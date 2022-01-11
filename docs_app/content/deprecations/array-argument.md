@@ -17,12 +17,7 @@ To unify the API surface of `forkJoin` and `combineLatest` we deprecated some si
 ## 受此变更影响的操作符
 
 - [combineLatest](/api/index/function/combineLatest)
-
-  [结合最新](/api/index/function/combineLatest)
-
 - [forkJoin](/api/index/function/forkJoin)
-
-  [分叉加入](/api/index/function/forkJoin)
 
 ## How to Refactor
 
@@ -30,7 +25,7 @@ To unify the API surface of `forkJoin` and `combineLatest` we deprecated some si
 
 We deprecated the signatures, where just pass all Observables directly as parameters to these operators.
 
-我们弃用了签名，直接将所有 Observables 作为参数传递给这些操作符。
+我们弃用了这些签名，直接将所有 Observables 作为参数传递给这些操作符。
 
 ```ts
 import { forkJoin, from } from 'rxjs';

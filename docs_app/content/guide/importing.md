@@ -1,14 +1,14 @@
 # Importing instructions
 
-# 导入说明
+# 导入指南
 
 There are different ways you can {@link guide/installation install} RxJS. Using/importing RxJS depends on the used RxJS version, but also depends on the used installation method.
 
-你可以通过多种方式{@link guide/installation install} RxJS。使用/导入 RxJS 取决于使用的 RxJS 版本，但也取决于使用的安装方法。
+你可以通过多种方式{@link guide/installation 安装} RxJS。如何使用/导入 RxJS 取决于所用的 RxJS 版本，但也取决于所用的安装方法。
 
 [Pipeable operators](https://v6.rxjs.dev/guide/v6/pipeable-operators) were introduced in RxJS version 5.5. This enabled all operators to be exported from a single place. This new export site was introduced with RxJS version 6 where all pipeable operators could have been imported from `'rxjs/operators'`. For example, `import { map } from 'rxjs/operators'`.
 
-[Pipeable 操作符](https://v6.rxjs.dev/guide/v6/pipeable-operators)是在 RxJS 5.5 版中引入的。这使得所有操作符都可以从一个地方导出。这个新的导出站点是在 RxJS 版本 6 中引入的，其中所有可管道操作符都可以从 `'rxjs/operators'` 导入。例如，`import { map } from 'rxjs/operators'`。
+[可联入管道的操作符](https://v6.rxjs.dev/guide/v6/pipeable-operators)是在 RxJS 5.5 版中引入的。这使得所有操作符都可以从一个地方导出。这个新的导出点是在 RxJS 版本 6 中引入的，其中所有可联入管道的操作符都可以从 `'rxjs/operators'` 导入。例如，`import { map } from 'rxjs/operators'`。
 
 # New in RxJS v7.2.0
 
@@ -18,11 +18,11 @@ There are different ways you can {@link guide/installation install} RxJS. Using/
 export site. This means that the preferred way to import operators is from `'rxjs'`, while
 `'rxjs/operators'` export site has been deprecated.**</span>
 
-**在 RxJS v7.2.0 中，大多数操作符已移至 `{@link api#index 'rxjs'}` 导出站点。这意味着导入操作符的首选方式是从 `'rxjs'`，而 `'rxjs/operators'` 导出站点已被弃用。**
+**在 RxJS v7.2.0 中，大多数操作符已移至 `{@link api#index 'rxjs'}` 导出点。这意味着导入操作符的首选方式是从 `'rxjs'`，而 `'rxjs/operators'` 导出点已被弃用。**
 
 For example, instead of using:
 
-例如，而不是使用：
+例如，不应该再用：
 
 ```ts
 import { map } from 'rxjs/operators';
@@ -42,15 +42,15 @@ Although the old way of importing operators is still active, it will be removed 
 
 Click {@link #how-to-migrate here to see} how to migrate.
 
-点击{@link #how-to-migrate here 查看}如何迁移。
+点击{@link #how-to-migrate 这里查看}如何迁移。
 
 # Export sites
 
-# 出口网站
+# 导出点
 
 RxJS v7 exports 6 different locations out of which you can import what you need. Those are:
 
-RxJS v7 导出 6 个不同的位置，你可以从中导入你需要的内容。那些是：
+RxJS v7 会导出 6 个不同的位置，你可以从中导入你需要的内容。即：
 
 - `{@link api#index 'rxjs'}` - for example: `import { of } from 'rxjs';`
 
@@ -83,30 +83,23 @@ RxJS v7 导出 6 个不同的位置，你可以从中导入你需要的内容。
 While nothing has been removed from `'rxjs/operators'`, it is strongly recommended doing the operator imports from `'rxjs'`. Almost all operator function exports have been moved to `'rxjs'`, but only a couple of old and deprecated operators have stayed in the `'rxjs/operators'`. Those operator functions are now mostly deprecated and most of them have their either static operator substitution or are kept as operators, but have a new name so that they are different to their static creation counter-part (
 usually ending with `With`). Those are:
 
-虽然没有从 `'rxjs/operators'` 中删除任何内容，但强烈建议从 `'rxjs'` 导入操作符。几乎所有操作符函数导出都已移至 `'rxjs'`，但只有几个旧的和已弃用的操作符保留在 `'rxjs/operators'` 中。这些操作符函数现在大多已被弃用，其中大多数具有静态操作符替换或保留为操作符，但有一个新名称，因此它们与其静态创建对应部分不同（通常以 `With` 结尾）。那些是：
+虽然没有从 `'rxjs/operators'` 中删除过任何内容，但强烈建议从 `'rxjs'` 中导入操作符。几乎所有操作符函数的导出都已移至 `'rxjs'`，但只有几个旧的和已弃用的操作符保留在 `'rxjs/operators'` 中。这些操作符函数现在大多已被弃用，其中大多数已替换为静态操作符或仍然是操作符，但有了一个新名字，因此它们与其对应的静态创建函数不同（通常以 `With` 结尾）。即：
 
 | `'rxjs/operators'` Operator | Replace With Static Creation Operator | Replace With New Operator Name |
 | --------------------------- | ------------------------------------- | ------------------------------ |
 | `'rxjs/operators'` 操作符 | 替换为静态创建操作符 | 替换为新的操作符名称 |
 | [`combineLatest`](/api/operators/combineLatest) | {@link combineLatest} | {@link combineLatestWith} |
-| [`combineLatest`](/api/operators/combineLatest) | {@link combineLatest} | {@link combineLatestWith} |
 | [`concat`](/api/operators/concat) | {@link concat} | {@link concatWith} |
-| [`concat`](/api/operators/concat) | {@link 连接} | {@link concatWith} |
 | [`merge`](/api/operators/merge) | {@link merge} | {@link mergeWith} |
-| [`merge`](/api/operators/merge) | {@链接合并} | {@link 合并} |
 | [`onErrorResumeNext`](/api/operators/onErrorResumeNext) | {@link onErrorResumeNext} | - |
-| [`onErrorResumeNext`](/api/operators/onErrorResumeNext) | {@link onErrorResumeNext} |  |
 | [`partition`](/api/operators/partition) | {@link partition} | - |
-| [`partition`](/api/operators/partition) | {@link 分区} |  |
 | [`race`](/api/operators/race) | {@link race} | {@link raceWith} |
-| [`race`](/api/operators/race) | {@link 比赛} | {@link raceWith} |
 | [`zip`](/api/operators/zip) | {@link zip} | {@link zipWith} |
-| [`zip`](/api/operators/zip) | {@链接压缩} | {@link zipWith} |
 
 For example, the old and deprecated way of using [`merge`](/api/operators/merge) from `'rxjs/operators'`
 is:
 
-例如，从 `'rxjs/operators'` 使用[`merge`](/api/operators/merge)的旧的和已弃用的方法是：
+例如，从 `'rxjs/operators'` 使用 [`merge`](/api/operators/merge) 的旧的和已弃用的方法是：
 
 ```ts
 import { merge } from 'rxjs/operators';
@@ -116,11 +109,11 @@ a$.pipe(merge(b$)).subscribe();
 
 But this should be avoided and replaced with one of the next two examples.
 
-但这应该避免并用接下来的两个示例之一代替。
+但这应该避免并替换为接下来的两个示例之一。
 
 For example, this could be replaced by using a static creation {@link merge} function:
 
-例如，这可以通过使用静态创建 {@link merge} 函数来替换：
+例如，这可以通过使用静态创建函数 {@link merge} 来替换：
 
 ```ts
 import { merge } from 'rxjs';
@@ -130,7 +123,7 @@ merge(a$, b$).subscribe();
 
 Or it could be written using a pipeable {@link mergeWith} operator:
 
-或者可以使用可管道 {@link mergeWith} 操作符编写：
+或者可以使用可联入管道的操作符 {@link mergeWith} 编写：
 
 ```ts
 import { mergeWith } from 'rxjs';
@@ -144,15 +137,15 @@ Depending on the preferred style, you can choose which one to follow, they are c
 
 Since a new way of importing operators is introduced with RxJS v7.2.0, instructions will be split to prior and after this version.
 
-由于 RxJS v7.2.0 引入了一种新的操作符导入方式，说明将分为之前和之后的版本。
+由于 RxJS v7.2.0 引入了一种新的操作符导入方式，这些指南将分为之前和之后的版本。
 
 ## ES6 via npm
 
-## ES6 通过 npm
+## 通过 npm 安装 ES6
 
 If you've installed RxJS using {@link guide/installation#es6-via-npm ES6 via npm} and installed version is:
 
-如果你已经使用 {@link guide/installation#es6-via-npm ES6 via npm} 安装了 RxJS 并且安装的版本是：
+如果你已经使用 {@link guide/installation#es6-via-npm 通过 npm 安装的 ES6} 安装了 RxJS 并且安装的版本是：
 
 ### v7.2.0 or later
 
@@ -234,7 +227,7 @@ of(1, 2, 3).pipe(map((x) => x + '!!!')); // etc
 If you installed a library {@link guide/installation#cdn using CDN}, the global namespace for rxjs is
 `rxjs`.
 
-如果你安装了一个库 {@link guide/installation#cdn using CDN}，rxjs 的全局命名空间是 `rxjs`。
+如果你{@link guide/installation#cdn 使用 CDN} 安装了一个库，则 rxjs 的全局命名空间是 `rxjs`。
 
 ### v7.2.0 or later
 

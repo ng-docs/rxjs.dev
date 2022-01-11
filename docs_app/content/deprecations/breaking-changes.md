@@ -36,7 +36,7 @@
 - **onUnhandledError:** Errors that occur during setup of an observable subscription after the subscription has emitted an error or completed will now throw in their own call stack. Before it would call `console.warn`. This is potentially breaking in edge cases for node applications, which may be configured to terminate for unhandled exceptions. In the unlikely event this affects you, you can configure the behavior to `console.warn` in the new configuration setting like
   so: `import { config } from 'rxjs'; config.onUnhandledError = (err) => console.warn(err);`
 
-  **onUnhandledError：**当可观察者的订阅已经发送了某个错误或完成通知，在设置此订阅期间发生的错误，现在将抛出它们自己的调用堆栈。就在它要调用 `console.warn` 之前。这可能会破坏 node 应用的某些边缘情况，可以将其配置为因未处理的异常而终止。万一这个变更影响到了你，你可以在新的配置项中将此行为配置为 `console.warn`，如下所示： `import { config } from 'rxjs'; config.onUnhandledError = (err) => console.warn(err);`
+  **onUnhandledError：**当可观察者的订阅已经发出了某个错误或完成通知，在设置此订阅期间发生的错误，现在将抛出它们自己的调用堆栈。就在它要调用 `console.warn` 之前。这可能会破坏 node 应用的某些边缘情况，可以将其配置为因未处理的异常而终止。万一这个变更影响到了你，你可以在新的配置项中将此行为配置为 `console.warn`，如下所示： `import { config } from 'rxjs'; config.onUnhandledError = (err) => console.warn(err);`
 
 - **RxJS Error types** Tests that are written with naive expectations against errors may fail now that errors have a proper `stack` property. In some testing frameworks, a deep equality check on two error instances will check the values in `stack`, which could be different.
 
@@ -68,7 +68,7 @@
 
 - `ReplaySubject` no longer schedules emissions when a scheduler is provided. If you need that behavior, please compose in `observeOn` using `pipe`, for example: `new ReplaySubject(2, 3000).pipe(observeOn(asap))`
 
-  当提供了调度器时，`ReplaySubject` 不再调度发送值的过程。如果你需要该行为，请使用 `pipe` 在 `observeOn` 中编写，例如： `new ReplaySubject(2, 3000).pipe(observeOn(asap))`
+  当提供了调度器时，`ReplaySubject` 不再调度发出值的过程。如果你需要该行为，请使用 `pipe` 在 `observeOn` 中编写，例如： `new ReplaySubject(2, 3000).pipe(observeOn(asap))`
 
 - **rxjs-compat:** `rxjs/Rx` is no longer a valid import site.
 
@@ -120,7 +120,7 @@
 
 - **mergeScan:** `mergeScan` will no longer emit its inner state again upon completion.
 
-  **mergeScan：** `mergeScan` 后将不再发送其内部状态。
+  **mergeScan：** `mergeScan` 后将不再发出其内部状态。
 
 ### of
 
@@ -206,7 +206,7 @@
 
 - **throwError:** In an extreme corner case for usage, `throwError` is no longer able to emit a function as an error directly. If you need to push a function as an error, you will have to use the factory function to return the function like so: `throwError(() => functionToEmit)`, in other words `throwError(() => () => console.log('called later'))`.
 
-  **throwError：**在一种极端罕见的用法下，`throwError` 不再直接将函数作为错误发送。如果你需要将函数作为错误推送，则必须使用工厂函数来返回函数，如下所示： `throwError(() => functionToEmit)`，换句话说 `throwError(() => () => console.log('called later'))`。
+  **throwError：**在一种极端罕见的用法下，`throwError` 不再直接将函数作为错误发出。如果你需要将函数作为错误推送，则必须使用工厂函数来返回函数，如下所示： `throwError(() => functionToEmit)`，换句话说 `throwError(() => () => console.log('called later'))`。
 
 ### timestamp
 
@@ -233,7 +233,7 @@
 
 - `ajax` body serialization will now use default XHR behavior in all cases. If the body is a `Blob`, `ArrayBuffer`, any array buffer view (like a byte sequence, e.g. `Uint8Array`, etc), `FormData`, `URLSearchParams`, `string`, or `ReadableStream`, default handling is use. If the `body` is otherwise `typeof` `"object"`, then it will be converted to JSON via `JSON.stringify`, and the `Content-Type` header will be set to `application/json;charset=utf-8`. All other types will emit an error.
 
-  `ajax` 正文的序列化现在将在所有情况下使用默认的 XHR 行为。如果主体是 `Blob`、`ArrayBuffer`、任何数组缓冲区视图（如字节序列，例如 `Uint8Array` 等）、`FormData`、`URLSearchParams`、`string` 或 `ReadableStream`，则使用默认处理。如果 `body` 是 `typeof` `"object"` 的，那么它将通过 `JSON.stringify` 转换为 JSON，并且 `Content-Type` 标头将设置为 `application/json;charset=utf-8`。所有其他类型都会发送错误。
+  `ajax` 正文的序列化现在将在所有情况下使用默认的 XHR 行为。如果主体是 `Blob`、`ArrayBuffer`、任何数组缓冲区视图（如字节序列，例如 `Uint8Array` 等）、`FormData`、`URLSearchParams`、`string` 或 `ReadableStream`，则使用默认处理。如果 `body` 是 `typeof` `"object"` 的，那么它将通过 `JSON.stringify` 转换为 JSON，并且 `Content-Type` 标头将设置为 `application/json;charset=utf-8`。所有其他类型都会发出错误。
 
 - The `Content-Type` header passed to `ajax` configuration no longer has any effect on the serialization behavior of the AJAX request.
 
@@ -245,7 +245,7 @@
 
 - **ajax:** In an extreme corner-case... If an error occurs, the responseType is `"json"`, we're in IE, and the `responseType` is not valid JSON, the `ajax` observable will no longer emit a syntax error, rather it will emit a full `AjaxError` with more details.
 
-  **ajax：**在某种极端罕见的情况下...如果我们在 IE 中发生错误，responseType 是 `"json"`，并且 `responseType` 不是有效的 JSON，则 `ajax` observable 将不再发送语法错误，而是发送带有更多详细信息的完整 `AjaxError`。
+  **ajax：**在某种极端罕见的情况下...如果我们在 IE 中发生错误，responseType 是 `"json"`，并且 `responseType` 不是有效的 JSON，则 `ajax` observable 将不再发出语法错误，而是发出带有更多详细信息的完整 `AjaxError`。
 
 - **ajax:** Ajax implementation drops support for IE10 and lower. This puts us in-line with other implementations and helps clean up code in this area
 

@@ -5,7 +5,7 @@ import { ObservableNotification } from './types';
  * The {@link GlobalConfig} object for RxJS. It is used to configure things
  * like how to react on unhandled errors.
  *
- * RxJS 的 {@link GlobalConfig} 对象。它用于配置诸如如何对未处理的错误做出反应之类的事情。
+ * RxJS 的 {@link GlobalConfig} 对象。它用于配置诸如如何对未处理的错误做出响应之类的事情。
  *
  */
 export const config: GlobalConfig = {
@@ -21,7 +21,7 @@ export const config: GlobalConfig = {
  * like how to react on unhandled errors. Accessible via {@link config}
  * object.
  *
- * RxJS 的全局配置对象，用于配置诸如如何对未处理的错误做出反应。可通过 {@link config} 对象访问。
+ * RxJS 的全局配置对象，用于配置诸如如何对未处理的错误做出响应。可通过 {@link config} 对象访问。
  *
  */
 export interface GlobalConfig {
@@ -93,13 +93,13 @@ export interface GlobalConfig {
    * `unsubscribe()` via `this` context in `next` functions created in observers passed
    * to `subscribe`.
    *
-   * 如果为 true，则启用 v5 中尚未记录的功能：在传递给 `subscribe` 的观察者中创建的 `next` 函数中通过 `this` 上下文访问 `unsubscribe()` 的能力。
+   * 如果为 true，则启用 v5 中尚未记录的功能：在传给 `subscribe` 的观察者中创建的 `next` 函数中通过 `this` 上下文访问 `unsubscribe()` 的能力。
    *
    * This is being removed because the performance was severely problematic, and it could also cause
    * issues when types other than POJOs are passed to subscribe as subscribers, as they will likely have
    * their `this` context overwritten.
    *
-   * 之所以将其删除，是因为性能存在严重问题，并且当 POJO 以外的类型作为订阅者传递给订阅时，它也可能导致问题，因为它们 `this` 上下文可能会被覆盖。
+   * 之所以将其删除，是因为性能存在严重问题，并且当 POJO 以外的类型作为订阅者传给订阅时，它也可能导致问题，因为它们 `this` 上下文可能会被覆盖。
    *
    * @deprecated As of version 8, RxJS will no longer support altering the
    * context of next functions provided as part of an observer to Subscribe. Instead,

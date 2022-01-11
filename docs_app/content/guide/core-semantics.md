@@ -49,7 +49,7 @@ sense.
 
 - Operators that accept "notifiers" (as described above), MUST ONLY recognized next values from the notifier as "notifications". Emitted completions may not be used a source of notification.
 
-  接受“通知器”（如上所述）的操作符只能将来自通知器的下一个值看做“通知”。已发送完成事件的通知器不能用作通知源。
+  接受“通知器”（如上所述）的操作符只能将来自通知器的下一个值看做“通知”。已发出完成事件的通知器不能用作通知源。
 
 - "Notifiers" provided directly to the operator MUST be subscribed to _before_ the source is subscribed to. "Notifiers" created via factory function provided to the operator SHOULD be subscribed to at the earliest possible moment.
 
@@ -89,7 +89,7 @@ sense.
 
 - MAY have "result selectors". This is a secondary argument that provides the ability to "map" values before they're emitted from the resulting observable.
 
-  可以有“结果选择器”。这是第二个参数，它提供了在值从结果 observable 发送之前“映射”值的能力。
+  可以有“结果选择器”。这是第二个参数，它提供了在值从结果 observable 发出之前“映射”值的能力。
 
 - IF the creation function accepts a "result selector", it must not accept "n-arguments" ahead of that result selector. Instead, it should accept an array or possibly an object. (bad: `combineThings(sourceA$, sourceB$, (a, b) => a + b)`, good: `combineThings([sourceA$, sourceB$], (a, b) => a + b)`. In this case, it may be okay to provide the result selector as a second argument, rather than as a named parameter, as the use should be fairly obvious.
 

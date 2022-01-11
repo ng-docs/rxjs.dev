@@ -107,7 +107,7 @@ Although `run()` executes entirely synchronously, the helper functions inside yo
 
 - `animate()` - specifies when requested animation frames will be 'painted'. `animate` accepts a marble diagram and each value emission in the diagram indicates when a 'paint' occurs - at which time, any queued `requestAnimationFrame` callbacks will be executed. Call `animate` at the beginning of your test and align the marble diagrams so that it's clear when the callbacks will be executed:
 
-  `animate()` - 指定何时“绘制”所请求的动画帧。`animate` 接受一个弹珠图，图中的每个值在发送时都会指示何时发生“绘制” - 届时，将执行任何已排队的 `requestAnimationFrame` 回调。在测试开始时调用 `animate` 并对齐弹珠图，以便清楚何时执行回调：
+  `animate()` - 指定何时“绘制”所请求的动画帧。`animate` 接受一个弹珠图，图中的每个值在发出时都会指示何时发生“绘制” - 届时，将执行任何已排队的 `requestAnimationFrame` 回调。在测试开始时调用 `animate` 并对齐弹珠图，以便清楚何时执行回调：
 
   ```ts
   testScheduler.run((helpers) => {
@@ -158,7 +158,7 @@ How many virtual milliseconds one frame represents depends on the value of `Test
 
 - `[a-z0-9]` e.g. `'a'` any alphanumeric character: Represents a value being emitted by the producer signaling `next()`. Also consider that you could map this into an object or an array like this:
 
-  `[a-z0-9]`（例如 `'a'`）任何字母数字字符：表示由生产者信号 `next()` 发送的值。你可以将它映射到一个对象或数组中，如下所示：
+  `[a-z0-9]`（例如 `'a'`）任何字母数字字符：表示由生产者信号 `next()` 发出的值。你可以将它映射到一个对象或数组中，如下所示：
 
 <!-- prettier-ignore -->
 
@@ -184,7 +184,7 @@ expectObservable(someStreamForTesting).toBe(expected, values);
 - `'()'` sync groupings: When multiple events need to be in the same frame synchronously, parentheses are used to group those events. You can group next'd values, a completion, or an error in this manner. The position of the initial `(` determines the time at which its values are emitted. While it can be counter-intuitive at first, after all the values have synchronously emitted time will progress a number of frames equal to the number of ASCII characters in the group, including the parentheses.
   e.g. `'(abc)'` will emit the values of a, b, and c synchronously in the same frame and then advance virtual time by 5 frames, `'(abc)'.length === 5`. This is done because it often helps you vertically align your marble diagrams, but it's a known pain point in real-world testing. [Learn more about known issues](#known-issues).
 
-  `'()'` 同步分组：当多个事件需要同步在同一帧中时，括号用于对这些事件进行分组。你可以通过这种方式对下一个值、完成或错误进行分组。初始值 `(` 的位置决定了它的值被发送的时间。虽然一开始有点反直觉，但在所有值同步发送后，时间将前进的帧数等于组中的 ASCII 字符数, 包括括号。例如 `'(abc)'` 将在同一帧中同步发送 a、b 和 c 的值，然后将虚拟时间提前 5 帧，`'(abc)'.length === 5`。这么做是因为它通常可以帮助你垂直对齐弹珠图，这是实际测试中的一个已知痛点。[了解有关已知问题](#known-issues)的更多信息。
+  `'()'` 同步分组：当多个事件需要同步在同一帧中时，括号用于对这些事件进行分组。你可以通过这种方式对下一个值、完成或错误进行分组。初始值 `(` 的位置决定了它的值被发出的时间。虽然一开始有点反直觉，但在所有值同步发出后，时间将前进的帧数等于组中的 ASCII 字符数, 包括括号。例如 `'(abc)'` 将在同一帧中同步发出 a、b 和 c 的值，然后将虚拟时间提前 5 帧，`'(abc)'.length === 5`。这么做是因为它通常可以帮助你垂直对齐弹珠图，这是实际测试中的一个已知痛点。[了解有关已知问题](#known-issues)的更多信息。
 
 - `'^'` subscription point: (hot observables only) shows the point at which the tested observables will be subscribed to the hot observable. This is the "zero frame" for that observable, every frame before the `^` will be negative. Negative time might seem pointless, but there are in fact advanced cases where this is necessary, usually involving ReplaySubjects.
 
@@ -204,7 +204,7 @@ When it's not the first character of the diagram it must be padded a space befor
 
 **NOTE**: You may have to subtract 1 millisecond from the time you want to progress because the alphanumeric marbles (representing an actual emitted value) _advance time 1 virtual frame_ themselves already, after they emit. This can be counter-intuitive and frustrating, but for now it is indeed correct.
 
-**注意**：你可能需要从你想要前进的时间中减去 1 毫秒，因为字母数字弹珠（代表实际发送的值）在它们发送后自身已经*提前了 1 个虚拟帧*。这可能是反直觉和令人沮丧的，但目前它确实是正确的。
+**注意**：你可能需要从你想要前进的时间中减去 1 毫秒，因为字母数字弹珠（代表实际发出的值）在它们发出后自身已经*提前了 1 个虚拟帧*。这可能是反直觉和令人沮丧的，但目前它确实是正确的。
 
 <!-- prettier-ignore -->
 
@@ -234,47 +234,47 @@ expectObservable(result).toBe(expected);
 
 `'-'` or `'------'`: Equivalent to {@link NEVER}, or an observable that never emits or errors or completes.
 
-`'-'` 或 `'------'` ：等价于 {@link NEVER}，或者是一个“从不发送”、“错误”或“完成”的可观察者。
+`'-'` 或 `'------'` ：等价于 {@link NEVER}，或者是一个“从不发出”、“错误”或“完成”的可观察者。
 
 `|`: Equivalent to {@link EMPTY}, or an observable that never emits and completes immediately.
 
-`|` : 等价于 {@link EMPTY}，或者是一个永远不会立即发送和完成的 observable。
+`|` : 等价于 {@link EMPTY}，或者是一个永远不会立即发出和完成的 observable。
 
 `#`: Equivalent to {@link throwError}, or an observable that never emits and errors immediately.
 
-`#` ：等价于 {@link throwError}，或者是一个永远不会立即发送错误的可观察者。
+`#` ：等价于 {@link throwError}，或者是一个永远不会立即发出错误的可观察者。
 
 `'--a--'`: An observable that waits 2 "frames", emits value `a` on frame 2 and then never completes.
 
-`'--a--'` ：一个等待 2 个“帧”的可观察者，在第 2 帧上发送值 `a` 然后永远不会完成。
+`'--a--'` ：一个等待 2 个“帧”的可观察者，在第 2 帧上发出值 `a` 然后永远不会完成。
 
 `'--a--b--|'`: On frame 2 emit `a`, on frame 5 emit `b`, and on frame 8, `complete`.
 
-`'--a--b--|'` ：在第 2 帧发送 `a`，在第 5 帧发送 `b`，在第 8 帧 `complete`。
+`'--a--b--|'` ：在第 2 帧发出 `a`，在第 5 帧发出 `b`，在第 8 帧 `complete`。
 
 `'--a--b--#'`: On frame 2 emit `a`, on frame 5 emit `b`, and on frame 8, `error`.
 
-`'--a--b--#'` ：在第 2 帧发送 `a`，在第 5 帧发送 `b`，在第 8 帧发送 `error`。
+`'--a--b--#'` ：在第 2 帧发出 `a`，在第 5 帧发出 `b`，在第 8 帧发出 `error`。
 
 `'-a-^-b--|'`: In a hot observable, on frame -2 emit `a`, then on frame 2 emit `b`, and on frame 5, `complete`.
 
-`'-a-^-b--|'` ：在一个热 observable 中，在 -2 帧上发送 `a`，然后在第 2 帧上发送 `b`，在第 5 帧上 `complete`。
+`'-a-^-b--|'` ：在一个热 observable 中，在 -2 帧上发出 `a`，然后在第 2 帧上发出 `b`，在第 5 帧上 `complete`。
 
 `'--(abc)-|'`: on frame 2 emit `a`, `b`, and `c`, then on frame 8, `complete`.
 
-`'--(abc)-|'` ：在第 2 帧发送 `a`、`b` 和 `c`，然后在第 8 帧，`complete`。
+`'--(abc)-|'` ：在第 2 帧发出 `a`、`b` 和 `c`，然后在第 8 帧，`complete`。
 
 `'-----(a|)'`: on frame 5 emit `a` and `complete`.
 
-`'-----(a|)'` ：在第 5 帧发送 `a` 并 `complete`。
+`'-----(a|)'` ：在第 5 帧发出 `a` 并 `complete`。
 
 `'a 9ms b 9s c|'`: on frame 0 emit `a`, on frame 10 emit `b`, on frame 9,011 emit `c`, then on frame 9,012 `complete`.
 
-`'a 9ms b 9s c|'` ：在第 0 帧发送 `a`，在第 10 帧发送 `b`，在第 9,011 帧发送 `c`，然后在第 9,012 帧 `complete`。
+`'a 9ms b 9s c|'` ：在第 0 帧发出 `a`，在第 10 帧发出 `b`，在第 9,011 帧发出 `c`，然后在第 9,012 帧 `complete`。
 
 `'--a 2.5m b'`: on frame 2 emit `a`, on frame 150,003 emit `b` and never complete.
 
-`'--a 2.5m b'` ：在第 2 帧发送 `a`，在第 150,003 帧发送 `b` 并且永远不会完成。
+`'--a 2.5m b'` ：在第 2 帧发出 `a`，在第 150,003 帧发出 `b` 并且永远不会完成。
 
 ## Subscription marbles
 

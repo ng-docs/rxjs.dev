@@ -447,7 +447,7 @@ AsyncSubject 类似于 [`last()`](/api/operators/last) 操作符，因为它会�
 
 Sometimes the emitted value doesn't matter as much as the fact that a value was emitted.
 
-有时，发送值这件事本身比所发送的值更重要。
+有时，发出值这件事本身比所发出的值更重要。
 
 For instance, the code below signals that one second has passed.
 
@@ -489,5 +489,5 @@ setTimeout(() => subject.next(), 1000);
 
 <span class="informal">Before version 7, the default type of Subject values was `any`. `Subject<any>` disables type checking of the emitted values, whereas `Subject<void>` prevents accidental access to the emitted value. If you want the old behavior, then replace `Subject` with `Subject<any>`.</span>
 
-<span class="informal">在版本 7 之前，Subject 值的默认类型是 `any`。`Subject<any>` 禁用发送值的类型检查，而 `Subject<void>` 可以防止意外访问所发送的值。如果你想要老式行为，请将 `Subject` 替换为 `Subject<any>`。</span>
+<span class="informal">在版本 7 之前，Subject 值的默认类型是 `any`。`Subject<any>` 禁用发出值的类型检查，而 `Subject<void>` 可以防止意外访问所发出的值。如果你想要老式行为，请将 `Subject` 替换为 `Subject<any>`。</span>
 

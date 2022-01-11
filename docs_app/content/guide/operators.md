@@ -28,7 +28,7 @@ A Pipeable Operator is essentially a pure function which takes one Observable as
 
 **Creation Operators** are the other kind of operator, which can be called as standalone functions to create a new Observable. For example: `of(1, 2, 3)` creates an observable that will emit 1, 2, and 3, one right after another. Creation operators will be discussed in more detail in a later section.
 
-**创建操作符**是另一种操作符，可以作为独立函数调用以创建新的 Observable。例如： `of(1, 2, 3)` 创建一个 observable，它将一个接一个地发送 1、2 和 3。创建操作符将在后面的部分中更详细地讨论。
+**创建操作符**是另一种操作符，可以作为独立函数调用以创建新的 Observable。例如： `of(1, 2, 3)` 创建一个 observable，它将一个接一个地发出 1、2 和 3。创建操作符将在后面的部分中更详细地讨论。
 
 For example, the operator called [`map`](/api/operators/map) is analogous to the Array method of the same name. Just as `[1, 2, 3].map(x => x * x)` will yield `[1, 4, 9]`, the Observable created like this:
 
@@ -49,7 +49,7 @@ of(1, 2, 3)
 
 will emit `1`, `4`, `9`. Another useful operator is [`first`](/api/operators/first):
 
-这将发送 `1`、`4`、`9`。另一个有用的操作符是 [`first`](/api/operators/first) ：
+这将发出 `1`、`4`、`9`。另一个有用的操作符是 [`first`](/api/operators/first) ：
 
 ```ts
 import { of, first } from 'rxjs';
@@ -110,7 +110,7 @@ See the list of all static creation operators [here](#creation-operators-list).
 
 Observables most commonly emit ordinary values like strings and numbers, but surprisingly often, it is necessary to handle Observables _of_ Observables, so-called higher-order Observables. For example, imagine you had an Observable emitting strings that were the URLs of files you wanted to see. The code might look like this:
 
-Observables 最常发送的是普通值，如字符串和数字，但令人惊讶的是，它还经常需要处理 Observables *的* Observables，即所谓的高阶 Observables。例如，假设你有一个 Observable 发送字符串，这些字符串是你想要查看的文件的 URL。其代码可能如下所示：
+Observables 最常发出的是普通值，如字符串和数字，但令人惊讶的是，它还经常需要处理 Observables *的* Observables，即所谓的高阶 Observables。例如，假设你有一个 Observable 发出字符串，这些字符串是你想要查看的文件的 URL。其代码可能如下所示：
 
 ```ts
 const fileObservable = urlObservable.pipe(map((url) => http.get(url)));
@@ -133,19 +133,19 @@ const fileObservable = urlObservable.pipe(
 
 The [`concatAll()`](/api/operators/concatAll) operator subscribes to each "inner" Observable that comes out of the "outer" Observable, and copies all the emitted values until that Observable completes, and goes on to the next one. All of the values are in that way concatenated. Other useful flattening operators (called [_join operators_](#join-operators)) are
 
-[`concatAll()`](/api/operators/concatAll) 操作符订阅从“外部” Observable 出来的每个“内部” Observable，并复制所有发送的值，直到该 Observable 完成，然后继续处理下一个。所有值都以这种方式连接。其他有用的展平操作符（称为[*联结操作符*](#join-operators)）有
+[`concatAll()`](/api/operators/concatAll) 操作符订阅从“外部” Observable 出来的每个“内部” Observable，并复制所有发出的值，直到该 Observable 完成，然后继续处理下一个。所有值都以这种方式连接。其他有用的展平操作符（称为[*联结操作符*](#join-operators)）有
 
 - [`mergeAll()`](/api/operators/mergeAll) — subscribes to each inner Observable as it arrives, then emits each value as it arrives
 
-  [`mergeAll()`](/api/operators/mergeAll) — 在每个内部 Observable 抵达时订阅它，然后在每个值抵达时发送这个值
+  [`mergeAll()`](/api/operators/mergeAll) — 在每个内部 Observable 抵达时订阅它，然后在每个值抵达时发出这个值
 
 - [`switchAll()`](/api/operators/switchAll) — subscribes to the first inner Observable when it arrives, and emits each value as it arrives, but when the next inner Observable arrives, unsubscribes to the previous one, and subscribes to the new one.
 
-  [`switchAll()`](/api/operators/switchAll) — 在第一个内部 Observable 抵达时订阅它，并在每个值抵达时发送这个值，但是当下一个内部 Observable 抵达时，退订前一个，并订阅新的。
+  [`switchAll()`](/api/operators/switchAll) — 在第一个内部 Observable 抵达时订阅它，并在每个值抵达时发出这个值，但是当下一个内部 Observable 抵达时，退订前一个，并订阅新的。
 
 - [`exhaustAll()`](/api/operators/exhaustAll) — subscribes to the first inner Observable when it arrives, and emits each value as it arrives, discarding all newly arriving inner Observables until that first one completes, then waits for the next inner Observable.
 
-  [`exhaustAll()`](/api/operators/exhaustAll) — 在第一个内部 Observable 抵达时订阅它，并在每个值抵达时发送这个值，丢弃所有新抵达的内部 Observable 直到第一个完成，然后等待下一个内部 Observable。
+  [`exhaustAll()`](/api/operators/exhaustAll) — 在第一个内部 Observable 抵达时订阅它，并在每个值抵达时发出这个值，丢弃所有新抵达的内部 Observable 直到第一个完成，然后等待下一个内部 Observable。
 
 Just as many array libraries combine [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) and [`flat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) (or `flatten()`) into a single [`flatMap()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap), there are mapping equivalents of all the RxJS flattening operators [`concatMap()`](/api/operators/concatMap)
 , [`mergeMap()`](/api/operators/mergeMap), [`switchMap()`](/api/operators/switchMap), and [`exhaustMap()`](/api/operators/exhaustMap).
@@ -159,11 +159,11 @@ exhaustMap()`](/api/operators/exhaustMap) 都有其映射等价物 [`exhaustMap(
 
 To explain how operators work, textual descriptions are often not enough. Many operators are related to time, they may for instance delay, sample, throttle, or debounce value emissions in different ways. Diagrams are often a better tool for that. _Marble Diagrams_ are visual representations of how operators work, and include the input Observable(s), the operator and its parameters, and the output Observable.
 
-要解释操作符的工作原理，文字描述通常是不够的。许多操作符都与时间有关，他们可能以不同的方式延迟、采样、节流或防抖后发送。图表通常是更好的工具。*弹珠图*是操作符如何工作的可视化表示，包括输入 Observable、操作符及其参数以及输出 Observable。
+要解释操作符的工作原理，文字描述通常是不够的。许多操作符都与时间有关，他们可能以不同的方式延迟、采样、节流或防抖后发出。图表通常是更好的工具。*弹珠图*是操作符如何工作的可视化表示，包括输入 Observable、操作符及其参数以及输出 Observable。
 
 <span class="informal">In a marble diagram, time flows to the right, and the diagram describes how values ("marbles") are emitted on the Observable execution.</span>
 
-<span class="informal">在弹珠图中，时间向右流动，该图描述了值（“弹珠”）是如何在 Observable 执行时发送的。</span>
+<span class="informal">在弹珠图中，时间向右流动，该图描述了值（“弹珠”）是如何在 Observable 执行时发出的。</span>
 
 Below you can see the anatomy of a marble diagram.
 
@@ -213,7 +213,7 @@ For a complete overview, see the [references page](/api).
 
 These are Observable creation operators that also have join functionality -- emitting values of multiple source Observables.
 
-这些是 Observable 的创建操作符，它们也具有联结功能 —— 发送多个源 Observable 的值。
+这些是 Observable 的创建操作符，它们也具有联结功能 —— 发出多个源 Observable 的值。
 
 - [`combineLatest`](/api/index/function/combineLatest)
 - [`concat`](/api/index/function/concat)

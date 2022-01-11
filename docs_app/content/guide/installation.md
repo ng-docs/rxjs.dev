@@ -1,6 +1,6 @@
 # Installation Instructions
 
-# 安装说明
+# 安装指南
 
 Here are different ways you can install RxJS:
 
@@ -8,7 +8,7 @@ Here are different ways you can install RxJS:
 
 ## ES2015 via npm
 
-## ES2015 通过 npm
+## 通过 npm 安装 ES2015
 
 ```shell
 npm install rxjs
@@ -29,15 +29,15 @@ By default, RxJS 7.x will provide different variants of the code based on the co
 If the target browsers for a project support ES2015+ or the bundle process supports down-leveling to ES5 then the bundler can optionally be configured to allow the ES2015 RxJS code to be used instead. You can enable support for using the ES2015 RxJS code by configuring a bundler to use the `es2015` custom export condition during module resolution. Configuring a bundler to use the `es2015` custom export condition is specific to each bundler. If you are interested in using this option, please consult the
 documentation of your bundler for additional information. However, some general information can be found here: <https://webpack.js.org/guides/package-exports/#conditions-custom>
 
-如果项目的目标浏览器支持 ES2015+ 或捆绑过程支持降级到 ES5，则可以选择将捆绑器配置为允许使用 ES2015 RxJS 代码。你可以通过将捆绑器配置为在模块解析期间使用 `es2015` 自定义导出条件来启用对使用 ES2015 RxJS 代码的支持。将捆绑器配置为使用 `es2015` 自定义导出条件特定于每个捆绑器。如果你有兴趣使用此选项，请查阅捆绑器的文档以获取更多信息。但是，可以在此处找到一些一般信息： [https](https://webpack.js.org/guides/package-exports/#conditions-custom) ://webpack.js.org/guides/package-exports/#conditions-custom
+如果项目的目标浏览器支持 ES2015+ 或其捆绑过程支持降级到 ES5，则可以选择将捆绑器配置为允许使用 ES2015 RxJS 代码。你可以通过将捆绑器配置为在模块解析期间使用 `es2015` 自定义导出条件来启用对使用 ES2015 RxJS 代码的支持。将捆绑器配置为让每个捆绑器使用独特的 `es2015` 自定义导出条件。如果你有兴趣使用此选项，请查阅捆绑器的文档以获取更多信息。但是，可以在此处找到一些一般信息： <https://webpack.js.org/guides/package-exports/#conditions-custom>
 
 To import only what you need, please {@link guide/importing#es6-via-npm check out this} guide.
 
-要仅导入你需要的内容，请{@link guide/importing#es6-via-npm check out this}指南。
+要仅导入你需要的内容，请{@link guide/importing#es6-via-npm 查看这份}指南。
 
 ## CommonJS via npm
 
-## 通过 npm 的 CommonJS
+## 通过 npm 导入 CommonJS
 
 If you receive an error like error TS2304: Cannot find name 'Promise' or error TS2304: Cannot find name
 'Iterable' when using RxJS you may need to install a supplemental set of typings.
@@ -46,7 +46,7 @@ If you receive an error like error TS2304: Cannot find name 'Promise' or error T
 
 1. For typings users:
 
-   对于打字用户：
+   对于 typings 用户：
 
 ```shell
 typings install es6-shim --ambient
@@ -54,15 +54,15 @@ typings install es6-shim --ambient
 
 2. If you're not using typings the interfaces can be copied from /es6-shim/es6-shim.d.ts.
 
-   如果你不使用类型，则可以从 /es6-shim/es6-shim.d.ts 复制接口。
+   如果你不使用 typings，则可以从 /es6-shim/es6-shim.d.ts 中复制接口。
 
 3. Add type definition file included in tsconfig.json or CLI argument.
 
-   添加包含在 tsconfig.json 或 CLI 参数中的类型定义文件。
+   添加要包含在 tsconfig.json 或 CLI 参数中的类型定义文件。
 
 ## All Module Types (CJS/ES6/AMD/TypeScript) via npm
 
-## 所有模块类型 (CJS/ES6/AMD/TypeScript) 通过 npm
+##  通过 npm 安装所有模块类型 (CJS/ES6/AMD/TypeScript)
 
 To install this library via npm version 3, use the following command:
 
@@ -82,11 +82,9 @@ npm install @reactivex/rxjs@7.3.0
 
 ## CDN
 
-## 内容分发网络
-
 For CDN, you can use [unpkg](https://unpkg.com/):
 
-对于 CDN，你可以使用[unpkg](https://unpkg.com/) ：
+对于 CDN，你可以使用 [unpkg](https://unpkg.com/)：
 
 [https://unpkg.com/rxjs@^7/dist/bundles/rxjs.umd.min.js](https://unpkg.com/rxjs@%5E7/dist/bundles/rxjs.umd.min.js)
 
