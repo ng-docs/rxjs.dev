@@ -10,7 +10,7 @@ export interface RepeatConfig {
   /**
    * The number of times to repeat the source. Defaults to `Infinity`.
    *
-   * 重复源的次数。默认为 `Infinity` 。
+   * 重复源的次数。默认为 `Infinity`。
    *
    */
   count?: number;
@@ -21,7 +21,7 @@ export interface RepeatConfig {
    * and the return value should be a valid observable input that will notify when the source
    * should be repeated. If the notifier observable is empty, the result will complete.
    *
-   * 如果是 `number` ，则将源的重复延迟该毫秒数。如果是一个函数，它将提供源被订阅的次数，并且返回值应该是一个有效的可观察输入，它将通知何时应该重复源。如果通知器 observable 为空，则结果将完成。
+   * 如果是 `number`，则将源的重复延迟该毫秒数。如果是一个函数，它将提供源被订阅的次数，并且返回值应该是一个有效的可观察输入，它将通知何时应该重复源。如果通知器 observable 为空，则结果将完成。
    *
    */
   delay?: number | ((count: number) => ObservableInput<any>);
@@ -48,11 +48,11 @@ export interface RepeatConfig {
  * Repeat is very similar to {@link retry}, where {@link retry} will resubscribe to the source in the error case, but
  * `repeat` will resubscribe if the source completes.
  *
- * repeat 与 {@link retry} 非常相似，其中 {@link retry} 将在错误情况下重新订阅源，但如果源完成， `repeat` 将重新订阅。
+ * repeat 与 {@link retry} 非常相似，其中 {@link retry} 将在错误情况下重新订阅源，但如果源完成，`repeat` 将重新订阅。
  *
  * Note that `repeat` will _not_ catch errors. Use {@link retry} for that.
  *
- * 请注意， `repeat`_ 不会 _ 捕获错误。为此使用 {@link retry}。
+ * 请注意，`repeat`_ 不会 _ 捕获错误。为此使用 {@link retry}。
  *
  * - `repeat(0)` returns an empty observable
  *

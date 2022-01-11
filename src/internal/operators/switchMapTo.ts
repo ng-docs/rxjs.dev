@@ -7,7 +7,7 @@ export function switchMapTo<O extends ObservableInput<unknown>>(observable: O): 
 /**
  * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
  *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： <https://rxjs.dev/deprecations/resultSelector>
+ * `resultSelector` 参数将在 v8 中删除。请改用内部 `map`。详细信息： <https://rxjs.dev/deprecations/resultSelector>
  *
  */
 export function switchMapTo<O extends ObservableInput<unknown>>(
@@ -17,7 +17,7 @@ export function switchMapTo<O extends ObservableInput<unknown>>(
 /**
  * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
  *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： <https://rxjs.dev/deprecations/resultSelector>
+ * `resultSelector` 参数将在 v8 中删除。请改用内部 `map`。详细信息： <https://rxjs.dev/deprecations/resultSelector>
  *
  */
 export function switchMapTo<T, R, O extends ObservableInput<unknown>>(
@@ -45,7 +45,7 @@ export function switchMapTo<T, R, O extends ObservableInput<unknown>>(
  * emits values only from the most recently emitted instance of
  * `innerObservable`.
  *
- * 将每个源值映射到给定的 Observable `innerObservable` ，而不考虑源值，然后将这些结果 Observable 展平为一个 Observable，即输出 Observable。输出 Observables 仅从最近发出的 `innerObservable` 实例发出值。
+ * 将每个源值映射到给定的 Observable `innerObservable`，而不考虑源值，然后将这些结果 Observable 展平为一个 Observable，即输出 Observable。输出 Observables 仅从最近发出的 `innerObservable` 实例发出值。
  *
  * ## Example
  *

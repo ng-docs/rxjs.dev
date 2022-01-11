@@ -21,7 +21,7 @@ The purpose of these semantics is provide predictable behavior for the users of 
 **Functions such as operators, constructors, and creation functions, should use named parameters in cases where there is more than 1 argument, and arguments after the first are non-obvious.** The primary use case should be streamlined to work without configuration. For example, `fakeFlattenMap(n => of(n))` is fine, but `fakeFlattenMap(n => of(n), 1)` is less readable than `fakeFlattenMap(n => of(n), { maxConcurrent: 1 })`. Other things, like `of(1, 2, 3)` are obvious enough that named parameters don't make
 sense.
 
-**运算符、构造函数和创建函数等函数在有多个参数的情况下应使用命名参数，并且第一个参数之后的参数不明显。**应简化主要用例，使其无需配置即可工作。例如， `fakeFlattenMap(n => of(n))` 很好，但 `fakeFlattenMap(n => of(n), 1)` 的可读性不如 `fakeFlattenMap(n => of(n), { maxConcurrent: 1 })` 。其他的东西，比如 `of(1, 2, 3)` 很明显，命名参数没有意义。
+**运算符、构造函数和创建函数等函数在有多个参数的情况下应使用命名参数，并且第一个参数之后的参数不明显。**应简化主要用例，使其无需配置即可工作。例如，`fakeFlattenMap(n => of(n))` 很好，但 `fakeFlattenMap(n => of(n), 1)` 的可读性不如 `fakeFlattenMap(n => of(n), { maxConcurrent: 1 })`。其他的东西，比如 `of(1, 2, 3)` 很明显，命名参数没有意义。
 
 ## Operators
 
@@ -29,11 +29,11 @@ sense.
 
 - MUST be a function that returns an [operator function](https://rxjs.dev/api/index/interface/OperatorFunction). That is `(source: Observable<In>) => Observable<Out>`.
 
-  必须是返回[操作符函数的函数](https://rxjs.dev/api/index/interface/OperatorFunction)。那就是 `(source: Observable<In>) => Observable<Out>` 。
+  必须是返回[操作符函数的函数](https://rxjs.dev/api/index/interface/OperatorFunction)。那就是 `(source: Observable<In>) => Observable<Out>`。
 
 - The returned operator function MUST be [referentially transparent](https://en.wikipedia.org/wiki/Referential_transparency). That is to say, that if you capture the return value of the operator (e.g. `const double => map(x => x + x)`), you can use that value to operate on any many observables as you like without changing any underlying state in the operator reference. (e.g. `a$.pipe(double)` and `b$.pipe(double)`).
 
-  返回的操作符函数必须是[引用透明](https://en.wikipedia.org/wiki/Referential_transparency)的。也就是说，如果你捕获运算符的返回值（例如 `const double => map(x => x + x)` ），你可以使用该值对任意多个 observables 进行任意操作，而无需更改任何底层操作员参考中的状态。 （例如 `a$.pipe(double)` 和 `b$.pipe(double)` ）。
+  返回的操作符函数必须是[引用透明](https://en.wikipedia.org/wiki/Referential_transparency)的。也就是说，如果你捕获运算符的返回值（例如 `const double => map(x => x + x)`），你可以使用该值对任意多个 observables 进行任意操作，而无需更改任何底层操作员参考中的状态。（例如 `a$.pipe(double)` 和 `b$.pipe(double)`）。
 
 - The observable returned by the operator function MUST subscribe to the source.
 
@@ -41,11 +41,11 @@ sense.
 
 - If the operation performed by the operator can tell it not change anything about the output of the source, it MUST return the reference to the source. For example `take(Infinity)` or `skip(0)`.
 
-  如果操作员执行的操作可以告诉它不会改变源输出的任何内容，它必须返回对源的引用。例如 `take(Infinity)` 或 `skip(0)` 。
+  如果操作员执行的操作可以告诉它不会改变源输出的任何内容，它必须返回对源的引用。例如 `take(Infinity)` 或 `skip(0)`。
 
 - Operators that accept a "notifier", that is another observable source that is used to trigger some behavior, must accept any type that can be converted to an `Observable` with `from`. For example `takeUntil`.
 
-  接受“通知者”的运算符，即另一个用于触发某些行为的可观察源，必须接受可以转换为 `Observable` 的任何类型 `from` 。例如 `takeUntil` 。
+  接受“通知者”的运算符，即另一个用于触发某些行为的可观察源，必须接受可以转换为 `Observable` 的任何类型 `from`。例如 `takeUntil`。
 
 - Operators that accept "notifiers" (as described above), MUST ONLY recognized next values from the notifier as "notifications". Emitted completions may not be used a source of notification.
 
@@ -73,7 +73,7 @@ sense.
 
 - IF they perform a related operation to a creation function, they SHOULD share the creation function's name only with the suffix `With`. (e.g. `concat` and `concatWith`).
 
-  如果他们对创建函数执行相关操作，他们应该只使用后缀 `With` 共享创建函数的名称。 （例如 `concat` 和 `concatWith` ）。
+  如果他们对创建函数执行相关操作，他们应该只使用后缀 `With` 共享创建函数的名称。（例如 `concat` 和 `concatWith`）。
 
 - SHOULD NOT have "result selectors". This is a secondary argument that provides the ability to "map" values after performing the primary operation of the operator.
 
@@ -93,5 +93,5 @@ sense.
 
 - IF the creation function accepts a "result selector", it must not accept "n-arguments" ahead of that result selector. Instead, it should accept an array or possibly an object. (bad: `combineThings(sourceA$, sourceB$, (a, b) => a + b)`, good: `combineThings([sourceA$, sourceB$], (a, b) => a + b)`. In this case, it may be okay to provide the result selector as a second argument, rather than as a named parameter, as the use should be fairly obvious.
 
-  如果创建函数接受“结果选择器”，则它不能在该结果选择器之前接受“n-arguments”。相反，它应该接受一个数组或者可能是一个对象。 (坏: `combineThings(sourceA$, sourceB$, (a, b) => a + b)` 好: `combineThings([sourceA$, sourceB$], (a, b) => a + b)` 。在这种情况下，将结果选择器作为第二个参数而不是作为命名参数提供可能是可以的，因为使用应该相当明显。
+  如果创建函数接受“结果选择器”，则它不能在该结果选择器之前接受“n-arguments”。相反，它应该接受一个数组或者可能是一个对象。(坏: `combineThings(sourceA$, sourceB$, (a, b) => a + b)` 好: `combineThings([sourceA$, sourceB$], (a, b) => a + b)`。在这种情况下，将结果选择器作为第二个参数而不是作为命名参数提供可能是可以的，因为使用应该相当明显。
 

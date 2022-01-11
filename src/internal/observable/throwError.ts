@@ -128,7 +128,7 @@ export function throwError(errorFactory: () => any): Observable<never>;
  * because it will create the error at the moment it should be created and capture a more appropriate stack trace. If
  * for some reason you need to create the error ahead of time, you can still do that: `const err = new Error('test'); throwError(() => err);`.
  *
- * 在 v8 中将删除对传递错误值的支持。相反，将工厂函数传递给 `throwError(() => new Error('test'))` 。这是因为它会在应该创建它的那一刻创建错误并捕获更合适的堆栈跟踪。如果由于某种原因你需要提前创建错误，你仍然可以这样做： `const err = new Error('test'); throwError(() => err);` .
+ * 在 v8 中将删除对传递错误值的支持。相反，将工厂函数传递给 `throwError(() => new Error('test'))`。这是因为它会在应该创建它的那一刻创建错误并捕获更合适的堆栈跟踪。如果由于某种原因你需要提前创建错误，你仍然可以这样做： `const err = new Error('test'); throwError(() => err);` .
  *
  */
 export function throwError(error: any): Observable<never>;

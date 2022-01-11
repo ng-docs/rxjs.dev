@@ -57,7 +57,7 @@ export function pairs(
  * By default, these arrays are emitted synchronously. To change that you can
  * pass a {@link SchedulerLike} as a second argument to `pairs`.
  *
- * 默认情况下，这些数组是同步发出的。要改变这一点，你可以将 {@link SchedulerLike} 作为第二个参数传递给 `pairs` 。
+ * 默认情况下，这些数组是同步发出的。要改变这一点，你可以将 {@link SchedulerLike} 作为第二个参数传递给 `pairs`。
  *
  * ## Example
  *
@@ -95,7 +95,7 @@ export function pairs(
  * In IE, you will need to polyfill `Object.entries` in order to use this.
  * [MDN has a polyfill here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
  *
- * 在 IE 中，你需要填充 `Object.entries` 才能使用它。 [MDN 这里有一个 polyfill](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
+ * 在 IE 中，你需要填充 `Object.entries` 才能使用它。[MDN 这里有一个 polyfill](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
  *
  * @param {Object} obj The object to inspect and turn into an
  * Observable sequence.

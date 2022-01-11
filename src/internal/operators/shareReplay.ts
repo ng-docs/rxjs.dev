@@ -34,7 +34,7 @@ export function shareReplay<T>(bufferSize?: number, windowTime?: number, schedul
  * a stream that need access to previously emitted values.
  * This ability to replay values on subscription is what differentiates {@link share} and `shareReplay`.
  *
- * 当你不希望在多个订阅者之间执行的副作用或繁重的计算时，你通常希望使用 `shareReplay` 。在你知道你将有迟到的订阅者需要访问先前发出的值的流的情况下，它也可能很有价值。这种重播订阅值的能力是 {@link share} 和 `shareReplay` 的区别。
+ * 当你不希望在多个订阅者之间执行的副作用或繁重的计算时，你通常希望使用 `shareReplay`。在你知道你将有迟到的订阅者需要访问先前发出的值的流的情况下，它也可能很有价值。这种重播订阅值的能力是 {@link share} 和 `shareReplay` 的区别。
  *
  * ![](shareReplay.png)
  *

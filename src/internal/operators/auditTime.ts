@@ -28,7 +28,7 @@ import { MonoTypeOperatorFunction, SchedulerLike } from '../types';
  * output Observable, and this process repeats for the next source value.
  * Optionally takes a {@link SchedulerLike} for managing timers.
  *
- * `auditTime` 类似于 `throttleTime` ，但从静音时间窗口发出最后一个值，而不是第一个值。 `auditTime` 在其内部计时器被禁用时立即在输出 Observable 上发出来自源 Observable 的最新值，并在启用计时器时忽略源值。最初，定时器被禁用。一旦第一个源值到达，定时器就被启用。在 `duration` 毫秒（或由可选的 `scheduler` 内部确定的时间单位）过去之后，计时器被禁用，然后在输出 Observable 上发出最近的源值，并且该过程对下一个源值重复。可以选择使用 {@link SchedulerLike} 来管理计时器。
+ * `auditTime` 类似于 `throttleTime`，但从静音时间窗口发出最后一个值，而不是第一个值。`auditTime` 在其内部计时器被禁用时立即在输出 Observable 上发出来自源 Observable 的最新值，并在启用计时器时忽略源值。最初，定时器被禁用。一旦第一个源值到达，定时器就被启用。在 `duration` 毫秒（或由可选的 `scheduler` 内部确定的时间单位）过去之后，计时器被禁用，然后在输出 Observable 上发出最近的源值，并且该过程对下一个源值重复。可以选择使用 {@link SchedulerLike} 来管理计时器。
  *
  * ## Example
  *

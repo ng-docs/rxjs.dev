@@ -10,13 +10,13 @@ import { ObservableInput } from '../types';
  * `iif` excepts a function that returns a boolean (the `condition` function), and two sources,
  * the `trueResult` and the `falseResult`, and returns an Observable.
  *
- * `iif` 排除了一个返回布尔值（ `condition` 函数）和两个源（ `trueResult` 和 `falseResult` ）的函数，并返回一个 Observable。
+ * `iif` 排除了一个返回布尔值（`condition` 函数）和两个源（`trueResult` 和 `falseResult`）的函数，并返回一个 Observable。
  *
  * At the moment of subscription, the `condition` function is called. If the result is `true`, the
  * subscription will be to the source passed as the `trueResult`, otherwise, the subscription will be
  * to the source passed as the `falseResult`.
  *
- * 在订阅的那一刻， `condition` 函数被调用。如果结果为 `true` ，订阅将针对作为 `trueResult` 传递的源，否则，订阅将针对作为 `falseResult` 传递的源。
+ * 在订阅的那一刻，`condition` 函数被调用。如果结果为 `true`，订阅将针对作为 `trueResult` 传递的源，否则，订阅将针对作为 `falseResult` 传递的源。
  *
  * If you need to check more than two options to choose between more than one observable, have a look at the {@link defer} creation method.
  *

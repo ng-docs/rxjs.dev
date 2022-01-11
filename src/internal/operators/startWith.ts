@@ -14,7 +14,7 @@ export function startWith<T>(value: undefined): OperatorFunction<T, T | undefine
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `concatAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `concatAll` 。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `concatAll`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function startWith<T, A extends readonly unknown[] = T[]>(

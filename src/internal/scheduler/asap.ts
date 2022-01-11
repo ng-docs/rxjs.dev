@@ -14,7 +14,7 @@ import { AsapScheduler } from './AsapScheduler';
  * in time. If however you set delay to `0`, `asap` will wait for current synchronously executing
  * code to end and then it will try to execute given task as fast as possible.
  *
- * 当你使用 `asap` 调度程序来延迟任务时，它的行为与 {@link asyncScheduler} 调度程序相同。但是，如果你将延迟设置为 `0` ，则 `asap` 将等待当前同步执行的代码结束，然后它将尝试尽快执行给定的任务。
+ * 当你使用 `asap` 调度程序来延迟任务时，它的行为与 {@link asyncScheduler} 调度程序相同。但是，如果你将延迟设置为 `0`，则 `asap` 将等待当前同步执行的代码结束，然后它将尝试尽快执行给定的任务。
  *
  * `asap` scheduler will do its best to minimize time between end of currently executing code
  * and start of scheduled task. This makes it best candidate for performing so called "deferring".
@@ -28,7 +28,7 @@ import { AsapScheduler } from './AsapScheduler';
  * that task will execute first. That being said, if you need to schedule task asynchronously, but
  * as soon as possible, `asap` scheduler is your best bet.
  *
- * 请注意，使用 `asap` 调度程序并不一定意味着你的任务将在当前执行代码之后首先处理。特别是，如果之前还用 `asap` 安排了某个任务，则该任务将首先执行。话虽如此，如果你需要异步调度任务，但尽快， `asap` scheduler 是你最好的选择。
+ * 请注意，使用 `asap` 调度程序并不一定意味着你的任务将在当前执行代码之后首先处理。特别是，如果之前还用 `asap` 安排了某个任务，则该任务将首先执行。话虽如此，如果你需要异步调度任务，但尽快，`asap` scheduler 是你最好的选择。
  *
  * ## Example
  *

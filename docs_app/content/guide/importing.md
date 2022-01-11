@@ -8,7 +8,7 @@ There are different ways you can {@link guide/installation install} RxJS. Using/
 
 [Pipeable operators](https://v6.rxjs.dev/guide/v6/pipeable-operators) were introduced in RxJS version 5.5. This enabled all operators to be exported from a single place. This new export site was introduced with RxJS version 6 where all pipeable operators could have been imported from `'rxjs/operators'`. For example, `import { map } from 'rxjs/operators'`.
 
-[Pipeable 操作符](https://v6.rxjs.dev/guide/v6/pipeable-operators)是在 RxJS 5.5 版中引入的。这使得所有操作员都可以从一个地方导出。这个新的导出站点是在 RxJS 版本 6 中引入的，其中所有可管道操作符都可以从 `'rxjs/operators'` 导入。例如， `import { map } from 'rxjs/operators'` 。
+[Pipeable 操作符](https://v6.rxjs.dev/guide/v6/pipeable-operators)是在 RxJS 5.5 版中引入的。这使得所有操作员都可以从一个地方导出。这个新的导出站点是在 RxJS 版本 6 中引入的，其中所有可管道操作符都可以从 `'rxjs/operators'` 导入。例如，`import { map } from 'rxjs/operators'`。
 
 # New in RxJS v7.2.0
 
@@ -18,7 +18,7 @@ There are different ways you can {@link guide/installation install} RxJS. Using/
 export site. This means that the preferred way to import operators is from `'rxjs'`, while
 `'rxjs/operators'` export site has been deprecated.**</span>
 
-**在 RxJS v7.2.0 中，大多数运算符已移至 `{@link api#index 'rxjs'}` 导出站点。这意味着导入操作符的首选方式是从 `'rxjs'` ，而 `'rxjs/operators'` 导出站点已被弃用。**
+**在 RxJS v7.2.0 中，大多数运算符已移至 `{@link api#index 'rxjs'}` 导出站点。这意味着导入操作符的首选方式是从 `'rxjs'`，而 `'rxjs/operators'` 导出站点已被弃用。**
 
 For example, instead of using:
 
@@ -83,7 +83,7 @@ RxJS v7 导出 6 个不同的位置，你可以从中导入你需要的内容。
 While nothing has been removed from `'rxjs/operators'`, it is strongly recommended doing the operator imports from `'rxjs'`. Almost all operator function exports have been moved to `'rxjs'`, but only a couple of old and deprecated operators have stayed in the `'rxjs/operators'`. Those operator functions are now mostly deprecated and most of them have their either static operator substitution or are kept as operators, but have a new name so that they are different to their static creation counter-part (
 usually ending with `With`). Those are:
 
-虽然没有从 `'rxjs/operators'` 中删除任何内容，但强烈建议从 `'rxjs'` 导入运算符。几乎所有运算符函数导出都已移至 `'rxjs'` ，但只有几个旧的和已弃用的运算符保留在 `'rxjs/operators'` 中。这些运算符函数现在大多已被弃用，其中大多数具有静态运算符替换或保留为运算符，但有一个新名称，因此它们与其静态创建对应部分不同（通常以 `With` 结尾）。那些是：
+虽然没有从 `'rxjs/operators'` 中删除任何内容，但强烈建议从 `'rxjs'` 导入运算符。几乎所有运算符函数导出都已移至 `'rxjs'`，但只有几个旧的和已弃用的运算符保留在 `'rxjs/operators'` 中。这些运算符函数现在大多已被弃用，其中大多数具有静态运算符替换或保留为运算符，但有一个新名称，因此它们与其静态创建对应部分不同（通常以 `With` 结尾）。那些是：
 
 | `'rxjs/operators'` Operator | Replace With Static Creation Operator | Replace With New Operator Name |
 | --------------------------- | ------------------------------------- | ------------------------------ |
@@ -236,7 +236,7 @@ of(1, 2, 3).pipe(map((x) => x + '!!!')); // etc
 If you installed a library {@link guide/installation#cdn using CDN}, the global namespace for rxjs is
 `rxjs`.
 
-如果你安装了一个库 {@link guide/installation#cdn using CDN}，rxjs 的全局命名空间是 `rxjs` 。
+如果你安装了一个库 {@link guide/installation#cdn using CDN}，rxjs 的全局命名空间是 `rxjs`。
 
 ### v7.2.0 or later
 

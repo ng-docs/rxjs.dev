@@ -18,7 +18,7 @@ export class VirtualTimeScheduler extends AsyncScheduler {
    * you record `scheduler.frame` to be `1`, then later, observe `scheduler.frame` to be at `11`,
    * that means `10` virtual time units have passed.
    *
-   * 虚拟调度程序实例状态的当前帧。两个“帧”之间的差异与“虚拟时间单位”的通过同义。因此，如果你将 `scheduler.frame` 记录为 `1` ，那么稍后，观察 `scheduler.frame` 为 `11` ，这意味着已经过去了 `10` 虚拟时间单位。
+   * 虚拟调度程序实例状态的当前帧。两个“帧”之间的差异与“虚拟时间单位”的通过同义。因此，如果你将 `scheduler.frame` 记录为 `1`，那么稍后，观察 `scheduler.frame` 为 `11`，这意味着已经过去了 `10` 虚拟时间单位。
    *
    */
   public frame: number = 0;

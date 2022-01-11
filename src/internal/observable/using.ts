@@ -44,7 +44,7 @@ import { EMPTY } from './empty';
  * @return {Observable<T>} An Observable that behaves the same as Observable returned by `observableFactory`, but
  * which - when completed, errored or unsubscribed - will also call `unsubscribe` on created resource object.
  *
- * 一个行为与 `observableFactory` 返回的 Observable 相同的 Observable，但是当它完成、出错或取消订阅时，也会在创建的资源对象上调用 `unsubscribe` 。
+ * 一个行为与 `observableFactory` 返回的 Observable 相同的 Observable，但是当它完成、出错或取消订阅时，也会在创建的资源对象上调用 `unsubscribe`。
  *
  */
 export function using<T extends ObservableInput<any>>(

@@ -8,7 +8,7 @@
 
 <span class="informal">A Subject is like an Observable, but can multicast to many Observers. Subjects are like EventEmitters: they maintain a registry of many listeners.</span>
 
-<span class="informal">Subject 类似于 Observable，但可以多播到多个 Observer。 Subjects 就像 EventEmitters：它们维护着许多监听器的注册表。</span>
+<span class="informal">Subject 类似于 Observable，但可以多播到多个 Observer。Subjects 就像 EventEmitters：它们维护着许多监听器的注册表。</span>
 
 **Every Subject is an Observable.** Given a Subject, you can `subscribe` to it, providing an Observer, which will start receiving values normally. From the perspective of the Observer, it cannot tell whether the Observable execution is coming from a plain unicast Observable or a Subject.
 
@@ -16,11 +16,11 @@
 
 Internally to the Subject, `subscribe` does not invoke a new execution that delivers values. It simply registers the given Observer in a list of Observers, similarly to how `addListener` usually works in other libraries and languages.
 
-在 Subject 内部， `subscribe` 不会调用传递值的新执行。它只是在一个观察者列表中注册给定的观察者，类似于 `addListener` 通常在其他库和语言中的工作方式。
+在 Subject 内部，`subscribe` 不会调用传递值的新执行。它只是在一个观察者列表中注册给定的观察者，类似于 `addListener` 通常在其他库和语言中的工作方式。
 
 **Every Subject is an Observer.** It is an object with the methods `next(v)`, `error(e)`, and `complete()`. To feed a new value to the Subject, just call `next(theValue)`, and it will be multicasted to the Observers registered to listen to the Subject.
 
-**每个主题都是观察者。**它是一个具有方法 `next(v)` 、 `error(e)` 和 `complete()` 的对象。要为 Subject 提供一个新值，只需调用 `next(theValue)` ，它将被多播到注册监听 Subject 的观察者。
+**每个主题都是观察者。**它是一个具有方法 `next(v)`、`error(e)` 和 `complete()` 的对象。要为 Subject 提供一个新值，只需调用 `next(theValue)`，它将被多播到注册监听 Subject 的观察者。
 
 In the example below, we have two Observers attached to a Subject, and we feed some values to the Subject:
 
@@ -83,7 +83,7 @@ With the approach above, we essentially just converted a unicast Observable exec
 
 There are also a few specializations of the `Subject` type: `BehaviorSubject`, `ReplaySubject`, and `AsyncSubject`.
 
-`Subject` 类型还有一些特化： `BehaviorSubject` 、 `ReplaySubject` 和 `AsyncSubject` 。
+`Subject` 类型还有一些特化： `BehaviorSubject`、`ReplaySubject` 和 `AsyncSubject`。
 
 ## Multicasted Observables
 
@@ -122,11 +122,11 @@ multicasted.connect();
 
 `multicast` returns an Observable that looks like a normal Observable, but works like a Subject when it comes to subscribing. `multicast` returns a `ConnectableObservable`, which is simply an Observable with the `connect()` method.
 
-`multicast` 返回一个看起来像普通 Observable 的 Observable，但在订阅时像 Subject 一样工作。 `multicast` 返回一个 `ConnectableObservable` ，它只是一个带有 `connect()` 方法的 Observable。
+`multicast` 返回一个看起来像普通 Observable 的 Observable，但在订阅时像 Subject 一样工作。`multicast` 返回一个 `ConnectableObservable`，它只是一个带有 `connect()` 方法的 Observable。
 
 The `connect()` method is important to determine exactly when the shared Observable execution will start. Because `connect()` does `source.subscribe(subject)` under the hood, `connect()` returns a Subscription, which you can unsubscribe from in order to cancel the shared Observable execution.
 
-`connect()` 方法对于确定共享的 Observable 执行何时开始非常重要。因为 `connect()` 在后台执行 `source.subscribe(subject)` ，所以 `connect()` 返回一个订阅，你可以取消订阅以取消共享的 Observable 执行。
+`connect()` 方法对于确定共享的 Observable 执行何时开始非常重要。因为 `connect()` 在后台执行 `source.subscribe(subject)`，所以 `connect()` 返回一个订阅，你可以取消订阅以取消共享的 Observable 执行。
 
 ### Reference counting
 
@@ -219,7 +219,7 @@ setTimeout(() => {
 
 If we wish to avoid explicit calls to `connect()`, we can use ConnectableObservable's `refCount()` method (reference counting), which returns an Observable that keeps track of how many subscribers it has. When the number of subscribers increases from `0` to `1`, it will call `connect()` for us, which starts the shared execution. Only when the number of subscribers decreases from `1` to `0` will it be fully unsubscribed, stopping further execution.
 
-如果我们希望避免显式调用 `connect()` ，我们可以使用 ConnectableObservable 的 `refCount()` 方法（引用计数），它返回一个 Observable 来跟踪它有多少订阅者。当订阅者数量从 `0` 增加到 `1` 时，它会为我们调用 `connect()` ，从而开始共享执行。只有当订阅者数量从 `1` 减少到 `0` 时，才会完全取消订阅，停止进一步执行。
+如果我们希望避免显式调用 `connect()`，我们可以使用 ConnectableObservable 的 `refCount()` 方法（引用计数），它返回一个 Observable 来跟踪它有多少订阅者。当订阅者数量从 `0` 增加到 `1` 时，它会为我们调用 `connect()`，从而开始共享执行。只有当订阅者数量从 `1` 减少到 `0` 时，才会完全取消订阅，停止进一步执行。
 
 <span class="informal">`refCount` makes the multicasted Observable automatically start executing when the first subscriber arrives, and stop executing when the last subscriber leaves.</span>
 
@@ -276,7 +276,7 @@ setTimeout(() => {
 
 The `refCount()` method only exists on ConnectableObservable, and it returns an `Observable`, not another ConnectableObservable.
 
-`refCount()` 方法只存在于 ConnectableObservable 上，它返回一个 `Observable` ，而不是另一个 ConnectableObservable。
+`refCount()` 方法只存在于 ConnectableObservable 上，它返回一个 `Observable`，而不是另一个 ConnectableObservable。
 
 ## BehaviorSubject
 
@@ -284,7 +284,7 @@ The `refCount()` method only exists on ConnectableObservable, and it returns an 
 
 One of the variants of Subjects is the `BehaviorSubject`, which has a notion of "the current value". It stores the latest value emitted to its consumers, and whenever a new Observer subscribes, it will immediately receive the "current value" from the `BehaviorSubject`.
 
-Subjects 的变体之一是 `BehaviorSubject` ，它具有“当前值”的概念。它存储发送给其消费者的最新值，并且每当有新的观察者订阅时，它将立即从 `BehaviorSubject` 接收“当前值”。
+Subjects 的变体之一是 `BehaviorSubject`，它具有“当前值”的概念。它存储发送给其消费者的最新值，并且每当有新的观察者订阅时，它将立即从 `BehaviorSubject` 接收“当前值”。
 
 <span class="informal">BehaviorSubjects are useful for representing "values over time". For instance, an event stream of birthdays is a Subject, but the stream of a person's age would be a BehaviorSubject.</span>
 
@@ -292,7 +292,7 @@ Subjects 的变体之一是 `BehaviorSubject` ，它具有“当前值”的概�
 
 In the following example, the BehaviorSubject is initialized with the value `0` which the first Observer receives when it subscribes. The second Observer receives the value `2` even though it subscribed after the value `2` was sent.
 
-在下面的示例中， BehaviorSubject 使用第一个观察者在订阅时收到的值 `0` 进行初始化。第二个观察者接收到值 `2` ，即使它是在发送值 `2` 之后订阅的。
+在下面的示例中，BehaviorSubject 使用第一个观察者在订阅时收到的值 `0` 进行初始化。第二个观察者接收到值 `2`，即使它是在发送值 `2` 之后订阅的。
 
 ```ts
 import { BehaviorSubject } from 'rxjs';
@@ -464,7 +464,7 @@ Passing a dummy value this way is clumsy and can confuse users.
 
 By declaring a _void subject_, you signal that the value is irrelevant. Only the event itself matters.
 
-通过声明一个 _void subject_ ，你表示该值是不相关的。只有事件本身很重要。
+通过声明一个 _void subject_，你表示该值是不相关的。只有事件本身很重要。
 
 ```ts
 const subject = new Subject<void>();
@@ -489,5 +489,5 @@ setTimeout(() => subject.next(), 1000);
 
 <span class="informal">Before version 7, the default type of Subject values was `any`. `Subject<any>` disables type checking of the emitted values, whereas `Subject<void>` prevents accidental access to the emitted value. If you want the old behavior, then replace `Subject` with `Subject<any>`.</span>
 
-<span class="informal">在版本 7 之前，Subject 值的默认类型是 `any` 。 `Subject<any>` 禁用发出值的类型检查，而 `Subject<void>` 防止意外访问发出的值。如果你想要旧行为，请将 `Subject` 替换为 `Subject<any>` 。</span>
+<span class="informal">在版本 7 之前，Subject 值的默认类型是 `any`。`Subject<any>` 禁用发出值的类型检查，而 `Subject<void>` 防止意外访问发出的值。如果你想要旧行为，请将 `Subject` 替换为 `Subject<any>`。</span>
 

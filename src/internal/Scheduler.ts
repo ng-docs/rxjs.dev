@@ -12,7 +12,7 @@ import { dateTimestampProvider } from './scheduler/dateTimestampProvider';
  *
  * Each unit of work in a Scheduler is called an `Action`.
  *
- * Scheduler 中的每个工作单元都称为一个 `Action` 。
+ * Scheduler 中的每个工作单元都称为一个 `Action`。
  *
  * ```ts
  * class Scheduler {
@@ -56,7 +56,7 @@ export class Scheduler implements SchedulerLike {
    * the future, according to the `delay` parameter, if specified. May be passed
    * some context object, `state`, which will be passed to the `work` function.
    *
-   * 安排一个函数 `work` 来执行。根据 `delay` 参数（如果指定），可能在将来的某个时间发生。可能会传递一些上下文对象 `state` ，它将传递给 `work` 函数。
+   * 安排一个函数 `work` 来执行。根据 `delay` 参数（如果指定），可能在将来的某个时间发生。可能会传递一些上下文对象 `state`，它将传递给 `work` 函数。
    *
    * The given arguments will be processed an stored as an Action object in a
    * queue of actions.

@@ -31,7 +31,7 @@ import { OperatorFunction, ObservableInput, ObservedValueOf } from '../types';
  * Note: `concatAll` is equivalent to `mergeAll` with concurrency parameter set
  * to `1`.
  *
- * 注意： `concatAll` 等价于将并发参数设置为 `1` 的 `mergeAll` 。
+ * 注意： `concatAll` 等价于将并发参数设置为 `1` 的 `mergeAll`。
  *
  * ## Example
  *

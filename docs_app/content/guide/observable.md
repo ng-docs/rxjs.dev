@@ -16,7 +16,7 @@ Observables 是多个值的惰性 Push 集合。他们填补了下表中的缺�
 
 **Example.** The following is an Observable that pushes the values `1`, `2`, `3` immediately (synchronously) when subscribed, and the value `4` after one second has passed since the subscribe call, then completes:
 
-**例子。**下面是一个 Observable，它在订阅时立即（同步）推送值 `1` 、 `2` 、 `3` ，并且在 subscribe 调用后一秒后推送值 `4` ，然后完成：
+**例子。**下面是一个 Observable，它在订阅时立即（同步）推送值 `1` 、 `2` 、 `3` ，并且在 subscribe 调用后一秒后推送值 `4`，然后完成：
 
 ```ts
 import { Observable } from 'rxjs';
@@ -96,9 +96,9 @@ ES2015 引入了[生成器函数和迭代器](https://developer.mozilla.org/en-U
 | --- | -------- | -------- |
 |  | 制片人 | 消费者 |
 | **Pull** | **Passive:** produces data when requested. | **Active:** decides when data is requested. |
-| **拉** | **被动：**在请求时产生数据。 | **活动：**决定何时请求数据。 |
+| **拉** | **被动：**在请求时产生数据。| **活动：**决定何时请求数据。|
 | **Push** | **Active:** produces data at its own pace. | **Passive:** reacts to received data. |
-| **推** | **主动：**按照自己的节奏生成数据。 | **被动：**对接收到的数据做出反应。 |
+| **推** | **主动：**按照自己的节奏生成数据。| **被动：**对接收到的数据做出反应。|
 
 **What is Push?** In Push systems, the Producer determines when to send data to the Consumer. The Consumer is unaware of when it will receive that data.
 
@@ -106,11 +106,11 @@ ES2015 引入了[生成器函数和迭代器](https://developer.mozilla.org/en-U
 
 Promises are the most common type of Push system in JavaScript today. A Promise (the Producer) delivers a resolved value to registered callbacks (the Consumers), but unlike functions, it is the Promise which is in charge of determining precisely when that value is "pushed" to the callbacks.
 
-Promise 是当今 JavaScript 中最常见的推送系统类型。 Promise（生产者）向注册的回调（消费者）传递解析值，但与函数不同的是，Promise 负责准确确定该值何时“推送”到回调。
+Promise 是当今 JavaScript 中最常见的推送系统类型。Promise（生产者）向注册的回调（消费者）传递解析值，但与函数不同的是，Promise 负责准确确定该值何时“推送”到回调。
 
 RxJS introduces Observables, a new Push system for JavaScript. An Observable is a Producer of multiple values, "pushing" them to Observers (Consumers).
 
-RxJS 引入了 Observables，一个新的 JavaScript 推送系统。 Observable 是多个值的生产者，将它们“推送”给观察者（消费者）。
+RxJS 引入了 Observables，一个新的 JavaScript 推送系统。Observable 是多个值的生产者，将它们“推送”给观察者（消费者）。
 
 - A **Function** is a lazily evaluated computation that synchronously returns a single value on invocation.
 
@@ -205,7 +205,7 @@ And the output is the same:
 This happens because both functions and Observables are lazy computations. If you don't call the function, the `console.log('Hello')` won't happen. Also with Observables, if you don't "call" it (with `subscribe`), the `console.log('Hello')` won't happen. Plus, "calling" or "subscribing" is an isolated operation: two function calls trigger two separate side effects, and two Observable subscribes trigger two separate side effects. As opposed to EventEmitters which share the side effects and have eager
 execution regardless of the existence of subscribers, Observables have no shared execution and are lazy.
 
-这是因为函数和 Observable 都是惰性计算。如果你不调用该函数， `console.log('Hello')` 将不会发生。同样对于 Observables，如果你不“调用”它（使用 `subscribe` ）， `console.log('Hello')` 将不会发生。另外，“调用”或“订阅”是一个孤立的操作：两个函数调用触发两个单独的副作用，两个 Observable 订阅触发两个单独的副作用。与 EventEmitter 共享副作用并且无论订阅者是否存在都急切执行相反，Observables 没有共享执行并且是惰性的。
+这是因为函数和 Observable 都是惰性计算。如果你不调用该函数， `console.log('Hello')` 将不会发生。同样对于 Observables，如果你不“调用”它（使用 `subscribe`），`console.log('Hello')` 将不会发生。另外，“调用”或“订阅”是一个孤立的操作：两个函数调用触发两个单独的副作用，两个 Observable 订阅触发两个单独的副作用。与 EventEmitter 共享副作用并且无论订阅者是否存在都急切执行相反，Observables 没有共享执行并且是惰性的。
 
 <span class="informal">Subscribing to an Observable is analogous to calling a Function.</span>
 
@@ -397,7 +397,7 @@ The `Observable` constructor takes one argument: the `subscribe` function.
 
 The following example creates an Observable to emit the string `'hi'` every second to a subscriber.
 
-下面的示例创建一个 Observable 以每秒向订阅者发送字符串 `'hi'` 。
+下面的示例创建一个 Observable 以每秒向订阅者发送字符串 `'hi'`。
 
 ```ts
 import { Observable } from 'rxjs';
@@ -411,11 +411,11 @@ const observable = new Observable(function subscribe(subscriber) {
 
 <span class="informal">Observables can be created with `new Observable`. Most commonly, observables are created using creation functions, like `of`, `from`, `interval`, etc.</span>
 
-可以使用 `new Observable` 。最常见的是，可观察对象是使用创建函数创建的，例如 `of` 、 `from` 、 `interval` 等。
+可以使用 `new Observable`。最常见的是，可观察对象是使用创建函数创建的，例如 `of`、`from`、`interval` 等。
 
 In the example above, the `subscribe` function is the most important piece to describe the Observable. Let's look at what subscribing means.
 
-在上面的例子中， `subscribe` 函数是描述 Observable 的最重要的部分。让我们看看订阅是什么意思。
+在上面的例子中，`subscribe` 函数是描述 Observable 的最重要的部分。让我们看看订阅是什么意思。
 
 ### Subscribing to Observables
 
@@ -443,7 +443,7 @@ This shows how `subscribe` calls are not shared among multiple Observers of the 
 
 This is drastically different to event handler APIs like `addEventListener` / `removeEventListener`. With `observable.subscribe`, the given Observer is not registered as a listener in the Observable. The Observable does not even maintain a list of attached Observers.
 
-这与 `addEventListener` / `removeEventListener` 等事件处理程序 API 截然不同。使用 `observable.subscribe` ，给定的 Observer 不会在 Observable 中注册为监听器。 Observable 甚至不维护附加的观察者列表。
+这与 `addEventListener` / `removeEventListener` 等事件处理程序 API 截然不同。使用 `observable.subscribe`，给定的 Observer 不会在 Observable 中注册为监听器。Observable 甚至不维护附加的观察者列表。
 
 A `subscribe` call is simply a way to start an "Observable execution" and deliver values or events to an Observer of that execution.
 
@@ -596,7 +596,7 @@ const observable = new Observable(function subscribe(subscriber) {
 
 Just like `observable.subscribe` resembles `new Observable(function subscribe() {...})`, the `unsubscribe` we return from `subscribe` is conceptually equal to `subscription.unsubscribe`. In fact, if we remove the ReactiveX types surrounding these concepts, we're left with rather straightforward JavaScript.
 
-就像 `observable.subscribe` 类似于 `new Observable(function subscribe() {...})` 一样，我们从 `subscribe` 返回的 `unsubscribe` 在概念上等于 `subscription.unsubscribe` 。事实上，如果我们删除围绕这些概念的 ReactiveX 类型，我们就会得到相当简单的 JavaScript。
+就像 `observable.subscribe` 类似于 `new Observable(function subscribe() {...})` 一样，我们从 `subscribe` 返回的 `unsubscribe` 在概念上等于 `subscription.unsubscribe`。事实上，如果我们删除围绕这些概念的 ReactiveX 类型，我们就会得到相当简单的 JavaScript。
 
 ```js
 function subscribe(subscriber) {

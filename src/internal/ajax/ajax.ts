@@ -44,7 +44,7 @@ export interface AjaxCreationMethod {
    * [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) in
    * global scope. Defaults to a `responseType` of `"json"`.
    *
-   * 在全局范围内使用[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP GET。默认为 `"json"` 的 `responseType` 。
+   * 在全局范围内使用[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP GET。默认为 `"json"` 的 `responseType`。
    *
    * ## Example
    *
@@ -70,7 +70,7 @@ export interface AjaxCreationMethod {
    * [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) in
    * global scope by default, and a `responseType` of `"json"`.
    *
-   * 默认情况下，在全局范围内使用[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP GET， `responseType` 为 `"json"` 。
+   * 默认情况下，在全局范围内使用[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP GET，`responseType` 为 `"json"`。
    *
    * @param url The URL to get the resource from
    *
@@ -88,14 +88,14 @@ export interface AjaxCreationMethod {
    * [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) in
    * global scope by default, and a `responseType` of `"json"`.
    *
-   * 默认情况下，使用全局范围内的[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP POST， `responseType` 为 `"json"` 。
+   * 默认情况下，使用全局范围内的[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP POST，`responseType` 为 `"json"`。
    *
    * Before sending the value passed to the `body` argument, it is automatically serialized
    * based on the specified `responseType`. By default, a JavaScript object will be serialized
    * to JSON. A `responseType` of `application/x-www-form-urlencoded` will flatten any provided
    * dictionary object to a url-encoded string.
    *
-   * 在发送传递给 `body` 参数的值之前，它会根据指定的 `responseType` 自动序列化。默认情况下，JavaScript 对象将被序列化为 JSON。 `application/x-www-form-urlencoded` 的 `responseType` 会将任何提供的字典对象展平为 url 编码的字符串。
+   * 在发送传递给 `body` 参数的值之前，它会根据指定的 `responseType` 自动序列化。默认情况下，JavaScript 对象将被序列化为 JSON。`application/x-www-form-urlencoded` 的 `responseType` 会将任何提供的字典对象展平为 url 编码的字符串。
    *
    * @param url The URL to get the resource from
    *
@@ -117,14 +117,14 @@ export interface AjaxCreationMethod {
    * [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) in
    * global scope by default, and a `responseType` of `"json"`.
    *
-   * 默认情况下，使用全局范围内的[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP PUT， `responseType` 为 `"json"` 。
+   * 默认情况下，使用全局范围内的[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP PUT，`responseType` 为 `"json"`。
    *
    * Before sending the value passed to the `body` argument, it is automatically serialized
    * based on the specified `responseType`. By default, a JavaScript object will be serialized
    * to JSON. A `responseType` of `application/x-www-form-urlencoded` will flatten any provided
    * dictionary object to a url-encoded string.
    *
-   * 在发送传递给 `body` 参数的值之前，它会根据指定的 `responseType` 自动序列化。默认情况下，JavaScript 对象将被序列化为 JSON。 `application/x-www-form-urlencoded` 的 `responseType` 会将任何提供的字典对象展平为 url 编码的字符串。
+   * 在发送传递给 `body` 参数的值之前，它会根据指定的 `responseType` 自动序列化。默认情况下，JavaScript 对象将被序列化为 JSON。`application/x-www-form-urlencoded` 的 `responseType` 会将任何提供的字典对象展平为 url 编码的字符串。
    *
    * @param url The URL to get the resource from
    *
@@ -146,14 +146,14 @@ export interface AjaxCreationMethod {
    * [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) in
    * global scope by default, and a `responseType` of `"json"`.
    *
-   * 默认情况下，使用全局范围内的[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP PATCH， `responseType` 为 `"json"` 。
+   * 默认情况下，使用全局范围内的[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP PATCH，`responseType` 为 `"json"`。
    *
    * Before sending the value passed to the `body` argument, it is automatically serialized
    * based on the specified `responseType`. By default, a JavaScript object will be serialized
    * to JSON. A `responseType` of `application/x-www-form-urlencoded` will flatten any provided
    * dictionary object to a url-encoded string.
    *
-   * 在发送传递给 `body` 参数的值之前，它会根据指定的 `responseType` 自动序列化。默认情况下，JavaScript 对象将被序列化为 JSON。 `application/x-www-form-urlencoded` 的 `responseType` 会将任何提供的字典对象展平为 url 编码的字符串。
+   * 在发送传递给 `body` 参数的值之前，它会根据指定的 `responseType` 自动序列化。默认情况下，JavaScript 对象将被序列化为 JSON。`application/x-www-form-urlencoded` 的 `responseType` 会将任何提供的字典对象展平为 url 编码的字符串。
    *
    * @param url The URL to get the resource from
    *
@@ -175,7 +175,7 @@ export interface AjaxCreationMethod {
    * [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) in
    * global scope by default, and a `responseType` of `"json"`.
    *
-   * 默认情况下，使用全局范围内的[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP DELETE， `responseType` 为 `"json"` 。
+   * 默认情况下，使用全局范围内的[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP DELETE，`responseType` 为 `"json"`。
    *
    * @param url The URL to get the resource from
    *
@@ -561,7 +561,7 @@ export function fromAjax<T>(init: AjaxConfig): Observable<AjaxResponse<T>> {
        * @param direction The "direction", used to prefix the response object that is
        * emitted to the consumer. (e.g. "upload_" or "download_")
        *
-       * “方向”，用于为发送给消费者的响应对象添加前缀。 （例如“上传 _”或“下载 _”）
+       * “方向”，用于为发送给消费者的响应对象添加前缀。（例如“上传 _”或“下载 _”）
        *
        */
       const addProgressEvent = (target: any, type: string, direction: AjaxDirection) => {

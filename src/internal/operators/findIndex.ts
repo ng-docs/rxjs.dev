@@ -7,14 +7,14 @@ export function findIndex<T>(predicate: BooleanConstructor): OperatorFunction<T,
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg` 。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function findIndex<T>(predicate: BooleanConstructor, thisArg: any): OperatorFunction<T, T extends Falsy ? -1 : number>;
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg` 。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function findIndex<T, A>(
@@ -42,7 +42,7 @@ export function findIndex<T>(predicate: (value: T, index: number, source: Observ
  * {@link first}, the `predicate` is required in `findIndex`, and does not emit
  * an error if a valid value is not found.
  *
- * `findIndex` 在源 Observable 中搜索与 `predicate` 包含的指定条件匹配的第一项，并返回源中第一次出现的（从零开始的）索引。与 {@link first} 不同， `predicate` 在 `findIndex` 中是必需的，如果未找到有效值，则不会发出错误。
+ * `findIndex` 在源 Observable 中搜索与 `predicate` 包含的指定条件匹配的第一项，并返回源中第一次出现的（从零开始的）索引。与 {@link first} 不同，`predicate` 在 `findIndex` 中是必需的，如果未找到有效值，则不会发出错误。
  *
  * ## Example
  *

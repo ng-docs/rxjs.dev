@@ -14,7 +14,7 @@ import { Subscribable } from '../types';
  * TODO: Discuss ObservableInput supporting "Subscribable".
  * <https://github.com/ReactiveX/rxjs/issues/5909>
  *
- * TODO：讨论支持“订阅”的 ObservableInput。 <https://github.com/ReactiveX/rxjs/issues/5909>
+ * TODO：讨论支持“订阅”的 ObservableInput。<https://github.com/ReactiveX/rxjs/issues/5909>
  *
  * @param subscribable A subscribable
  *

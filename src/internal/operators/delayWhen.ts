@@ -49,7 +49,7 @@ export function delayWhen<T>(delayDurationSelector: (value: T, index: number) =>
  * `delayWhen` will subscribe to the source Observable as soon as the output
  * Observable is subscribed.
  *
- * 可选地， `delayWhen` 接受第二个参数， `subscriptionDelay` ，它是一个 Observable。当 `subscriptionDelay` 发出它的第一个值或完成时，源 Observable 被订阅并开始像上一段中描述的那样表现。如果未提供 `subscriptionDelay` ，则 `delayWhen` 将在订阅输出 Observable 后立即订阅源 Observable。
+ * 可选地，`delayWhen` 接受第二个参数，`subscriptionDelay`，它是一个 Observable。当 `subscriptionDelay` 发出它的第一个值或完成时，源 Observable 被订阅并开始像上一段中描述的那样表现。如果未提供 `subscriptionDelay`，则 `delayWhen` 将在订阅输出 Observable 后立即订阅源 Observable。
  *
  * ## Example
  *

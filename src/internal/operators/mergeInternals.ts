@@ -34,7 +34,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * @param expand If `true` this will perform an "expand" strategy, which differs only
  * in that it recurses, and the inner subscription must be schedule-able.
  *
- * 如果为 `true` ，这将执行“扩展”策略，不同之处仅在于它是递归的，并且内部订阅必须是可调度的。
+ * 如果为 `true`，这将执行“扩展”策略，不同之处仅在于它是递归的，并且内部订阅必须是可调度的。
  *
  * @param innerSubScheduler A scheduler to use to schedule inner subscriptions,
  * this is to support the expand strategy, mostly, and should be deprecated

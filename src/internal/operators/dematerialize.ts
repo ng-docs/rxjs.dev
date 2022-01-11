@@ -12,7 +12,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * <span class="informal">Unwraps {@link ObservableNotification} objects as actual `next`,
  * `error` and `complete` emissions. The opposite of {@link materialize}.</span>
  *
- * <span class="informal">将 {@link ObservableNotification} 对象解包为实际的 `next` 、 `error` 和 `complete` 排放。 {@link materialize} 的反义词。</span>
+ * <span class="informal">将 {@link ObservableNotification} 对象解包为实际的 `next`、`error` 和 `complete` 排放。{@link materialize} 的反义词。</span>
  *
  * ![](dematerialize.png)
  *
@@ -22,7 +22,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * notifications are then unwrapped using the metadata they contain, and emitted
  * as `next`, `error`, and `complete` on the output Observable.
  *
- * 假设 `dematerialize` 操作的 Observable 只发出 {@link ObservableNotification} 对象作为 `next` 发射，并且不发射任何 `error` 。这样的 Observable 是 `materialize` 操作的输出。然后使用它们包含的元数据对这些通知进行解包，并在输出 Observable 上发出 `next` 、 `error` 和 `complete` 。
+ * 假设 `dematerialize` 操作的 Observable 只发出 {@link ObservableNotification} 对象作为 `next` 发射，并且不发射任何 `error`。这样的 Observable 是 `materialize` 操作的输出。然后使用它们包含的元数据对这些通知进行解包，并在输出 Observable 上发出 `next`、`error` 和 `complete`。
  *
  * Use this operator in conjunction with {@link materialize}.
  *

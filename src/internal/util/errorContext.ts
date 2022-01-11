@@ -8,7 +8,7 @@ let context: { errorThrown: boolean; error: any } | null = null;
  * will record the error such that it will be rethrown after the call back is complete.
  * TODO: Remove in v8
  *
- * 处理超粗模式的错误。创建一个上下文，其中任何同步抛出的错误都将传递给 {@link captureError}。它将记录错误，以便在回调完成后重新抛出。 TODO：在 v8 中删除
+ * 处理超粗模式的错误。创建一个上下文，其中任何同步抛出的错误都将传递给 {@link captureError}。它将记录错误，以便在回调完成后重新抛出。TODO：在 v8 中删除
  *
  * @param cb An immediately executed function.
  *

@@ -21,7 +21,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * emissions from the source Observable, but not on the first emission, because
  * there is no previous value in that case.
  *
- * 来自源 Observable 的第 N 个发射将导致输出 Observable 发射一个数组[(N-1)th，][(n-1)th,%20nth]前一个值和当前值的第 N 个，作为一对。出于这个原因，在源 Observable 的第二次和后续发射时， `pairwise` 发射，但不是在第一次发射时发射，因为在这种情况下没有先前的值。
+ * 来自源 Observable 的第 N 个发射将导致输出 Observable 发射一个数组[(N-1)th，][(n-1)th,%20nth]前一个值和当前值的第 N 个，作为一对。出于这个原因，在源 Observable 的第二次和后续发射时，`pairwise` 发射，但不是在第一次发射时发射，因为在这种情况下没有先前的值。
  *
  * ## Example
  *

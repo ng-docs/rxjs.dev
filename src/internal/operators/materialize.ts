@@ -14,7 +14,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * {@link Notification} objects, emitted as `next` on the output Observable.
  * </span>
  *
- * <span class="informal">在 {@link Notification} 对象中包装 `next` 、 `error` 和 `complete` 发射，作为输出 Observable 上的 `next` 发射。</span>
+ * <span class="informal">在 {@link Notification} 对象中包装 `next`、`error` 和 `complete` 发射，作为输出 Observable 上的 `next` 发射。</span>
  *
  * ![](materialize.png)
  *
@@ -25,7 +25,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * When the source Observable emits `error`, the output will emit `next` as a
  * Notification of type "error", and then `complete`.
  *
- * `materialize` 返回一个 Observable，它为源 Observable 的每个 `next` 、 `error` 或 `complete` 发射发出一个 `next` 通知。当源 Observable 发出 `complete` 时，输出 Observable 将作为“完成”类型的 Notification 发出 `next` 一个，然后它也会发出 `complete` 。当源 Observable 发出 `error` 时，输出将发出 `next` 作为“error”类型的 Notification，然后 `complete` 。
+ * `materialize` 返回一个 Observable，它为源 Observable 的每个 `next`、`error` 或 `complete` 发射发出一个 `next` 通知。当源 Observable 发出 `complete` 时，输出 Observable 将作为“完成”类型的 Notification 发出 `next` 一个，然后它也会发出 `complete`。当源 Observable 发出 `error` 时，输出将发出 `next` 作为“error”类型的 Notification，然后 `complete`。
  *
  * This operator is useful for producing metadata of the source Observable, to
  * be consumed as `next` emissions. Use it in conjunction with

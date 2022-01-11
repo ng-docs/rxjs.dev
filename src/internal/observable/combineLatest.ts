@@ -22,7 +22,7 @@ import { executeSchedule } from '../util/executeSchedule';
  * You have passed `any` here, we can't figure out if it is
  * an array or an object, so you're getting `unknown`. Use better types.
  *
- * 你在这里传递了 `any` ，我们无法确定它是数组还是对象，所以你得到了 `unknown` 。使用更好的类型。
+ * 你在这里传递了 `any`，我们无法确定它是数组还是对象，所以你得到了 `unknown`。使用更好的类型。
  *
  * @param arg Something typed as `any`
  *
@@ -37,7 +37,7 @@ export function combineLatest<A extends readonly unknown[]>(sources: readonly [.
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll` 。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function combineLatest<A extends readonly unknown[], R>(
@@ -52,7 +52,7 @@ export function combineLatest<A extends readonly unknown[], R>(
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll` 。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function combineLatest<A extends readonly unknown[]>(
@@ -71,7 +71,7 @@ export function combineLatest<A extends readonly unknown[]>(...sources: [...Obse
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll` 。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function combineLatest<A extends readonly unknown[], R>(
@@ -89,7 +89,7 @@ export function combineLatest<A extends readonly unknown[], R>(
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll` 。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function combineLatest<A extends readonly unknown[]>(
@@ -145,7 +145,7 @@ export function combineLatest<T extends Record<string, ObservableInput<any>>>(
  * and never complete, since, again, it will wait for all streams to emit some
  * value.
  *
- * 为了确保输出数组始终具有相同的长度， `combineLatest` 实际上会等待所有输入 Observable 至少发出一次，然后才开始发出结果。这意味着如果某些 Observable 在其他 Observable 开始发射之前发射了值，那么除了最后一个之外的所有这些值都将丢失。另一方面，如果某个 Observable 没有发出值但完成了，则结果 Observable 将在同一时刻完成而不发出任何内容，因为现在不可能将完成的 Observable 中的值包含在结果数组中。此外，如果某些输入 Observable 没有发出任何值并且永远不会完成， `combineLatest` 也将永远不会发出并且永远不会完成，因为它会再次等待所有流发出一些值。
+ * 为了确保输出数组始终具有相同的长度，`combineLatest` 实际上会等待所有输入 Observable 至少发出一次，然后才开始发出结果。这意味着如果某些 Observable 在其他 Observable 开始发射之前发射了值，那么除了最后一个之外的所有这些值都将丢失。另一方面，如果某个 Observable 没有发出值但完成了，则结果 Observable 将在同一时刻完成而不发出任何内容，因为现在不可能将完成的 Observable 中的值包含在结果数组中。此外，如果某些输入 Observable 没有发出任何值并且永远不会完成，`combineLatest` 也将永远不会发出并且永远不会完成，因为它会再次等待所有流发出一些值。
  *
  * If at least one Observable was passed to `combineLatest` and all passed Observables
  * emitted something, the resulting Observable will complete when all combined
@@ -155,7 +155,7 @@ export function combineLatest<T extends Record<string, ObservableInput<any>>>(
  * emitted value. On the other hand, if any Observable errors, `combineLatest`
  * will error immediately as well, and all other Observables will be unsubscribed.
  *
- * 如果至少一个 Observable 被传递给 `combineLatest` 并且所有传递的 Observables 都发出了一些东西，那么当所有组合流完成时，生成的 Observable 将完成。因此，即使某些 Observable 完成， `combineLatest` 的结果仍然会在其他 Observable 完成时发出值。如果是一个完整的 Observable，从现在开始，它的值将永远是最后一个发出的值。另一方面，如果有任何 Observable 错误， `combineLatest` 也会立即出错，并且所有其他 Observable 都将被取消订阅。
+ * 如果至少一个 Observable 被传递给 `combineLatest` 并且所有传递的 Observables 都发出了一些东西，那么当所有组合流完成时，生成的 Observable 将完成。因此，即使某些 Observable 完成，`combineLatest` 的结果仍然会在其他 Observable 完成时发出值。如果是一个完整的 Observable，从现在开始，它的值将永远是最后一个发出的值。另一方面，如果有任何 Observable 错误，`combineLatest` 也会立即出错，并且所有其他 Observable 都将被取消订阅。
  *
  * ## Examples
  *

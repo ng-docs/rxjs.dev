@@ -6,7 +6,7 @@ export function map<T, R>(project: (value: T, index: number) => R): OperatorFunc
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg` 。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function map<T, R, A>(project: (this: A, value: T, index: number) => R, thisArg: A): OperatorFunction<T, R>;
@@ -54,7 +54,7 @@ export function map<T, R, A>(project: (this: A, value: T, index: number) => R, t
  * the number `i` for the i-th emission that has happened since the
  * subscription, starting from the number `0`.
  *
- * 应用于源 Observable 发出的每个 `value` 的函数。 `index` 参数是自订阅以来发生的第 i 个发射的数字 `i` ，从数字 `0` 开始。
+ * 应用于源 Observable 发出的每个 `value` 的函数。`index` 参数是自订阅以来发生的第 i 个发射的数字 `i`，从数字 `0` 开始。
  *
  * @param {any} [thisArg] An optional argument to define what `this` is in the
  * `project` function.

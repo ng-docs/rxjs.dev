@@ -40,7 +40,7 @@ export interface RetryConfig {
  * calls `error`, this method will resubscribe to the source Observable for a maximum of `count` resubscriptions (given
  * as a number parameter) rather than propagating the `error` call.
  *
- * 返回一个镜像源 Observable 的 Observable，但 `error` 除外。如果源 Observable 调用 `error` ，此方法将重新订阅源 Observable 最多重新订阅 `count` （作为数字参数给出），而不是传播 `error` 调用。
+ * 返回一个镜像源 Observable 的 Observable，但 `error` 除外。如果源 Observable 调用 `error`，此方法将重新订阅源 Observable 最多重新订阅 `count`（作为数字参数给出），而不是传播 `error` 调用。
  *
  * ![](retry.png)
  *
@@ -49,7 +49,7 @@ export interface RetryConfig {
  * time and emits: `[1, 2, 3, 4, 5]` then the complete stream of emissions and notifications
  * would be: `[1, 2, 1, 2, 3, 4, 5, complete]`.
  *
- * 源 Observable 发出的任何和所有项目都将由结果 Observable 发出，即使是在订阅失败期间发出的那些。例如，如果一个 Observable 第一次失败但发出 `[1, 2]` 然后第二次成功并发出： `[1, 2, 3, 4, 5]` 那么完整的发射和通知流将是： `[1, 2, 1, 2, 3, 4, 5, complete]` 。
+ * 源 Observable 发出的任何和所有项目都将由结果 Observable 发出，即使是在订阅失败期间发出的那些。例如，如果一个 Observable 第一次失败但发出 `[1, 2]` 然后第二次成功并发出： `[1, 2, 3, 4, 5]` 那么完整的发射和通知流将是： `[1, 2, 1, 2, 3, 4, 5, complete]`。
  *
  * ## Example
  *

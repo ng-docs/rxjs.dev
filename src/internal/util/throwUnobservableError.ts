@@ -1,7 +1,7 @@
 /**
  * Creates the TypeError to throw if an invalid object is passed to `from` or `scheduled`.
  *
- * 如果将无效对象传递给 `from` 或 `scheduled` ，则创建要抛出的 TypeError。
+ * 如果将无效对象传递给 `from` 或 `scheduled`，则创建要抛出的 TypeError。
  *
  * @param input The object that was passed.
  *

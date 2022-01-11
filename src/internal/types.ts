@@ -103,7 +103,7 @@ export interface SubscriptionLike extends Unsubscribable {
 /**
  * @deprecated Do not use. Most likely you want to use `ObservableInput`. Will be removed in v8.
  *
- * 不使用。你很可能想使用 `ObservableInput` 。将在 v8 中删除。
+ * 不使用。你很可能想使用 `ObservableInput`。将在 v8 中删除。
  *
  */
 export type SubscribableOrPromise<T> = Subscribable<T> | Subscribable<never> | PromiseLike<T> | InteropObservable<T>;
@@ -301,7 +301,7 @@ export interface TimestampProvider {
  * `O extends ObservableInput<any>` and you pass in `Observable<number>`, or
  * `Promise<number>`, etc, it will type as `number`.
  *
- * 从 `ObservableInput<any>` 中提取类型。如果你有 `O extends ObservableInput<any>` 并且你传入 `Observable<number>` 或 `Promise<number>` 等，它将键入为 `number` 。
+ * 从 `ObservableInput<any>` 中提取类型。如果你有 `O extends ObservableInput<any>` 并且你传入 `Observable<number>` 或 `Promise<number>` 等，它将键入为 `number`。
  *
  */
 export type ObservedValueOf<O> = O extends ObservableInput<infer T> ? T : never;
@@ -314,7 +314,7 @@ export type ObservedValueOf<O> = O extends ObservableInput<infer T> ? T : never;
  * If you pass in `[Observable<string>, Observable<number>]` you would
  * get back a type of `string | number`.
  *
- * 从 `ObservableInput<any>[]` 中提取元素类型的联合。如果你有 `O extends ObservableInput<any>[]` 并且你传入 `Observable<string>[]` 或 `Promise<string>[]` 你会得到一个 `string` 类型。如果你传入 `[Observable<string>, Observable<number>]` 你会得到一种 `string | number` 。
+ * 从 `ObservableInput<any>[]` 中提取元素类型的联合。如果你有 `O extends ObservableInput<any>[]` 并且你传入 `Observable<string>[]` 或 `Promise<string>[]` 你会得到一个 `string` 类型。如果你传入 `[Observable<string>, Observable<number>]` 你会得到一种 `string | number`。
  *
  */
 export type ObservedValueUnionFromArray<X> = X extends Array<ObservableInput<infer T>> ? T : never;
@@ -333,7 +333,7 @@ export type ObservedValuesFromArray<X> = ObservedValueUnionFromArray<X>;
  * `[Observable<string>, Observable<number>]` you would get back a type
  * of `[string, number]`.
  *
- * 从 `ObservableInput<any>[]` 中提取元素类型的元组。如果你有 `O extends ObservableInput<any>[]` 并且你传入 `[Observable<string>, Observable<number>]` 你会得到一个类型 `[string, number]` 。
+ * 从 `ObservableInput<any>[]` 中提取元素类型的元组。如果你有 `O extends ObservableInput<any>[]` 并且你传入 `[Observable<string>, Observable<number>]` 你会得到一个类型 `[string, number]`。
  *
  */
 export type ObservedValueTupleFromArray<X> = { [K in keyof X]: ObservedValueOf<X[K]> };
@@ -354,7 +354,7 @@ export type ObservableInputTuple<T> = {
  * Constructs a new tuple with the specified type at the head.
  * If you declare `Cons<A, [B, C]>` you will get back `[A, B, C]`.
  *
- * 在头部构造一个具有指定类型的新元组。如果你声明 `Cons<A, [B, C]>` 你将返回 `[A, B, C]` 。
+ * 在头部构造一个具有指定类型的新元组。如果你声明 `Cons<A, [B, C]>` 你将返回 `[A, B, C]`。
  *
  */
 export type Cons<X, Y extends readonly any[]> = ((arg: X, ...rest: Y) => any) extends (...args: infer U) => any ? U : never;
@@ -363,7 +363,7 @@ export type Cons<X, Y extends readonly any[]> = ((arg: X, ...rest: Y) => any) ex
  * Extracts the head of a tuple.
  * If you declare `Head<[A, B, C]>` you will get back `A`.
  *
- * 提取元组的头部。如果你声明 `Head<[A, B, C]>` 你将返回 `A` 。
+ * 提取元组的头部。如果你声明 `Head<[A, B, C]>` 你将返回 `A`。
  *
  */
 export type Head<X extends readonly any[]> = ((...args: X) => any) extends (arg: infer U, ...rest: any[]) => any ? U : never;
@@ -372,7 +372,7 @@ export type Head<X extends readonly any[]> = ((...args: X) => any) extends (arg:
  * Extracts the tail of a tuple.
  * If you declare `Tail<[A, B, C]>` you will get back `[B, C]`.
  *
- * 提取元组的尾部。如果你声明 `Tail<[A, B, C]>` 你将返回 `[B, C]` 。
+ * 提取元组的尾部。如果你声明 `Tail<[A, B, C]>` 你将返回 `[B, C]`。
  *
  */
 export type Tail<X extends readonly any[]> = ((...args: X) => any) extends (arg: any, ...rest: infer U) => any ? U : never;
@@ -382,7 +382,7 @@ export type Tail<X extends readonly any[]> = ((...args: X) => any) extends (arg:
  * If you have `T extends Array<any>`, and pass a `string[]` to it,
  * `ValueFromArray<T>` will return the actual type of `string`.
  *
- * 从 Array 类型中提取泛型值。如果你有 `T extends Array<any>` 并将 `string[]` 传递给它， `ValueFromArray<T>` 将返回 `string` 的实际类型。
+ * 从 Array 类型中提取泛型值。如果你有 `T extends Array<any>` 并将 `string[]` 传递给它，`ValueFromArray<T>` 将返回 `string` 的实际类型。
  *
  */
 export type ValueFromArray<A extends readonly unknown[]> = A extends Array<infer T> ? T : never;
@@ -453,7 +453,7 @@ export interface Connectable<T> extends Observable<T> {
    * (Idempotent) Calling this method will connect the underlying source observable to all subscribed consumers
    * through an underlying {@link Subject}.
    *
-   * （幂等）调用此方法将通过底层 {@link Subject} 将底层可观察源连接到所有订阅的消费者。
+   *（幂等）调用此方法将通过底层 {@link Subject} 将底层可观察源连接到所有订阅的消费者。
    *
    * @returns A subscription, that when unsubscribed, will "disconnect" the source from the connector subject,
    * severing notifications to all consumers.

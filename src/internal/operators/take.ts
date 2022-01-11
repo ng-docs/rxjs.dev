@@ -20,7 +20,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * all of its values are emitted. After that, it completes, regardless if the
  * source completes.
  *
- * `take` 返回一个 Observable，它只发出源 Observable 发出的第一个 `count` 数值。如果源发出的计数值少于 `count` ，则发出它的所有值。之后，无论源是否完成，它都会完成。
+ * `take` 返回一个 Observable，它只发出源 Observable 发出的第一个 `count` 数值。如果源发出的计数值少于 `count`，则发出它的所有值。之后，无论源是否完成，它都会完成。
  *
  * ## Example
  *

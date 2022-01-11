@@ -7,7 +7,7 @@ import { arrRemove } from '../util/arrRemove';
  * Buffers the source Observable values until the size hits the maximum
  * `bufferSize` given.
  *
- * 缓冲源 Observable 值，直到大小达到给定的最大 `bufferSize` 。
+ * 缓冲源 Observable 值，直到大小达到给定的最大 `bufferSize`。
  *
  * <span class="informal">Collects values from the past as an array, and emits
  * that array only when its size reaches `bufferSize`.</span>
@@ -22,7 +22,7 @@ import { arrRemove } from '../util/arrRemove';
  * `null`, then new buffers are started immediately at the start of the source
  * and when each buffer closes and is emitted.
  *
- * 通过 `bufferSize` 缓冲来自源 Observable 的多个值，然后发出缓冲区并清除它，并为每个 `startBufferEvery` 值启动一个新缓冲区。如果 `startBufferEvery` 未提供或为 `null` ，则新缓冲区会在源开始处以及每个缓冲区关闭并发出时立即启动。
+ * 通过 `bufferSize` 缓冲来自源 Observable 的多个值，然后发出缓冲区并清除它，并为每个 `startBufferEvery` 值启动一个新缓冲区。如果 `startBufferEvery` 未提供或为 `null`，则新缓冲区会在源开始处以及每个缓冲区关闭并发出时立即启动。
  *
  * ## Examples
  *

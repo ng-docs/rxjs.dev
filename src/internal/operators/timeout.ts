@@ -95,7 +95,7 @@ export interface TimeoutError<T = unknown, M = unknown> extends Error {
    * (Note that using this constructor directly is not recommended,
    * you should create your own errors)
    *
-   * 由创建错误的超时操作提供给错误的信息。如果直接在具有空构造函数的非 RxJS 代码中使用，将为 `null` 。 （注意不建议直接使用这个构造函数，你应该自己创建错误）
+   * 由创建错误的超时操作提供给错误的信息。如果直接在具有空构造函数的非 RxJS 代码中使用，将为 `null`。（注意不建议直接使用这个构造函数，你应该自己创建错误）
    *
    */
   info: TimeoutInfo<T, M> | null;
@@ -141,7 +141,7 @@ export const TimeoutError: TimeoutErrorCtor = createErrorClass(
  * If `with` is provided, this will return an observable that will switch to a different observable if the source
  * does not push values within the specified time parameters.
  *
- * 如果提供 `with` ，这将返回一个 observable，如果源没有在指定的时间参数内推送值，它将切换到不同的 observable。
+ * 如果提供 `with`，这将返回一个 observable，如果源没有在指定的时间参数内推送值，它将切换到不同的 observable。
  *
  * <span class="informal">The most flexible option for creating a timeout behavior.</span>
 *
@@ -159,14 +159,14 @@ export const TimeoutError: TimeoutErrorCtor = createErrorClass(
  * the first value from the source _only_. The timings of all subsequent values  from the source will be checked
  * against the time period provided by `each`, if it was provided.
  *
- * 第 `first` 属性可以是特定时间的 `Date` 、相对于订阅点的时间段的 `number` ，也可以被跳过。此属性 _ 仅 _ 用于检查来自源的第一个值到达的超时条件。来自源的所有后续值的时间将根据 `each` 提供的时间段进行检查（如果提供的话）。
+ * 第 `first` 属性可以是特定时间的 `Date`、相对于订阅点的时间段的 `number`，也可以被跳过。此属性 _ 仅 _ 用于检查来自源的第一个值到达的超时条件。来自源的所有后续值的时间将根据 `each` 提供的时间段进行检查（如果提供的话）。
  *
  * The `each` property can be either a `number` or skipped. If a value for `each` is provided, it represents the amount of
  * time the resulting observable will wait between the arrival of values from the source before timing out. Note that if
  * `first` is _not_ provided, the value from `each` will be used to check timeout conditions for the arrival of the first
  * value and all subsequent values. If `first` _is_ provided, `each` will only be use to check all values after the first.
  *
- * `each` 属性可以是 `number` 或跳过。如果为 `each` 提供了一个值，则它表示生成的 observable 在超时之前在源值到达之间等待的时间量。请注意，如果 _ 未 _ 提供 `first` ，则 `each` 中的值将用于检查第一个值和所有后续值到达的超时条件。如果提供了 `first` ，_ 则 _`each` 将仅用于检查第一个之后的所有值。
+ * `each` 属性可以是 `number` 或跳过。如果为 `each` 提供了一个值，则它表示生成的 observable 在超时之前在源值到达之间等待的时间量。请注意，如果 _ 未 _ 提供 `first`，则 `each` 中的值将用于检查第一个值和所有后续值到达的超时条件。如果提供了 `first`，_ 则 _`each` 将仅用于检查第一个之后的所有值。
  *
  * ## Examples
  *
@@ -248,14 +248,14 @@ export function timeout<T, O extends ObservableInput<unknown>, M = unknown>(
  * the first value from the source _only_. The timings of all subsequent values  from the source will be checked
  * against the time period provided by `each`, if it was provided.
  *
- * 第 `first` 属性可以是特定时间的 `Date` 、相对于订阅点的时间段的 `number` ，也可以被跳过。此属性 _ 仅 _ 用于检查来自源的第一个值到达的超时条件。来自源的所有后续值的时间将根据 `each` 提供的时间段进行检查（如果提供的话）。
+ * 第 `first` 属性可以是特定时间的 `Date`、相对于订阅点的时间段的 `number`，也可以被跳过。此属性 _ 仅 _ 用于检查来自源的第一个值到达的超时条件。来自源的所有后续值的时间将根据 `each` 提供的时间段进行检查（如果提供的话）。
  *
  * The `each` property can be either a `number` or skipped. If a value for `each` is provided, it represents the amount of
  * time the resulting observable will wait between the arrival of values from the source before timing out. Note that if
  * `first` is _not_ provided, the value from `each` will be used to check timeout conditions for the arrival of the first
  * value and all subsequent values. If `first` _is_ provided, `each` will only be use to check all values after the first.
  *
- * `each` 属性可以是 `number` 或跳过。如果为 `each` 提供了一个值，则它表示生成的 observable 在超时之前在源值到达之间等待的时间量。请注意，如果 _ 未 _ 提供 `first` ，则 `each` 中的值将用于检查第一个值和所有后续值到达的超时条件。如果提供了 `first` ，_ 则 _`each` 将仅用于检查第一个之后的所有值。
+ * `each` 属性可以是 `number` 或跳过。如果为 `each` 提供了一个值，则它表示生成的 observable 在超时之前在源值到达之间等待的时间量。请注意，如果 _ 未 _ 提供 `first`，则 `each` 中的值将用于检查第一个值和所有后续值到达的超时条件。如果提供了 `first`，_ 则 _`each` 将仅用于检查第一个之后的所有值。
  *
  * ### Handling TimeoutErrors
  *
@@ -271,7 +271,7 @@ export function timeout<T, O extends ObservableInput<unknown>, M = unknown>(
  * In this case, you would check the error for `instanceof TimeoutError` to validate that the error was indeed from `timeout`, and
  * not from some other source. If it's not from `timeout`, you should probably rethrow it if you're in a `catchError`.
  *
- * 在这种情况下，你将检查 `instanceof TimeoutError` 的错误，以验证该错误确实来自 `timeout` ，而不是来自其他来源。如果它不是来自 `timeout` ，那么如果你处于 `catchError` 中，你可能应该重新抛出它。
+ * 在这种情况下，你将检查 `instanceof TimeoutError` 的错误，以验证该错误确实来自 `timeout`，而不是来自其他来源。如果它不是来自 `timeout`，那么如果你处于 `catchError` 中，你可能应该重新抛出它。
  *
  * ## Examples
  *

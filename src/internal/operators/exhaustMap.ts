@@ -13,7 +13,7 @@ export function exhaustMap<T, O extends ObservableInput<any>>(
 /**
  * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
  *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： <https://rxjs.dev/deprecations/resultSelector>
+ * `resultSelector` 参数将在 v8 中删除。请改用内部 `map`。详细信息： <https://rxjs.dev/deprecations/resultSelector>
  *
  */
 export function exhaustMap<T, O extends ObservableInput<any>>(
@@ -23,7 +23,7 @@ export function exhaustMap<T, O extends ObservableInput<any>>(
 /**
  * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
  *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： <https://rxjs.dev/deprecations/resultSelector>
+ * `resultSelector` 参数将在 v8 中删除。请改用内部 `map`。详细信息： <https://rxjs.dev/deprecations/resultSelector>
  *
  */
 export function exhaustMap<T, I, R>(
@@ -54,7 +54,7 @@ export function exhaustMap<T, I, R>(
  * that one completes, it will accept and flatten the next projected Observable
  * and repeat this process.
  *
- * 返回一个 Observable，该 Observable 基于应用你提供给源 Observable 发出的每个项目的函数来发射项目，其中该函数返回一个（所谓的“内部”）Observable。当它将源值投影到 Observable 时，输出 Observable 开始发射由该投影的 Observable 发出的项目。但是，如果前一个投影的 Observable 尚未完成， `exhaustMap` 忽略每个新的投影 Observable。一旦完成，它将接受并展平下一个投影的 Observable 并重复此过程。
+ * 返回一个 Observable，该 Observable 基于应用你提供给源 Observable 发出的每个项目的函数来发射项目，其中该函数返回一个（所谓的“内部”）Observable。当它将源值投影到 Observable 时，输出 Observable 开始发射由该投影的 Observable 发出的项目。但是，如果前一个投影的 Observable 尚未完成，`exhaustMap` 忽略每个新的投影 Observable。一旦完成，它将接受并展平下一个投影的 Observable 并重复此过程。
  *
  * ## Example
  *

@@ -31,7 +31,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * because it's distinct in comparison to the _previously emitted_ value,
  * not in comparison to _all other emitted values_.
  *
- * 一个没有 `comparator` 的非常基本的示例。请注意， `1` 被多次发出，因为它与 _ 先前发出 _ 的值相比是不同的，而不是与 _ 所有其他发出的值 _ 相比。
+ * 一个没有 `comparator` 的非常基本的示例。请注意，`1` 被多次发出，因为它与 _ 先前发出 _ 的值相比是不同的，而不是与 _ 所有其他发出的值 _ 相比。
  *
  * ```ts
  * import { of, distinctUntilChanged } from 'rxjs';
@@ -46,7 +46,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * you only want to emit a value when all of its components have
  * changed:
  *
- * 使用 `comparator` ，你可以进行自定义比较。假设你只想在其所有组件都更改时发出一个值：
+ * 使用 `comparator`，你可以进行自定义比较。假设你只想在其所有组件都更改时发出一个值：
  *
  * ```ts
  * import { of, distinctUntilChanged } from 'rxjs';
@@ -127,7 +127,7 @@ export function distinctUntilChanged<T>(comparator?: (previous: T, current: T) =
  * 3. For all values after the first, the selected key will be compared against the key selected from
  *    the previously emitted value using the `comparator`.
  *
- *    对于第一个之后的所有值，将使用比较器将所选键与从先前发出的值中选择的键进行 `comparator` 。
+ *    对于第一个之后的所有值，将使用比较器将所选键与从先前发出的值中选择的键进行 `comparator`。
  *
  * 4. If the keys are determined to be unequal by this check, the value (not the key), is emitted
  *    and the selected key from that value is saved for future comparisons against other keys.

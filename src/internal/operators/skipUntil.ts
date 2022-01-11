@@ -22,7 +22,7 @@ import { noop } from '../util/noop';
  * observable. It will never let the *source* observable emit any values if the *notifier* completes or throws an error without emitting
  * a value before.
  *
- * 在内部， `skipUntil` 操作符订阅传入的 observable（在下面称为*notifier* ），以便识别其第一个值的发射。发生这种情况时，操作员取消订阅*通知程序*并开始发出*源*observable 的值。如果*通知器*完成或抛出错误而之前没有发出值，它将永远不会让*源*observable 发出任何值。
+ * 在内部，`skipUntil` 操作符订阅传入的 observable（在下面称为*notifier*），以便识别其第一个值的发射。发生这种情况时，操作员取消订阅*通知程序*并开始发出*源*observable 的值。如果*通知器*完成或抛出错误而之前没有发出值，它将永远不会让*源*observable 发出任何值。
  *
  * ## Example
  *

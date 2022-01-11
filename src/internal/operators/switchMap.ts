@@ -11,7 +11,7 @@ export function switchMap<T, O extends ObservableInput<any>>(
 /**
  * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
  *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： <https://rxjs.dev/deprecations/resultSelector>
+ * `resultSelector` 参数将在 v8 中删除。请改用内部 `map`。详细信息： <https://rxjs.dev/deprecations/resultSelector>
  *
  */
 export function switchMap<T, O extends ObservableInput<any>>(
@@ -21,7 +21,7 @@ export function switchMap<T, O extends ObservableInput<any>>(
 /**
  * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
  *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： <https://rxjs.dev/deprecations/resultSelector>
+ * `resultSelector` 参数将在 v8 中删除。请改用内部 `map`。详细信息： <https://rxjs.dev/deprecations/resultSelector>
  *
  */
 export function switchMap<T, R, O extends ObservableInput<any>>(
@@ -52,7 +52,7 @@ export function switchMap<T, R, O extends ObservableInput<any>>(
  * emitting items from the new one. It continues to behave like this for
  * subsequent inner Observables.
  *
- * 返回一个 Observable，该 Observable 基于应用你提供给源 Observable 发出的每个项目的函数来发射项目，其中该函数返回一个（所谓的“内部”）Observable。每次它观察到这些内部 Observable 之一时，输出 Observable 开始发射由该内部 Observable 发射的项目。当一个新的内部 Observable 被发射时， `switchMap` 停止从之前发射的内部 Observable 发射项目，并开始从新的发射项目。对于后续的内部 Observable，它继续表现得像这样。
+ * 返回一个 Observable，该 Observable 基于应用你提供给源 Observable 发出的每个项目的函数来发射项目，其中该函数返回一个（所谓的“内部”）Observable。每次它观察到这些内部 Observable 之一时，输出 Observable 开始发射由该内部 Observable 发射的项目。当一个新的内部 Observable 被发射时，`switchMap` 停止从之前发射的内部 Observable 发射项目，并开始从新的发射项目。对于后续的内部 Observable，它继续表现得像这样。
  *
  * ## Example
  *
@@ -106,7 +106,7 @@ export function switchMap<T, R, O extends ObservableInput<any>>(
  * `resultSelector`) to each item emitted by the source Observable and taking
  * only the values from the most recently projected inner Observable.
  *
- * 一个返回 Observable 的函数，该函数发出将投影函数（和可选的不推荐使用的 `resultSelector` ）应用于源 Observable 发出的每个项目的结果，并且仅从最近投影的内部 Observable 中获取值。
+ * 一个返回 Observable 的函数，该函数发出将投影函数（和可选的不推荐使用的 `resultSelector`）应用于源 Observable 发出的每个项目的结果，并且仅从最近投影的内部 Observable 中获取值。
  *
  */
 export function switchMap<T, R, O extends ObservableInput<any>>(

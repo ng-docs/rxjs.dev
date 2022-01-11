@@ -26,7 +26,7 @@ export function fromFetch(input: string | Request, init?: RequestInit): Observab
  * Will automatically set up an internal [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
  * in order to teardown the internal `fetch` when the subscription tears down.
  *
- * 将自动设置一个内部[AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)以便在订阅拆除时拆除内部 `fetch` 。
+ * 将自动设置一个内部[AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)以便在订阅拆除时拆除内部 `fetch`。
  *
  * If a `signal` is provided via the `init` argument, it will behave like it usually does with
  * `fetch`. If the provided `signal` aborts, the error that `fetch` normally rejects with
@@ -77,7 +77,7 @@ export function fromFetch(input: string | Request, init?: RequestInit): Observab
  * the promise returned by `fetch` will resolve as soon as the response's headers are
  * received.
  *
- * 对于使用[分块传输编码](https://tools.ietf.org/html/rfc7230#section-3.3.1)的 HTTP 响应， `fetch` 返回的承诺将在收到响应的标头后立即解析。
+ * 对于使用[分块传输编码](https://tools.ietf.org/html/rfc7230#section-3.3.1)的 HTTP 响应，`fetch` 返回的承诺将在收到响应的标头后立即解析。
  *
  * That means the `fromFetch` observable will emit a `Response` - and will
  * then complete - before the body is received. When one of the methods on the
@@ -112,12 +112,12 @@ export function fromFetch(input: string | Request, init?: RequestInit): Observab
  * @param initWithSelector A configuration object for the fetch.
  * [See MDN for more details](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)
  *
- * 获取的配置对象。 [有关更多详细信息，请参阅 MDN](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)
+ * 获取的配置对象。[有关更多详细信息，请参阅 MDN](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)
  *
  * @returns An Observable, that when subscribed to, performs an HTTP request using the native `fetch`
  * function. The {@link Subscription} is tied to an `AbortController` for the fetch.
  *
- * 一个 Observable，当被订阅时，它使用本机 `fetch` 函数执行 HTTP 请求。 {@link Subscription} 绑定到 `AbortController` 以进行获取。
+ * 一个 Observable，当被订阅时，它使用本机 `fetch` 函数执行 HTTP 请求。{@link Subscription} 绑定到 `AbortController` 以进行获取。
  *
  */
 export function fromFetch<T>(

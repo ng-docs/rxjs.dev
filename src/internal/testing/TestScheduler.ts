@@ -41,7 +41,7 @@ export class TestScheduler extends VirtualTimeScheduler {
    * the test scheduler is being used in "run mode", via the `run` method, this is temporarly
    * set to `1` for the duration of the `run` block, then set back to whatever value it was.
    *
-   * 弹珠图中每个字符代表的虚拟时间单位的数量。如果测试调度程序正在“运行模式”下使用，则通过 `run` 方法，在 `run` 块的持续时间内将其临时设置为 `1` ，然后设置回它的任何值。
+   * 弹珠图中每个字符代表的虚拟时间单位的数量。如果测试调度程序正在“运行模式”下使用，则通过 `run` 方法，在 `run` 块的持续时间内将其临时设置为 `1`，然后设置回它的任何值。
    *
    * @nocollapse
    */
@@ -680,7 +680,7 @@ export class TestScheduler extends VirtualTimeScheduler {
    * is, in 'run mode' there is no need to explicitly pass a `TestScheduler`
    * instance to observable creators or operators.
    *
-   * `run` 方法在“运行模式”下执行测试——测试中使用的调度程序自动委托给 `TestScheduler` 。也就是说，在“运行模式”中，不需要显式地将 `TestScheduler` 实例传递给可观察的创建者或操作员。
+   * `run` 方法在“运行模式”下执行测试——测试中使用的调度程序自动委托给 `TestScheduler`。也就是说，在“运行模式”中，不需要显式地将 `TestScheduler` 实例传递给可观察的创建者或操作员。
    *
    * @see {@link /guide/testing/marble-testing}
    */

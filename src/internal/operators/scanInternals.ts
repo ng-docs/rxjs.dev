@@ -5,7 +5,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
 /**
  * A basic scan operation. This is used for `scan` and `reduce`.
  *
- * 一个基本的扫描操作。这用于 `scan` 和 `reduce` 。
+ * 一个基本的扫描操作。这用于 `scan` 和 `reduce`。
  *
  * @param accumulator The accumulator to use
  *

@@ -41,7 +41,7 @@ export function first<T, D = T>(
  * emits the first value of the source that matches the specified condition. Throws an error if
  * `defaultValue` was not provided and a matching element is not found.
  *
- * 如果不带参数调用， `first` 发出源 Observable 的第一个值，然后完成。如果使用 `predicate` 函数调用，则 `first` 发出与指定条件匹配的源的第一个值。如果未提供 `defaultValue` 且未找到匹配元素，则会引发错误。
+ * 如果不带参数调用，`first` 发出源 Observable 的第一个值，然后完成。如果使用 `predicate` 函数调用，则 `first` 发出与指定条件匹配的源的第一个值。如果未提供 `defaultValue` 且未找到匹配元素，则会引发错误。
  *
  * ## Examples
  *

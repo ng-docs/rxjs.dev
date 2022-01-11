@@ -115,7 +115,7 @@ export interface GenerateOptions<T, S> extends GenerateBaseOptions<S> {
  *
  * @param {function (state: S): T} resultSelector Selector function for results produced in the sequence. (deprecated)
  *
- * 序列中产生的结果的选择器函数。 （已弃用）
+ * 序列中产生的结果的选择器函数。（已弃用）
  *
  * @param {SchedulerLike} [scheduler] A {@link SchedulerLike} on which to run the generator loop. If not provided, defaults to emit immediately.
  *
@@ -160,7 +160,7 @@ export function generate<T, S>(
  * iteration (for example, if the index is lower than 10) and the third states how the defined value
  * will be modified on every step (for example, the index will be incremented by one).
  *
- * `generate` 允许你创建一个使用与传统 for 循环非常相似的循环生成的值流。 `generate` 的第一个参数是一个起始值。第二个参数是一个接受此值并测试某些条件是否仍然成立的函数。如果是，则循环继续，如果不是，则停止。第三个值是一个函数，它采用先前定义的值并在每次迭代时以某种方式对其进行修改。请注意，这三个参数如何直接等效于传统 for 循环中的三个表达式：第一个表达式初始化某个状态（例如，数字索引），第二个表达式测试循环是否可以执行下一次迭代（例如，如果索引小于 10），第三个说明如何在每一步修改定义的值（例如，索引将增加 1）。
+ * `generate` 允许你创建一个使用与传统 for 循环非常相似的循环生成的值流。`generate` 的第一个参数是一个起始值。第二个参数是一个接受此值并测试某些条件是否仍然成立的函数。如果是，则循环继续，如果不是，则停止。第三个值是一个函数，它采用先前定义的值并在每次迭代时以某种方式对其进行修改。请注意，这三个参数如何直接等效于传统 for 循环中的三个表达式：第一个表达式初始化某个状态（例如，数字索引），第二个表达式测试循环是否可以执行下一次迭代（例如，如果索引小于 10），第三个说明如何在每一步修改定义的值（例如，索引将增加 1）。
  *
  * Return value of a `generate` operator is an Observable that on each loop iteration
  * emits a value. First of all, the condition function is ran. If it returns true, then the Observable
@@ -182,7 +182,7 @@ export function generate<T, S>(
  * of calling `generate` allows you to omit `condition` as well. If you omit it, that means
  * condition always holds, or in other words the resulting Observable will never complete.
  *
- * 如果你在 `generate` 调用中发现三个匿名函数难以阅读，你可以向操作员提供一个对象，而不是该对象具有以下属性： `initialState` 、 `condition` 、 `iterate` 和 `resultSelector` ，它们应该具有你通常传递给 `generate` 的相应值. `resultSelector` 仍然是可选的，但调用 `generate` 的这种形式也允许你省略 `condition` 。如果省略它，则意味着条件始终成立，或者换句话说，生成的 Observable 永远不会完成。
+ * 如果你在 `generate` 调用中发现三个匿名函数难以阅读，你可以向操作员提供一个对象，而不是该对象具有以下属性： `initialState`、`condition`、`iterate` 和 `resultSelector`，它们应该具有你通常传递给 `generate` 的相应值. `resultSelector` 仍然是可选的，但调用 `generate` 的这种形式也允许你省略 `condition`。如果省略它，则意味着条件始终成立，或者换句话说，生成的 Observable 永远不会完成。
  *
  * Both forms of `generate` can optionally accept a scheduler. In case of a multi-parameter call,
  * scheduler simply comes as a last argument (no matter if there is a `resultSelector`

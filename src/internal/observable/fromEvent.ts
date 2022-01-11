@@ -141,7 +141,7 @@ export function fromEvent<T, R>(
  * handler functions have different names, but they all accept a string describing event type
  * and function itself, which will be called whenever said event happens.
  *
- * `fromEvent` 接受作为第一个参数的事件目标，它是一个具有用于注册事件处理函数的方法的对象。作为第二个参数，它需要一个字符串来指示我们想要监听的事件类型。 `fromEvent` 支持选定类型的事件目标，下面将详细介绍。如果你的事件目标与列出的任何目标都不匹配，则应使用可用于任意 API 的 {@link fromEventPattern}。对于 `fromEvent` 支持的 API，它们用于添加和删除事件处理函数的方法有不同的名称，但它们都接受描述事件类型和函数本身的字符串，每当所述事件发生时都会调用该字符串。
+ * `fromEvent` 接受作为第一个参数的事件目标，它是一个具有用于注册事件处理函数的方法的对象。作为第二个参数，它需要一个字符串来指示我们想要监听的事件类型。`fromEvent` 支持选定类型的事件目标，下面将详细介绍。如果你的事件目标与列出的任何目标都不匹配，则应使用可用于任意 API 的 {@link fromEventPattern}。对于 `fromEvent` 支持的 API，它们用于添加和删除事件处理函数的方法有不同的名称，但它们都接受描述事件类型和函数本身的字符串，每当所述事件发生时都会调用该字符串。
  *
  * Every time resulting Observable is subscribed, event handler function will be registered
  * to event target on given event type. When that event fires, value
@@ -165,7 +165,7 @@ export function fromEvent<T, R>(
  * event target which has the same method names as DOM EventTarget, `fromEvent` is still
  * a good choice.
  *
- * 请记住，下面列出的事件目标是通过鸭子类型检查的。这意味着无论你拥有什么样的对象，无论你在什么环境中工作，如果它公开了所描述的方法（当然前提是它们的行为如上所述），你都可以安全地在该对象上使用 `fromEvent` 。因此，例如，如果 Node.js 库公开了与 DOM EventTarget 具有相同方法名称的事件目标， `fromEvent` 仍然是一个不错的选择。
+ * 请记住，下面列出的事件目标是通过鸭子类型检查的。这意味着无论你拥有什么样的对象，无论你在什么环境中工作，如果它公开了所描述的方法（当然前提是它们的行为如上所述），你都可以安全地在该对象上使用 `fromEvent`。因此，例如，如果 Node.js 库公开了与 DOM EventTarget 具有相同方法名称的事件目标，`fromEvent` 仍然是一个不错的选择。
  *
  * If the API you use is more callback then event handler oriented (subscribed
  * callback function fires only once and thus there is no need to manually
@@ -192,7 +192,7 @@ export function fromEvent<T, R>(
  * `fromEvent` is used with event target of that type, you can provide this values
  * as third parameter as well.
  *
- * 在浏览器中， `addEventListener` 接受 - 除了事件类型字符串和事件处理函数参数 - 可选的第三个参数，它是一个对象或布尔值，都用于附加配置如何以及何时调用传递的函数。当 `fromEvent` 与该类型的事件目标一起使用时，你也可以将此值作为第三个参数提供。
+ * 在浏览器中，`addEventListener` 接受 - 除了事件类型字符串和事件处理函数参数 - 可选的第三个参数，它是一个对象或布尔值，都用于附加配置如何以及何时调用传递的函数。当 `fromEvent` 与该类型的事件目标一起使用时，你也可以将此值作为第三个参数提供。
  *
  * **Node.js EventEmitter**
  *
@@ -216,13 +216,13 @@ export function fromEvent<T, R>(
  *
  * List of DOM Nodes, returned for example by `document.querySelectorAll` or `Node.childNodes`.
  *
- * DOM 节点列表，例如由 `document.querySelectorAll` 或 `Node.childNodes` 。
+ * DOM 节点列表，例如由 `document.querySelectorAll` 或 `Node.childNodes`。
  *
  * Although this collection is not event target in itself, `fromEvent` will iterate over all Nodes
  * it contains and install event handler function in every of them. When returned Observable
  * is unsubscribed, function will be removed from all Nodes.
  *
- * 虽然这个集合本身不是事件目标， `fromEvent` 将遍历它包含的所有节点并在每个节点中安装事件处理函数。当返回的 Observable 被取消订阅时，函数将从所有节点中移除。
+ * 虽然这个集合本身不是事件目标，`fromEvent` 将遍历它包含的所有节点并在每个节点中安装事件处理函数。当返回的 Observable 被取消订阅时，函数将从所有节点中移除。
  *
  * **DOM HtmlCollection**
  *
@@ -355,7 +355,7 @@ export function fromEvent<T>(
  * from a target in the most common handler pattern, where there are only two arguments.
  * (e.g.  `on(name, fn)`, `off(name, fn)`, `addListener(name, fn)`, or `removeListener(name, fn)`)
  *
- * 用于创建 `add` 和 `remove` 函数，以在最常见的处理程序模式中从目标注册和取消注册事件处理程序，其中只有两个参数。 （例如 `on(name, fn)` 、 `off(name, fn)` 、 `addListener(name, fn)` 或 `removeListener(name, fn)` ）
+ * 用于创建 `add` 和 `remove` 函数，以在最常见的处理程序模式中从目标注册和取消注册事件处理程序，其中只有两个参数。（例如 `on(name, fn)`、`off(name, fn)`、`addListener(name, fn)` 或 `removeListener(name, fn)`）
  *
  * @param target The target we're calling methods on
  *

@@ -23,7 +23,7 @@ import { reduce } from './reduce';
  * as argument, in which case the output emission will represent the number of
  * source values that matched `true` with the `predicate`.
  *
- * `count` 将发出值的 Observable 转换为发出单个值的 Observable，该值表示源 Observable 发出的值的数量。如果源 Observable 因错误而终止， `count` 将传递此错误通知，而不首先发出值。如果源 Observable 根本没有终止，则 `count` 既不会发出值也不会终止。此运算符将可选的 `predicate` 函数作为参数，在这种情况下，输出发射将表示与 `predicate` 匹配 `true` 源值的数量。
+ * `count` 将发出值的 Observable 转换为发出单个值的 Observable，该值表示源 Observable 发出的值的数量。如果源 Observable 因错误而终止，`count` 将传递此错误通知，而不首先发出值。如果源 Observable 根本没有终止，则 `count` 既不会发出值也不会终止。此运算符将可选的 `predicate` 函数作为参数，在这种情况下，输出发射将表示与 `predicate` 匹配 `true` 源值的数量。
  *
  * ## Examples
  *

@@ -16,7 +16,7 @@ import { captureError } from './util/errorContext';
  * `unsubscribe`. Subscriber is a common type in RxJS, and crucial for
  * implementing operators, but it is rarely used as a public API.
  *
- * 实现 {@link Observer} 接口并扩展 {@link Subscription} 类。虽然 {@link Observer} 是用于使用 {@link Observable} 值的公共 API，但所有 Observers 都被转换为订阅者，以提供类似订阅的功能，例如 `unsubscribe` 。订阅者是 RxJS 中的一种常见类型，对于实现运算符至关重要，但它很少用作公共 API。
+ * 实现 {@link Observer} 接口并扩展 {@link Subscription} 类。虽然 {@link Observer} 是用于使用 {@link Observable} 值的公共 API，但所有 Observers 都被转换为订阅者，以提供类似订阅的功能，例如 `unsubscribe`。订阅者是 RxJS 中的一种常见类型，对于实现运算符至关重要，但它很少用作公共 API。
  *
  * @class Subscriber<T>
  */
@@ -99,7 +99,7 @@ export class Subscriber<T> extends Subscription implements Observer<T> {
    * the Observable, with a value. The Observable may call this method 0 or more
    * times.
    *
-   * {@link Observer} 回调，用于接收来自 Observable 的 `next` 类型的通知，带有一个值。 Observable 可能会调用此方法 0 次或更多次。
+   * {@link Observer} 回调，用于接收来自 Observable 的 `next` 类型的通知，带有一个值。Observable 可能会调用此方法 0 次或更多次。
    *
    * @param {T} [value] The `next` value.
    * @return {void}
@@ -117,7 +117,7 @@ export class Subscriber<T> extends Subscription implements Observer<T> {
    * the Observable, with an attached `Error`. Notifies the Observer that
    * the Observable has experienced an error condition.
    *
-   * {@link Observer} 回调从 Observable 接收类型 `error` 的通知，并附加 `Error` 。通知 Observer Observable 遇到了错误情况。
+   * {@link Observer} 回调从 Observable 接收类型 `error` 的通知，并附加 `Error`。通知 Observer Observable 遇到了错误情况。
    *
    * @param {any} [err] The `error` exception.
    * @return {void}
@@ -293,7 +293,7 @@ function handleStoppedNotification(notification: ObservableNotification<any>, su
  * pass any arguments to `subscribe`. Comes with the default error handling
  * behavior.
  *
- * 观察者用作订阅的存根，其中用户没有将任何参数传递给 `subscribe` 。带有默认的错误处理行为。
+ * 观察者用作订阅的存根，其中用户没有将任何参数传递给 `subscribe`。带有默认的错误处理行为。
  *
  */
 export const EMPTY_OBSERVER: Readonly<Observer<any>> & { closed: true } = {

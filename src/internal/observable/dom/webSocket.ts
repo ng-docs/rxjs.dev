@@ -15,7 +15,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * {@link WebSocketSubjectConfig} object for providing additional configuration, as
  * well as Observers for tracking lifecycle of WebSocket connection.
  *
- * `webSocket` 是一个生成 `WebSocketSubject` 的工厂函数，可用于与任意端点建立 WebSocket 连接。 `webSocket` 接受带有 WebSocket 端点 url 的字符串或 {@link WebSocketSubjectConfig} 对象作为参数，用于提供额外的配置，以及用于跟踪 WebSocket 连接生命周期的观察者。
+ * `webSocket` 是一个生成 `WebSocketSubject` 的工厂函数，可用于与任意端点建立 WebSocket 连接。`webSocket` 接受带有 WebSocket 端点 url 的字符串或 {@link WebSocketSubjectConfig} 对象作为参数，用于提供额外的配置，以及用于跟踪 WebSocket 连接生命周期的观察者。
  *
  * When `WebSocketSubject` is subscribed, it attempts to make a socket connection,
  * unless there is one made already. This means that many subscribers will always listen
@@ -34,7 +34,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * any errors. If at any point (starting, maintaining or closing a connection) there is an error,
  * stream will also error with whatever WebSocket API has thrown.
  *
- * 一旦建立连接，每当有新消息来自服务器时， `WebSocketSubject` 都会将该消息作为流中的值发出。默认情况下，来自套接字的消息通过 `JSON.parse` 解析。如果你想自定义如何处理反序列化（如果有的话），你可以在 {@link WebSocketSubject} 中提供自定义 `resultSelector` 函数。当连接关闭时，流将完成，前提是它没有任何错误发生。如果在任何时候（启动、维护或关闭连接）出现错误，无论 WebSocket API 抛出什么，流都会出错。
+ * 一旦建立连接，每当有新消息来自服务器时，`WebSocketSubject` 都会将该消息作为流中的值发出。默认情况下，来自套接字的消息通过 `JSON.parse` 解析。如果你想自定义如何处理反序列化（如果有的话），你可以在 {@link WebSocketSubject} 中提供自定义 `resultSelector` 函数。当连接关闭时，流将完成，前提是它没有任何错误发生。如果在任何时候（启动、维护或关闭连接）出现错误，无论 WebSocket API 抛出什么，流都会出错。
  *
  * By virtue of being a {@link Subject}, `WebSocketSubject` allows for receiving and sending messages from the server. In order
  * to communicate with a connected endpoint, use `next`, `error` and `complete` methods. `next` sends a value to the server, so bear in mind
@@ -48,7 +48,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * property with status code number and optional `reason` property with string describing details
  * of an error.
  *
- * 由于是 {@link Subject}， `WebSocketSubject` 允许从服务器接收和发送消息。为了与连接的端点通信，请使用 `next` 、 `error` 和 `complete` 方法。 `next` 向服务器发送一个值，因此请记住，该值不会事先序列化。因此，在使用结果调用 `next` 之前，必须手动调用 `JSON.stringify` 值。另请注意，如果在下一个值的时刻没有套接字连接（例如没有人订阅），则这些值将被缓冲，并在最终建立连接时发送。 `complete` 方法关闭套接字连接。 `error` 也是如此，并通过状态代码和字符串通知服务器出现问题，并提供详细信息。由于 WebSocket API 中需要状态码，因此 `WebSocketSubject` 不允许像常规 `Subject` 一样，将任意值传递给 `error` 方法。需要使用具有带有状态代码编号的 `code` 属性和带有描述错误详细信息的字符串的可选 `reason` 属性的对象来调用它。
+ * 由于是 {@link Subject}，`WebSocketSubject` 允许从服务器接收和发送消息。为了与连接的端点通信，请使用 `next`、`error` 和 `complete` 方法。`next` 向服务器发送一个值，因此请记住，该值不会事先序列化。因此，在使用结果调用 `next` 之前，必须手动调用 `JSON.stringify` 值。另请注意，如果在下一个值的时刻没有套接字连接（例如没有人订阅），则这些值将被缓冲，并在最终建立连接时发送。`complete` 方法关闭套接字连接。`error` 也是如此，并通过状态代码和字符串通知服务器出现问题，并提供详细信息。由于 WebSocket API 中需要状态码，因此 `WebSocketSubject` 不允许像常规 `Subject` 一样，将任意值传递给 `error` 方法。需要使用具有带有状态代码编号的 `code` 属性和带有描述错误详细信息的字符串的可选 `reason` 属性的对象来调用它。
  *
  * Calling `next` does not affect subscribers of `WebSocketSubject` - they have no
  * information that something was sent to the server (unless of course the server
@@ -60,7 +60,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * (calling `complete` or `error`), if process of closing socket connection results in some errors, *then* stream
  * will error.
  *
- * 调用 `next` 不会影响 `WebSocketSubject` 的订阅者 - 他们没有任何信息表明某些内容已发送到服务器（当然，除非服务器以某种方式响应消息）。另一方面，由于调用 `complete` 会触发关闭套接字连接的尝试。如果该连接在没有任何错误的情况下关闭，则流将完成，从而通知所有订阅者。而且由于调用 `error` 也会关闭套接字连接，只是服务器的状态码不同，如果关闭本身没有错误，订阅的 Observable 将不会出错，正如人们所期望的那样，但会像往常一样完成。在这两种情况下（调用 `complete` 或 `error` ），如果关闭套接字连接的过程导致一些错误，*则*流将出错。
+ * 调用 `next` 不会影响 `WebSocketSubject` 的订阅者 - 他们没有任何信息表明某些内容已发送到服务器（当然，除非服务器以某种方式响应消息）。另一方面，由于调用 `complete` 会触发关闭套接字连接的尝试。如果该连接在没有任何错误的情况下关闭，则流将完成，从而通知所有订阅者。而且由于调用 `error` 也会关闭套接字连接，只是服务器的状态码不同，如果关闭本身没有错误，订阅的 Observable 将不会出错，正如人们所期望的那样，但会像往常一样完成。在这两种情况下（调用 `complete` 或 `error`），如果关闭套接字连接的过程导致一些错误，*则*流将出错。
  *
  * **Multiplexing**
  *
@@ -77,7 +77,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * were two separate sockets is desirable. This eliminates manually registering and unregistering in a gateway for
  * given service and filter out messages of interest. This is exactly what `multiplex` method is for.
  *
- * `WebSocketSubject` 有一个额外的运算符，在其他 Subjects 中没有。它被称为 `multiplex` ，它用于模拟打开多个套接字连接，而实际上只维护一个。例如，一个应用程序既有聊天面板，也有关于体育新闻的实时通知。由于这是两个不同的功能，因此为每个功能设置两个单独的连接是有意义的。也许甚至可以有两个带有 WebSocket 端点的单独服务，在单独的机器上运行，只有 GUI 将它们组合在一起。每个功能都有一个套接字连接可能会变得过于昂贵。将单个 WebSocket 端点用作其他服务（在本例中为聊天和体育新闻服务）的网关是一种常见模式。即使客户端应用程序中只有一个连接，也希望能够像处理两个单独的套接字一样操作流。这消除了在网关中手动注册和注销给定服务并过滤掉感兴趣的消息。这正是 `multiplex` 方法的用途。
+ * `WebSocketSubject` 有一个额外的运算符，在其他 Subjects 中没有。它被称为 `multiplex`，它用于模拟打开多个套接字连接，而实际上只维护一个。例如，一个应用程序既有聊天面板，也有关于体育新闻的实时通知。由于这是两个不同的功能，因此为每个功能设置两个单独的连接是有意义的。也许甚至可以有两个带有 WebSocket 端点的单独服务，在单独的机器上运行，只有 GUI 将它们组合在一起。每个功能都有一个套接字连接可能会变得过于昂贵。将单个 WebSocket 端点用作其他服务（在本例中为聊天和体育新闻服务）的网关是一种常见模式。即使客户端应用程序中只有一个连接，也希望能够像处理两个单独的套接字一样操作流。这消除了在网关中手动注册和注销给定服务并过滤掉感兴趣的消息。这正是 `multiplex` 方法的用途。
  *
  * Method accepts three parameters. First two are functions returning subscription and unsubscription messages
  * respectively. These are messages that will be sent to the server, whenever consumer of resulting Observable
@@ -98,13 +98,13 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * if there is such identifier on an object emitted by the socket. Messages which returns `false` in `messageFilter` are simply skipped,
  * and are not passed down the stream.
  *
- * `multiplex` 的最后一个参数是一个 `messageFilter` 函数，它应该返回一个布尔值。它用于过滤服务器发送的消息，只发送给那些属于模拟 WebSocket 流的消息。例如，服务器可能会在消息对象上用某种字符串标识符标记这些消息，如果套接字发出的对象上有这样的标识符，则 `messageFilter` 将返回 `true` 。在 `messageFilter` 中返回 `false` 的消息将被简单地跳过，并且不会沿流向下传递。
+ * `multiplex` 的最后一个参数是一个 `messageFilter` 函数，它应该返回一个布尔值。它用于过滤服务器发送的消息，只发送给那些属于模拟 WebSocket 流的消息。例如，服务器可能会在消息对象上用某种字符串标识符标记这些消息，如果套接字发出的对象上有这样的标识符，则 `messageFilter` 将返回 `true`。在 `messageFilter` 中返回 `false` 的消息将被简单地跳过，并且不会沿流向下传递。
  *
  * Return value of `multiplex` is an Observable with messages incoming from emulated socket connection. Note that this
  * is not a `WebSocketSubject`, so calling `next` or `multiplex` again will fail. For pushing values to the
  * server, use root `WebSocketSubject`.
  *
- * `multiplex` 的返回值是一个 Observable，其中包含从模拟套接字连接传入的消息。请注意，这不是 `WebSocketSubject` ，因此再次调用 `next` 或 `multiplex` 将失败。要将值推送到服务器，请使用 root `WebSocketSubject` 。
+ * `multiplex` 的返回值是一个 Observable，其中包含从模拟套接字连接传入的消息。请注意，这不是 `WebSocketSubject`，因此再次调用 `next` 或 `multiplex` 将失败。要将值推送到服务器，请使用 root `WebSocketSubject`。
  *
  * ## Examples
  *

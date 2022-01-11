@@ -24,14 +24,14 @@ export function bindCallback<A extends readonly unknown[], R extends readonly un
  * it will return a function `g` that when called as `g(x)` will output an
  * Observable.</span>
  *
- * 给它一个 `f(x, callback)` 类型的函数 `f` ，它会返回一个函数 `g` ，当调用 `g(x)` 时会输出一个 Observable。
+ * 给它一个 `f(x, callback)` 类型的函数 `f`，它会返回一个函数 `g`，当调用 `g(x)` 时会输出一个 Observable。
  *
  * `bindCallback` is not an operator because its input and output are not
  * Observables. The input is a function `func` with some parameters. The
  * last parameter must be a callback function that `func` calls when it is
  * done.
  *
- * `bindCallback` 不是运算符，因为它的输入和输出不是 Observable。输入是一个带有一些参数的函数 `func` 。最后一个参数必须是 `func` 完成时调用的回调函数。
+ * `bindCallback` 不是运算符，因为它的输入和输出不是 Observable。输入是一个带有一些参数的函数 `func`。最后一个参数必须是 `func` 完成时调用的回调函数。
  *
  * The output of `bindCallback` is a function that takes the same parameters
  * as `func`, except the last one (the callback). When the output function
@@ -57,7 +57,7 @@ export function bindCallback<A extends readonly unknown[], R extends readonly un
  * and call `subscribe` on the output Observable, all function calls that are currently executing
  * will end before `func` is invoked.
  *
- * 最后一个可选参数 - `scheduler` - 可用于控制在有人订阅 Observable 后何时调用 `func` ，以及何时发出传递给回调的结果。默认情况下，订阅 Observable 会同步调用 `func` ，但使用 {@link asyncScheduler} 作为最后一个参数将推迟对 `func` 的调用，就像将调用包装在 `setTimeout` 中并设置超时时间为 `0` 一样。如果你要使用异步调度程序并在输出 Observable 上调用 `subscribe` ，则当前正在执行的所有函数调用将在调用 `func` 之前结束。
+ * 最后一个可选参数 - `scheduler` - 可用于控制在有人订阅 Observable 后何时调用 `func`，以及何时发出传递给回调的结果。默认情况下，订阅 Observable 会同步调用 `func`，但使用 {@link asyncScheduler} 作为最后一个参数将推迟对 `func` 的调用，就像将调用包装在 `setTimeout` 中并设置超时时间为 `0` 一样。如果你要使用异步调度程序并在输出 Observable 上调用 `subscribe`，则当前正在执行的所有函数调用将在调用 `func` 之前结束。
  *
  * By default, results passed to the callback are emitted immediately after `func` invokes the callback.
  * In particular, if the callback is called synchronously, then the subscription of the resulting Observable
@@ -65,7 +65,7 @@ export function bindCallback<A extends readonly unknown[], R extends readonly un
  * you may use {@link asyncScheduler} just as before.  This means that by using `Scheduler.async` you can
  * ensure that `func` always calls its callback asynchronously, thus avoiding terrifying Zalgo.
  *
- * 默认情况下，传递给回调的结果会在 `func` 调用回调后立即发出。特别是，如果同步调用回调，则生成的 Observable 的订阅也将同步调用 `next` 函数。如果你想推迟那个调用，你可以像以前一样使用 {@link asyncScheduler}。这意味着通过使用 `Scheduler.async` ，你可以确保 `func` 始终异步调用其回调，从而避免可怕的 Zalgo。
+ * 默认情况下，传递给回调的结果会在 `func` 调用回调后立即发出。特别是，如果同步调用回调，则生成的 Observable 的订阅也将同步调用 `next` 函数。如果你想推迟那个调用，你可以像以前一样使用 {@link asyncScheduler}。这意味着通过使用 `Scheduler.async`，你可以确保 `func` 始终异步调用其回调，从而避免可怕的 Zalgo。
  *
  * Note that the Observable created by the output function will always emit a single value
  * and then complete immediately. If `func` calls the callback multiple times, values from subsequent
@@ -79,7 +79,7 @@ export function bindCallback<A extends readonly unknown[], R extends readonly un
  * is called as a method of some objec and if `func` is not already bound, in order to preserve the context
  * it is recommended that the context of the output function is set to that object as well.
  *
- * 如果 `func` 依赖于某个上下文（ `this` 属性）并且尚未绑定，则 `func` 的上下文将是输出函数在调用时具有的上下文。特别是，如果 `func` 作为某个对象的方法被调用并且如果 `func` 尚未绑定，为了保留上下文，建议也将输出函数的上下文设置为该对象。
+ * 如果 `func` 依赖于某个上下文（`this` 属性）并且尚未绑定，则 `func` 的上下文将是输出函数在调用时具有的上下文。特别是，如果 `func` 作为某个对象的方法被调用并且如果 `func` 尚未绑定，为了保留上下文，建议也将输出函数的上下文设置为该对象。
  *
  * If the input function calls its callback in the "node style" (i.e. first argument to callback is
  * optional error parameter signaling whether the call failed or not), {@link bindNodeCallback}
@@ -87,7 +87,7 @@ export function bindCallback<A extends readonly unknown[], R extends readonly un
  * `bindCallback` will treat such functions the same as any other and error parameters
  * (whether passed or not) will always be interpreted as regular callback argument.
  *
- * 如果输入函数以“节点样式”调用其回调（即回调的第一个参数是可选的错误参数，指示调用是否失败），{@link bindNodeCallback} 提供方便的错误处理，可能是更好的选择。 `bindCallback` 会将此类函数视为与任何其他函数相同，并且错误参数（无论是否传递）将始终被解释为常规回调参数。
+ * 如果输入函数以“节点样式”调用其回调（即回调的第一个参数是可选的错误参数，指示调用是否失败），{@link bindNodeCallback} 提供方便的错误处理，可能是更好的选择。`bindCallback` 会将此类函数视为与任何其他函数相同，并且错误参数（无论是否传递）将始终被解释为常规回调参数。
  *
  * ## Examples
  *

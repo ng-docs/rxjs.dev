@@ -31,7 +31,7 @@ export interface AjaxError extends Error {
    * The HTTP status code, if the request has completed. If not,
    * it is set to `0`.
    *
-   * HTTP 状态代码（如果请求已完成）。如果不是，则设置为 `0` 。
+   * HTTP 状态代码（如果请求已完成）。如果不是，则设置为 `0`。
    *
    */
   status: number;
@@ -70,7 +70,7 @@ export interface AjaxErrorCtor {
  * is an `instanceof AjaxError`. DO NOT create new instances of `AjaxError` with
  * the constructor.
  *
- * 在 AJAX 请求期间发生错误时抛出。这仅被导出，因为它对于检查错误是否是 `instanceof AjaxError` 。不要使用构造函数创建新的 `AjaxError` 实例。
+ * 在 AJAX 请求期间发生错误时抛出。这仅被导出，因为它对于检查错误是否是 `instanceof AjaxError`。不要使用构造函数创建新的 `AjaxError` 实例。
  *
  * @class AjaxError
  * @see {@link ajax}
@@ -118,7 +118,7 @@ export interface AjaxTimeoutErrorCtor {
  * `instanceof AjaxTimeoutError`. DO NOT use the constructor to create an instance of
  * this type.
  *
- * 仅将其导出是因为它对于检查错误是否为 `instanceof AjaxTimeoutError` 。不要使用构造函数来创建这种类型的实例。
+ * 仅将其导出是因为它对于检查错误是否为 `instanceof AjaxTimeoutError`。不要使用构造函数来创建这种类型的实例。
  *
  * @class AjaxTimeoutError
  * @see {@link ajax}

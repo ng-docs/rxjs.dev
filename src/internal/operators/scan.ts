@@ -32,7 +32,7 @@ export function scan<V, A, S>(accumulator: (acc: A | S, value: V, index: number)
  *
  * - If a `seed` value was supplied (as the second argument to `scan`), let `state = seed` and `value = firstValue`.
  *
- *   如果提供了 `seed` 值（作为 `scan` 的第二个参数），则让 `state = seed` 和 `value = firstValue` 。
+ *   如果提供了 `seed` 值（作为 `scan` 的第二个参数），则让 `state = seed` 和 `value = firstValue`。
  *
  * - If NO `seed` value was supplied (no second argument), let `state = firstValue` and go to 3.
  *
@@ -40,7 +40,7 @@ export function scan<V, A, S>(accumulator: (acc: A | S, value: V, index: number)
  *
  * 2. Let `state = accumulator(state, value)`.
  *
- *    让 `state = accumulator(state, value)` 。
+ *    让 `state = accumulator(state, value)`。
  *
  * - If an error is thrown by `accumulator`, notify the consumer of an error. The process ends.
  *
@@ -48,11 +48,11 @@ export function scan<V, A, S>(accumulator: (acc: A | S, value: V, index: number)
  *
  * 3. Emit `state`.
  *
- *    发射 `state` 。
+ *    发射 `state`。
  *
  * 4. Next value arrives, let `value = nextValue`, go to 2.
  *
- *    下一个值到达，让 `value = nextValue` ，转到 2。
+ *    下一个值到达，让 `value = nextValue`，转到 2。
  *
  * ## Examples
  *
@@ -85,7 +85,7 @@ export function scan<V, A, S>(accumulator: (acc: A | S, value: V, index: number)
  * So important to like, computers and stuff that its whiteboarded
  * in job interviews. Now you can show them the Rx version! (Please don't, haha)
  *
- * 斐波那契数列。这个例子展示了如何使用种子来启动积累过程。还有……你知道……斐波那契。喜欢计算机和其他东西非常重要，以至于它在求职面试中被写成了白板。现在你可以向他们展示 Rx 版本！ （请不要，哈哈）
+ * 斐波那契数列。这个例子展示了如何使用种子来启动积累过程。还有……你知道……斐波那契。喜欢计算机和其他东西非常重要，以至于它在求职面试中被写成了白板。现在你可以向他们展示 Rx 版本！（请不要，哈哈）
  *
  * ```ts
  * import { interval, scan, map, startWith } from 'rxjs';

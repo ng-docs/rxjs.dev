@@ -13,7 +13,7 @@ import { map } from './map';
  * default, it uses the `asyncScheduler` which simply returns `Date.now()` (milliseconds since 1970/01/01
  * 00:00:00:000) and therefore is of type `number`.
  *
- * `timestamp` 运算符将*源*可观察流映射到 `{value: T, timestamp: R}` 类型的对象。属性是一般类型的。 `value` 属性包含*源*observable 的值和类型。 `timestamp` 由调度程序 `now` 功能生成。默认情况下，它使用 `asyncScheduler` ，它只返回 `Date.now()` （自 1970/01/01 00:00:00:000 以来的毫秒数），因此是 `number` 类型。
+ * `timestamp` 运算符将*源*可观察流映射到 `{value: T, timestamp: R}` 类型的对象。属性是一般类型的。`value` 属性包含*源*observable 的值和类型。`timestamp` 由调度程序 `now` 功能生成。默认情况下，它使用 `asyncScheduler`，它只返回 `Date.now()`（自 1970/01/01 00:00:00:000 以来的毫秒数），因此是 `number` 类型。
  *
  * ![](timestamp.png)
  *

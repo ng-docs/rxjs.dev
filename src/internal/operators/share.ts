@@ -69,7 +69,7 @@ export function share<T>(options: ShareConfig<T>): MonoTypeOperatorFunction<T>;
  * unsubscribe from the source Observable. Because the Observable is multicasting it makes the stream `hot`.
  * This is an alias for `multicast(() => new Subject()), refCount()`.
  *
- * 返回一个多播（共享）原始 Observable 的新 Observable。只要至少有一个订阅者，这个 Observable 就会被订阅并发送数据。当所有订阅者都取消订阅后，它将取消订阅源 Observable。因为 Observable 正在多播，所以它使流变 `hot` 。这是 `multicast(() => new Subject()), refCount()` 的别名。
+ * 返回一个多播（共享）原始 Observable 的新 Observable。只要至少有一个订阅者，这个 Observable 就会被订阅并发送数据。当所有订阅者都取消订阅后，它将取消订阅源 Observable。因为 Observable 正在多播，所以它使流变 `hot`。这是 `multicast(() => new Subject()), refCount()` 的别名。
  *
  * The subscription to the underlying source Observable can be reset (unsubscribe and resubscribe for new subscribers),
  * if the subscriber count to the shared observable drops to 0, or if the source Observable errors or completes. It is

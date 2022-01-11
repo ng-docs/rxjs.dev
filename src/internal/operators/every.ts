@@ -7,7 +7,7 @@ export function every<T>(predicate: BooleanConstructor): OperatorFunction<T, Exc
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg` 。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function every<T>(
@@ -17,7 +17,7 @@ export function every<T>(
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg` 。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function every<T, A>(

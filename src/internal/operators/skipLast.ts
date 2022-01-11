@@ -15,7 +15,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * emits its fourth value, the first value the source emitted will finally be emitted
  * from the returned observable, as it is no longer part of what needs to be skipped.
  *
- * 返回一个 observable，它会尽快发出值，给定一些跳过的值。例如，如果你在源上 `skipLast(3)` ，当源发出其第四个值时，源发出的第一个值最终将从返回的 observable 中发出，因为它不再是需要跳过的一部分。
+ * 返回一个 observable，它会尽快发出值，给定一些跳过的值。例如，如果你在源上 `skipLast(3)`，当源发出其第四个值时，源发出的第一个值最终将从返回的 observable 中发出，因为它不再是需要跳过的一部分。
  *
  * All values emitted by the result of `skipLast(N)` will be delayed by `N` emissions,
  * as each value is held in a buffer until enough values have been emitted that that

@@ -27,7 +27,7 @@ export function mapTo<T, R>(value: R): OperatorFunction<T, R>;
  * Observable emits a value. In other words, ignores the actual source value,
  * and simply uses the emission moment to know when to emit the given `value`.
  *
- * 将一个常 `value` 作为参数，并在源 Observable 发出一个值时发出该值。换句话说，忽略实际的源值，并简单地使用发射时刻来知道何时发射给定的 `value` 。
+ * 将一个常 `value` 作为参数，并在源 Observable 发出一个值时发出该值。换句话说，忽略实际的源值，并简单地使用发射时刻来知道何时发射给定的 `value`。
  *
  * ## Example
  *
@@ -53,7 +53,7 @@ export function mapTo<T, R>(value: R): OperatorFunction<T, R>;
  * @return A function that returns an Observable that emits the given `value`
  * every time the source Observable emits.
  *
- * 一个函数，它返回一个 Observable，每次源 Observable 发出时发出给定的 `value` 。
+ * 一个函数，它返回一个 Observable，每次源 Observable 发出时发出给定的 `value`。
  *
  */
 export function mapTo<R>(value: R): OperatorFunction<unknown, R> {

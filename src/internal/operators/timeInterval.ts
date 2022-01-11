@@ -13,7 +13,7 @@ import { map } from './map';
  * defaults to {@link asyncScheduler}, so by default, the `interval` will be in
  * milliseconds.
  *
- * 发射一个包含当前值的对象，以及发射当前值和前一个值之间经过的时间，这是通过使用提供的 `scheduler` 的 `now()` 方法在每次发射时检索当前时间来计算的，然后计算不同之处。 `scheduler` 默认为 {@link asyncScheduler}，因此默认情况下， `interval` 将以毫秒为单位。
+ * 发射一个包含当前值的对象，以及发射当前值和前一个值之间经过的时间，这是通过使用提供的 `scheduler` 的 `now()` 方法在每次发射时检索当前时间来计算的，然后计算不同之处。`scheduler` 默认为 {@link asyncScheduler}，因此默认情况下，`interval` 将以毫秒为单位。
  *
  * <span class="informal">Convert an Observable that emits items into one that
  * emits indications of the amount of time elapsed between those emissions.</span>

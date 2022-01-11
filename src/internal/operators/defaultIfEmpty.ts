@@ -48,7 +48,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * specified `defaultValue` if the source Observable emits no items, or the
  * values emitted by the source Observable.
  *
- * 返回一个 Observable 的函数，如果源 Observable 没有发出任何项，则该 Observable 发出指定的 `defaultValue` ，或者源 Observable 发出的值。
+ * 返回一个 Observable 的函数，如果源 Observable 没有发出任何项，则该 Observable 发出指定的 `defaultValue`，或者源 Observable 发出的值。
  *
  */
 export function defaultIfEmpty<T, R>(defaultValue: R): OperatorFunction<T, T | R> {

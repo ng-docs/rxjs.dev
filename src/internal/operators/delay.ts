@@ -67,7 +67,7 @@ import { timer } from '../observable/timer';
  * @param {number|Date} due The delay duration in milliseconds (a `number`) or
  * a `Date` until which the emission of the source items is delayed.
  *
- * 以毫秒为单位的延迟持续时间（一个 `number` ）或一个 `Date` ，在此之前源项目的发射被延迟。
+ * 以毫秒为单位的延迟持续时间（一个 `number`）或一个 `Date`，在此之前源项目的发射被延迟。
  *
  * @param {SchedulerLike} [scheduler=async] The {@link SchedulerLike} to use for
  * managing the timers that handle the time-shift for each item.

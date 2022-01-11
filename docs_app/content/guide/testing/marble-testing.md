@@ -8,7 +8,7 @@
 
 We can test our _asynchronous_ RxJS code _synchronously_ and deterministically by virtualizing time using the TestScheduler. **Marble diagrams** provide a visual way for us to represent the behavior of an Observable. We can use them to assert that a particular Observable behaves as expected, as well as to create [hot and cold Observables](https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339) we can use as mocks.
 
-我们可以通过使用 TestScheduler 虚拟化时间来 _ 同步 _ 和确定地测试我们的\_ 异步\_RxJS 代码。**大理石图为**我们提供了一种可视化的方式来表示 Observable 的行为。我们可以使用它们来断言特定的 Observable 的行为符合预期，以及创建可以用作模拟的[冷热 Observable](https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339) 。
+我们可以通过使用 TestScheduler 虚拟化时间来 _ 同步 _ 和确定地测试我们的\_ 异步\_RxJS 代码。**大理石图为**我们提供了一种可视化的方式来表示 Observable 的行为。我们可以使用它们来断言特定的 Observable 的行为符合预期，以及创建可以用作模拟的[冷热 Observable](https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339)。
 
 > At this time, the TestScheduler can only be used to test code that uses RxJS schedulers - `AsyncScheduler`, etc. If the code consumes a Promise, for example, it cannot be reliably tested with `TestScheduler`, but instead should be tested more traditionally. See the [Known Issues](#known-issues) section for more details.
 >
@@ -62,7 +62,7 @@ testScheduler.run((helpers) => {
 
 Although `run()` executes entirely synchronously, the helper functions inside your callback function do not! These functions **schedule assertions** that will execute either when your callback completes or when you explicitly call `flush()`. Be wary of calling synchronous assertions, for example `expect`, from your testing library of choice, from within the callback. See [Synchronous Assertion](#synchronous-assertion) for more information on how to do this.
 
-尽管 `run()` 完全同步执行，但回调函数中的辅助函数却没有！这些函数**调度断言**，这些断言将在你的回调完成或你显式调用 `flush()` 时执行。小心在回调中从你选择的测试库中调用同步断言，例如 `expect` 。有关如何执行此操作的更多信息，请参阅[同步断言](#synchronous-assertion)。
+尽管 `run()` 完全同步执行，但回调函数中的辅助函数却没有！这些函数**调度断言**，这些断言将在你的回调完成或你显式调用 `flush()` 时执行。小心在回调中从你选择的测试库中调用同步断言，例如 `expect`。有关如何执行此操作的更多信息，请参阅[同步断言](#synchronous-assertion)。
 
 - `cold(marbleDiagram: string, values?: object, error?: any)` - creates a "cold" observable whose subscription starts when the test begins.
 
@@ -79,7 +79,7 @@ Although `run()` executes entirely synchronously, the helper functions inside yo
 - `expectSubscriptions(actualSubscriptionLogs: SubscriptionLog[]).toBe(subscriptionMarbles: string)` - like `expectObservable` schedules an assertion for when the testScheduler flushes. Both `cold()` and `hot()` return an observable with a property `subscriptions` of type `SubscriptionLog[]`. Give `subscriptions` as parameter to `expectSubscriptions` to assert whether it matches the `subscriptionsMarbles` marble diagram given in `toBe()`. Subscription marble diagrams are slightly different than Observable
   marble diagrams. Read more below.
 
-  `expectSubscriptions(actualSubscriptionLogs: SubscriptionLog[]).toBe(subscriptionMarbles: string)` - 像 `expectObservable` 一样，在 testScheduler 刷新时安排一个断言。 `cold()` 和 `hot()` 都返回一个带有 `SubscriptionLog[]` 类型的属性 `subscriptions` 的 observable。将 `subscriptions` 作为参数提供给 `expectSubscriptions` 以断言它是否与 `toBe()` 中给出的 `subscriptionsMarbles` 大理石图匹配。订阅弹珠图与可观察弹珠图略有不同。在下面阅读更多内容。
+  `expectSubscriptions(actualSubscriptionLogs: SubscriptionLog[]).toBe(subscriptionMarbles: string)` - 像 `expectObservable` 一样，在 testScheduler 刷新时安排一个断言。`cold()` 和 `hot()` 都返回一个带有 `SubscriptionLog[]` 类型的属性 `subscriptions` 的 observable。将 `subscriptions` 作为参数提供给 `expectSubscriptions` 以断言它是否与 `toBe()` 中给出的 `subscriptionsMarbles` 大理石图匹配。订阅弹珠图与可观察弹珠图略有不同。在下面阅读更多内容。
 
 - `flush()` - immediately starts virtual time. Not often used since `run()` will automatically flush for you when your callback returns, but in some cases you may wish to flush more than once or otherwise have more control.
 
@@ -103,7 +103,7 @@ Although `run()` executes entirely synchronously, the helper functions inside yo
 
 - `animate()` - specifies when requested animation frames will be 'painted'. `animate` accepts a marble diagram and each value emission in the diagram indicates when a 'paint' occurs - at which time, any queued `requestAnimationFrame` callbacks will be executed. Call `animate` at the beginning of your test and align the marble diagrams so that it's clear when the callbacks will be executed:
 
-  `animate()` - 指定何时“绘制”请求的动画帧。 `animate` 接受一个弹珠图，图中的每个值发射都指示何时发生“绘制” - 届时，将执行任何排队的 `requestAnimationFrame` 回调。在测试开始时调用 `animate` 并对齐弹珠图，以便清楚何时执行回调：
+  `animate()` - 指定何时“绘制”请求的动画帧。`animate` 接受一个弹珠图，图中的每个值发射都指示何时发生“绘制” - 届时，将执行任何排队的 `requestAnimationFrame` 回调。在测试开始时调用 `animate` 并对齐弹珠图，以便清楚何时执行回调：
 
   ```ts
   testScheduler.run((helpers) => {
@@ -125,7 +125,7 @@ In the context of TestScheduler, a marble diagram is a string containing special
 
 How many virtual milliseconds one frame represents depends on the value of `TestScheduler.frameTimeFactor`. For legacy reasons the value of `frameTimeFactor` is 1 _only_ when your code inside the `testScheduler.run(callback)` callback is running. Outside of it, it's set to 10. This will likely change in a future version of RxJS so that it is always 1.
 
-一帧代表多少虚拟毫秒取决于 `TestScheduler.frameTimeFactor` 的值。由于遗留原因，_ 只有 _ 当 `testScheduler.run(callback)` 回调中的代码正在运行时， `frameTimeFactor` 的值才为 1。在它之外，它设置为 10。这可能会在 RxJS 的未来版本中发生变化，因此它始终为 1。
+一帧代表多少虚拟毫秒取决于 `TestScheduler.frameTimeFactor` 的值。由于遗留原因，_ 只有 _ 当 `testScheduler.run(callback)` 回调中的代码正在运行时，`frameTimeFactor` 的值才为 1。在它之外，它设置为 10。这可能会在 RxJS 的未来版本中发生变化，因此它始终为 1。
 
 > IMPORTANT: This syntax guide refers to usage of marble diagrams when using the new `testScheduler.run(callback)`. The semantics of marble diagrams when using the TestScheduler manually are different, and some features like the new time progression syntax are not supported.
 >
@@ -142,15 +142,15 @@ How many virtual milliseconds one frame represents depends on the value of `Test
 
 - `[0-9]+[ms|s|m]` time progression: the time progression syntax lets you progress virtual time by a specific amount. It's a number, followed by a time unit of `ms` (milliseconds), `s` (seconds), or `m` (minutes) without any space between them, e.g. `a 10ms b`. See [Time progression syntax](#time-progression-syntax) for more details.
 
-  `[0-9]+[ms|s|m]` 时间进度：时间进度语法允许你将虚拟时间推进特定数量。它是一个数字，后跟 `ms` （毫秒）、 `s` （秒）或 `m` （分钟）的时间单位，它们之间没有任何空格，例如 `a 10ms b` 。有关更多详细信息，请参阅[时间进度语法](#time-progression-syntax)。
+  `[0-9]+[ms|s|m]` 时间进度：时间进度语法允许你将虚拟时间推进特定数量。它是一个数字，后跟 `ms`（毫秒）、`s`（秒）或 `m`（分钟）的时间单位，它们之间没有任何空格，例如 `a 10ms b`。有关更多详细信息，请参阅[时间进度语法](#time-progression-syntax)。
 
 - `'|'` complete: The successful completion of an observable. This is the observable producer signaling `complete()`.
 
-  `'|'` 完成：一个可观察对象的成功完成。这是可观察的生产者信号 `complete()` 。
+  `'|'` 完成：一个可观察对象的成功完成。这是可观察的生产者信号 `complete()`。
 
 - `'#'` error: An error terminating the observable. This is the observable producer signaling `error()`.
 
-  `'#'` 错误：终止 observable 的错误。这是可观察到的生产者信号 `error()` 。
+  `'#'` 错误：终止 observable 的错误。这是可观察到的生产者信号 `error()`。
 
 - `[a-z0-9]` e.g. `'a'` any alphanumeric character: Represents a value being emitted by the producer signaling `next()`. Also consider that you could map this into an object or an array like this:
 
@@ -180,11 +180,11 @@ expectObservable(someStreamForTesting).toBe(expected, values);
 - `'()'` sync groupings: When multiple events need to be in the same frame synchronously, parentheses are used to group those events. You can group next'd values, a completion, or an error in this manner. The position of the initial `(` determines the time at which its values are emitted. While it can be counter-intuitive at first, after all the values have synchronously emitted time will progress a number of frames equal to the number of ASCII characters in the group, including the parentheses.
   e.g. `'(abc)'` will emit the values of a, b, and c synchronously in the same frame and then advance virtual time by 5 frames, `'(abc)'.length === 5`. This is done because it often helps you vertically align your marble diagrams, but it's a known pain point in real-world testing. [Learn more about known issues](#known-issues).
 
-  `'()'` 同步分组：当多个事件需要同步在同一帧中时，括号用于对这些事件进行分组。你可以通过这种方式对下一个值、完成或错误进行分组。初始值 `(` 的位置决定了它的值被发出的时间。虽然一开始它可能是违反直觉的，但在所有值同步发出后，时间将前进的帧数等于组中的 ASCII 字符数, 包括括号。例如 `'(abc)'` 将在同一帧中同步发出 a、b 和 c 的值，然后将虚拟时间提前 5 帧， `'(abc)'.length === 5` 。这是完成是因为它通常可以帮助你垂直对齐大理石图，但这是实际测试中的一个已知痛点。[了解有关已知问题](#known-issues)的更多信息。
+  `'()'` 同步分组：当多个事件需要同步在同一帧中时，括号用于对这些事件进行分组。你可以通过这种方式对下一个值、完成或错误进行分组。初始值 `(` 的位置决定了它的值被发出的时间。虽然一开始它可能是违反直觉的，但在所有值同步发出后，时间将前进的帧数等于组中的 ASCII 字符数, 包括括号。例如 `'(abc)'` 将在同一帧中同步发出 a、b 和 c 的值，然后将虚拟时间提前 5 帧，`'(abc)'.length === 5`。这是完成是因为它通常可以帮助你垂直对齐大理石图，但这是实际测试中的一个已知痛点。[了解有关已知问题](#known-issues)的更多信息。
 
 - `'^'` subscription point: (hot observables only) shows the point at which the tested observables will be subscribed to the hot observable. This is the "zero frame" for that observable, every frame before the `^` will be negative. Negative time might seem pointless, but there are in fact advanced cases where this is necessary, usually involving ReplaySubjects.
 
-  `'^'` 订阅点：（仅限 hot observables）显示测试的 observables 将订阅 hot observable 的点。这是该可观察对象的“零帧”， `^` 之前的每一帧都是负数。负时间可能看起来毫无意义，但实际上在高级情况下这是必要的，通常涉及 ReplaySubjects。
+  `'^'` 订阅点：（仅限 hot observables）显示测试的 observables 将订阅 hot observable 的点。这是该可观察对象的“零帧”，`^` 之前的每一帧都是负数。负时间可能看起来毫无意义，但实际上在高级情况下这是必要的，通常涉及 ReplaySubjects。
 
 ### Time progression syntax
 
@@ -192,7 +192,7 @@ expectObservable(someStreamForTesting).toBe(expected, values);
 
 The new time progression syntax takes inspiration from the CSS duration syntax. It's a number (integer or floating point) immediately followed by a unit; ms (milliseconds), s (seconds), m (minutes). e.g. `100ms`, `1.4s`, `5.25m`.
 
-新的时间进度语法从 CSS 持续时间语法中汲取灵感。它是一个数字（整数或浮点数），后面紧跟一个单位； ms（毫秒）、s（秒）、m（分钟）。例如 `100ms` 、 `1.4s` 、 `5.25m` 。
+新的时间进度语法从 CSS 持续时间语法中汲取灵感。它是一个数字（整数或浮点数），后面紧跟一个单位； ms（毫秒）、s（秒）、m（分钟）。例如 `100ms`、`1.4s`、`5.25m`。
 
 When it's not the first character of the diagram it must be padded a space before/after to disambiguate it from a series of marbles. e.g. `a 1ms b` needs the spaces because `a1msb` will be interpreted as `['a', '1', 'm', 's', 'b']` where each of these characters is a value that will be next()'d as-is.
 
@@ -246,31 +246,31 @@ expectObservable(result).toBe(expected);
 
 `'--a--b--|'`: On frame 2 emit `a`, on frame 5 emit `b`, and on frame 8, `complete`.
 
-`'--a--b--|'` ：在第 2 帧发出 `a` ，在第 5 帧发出 `b` ，在第 8 帧 `complete` 。
+`'--a--b--|'` ：在第 2 帧发出 `a`，在第 5 帧发出 `b`，在第 8 帧 `complete`。
 
 `'--a--b--#'`: On frame 2 emit `a`, on frame 5 emit `b`, and on frame 8, `error`.
 
-`'--a--b--#'` ：在第 2 帧发出 `a` ，在第 5 帧发出 `b` ，在第 8 帧发出 `error` 。
+`'--a--b--#'` ：在第 2 帧发出 `a`，在第 5 帧发出 `b`，在第 8 帧发出 `error`。
 
 `'-a-^-b--|'`: In a hot observable, on frame -2 emit `a`, then on frame 2 emit `b`, and on frame 5, `complete`.
 
-`'-a-^-b--|'` ：在一个 hot observable 中，在 -2 帧上发出 `a` ，然后在第 2 帧上发出 `b` ，在第 5 帧上， `complete` 。
+`'-a-^-b--|'` ：在一个 hot observable 中，在 -2 帧上发出 `a`，然后在第 2 帧上发出 `b`，在第 5 帧上，`complete`。
 
 `'--(abc)-|'`: on frame 2 emit `a`, `b`, and `c`, then on frame 8, `complete`.
 
-`'--(abc)-|'` ：在第 2 帧发出 `a` ， `b` 和 `c` ，然后在第 8 帧， `complete` 。
+`'--(abc)-|'` ：在第 2 帧发出 `a`，`b` 和 `c`，然后在第 8 帧，`complete`。
 
 `'-----(a|)'`: on frame 5 emit `a` and `complete`.
 
-`'-----(a|)'` ：在第 5 帧发出 `a` 并 `complete` 。
+`'-----(a|)'` ：在第 5 帧发出 `a` 并 `complete`。
 
 `'a 9ms b 9s c|'`: on frame 0 emit `a`, on frame 10 emit `b`, on frame 9,011 emit `c`, then on frame 9,012 `complete`.
 
-`'a 9ms b 9s c|'` ：在第 0 帧发出 `a` ，在第 10 帧发出 `b` ，在第 9,011 帧发出 `c` ，然后在第 9,012 帧 `complete` 。
+`'a 9ms b 9s c|'` ：在第 0 帧发出 `a`，在第 10 帧发出 `b`，在第 9,011 帧发出 `c`，然后在第 9,012 帧 `complete`。
 
 `'--a 2.5m b'`: on frame 2 emit `a`, on frame 150,003 emit `b` and never complete.
 
-`'--a 2.5m b'` ：在第 2 帧发出 `a` ，在第 150,003 帧发出 `b` 并且永远不会完成。
+`'--a 2.5m b'` ：在第 2 帧发出 `a`，在第 150,003 帧发出 `b` 并且永远不会完成。
 
 ## Subscription marbles
 
@@ -278,7 +278,7 @@ expectObservable(result).toBe(expected);
 
 The `expectSubscriptions` helper allows you to assert that a `cold()` or `hot()` Observable you created was subscribed/unsubscribed to at the correct point in time. The `subscriptionMarbles` parameter to `expectObservable` allows your test to defer subscription to a later virtual time, and/or unsubscribe even if the observable being tested has not yet completed.
 
-`expectSubscriptions` 帮助器允许你断言你创建的 `cold()` 或 `hot()` 可观察对象在正确的时间点被订阅/取消订阅。 `expectObservable` 的 `subscriptionMarbles` 参数允许你的测试将订阅推迟到以后的虚拟时间，和/或取消订阅，即使正在测试的 observable 尚未完成。
+`expectSubscriptions` 帮助器允许你断言你创建的 `cold()` 或 `hot()` 可观察对象在正确的时间点被订阅/取消订阅。`expectObservable` 的 `subscriptionMarbles` 参数允许你的测试将订阅推迟到以后的虚拟时间，和/或取消订阅，即使正在测试的 observable 尚未完成。
 
 The subscription marble syntax is slightly different to conventional marble syntax.
 
@@ -290,7 +290,7 @@ The subscription marble syntax is slightly different to conventional marble synt
 
 - `[0-9]+[ms|s|m]` time progression: the time progression syntax lets you progress virtual time by a specific amount. It's a number, followed by a time unit of `ms` (milliseconds), `s` (seconds), or `m` (minutes) without any space between them, e.g. `a 10ms b`. See [Time progression syntax](#time-progression-syntax) for more details.
 
-  `[0-9]+[ms|s|m]` 时间进度：时间进度语法允许你将虚拟时间推进特定数量。它是一个数字，后跟 `ms` （毫秒）、 `s` （秒）或 `m` （分钟）的时间单位，它们之间没有任何空格，例如 `a 10ms b` 。有关更多详细信息，请参阅[时间进度语法](#time-progression-syntax)。
+  `[0-9]+[ms|s|m]` 时间进度：时间进度语法允许你将虚拟时间推进特定数量。它是一个数字，后跟 `ms`（毫秒）、`s`（秒）或 `m`（分钟）的时间单位，它们之间没有任何空格，例如 `a 10ms b`。有关更多详细信息，请参阅[时间进度语法](#time-progression-syntax)。
 
 - `'^'` subscription point: shows the point in time at which a subscription happens.
 
@@ -302,7 +302,7 @@ The subscription marble syntax is slightly different to conventional marble synt
 
 There should be **at most one** `^` point in a subscription marble diagram, and **at most one** `!` point. Other than that, the `-` character is the only one allowed in a subscription marble diagram.
 
-订阅弹珠图**中最多应该有一个**`^` 点**，最多有一个**`!` 观点。除此之外， `-` 字符是订阅弹珠图中唯一允许的字符。
+订阅弹珠图**中最多应该有一个**`^` 点**，最多有一个**`!` 观点。除此之外，`-` 字符是订阅弹珠图中唯一允许的字符。
 
 ### Examples
 
@@ -390,7 +390,7 @@ expect(eventCount).toBe(2);
 
 In the above situation we need the observable stream to complete so that we can test the variable was set to the correct value. The TestScheduler runs in 'virtual time' (synchronously), but doesn't normally run (and complete) until the testScheduler callback returns. The flush() method manually triggers the virtual time so that we can test the local variable after the observable completes.
 
-在上述情况下，我们需要完成 observable 流，以便我们可以测试变量是否设置为正确的值。 TestScheduler 在“虚拟时间”（同步）运行，但在 testScheduler 回调返回之前通常不会运行（并完成）。 flush() 方法手动触发虚拟时间，以便我们可以在 observable 完成后测试局部变量。
+在上述情况下，我们需要完成 observable 流，以便我们可以测试变量是否设置为正确的值。TestScheduler 在“虚拟时间”（同步）运行，但在 testScheduler 回调返回之前通常不会运行（并完成）。flush() 方法手动触发虚拟时间，以便我们可以在 observable 完成后测试局部变量。
 
 * * *
 
@@ -425,7 +425,7 @@ it('has async code', (done) => {
 
 On a related note, you also can't currently assert delays of zero, even with `AsyncScheduler`, e.g. `delay(0)` is like saying `setTimeout(work, 0)`. This schedules a new ["task" aka "macrotask"](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/), so it's asynchronous, but without an explicit passage of time.
 
-在相关说明中，你目前也不能断言延迟为零，即使使用 `AsyncScheduler` ，例如 `delay(0)` 就像在说 `setTimeout(work, 0)` 。这会安排一个新的[“任务”又名“宏任务”](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/) ，所以它是异步的，但没有明确的时间流逝。
+在相关说明中，你目前也不能断言延迟为零，即使使用 `AsyncScheduler`，例如 `delay(0)` 就像在说 `setTimeout(work, 0)`。这会安排一个新的[“任务”又名“宏任务”](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/)，所以它是异步的，但没有明确的时间流逝。
 
 ### Behavior is different outside of `testScheduler.run(callback)`
 
@@ -438,11 +438,11 @@ to [use the TestScheduler outside](https://github.com/ReactiveX/rxjs/blob/7113ae
 
 - `TestScheduler` helper methods have more verbose names, like `testScheduler.createColdObservable()` instead of `cold()`.
 
-  `TestScheduler` 辅助方法具有更详细的名称，例如 `testScheduler.createColdObservable()` 而不是 `cold()` 。
+  `TestScheduler` 辅助方法具有更详细的名称，例如 `testScheduler.createColdObservable()` 而不是 `cold()`。
 
 - The testScheduler instance is _not_ automatically used by operators that use `AsyncScheduler`, e.g. `delay`, `debounceTime`, etc., so you have to explicitly pass it to them.
 
-  使用 AsyncScheduler 的操作员 _ 不会 _ 自动使用 `AsyncScheduler` 实例，例如 `delay` 、 `debounceTime` 等，因此你必须将其显式传递给它们。
+  使用 AsyncScheduler 的操作员 _ 不会 _ 自动使用 `AsyncScheduler` 实例，例如 `delay`、`debounceTime` 等，因此你必须将其显式传递给它们。
 
 - There is NO support for time progression syntax e.g. `-a 100ms b-|`.
 
@@ -450,7 +450,7 @@ to [use the TestScheduler outside](https://github.com/ReactiveX/rxjs/blob/7113ae
 
 - 1 frame is 10 virtual milliseconds by default. i.e. `TestScheduler.frameTimeFactor = 10`.
 
-  1 帧默认为 10 个虚拟毫秒。即 `TestScheduler.frameTimeFactor = 10` 。
+  1 帧默认为 10 个虚拟毫秒。即 `TestScheduler.frameTimeFactor = 10`。
 
 - Each whitespace `' '` equals 1 frame, same as a hyphen `'-'`.
 
@@ -458,7 +458,7 @@ to [use the TestScheduler outside](https://github.com/ReactiveX/rxjs/blob/7113ae
 
 - There is a hard maximum number of frames set at 750 i.e. `maxFrames = 750`. After 750 they are silently ignored.
 
-  有一个硬性的最大帧数设置为 750 即 `maxFrames = 750` 。在 750 之后，它们会被默默地忽略。
+  有一个硬性的最大帧数设置为 750 即 `maxFrames = 750`。在 750 之后，它们会被默默地忽略。
 
 - You must explicitly flush the scheduler.
 

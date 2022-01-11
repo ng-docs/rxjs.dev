@@ -12,7 +12,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * If that Observable calls `complete` or `error` then this method will call `complete` or `error` on the child
  * subscription. Otherwise this method will resubscribe to the source Observable.
  *
- * 返回一个镜像源 Observable 的 Observable，但 `error` 除外。如果源 Observable 调用 `error` ，该方法会将导致错误的 Throwable 发送到从 `notifier` 返回的 Observable。如果该 Observable 调用 `complete` 或 `error` ，则此方法将在子订阅上调用 `complete` 或 `error` 。否则此方法将重新订阅源 Observable。
+ * 返回一个镜像源 Observable 的 Observable，但 `error` 除外。如果源 Observable 调用 `error`，该方法会将导致错误的 Throwable 发送到从 `notifier` 返回的 Observable。如果该 Observable 调用 `complete` 或 `error`，则此方法将在子订阅上调用 `complete` 或 `error`。否则此方法将重新订阅源 Observable。
  *
  * ![](retryWhen.png)
  *
@@ -62,7 +62,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * @param {function(errors: Observable): Observable} notifier - Receives an Observable of notifications with which a
  *   user can `complete` or `error`, aborting the retry.
  *
- *   接收一个 Observable 通知，用户可以使用这些通知 `complete` 或 `error` ，中止重试。
+ *   接收一个 Observable 通知，用户可以使用这些通知 `complete` 或 `error`，中止重试。
  *
  * @return A function that returns an Observable that mirrors the source
  * Observable with the exception of an `error`.

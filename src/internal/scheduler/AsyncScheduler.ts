@@ -19,7 +19,7 @@ export class AsyncScheduler extends Scheduler {
    * coming from `setTimeout`, `setInterval`, `requestAnimationFrame`, and
    * others.
    *
-   * 用于跟踪最新异步任务的内部 ID，例如来自 `setTimeout` 、 `setInterval` 、 `requestAnimationFrame` 等的任务。
+   * 用于跟踪最新异步任务的内部 ID，例如来自 `setTimeout`、`setInterval`、`requestAnimationFrame` 等的任务。
    *
    * @type {any}
    * @internal

@@ -4,7 +4,7 @@
 
 **What is an Observer?** An Observer is a consumer of values delivered by an Observable. Observers are simply a set of callbacks, one for each type of notification delivered by the Observable: `next`, `error`, and `complete`. The following is an example of a typical Observer object:
 
-**什么是观察者？** Observer 是 Observable 传递的值的消费者。观察者只是一组回调，对应于 Observable 传递的每种类型的通知： `next` 、 `error` 和 `complete` 。下面是一个典型的 Observer 对象的例子：
+**什么是观察者？** Observer 是 Observable 传递的值的消费者。观察者只是一组回调，对应于 Observable 传递的每种类型的通知： `next`、`error` 和 `complete`。下面是一个典型的 Observer 对象的例子：
 
 ```ts
 const observer = {

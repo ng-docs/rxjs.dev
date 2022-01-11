@@ -13,7 +13,7 @@ export function expand<T, O extends ObservableInput<unknown>>(
  * use `subscribeOn` within the projection function: `expand((value) => fn(value).pipe(subscribeOn(scheduler)))`.
  * Details: Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。如果你需要安排内部订阅，请在投影函数中使用 `subscribeOn` ： `expand((value) => fn(value).pipe(subscribeOn(scheduler)))` 。详细信息：详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
+ * `scheduler` 参数将在 v8 中删除。如果你需要安排内部订阅，请在投影函数中使用 `subscribeOn` ： `expand((value) => fn(value).pipe(subscribeOn(scheduler)))`。详细信息：详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function expand<T, O extends ObservableInput<unknown>>(
@@ -47,7 +47,7 @@ export function expand<T, O extends ObservableInput<unknown>>(
  * given to the `project` function to produce new output values. This is how
  * *expand* behaves recursively.
  *
- * 返回一个 Observable，该 Observable 基于将你提供的函数应用于源 Observable 发出的每个项目，其中该函数返回一个 Observable，然后合并这些结果 Observable 并发出此合并的结果来发出项目。 *Expand*将在输出 Observable 上重新发出每个源值。然后，将每个输出值提供给 `project` 函数，该函数返回一个内部 Observable 以合并到输出 Observable 上。投影产生的那些输出值也被赋予 `project` 函数以产生新的输出值。这就是*expand*递归的行为方式。
+ * 返回一个 Observable，该 Observable 基于将你提供的函数应用于源 Observable 发出的每个项目，其中该函数返回一个 Observable，然后合并这些结果 Observable 并发出此合并的结果来发出项目。*Expand*将在输出 Observable 上重新发出每个源值。然后，将每个输出值提供给 `project` 函数，该函数返回一个内部 Observable 以合并到输出 Observable 上。投影产生的那些输出值也被赋予 `project` 函数以产生新的输出值。这就是*expand*递归的行为方式。
  *
  * ## Example
  *

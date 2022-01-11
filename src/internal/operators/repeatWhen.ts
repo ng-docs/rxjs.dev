@@ -12,7 +12,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * calls `complete` or `error`, then this method will call `complete` or `error` on the child subscription. Otherwise
  * this method will resubscribe to the source Observable.
  *
- * 返回一个镜像源 Observable 的 Observable，但 `complete` 除外。如果源 Observable 调用 `complete` ，此方法将发送到从 `notifier` 返回的 Observable。如果该 Observable 调用 `complete` 或 `error` ，那么此方法将在子订阅上调用 `complete` 或 `error` 。否则此方法将重新订阅源 Observable。
+ * 返回一个镜像源 Observable 的 Observable，但 `complete` 除外。如果源 Observable 调用 `complete`，此方法将发送到从 `notifier` 返回的 Observable。如果该 Observable 调用 `complete` 或 `error`，那么此方法将在子订阅上调用 `complete` 或 `error`。否则此方法将重新订阅源 Observable。
  *
  * ![](repeatWhen.png)
  *
@@ -59,7 +59,7 @@ export function repeatWhen<T>(notifier: (notifications: Observable<void>) => Obs
     /**
      * Checks to see if we can complete the result, completes it, and returns `true` if it was completed.
      *
-     * 检查我们是否可以完成结果，完成它，如果完成则返回 `true` 。
+     * 检查我们是否可以完成结果，完成它，如果完成则返回 `true`。
      *
      */
     const checkComplete = () => isMainComplete && isNotifierComplete && (subscriber.complete(), true);

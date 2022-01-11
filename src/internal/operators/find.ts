@@ -8,7 +8,7 @@ export function find<T>(predicate: BooleanConstructor): OperatorFunction<T, Trut
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg` 。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function find<T, S extends T, A>(
@@ -21,7 +21,7 @@ export function find<T, S extends T>(
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg` 。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function find<T, A>(
@@ -48,7 +48,7 @@ export function find<T>(predicate: (value: T, index: number, source: Observable<
  * in `find`, and does not emit an error if a valid value is not found
  * (emits `undefined` instead).
  *
- * `find` 搜索源 Observable 中与 `predicate` 包含的指定条件匹配的第一个项目，并返回源中的第一个匹配项。与 {@link first} 不同， `predicate` 在 `find` 中是必需的，如果未找到有效值，则不会发出错误（而是发出 `undefined` ）。
+ * `find` 搜索源 Observable 中与 `predicate` 包含的指定条件匹配的第一个项目，并返回源中的第一个匹配项。与 {@link first} 不同，`predicate` 在 `find` 中是必需的，如果未找到有效值，则不会发出错误（而是发出 `undefined`）。
  *
  * ## Example
  *

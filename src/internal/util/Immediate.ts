@@ -8,7 +8,7 @@ const activeHandles: { [key: number]: any } = {};
  * Returns `true` if found, `false` otherwise. Used both to clear
  * Immediate scheduled tasks, and to identify if a task should be scheduled.
  *
- * 在活动句柄列表中查找句柄，并将其删除。如果找到则返回 `true` ，否则返回 `false` 。既用于清除立即计划任务，也用于确定是否应计划任务。
+ * 在活动句柄列表中查找句柄，并将其删除。如果找到则返回 `true`，否则返回 `false`。既用于清除立即计划任务，也用于确定是否应计划任务。
  *
  */
 function findAndClearHandle(handle: number): boolean {

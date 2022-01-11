@@ -42,7 +42,7 @@ export class AjaxResponse<T> {
   /**
    * The responseType set on the request. (For example: `""`, `"arraybuffer"`, `"blob"`, `"document"`, `"json"`, or `"text"`)
    *
-   * 在请求上设置的 responseType。 （例如： `""` 、 `"arraybuffer"` 、 `"blob"` 、 `"document"` 、 `"json"` 或 `"text"` ）
+   * 在请求上设置的 responseType。（例如： `""`、`"arraybuffer"`、`"blob"`、`"document"`、`"json"` 或 `"text"`）
    *
    * @deprecated There isn't much reason to examine this. It's the same responseType set (or defaulted) on the ajax config.
    * If you really need to examine this value, you can check it on the `request` or the `xhr`. Will be removed in v8.
@@ -57,7 +57,7 @@ export class AjaxResponse<T> {
    * calculating progress. (You will want to set {@link includeDownloadProgress} or
    * {@link includeDownloadProgress})
    *
-   * 到目前为止加载的字节总数。在计算进度时与 {@link total} 一起使用。 （你需要设置 {@link includeDownloadProgress} 或 {@link includeDownloadProgress}）
+   * 到目前为止加载的字节总数。在计算进度时与 {@link total} 一起使用。（你需要设置 {@link includeDownloadProgress} 或 {@link includeDownloadProgress}）
    *
    */
   readonly loaded: number;
@@ -67,7 +67,7 @@ export class AjaxResponse<T> {
    * calculating progress. (You will want to set {@link includeDownloadProgress} or
    * {@link includeDownloadProgress})
    *
-   * 要加载的总字节数。在计算进度时与 {@link loaded} 一起使用。 （你需要设置 {@link includeDownloadProgress} 或 {@link includeDownloadProgress}）
+   * 要加载的总字节数。在计算进度时与 {@link loaded} 一起使用。（你需要设置 {@link includeDownloadProgress} 或 {@link includeDownloadProgress}）
    *
    */
   readonly total: number;

@@ -25,7 +25,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * not yet completed. Once that one completes, it will accept and flatten the
  * next inner Observable and repeat this process.
  *
- * `exhaustAll` 订阅了一个发出 Observables 的 Observable，也称为高阶 Observable。每次它观察到这些发射的内部 Observable 之一时，输出 Observable 就会开始发射由该内部 Observable 发射的项目。到目前为止，它的行为类似于 {@link mergeAll}。但是，如果前一个 Observable 尚未完成， `exhaustAll` 忽略每个新的内部 Observable。一旦完成，它将接受并展平下一个内部 Observable 并重复此过程。
+ * `exhaustAll` 订阅了一个发出 Observables 的 Observable，也称为高阶 Observable。每次它观察到这些发射的内部 Observable 之一时，输出 Observable 就会开始发射由该内部 Observable 发射的项目。到目前为止，它的行为类似于 {@link mergeAll}。但是，如果前一个 Observable 尚未完成，`exhaustAll` 忽略每个新的内部 Observable。一旦完成，它将接受并展平下一个内部 Observable 并重复此过程。
  *
  * ## Example
  *

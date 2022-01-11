@@ -26,7 +26,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * started immediately at the start of the source and when each window completes
  * with size `windowSize`.
  *
- * 返回一个 Observable，它发出从源 Observable 收集的项目的窗口。输出 Observable 会在每个 `startWindowEvery` 项目中发出窗口，每个项目包含不超过 `windowSize` 个项目。当源 Observable 完成或遇到错误时，输出 Observable 会发出当前窗口并传播来自源 Observable 的通知。如果没有提供 `startWindowEvery` ，那么新窗口会在源文件的开始处以及每个窗口以 `windowSize` 大小完成时立即启动。
+ * 返回一个 Observable，它发出从源 Observable 收集的项目的窗口。输出 Observable 会在每个 `startWindowEvery` 项目中发出窗口，每个项目包含不超过 `windowSize` 个项目。当源 Observable 完成或遇到错误时，输出 Observable 会发出当前窗口并传播来自源 Observable 的通知。如果没有提供 `startWindowEvery`，那么新窗口会在源文件的开始处以及每个窗口以 `windowSize` 大小完成时立即启动。
  *
  * ## Examples
  *

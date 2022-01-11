@@ -39,14 +39,14 @@ export function onErrorResumeNext<T, A extends readonly unknown[]>(
  * be happening until there is no more Observables left in the series, at which point returned Observable will
  * complete - even if the last subscribed stream ended with an error.
  *
- * `onErrorResumeNext` 返回一个 Observable，它从源 Observable 订阅和重新发送值开始。当它的值流结束时——无论 Observable 是否完成或发出错误 `onErrorResumeNext` 将订阅作为参数传递给该方法的第一个 Observable。它也将开始重新发送其值，并且 - 再次 - 当该流结束时， `onErrorResumeNext` 将继续订阅提供的系列中的另一个 Observable，无论之前的 Observable 是否完成或以错误结束。这将一直发生，直到系列中没有更多的 Observable，此时返回的 Observable 将完成 - 即使最后订阅的流以错误结束。
+ * `onErrorResumeNext` 返回一个 Observable，它从源 Observable 订阅和重新发送值开始。当它的值流结束时——无论 Observable 是否完成或发出错误 `onErrorResumeNext` 将订阅作为参数传递给该方法的第一个 Observable。它也将开始重新发送其值，并且 - 再次 - 当该流结束时，`onErrorResumeNext` 将继续订阅提供的系列中的另一个 Observable，无论之前的 Observable 是否完成或以错误结束。这将一直发生，直到系列中没有更多的 Observable，此时返回的 Observable 将完成 - 即使最后订阅的流以错误结束。
  *
  * `onErrorResumeNext` can be therefore thought of as version of {@link concat} operator, which is more permissive
  * when it comes to the errors emitted by its input Observables. While `concat` subscribes to the next Observable
  * in series only if previous one successfully completed, `onErrorResumeNext` subscribes even if it ended with
  * an error.
  *
- * 因此 `onErrorResumeNext` 可以被认为是 {@link concat} 运算符的版本，当涉及到其输入 Observables 发出的错误时，它更加宽容。 `concat` 仅在前一个 Observable 成功完成时才订阅系列中的下一个 Observable， `onErrorResumeNext` 订阅即使它以错误结束。
+ * 因此 `onErrorResumeNext` 可以被认为是 {@link concat} 运算符的版本，当涉及到其输入 Observables 发出的错误时，它更加宽容。`concat` 仅在前一个 Observable 成功完成时才订阅系列中的下一个 Observable，`onErrorResumeNext` 订阅即使它以错误结束。
  *
  * Note that you do not get any access to errors emitted by the Observables. In particular do not
  * expect these errors to appear in error callback passed to {@link Observable#subscribe}. If you want to take

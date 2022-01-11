@@ -5,7 +5,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg` 。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function filter<T, S extends T, A>(predicate: (this: A, value: T, index: number) => value is S, thisArg: A): OperatorFunction<T, S>;
@@ -14,7 +14,7 @@ export function filter<T>(predicate: BooleanConstructor): OperatorFunction<T, Tr
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg` 。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function filter<T, A>(predicate: (this: A, value: T, index: number) => boolean, thisArg: A): MonoTypeOperatorFunction<T>;
@@ -72,7 +72,7 @@ export function filter<T>(predicate: (value: T, index: number) => boolean): Mono
  * emission that has happened since the subscription, starting from the number
  * `0`.
  *
- * 评估源 Observable 发出的每个值的函数。如果它返回 `true` ，则发出该值，如果为 `false` ，则该值不会传递给输出 Observable。 `index` 参数是自订阅以来发生的第 i 个源排放的数字 `i` ，从数字 `0` 开始。
+ * 评估源 Observable 发出的每个值的函数。如果它返回 `true`，则发出该值，如果为 `false`，则该值不会传递给输出 Observable。`index` 参数是自订阅以来发生的第 i 个源排放的数字 `i`，从数字 `0` 开始。
  *
  * @param thisArg An optional argument to determine the value of `this`
  * in the `predicate` function.

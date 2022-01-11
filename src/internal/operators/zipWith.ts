@@ -29,7 +29,7 @@ import { zip } from './zip';
  *
  * In many cases, authors want `combineLatestWith` and not `zipWith`.
  *
- * 在许多情况下，作者想要 `combineLatestWith` 而不是 `zipWith` 。
+ * 在许多情况下，作者想要 `combineLatestWith` 而不是 `zipWith`。
  *
  * @param otherInputs other observable inputs to collate values from.
  *

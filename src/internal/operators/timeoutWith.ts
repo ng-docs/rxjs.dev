@@ -20,7 +20,7 @@ import { timeout } from './timeout';
  *
  * @param dueBy The exact time, as a `Date`, at which the timeout will be triggered if the first value does not arrive.
  *
- * 如果第一个值未到达，将触发超时的确切时间，如 `Date` 。
+ * 如果第一个值未到达，将触发超时的确切时间，如 `Date`。
  *
  * @param switchTo The observable to switch to when timeout occurs.
  *
@@ -32,7 +32,7 @@ import { timeout } from './timeout';
  *
  * @deprecated Replaced with {@link timeout}. Instead of `timeoutWith(someDate, a$, scheduler)`, use the configuration object `timeout({ first: someDate, with: () => a$, scheduler })`. Will be removed in v8.
  *
- * 替换为 {@link timeout}。代替 `timeoutWith(someDate, a$, scheduler)` ，使用配置对象 `timeout({ first: someDate, with: () => a$, scheduler })` 。将在 v8 中删除。
+ * 替换为 {@link timeout}。代替 `timeoutWith(someDate, a$, scheduler)`，使用配置对象 `timeout({ first: someDate, with: () => a$, scheduler })`。将在 v8 中删除。
  *
  */
 export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, scheduler?: SchedulerLike): OperatorFunction<T, T | R>;
@@ -126,7 +126,7 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  *
  * @deprecated Replaced with {@link timeout}. Instead of `timeoutWith(100, a$, scheduler)`, use the configuration object `timeout({ each: 100, with: () => a$, scheduler })`. Will be removed in v8.
  *
- * 替换为 {@link timeout}。代替 `timeoutWith(100, a$, scheduler)` ，使用配置对象 `timeout({ each: 100, with: () => a$, scheduler })` 。将在 v8 中删除。
+ * 替换为 {@link timeout}。代替 `timeoutWith(100, a$, scheduler)`，使用配置对象 `timeout({ each: 100, with: () => a$, scheduler })`。将在 v8 中删除。
  *
  */
 export function timeoutWith<T, R>(waitFor: number, switchTo: ObservableInput<R>, scheduler?: SchedulerLike): OperatorFunction<T, T | R>;

@@ -11,7 +11,7 @@ export function merge<A extends readonly unknown[]>(...sourcesAndConcurrency: [.
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `mergeAll` 。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `mergeAll`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function merge<A extends readonly unknown[]>(
@@ -20,7 +20,7 @@ export function merge<A extends readonly unknown[]>(
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `mergeAll` 。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `mergeAll`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function merge<A extends readonly unknown[]>(

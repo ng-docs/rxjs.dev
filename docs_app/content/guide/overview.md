@@ -4,7 +4,7 @@
 
 RxJS is a library for composing asynchronous and event-based programs by using observable sequences. It provides one core type, the [Observable](./guide/observable), satellite types (Observer, Schedulers, Subjects) and operators inspired by `Array` methods (`map`, `filter`, `reduce`, `every`, etc) to allow handling asynchronous events as collections.
 
-RxJS 是一个使用可观察序列编写异步和基于事件的程序的库。它提供了一种核心类型，即[Observable](./guide/observable) 、卫星类型（Observer、Scheduler、Subjects）和受 `Array` 方法（ `map` 、 `filter` 、 `reduce` 、 `every` 等）启发的运算符，以允许将异步事件作为集合处理。
+RxJS 是一个使用可观察序列编写异步和基于事件的程序的库。它提供了一种核心类型，即[Observable](./guide/observable)、卫星类型（Observer、Scheduler、Subjects）和受 `Array` 方法（`map`、`filter`、`reduce`、`every` 等）启发的运算符，以允许将异步事件作为集合处理。
 
 <span class="informal">Think of RxJS as Lodash for events.</span>
 
@@ -32,7 +32,7 @@ RxJS 中解决异步事件管理的基本概念是：
 
 - **Operators:** are pure functions that enable a functional programming style of dealing with collections with operations like `map`, `filter`, `concat`, `reduce`, etc.
 
-  **运算符：**是纯函数，可以使用 `map` 、 `filter` 、 `concat` 、 `reduce` 等操作来处理集合的函数式编程风格。
+  **运算符：**是纯函数，可以使用 `map`、`filter`、`concat`、`reduce` 等操作来处理集合的函数式编程风格。
 
 - **Subject:** is equivalent to an EventEmitter, and the only way of multicasting a value or event to multiple Observers.
 
@@ -138,7 +138,7 @@ fromEvent(document, 'click')
 
 Other flow control operators are [**filter**](../api/operators/filter), [**delay**](../api/operators/delay), [**debounceTime**](../api/operators/debounceTime), [**take**](../api/operators/take), [**takeUntil**](../api/operators/takeUntil), [**distinct**](../api/operators/distinct), [**distinctUntilChanged**](../api/operators/distinctUntilChanged) etc.
 
-其他流控制运算符是[**filter**](../api/operators/filter) 、 [**delay**](../api/operators/delay) 、 [**debounceTime**](../api/operators/debounceTime) 、 [**take**](../api/operators/take) 、 [**takeUntil**](../api/operators/takeUntil) 、 [**distinct**](../api/operators/distinct) 、 [**distinctUntilChanged**](../api/operators/distinctUntilChanged)等。
+其他流控制运算符是[**filter**](../api/operators/filter)、[**delay**](../api/operators/delay)、[**debounceTime**](../api/operators/debounceTime)、[**take**](../api/operators/take)、[**takeUntil**](../api/operators/takeUntil)、[**distinct**](../api/operators/distinct)、[**distinctUntilChanged**](../api/operators/distinctUntilChanged)等。
 
 ### Values
 
@@ -183,5 +183,5 @@ fromEvent(document, 'click')
 
 Other value producing operators are [**pluck**](../api/operators/pluck), [**pairwise**](../api/operators/pairwise), [**sample**](../api/operators/sample) etc.
 
-其他产生价值的运算符是[**pluck**](../api/operators/pluck) 、 [**pairwise**](../api/operators/pairwise) 、 [**sample**](../api/operators/sample)等。
+其他产生价值的运算符是[**pluck**](../api/operators/pluck)、[**pairwise**](../api/operators/pairwise)、[**sample**](../api/operators/sample)等。
 

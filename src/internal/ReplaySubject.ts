@@ -13,7 +13,7 @@ import { dateTimestampProvider } from './scheduler/dateTimestampProvider';
  * `ReplaySubject` "observes" values by having them passed to its `next` method. When it observes a value, it will store that
  * value for a time determined by the configuration of the `ReplaySubject`, as passed to its constructor.
  *
- * `ReplaySubject` 有一个内部缓冲区，它将存储它观察到的指定数量的值。与 `Subject` 一样， `ReplaySubject` 通过将值传递给 `next` 方法来“观察”值。当它观察到一个值时，它将将该值存储一段时间，该时间由 `ReplaySubject` 的配置确定，并传递给其构造函数。
+ * `ReplaySubject` 有一个内部缓冲区，它将存储它观察到的指定数量的值。与 `Subject` 一样，`ReplaySubject` 通过将值传递给 `next` 方法来“观察”值。当它观察到一个值时，它将将该值存储一段时间，该时间由 `ReplaySubject` 的配置确定，并传递给其构造函数。
  *
  * When a new subscriber subscribes to the `ReplaySubject` instance, it will synchronously emit all values in its buffer in
  * a First-In-First-Out (FIFO) manner. The `ReplaySubject` will also complete, if it has observed completion; and it will
@@ -44,7 +44,7 @@ import { dateTimestampProvider } from './scheduler/dateTimestampProvider';
  *
  * `BehaviorSubject` is similar to `new ReplaySubject(1)`, with a couple fo exceptions:
  *
- * `BehaviorSubject` 类似于 `new ReplaySubject(1)` ，但有几个例外：
+ * `BehaviorSubject` 类似于 `new ReplaySubject(1)`，但有几个例外：
  *
  * 1. `BehaviorSubject` comes "primed" with a single value upon construction.
  *
@@ -52,7 +52,7 @@ import { dateTimestampProvider } from './scheduler/dateTimestampProvider';
  *
  * 2. `ReplaySubject` will replay values, even after observing an error, where `BehaviorSubject` will not.
  *
- *    `ReplaySubject` 将重播值，即使在观察到错误之后， `BehaviorSubject` 也不会。
+ *    `ReplaySubject` 将重播值，即使在观察到错误之后，`BehaviorSubject` 也不会。
  *
  * @see {@link Subject}
  * @see {@link BehaviorSubject}

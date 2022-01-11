@@ -61,7 +61,7 @@ export function pluck<T>(...properties: string[]): OperatorFunction<T, unknown>;
  * Observable. If a property can't be resolved, it will return `undefined` for
  * that value.
  *
- * 给定描述属性路径的字符串或数字列表，从源 Observable 中的所有值中检索指定嵌套属性的值。如果无法解析某个属性，它将返回该值的 `undefined` 。
+ * 给定描述属性路径的字符串或数字列表，从源 Observable 中的所有值中检索指定嵌套属性的值。如果无法解析某个属性，它将返回该值的 `undefined`。
  *
  * ## Example
  *
@@ -92,7 +92,7 @@ export function pluck<T>(...properties: string[]): OperatorFunction<T, unknown>;
  *
  * @deprecated Use {@link map} and optional chaining: `pluck('foo', 'bar')` is `map(x => x?.foo?.bar)`. Will be removed in v8.
  *
- * 使用 {@link map} 和可选链接： `pluck('foo', 'bar')` is `map(x => x?.foo?.bar)` 。将在 v8 中删除。
+ * 使用 {@link map} 和可选链接： `pluck('foo', 'bar')` is `map(x => x?.foo?.bar)`。将在 v8 中删除。
  *
  */
 export function pluck<T, R>(...properties: Array<string | number | symbol>): OperatorFunction<T, R> {

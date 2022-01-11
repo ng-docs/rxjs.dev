@@ -8,7 +8,7 @@ import { operate } from '../util/lift';
  *
  * With `subscribeOn` you can decide what type of scheduler a specific Observable will be using when it is subscribed to.
  *
- * 使用 `subscribeOn` ，你可以决定特定 Observable 在订阅时将使用哪种类型的调度程序。
+ * 使用 `subscribeOn`，你可以决定特定 Observable 在订阅时将使用哪种类型的调度程序。
  *
  * Schedulers control the speed and order of emissions to observers from an Observable stream.
  *

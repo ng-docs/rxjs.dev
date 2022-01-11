@@ -74,7 +74,7 @@ import { UnaryFunction } from '../types';
  * `source.pipe(share({ connector: () => new AsyncSubject(), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))`.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。要在底层使用 {@link AsyncSubject} 创建可连接的 observable，请使用 {@link connectable}。 `source.pipe(publishLast())` 等价于 connectable `connectable(source, { connector: () => new AsyncSubject(), resetOnDisconnect: false })` 。如果你在 `publishLast` 之后使用 {@link refCount}，请改用 {@link share} 运算符。 `source.pipe(publishLast(), refCount())` 等价于 `source.pipe(share({ connector: () => new AsyncSubject(), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))` 。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 将在 v8 中删除。要在底层使用 {@link AsyncSubject} 创建可连接的 observable，请使用 {@link connectable}。`source.pipe(publishLast())` 等价于 connectable `connectable(source, { connector: () => new AsyncSubject(), resetOnDisconnect: false })`。如果你在 `publishLast` 之后使用 {@link refCount}，请改用 {@link share} 运算符。`source.pipe(publishLast(), refCount())` 等价于 `source.pipe(share({ connector: () => new AsyncSubject(), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))`。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function publishLast<T>(): UnaryFunction<Observable<T>, ConnectableObservable<T>> {

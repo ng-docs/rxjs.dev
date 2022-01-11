@@ -22,7 +22,7 @@ import { isValidDate } from '../util/isDate';
  * The `delay` is specified by default in milliseconds, however providing a custom scheduler could
  * create a different behavior.
  *
- * 默认情况下以毫秒为单位指定 `delay` ，但是提供自定义调度程序可能会创建不同的行为。
+ * 默认情况下以毫秒为单位指定 `delay`，但是提供自定义调度程序可能会创建不同的行为。
  *
  * ## Examples
  *
@@ -92,19 +92,19 @@ import { isValidDate } from '../util/isDate';
  *
  * - The {@link asyncScheduler} uses `setTimeout` which has limitations for how far in the future it can be scheduled.
  *
- *   {@link asyncScheduler} 使用 `setTimeout` ，它对未来可以调度多远有限制。
+ *   {@link asyncScheduler} 使用 `setTimeout`，它对未来可以调度多远有限制。
  *
  * - If a `scheduler` is provided that returns a timestamp other than an epoch from `now()`, and
  *   a `Date` object is passed to the `dueTime` argument, the calculation for when the first emission
  *   should occur will be incorrect. In this case, it would be best to do your own calculations
  *   ahead of time, and pass a `number` in as the `dueTime`.
  *
- *   如果提供的 `scheduler` 从 `now()` 返回除纪元以外的时间戳，并且将 `Date` 对象传递给 `dueTime` 参数，则首次发射时间的计算将不正确。在这种情况下，最好提前进行自己的计算，并传入一个 `number` 作为 `dueTime` 。
+ *   如果提供的 `scheduler` 从 `now()` 返回除纪元以外的时间戳，并且将 `Date` 对象传递给 `dueTime` 参数，则首次发射时间的计算将不正确。在这种情况下，最好提前进行自己的计算，并传入一个 `number` 作为 `dueTime`。
  *
  * @param due If a `number`, the amount of time in milliseconds to wait before emitting.
  * If a `Date`, the exact time at which to emit.
  *
- * 如果是 `number` ，则在发射前等待的时间量（以毫秒为单位）。如果是 `Date` ，则发出的确切时间。
+ * 如果是 `number`，则在发射前等待的时间量（以毫秒为单位）。如果是 `Date`，则发出的确切时间。
  *
  * @param scheduler The scheduler to use to schedule the delay. Defaults to {@link asyncScheduler}.
  *
@@ -122,7 +122,7 @@ export function timer(due: number | Date, scheduler?: SchedulerLike): Observable
  * The `delay` and `intervalDuration` are specified by default in milliseconds, however providing a custom scheduler could
  * create a different behavior.
  *
- * 默认情况下， `delay` 和 `intervalDuration` 以毫秒为单位指定，但是提供自定义调度程序可能会创建不同的行为。
+ * 默认情况下，`delay` 和 `intervalDuration` 以毫秒为单位指定，但是提供自定义调度程序可能会创建不同的行为。
  *
  * ## Example
  *
@@ -137,7 +137,7 @@ export function timer(due: number | Date, scheduler?: SchedulerLike): Observable
  * `timer` works well for this. Here we have both side-by-side so you can
  * see them in comparison.
  *
- * 由于 {@link interval} 在开始之前等待传递的延迟，因此有时这并不理想。你可能想立即开始一个间隔。 `timer` 适用于此。在这里，我们将两者并排放置，因此你可以比较它们。
+ * 由于 {@link interval} 在开始之前等待传递的延迟，因此有时这并不理想。你可能想立即开始一个间隔。`timer` 适用于此。在这里，我们将两者并排放置，因此你可以比较它们。
  *
  * Note that this observable will never complete.
  *
@@ -156,19 +156,19 @@ export function timer(due: number | Date, scheduler?: SchedulerLike): Observable
  *
  * - The {@link asyncScheduler} uses `setTimeout` which has limitations for how far in the future it can be scheduled.
  *
- *   {@link asyncScheduler} 使用 `setTimeout` ，它对未来可以调度多远有限制。
+ *   {@link asyncScheduler} 使用 `setTimeout`，它对未来可以调度多远有限制。
  *
  * - If a `scheduler` is provided that returns a timestamp other than an epoch from `now()`, and
  *   a `Date` object is passed to the `dueTime` argument, the calculation for when the first emission
  *   should occur will be incorrect. In this case, it would be best to do your own calculations
  *   ahead of time, and pass a `number` in as the `startDue`.
  *
- *   如果提供的 `scheduler` 从 `now()` 返回除纪元以外的时间戳，并且将 `Date` 对象传递给 `dueTime` 参数，则首次发射时间的计算将不正确。在这种情况下，最好提前进行自己的计算，并传入一个 `number` 作为 `startDue` 。
+ *   如果提供的 `scheduler` 从 `now()` 返回除纪元以外的时间戳，并且将 `Date` 对象传递给 `dueTime` 参数，则首次发射时间的计算将不正确。在这种情况下，最好提前进行自己的计算，并传入一个 `number` 作为 `startDue`。
  *
  * @param startDue If a `number`, is the time to wait before starting the interval.
  * If a `Date`, is the exact time at which to start the interval.
  *
- * 如果是 `number` ，是开始间隔之前等待的时间。如果是 `Date` ，则为开始间隔的确切时间。
+ * 如果是 `number`，是开始间隔之前等待的时间。如果是 `Date`，则为开始间隔的确切时间。
  *
  * @param intervalDuration The delay between each value emitted in the interval. Passing a
  * negative number here will result in immediate completion after the first value is emitted, as though

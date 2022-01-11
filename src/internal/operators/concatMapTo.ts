@@ -7,7 +7,7 @@ export function concatMapTo<O extends ObservableInput<unknown>>(observable: O): 
 /**
  * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
  *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： <https://rxjs.dev/deprecations/resultSelector>
+ * `resultSelector` 参数将在 v8 中删除。请改用内部 `map`。详细信息： <https://rxjs.dev/deprecations/resultSelector>
  *
  */
 export function concatMapTo<O extends ObservableInput<unknown>>(
@@ -17,7 +17,7 @@ export function concatMapTo<O extends ObservableInput<unknown>>(
 /**
  * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
  *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： <https://rxjs.dev/deprecations/resultSelector>
+ * `resultSelector` 参数将在 v8 中删除。请改用内部 `map`。详细信息： <https://rxjs.dev/deprecations/resultSelector>
  *
  */
 export function concatMapTo<T, R, O extends ObservableInput<unknown>>(
@@ -45,7 +45,7 @@ export function concatMapTo<T, R, O extends ObservableInput<unknown>>(
  * instance emitted on the output Observable is concatenated with the previous
  * `innerObservable` instance.
  *
- * 将每个源值映射到给定的 Observable `innerObservable` ，而不考虑源值，然后将这些结果 Observable 展平为一个 Observable，即输出 Observable。在输出 Observable 上发出的每个新的 `innerObservable` 实例都与前一个 `innerObservable` 实例连接。
+ * 将每个源值映射到给定的 Observable `innerObservable`，而不考虑源值，然后将这些结果 Observable 展平为一个 Observable，即输出 Observable。在输出 Observable 上发出的每个新的 `innerObservable` 实例都与前一个 `innerObservable` 实例连接。
  *
  * __Warning:__ if source values arrive endlessly and faster than their
  * corresponding inner Observables can complete, it will result in memory issues
@@ -57,7 +57,7 @@ export function concatMapTo<T, R, O extends ObservableInput<unknown>>(
  * Note: `concatMapTo` is equivalent to `mergeMapTo` with concurrency parameter
  * set to `1`.
  *
- * 注意： `concatMapTo` 等价于将并发参数设置为 `1` 的 `mergeMapTo` 。
+ * 注意： `concatMapTo` 等价于将并发参数设置为 `1` 的 `mergeMapTo`。
  *
  * ## Example
  *

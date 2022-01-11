@@ -48,7 +48,7 @@ export function windowTime<T>(
  * after emitting last value and next one still will open as specified by
  * `windowTimeSpan` and `windowCreationInterval` arguments.
  *
- * 返回一个 Observable，它发出从源 Observable 收集的项目的窗口。输出 Observable 定期启动一个新窗口，由 `windowCreationInterval` 参数确定。它在 `windowTimeSpan` 参数指定的固定时间跨度后发出每个窗口。当源 Observable 完成或遇到错误时，输出 Observable 会发出当前窗口并传播来自源 Observable 的通知。如果没有提供 `windowCreationInterval` ，则输出 Observable 会在前一个持续时间 `windowTimeSpan` 的窗口完成时启动一个新窗口。如果提供了 `maxWindowCount` ，则每个窗口将发出最多固定数量的值。窗口将在发出最后一个值后立即完成，并且下一个仍将按照 `windowTimeSpan` 和 `windowCreationInterval` 参数的指定打开。
+ * 返回一个 Observable，它发出从源 Observable 收集的项目的窗口。输出 Observable 定期启动一个新窗口，由 `windowCreationInterval` 参数确定。它在 `windowTimeSpan` 参数指定的固定时间跨度后发出每个窗口。当源 Observable 完成或遇到错误时，输出 Observable 会发出当前窗口并传播来自源 Observable 的通知。如果没有提供 `windowCreationInterval`，则输出 Observable 会在前一个持续时间 `windowTimeSpan` 的窗口完成时启动一个新窗口。如果提供了 `maxWindowCount`，则每个窗口将发出最多固定数量的值。窗口将在发出最后一个值后立即完成，并且下一个仍将按照 `windowTimeSpan` 和 `windowCreationInterval` 参数的指定打开。
  *
  * ## Examples
  *

@@ -8,7 +8,7 @@ import { arrRemove } from './util/arrRemove';
  * Subscription has one important method, `unsubscribe`, that takes no argument
  * and just disposes the resource held by the subscription.
  *
- * 表示一次性资源，例如 Observable 的执行。订阅有一个重要的方法 `unsubscribe` ，它不接受任何参数，只是释放订阅持有的资源。
+ * 表示一次性资源，例如 Observable 的执行。订阅有一个重要的方法 `unsubscribe`，它不接受任何参数，只是释放订阅持有的资源。
  *
  * Additionally, subscriptions may be grouped together through the `add()`
  * method, which will attach a child Subscription to the current Subscription.
@@ -126,12 +126,12 @@ export class Subscription implements SubscriptionLike {
    * Closed Subscriptions cannot be added as teardowns to any subscription. Adding a closed
    * subscription to a any subscription will result in no operation. (A noop).
    *
-   * 已关闭的订阅不能作为拆解添加到任何订阅。将已关闭的订阅添加到任何订阅将不会导致任何操作。 （一个 noop）。
+   * 已关闭的订阅不能作为拆解添加到任何订阅。将已关闭的订阅添加到任何订阅将不会导致任何操作。（一个 noop）。
    *
    * Adding a subscription to itself, or adding `null` or `undefined` will not perform any
    * operation at all. (A noop).
    *
-   * 对自身添加订阅，或者添加 `null` 或 `undefined` 根本不会执行任何操作。 （一个 noop）。
+   * 对自身添加订阅，或者添加 `null` 或 `undefined` 根本不会执行任何操作。（一个 noop）。
    *
    * `Subscription` instances that are added to this instance will automatically remove themselves
    * if they are unsubscribed. Functions and {@link Unsubscribable} objects that you wish to remove
@@ -230,7 +230,7 @@ export class Subscription implements SubscriptionLike {
    * from every other `Subscription` they have been added to. This means that using the `remove` method
    * is not a common thing and should be used thoughtfully.
    *
-   * 请注意， `Subscription` 实例在取消订阅时会自动从它们添加到的所有其他 `Subscription` 中删除。这意味着使用 `remove` 方法并不是一件常见的事情，应该慎重使用。
+   * 请注意，`Subscription` 实例在取消订阅时会自动从它们添加到的所有其他 `Subscription` 中删除。这意味着使用 `remove` 方法并不是一件常见的事情，应该慎重使用。
    *
    * If you add the same teardown instance of a function or an unsubscribable object to a `Subcription` instance
    * more than once, you will need to call `remove` the same number of times to remove all instances.

@@ -10,7 +10,7 @@ import { isFunction } from './util/isFunction';
  * @deprecated Use a string literal instead. `NotificationKind` will be replaced with a type alias in v8.
  * It will not be replaced with a const enum as those are not compatible with isolated modules.
  *
- * 请改用字符串文字。 `NotificationKind` 在 v8 中将被替换为类型别名。它不会被 const 枚举替换，因为它们与隔离模块不兼容。
+ * 请改用字符串文字。`NotificationKind` 在 v8 中将被替换为类型别名。它不会被 const 枚举替换，因为它们与隔离模块不兼容。
  *
  */
 export enum NotificationKind {
@@ -27,7 +27,7 @@ export enum NotificationKind {
  * with metadata of, for instance, what type of push message it is (`next`,
  * `error`, or `complete`).
  *
- * 表示 {@link Observable} 可以发出的基于推送的事件或值。此类对于管理通知的运算符特别有用，例如 {@link materialize}、{@link dematerialize}、{@link observeOn} 等。除了包装实际交付的值之外，它还使用元数据对其进行注释，例如，它是什么类型的推送消息（ `next` 、 `error` 或 `complete` ）。
+ * 表示 {@link Observable} 可以发出的基于推送的事件或值。此类对于管理通知的运算符特别有用，例如 {@link materialize}、{@link dematerialize}、{@link observeOn} 等。除了包装实际交付的值之外，它还使用元数据对其进行注释，例如，它是什么类型的推送消息（`next`、`error` 或 `complete`）。
  *
  * @see {@link materialize}
  * @see {@link dematerialize}
@@ -37,7 +37,7 @@ export enum NotificationKind {
  * For example: `{ kind: 'N', value: 1 }`, `{ kind: 'E', error: new Error('bad') }`, or `{ kind: 'C' }`.
  * Will be removed in v8.
  *
- * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中概述的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }` 。将在 v8 中删除。
+ * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中概述的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }`。将在 v8 中删除。
  *
  */
 export class Notification<T> {
@@ -49,7 +49,7 @@ export class Notification<T> {
    *
    * @deprecated Will be removed in v8. Instead, just check to see if the value of `kind` is `"N"`.
    *
-   * 将在 v8 中删除。相反，只需检查 `kind` 的值是否为 `"N"` 。
+   * 将在 v8 中删除。相反，只需检查 `kind` 的值是否为 `"N"`。
    *
    */
   readonly hasValue: boolean;
@@ -181,7 +181,7 @@ export class Notification<T> {
    * Executes the next handler if the Notification is of `kind` `"N"`. Otherwise
    * this will not error, and it will be a noop.
    *
-   * 如果 Notification `kind` 为 `"N"` ，则执行下一个处理程序。否则这不会出错，而且会是一个 noop。
+   * 如果 Notification `kind` 为 `"N"`，则执行下一个处理程序。否则这不会出错，而且会是一个 noop。
    *
    * @param next The next handler
    *
@@ -248,7 +248,7 @@ export class Notification<T> {
    * Executes the next handler if the Notification is of `kind` `"N"`. Otherwise
    * this will not error, and it will be a noop.
    *
-   * 如果 Notification `kind` 为 `"N"` ，则执行下一个处理程序。否则这不会出错，而且会是一个 noop。
+   * 如果 Notification `kind` 为 `"N"`，则执行下一个处理程序。否则这不会出错，而且会是一个 noop。
    *
    * @param next The next handler
    *
@@ -293,7 +293,7 @@ export class Notification<T> {
    * @deprecated Will be removed in v8. To convert a `Notification` to an {@link Observable},
    * use {@link of} and {@link dematerialize}: `of(notification).pipe(dematerialize())`.
    *
-   * 将在 v8 中删除。要将 `Notification` 转换为 {@link Observable}，请使用 {@link of} 和 {@link dematerialize}: `of(notification).pipe(dematerialize())` 。
+   * 将在 v8 中删除。要将 `Notification` 转换为 {@link Observable}，请使用 {@link of} 和 {@link dematerialize}: `of(notification).pipe(dematerialize())`。
    *
    */
   toObservable(): Observable<T> {
@@ -344,7 +344,7 @@ export class Notification<T> {
    * For example: `{ kind: 'N', value: 1 }`, `{ kind: 'E', error: new Error('bad') }`, or `{ kind: 'C' }`.
    * Will be removed in v8.
    *
-   * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中概述的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }` 。将在 v8 中删除。
+   * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中概述的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }`。将在 v8 中删除。
    *
    */
   static createNext<T>(value: T) {
@@ -369,7 +369,7 @@ export class Notification<T> {
    * For example: `{ kind: 'N', value: 1 }`, `{ kind: 'E', error: new Error('bad') }`, or `{ kind: 'C' }`.
    * Will be removed in v8.
    *
-   * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中概述的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }` 。将在 v8 中删除。
+   * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中概述的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }`。将在 v8 中删除。
    *
    */
   static createError(err?: any) {
@@ -391,7 +391,7 @@ export class Notification<T> {
    * For example: `{ kind: 'N', value: 1 }`, `{ kind: 'E', error: new Error('bad') }`, or `{ kind: 'C' }`.
    * Will be removed in v8.
    *
-   * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中概述的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }` 。将在 v8 中删除。
+   * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中概述的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }`。将在 v8 中删除。
    *
    */
   static createComplete(): Notification<never> & CompleteNotification {

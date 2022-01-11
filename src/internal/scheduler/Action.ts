@@ -26,7 +26,7 @@ export class Action<T> extends Subscription {
    * some context object, `state`. May happen at some point in the future,
    * according to the `delay` parameter, if specified.
    *
-   * 在其父 {@link SchedulerLike} 上安排此操作以执行。可以传递一些上下文对象 `state` 。根据 `delay` 参数（如果指定），可能在将来的某个时间发生。
+   * 在其父 {@link SchedulerLike} 上安排此操作以执行。可以传递一些上下文对象 `state`。根据 `delay` 参数（如果指定），可能在将来的某个时间发生。
    *
    * @param {T} [state] Some contextual data that the `work` function uses when
    * called by the Scheduler.

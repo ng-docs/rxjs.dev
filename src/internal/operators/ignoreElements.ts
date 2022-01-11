@@ -13,7 +13,7 @@ import { noop } from '../util/noop';
  * The `ignoreElements` operator suppresses all items emitted by the source Observable,
  * but allows its termination notification (either `error` or `complete`) to pass through unchanged.
  *
- * `ignoreElements` 操作符抑制源 Observable 发出的所有项目，但允许其终止通知（ `error` 或 `complete` ）通过不变。
+ * `ignoreElements` 操作符抑制源 Observable 发出的所有项目，但允许其终止通知（`error` 或 `complete`）通过不变。
  *
  * If you do not care about the items being emitted by an Observable, but you do want to be notified
  * when it completes or when it terminates with an error, you can apply the `ignoreElements` operator
@@ -47,7 +47,7 @@ import { noop } from '../util/noop';
  * `complete` or `error`, based on which one is called by the source
  * Observable.
  *
- * 一个返回一个空 Observable 的函数，它只调用 `complete` 或 `error` ，基于哪个由源 Observable 调用。
+ * 一个返回一个空 Observable 的函数，它只调用 `complete` 或 `error`，基于哪个由源 Observable 调用。
  *
  */
 export function ignoreElements(): OperatorFunction<unknown, never> {

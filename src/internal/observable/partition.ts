@@ -7,7 +7,7 @@ import { innerFrom } from './innerFrom';
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg` 。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function partition<T, U extends T, A>(
@@ -23,7 +23,7 @@ export function partition<T, U extends T>(
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg` 。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function partition<T, A>(
@@ -89,7 +89,7 @@ export function partition<T>(source: ObservableInput<T>, predicate: (value: T, i
  * `index` parameter is the number `i` for the i-th source emission that has
  * happened since the subscription, starting from the number `0`.
  *
- * 评估源 Observable 发出的每个值的函数。如果返回 `true` ，则在返回数组中的第一个 Observable 上发出该值，如果为 `false` ，则在数组中的第二个 Observable 上发出该值。 `index` 参数是自订阅以来发生的第 i 个源排放的数字 `i` ，从数字 `0` 开始。
+ * 评估源 Observable 发出的每个值的函数。如果返回 `true`，则在返回数组中的第一个 Observable 上发出该值，如果为 `false`，则在数组中的第二个 Observable 上发出该值。`index` 参数是自订阅以来发生的第 i 个源排放的数字 `i`，从数字 `0` 开始。
  *
  * @param {any} [thisArg] An optional argument to determine the value of `this`
  * in the `predicate` function.

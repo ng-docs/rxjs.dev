@@ -18,7 +18,7 @@ import { AnyCatcher } from '../AnyCatcher';
  * You have passed `any` here, we can't figure out if it is
  * an array or an object, so you're getting `unknown`. Use better types.
  *
- * 你在这里传递了 `any` ，我们无法确定它是数组还是对象，所以你得到了 `unknown` 。使用更好的类型。
+ * 你在这里传递了 `any`，我们无法确定它是数组还是对象，所以你得到了 `unknown`。使用更好的类型。
  *
  * @param arg Something typed as `any`
  *
@@ -67,7 +67,7 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * an {@link Observable} that emits either an array of values in the exact same order as the passed array,
  * or a dictionary of values in the same shape as the passed dictionary.
  *
- * 接受 {@link ObservableInput} 的 `Array` 或 {@link ObservableInput} 的字典 `Object` ，并返回一个 {@link Observable}，它以与传递的数组完全相同的顺序发出一个值数组，或者在与传递的字典相同的形状。
+ * 接受 {@link ObservableInput} 的 `Array` 或 {@link ObservableInput} 的字典 `Object`，并返回一个 {@link Observable}，它以与传递的数组完全相同的顺序发出一个值数组，或者在与传递的字典相同的形状。
  *
  * <span class="informal">Wait for Observables to complete and then combine last values they emitted;
  * complete immediately if an empty array is passed.</span>
@@ -113,12 +113,12 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * the previous case. Overall, in order for `forkJoin` to emit a value, all given observables
  * have to emit something at least once and complete.
  *
- * 为了使结果数组的长度与输入的 observables 的数量相同，只要任何给定的 observables 完成而没有发出任何值， `forkJoin` 也将在那个时刻完成并且它也不会发出任何东西，即使它已经具有来自其他可观察对象的一些最后值。相反，如果有一个 observable 永远不会完成， `forkJoin` 也永远不会完成，除非在任何时候其他 observable 完成而不发出值，这让我们回到前面的情况。总的来说，为了让 `forkJoin` 发出一个值，所有给定的 observables 必须至少发出一次并完成。
+ * 为了使结果数组的长度与输入的 observables 的数量相同，只要任何给定的 observables 完成而没有发出任何值，`forkJoin` 也将在那个时刻完成并且它也不会发出任何东西，即使它已经具有来自其他可观察对象的一些最后值。相反，如果有一个 observable 永远不会完成，`forkJoin` 也永远不会完成，除非在任何时候其他 observable 完成而不发出值，这让我们回到前面的情况。总的来说，为了让 `forkJoin` 发出一个值，所有给定的 observables 必须至少发出一次并完成。
  *
  * If any given observable errors at some point, `forkJoin` will error as well and immediately unsubscribe
  * from the other observables.
  *
- * 如果在某个时候任何给定的 observable 错误， `forkJoin` 也会出错并立即取消订阅其他 observables。
+ * 如果在某个时候任何给定的 observable 错误，`forkJoin` 也会出错并立即取消订阅其他 observables。
  *
  * Optionally `forkJoin` accepts a `resultSelector` function, that will be called with values which normally
  * would land in the emitted array. Whatever is returned by the `resultSelector`, will appear in the output
@@ -126,7 +126,7 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * all its arguments and puts them into an array. Note that the `resultSelector` will be called only
  * when `forkJoin` is supposed to emit a result.
  *
- * 可选地， `forkJoin` 接受一个 `resultSelector` 函数，该函数将使用通常会落在发出的数组中的值调用。无论 `resultSelector` 返回什么，都会出现在输出 observable 中。这意味着默认的 `resultSelector` 可以被认为是一个函数，它接受它的所有参数并将它们放入一个数组中。请注意，只有当 `forkJoin` 应该发出结果时才会调用 `resultSelector` 。
+ * 可选地，`forkJoin` 接受一个 `resultSelector` 函数，该函数将使用通常会落在发出的数组中的值调用。无论 `resultSelector` 返回什么，都会出现在输出 observable 中。这意味着默认的 `resultSelector` 可以被认为是一个函数，它接受它的所有参数并将它们放入一个数组中。请注意，只有当 `forkJoin` 应该发出结果时才会调用 `resultSelector`。
  *
  * ## Examples
  *

@@ -60,7 +60,7 @@ import { take } from './take';
  * @param {number} index Is the number `i` for the i-th source emission that has
  * happened since the subscription, starting from the number `0`.
  *
- * 是自订阅以来发生的第 i 个源排放的数字 `i` ，从数字 `0` 开始。
+ * 是自订阅以来发生的第 i 个源排放的数字 `i`，从数字 `0` 开始。
  *
  * @param {T} [defaultValue] The default value returned for missing indices.
  * @return A function that returns an Observable that emits a single item, if

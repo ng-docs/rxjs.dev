@@ -13,7 +13,7 @@ import { noop } from '../util/noop';
  * <span class="informal">Lets values pass until a second Observable,
  * `notifier`, emits a value. Then, it completes.</span>
  *
- * <span class="informal">让值传递，直到第二个 Observable， `notifier` 发出一个值。然后，它就完成了。</span>
+ * <span class="informal">让值传递，直到第二个 Observable，`notifier` 发出一个值。然后，它就完成了。</span>
  *
  * ![](takeUntil.png)
  *
@@ -23,7 +23,7 @@ import { noop } from '../util/noop';
  * and completes. If the `notifier` doesn't emit any value and completes
  * then `takeUntil` will pass all values.
  *
- * `takeUntil` 订阅并开始镜像源 Observable。它还监视你提供的第二个 Observable `notifier` 。如果 `notifier` 发出一个值，则输出 Observable 将停止镜像源 Observable 并完成。如果 `notifier` 程序没有发出任何值并完成，则 `takeUntil` 将传递所有值。
+ * `takeUntil` 订阅并开始镜像源 Observable。它还监视你提供的第二个 Observable `notifier`。如果 `notifier` 发出一个值，则输出 Observable 将停止镜像源 Observable 并完成。如果 `notifier` 程序没有发出任何值并完成，则 `takeUntil` 将传递所有值。
  *
  * ## Example
  *

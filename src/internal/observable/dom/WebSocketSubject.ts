@@ -24,7 +24,7 @@ import { Observer, NextObserver } from '../../types';
  * to the socket client. By default, `deserializer` is going to apply `JSON.parse` to each message coming
  * from the Server.
  *
- * 它定义了一组属性以在套接字生命周期的特定时刻提供自定义行为。当连接打开时我们可以使用 `openObserver` ，当连接关闭时 `closeObserver` ，如果我们有兴趣监听来自服务器的数据： `deserializer` ，它允许我们在将数据传递给套接字客户端之前自定义数据的反序列化策略。默认情况下， `deserializer` 化器 `JSON.parse` 应用于来自服务器的每条消息。
+ * 它定义了一组属性以在套接字生命周期的特定时刻提供自定义行为。当连接打开时我们可以使用 `openObserver`，当连接关闭时 `closeObserver`，如果我们有兴趣监听来自服务器的数据： `deserializer`，它允许我们在将数据传递给套接字客户端之前自定义数据的反序列化策略。默认情况下，`deserializer` 化器 `JSON.parse` 应用于来自服务器的每条消息。
  *
  * ## Examples
  *
@@ -34,7 +34,7 @@ import { Observer, NextObserver } from '../../types';
  * for incoming data, either be text or binarydata. We can apply a custom deserialization strategy
  * or just simply skip the default behaviour.
  *
- * **deserializer** ，此属性的默认值为 `JSON.parse` 但由于传入数据只有两个选项，文本或二进制数据。我们可以应用自定义反序列化策略，或者只是跳过默认行为。
+ * **deserializer**，此属性的默认值为 `JSON.parse` 但由于传入数据只有两个选项，文本或二进制数据。我们可以应用自定义反序列化策略，或者只是跳过默认行为。
  *
  * ```ts
  * import { webSocket } from 'rxjs/webSocket';
@@ -101,7 +101,7 @@ import { Observer, NextObserver } from '../../types';
  * webSocket or sending notification that the connection was successful, this is when
  * openObserver is useful for.
  *
- * **openObserver** ，假设我们需要在向 webSocket 发送/接收 msgs 或发送连接成功的通知之前进行某种初始化任务，这就是 openObserver 有用的时候。
+ * **openObserver**，假设我们需要在向 webSocket 发送/接收 msgs 或发送连接成功的通知之前进行某种初始化任务，这就是 openObserver 有用的时候。
  *
  * ```ts
  * import { webSocket } from 'rxjs/webSocket';
@@ -275,13 +275,13 @@ export class WebSocketSubject<T> extends AnonymousSubject<T> {
    * unsubscription, completion, or error, a message defined by the `unsubMsg`
    * argument will be sent to the server over the WebSocketSubject.
    *
-   * 创建一个 {@link Observable}，当订阅它时，通过套接字向服务器发送一条由 `subMsg` 函数定义的消息，以开始通过该套接字订阅数据。一旦数据到达， `messageFilter` 参数将用于为生成的 Observable 选择适当的数据。当由于取消订阅、完成或错误而发生拆卸时，由 `unsubMsg` 参数定义的消息将通过 WebSocketSubject 发送到服务器。
+   * 创建一个 {@link Observable}，当订阅它时，通过套接字向服务器发送一条由 `subMsg` 函数定义的消息，以开始通过该套接字订阅数据。一旦数据到达，`messageFilter` 参数将用于为生成的 Observable 选择适当的数据。当由于取消订阅、完成或错误而发生拆卸时，由 `unsubMsg` 参数定义的消息将通过 WebSocketSubject 发送到服务器。
    *
    * @param subMsg A function to generate the subscription message to be sent to
    * the server. This will still be processed by the serializer in the
    * WebSocketSubject's config. (Which defaults to JSON serialization)
    *
-   * 生成要发送到服务器的订阅消息的函数。这仍将由 WebSocketSubject 配置中的序列化程序处理。 （默认为 JSON 序列化）
+   * 生成要发送到服务器的订阅消息的函数。这仍将由 WebSocketSubject 配置中的序列化程序处理。（默认为 JSON 序列化）
    *
    * @param unsubMsg A function to generate the unsubscription message to be
    * sent to the server at teardown. This will still be processed by the

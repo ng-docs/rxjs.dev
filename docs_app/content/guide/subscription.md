@@ -4,7 +4,7 @@
 
 **What is a Subscription?** A Subscription is an object that represents a disposable resource, usually the execution of an Observable. A Subscription has one important method, `unsubscribe`, that takes no argument and just disposes the resource held by the subscription. In previous versions of RxJS, Subscription was called "Disposable".
 
-**什么是订阅？** Subscription 是一个表示一次性资源的对象，通常是 Observable 的执行。订阅有一个重要的方法 `unsubscribe` ，它不接受任何参数，只是释放订阅持有的资源。在以前的 RxJS 版本中，Subscription 被称为“Disposable”。
+**什么是订阅？** Subscription 是一个表示一次性资源的对象，通常是 Observable 的执行。订阅有一个重要的方法 `unsubscribe`，它不接受任何参数，只是释放订阅持有的资源。在以前的 RxJS 版本中，Subscription 被称为“Disposable”。
 
 ```ts
 import { interval } from 'rxjs';

@@ -24,7 +24,7 @@ import { noop } from '../util/noop';
  * use might result in memory leaks. To help alleviate this in some scenarios, an optional `flushes` parameter is also provided so
  * that the internal `Set` can be "flushed", basically clearing it of values.
  *
- * 在其他运行时，此运算符将使用 `Set` 的最小实现，该实现依赖于 `Array` 和 `indexOf` 在引擎盖下，因此性能会随着检查更多值的区别而降低。即使在较新的浏览器中，长时间运行 `distinct` 用途也可能导致内存泄漏。为了在某些情况下帮助缓解这种情况，还提供了一个可选的 `flushes` 参数，以便可以“刷新”内部 `Set` ，基本上清除它的值。
+ * 在其他运行时，此运算符将使用 `Set` 的最小实现，该实现依赖于 `Array` 和 `indexOf` 在引擎盖下，因此性能会随着检查更多值的区别而降低。即使在较新的浏览器中，长时间运行 `distinct` 用途也可能导致内存泄漏。为了在某些情况下帮助缓解这种情况，还提供了一个可选的 `flushes` 参数，以便可以“刷新”内部 `Set`，基本上清除它的值。
  *
  * ## Examples
  *

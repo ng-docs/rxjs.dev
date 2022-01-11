@@ -33,7 +33,7 @@ export function race<T extends readonly unknown[]>(...inputs: [...ObservableInpu
  * HTTP or WebSockets. `race` can also be useful for switching observable context based on user
  * input.
  *
- * `race` 对于从 HTTP 或 WebSockets 的最快网络连接中选择响应很有用。 `race` 对于根据用户输入切换可观察上下文也很有用。
+ * `race` 对于从 HTTP 或 WebSockets 的最快网络连接中选择响应很有用。`race` 对于根据用户输入切换可观察上下文也很有用。
  *
  * ## Example
  *

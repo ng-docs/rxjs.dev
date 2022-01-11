@@ -13,7 +13,7 @@ export function mergeMap<T, O extends ObservableInput<any>>(
 /**
  * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
  *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： <https://rxjs.dev/deprecations/resultSelector>
+ * `resultSelector` 参数将在 v8 中删除。请改用内部 `map`。详细信息： <https://rxjs.dev/deprecations/resultSelector>
  *
  */
 export function mergeMap<T, O extends ObservableInput<any>>(
@@ -24,7 +24,7 @@ export function mergeMap<T, O extends ObservableInput<any>>(
 /**
  * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
  *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： <https://rxjs.dev/deprecations/resultSelector>
+ * `resultSelector` 参数将在 v8 中删除。请改用内部 `map`。详细信息： <https://rxjs.dev/deprecations/resultSelector>
  *
  */
 export function mergeMap<T, R, O extends ObservableInput<any>>(
@@ -101,7 +101,7 @@ export function mergeMap<T, R, O extends ObservableInput<any>>(
  * `resultSelector`) to each item emitted by the source Observable and merging
  * the results of the Observables obtained from this transformation.
  *
- * 一个返回 Observable 的函数，该函数发出将投影函数（以及可选的不推荐使用的 `resultSelector` ）应用于源 Observable 发出的每个项目并合并从此转换获得的 Observables 的结果的结果。
+ * 一个返回 Observable 的函数，该函数发出将投影函数（以及可选的不推荐使用的 `resultSelector`）应用于源 Observable 发出的每个项目并合并从此转换获得的 Observables 的结果的结果。
  *
  */
 export function mergeMap<T, R, O extends ObservableInput<any>>(

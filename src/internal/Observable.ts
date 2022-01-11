@@ -66,7 +66,7 @@ export class Observable<T> implements Subscribable<T> {
    * @nocollapse
    * @deprecated Use `new Observable()` instead. Will be removed in v8.
    *
-   * 改用 `new Observable()` 。将在 v8 中删除。
+   * 改用 `new Observable()`。将在 v8 中删除。
    *
    */
   static create: (...args: any[]) => any = <T>(subscribe?: (subscriber: Subscriber<T>) => TeardownLogic) => {
@@ -146,7 +146,7 @@ export class Observable<T> implements Subscribable<T> {
    * `process.on('error)`) to be notified of unhandled errors. Because of this, it's recommended that you provide
    * an `error` method to avoid missing thrown errors.
    *
-   * 第一种方法是创建一个实现 {@link Observer} 接口的对象。它应该具有由该接口定义的方法，但请注意，它应该只是一个常规的 JavaScript 对象，你可以以任何你想要的方式创建它（ES6 类、经典函数构造函数、对象字面量等）。特别是，不要尝试使用任何 RxJS 实现细节来创建观察者——你不需要它们。还要记住，你的对象不必实现所有方法。如果你发现自己创建了一个什么都不做的方法，你可以简单地省略它。但是请注意，如果没有提供 `error` 方法并且发生错误，它将被异步抛出。使用 `try` / `catch` 无法捕获异步抛出的错误。相反，使用 {@link onUnhandledError} 配置选项或使用运行时处理程序（如 `window.onerror` 或 `process.on('error)` ）来通知未处理的错误。因此，建议你提供 `error` 方法以避免丢失抛出的错误。
+   * 第一种方法是创建一个实现 {@link Observer} 接口的对象。它应该具有由该接口定义的方法，但请注意，它应该只是一个常规的 JavaScript 对象，你可以以任何你想要的方式创建它（ES6 类、经典函数构造函数、对象字面量等）。特别是，不要尝试使用任何 RxJS 实现细节来创建观察者——你不需要它们。还要记住，你的对象不必实现所有方法。如果你发现自己创建了一个什么都不做的方法，你可以简单地省略它。但是请注意，如果没有提供 `error` 方法并且发生错误，它将被异步抛出。使用 `try` / `catch` 无法捕获异步抛出的错误。相反，使用 {@link onUnhandledError} 配置选项或使用运行时处理程序（如 `window.onerror` 或 `process.on('error)`）来通知未处理的错误。因此，建议你提供 `error` 方法以避免丢失抛出的错误。
    *
    * The second way is to give up on Observer object altogether and simply provide callback functions in place of its methods.
    * This means you can provide three functions as arguments to `subscribe`, where the first function is equivalent
@@ -160,14 +160,14 @@ export class Observable<T> implements Subscribable<T> {
    * You can, however, subscribe with no parameters at all. This may be the case where you're not interested in terminal events
    * and you also handled emissions internally by using operators (e.g. using `tap`).
    *
-   * 但是，你可以完全不使用任何参数进行订阅。这可能是你对终端事件不感兴趣并且你还通过使用运算符（例如使用 `tap` ）在内部处理排放的情况。
+   * 但是，你可以完全不使用任何参数进行订阅。这可能是你对终端事件不感兴趣并且你还通过使用运算符（例如使用 `tap`）在内部处理排放的情况。
    *
    * Whichever style of calling `subscribe` you use, in both cases it returns a Subscription object.
    * This object allows you to call `unsubscribe` on it, which in turn will stop the work that an Observable does and will clean
    * up all resources that an Observable used. Note that cancelling a subscription will not call `complete` callback
    * provided to `subscribe` function, which is reserved for a regular completion signal that comes from an Observable.
    *
-   * 无论你使用哪种调用方式 `subscribe` ，在这两种情况下它都会返回一个 Subscription 对象。这个对象允许你在它上面调用 `unsubscribe` ，这反过来会停止 Observable 所做的工作并清理 Observable 使用的所有资源。请注意，取消订阅不会调用提供给 `subscribe` 函数的 `complete` 回调，该回调是为来自 Observable 的常规完成信号保留的。
+   * 无论你使用哪种调用方式 `subscribe`，在这两种情况下它都会返回一个 Subscription 对象。这个对象允许你在它上面调用 `unsubscribe`，这反过来会停止 Observable 所做的工作并清理 Observable 使用的所有资源。请注意，取消订阅不会调用提供给 `subscribe` 函数的 `complete` 回调，该回调是为来自 Observable 的常规完成信号保留的。
    *
    * Remember that callbacks provided to `subscribe` are not guaranteed to be called asynchronously.
    * It is an Observable itself that decides when these functions will be called. For example {@link of}
@@ -268,16 +268,16 @@ export class Observable<T> implements Subscribable<T> {
    * or the first of three possible handlers, which is the handler for each value emitted from the subscribed
    * Observable.
    *
-   * （可选）具有要调用的方法的观察者，或者三个可能的处理程序中的第一个，它是从订阅的 Observable 发出的每个值的处理程序。
+   *（可选）具有要调用的方法的观察者，或者三个可能的处理程序中的第一个，它是从订阅的 Observable 发出的每个值的处理程序。
    *
    * @param {Function} error (optional) A handler for a terminal event resulting from an error. If no error handler is provided,
    * the error will be thrown asynchronously as unhandled.
    *
-   * （可选）由错误导致的终端事件的处理程序。如果未提供错误处理程序，则错误将作为未处理异步抛出。
+   *（可选）由错误导致的终端事件的处理程序。如果未提供错误处理程序，则错误将作为未处理异步抛出。
    *
    * @param {Function} complete (optional) A handler for a terminal event resulting from successful completion.
    *
-   * （可选）成功完成导致的终端事件的处理程序。
+   *（可选）成功完成导致的终端事件的处理程序。
    *
    * @return {Subscription} a subscription reference to the registered handlers
    *
@@ -329,7 +329,7 @@ export class Observable<T> implements Subscribable<T> {
    * Used as a NON-CANCELLABLE means of subscribing to an observable, for use with
    * APIs that expect promises, like `async/await`. You cannot unsubscribe from this.
    *
-   * 用作订阅 observable 的不可取消的方式，用于期望承诺的 API，如 `async/await` 。你不能取消订阅。
+   * 用作订阅 observable 的不可取消的方式，用于期望承诺的 API，如 `async/await`。你不能取消订阅。
    *
    * **WARNING**: Only use this with observables you *know* will complete. If the source
    * observable does not complete, you will end up with a promise that is hung up, and

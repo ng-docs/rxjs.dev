@@ -28,7 +28,7 @@ const fileObservable = urlObservable.pipe(
 
 The Observable returned in the `concatMap` function is usually referred to as a so-called "inner" Observable, while in this context the `urlObservable` is the so-called "outer" Observable.
 
-`concatMap` 函数中返回的 Observable 通常称为所谓的“内部”Observable，而在这种情况下， `urlObservable` 就是所谓的“外部”Observable。
+`concatMap` 函数中返回的 Observable 通常称为所谓的“内部”Observable，而在这种情况下，`urlObservable` 就是所谓的“外部”Observable。
 
 The [`concatMap()`](/api/operators/concatMap) operator subscribes to each "inner" Observable, buffers all further emissions of the "outer" Observable, and copies all the emitted values until the inner Observable completes, and continues processing the values of the "outer Observable". All of the values are in that way concatenated. Other useful flattening operators are
 

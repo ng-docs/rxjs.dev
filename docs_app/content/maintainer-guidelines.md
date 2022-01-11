@@ -36,5 +36,5 @@ His Beardliness, @jeffbcross. They are words to live by for those that are taske
 - __Small, logical commits__. A PR should be focused on a single problem, though that problem may be reasonable to be broken into a few logical commits. For example, a global renaming may be best to be broken into a single commit that renames all files, and then a commit that renames symbols within files. This makes the review process simpler easier, so the diff of the meaty commit (where symbols are renamed) can be easily understood than if both were done in the same commit, in which case github would just
   show a deleted file and an added file.
 
-  __ 小而合乎逻辑的提交 __。 PR 应该专注于单个问题，尽管将问题分解为几个逻辑提交可能是合理的。例如，全局重命名可能最好分解为重命名所有文件的单个提交，然后是重命名文件中的符号的提交。这使得审查过程更简单，因此可以很容易地理解大量提交（符号被重命名）的差异，而不是两者都在同一个提交中完成，在这种情况下，github 只会显示一个已删除的文件和一个添加的文件。
+  __ 小而合乎逻辑的提交 __。PR 应该专注于单个问题，尽管将问题分解为几个逻辑提交可能是合理的。例如，全局重命名可能最好分解为重命名所有文件的单个提交，然后是重命名文件中的符号的提交。这使得审查过程更简单，因此可以很容易地理解大量提交（符号被重命名）的差异，而不是两者都在同一个提交中完成，在这种情况下，github 只会显示一个已删除的文件和一个添加的文件。
 

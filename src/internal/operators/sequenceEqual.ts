@@ -99,7 +99,7 @@ export function sequenceEqual<T>(
      * state -- `selfState` -- to the other source's collected state -- `otherState`. This
      * is used for both streams.
      *
-     * 创建订阅其中一个源的订阅者，并将其收集状态 - `selfState` - 与另一个源的收集状态 - `otherState` 。这用于两个流。
+     * 创建订阅其中一个源的订阅者，并将其收集状态 - `selfState` - 与另一个源的收集状态 - `otherState`。这用于两个流。
      *
      */
     const createSubscriber = (selfState: SequenceState<T>, otherState: SequenceState<T>) => {

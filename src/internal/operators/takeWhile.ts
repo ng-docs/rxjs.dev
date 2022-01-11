@@ -14,7 +14,7 @@ export function takeWhile<T>(predicate: (value: T, index: number) => boolean, in
  * the given `predicate`, and then completes as soon as this `predicate` is not
  * satisfied.
  *
- * 只要每个值都满足给定的 `predicate` ，就发出源 Observable 发出的值，然后在不满足该 `predicate` 时立即完成。
+ * 只要每个值都满足给定的 `predicate`，就发出源 Observable 发出的值，然后在不满足该 `predicate` 时立即完成。
  *
  * <span class="informal">Takes values from the source only while they pass the
  * condition given. When the first value does not satisfy, it completes.</span>

@@ -16,7 +16,7 @@ Operators are **functions**. There are two kinds of operators:
 
 **Pipeable Operators** are the kind that can be piped to Observables using the syntax `observableInstance.pipe(operator())`. These include, [`filter(...)`](/api/operators/filter), and [`mergeMap(...)`](/api/operators/mergeMap). When called, they do not _change_ the existing Observable instance. Instead, they return a _new_ Observable, whose subscription logic is based on the first Observable.
 
-可管道**操作符**是可以使用语法 `observableInstance.pipe(operator())` 管道传输到 Observables 的类型。其中包括[`filter(...)`](/api/operators/filter)和[`mergeMap(...)`](/api/operators/mergeMap) 。调用时，它们不会 _ 更改 _ 现有的 Observable 实例。相反，它们返回一个 _ 新 _ 的 Observable，其订阅逻辑基于第一个 Observable。
+可管道**操作符**是可以使用语法 `observableInstance.pipe(operator())` 管道传输到 Observables 的类型。其中包括[`filter(...)`](/api/operators/filter)和[`mergeMap(...)`](/api/operators/mergeMap)。调用时，它们不会 _ 更改 _ 现有的 Observable 实例。相反，它们返回一个 _ 新 _ 的 Observable，其订阅逻辑基于第一个 Observable。
 
 <span class="informal">A Pipeable Operator is a function that takes an Observable as its input and returns another Observable. It is a pure operation: the previous Observable stays unmodified.</span>
 
@@ -32,7 +32,7 @@ Pipeable Operator 本质上是一个纯函数，它将一个 Observable 作为�
 
 For example, the operator called [`map`](/api/operators/map) is analogous to the Array method of the same name. Just as `[1, 2, 3].map(x => x * x)` will yield `[1, 4, 9]`, the Observable created like this:
 
-例如，名为[`map`](/api/operators/map)的运算符类似于同名的 Array 方法。正如 `[1, 2, 3].map(x => x * x)` 将产生 `[1, 4, 9]` ， Observable 创建如下：
+例如，名为[`map`](/api/operators/map)的运算符类似于同名的 Array 方法。正如 `[1, 2, 3].map(x => x * x)` 将产生 `[1, 4, 9]`，Observable 创建如下：
 
 ```ts
 import { of, map } from 'rxjs';
@@ -49,7 +49,7 @@ of(1, 2, 3)
 
 will emit `1`, `4`, `9`. Another useful operator is [`first`](/api/operators/first):
 
-将发出 `1` , `4` , `9` 。另一个有用的运算符是[`first`](/api/operators/first) ：
+将发出 `1` , `4` , `9`。另一个有用的运算符是[`first`](/api/operators/first) ：
 
 ```ts
 import { of, first } from 'rxjs';
@@ -64,7 +64,7 @@ of(1, 2, 3)
 
 Note that `map` logically must be constructed on the fly, since it must be given the mapping function to. By contrast, `first` could be a constant, but is nonetheless constructed on the fly. As a general practice, all operators are constructed, whether they need arguments or not.
 
-请注意， `map` 必须在逻辑上动态构建，因为它必须被赋予映射函数。相比之下， `first` 可能是一个常数，但仍然是动态构建的。作为一般实践，所有运算符都是构造的，无论它们是否需要参数。
+请注意，`map` 必须在逻辑上动态构建，因为它必须被赋予映射函数。相比之下，`first` 可能是一个常数，但仍然是动态构建的。作为一般实践，所有运算符都是构造的，无论它们是否需要参数。
 
 ## Piping
 
@@ -72,7 +72,7 @@ Note that `map` logically must be constructed on the fly, since it must be given
 
 Pipeable operators are functions, so they _could_ be used like ordinary functions: `op()(obs)` — but in practice, there tend to be many of them convolved together, and quickly become unreadable: `op4()(op3()(op2()(op1()(obs))))`. For that reason, Observables have a method called `.pipe()` that accomplishes the same thing while being much easier to read:
 
-可管道运算符是函数，因此它们 _ 可以 _ 像普通函数一样使用： `op()(obs)` — 但实际上，它们中的许多往往会卷积在一起，很快就会变得不可读： `op4()(op3()(op2()(op1()(obs))))` 。出于这个原因，Observables 有一个名为 `.pipe()` 的方法，它完成了同样的事情，同时更容易阅读：
+可管道运算符是函数，因此它们 _ 可以 _ 像普通函数一样使用： `op()(obs)` — 但实际上，它们中的许多往往会卷积在一起，很快就会变得不可读： `op4()(op3()(op2()(op1()(obs))))`。出于这个原因，Observables 有一个名为 `.pipe()` 的方法，它完成了同样的事情，同时更容易阅读：
 
 ```ts
 obs.pipe(op1(), op2(), op3(), op4());
@@ -150,8 +150,8 @@ The [`concatAll()`](/api/operators/concatAll) operator subscribes to each "inner
 Just as many array libraries combine [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) and [`flat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) (or `flatten()`) into a single [`flatMap()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap), there are mapping equivalents of all the RxJS flattening operators [`concatMap()`](/api/operators/concatMap)
 , [`mergeMap()`](/api/operators/mergeMap), [`switchMap()`](/api/operators/switchMap), and [`exhaustMap()`](/api/operators/exhaustMap).
 
-正如许多数组库将[`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)和[`flat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) （或 `flatten()` ）组合成一个[`flatMap()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap)一样，所有 RxJS 展平运算符[`concatMap()`](/api/operators/concatMap) 、 [`mergeMap()`](/api/operators/mergeMap) 、 [`switchMap()`](/api/operators/switchMap)和[`
-exhaustMap()`](/api/operators/exhaustMap)都有映射等价物[`exhaustMap()`](/api/operators/exhaustMap) 。
+正如许多数组库将[`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)和[`flat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)（或 `flatten()`）组合成一个[`flatMap()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap)一样，所有 RxJS 展平运算符[`concatMap()`](/api/operators/concatMap)、[`mergeMap()`](/api/operators/mergeMap)、[`switchMap()`](/api/operators/switchMap)和[`
+exhaustMap()`](/api/operators/exhaustMap)都有映射等价物[`exhaustMap()`](/api/operators/exhaustMap)。
 
 ## Marble diagrams
 
@@ -386,7 +386,7 @@ function discardOddDoubleEven() {
 
 (The `pipe()` function is analogous to, but not the same thing as, the `.pipe()` method on an Observable.)
 
-（ `pipe()` 函数类似于 Observable 上的 `.pipe()` 方法，但并不相同。）
+（`pipe()` 函数类似于 Observable 上的 `.pipe()` 方法，但并不相同。）
 
 ### Creating new operators from scratch
 
@@ -458,7 +458,7 @@ Note that you must
 
 1. implement all three Observer functions, `next()`, `error()`, and `complete()` when subscribing to the input Observable.
 
-   在订阅输入 Observable 时实现所有三个 Observer 函数， `next()` ， `error()` 和 `complete()` 。
+   在订阅输入 Observable 时实现所有三个 Observer 函数，`next()`，`error()` 和 `complete()`。
 
 2. implement a "teardown" function that cleans up when the Observable completes (in this case by unsubscribing and clearing any pending timeouts).
 

@@ -52,7 +52,7 @@ const DEFAULT_CONFIG: ConnectConfig<unknown> = {
  * to create a resulting observable that, when subscribed, will set up your multicast. This is
  * generally, but not always, accomplished with {@link merge}.
  *
- * 要使用 `connect` ，你需要提供一个 `selector` 函数，该函数将为你提供一个尚未连接的多播 observable。然后，你使用该多播 observable 创建一个结果 observable，当订阅时，它将设置你的多播。这通常（但并非总是）通过 {@link merge} 完成。
+ * 要使用 `connect`，你需要提供一个 `selector` 函数，该函数将为你提供一个尚未连接的多播 observable。然后，你使用该多播 observable 创建一个结果 observable，当订阅时，它将设置你的多播。这通常（但并非总是）通过 {@link merge} 完成。
  *
  * Note that using a {@link takeUntil} inside of `connect`'s `selector` _might_ mean you were looking
  * to use the {@link takeWhile} operator instead.
@@ -63,7 +63,7 @@ const DEFAULT_CONFIG: ConnectConfig<unknown> = {
  * the `selector` function returns, the observable it returns will be subscribed to, _then_ the
  * multicast will be connected to the source.
  *
- * 当你订阅 `connect` 的结果时，将调用 `selector` 函数。 `selector` 函数返回后，它返回的 observable 将被订阅，_ 然后 _ 组播将连接到源。
+ * 当你订阅 `connect` 的结果时，将调用 `selector` 函数。`selector` 函数返回后，它返回的 observable 将被订阅，_ 然后 _ 组播将连接到源。
  *
  * ## Example
  *

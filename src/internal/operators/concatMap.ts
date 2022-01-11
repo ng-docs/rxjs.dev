@@ -9,7 +9,7 @@ export function concatMap<T, O extends ObservableInput<any>>(
 /**
  * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
  *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： <https://rxjs.dev/deprecations/resultSelector>
+ * `resultSelector` 参数将在 v8 中删除。请改用内部 `map`。详细信息： <https://rxjs.dev/deprecations/resultSelector>
  *
  */
 export function concatMap<T, O extends ObservableInput<any>>(
@@ -19,7 +19,7 @@ export function concatMap<T, O extends ObservableInput<any>>(
 /**
  * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
  *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： <https://rxjs.dev/deprecations/resultSelector>
+ * `resultSelector` 参数将在 v8 中删除。请改用内部 `map`。详细信息： <https://rxjs.dev/deprecations/resultSelector>
  *
  */
 export function concatMap<T, R, O extends ObservableInput<any>>(
@@ -59,7 +59,7 @@ export function concatMap<T, R, O extends ObservableInput<any>>(
  * Note: `concatMap` is equivalent to `mergeMap` with concurrency parameter set
  * to `1`.
  *
- * 注意： `concatMap` 等价于将并发参数设置为 `1` 的 `mergeMap` 。
+ * 注意： `concatMap` 等价于将并发参数设置为 `1` 的 `mergeMap`。
  *
  * ## Example
  *
@@ -101,7 +101,7 @@ export function concatMap<T, R, O extends ObservableInput<any>>(
  * `resultSelector`) to each item emitted by the source Observable and taking
  * values from each projected inner Observable sequentially.
  *
- * 一个返回 Observable 的函数，该函数发出将投影函数（和可选的不推荐使用的 `resultSelector` ）应用于源 Observable 发出的每个项目的结果，并按顺序从每个投影的内部 Observable 中获取值。
+ * 一个返回 Observable 的函数，该函数发出将投影函数（和可选的不推荐使用的 `resultSelector`）应用于源 Observable 发出的每个项目的结果，并按顺序从每个投影的内部 Observable 中获取值。
  *
  */
 export function concatMap<T, R, O extends ObservableInput<any>>(

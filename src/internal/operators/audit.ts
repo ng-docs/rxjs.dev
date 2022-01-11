@@ -30,7 +30,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * recent source value is emitted on the output Observable, and this process
  * repeats for the next source value.
  *
- * `audit` 类似于 `throttle` ，但从静音时间窗口发出最后一个值，而不是第一个值。 `audit` 会在其内部计时器禁用后立即在输出 Observable 上发出来自源 Observable 的最新值，并在启用计时器时忽略源值。最初，定时器被禁用。一旦第一个源值到达，通过使用源值调用 `durationSelector` 函数来启用计时器，该函数返回“duration” Observable。当持续时间 Observable 发出一个值时，计时器被禁用，然后在输出 Observable 上发出最近的源值，并且对于下一个源值重复此过程。
+ * `audit` 类似于 `throttle`，但从静音时间窗口发出最后一个值，而不是第一个值。`audit` 会在其内部计时器禁用后立即在输出 Observable 上发出来自源 Observable 的最新值，并在启用计时器时忽略源值。最初，定时器被禁用。一旦第一个源值到达，通过使用源值调用 `durationSelector` 函数来启用计时器，该函数返回“duration” Observable。当持续时间 Observable 发出一个值时，计时器被禁用，然后在输出 Observable 上发出最近的源值，并且对于下一个源值重复此过程。
  *
  * ## Example
  *

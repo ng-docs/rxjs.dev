@@ -112,7 +112,7 @@ export function catchError<T, O extends ObservableInput<any>>(
  * is the source observable, in case you'd like to "retry" that observable by returning it again. Whatever observable
  * is returned by the `selector` will be used to continue the observable chain.
  *
- * 一个函数，它接受作为参数的 `err` ，它是错误，并被 `caught` ，它是源 observable，以防你想通过再次返回它来“重试”那个 observable。 `selector` 返回的任何 observable 都将用于继续 observable 链。
+ * 一个函数，它接受作为参数的 `err`，它是错误，并被 `caught`，它是源 observable，以防你想通过再次返回它来“重试”那个 observable。`selector` 返回的任何 observable 都将用于继续 observable 链。
  *
  * @return A function that returns an Observable that originates from either
  * the source or the Observable returned by the `selector` function.

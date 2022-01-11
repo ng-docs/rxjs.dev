@@ -4,7 +4,7 @@
 
 To limit the API surface of some operators, but also prepare for a [major refactoring in V8](https://github.com/ReactiveX/rxjs/pull/4583), we agreed on deprecating the `scheduler` argument from many operators. It solely deprecates those methods where this argument is rarely used. So `time` related operators, like [`interval`](https://rxjs.dev/api/index/function/interval) are not affected by this deprecation.
 
-为了限制某些运算符的 API 表面，同时也为[V8 中的重大重构](https://github.com/ReactiveX/rxjs/pull/4583)做准备，我们同意从许多运算符中弃用 `scheduler` 参数。它仅弃用那些很少使用此参数的方法。因此，与 `time` 相关的运算符（如[`interval`](https://rxjs.dev/api/index/function/interval) ）不受此弃用的影响。
+为了限制某些运算符的 API 表面，同时也为[V8 中的重大重构](https://github.com/ReactiveX/rxjs/pull/4583)做准备，我们同意从许多运算符中弃用 `scheduler` 参数。它仅弃用那些很少使用此参数的方法。因此，与 `time` 相关的运算符（如[`interval`](https://rxjs.dev/api/index/function/interval)）不受此弃用的影响。
 
 To support this transition the [scheduled creation function](/api/index/function/scheduled) was added.
 
@@ -63,7 +63,7 @@ If you use any other operator from the list above and using the `scheduler` argu
 
 For the `of` creation function you need to this Observable with `scheduled` and instead of passing the `scheduler` argument to `of` pass it to `scheduled`. Following code example demonstrate this process.
 
-`of` 创建函数，你需要将此 Observable 与 `scheduled` 一起传递 `of` 而不是将 `scheduler` 参数传递给 `scheduled` 。以下代码示例演示了此过程。
+`of` 创建函数，你需要将此 Observable 与 `scheduled` 一起传递 `of` 而不是将 `scheduler` 参数传递给 `scheduled`。以下代码示例演示了此过程。
 
 ```ts
 import { of, asyncScheduler, scheduled } from 'rxjs';
@@ -76,7 +76,7 @@ scheduled([1, 2, 3], asyncScheduler).subscribe((x) => console.log(x));
 
 ### Refactoring of `merge`, `concat`, `combineLatest`, `startWith` and `endWith`
 
-### 重构 `merge` 、 `concat` 、 `combineLatest` 、 `startWith` 和 `endWith`
+### 重构 `merge`、`concat`、`combineLatest`、`startWith` 和 `endWith`
 
 In case you used to pass a scheduler argument to one of these operators you probably had code like this:
 
@@ -102,11 +102,11 @@ scheduled([of('hello '), of('World')], asyncScheduler)
 
 You can apply this pattern to refactor deprecated usage of `concat`, `startWith` and `endWith` but do notice that you will want to use [mergeAll](/api/operators/mergeAll) to refactor the deprecated usage of `merge`.
 
-你可以应用此模式来重构不推荐使用的 `concat` 、 `startWith` 和 `endWith` ，但请注意你将希望使用[mergeAll](/api/operators/mergeAll)重构不推荐使用的 `merge` 。
+你可以应用此模式来重构不推荐使用的 `concat`、`startWith` 和 `endWith`，但请注意你将希望使用[mergeAll](/api/operators/mergeAll)重构不推荐使用的 `merge`。
 
 With `combineLatest`, you will want to use [combineLatestAll](/api/operators/combineLatestAll)
 
-使用 `combineLatest` ，你将需要使用[combineLatestAll](/api/operators/combineLatestAll)
+使用 `combineLatest`，你将需要使用[combineLatestAll](/api/operators/combineLatestAll)
 
 E.g. code that used to look like this:
 

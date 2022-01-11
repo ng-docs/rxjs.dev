@@ -81,7 +81,7 @@ export class AsyncAction<T> extends Action<T> {
   /**
    * Immediately executes this action and the `work` it contains.
    *
-   * 立即执行此操作及其包含的 `work` 。
+   * 立即执行此操作及其包含的 `work`。
    *
    * @return {any}
    */
