@@ -8,7 +8,7 @@ import { identity } from '../util/identity';
  * error or complete notification from the combination of the Observable to which
  * the operator is applied and supplied Observables.
  *
- * 创建一个镜像第一个源 Observable 的 Observable，以从应用运算符的 Observable 和提供的 Observables 的组合发出下一个、错误或完成通知。
+ * 返回一个 Observable，它会镜像所提供的这些源中首先发出 next、error 或 complete 的那个，这些源包括源 Observable 和那些传入的 Observable 参数。
  *
  * ## Example
  *
@@ -30,12 +30,12 @@ import { identity } from '../util/identity';
  * ```
  * @param otherSources Sources used to race for which Observable emits first.
  *
- * 用于竞争 Observable 首先发出的源。
+ * 一些用于竞争哪个 Observable 最先发出条目的源。
  *
  * @return A function that returns an Observable that mirrors the output of the
  * first Observable to emit an item.
  *
- * 一个返回 Observable 的函数，该函数反映了第一个 Observable 的输出以发射项目。
+ * 一个返回 Observable 的函数，该 Observable 会镜像首先发出了条目的 Observable 的输出。
  *
  */
 export function raceWith<T, A extends readonly unknown[]>(

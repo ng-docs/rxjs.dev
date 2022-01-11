@@ -8,7 +8,7 @@ const activeHandles: { [key: number]: any } = {};
  * Returns `true` if found, `false` otherwise. Used both to clear
  * Immediate scheduled tasks, and to identify if a task should be scheduled.
  *
- * 在活动句柄列表中查找句柄，并将其删除。如果找到则返回 `true`，否则返回 `false`。既用于清除立即计划任务，也用于确定是否应计划任务。
+ * 在活动处理器列表中查找某个处理器，并将其删除。如果找到则返回 `true`，否则返回 `false`。既用于清除立即安排的任务，也用于确定是否应该安排某个任务。
  *
  */
 function findAndClearHandle(handle: number): boolean {
@@ -22,7 +22,7 @@ function findAndClearHandle(handle: number): boolean {
 /**
  * Helper functions to schedule and unschedule microtasks.
  *
- * 辅助函数来调度和取消调度微任务。
+ * 来调度和取消调度微任务的辅助函数。
  *
  */
 export const Immediate = {
@@ -50,5 +50,5 @@ export const Immediate = {
 export const TestTools = {
   pending() {
     return Object.keys(activeHandles).length;
-  }
+  },
 };

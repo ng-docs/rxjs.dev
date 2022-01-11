@@ -9,7 +9,7 @@ import { connect } from './connect';
  * Returns a connectable observable that, when connected, will multicast
  * all values through a single underlying {@link Subject} instance.
  *
- * 返回一个可连接的 observable，当它连接时，将通过单个底层 {@link Subject} 实例多播所有值。
+ * 返回一个可连接的 observable，当它被连接时，会通过单个底层 {@link Subject} 实例多播所有值。
  *
  * @deprecated Will be removed in v8. To create a connectable observable, use {@link connectable}.
  * `source.pipe(publish())` is equivalent to
@@ -19,7 +19,7 @@ import { connect } from './connect';
  * `source.pipe(share({ resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))`.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。要创建可连接的 observable，请使用 {@link connectable}。`source.pipe(publish())` 等价于 connectable `connectable(source, { connector: () => new Subject(), resetOnDisconnect: false })`。如果你在 `publish` 后使用 {@link refCount}，请改用 {@link share} 运算符。`source.pipe(publish(), refCount())` 等价于 `source.pipe(share({ resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))`。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 将在 v8 中删除。要创建可连接的 observable，请使用 {@link connectable}。`source.pipe(publish())` 等价于 `connectable(source, { connector: () => new Subject(), resetOnDisconnect: false })`。如果你在 `publish` 后使用了 {@link refCount}，请改用 {@link share} 操作符。`source.pipe(publish(), refCount())` 等价于 `source.pipe(share({ resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))`。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function publish<T>(): UnaryFunction<Observable<T>, ConnectableObservable<T>>;
@@ -30,7 +30,7 @@ export function publish<T>(): UnaryFunction<Observable<T>, ConnectableObservable
  * that selector function and subscribes to it, sending its values to the consumer, _then_ connects
  * the subject to the original source.
  *
- * 返回一个 observable，当订阅它时，创建一个底层 {@link Subject}，向选择器函数提供它的可观察视图，获取该 `selector` 函数的可观察结果并订阅它，将其值发送给消费者，_ 然后 _ 将主题与原始来源联系起来。
+ * 返回一个 observable，当它被订阅时，会创建一个底层 {@link Subject}，向选择器函数提供它的可观察视图，获取该 `selector` 函数的可观察结果并订阅它，将其值发送给消费者，*然后*将此主体与其原始来源连接起来。
  *
  * @param selector A function used to setup multicasting prior to automatic connection.
  *
@@ -40,7 +40,7 @@ export function publish<T>(): UnaryFunction<Observable<T>, ConnectableObservable
  * `publish(selector)` is equivalent to `connect(selector)`.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。请改用 {@link connect} 运算符。`publish(selector)` 等价于 `connect(selector)`。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 将在 v8 中删除。请改用 {@link connect} 操作符。`publish(selector)` 等价于 `connect(selector)`。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function publish<T, O extends ObservableInput<any>>(selector: (shared: Observable<T>) => O): OperatorFunction<T, ObservedValueOf<O>>;
@@ -49,11 +49,11 @@ export function publish<T, O extends ObservableInput<any>>(selector: (shared: Ob
  * Returns a ConnectableObservable, which is a variety of Observable that waits until its connect method is called
  * before it begins emitting items to those Observers that have subscribed to it.
  *
- * 返回一个 ConnectableObservable，它是一个 Observable 的变体，它一直等到它的 connect 方法被调用，然后才开始向订阅了它的 Observer 发送项目。
+ * 返回一个 ConnectableObservable，它是一个 Observable 的变体，它会一直等到其 connect 方法被调用，才开始向订阅了它的 Observer 发送条目。
  *
  * <span class="informal">Makes a cold Observable hot</span>
-*
- * <span class="informal">使冷 Observable 变热</span>
+ *
+ * <span class="informal">使冷 Observable 变成热的</span>
  *
  * ![](publish.png)
  *
@@ -64,7 +64,7 @@ export function publish<T, O extends ObservableInput<any>>(selector: (shared: Ob
  * Make `source$` hot by applying `publish` operator, then merge each inner observable into a single one
  * and subscribe
  *
- * 通过应用 `publish` 运算符使 `source$` 变热，然后将每个内部 observable 合并为一个并订阅
+ * 可以使用 `publish` 操作符使 `source$` 变热，然后将每个内部 observable 合并为一个并订阅
  *
  * ```ts
  * import { zip, interval, of, map, publish, merge, tap } from 'rxjs';
@@ -102,14 +102,14 @@ export function publish<T, O extends ObservableInput<any>>(selector: (shared: Ob
  * @return A function that returns a ConnectableObservable that upon connection
  * causes the source Observable to emit items to its Observers.
  *
- * 一个返回 ConnectableObservable 的函数，该函数在连接时会导致源 Observable 向其 Observers 发出项目。
+ * 一个返回 ConnectableObservable 的函数，在连接该 Observable 时会导致源 Observable 向其 Observers 发送条目。
  *
  * @deprecated Will be removed in v8. Use the {@link connectable} observable, the {@link connect} operator or the
  * {@link share} operator instead. See the overloads below for equivalent replacement examples of this operator's
  * behaviors.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。请改用 {@link connectable} observable、{@link connect} 运算符或 {@link share} 运算符。有关此运算符行为的等效替换示例，请参见下面的重载。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 将在 v8 中删除。请改用 {@link connectable} observable、{@link connect} 操作符或 {@link share} 操作符。有关此操作符行为的等效替换示例，请参见其它的重载。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function publish<T, R>(selector?: OperatorFunction<T, R>): MonoTypeOperatorFunction<T> | OperatorFunction<T, R> {

@@ -20,7 +20,7 @@ import { isFunction } from '../util/isFunction';
  *
  * @param timestampProvider The timestamp provider for the underlying {@link ReplaySubject}.
  *
- * 底层 {@link ReplaySubject} 的时间戳提供程序。
+ * 底层 {@link ReplaySubject} 的时间戳提供者。
  *
  * @deprecated Will be removed in v8. To create a connectable observable that uses a
  * {@link ReplaySubject} under the hood, use {@link connectable}.
@@ -31,7 +31,7 @@ import { isFunction } from '../util/isFunction';
  * `share({ connector: () => new ReplaySubject(size, time, scheduler), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false })`.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。要创建一个在底层使用 {@link ReplaySubject} 的可连接 observable，请使用 {@link connectable}。`source.pipe(publishReplay(size, time, scheduler))` 等价于 `connectable(source, { connector: () => new ReplaySubject(size, time, scheduler), resetOnDisconnect: false })`。如果你在 `publishReplay` 之后使用 {@link refCount}，请改用 {@link share} 运算符。`publishReplay(size, time, scheduler), refCount()` 等价于 `share({ connector: () => new ReplaySubject(size, time, scheduler), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false })`。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 将在 v8 中删除。要创建一个在底层使用 {@link ReplaySubject} 的可连接 observable，请使用 {@link connectable}。`source.pipe(publishReplay(size, time, scheduler))` 等价于 `connectable(source, { connector: () => new ReplaySubject(size, time, scheduler), resetOnDisconnect: false })`。如果你在 `publishReplay` 之后使用 {@link refCount}，请改用 {@link share} 操作符。`publishReplay(size, time, scheduler), refCount()` 等价于 `share({ connector: () => new ReplaySubject(size, time, scheduler), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false })`。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function publishReplay<T>(
@@ -46,11 +46,11 @@ export function publishReplay<T>(
  * the `selector` function, which then returns an observable that is subscribed to before
  * "connecting" the source to the internal `ReplaySubject`.
  *
- * 创建一个 observable，当订阅它时，将创建一个 {@link ReplaySubject}，并从它传递一个 observable（使用[asObservable](api/index/class/Subject#asObservable)）到 `selector` 函数，然后返回一个在将源“连接”到源之前订阅的 observable 内部 `ReplaySubject`。
+ * 创建一个 observable，当订阅它时，将创建一个 {@link ReplaySubject}，并从它传一个 observable（使用[asObservable](api/index/class/Subject#asObservable)）到 `selector` 函数，然后返回一个 observable，该 Observable 被订阅后，会将此源“连接”到内部 `ReplaySubject`。
  *
  * Since this is deprecated, for additional details see the documentation for {@link connect}.
  *
- * 由于已弃用此功能，因此有关其他详细信息，请参阅 {@link connect} 的文档。
+ * 由于已弃用此功能，因此有关其它详细信息，请参阅 {@link connect} 的文档。
  *
  * @param bufferSize The buffer size for the underlying {@link ReplaySubject}.
  *
@@ -66,14 +66,14 @@ export function publishReplay<T>(
  *
  * @param timestampProvider The timestamp provider for the underlying {@link ReplaySubject}.
  *
- * 底层 {@link ReplaySubject} 的时间戳提供程序。
+ * 底层 {@link ReplaySubject} 的时间戳提供者。
  *
  * @deprecated Will be removed in v8. Use the {@link connect} operator instead.
  * `source.pipe(publishReplay(size, window, selector, scheduler))` is equivalent to
  * `source.pipe(connect(selector, { connector: () => new ReplaySubject(size, window, scheduler) }))`.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。请改用 {@link connect} 运算符。`source.pipe(publishReplay(size, window, selector, scheduler))` 等价于 `source.pipe(connect(selector, { connector: () => new ReplaySubject(size, window, scheduler) }))`。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 将在 v8 中删除。请改用 {@link connect} 操作符。`source.pipe(publishReplay(size, window, selector, scheduler))` 等价于 `source.pipe(connect(selector, { connector: () => new ReplaySubject(size, window, scheduler) }))`。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function publishReplay<T, O extends ObservableInput<any>>(
@@ -99,11 +99,11 @@ export function publishReplay<T, O extends ObservableInput<any>>(
  *
  * @param selector Passing `undefined` here determines that this operator will return a {@link ConnectableObservable}.
  *
- * 在此处传递 `undefined` 确定此运算符将返回 {@link ConnectableObservable}。
+ * 在此传入 `undefined` 会决定此操作符要返回 {@link ConnectableObservable}。
  *
  * @param timestampProvider The timestamp provider for the underlying {@link ReplaySubject}.
  *
- * 底层 {@link ReplaySubject} 的时间戳提供程序。
+ * 底层 {@link ReplaySubject} 的时间戳提供者。
  *
  * @deprecated Will be removed in v8. To create a connectable observable that uses a
  * {@link ReplaySubject} under the hood, use {@link connectable}.
@@ -114,7 +114,7 @@ export function publishReplay<T, O extends ObservableInput<any>>(
  * `share({ connector: () => new ReplaySubject(size, time, scheduler), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false })`.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。要创建一个在底层使用 {@link ReplaySubject} 的可连接 observable，请使用 {@link connectable}。`source.pipe(publishReplay(size, time, scheduler))` 等价于 `connectable(source, { connector: () => new ReplaySubject(size, time, scheduler), resetOnDisconnect: false })`。如果你在 `publishReplay` 之后使用 {@link refCount}，请改用 {@link share} 运算符。`publishReplay(size, time, scheduler), refCount()` 等价于 `share({ connector: () => new ReplaySubject(size, time, scheduler), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false })`。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 将在 v8 中删除。要创建一个在底层使用 {@link ReplaySubject} 的可连接 observable，请使用 {@link connectable}。`source.pipe(publishReplay(size, time, scheduler))` 等价于 `connectable(source, { connector: () => new ReplaySubject(size, time, scheduler), resetOnDisconnect: false })`。如果你在 `publishReplay` 之后使用 {@link refCount}，请改用 {@link share} 操作符。`publishReplay(size, time, scheduler), refCount()` 等价于 `share({ connector: () => new ReplaySubject(size, time, scheduler), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false })`。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function publishReplay<T, O extends ObservableInput<any>>(
@@ -130,7 +130,7 @@ export function publishReplay<T, O extends ObservableInput<any>>(
  * behaviors.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。请改用 {@link connectable} observable、{@link connect} 运算符或 {@link share} 运算符。有关此运算符行为的等效替换示例，请参见下面的重载。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 将在 v8 中删除。请改用 {@link connectable} observable、{@link connect} 操作符或 {@link share} 操作符。有关此操作符行为的等效替换示例，请参见其它的重载。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function publishReplay<T, R>(

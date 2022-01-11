@@ -9,7 +9,7 @@ import { popResultSelector } from '../util/args';
 /**
  * @deprecated Replaced with {@link combineLatestWith}. Will be removed in v8.
  *
- * 替换为 {@link combineLatestWith}。将在 v8 中删除。
+ * 已替换为 {@link combineLatestWith}。将在 v8 中删除。
  *
  */
 export function combineLatest<T, A extends readonly unknown[], R>(
@@ -19,7 +19,7 @@ export function combineLatest<T, A extends readonly unknown[], R>(
 /**
  * @deprecated Replaced with {@link combineLatestWith}. Will be removed in v8.
  *
- * 替换为 {@link combineLatestWith}。将在 v8 中删除。
+ * 已替换为 {@link combineLatestWith}。将在 v8 中删除。
  *
  */
 export function combineLatest<T, A extends readonly unknown[], R>(sources: [...ObservableInputTuple<A>]): OperatorFunction<T, [T, ...A]>;
@@ -27,7 +27,7 @@ export function combineLatest<T, A extends readonly unknown[], R>(sources: [...O
 /**
  * @deprecated Replaced with {@link combineLatestWith}. Will be removed in v8.
  *
- * 替换为 {@link combineLatestWith}。将在 v8 中删除。
+ * 已替换为 {@link combineLatestWith}。将在 v8 中删除。
  *
  */
 export function combineLatest<T, A extends readonly unknown[], R>(
@@ -36,7 +36,7 @@ export function combineLatest<T, A extends readonly unknown[], R>(
 /**
  * @deprecated Replaced with {@link combineLatestWith}. Will be removed in v8.
  *
- * 替换为 {@link combineLatestWith}。将在 v8 中删除。
+ * 已替换为 {@link combineLatestWith}。将在 v8 中删除。
  *
  */
 export function combineLatest<T, A extends readonly unknown[], R>(...sources: [...ObservableInputTuple<A>]): OperatorFunction<T, [T, ...A]>;
@@ -44,7 +44,7 @@ export function combineLatest<T, A extends readonly unknown[], R>(...sources: [.
 /**
  * @deprecated Replaced with {@link combineLatestWith}. Will be removed in v8.
  *
- * 替换为 {@link combineLatestWith}。将在 v8 中删除。
+ * 已替换为 {@link combineLatestWith}。将在 v8 中删除。
  *
  */
 export function combineLatest<T, R>(...args: (ObservableInput<any> | ((...values: any[]) => R))[]): OperatorFunction<T, unknown> {

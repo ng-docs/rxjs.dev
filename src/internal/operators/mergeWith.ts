@@ -4,21 +4,21 @@ import { merge } from './merge';
 /**
  * Merge the values from all observables to a single observable result.
  *
- * 将所有可观察对象的值合并为单个可观察结果。
+ * 将所有 Observable 的值合并为单个可观察结果。
  *
  * Creates an observable, that when subscribed to, subscribes to the source
  * observable, and all other sources provided as arguments. All values from
  * every source are emitted from the resulting subscription.
  *
- * 创建一个 observable，当订阅它时，它会订阅源 observable，以及作为参数提供的所有其他源。来自每个来源的所有值都是从生成的订阅中发出的。
+ * 创建一个 observable，当订阅它时，它就会订阅源 observable 以及作为参数传进来的所有其它源。来自每个来源的所有值都会从对结果的订阅中发出。
  *
  * When all sources complete, the resulting observable will complete.
  *
- * 当所有源都完成时，生成的 observable 将完成。
+ * 当所有源都已完成时，结果 observable 就会完成。
  *
  * When any source errors, the resulting observable will error.
  *
- * 当任何源错误时，产生的 observable 都会出错。
+ * 当任何一个源出错时，结果 observable 就会出错。
  *
  * ## Example
  *
@@ -50,12 +50,12 @@ import { merge } from './merge';
  * @see {@link merge}
  * @param otherSources the sources to combine the current source with.
  *
- * 与当前源相结合的源。
+ * 要与当前源组合在一起的源。
  *
  * @return A function that returns an Observable that merges the values from
  * all given Observables.
  *
- * 一个返回 Observable 的函数，它合并来自所有给定 Observable 的值。
+ * 一个返回 Observable 的函数，它会合并来自所有给定 Observable 的值。
  *
  */
 export function mergeWith<T, A extends readonly unknown[]>(

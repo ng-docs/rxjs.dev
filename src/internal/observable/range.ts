@@ -7,7 +7,7 @@ export function range(start: number, count?: number): Observable<number>;
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `range(start, count).pipe(observeOn(scheduler))` instead. Details: Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `range(start, count).pipe(observeOn(scheduler))` 代替。详细信息：详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
+ * `scheduler` 参数将在 v8 中删除。请改用 `range(start, count).pipe(observeOn(scheduler))`。详细信息：<https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function range(start: number, count: number | undefined, scheduler: SchedulerLike): Observable<number>;
@@ -16,11 +16,11 @@ export function range(start: number, count: number | undefined, scheduler: Sched
  * Creates an Observable that emits a sequence of numbers within a specified
  * range.
  *
- * 创建一个可发出指定范围内的数字序列的 Observable。
+ * 创建一个可发送指定范围内的数字序列的 Observable。
  *
  * <span class="informal">Emits a sequence of numbers in a range.</span>
-*
- * <span class="informal">发出一个范围内的数字序列。</span>
+ *
+ * <span class="informal">发送一个范围内的数字序列。</span>
  *
  * ![](range.png)
  *
@@ -29,7 +29,7 @@ export function range(start: number, count: number | undefined, scheduler: Sched
  * {@link SchedulerLike} and just delivers the notifications synchronously, but may use
  * an optional {@link SchedulerLike} to regulate those deliveries.
  *
- * `range` 运算符按顺序发出一系列连续整数，你可以在其中选择范围的 `start` 及其 `length`。默认情况下，不使用 {@link SchedulerLike} 并且仅同步传递通知，但可以使用可选的 {@link SchedulerLike} 来规范这些传递。
+ * `range` 操作符会按顺序发送一系列连续整数，你可以在其中选择范围的 `start` 及其 `length`。默认情况下，不使用 {@link SchedulerLike} 并且仅同步传递通知，但可以使用可选的 {@link SchedulerLike} 来规范这些传递。
  *
  * ## Example
  *
@@ -37,7 +37,7 @@ export function range(start: number, count: number | undefined, scheduler: Sched
  *
  * Produce a range of numbers
  *
- * 产生一系列数字
+ * 产生某个范围内的连续数列
  *
  * ```ts
  * import { range } from 'rxjs';
@@ -65,12 +65,12 @@ export function range(start: number, count: number | undefined, scheduler: Sched
  * @param {SchedulerLike} [scheduler] A {@link SchedulerLike} to use for scheduling
  * the emissions of the notifications.
  *
- * 用于调度通知的发送。
+ * 用于调度通知发送方式的 {@link SchedulerLike}。
  *
  * @return {Observable} An Observable of numbers that emits a finite range of
  * sequential integers.
  *
- * 一个可观察到的数字，它发出有限范围的连续整数。
+ * 一个数字 Observable，它会发送有限范围内的连续整数。
  *
  */
 export function range(start: number, count?: number, scheduler?: SchedulerLike): Observable<number> {

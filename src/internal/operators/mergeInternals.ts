@@ -9,37 +9,37 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * A process embodying the general "merge" strategy. This is used in
  * `mergeMap` and `mergeScan` because the logic is otherwise nearly identical.
  *
- * 体现一般“合并”策略的过程。这在 `mergeMap` 和 `mergeScan` 中使用，因为逻辑几乎相同。
+ * 体现一般化“合并”策略的过程。`mergeMap` 和 `mergeScan` 都用了它，因为其逻辑几乎相同。
  *
  * @param source The original source observable
  *
- * 可观察的原始源
+ * 原始的源 Observable
  *
  * @param subscriber The consumer subscriber
  *
- * 消费者订阅者
+ * 消费者/订阅者
  *
  * @param project The projection function to get our inner sources
  *
- * 获取我们内部资源的投影函数
+ * 用于获取内部资源的投影函数
  *
  * @param concurrent The number of concurrent inner subscriptions
  *
- * 并发内部订阅数
+ * 内部订阅的最大并发数
  *
  * @param onBeforeNext Additional logic to apply before nexting to our consumer
  *
- * 在我们的消费者旁边之前应用的附加逻辑
+ * 在传给（next to）消费者之前要执行的附加逻辑
  *
  * @param expand If `true` this will perform an "expand" strategy, which differs only
  * in that it recurses, and the inner subscription must be schedule-able.
  *
- * 如果为 `true`，这将执行“扩展”策略，不同之处仅在于它是递归的，并且内部订阅必须是可调度的。
+ * 如果为 `true`，这将执行“展开”策略，其唯一的不同点在于它是递归的，并且内部订阅必须是可调度的。
  *
  * @param innerSubScheduler A scheduler to use to schedule inner subscriptions,
  * this is to support the expand strategy, mostly, and should be deprecated
  *
- * 用于调度内部订阅的调度程序，主要用于支持扩展策略，应弃用
+ * 用于调度各个内部订阅的调度器，主要用于支持这里的展开策略，即将弃用
  *
  */
 export function mergeInternals<T, R>(

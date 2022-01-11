@@ -5,14 +5,14 @@ import { operate } from '../util/lift';
 /**
  * @deprecated Replaced with {@link zipWith}. Will be removed in v8.
  *
- * 替换为 {@link zipWith}。将在 v8 中删除。
+ * 已替换为 {@link zipWith}。将在 v8 中删除。
  *
  */
 export function zip<T, A extends readonly unknown[]>(otherInputs: [...ObservableInputTuple<A>]): OperatorFunction<T, Cons<T, A>>;
 /**
  * @deprecated Replaced with {@link zipWith}. Will be removed in v8.
  *
- * 替换为 {@link zipWith}。将在 v8 中删除。
+ * 已替换为 {@link zipWith}。将在 v8 中删除。
  *
  */
 export function zip<T, A extends readonly unknown[], R>(
@@ -22,14 +22,14 @@ export function zip<T, A extends readonly unknown[], R>(
 /**
  * @deprecated Replaced with {@link zipWith}. Will be removed in v8.
  *
- * 替换为 {@link zipWith}。将在 v8 中删除。
+ * 已替换为 {@link zipWith}。将在 v8 中删除。
  *
  */
 export function zip<T, A extends readonly unknown[]>(...otherInputs: [...ObservableInputTuple<A>]): OperatorFunction<T, Cons<T, A>>;
 /**
  * @deprecated Replaced with {@link zipWith}. Will be removed in v8.
  *
- * 替换为 {@link zipWith}。将在 v8 中删除。
+ * 已替换为 {@link zipWith}。将在 v8 中删除。
  *
  */
 export function zip<T, A extends readonly unknown[], R>(
@@ -39,7 +39,7 @@ export function zip<T, A extends readonly unknown[], R>(
 /**
  * @deprecated Replaced with {@link zipWith}. Will be removed in v8.
  *
- * 替换为 {@link zipWith}。将在 v8 中删除。
+ * 已替换为 {@link zipWith}。将在 v8 中删除。
  *
  */
 export function zip<T, R>(...sources: Array<ObservableInput<any> | ((...values: Array<any>) => R)>): OperatorFunction<T, any> {

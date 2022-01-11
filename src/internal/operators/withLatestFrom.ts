@@ -17,13 +17,13 @@ export function withLatestFrom<T, O extends unknown[], R>(
  * whose values are calculated from the latest values of each, only when the
  * source emits.
  *
- * 将源 Observable 与其他 Observable 组合以创建一个 Observable，其值是根据每个 Observable 的最新值计算的，仅当源发出时。
+ * 将源 Observable 与其它 Observable 进行组合以创建一个 Observable，其值是根据每个 Observable 的最新值计算的，仅当源发送时才发送。
  *
  * <span class="informal">Whenever the source Observable emits a value, it
  * computes a formula using that value plus the latest values from other input
  * Observables, then emits the output of that formula.</span>
  *
- * <span class="informal">每当源 Observable 发出一个值时，它会使用该值加上来自其他输入 Observable 的最新值计算一个公式，然后发出该公式的输出。</span>
+ * <span class="informal">每当源 Observable 发出一个值时，它会使用该值加上来自其它输入 Observable 的最新值计算一个公式，然后发送该公式的输出结果。</span>
  *
  * ![](withLatestFrom.png)
  *
@@ -33,7 +33,7 @@ export function withLatestFrom<T, O extends unknown[], R>(
  * the value to be emitted on the output Observable. All input Observables must
  * emit at least one value before the output Observable will emit a value.
  *
- * `withLatestFrom` 仅在源发出一个值时将源 Observable（实例）中的每个值与来自其他输入 Observable 的最新值组合在一起，可选地使用 `project` 函数来确定要在输出 Observable 上发出的值。在输出 Observable 发出一个值之前，所有输入 Observable 必须发出至少一个值。
+ * `withLatestFrom` 只会在源发送一个值时将源 Observable（实例）中的每个值与来自其它输入 Observable 的最新值组合在一起，使用可选的 `project` 函数来确定要在输出 Observable 上发送的值。在输出 Observable 发送一个值之前，所有输入 Observable 必须发送过至少一个值。
  *
  * ## Example
  *
@@ -41,7 +41,7 @@ export function withLatestFrom<T, O extends unknown[], R>(
  *
  * On every click event, emit an array with the latest timer event plus the click event
  *
- * 在每个点击事件上，发出一个包含最新计时器事件和点击事件的数组
+ * 在每个点击事件上，发送一个包含最新计时器事件和点击事件的数组
  *
  * ```ts
  * import { fromEvent, interval, withLatestFrom } from 'rxjs';
@@ -55,7 +55,7 @@ export function withLatestFrom<T, O extends unknown[], R>(
  * @param {ObservableInput} other An input Observable to combine with the source
  * Observable. More than one input Observables may be given as argument.
  *
- * 与源 Observable 结合的输入 Observable。可以给出多个输入 Observables 作为参数。
+ * 要与源 Observable 组合的输入 Observable。这里可以给出多个输入 Observables 作为参数。
  *
  * @param {Function} [project] Projection function for combining values
  * together. Receives all values in order of the Observables passed, where the
@@ -66,7 +66,7 @@ export function withLatestFrom<T, O extends unknown[], R>(
  * most recent values from each input Observable, or an array of the most
  * recent values from each input Observable.
  *
- * 一个函数，它从每个输入 Observable 的最新值中返回一个由投影值组成的 Observable，或者从每个输入 Observable 中返回一个包含最新值的数组。
+ * 一个函数，它会从每个输入 Observable 的最新值中返回一个由投影后的值组成的 Observable，或者返回一个包含每个输入 Observable 的最新值的数组。
  *
  */
 export function withLatestFrom<T, R>(...inputs: any[]): OperatorFunction<T, R | any[]> {

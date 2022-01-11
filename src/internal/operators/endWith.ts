@@ -7,14 +7,14 @@ import { MonoTypeOperatorFunction, SchedulerLike, OperatorFunction, ValueFromArr
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `concatAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `concatAll`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
+ * `scheduler` 参数将在 v8 中删除。请改用 `scheduled` 和 `concatAll`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function endWith<T>(scheduler: SchedulerLike): MonoTypeOperatorFunction<T>;
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `concatAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `concatAll`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
+ * `scheduler` 参数将在 v8 中删除。请改用 `scheduled` 和 `concatAll`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function endWith<T, A extends unknown[] = T[]>(
@@ -27,17 +27,17 @@ export function endWith<T, A extends unknown[] = T[]>(...values: A): OperatorFun
  * Returns an observable that will emit all values from the source, then synchronously emit
  * the provided value(s) immediately after the source completes.
  *
- * 返回一个 observable，它将从源发出所有值，然后在源完成后立即同步发出提供的值。
+ * 返回一个 observable，它将从源发送所有值，然后在源完成后立即同步发送所提供的值。
  *
  * NOTE: Passing a last argument of a Scheduler is _deprecated_, and may result in incorrect
  * types in TypeScript.
  *
- * 注意：_ 不推荐 _ 传递调度程序的最后一个参数，并且可能导致 TypeScript 中的类型不正确。
+ * 注意：*不推荐*传递调度器的最后一个参数，它可能导致 TypeScript 中的类型不正确。
  *
  * This is useful for knowing when an observable ends. Particularly when paired with an
  * operator like {@link takeUntil}
  *
- * 这对于了解 observable 何时结束很有用。特别是与像 {@link takeUntil} 这样的运算符配对时
+ * 这对于了解 observable 何时结束很有用。特别是与像 {@link takeUntil} 这样的操作符配合使用时
  *
  * ![](endWith.png)
  *
@@ -48,7 +48,7 @@ export function endWith<T, A extends unknown[] = T[]>(...values: A): OperatorFun
  * Emit values to know when an interval starts and stops. The interval will
  * stop when a user clicks anywhere on the document.
  *
- * 发出值以了解间隔何时开始和停止。当用户单击文档上的任意位置时，间隔将停止。
+ * 发送值以了解定期重复 Observable 何时开始和停止。当用户单击文档上的任意位置时，定期重复 Observable 将停止。
  *
  * ```ts
  * import { interval, map, fromEvent, startWith, takeUntil, endWith } from 'rxjs';
@@ -78,13 +78,13 @@ export function endWith<T, A extends unknown[] = T[]>(...values: A): OperatorFun
  * @see {@link takeUntil}
  * @param values Items you want the modified Observable to emit last.
  *
- * 你希望修改后的 Observable 最后发出的项目。
+ * 你希望修改后的 Observable 要在最后发送的条目。
  *
  * @return A function that returns an Observable that emits all values from the
  * source, then synchronously emits the provided value(s) immediately after the
  * source completes.
  *
- * 一个返回 Observable 的函数，该 Observable 从源发出所有值，然后在源完成后立即同步发出提供的值。
+ * 一个返回 Observable 的函数，该 Observable 会从源发送所有值，然后在源完成后立即同步发送所提供的值。
  *
  */
 export function endWith<T>(...values: Array<T | SchedulerLike>): MonoTypeOperatorFunction<T> {

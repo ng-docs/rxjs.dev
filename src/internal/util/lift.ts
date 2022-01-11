@@ -6,7 +6,7 @@ import { isFunction } from './isFunction';
 /**
  * Used to determine if an object is an Observable with a lift function.
  *
- * 用于确定一个对象是否是具有提升功能的 Observable。
+ * 用于确定一个对象是否是具有 lift 函数的 Observable。
  *
  */
 export function hasLift(source: any): source is { lift: InstanceType<typeof Observable>['lift'] } {
@@ -16,7 +16,7 @@ export function hasLift(source: any): source is { lift: InstanceType<typeof Obse
 /**
  * Creates an `OperatorFunction`. Used to define operators throughout the library in a concise way.
  *
- * 创建一个 `OperatorFunction`。用于以简洁的方式在整个库中定义运算符。
+ * 创建一个 `OperatorFunction`。用于以简洁的方式在整个库中定义操作符。
  *
  * @param init The logic to connect the liftedSource to the subscriber at the moment of subscription.
  *

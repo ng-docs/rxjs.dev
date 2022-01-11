@@ -36,7 +36,7 @@ Examples of behavior that contributes to creating a positive environment include
 
 * Showing empathy towards other community members
 
-  对其他社区成员表示同情
+  对其他社区成员展现同理心
 
 Examples of unacceptable behavior by participants include:
 
@@ -48,7 +48,7 @@ Examples of unacceptable behavior by participants include:
 
 * Trolling, insulting/derogatory comments, and personal or political attacks
 
-  拖钓、侮辱/贬损评论以及人身或政治攻击
+  流氓、侮辱/贬损评论以及人身或政治攻击
 
 * Public or private harassment
 

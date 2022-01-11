@@ -7,13 +7,13 @@ import { UnaryFunction } from '../types';
  * Splits the source Observable into two, one with values that satisfy a
  * predicate, and another with values that don't satisfy the predicate.
  *
- * 将源 Observable 拆分为两个，一个具有满足谓词的值，另一个具有不满足谓词的值。
+ * 将源 Observable 拆分为两个，一个具有满足此谓词的值，另一个具有不满足此谓词的值。
  *
  * <span class="informal">It's like {@link filter}, but returns two Observables:
  * one like the output of {@link filter}, and the other with values that did not
  * pass the condition.</span>
  *
- * <span class="informal">它类似于 {@link filter}，但返回两个 Observable：一个类似于 {@link filter} 的输出，另一个具有未通过条件的值。</span>
+ * <span class="informal">它类似于 {@link filter}，但会返回两个 Observable：一个类似于 {@link filter} 的输出，另一个则具有不满足条件的值。</span>
  *
  * ![](partition.png)
  *
@@ -24,7 +24,7 @@ import { UnaryFunction } from '../types';
  * predicate returns false. The first behaves like {@link filter} and the second
  * behaves like {@link filter} with the predicate negated.
  *
- * `partition` 输出一个包含两个 Observable 的数组，它们通过给定的 `predicate` 函数对源 Observable 中的值进行分区。该数组中的第一个 Observable 发出谓词参数返回 true 的源值。第二个 Observable 发出谓词返回 false 的源值。第一个行为类似于 {@link filter}，第二个行为类似于 {@link filter}，谓词被否定。
+ * `partition` 会输出一个包含两个 Observable 的数组，它们通过给定的 `predicate` 函数对源 Observable 中的值进行划分。该数组中的第一个 Observable 会发送源值中谓词参数返回 `true` 的值。第二个 Observable 会发送源值中谓词参数返回 `false` 的值。第一个行为类似于 {@link filter}，第二个行为类似于带有否定谓词的 {@link filter}。
  *
  * ## Example
  *
@@ -32,7 +32,7 @@ import { UnaryFunction } from '../types';
  *
  * Partition click events into those on DIV elements and those elsewhere
  *
- * 将点击事件划分为 DIV 元素上的事件和其他地方的事件
+ * 将点击事件划分为 DIV 元素上的事件和其它地方的事件
  *
  * ```ts
  * import { fromEvent } from 'rxjs';
@@ -56,7 +56,7 @@ import { UnaryFunction } from '../types';
  * `index` parameter is the number `i` for the i-th source emission that has
  * happened since the subscription, starting from the number `0`.
  *
- * 评估源 Observable 发出的每个值的函数。如果返回 `true`，则在返回数组中的第一个 Observable 上发出该值，如果为 `false`，则在数组中的第二个 Observable 上发出该值。`index` 参数是自订阅以来发生的第 i 个源排放的数字 `i`，从数字 `0` 开始。
+ * 用于评估源 Observable 发送的每个值的函数。如果返回 `true`，则会在返回数组中的第一个 Observable 上发送该值，如果为 `false`，则会在数组中的第二个 Observable 上发送该值。`index` 参数是自订阅以来源发出的第 `i` 个数字中的 `i`，从数字 `0` 开始。
  *
  * @param {any} [thisArg] An optional argument to determine the value of `this`
  * in the `predicate` function.
@@ -64,11 +64,11 @@ import { UnaryFunction } from '../types';
  * values that passed the predicate, and another with values that did not pass
  * the predicate.
  *
- * 一个函数，它返回一个包含两个 Observable 的数组：一个带有通过谓词的值，另一个带有未通过谓词的值。
+ * 一个函数，它返回一个包含两个 Observable 的数组：一个带有满足谓词的值，另一个带有不满足谓词的值。
  *
  * @deprecated Replaced with the `partition` static creation function. Will be removed in v8.
  *
- * 替换为 `partition` 静态创建功能。将在 v8 中删除。
+ * 替换为静态创建函数 `partition`。将在 v8 中删除。
  *
  */
 export function partition<T>(

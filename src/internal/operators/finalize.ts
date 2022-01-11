@@ -6,7 +6,7 @@ import { operate } from '../util/lift';
  * the source terminates on complete or error.
  * The specified function will also be called when the subscriber explicitly unsubscribes.
  *
- * 返回一个镜像源 Observable 的 Observable，但会在源因完成或错误而终止时调用指定的函数。当订阅者明确取消订阅时，也会调用指定的函数。
+ * 返回一个源 Observable 的镜像 Observable，但它会在源因为完成或错误而终止的时候调用指定的函数。当订阅者显式退订时，也会调用指定的函数。
  *
  * ## Examples
  *
@@ -38,7 +38,7 @@ import { operate } from '../util/lift';
  *
  * Execute callback function when the subscriber explicitly unsubscribes
  *
- * 订阅者显式取消订阅时执行回调函数
+ * 当订阅者显式退订时会执行回调函数
  *
  * ```ts
  * import { interval, finalize, tap, noop, timer } from 'rxjs';
@@ -72,7 +72,7 @@ import { operate } from '../util/lift';
  * @return A function that returns an Observable that mirrors the source, but
  * will call the specified function on termination.
  *
- * 返回一个镜像源的 Observable 的函数，但会在终止时调用指定的函数。
+ * 返回一个源 Observable 的镜像 Observable 的函数，但镜像 Observable 会在终止时调用指定的函数。
  *
  */
 export function finalize<T>(callback: () => void): MonoTypeOperatorFunction<T> {

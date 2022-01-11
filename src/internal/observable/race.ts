@@ -12,7 +12,7 @@ export function race<T extends readonly unknown[]>(...inputs: [...ObservableInpu
 /**
  * Returns an observable that mirrors the first source observable to emit an item.
  *
- * 返回一个镜像第一个源 observable 以发射项目的 observable。
+ * 返回一个 observable，它会镜像第一个发送条目的源 Observable。
  *
  * ![](race.png)
  *
@@ -21,19 +21,19 @@ export function race<T extends readonly unknown[]>(...inputs: [...ObservableInpu
  * The resulting observable will forward all notifications, including error and completion, from the "winning"
  * source observable.
  *
- * `race` 返回一个 observable，当订阅它时，它会立即订阅所有源 observables。一旦其中一个源 observables 发出一个值，结果就会取消订阅其他源。生成的 observable 将转发来自“获胜”源 observable 的所有通知，包括错误和完成。
+ * `race` 会返回一个 observable，当订阅它时，它会立即订阅所有源 Observables。一旦其中一个源 Observables 发送了一个值，它就会退订其它源。其结果 observable 将转发来自“获胜”源 observable 的所有通知，包括错误和完成。
  *
  * If one of the used source observable throws an errors before a first notification
  * the race operator will also throw an error, no matter if another source observable
  * could potentially win the race.
  *
- * 如果一个使用的源 observable 在第一次通知之前抛出一个错误，那么无论另一个源 observable 是否有可能赢得比赛，比赛操作员也会抛出一个错误。
+ * 如果一个已使用的源 observable 在第一次通知之前抛出一个错误，那么无论另一个源 observable 是否有可能赢得这场竞速，race 操作符都会抛出一个错误。
  *
  * `race` can be useful for selecting the response from the fastest network connection for
  * HTTP or WebSockets. `race` can also be useful for switching observable context based on user
  * input.
  *
- * `race` 对于从 HTTP 或 WebSockets 的最快网络连接中选择响应很有用。`race` 对于根据用户输入切换可观察上下文也很有用。
+ * `race` 对于从 HTTP 或 WebSockets 的最快网络连接中选取一个响应是很有用的。`race` 在需要根据用户输入切换 Observable 上下文时也很有用。
  *
  * ## Example
  *
@@ -41,7 +41,7 @@ export function race<T extends readonly unknown[]>(...inputs: [...ObservableInpu
  *
  * Subscribes to the observable that was the first to start emitting.
  *
- * 订阅第一个开始发射的 observable。
+ * 订阅第一个开始发送的 observable。
  *
  * ```ts
  * import { interval, map, race } from 'rxjs';
@@ -58,11 +58,11 @@ export function race<T extends readonly unknown[]>(...inputs: [...ObservableInpu
  * ```
  * @param {...Observables} ...observables sources used to race for which Observable emits first.
  *
- * 用于竞争 Observable 首先发出的源。
+ * 要竞争谁先发送值的几个源 Observable。
  *
  * @return {Observable} an Observable that mirrors the output of the first Observable to emit an item.
  *
- * 一个 Observable，它反映了第一个 Observable 的输出以发射一个项目。
+ * 一个 Observable，它镜像了第一个发送条目的 Observable 的输出。
  *
  */
 export function race<T>(...sources: (ObservableInput<T> | ObservableInput<T>[])[]): Observable<any> {
@@ -75,11 +75,11 @@ export function race<T>(...sources: (ObservableInput<T> | ObservableInput<T>[])[
  * An observable initializer function for both the static version and the
  * operator version of race.
  *
- * 用于静态版本和操作员版本的可观察初始化函数。
+ * 用于静态版本和操作符版本的可观察初始化函数。
  *
  * @param sources The sources to race
  *
- * 比赛的来源
+ * 要竞速的源
  *
  */
 export function raceInit<T>(sources: ObservableInput<T>[]) {

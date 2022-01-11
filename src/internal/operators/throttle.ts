@@ -20,12 +20,12 @@ export const defaultThrottleConfig: ThrottleConfig = {
  * values for a duration determined by another Observable, then repeats this
  * process.
  *
- * 从源 Observable 发出一个值，然后在由另一个 Observable 确定的持续时间内忽略后续源值，然后重复此过程。
+ * 从源 Observable 发送一个值，然后在由另一个 Observable 确定的持续时间内忽略后续源值，然后重复此过程。
  *
  * <span class="informal">It's like {@link throttleTime}, but the silencing
  * duration is determined by a second Observable.</span>
  *
- * <span class="informal">就像 {@link throttleTime}，但静音持续时间由第二个 Observable 决定。</span>
+ * <span class="informal">它很像 {@link throttleTime}，但其静默持续时间由第二个 Observable 决定。</span>
  *
  * ![](throttle.svg)
  *
@@ -38,7 +38,7 @@ export const defaultThrottleConfig: ThrottleConfig = {
  * value, the timer is disabled, and this process repeats for the
  * next source value.
  *
- * 当内部定时器被禁用时，`throttle` 在输出 Observable 上发出源 Observable 值，并在启用定时器时忽略源值。最初，定时器被禁用。一旦第一个源值到达，它就会被转发到输出 Observable，然后通过使用源值调用 `durationSelector` 函数来启用计时器，该函数返回“duration” Observable。当持续时间 Observable 发出一个值时，定时器被禁用，并且这个过程重复下一个源值。
+ * 当其内部定时器被禁用时，`throttle` 就会在输出 Observable 上发送源 Observable 的值，并在启用内部定时器时忽略源值。最初，定时器会被禁用。一旦第一个源值抵达，它就会转发到输出 Observable，然后通过使用源值调用 `durationSelector` 函数来启用计时器，该函数会返回一个 持续时间（duration）Observable。当持续时间 Observable 发出一个值时，定时器就会被禁用，下一个源值也以此类推。
  *
  * ## Example
  *
@@ -46,7 +46,7 @@ export const defaultThrottleConfig: ThrottleConfig = {
  *
  * Emit clicks at a rate of at most one click per second
  *
- * 以每秒最多一次点击的速度发出点击
+ * 以每秒最多一次点击的速度发送点击
  *
  * ```ts
  * import { fromEvent, throttle, interval } from 'rxjs';
@@ -65,7 +65,7 @@ export const defaultThrottleConfig: ThrottleConfig = {
  * that receives a value from the source Observable, for computing the silencing
  * duration for each source value, returned as an Observable or a Promise.
  *
- * 从源 Observable 接收值的函数，用于计算每个源值的静默持续时间，返回为 Observable 或 Promise。
+ * 一个从源 Observable 接收值的函数，用于计算每个源值的静默持续时间，返回值为 Observable 或 Promise。
  *
  * @param config a configuration object to define `leading` and `trailing` behavior. Defaults
  * to `{ leading: true, trailing: false }`.
@@ -75,7 +75,7 @@ export const defaultThrottleConfig: ThrottleConfig = {
  * @return A function that returns an Observable that performs the throttle
  * operation to limit the rate of emissions from the source.
  *
- * 一个返回 Observable 的函数，该 Observable 执行节流操作以限制源的排放率。
+ * 一个返回 Observable 的函数，该 Observable 会执行节流操作以限制源的发送速度。
  *
  */
 export function throttle<T>(

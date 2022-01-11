@@ -4,7 +4,7 @@
 
 To unify the API surface of `forkJoin` and `combineLatest` we deprecated some signatures. Since that it is recommended to either pass an Object or an Array to these operators.
 
-为了统一 `forkJoin` 和 `combineLatest` 的 API 表面，我们弃用了一些签名。因此，建议将 Object 或 Array 传递给这些运算符。
+为了统一 `forkJoin` 和 `combineLatest` 的 对外 API，我们弃用了一些签名。因此，建议将 Object 或 Array 传递给这些操作符。
 
 <div class="alert is-important">
     <span>
@@ -14,15 +14,10 @@ To unify the API surface of `forkJoin` and `combineLatest` we deprecated some si
 
 ## Operators affected by this Change
 
-## 受此变更影响的运营商
+## 受此变更影响的操作符
 
 - [combineLatest](/api/index/function/combineLatest)
-
-  [结合最新](/api/index/function/combineLatest)
-
 - [forkJoin](/api/index/function/forkJoin)
-
-  [分叉加入](/api/index/function/forkJoin)
 
 ## How to Refactor
 
@@ -30,7 +25,7 @@ To unify the API surface of `forkJoin` and `combineLatest` we deprecated some si
 
 We deprecated the signatures, where just pass all Observables directly as parameters to these operators.
 
-我们弃用了签名，直接将所有 Observables 作为参数传递给这些操作符。
+我们弃用了这些签名，直接将所有 Observables 作为参数传递给这些操作符。
 
 ```ts
 import { forkJoin, from } from 'rxjs';

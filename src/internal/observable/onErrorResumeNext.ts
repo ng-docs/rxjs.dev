@@ -14,11 +14,11 @@ export function onErrorResumeNext<A extends readonly unknown[]>(...sources: [...
  * When any of the provided Observable emits a complete or an error notification, it immediately subscribes to the next one
  * that was passed.
  *
- * 当任何提供的 Observable 发出完成或错误通知时，它会立即订阅下一个传递的通知。
+ * 当任何提供的 Observable 发送完成或错误通知时，它会立即订阅下一个传入的 Observable。
  *
  * <span class="informal">Execute series of Observables no matter what, even if it means swallowing errors.</span>
-*
- * <span class="informal">无论如何都要执行一系列 Observables，即使这意味着吞下错误。</span>
+ *
+ * <span class="informal">无论如何都要执行这一系列 Observables，即使这意味着掩盖错误。</span>
  *
  * ![](onErrorResumeNext.png)
  *
@@ -26,22 +26,22 @@ export function onErrorResumeNext<A extends readonly unknown[]>(...sources: [...
  * If the source it's subscribed to emits an error or completes, it will move to the next source
  * without error.
  *
- * `onErrorResumeNext` 将按顺序订阅它提供的每个可观察源。如果它订阅的源发出错误或完成，它将移动到下一个源而没有错误。
+ * `onErrorResumeNext` 将按顺序订阅它提供的每个可观察源。如果它订阅的源出错或完成，它将移动到下一个源而不会发出错误。
  *
  * If `onErrorResumeNext` is provided no arguments, or a single, empty array, it will return {@link EMPTY}.
  *
- * 如果 `onErrorResumeNext` 没有提供任何参数，或者是一个空数组，它将返回 {@link EMPTY}。
+ * 如果 `onErrorResumeNext` 没有提供任何参数，或者提供了一个空数组，它将返回 {@link EMPTY}。
  *
  * `onErrorResumeNext` is basically {@link concat}, only it will continue, even if one of its
  * sources emits an error.
  *
- * `onErrorResumeNext` 基本上是 {@link concat}，只有它会继续，即使它的一个源发出错误。
+ * `onErrorResumeNext` 基本相当于 {@link concat}，但即使它的一个源发生了错误，它也会继续。
  *
  * Note that there is no way to handle any errors thrown by sources via the result of
  * `onErrorResumeNext`. If you want to handle errors thrown in any given source, you can
  * always use the {@link catchError} operator on them before passing them into `onErrorResumeNext`.
  *
- * 请注意，无法通过 `onErrorResumeNext` 的结果处理源引发的任何错误。如果你想处理任何给定源中抛出的错误，你始终可以在将它们传递给 `onErrorResumeNext` 之前对其使用 {@link catchError} 运算符。
+ * 请注意，无法通过 `onErrorResumeNext` 的结果处理来源中抛出的任何错误。如果你想处理任何给定来源中抛出的错误，你可以在将它们传给 `onErrorResumeNext` 之前总是对其先使用 {@link catchError} 操作符。
  *
  * ## Example
  *
@@ -84,12 +84,12 @@ export function onErrorResumeNext<A extends readonly unknown[]>(...sources: [...
  * @see {@link catchError}
  * @param {...ObservableInput} sources Observables (or anything that *is* observable) passed either directly or as an array.
  *
- * Observables（或任何*可*观察的）直接或作为数组传递。
+ * 直接或作为数组传入的 Observables（或任何* Observable*类似物）。
  *
  * @return {Observable} An Observable that concatenates all sources, one after the other,
  * ignoring all errors, such that any error causes it to move on to the next source.
  *
- * 一个 Observable 一个接一个地连接所有源，忽略所有错误，这样任何错误都会导致它移动到下一个源。
+ * 一个 Observable。它会一个接一个地连接所有来源，忽略所有错误，任何错误都会导致它移动到下一个来源。
  *
  */
 export function onErrorResumeNext<A extends readonly unknown[]>(

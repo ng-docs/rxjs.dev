@@ -5,7 +5,7 @@ import { createErrorClass } from '../util/createErrorClass';
 /**
  * A normalized AJAX error.
  *
- * 规范化的 AJAX 错误。
+ * 已规范化过的 AJAX 错误。
  *
  * @see {@link ajax}
  * @class AjaxError
@@ -58,7 +58,7 @@ export interface AjaxErrorCtor {
    * @deprecated Internal implementation detail. Do not construct error instances.
    * Cannot be tagged as internal: <https://github.com/ReactiveX/rxjs/issues/6269>
    *
-   * 内部实现细节。不要构造错误实例。不能标记为内部： <https://github.com/ReactiveX/rxjs/issues/6269>
+   * 内部实现细节。不要构造错误实例。不能标记为内部：<https://github.com/ReactiveX/rxjs/issues/6269>
    *
    */
   new (message: string, xhr: XMLHttpRequest, request: AjaxRequest): AjaxError;
@@ -70,7 +70,7 @@ export interface AjaxErrorCtor {
  * is an `instanceof AjaxError`. DO NOT create new instances of `AjaxError` with
  * the constructor.
  *
- * 在 AJAX 请求期间发生错误时抛出。这仅被导出，因为它对于检查错误是否是 `instanceof AjaxError`。不要使用构造函数创建新的 `AjaxError` 实例。
+ * 在 AJAX 请求期间发生错误时抛出。导出它只是为了检查错误是否为 `instanceof AjaxError`。不要使用构造函数创建新的 `AjaxError` 实例。
  *
  * @class AjaxError
  * @see {@link ajax}
@@ -103,7 +103,7 @@ export interface AjaxTimeoutErrorCtor {
    * @deprecated Internal implementation detail. Do not construct error instances.
    * Cannot be tagged as internal: <https://github.com/ReactiveX/rxjs/issues/6269>
    *
-   * 内部实现细节。不要构造错误实例。不能标记为内部： <https://github.com/ReactiveX/rxjs/issues/6269>
+   * 内部实现细节。不要构造错误实例。不能标记为内部：<https://github.com/ReactiveX/rxjs/issues/6269>
    *
    */
   new (xhr: XMLHttpRequest, request: AjaxRequest): AjaxTimeoutError;
@@ -112,13 +112,13 @@ export interface AjaxTimeoutErrorCtor {
 /**
  * Thrown when an AJAX request times out. Not to be confused with {@link TimeoutError}.
  *
- * AJAX 请求超时时抛出。不要与 {@link TimeoutError} 混淆。
+ * 当 AJAX 请求超时时抛出。不要与 {@link TimeoutError} 混淆。
  *
  * This is exported only because it is useful for checking to see if errors are an
  * `instanceof AjaxTimeoutError`. DO NOT use the constructor to create an instance of
  * this type.
  *
- * 仅将其导出是因为它对于检查错误是否为 `instanceof AjaxTimeoutError`。不要使用构造函数来创建这种类型的实例。
+ * 导出它只是为了检查错误是否为 `instanceof AjaxTimeoutError`。不要使用构造函数来创建这种类型的实例。
  *
  * @class AjaxTimeoutError
  * @see {@link ajax}

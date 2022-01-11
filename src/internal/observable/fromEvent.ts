@@ -82,7 +82,7 @@ export function fromEvent(target: NodeStyleEventEmitter | ArrayLike<NodeStyleEve
 /**
  * @deprecated Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
  *
- * 不要指定显式类型参数。带有无法推断的类型参数的签名将在 v8 中删除。
+ * 不要指定显式类型参数。那些带有无法推断的类型参数的签名将在 v8 中删除。
  *
  */
 export function fromEvent<T>(target: NodeStyleEventEmitter | ArrayLike<NodeStyleEventEmitter>, eventName: string): Observable<T>;
@@ -99,7 +99,7 @@ export function fromEvent(
 /**
  * @deprecated Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
  *
- * 不要指定显式类型参数。带有无法推断的类型参数的签名将在 v8 中删除。
+ * 不要指定显式类型参数。那些带有无法推断的类型参数的签名将在 v8 中删除。
  *
  */
 export function fromEvent<T>(target: NodeCompatibleEventEmitter | ArrayLike<NodeCompatibleEventEmitter>, eventName: string): Observable<T>;
@@ -123,12 +123,12 @@ export function fromEvent<T, R>(
  * Creates an Observable that emits events of a specific type coming from the
  * given event target.
  *
- * 创建一个 Observable，它发出来自给定事件目标的特定类型的事件。
+ * 创建一个 Observable，它会发出来自给定事件目标的特定类型的事件。
  *
  * <span class="informal">Creates an Observable from DOM events, or Node.js
  * EventEmitter events or others.</span>
  *
- * 从 DOM 事件或 Node.js EventEmitter 事件或其他事件创建一个 Observable。
+ * <span class="informal">从 DOM 事件或 Node.js EventEmitter 事件或其它事件创建一个 Observable。</span>
  *
  * ![](fromEvent.png)
  *
@@ -141,14 +141,14 @@ export function fromEvent<T, R>(
  * handler functions have different names, but they all accept a string describing event type
  * and function itself, which will be called whenever said event happens.
  *
- * `fromEvent` 接受作为第一个参数的事件目标，它是一个具有用于注册事件处理函数的方法的对象。作为第二个参数，它需要一个字符串来指示我们想要监听的事件类型。`fromEvent` 支持选定类型的事件目标，下面将详细介绍。如果你的事件目标与列出的任何目标都不匹配，则应使用可用于任意 API 的 {@link fromEventPattern}。对于 `fromEvent` 支持的 API，它们用于添加和删除事件处理函数的方法有不同的名称，但它们都接受描述事件类型和函数本身的字符串，每当所述事件发生时都会调用该字符串。
+ * `fromEvent` 的第一个参数是要从中接收事件的目标，它是一个对象，具有一个能用来注册事件处理器的方法。第二个参数是一个字符串，用来指出我们要监听的事件类型。`fromEvent` 支持一些选定类型的事件目标，稍后将详细介绍。如果你的事件目标与下面列出的任何目标都不匹配，则应该使用可用于任意 API 的 {@link fromEventPattern}。对于 `fromEvent` 支持的 API，它们用于添加和删除事件处理函数的方法有不同的名称，但它们都能接受用于描述事件类型的字符串和一个函数，每当这类事件发生时都会调用该函数。
  *
  * Every time resulting Observable is subscribed, event handler function will be registered
  * to event target on given event type. When that event fires, value
  * passed as a first argument to registered function will be emitted by output Observable.
  * When Observable is unsubscribed, function will be unregistered from event target.
  *
- * 每次订阅生成的 Observable 时，事件处理函数都会注册到给定事件类型的事件目标。当该事件触发时，作为第一个参数传递给注册函数的值将由输出 Observable 发出。当 Observable 被取消订阅时，函数将从事件目标中取消注册。
+ * 每当订阅所生成的 Observable 时，事件处理函数都会注册到给定事件类型的事件目标。当该事件触发时，作为第一个参数传给注册函数的那个值将由输出 Observable 发出。当 Observable 被退订时，该函数将从事件目标中取消注册。
  *
  * Note that if event target calls registered function with more than one argument, second
  * and following arguments will not appear in resulting stream. In order to get access to them,
@@ -156,7 +156,7 @@ export function fromEvent<T, R>(
  * passed to event handler. Output Observable will then emit value returned by project function,
  * instead of the usual value.
  *
- * 请注意，如果事件目标调用具有多个参数的注册函数，则第二个和后续参数将不会出现在结果流中。为了访问它们，你可以传递给 `fromEvent` 可选项目函数，该函数将使用传递给事件处理程序的所有参数进行调用。然后，Output Observable 将发出项目函数返回的值，而不是通常的值。
+ * 请注意，如果事件目标调用的是具有多个参数的已注册函数，则第二个和后续参数将不会出现在结果流中。为了访问它们，你可以给 `fromEvent` 传一个可选的投影函数，该函数将使用传给事件处理器的所有参数进行调用。然后，输出 Observable 将发出此投影函数返回的值，而不是通常的值。
  *
  * Remember that event targets listed below are checked via duck typing. It means that
  * no matter what kind of object you have and no matter what environment you work in,
@@ -165,22 +165,20 @@ export function fromEvent<T, R>(
  * event target which has the same method names as DOM EventTarget, `fromEvent` is still
  * a good choice.
  *
- * 请记住，下面列出的事件目标是通过鸭子类型检查的。这意味着无论你拥有什么样的对象，无论你在什么环境中工作，如果它公开了所描述的方法（当然前提是它们的行为如上所述），你都可以安全地在该对象上使用 `fromEvent`。因此，例如，如果 Node.js 库公开了与 DOM EventTarget 具有相同方法名称的事件目标，`fromEvent` 仍然是一个不错的选择。
+ * 请记住，下面列出的事件目标都是通过鸭子类型进行检查的。这意味着无论你拥有什么样的对象，也无论你在什么环境中工作，只要它公开了如前所述的方法（当然前提是它们的行为也如前所述），你都可以安全地在该对象上使用 `fromEvent`。因此，如果 Node.js 库公开了与 DOM EventTarget 具有相同方法名称的事件目标，`fromEvent` 仍然是一个不错的选择。
  *
  * If the API you use is more callback then event handler oriented (subscribed
  * callback function fires only once and thus there is no need to manually
  * unregister it), you should use {@link bindCallback} or {@link bindNodeCallback}
  * instead.
  *
- * 如果你使用的 API 更多的是回调然后面向事件处理程序（订阅的回调函数只触发一次，因此无需手动取消注册它），你应该使用 {@link bindCallback} 或 {@link bindNodeCallback} 代替。
+ * 如果你使用的 API 更像回调，而非事件处理器（已订阅的回调函数只会触发一次，因此无需手动取消注册它），你应该改用 {@link bindCallback} 或 {@link bindNodeCallback}。
  *
  * `fromEvent` supports following types of event targets:
  *
  * `fromEvent` 支持以下类型的事件目标：
  *
  * **DOM EventTarget**
- *
- * **DOM 事件目标**
  *
  * This is an object with `addEventListener` and `removeEventListener` methods.
  *
@@ -192,11 +190,9 @@ export function fromEvent<T, R>(
  * `fromEvent` is used with event target of that type, you can provide this values
  * as third parameter as well.
  *
- * 在浏览器中，`addEventListener` 接受 - 除了事件类型字符串和事件处理函数参数 - 可选的第三个参数，它是一个对象或布尔值，都用于附加配置如何以及何时调用传递的函数。当 `fromEvent` 与该类型的事件目标一起使用时，你也可以将此值作为第三个参数提供。
+ * 在浏览器中，`addEventListener` 接受除了事件类型字符串和事件处理函数参数之外的第三个可选参数，它是一个对象或布尔值，都用于额外配置如何以及何时调用传入的函数。当 `fromEvent` 与该类型的事件目标一起使用时，你也可以将此值作为第三个参数来提供。
  *
  * **Node.js EventEmitter**
- *
- * **Node.js 事件发射器**
  *
  * An object with `addListener` and `removeListener` methods.
  *
@@ -204,7 +200,7 @@ export function fromEvent<T, R>(
  *
  * **JQuery-style event target**
  *
- * **jQuery 样式的事件目标**
+ * **jQuery 风格的事件目标**
  *
  * An object with `on` and `off` methods
  *
@@ -212,24 +208,22 @@ export function fromEvent<T, R>(
  *
  * **DOM NodeList**
  *
- * **DOM 节点列表**
- *
  * List of DOM Nodes, returned for example by `document.querySelectorAll` or `Node.childNodes`.
  *
- * DOM 节点列表，例如由 `document.querySelectorAll` 或 `Node.childNodes`。
+ * DOM 节点的列表，例如由 `document.querySelectorAll` 或 `Node.childNodes`。
  *
  * Although this collection is not event target in itself, `fromEvent` will iterate over all Nodes
  * it contains and install event handler function in every of them. When returned Observable
  * is unsubscribed, function will be removed from all Nodes.
  *
- * 虽然这个集合本身不是事件目标，`fromEvent` 将遍历它包含的所有节点并在每个节点中安装事件处理函数。当返回的 Observable 被取消订阅时，函数将从所有节点中移除。
+ * 虽然这个集合本身不是事件目标，但 `fromEvent` 将遍历它包含的所有节点并在每个节点中安装事件处理函数。当返回的 Observable 被退订时，函数将从所有节点中移除。
  *
  * **DOM HtmlCollection**
  *
  * Just as in case of NodeList it is a collection of DOM nodes. Here as well event handler function is
  * installed and removed in each of elements.
  *
- * 就像 NodeList 一样，它是 DOM 节点的集合。在这里，事件处理函数也在每个元素中安装和删除。
+ * 就像 NodeList 一样，它是 DOM 节点的集合。在这里，事件处理函数也会在每个元素中安装和删除。
  *
  * ## Examples
  *
@@ -277,7 +271,7 @@ export function fromEvent<T, R>(
  * @param {FromEventTarget<T>} target The DOM EventTarget, Node.js
  * EventEmitter, JQuery-like event target, NodeList or HTMLCollection to attach the event handler to.
  *
- * DOM EventTarget、Node.js EventEmitter、类似 JQuery 的事件目标、NodeList 或 HTMLCollection 来附加事件处理程序。
+ * 要附加事件处理器的 DOM EventTarget、Node.js EventEmitter、类似 JQuery 的事件目标、NodeList 或 HTMLCollection。
  *
  * @param {string} eventName The event name of interest, being emitted by the
  * `target`.
@@ -355,15 +349,15 @@ export function fromEvent<T>(
  * from a target in the most common handler pattern, where there are only two arguments.
  * (e.g.  `on(name, fn)`, `off(name, fn)`, `addListener(name, fn)`, or `removeListener(name, fn)`)
  *
- * 用于创建 `add` 和 `remove` 函数，以在最常见的处理程序模式中从目标注册和取消注册事件处理程序，其中只有两个参数。（例如 `on(name, fn)`、`off(name, fn)`、`addListener(name, fn)` 或 `removeListener(name, fn)`）
+ * 用于创建 `add` 和 `remove` 函数，以便在最常见的处理器模式中向目标注册和取消注册事件处理器，它只有两个参数。（例如 `on(name, fn)`、`off(name, fn)`、`addListener(name, fn)` 或 `removeListener(name, fn)`）
  *
  * @param target The target we're calling methods on
  *
- * 我们调用方法的目标
+ * 我们要调用这些方法的目标
  *
  * @param eventName The event name for the event we're creating register or unregister functions for
  *
- * 我们正在为其创建注册或注销函数的事件的事件名称
+ * 我们要为其创建注册或取消注册函数的事件的名称
  *
  */
 function toCommonHandlerRegistry(target: any, eventName: string) {
@@ -374,7 +368,7 @@ function toCommonHandlerRegistry(target: any, eventName: string) {
  * Checks to see if the target implements the required node-style EventEmitter methods
  * for adding and removing event handlers.
  *
- * 检查目标是否实现了添加和删除事件处理程序所需的节点样式 EventEmitter 方法。
+ * 检查目标是否实现了添加和删除事件处理器所需的 Node 风格的 EventEmitter 方法。
  *
  * @param target the object to check
  *
@@ -389,7 +383,7 @@ function isNodeStyleEventEmitter(target: any): target is NodeStyleEventEmitter {
  * Checks to see if the target implements the required jQuery-style EventEmitter methods
  * for adding and removing event handlers.
  *
- * 检查目标是否实现了添加和删除事件处理程序所需的 jQuery 样式 EventEmitter 方法。
+ * 检查目标是否实现了添加和删除事件处理器所需的 jQuery 风格的 EventEmitter 方法。
  *
  * @param target the object to check
  *
@@ -404,7 +398,7 @@ function isJQueryStyleEventEmitter(target: any): target is JQueryStyleEventEmitt
  * Checks to see if the target implements the required EventTarget methods
  * for adding and removing event handlers.
  *
- * 检查目标是否实现了添加和删除事件处理程序所需的 EventTarget 方法。
+ * 检查目标是否实现了添加和删除事件处理器所需的 EventTarget 方法。
  *
  * @param target the object to check
  *

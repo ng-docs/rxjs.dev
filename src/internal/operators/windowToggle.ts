@@ -13,12 +13,12 @@ import { arrRemove } from '../util/arrRemove';
  * an emission from `openings` and ending when the output of `closingSelector`
  * emits.
  *
- * 将源 Observable 值分支为嵌套的 Observable，从 `openings` 的发射开始，到 `closingSelector` 的输出发射时结束。
+ * 将源 Observable 的每个值分叉为一个嵌套 Observable，从 `openings` 发出值开始，到 `closingSelector` 的输出发出值结束。
  *
  * <span class="informal">It's like {@link bufferToggle}, but emits a nested
  * Observable instead of an array.</span>
  *
- * <span class="informal">它类似于 {@link bufferToggle}，但发出一个嵌套的 Observable 而不是一个数组。</span>
+ * <span class="informal">类似于 {@link bufferToggle}，但它会发送一个嵌套的 Observable 而非数组。</span>
  *
  * ![](windowToggle.png)
  *
@@ -28,7 +28,7 @@ import { arrRemove } from '../util/arrRemove';
  * Observable emits an item and when the Observable returned by
  * `closingSelector` emits an item.
  *
- * 返回一个 Observable，它发出从源 Observable 收集的项目的窗口。输出 Observable 发出窗口，其中包含源 Observable 在从 `openings` Observable 发出一个项目到 `closingSelector` 返回的 Observable 发出一个项目之间发出的那些项目。
+ * 返回一个 Observable，它会发出一些从源 Observable 收集来的条目的窗口。输出 Observable 会发送一些窗口，其中包含源 Observable 在从 `openings` Observable 发出条目到 `closingSelector` 返回的 Observable 发出条目之间发送的那些条目。
  *
  * ## Example
  *
@@ -36,7 +36,7 @@ import { arrRemove } from '../util/arrRemove';
  *
  * Every other second, emit the click events from the next 500ms
  *
- * 每隔一秒，从接下来的 500 毫秒发出点击事件
+ * 每隔一秒，发出接下来的 500 毫秒内发生的所有点击事件
  *
  * ```ts
  * import { fromEvent, interval, windowToggle, EMPTY, mergeAll } from 'rxjs';
@@ -57,19 +57,19 @@ import { arrRemove } from '../util/arrRemove';
  * @param {Observable<O>} openings An observable of notifications to start new
  * windows.
  *
- * 可观察到的用于启动新窗口的通知。
+ * 一个 Observable，用作启动新窗口的通知。
  *
  * @param {function(value: O): Observable} closingSelector A function that takes
  * the value emitted by the `openings` observable and returns an Observable,
  * which, when it emits a next notification, signals that the
  * associated window should complete.
  *
- * 一个函数，它接受由可观察的 `openings` 发出的值并返回一个可观察的，当它发出下一个通知时，表示关联的窗口应该完成。
+ * 一个函数，它接受由 `openings` Observable 发来的值并返回一个 Observable，当它发出 next 通知时，表示其关联的窗口该完成了。
  *
  * @return A function that returns an Observable of windows, which in turn are
  * Observables.
  *
- * 一个返回窗口的 Observable 的函数，这些窗口又是 Observables。
+ * 一个返回以窗口为条目的 Observable 的函数，这些窗口又都是 Observables。
  *
  */
 export function windowToggle<T, O>(

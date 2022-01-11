@@ -5,14 +5,14 @@ import { raceWith } from './raceWith';
 /**
  * @deprecated Replaced with {@link raceWith}. Will be removed in v8.
  *
- * 替换为 {@link raceWith}。将在 v8 中删除。
+ * 已替换为 {@link raceWith}。将在 v8 中删除。
  *
  */
 export function race<T, A extends readonly unknown[]>(otherSources: [...ObservableInputTuple<A>]): OperatorFunction<T, T | A[number]>;
 /**
  * @deprecated Replaced with {@link raceWith}. Will be removed in v8.
  *
- * 替换为 {@link raceWith}。将在 v8 中删除。
+ * 已替换为 {@link raceWith}。将在 v8 中删除。
  *
  */
 export function race<T, A extends readonly unknown[]>(...otherSources: [...ObservableInputTuple<A>]): OperatorFunction<T, T | A[number]>;
@@ -21,20 +21,20 @@ export function race<T, A extends readonly unknown[]>(...otherSources: [...Obser
  * Returns an Observable that mirrors the first source Observable to emit a next,
  * error or complete notification from the combination of this Observable and supplied Observables.
  *
- * 返回一个镜像第一个源 Observable 的 Observable，以从这个 Observable 和提供的 Observable 的组合发出下一个、错误或完成通知。
+ * 返回一个 Observable，它会镜像所提供的这些源中首先发出 next、error 或 complete 的那个，这些源包括源 Observable 和那些传入的 Observable 参数。
  *
  * @param args Sources used to race for which Observable emits first.
  *
- * 用于竞争 Observable 首先发出的源。
+ * 一些源，它们将通过谁先发出值的方式进行竞争。
  *
  * @return A function that returns an Observable that mirrors the output of the
  * first Observable to emit an item.
  *
- * 一个返回 Observable 的函数，该函数反映了第一个 Observable 的输出以发射项目。
+ * 一个返回 Observable 的函数，该 Observable 会镜像首先发出了条目的 Observable 的输出。
  *
  * @deprecated Replaced with {@link raceWith}. Will be removed in v8.
  *
- * 替换为 {@link raceWith}。将在 v8 中删除。
+ * 已替换为 {@link raceWith}。将在 v8 中删除。
  *
  */
 export function race<T>(...args: any[]): OperatorFunction<T, unknown> {

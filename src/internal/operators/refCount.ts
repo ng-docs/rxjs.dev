@@ -8,7 +8,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * Make a {@link ConnectableObservable} behave like a ordinary observable and automates the way
  * you can connect to it.
  *
- * 使 {@link ConnectableObservable} 表现得像一个普通的 observable 并自动化你可以连接到它的方式。
+ * 让 {@link ConnectableObservable} 的行为就像一个普通的 observable，但你能自动连接到它。
  *
  * Internally it counts the subscriptions to the observable and subscribes (only once) to the source if
  * the number of subscriptions is larger than 0. If the number of subscriptions is smaller than 1, it
@@ -16,12 +16,12 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * refCount has only a single subscription independently of the number of subscribers to the target
  * observable.
  *
- * 在内部，它计算对 observable 的订阅，如果订阅数大于 0，则订阅（仅一次）源。如果订阅数小于 1，则从源取消订阅。这样，你可以确保*发布*的 refCount 之前的所有内容都只有一个订阅，而与目标 observable 的订阅者数量无关。
+ * 在内部，它会对 observable 的订阅进行计数，如果订阅数大于 0，则订阅源（只一次）。如果订阅数小于 1，则从源退订。这样，你可以确保*已发布*的 refCount 之前的所有内容都只有一个订阅，而与目标 observable 的订阅者数量无关。
  *
  * Note that using the {@link share} operator is exactly the same as using the `multicast(() => new Subject())` operator
  * (making the observable hot) and the *refCount* operator in a sequence.
  *
- * 请注意，使用 {@link share} 运算符与使用 `multicast(() => new Subject())` 运算符（使 observable 变热）和*refCount*运算符的顺序完全相同。
+ * 请注意，使用 {@link share} 操作符与依次使用 `multicast(() => new Subject())` 操作符（使 observable 变成热的）和*refCount*操作符的效果完全相同。
  *
  * ![](refCount.png)
  *
@@ -34,7 +34,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * second one does not use it. You will notice that a connectable observable does nothing
  * until you call its connect function.
  *
- * 在下面的示例中，使用*发布*运算符将两个区间转换为可连接的 observable。第一个使用*refCount*运算符，第二个不使用它。你会注意到一个可连接的 observable 在你调用它的 connect 函数之前什么都不做。
+ * 在下面的示例中，使用 *publish* 操作符将两个定期重复 Observable 转换为可连接的 observable。第一个会使用 *refCount* 操作符，第二个则不使用。你会注意到一个可连接的 observable 在你调用它的 connect 函数之前什么都不做。
  *
  * ```ts
  * import { interval, tap, publish, refCount } from 'rxjs';
@@ -64,7 +64,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * @return A function that returns an Observable that automates the connection
  * to ConnectableObservable.
  *
- * 返回可自动连接到 ConnectableObservable 的 Observable 的函数。
+ * 返回一个 Observable 的函数，该 Observable 会自动连接到 ConnectableObservable。
  *
  * @see {@link ConnectableObservable}
  * @see {@link share}
@@ -74,7 +74,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * `refCount` operator.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 替换为 {@link share} 运算符。如何使用 `share` 取决于你在 `refCount` 运算符之前创建的可连接 observable。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 已替换为 {@link share} 操作符。如何使用 `share` 取决于你在 `refCount` 操作符之前创建的可连接 observable。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function refCount<T>(): MonoTypeOperatorFunction<T> {

@@ -7,14 +7,14 @@ import { from } from '../observable/from';
 /**
  * @deprecated Replaced with {@link concatWith}. Will be removed in v8.
  *
- * 替换为 {@link concatWith}。将在 v8 中删除。
+ * 已替换为 {@link concatWith}。将在 v8 中删除。
  *
  */
 export function concat<T, A extends readonly unknown[]>(...sources: [...ObservableInputTuple<A>]): OperatorFunction<T, T | A[number]>;
 /**
  * @deprecated Replaced with {@link concatWith}. Will be removed in v8.
  *
- * 替换为 {@link concatWith}。将在 v8 中删除。
+ * 已替换为 {@link concatWith}。将在 v8 中删除。
  *
  */
 export function concat<T, A extends readonly unknown[]>(
@@ -24,7 +24,7 @@ export function concat<T, A extends readonly unknown[]>(
 /**
  * @deprecated Replaced with {@link concatWith}. Will be removed in v8.
  *
- * 替换为 {@link concatWith}。将在 v8 中删除。
+ * 已替换为 {@link concatWith}。将在 v8 中删除。
  *
  */
 export function concat<T, R>(...args: any[]): OperatorFunction<T, R> {

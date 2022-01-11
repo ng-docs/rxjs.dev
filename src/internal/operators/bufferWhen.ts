@@ -9,13 +9,13 @@ import { innerFrom } from '../observable/innerFrom';
  * Buffers the source Observable values, using a factory function of closing
  * Observables to determine when to close, emit, and reset the buffer.
  *
- * 缓冲源 Observable 值，使用关闭 Observables 的工厂函数来确定何时关闭、发出和重置缓冲区。
+ * 缓冲源 Observable 值，由工厂函数 closingSelector 来确定何时关闭、发出和重置缓冲区。
  *
  * <span class="informal">Collects values from the past as an array. When it
  * starts collecting values, it calls a function that returns an Observable that
  * tells when to close the buffer and restart collecting.</span>
  *
- * <span class="informal">将过去的值作为数组收集。当它开始收集值时，它会调用一个返回 Observable 的函数，该函数告诉何时关闭缓冲区并重新开始收集。</span>
+ * <span class="informal">将已过去的值收集成数组。当它开始收集值时，就会调用一个返回 Observable 的函数，由该函数决定何时关闭缓冲区并重新开始收集。</span>
  *
  * ![](bufferWhen.png)
  *
@@ -23,7 +23,7 @@ import { innerFrom } from '../observable/innerFrom';
  * returned by calling `closingSelector` function emits a value. When it closes
  * the buffer, it immediately opens a new buffer and repeats the process.
  *
- * 立即打开一个缓冲区，然后在调用 `closingSelector` 函数返回的 observable 发出一个值时关闭缓冲区。当它关闭缓冲区时，它会立即打开一个新缓冲区并重复该过程。
+ * 立即打开一个缓冲区，然后当 `closingSelector` 函数返回的 observable 发送一个值时关闭缓冲区。一旦关闭了缓冲区，就会立即打开一个新缓冲区并重复该过程。
  *
  * ## Example
  *
@@ -31,7 +31,7 @@ import { innerFrom } from '../observable/innerFrom';
  *
  * Emit an array of the last clicks every [1-5] random seconds
  *
- * 每[1-5][1-5]秒随机发出最后一次点击的数组
+ * 每隔 [1-5] 秒随机发送最后一次点击的数组
  *
  * ```ts
  * import { fromEvent, bufferWhen, interval } from 'rxjs';
@@ -50,11 +50,11 @@ import { innerFrom } from '../observable/innerFrom';
  * @param {function(): Observable} closingSelector A function that takes no
  * arguments and returns an Observable that signals buffer closure.
  *
- * 一个不接受参数并返回一个指示缓冲区关闭的 Observable 的函数。
+ * 一个不接受参数的函数，返回一个指示缓冲区关闭的 Observable。
  *
  * @return A function that returns an Observable of arrays of buffered values.
  *
- * 返回缓冲值数组的 Observable 的函数。
+ * 一个返回 Observable 的函数，该 Observable 的内容是一些由已缓冲的值构成的数组。
  *
  */
 export function bufferWhen<T>(closingSelector: () => ObservableInput<any>): OperatorFunction<T, T[]> {

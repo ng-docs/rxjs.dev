@@ -34,7 +34,7 @@ export function switchMap<T, R, O extends ObservableInput<any>>(
  * Projects each source value to an Observable which is merged in the output
  * Observable, emitting values only from the most recently projected Observable.
  *
- * 将每个源值投影到一个 Observable，该 Observable 合并到输出 Observable 中，仅从最近投影的 Observable 发出值。
+ * 将每个源值投影到一个 Observable，该 Observable 会合并到输出 Observable 中，仅从最近投影的 Observable 中发出值。
  *
  * <span class="informal">Maps each value to an Observable, then flattens all of
  * these inner Observables.</span>
@@ -52,7 +52,7 @@ export function switchMap<T, R, O extends ObservableInput<any>>(
  * emitting items from the new one. It continues to behave like this for
  * subsequent inner Observables.
  *
- * 返回一个 Observable，该 Observable 基于应用你提供给源 Observable 发出的每个项目的函数来发射项目，其中该函数返回一个（所谓的“内部”）Observable。每次它观察到这些内部 Observable 之一时，输出 Observable 开始发射由该内部 Observable 发射的项目。当一个新的内部 Observable 被发射时，`switchMap` 停止从之前发射的内部 Observable 发射项目，并开始从新的发射项目。对于后续的内部 Observable，它继续表现得像这样。
+ * 返回一个 Observable，该 Observable 会针对源 Observable 发出的每个条目调用某个函数来发送条目，该函数会返回一个（所谓的“内部”）Observable。每次它观察到这些内部 Observable 之一时，输出 Observable 就会开始发送由该内部 Observable 发送的条目。当发送一个新的内部 Observable 时，`switchMap` 就会停止从之前发送的内部 Observable 中发送条目，并开始从新的 Observable 发送条目。后续的内部 Observable 也以此类推。
  *
  * ## Example
  *
@@ -81,7 +81,7 @@ export function switchMap<T, R, O extends ObservableInput<any>>(
  *
  * Restart an interval Observable on every click event
  *
- * 在每个点击事件上重新启动一个时间间隔 Observable
+ * 在每个点击事件上重新启动一个定期重复 Observable
  *
  * ```ts
  * import { fromEvent, switchMap, interval } from 'rxjs';
@@ -99,14 +99,14 @@ export function switchMap<T, R, O extends ObservableInput<any>>(
  * that, when applied to an item emitted by the source Observable, returns an
  * Observable.
  *
- * 一个函数，当应用于源 Observable 发出的项目时，返回一个 Observable。
+ * 一个函数，当针对源 Observable 发出的条目调用它时，会返回一个 Observable。
  *
  * @return A function that returns an Observable that emits the result of
  * applying the projection function (and the optional deprecated
  * `resultSelector`) to each item emitted by the source Observable and taking
  * only the values from the most recently projected inner Observable.
  *
- * 一个返回 Observable 的函数，该函数发出将投影函数（和可选的不推荐使用的 `resultSelector`）应用于源 Observable 发出的每个项目的结果，并且仅从最近投影的内部 Observable 中获取值。
+ * 一个返回 Observable 的函数，该 Observable 会针对源 Observable 发送的每个条目调用投影函数（和已弃用的可选参数 `resultSelector`），并且仅从最近投影出来的内部 Observable 中获取值。
  *
  */
 export function switchMap<T, R, O extends ObservableInput<any>>(

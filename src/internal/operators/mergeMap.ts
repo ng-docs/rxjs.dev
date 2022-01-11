@@ -38,7 +38,7 @@ export function mergeMap<T, R, O extends ObservableInput<any>>(
  * Projects each source value to an Observable which is merged in the output
  * Observable.
  *
- * 将每个源值投影到一个 Observable，该 Observable 被合并到输出 Observable 中。
+ * 将每个源值投影到一个 Observable，该 Observable 会被合并到输出 Observable 中。
  *
  * <span class="informal">Maps each value to an Observable, then flattens all of
  * these inner Observables using {@link mergeAll}.</span>
@@ -52,7 +52,7 @@ export function mergeMap<T, R, O extends ObservableInput<any>>(
  * returns an Observable, and then merging those resulting Observables and
  * emitting the results of this merger.
  *
- * 返回一个 Observable，该 Observable 基于将你提供的函数应用于源 Observable 发出的每个项目，其中该函数返回一个 Observable，然后合并这些结果 Observable 并发出此合并的结果，从而发出项目。
+ * 返回一个 Observable，该 Observable 将针对源 Observable 发送的每个条目执行一个函数，该函数会返回一个 Observable，然后合并这些结果 Observable，并发送合并后的结果。
  *
  * ## Example
  *
@@ -60,7 +60,7 @@ export function mergeMap<T, R, O extends ObservableInput<any>>(
  *
  * Map and flatten each letter to an Observable ticking every 1 second
  *
- * 每 1 秒将每个字母映射并展平到一个 Observable 滴答声
+ * 将每个字母映射为一个每秒发送一个条目的 Observable 并展平
  *
  * ```ts
  * import { of, mergeMap, interval, map } from 'rxjs';
@@ -92,7 +92,7 @@ export function mergeMap<T, R, O extends ObservableInput<any>>(
  * that, when applied to an item emitted by the source Observable, returns an
  * Observable.
  *
- * 一个函数，当应用于源 Observable 发出的项目时，返回一个 Observable。
+ * 一个函数，当针对源 Observable 发出的条目调用它时，会返回一个 Observable。
  *
  * @param {number} [concurrent=Infinity] Maximum number of input
  * Observables being subscribed to concurrently.
@@ -101,7 +101,7 @@ export function mergeMap<T, R, O extends ObservableInput<any>>(
  * `resultSelector`) to each item emitted by the source Observable and merging
  * the results of the Observables obtained from this transformation.
  *
- * 一个返回 Observable 的函数，该函数发出将投影函数（以及可选的不推荐使用的 `resultSelector`）应用于源 Observable 发出的每个项目并合并从此转换获得的 Observables 的结果的结果。
+ * 一个返回 Observable 的函数，该 Observable 会针对源 Observable 发送的每个条目调用投影函数（并带有已弃用的可选参数 `resultSelector`），并将转换出的结果 Observables 合并后发出。
  *
  */
 export function mergeMap<T, R, O extends ObservableInput<any>>(

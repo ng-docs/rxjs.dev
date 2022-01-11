@@ -25,12 +25,12 @@ export function bufferTime<T>(
 /**
  * Buffers the source Observable values for a specific time period.
  *
- * 缓冲特定时间段的源 Observable 值。
+ * 每隔特定时间段，对源 Observable 的值进行缓冲。
  *
  * <span class="informal">Collects values from the past as an array, and emits
  * those arrays periodically in time.</span>
  *
- * <span class="informal">将过去的值作为数组收集，并及时定期发出这些数组。</span>
+ * <span class="informal">将已过去的值收集为数组，并定期发送这些数组。</span>
  *
  * ![](bufferTime.png)
  *
@@ -43,7 +43,7 @@ export function bufferTime<T>(
  * `maxBufferSize` is specified, the buffer will be closed either after
  * `bufferTimeSpan` milliseconds or when it contains `maxBufferSize` elements.
  *
- * 在特定持续时间 `bufferTimeSpan` 中缓冲来自源的值。除非给定可选参数 `bufferCreationInterval`，否则它会每隔 `bufferTimeSpan` 毫秒发出并重置缓冲区。如果给定了 `bufferCreationInterval`，则此运算符每 `bufferCreationInterval` 毫秒打开缓冲区，并每 `bufferTimeSpan` 毫秒关闭（发出和重置）缓冲区。当指定可选参数 `maxBufferSize` 时，缓冲区将在 `bufferTimeSpan` 毫秒后或包含 `maxBufferSize` 元素时关闭。
+ * 在特定持续时间 `bufferTimeSpan` 内缓冲来自源的值。除非给定可选参数 `bufferCreationInterval`，否则它会每隔 `bufferTimeSpan` 毫秒发送一次并重置缓冲区。如果给定了 `bufferCreationInterval`，则此操作符会每隔 `bufferCreationInterval` 毫秒打开缓冲区，并每隔 `bufferTimeSpan` 毫秒关闭（发送和重置）缓冲区。当指定可选参数 `maxBufferSize` 时，缓冲区将在 `bufferTimeSpan` 毫秒后或包含 `maxBufferSize` 个元素时关闭。
  *
  * ## Examples
  *
@@ -51,7 +51,7 @@ export function bufferTime<T>(
  *
  * Every second, emit an array of the recent click events
  *
- * 每秒发出一组最近的点击事件
+ * 每秒发送一组最近的点击事件
  *
  * ```ts
  * import { fromEvent, bufferTime } from 'rxjs';
@@ -63,7 +63,7 @@ export function bufferTime<T>(
  *
  * Every 5 seconds, emit the click events from the next 2 seconds
  *
- * 每 5 秒，从接下来的 2 秒发出点击事件
+ * 每 5 秒，发送以 2 秒间隔缓冲到的点击事件
  *
  * ```ts
  * import { fromEvent, bufferTime } from 'rxjs';
@@ -79,7 +79,7 @@ export function bufferTime<T>(
  * @see {@link windowTime}
  * @param {number} bufferTimeSpan The amount of time to fill each buffer array.
  *
- * 填充每个缓冲区数组的时间。
+ * 填充每个缓冲区数组的时间段。
  *
  * @param {number} [bufferCreationInterval] The interval at which to start new
  * buffers.
@@ -88,7 +88,7 @@ export function bufferTime<T>(
  * intervals that determine buffer boundaries.
  * @return A function that returns an Observable of arrays of buffered values.
  *
- * 返回缓冲值数组的 Observable 的函数。
+ * 一个返回 Observable 的函数，该 Observable 的值是一些缓冲区构成的数组。
  *
  */
 export function bufferTime<T>(bufferTimeSpan: number, ...otherArgs: any[]): OperatorFunction<T, T[]> {
@@ -109,7 +109,7 @@ export function bufferTime<T>(bufferTimeSpan: number, ...otherArgs: any[]): Oper
      * does not alter the buffer. Also checks to see if a new buffer needs to be started
      * after the emit.
      *
-     * 是否从记录中发出缓冲区的工作，确保在发出之前删除记录，因此可重入代码（可能来自某些自定义调度）不会改变缓冲区。还检查发射后是否需要启动新缓冲区。
+     * 执行从此记录中发送缓冲区的工作，以确保在发送之前删除记录，因此某些可重入代码（可能来自某些自定义调度器）不会修改缓冲区。它还会检查发送后是否需要启动新缓冲区。
      *
      */
     const emit = (record: { buffer: T[]; subs: Subscription }) => {
@@ -125,7 +125,7 @@ export function bufferTime<T>(bufferTimeSpan: number, ...otherArgs: any[]): Oper
      * the work of scheduling a job at the requested bufferTimeSpan
      * that will emit the buffer (if it's not unsubscribed before then).
      *
-     * 每次我们开始一个新的缓冲区时调用。这会在请求的 bufferTimeSpan 处调度作业，该作业将发出缓冲区（如果在此之前未取消订阅）。
+     * 每当我们开始一个新的缓冲区时调用时。这会在请求的 bufferTimeSpan 处调度一个任务，该任务会发送缓冲区（如果在此之前未退订）。
      *
      */
     const startBuffer = () => {

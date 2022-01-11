@@ -52,7 +52,7 @@ export function pluck<T>(...properties: string[]): OperatorFunction<T, unknown>;
  * <span class="informal">Like {@link map}, but meant only for picking one of
  * the nested properties of every emitted value.</span>
  *
- * <span class="informal">与 {@link map} 类似，但仅用于选择每个发出值的嵌套属性之一。</span>
+ * <span class="informal">与 {@link map} 类似，但仅用于选择每个发来的值的嵌套属性之一。</span>
  *
  * ![](pluck.png)
  *
@@ -61,7 +61,7 @@ export function pluck<T>(...properties: string[]): OperatorFunction<T, unknown>;
  * Observable. If a property can't be resolved, it will return `undefined` for
  * that value.
  *
- * 给定描述属性路径的字符串或数字列表，从源 Observable 中的所有值中检索指定嵌套属性的值。如果无法解析某个属性，它将返回该值的 `undefined`。
+ * 根据描述某属性路径的字符串或数字列表，从源 Observable 的所有值中检索指定嵌套属性的值。如果无法解析某个属性，它将为该值返回 `undefined`。
  *
  * ## Example
  *
@@ -69,7 +69,7 @@ export function pluck<T>(...properties: string[]): OperatorFunction<T, unknown>;
  *
  * Map every click to the tagName of the clicked target element
  *
- * 将每次点击映射到点击的目标元素的 tagName
+ * 将每次点击映射为此点击的目标元素的 tagName
  *
  * ```ts
  * import { fromEvent, pluck } from 'rxjs';
@@ -88,7 +88,7 @@ export function pluck<T>(...properties: string[]): OperatorFunction<T, unknown>;
  * @return A function that returns an Observable of property values from the
  * source values.
  *
- * 从源值返回属性值的 Observable 的函数。
+ * 从源值返回某个属性值的 Observable 的函数。
  *
  * @deprecated Use {@link map} and optional chaining: `pluck('foo', 'bar')` is `map(x => x?.foo?.bar)`. Will be removed in v8.
  *

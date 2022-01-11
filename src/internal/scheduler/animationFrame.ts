@@ -7,7 +7,7 @@ import { AnimationFrameScheduler } from './AnimationFrameScheduler';
  * 动画帧调度器
  *
  * <span class="informal">Perform task when `window.requestAnimationFrame` would fire</span>
-*
+ *
  * <span class="informal">在 `window.requestAnimationFrame` 触发时执行任务</span>
  *
  * When `animationFrame` scheduler is used with delay, it will fall back to {@link asyncScheduler} scheduler
@@ -19,7 +19,7 @@ import { AnimationFrameScheduler } from './AnimationFrameScheduler';
  * It makes sure scheduled task will happen just before next browser content repaint,
  * thus performing animations as efficiently as possible.
  *
- * 无需延迟，`animationFrame` 调度程序可用于创建流畅的浏览器动画。它确保计划任务将在下一次浏览器内容重绘之前发生，从而尽可能高效地执行动画。
+ * 无需延迟，`animationFrame` 调度器可用于创建流畅的浏览器动画。它能确保已安排的任务将在下一次浏览器内容重绘之前发生，从而尽可能高效地执行动画。
  *
  * ## Example
  *

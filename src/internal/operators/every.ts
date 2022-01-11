@@ -7,7 +7,7 @@ export function every<T>(predicate: BooleanConstructor): OperatorFunction<T, Exc
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 改用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function every<T>(
@@ -17,7 +17,7 @@ export function every<T>(
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 改用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function every<T, A>(
@@ -29,12 +29,12 @@ export function every<T>(predicate: (value: T, index: number, source: Observable
 /**
  * Returns an Observable that emits whether or not every item of the source satisfies the condition specified.
  *
- * 返回一个 Observable，它发出源中的每个项目是否满足指定的条件。
+ * 返回一个 Observable，它会发送是否源中的每个条目全都满足指定的条件。
  *
  * <span class="informal">If all values pass predicate before the source completes, emits true before completion,
  * otherwise emit false, then complete.</span>
  *
- * <span class="informal">如果所有值在源完成之前通过谓词，则在完成之前发出 true，否则发出 false，然后完成。</span>
+ * <span class="informal">如果所有值都在源完成之前通过了谓词检查，则会在完成之前发送 true，否则发送 false。</span>
  *
  * ![](every.png)
  *
@@ -55,13 +55,13 @@ export function every<T>(predicate: (value: T, index: number, source: Observable
  * ```
  * @param {function} predicate A function for determining if an item meets a specified condition.
  *
- * 用于确定项目是否满足指定条件的函数。
+ * 用于确定条目是否满足指定条件的函数。
  *
  * @param {any} [thisArg] Optional object to use for `this` in the callback.
  * @return A function that returns an Observable of booleans that determines if
  * all items of the source Observable meet the condition specified.
  *
- * 一个返回布尔值的 Observable 的函数，用于确定源 Observable 的所有项目是否满足指定的条件。
+ * 一个返回布尔值的 Observable 的函数，用于确定是否源 Observable 的每个条目全都满足指定的条件。
  *
  */
 export function every<T>(
