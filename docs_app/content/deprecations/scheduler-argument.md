@@ -4,7 +4,7 @@
 
 To limit the API surface of some operators, but also prepare for a [major refactoring in V8](https://github.com/ReactiveX/rxjs/pull/4583), we agreed on deprecating the `scheduler` argument from many operators. It solely deprecates those methods where this argument is rarely used. So `time` related operators, like [`interval`](https://rxjs.dev/api/index/function/interval) are not affected by this deprecation.
 
-为了限制某些操作符的 API 表面，同时也为[V8 中的重大重构](https://github.com/ReactiveX/rxjs/pull/4583)做准备，我们同意从许多操作符中弃用 `scheduler` 参数。它仅弃用那些很少使用此参数的方法。因此，与 `time` 相关的操作符（如[`interval`](https://rxjs.dev/api/index/function/interval)）不受此弃用的影响。
+为了限制某些操作符的 对外 API，同时也为[V8 中的重大重构](https://github.com/ReactiveX/rxjs/pull/4583)做准备，我们同意从许多操作符中弃用 `scheduler` 参数。它仅弃用那些很少使用此参数的方法。因此，与 `time` 相关的操作符（如[`interval`](https://rxjs.dev/api/index/function/interval)）不受此弃用的影响。
 
 To support this transition the [scheduled creation function](/api/index/function/scheduled) was added.
 
