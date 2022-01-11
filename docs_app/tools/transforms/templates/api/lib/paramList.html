@@ -21,10 +21,10 @@
       {% if showType %}<td class="param-type"><code>{$ parameter.type $}</code></td>{% endif %}
       <td class="param-description">
       {% marked %}
-        {% if parameter.isOptional or parameter.defaultValue !== undefined %}Optional. Default is `{$ parameter.defaultValue === undefined and 'undefined' or parameter.defaultValue $}`.{% endif %}
+        {% if parameter.isOptional or parameter.defaultValue !== undefined %}可选。默认值为 `{$ parameter.defaultValue === undefined and 'undefined' or parameter.defaultValue $}`。{% endif %}
 
         {% if parameter.description | trim %}{$ parameter.description $}
-        {% elseif not showType and parameter.type %}<p>Type: <code>{$ parameter.type $}</code>.</p>
+        {% elseif not showType and parameter.type %}<p>类型：<code>{$ parameter.type $}</code>。</p>
         {% endif %}
       {% endmarked %}
       </td>
@@ -32,6 +32,6 @@
   </tbody>
 </table>
 {%- else -%}
-<p>There are no parameters.</p>
+<p>没有参数。</p>
 {%- endif -%}
 {%- endmacro -%}

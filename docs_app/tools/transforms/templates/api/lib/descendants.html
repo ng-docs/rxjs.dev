@@ -2,10 +2,10 @@
 {% if descendants.length %}
 <ul>
   {% for descendant in descendants %}
-    <li>
-      <code>{$ descendant.name $}</code>
+  <li>
+    <code>{$ descendant.name $}</code>
       {$ renderDescendantList(descendant.descendants | filterByPropertyValue('docType', docType), docType, recursed) $}
-    </li>
+  </li>
   {% endfor %}
 </ul>
 {% endif %}
