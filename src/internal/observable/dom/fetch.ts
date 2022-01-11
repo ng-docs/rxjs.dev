@@ -85,7 +85,7 @@ export function fromFetch(input: string | Request, init?: RequestInit): Observab
  * resolve until the entire body has been received. Unsubscribing from any observable
  * that uses the promise as an observable input will not abort the request.
  *
- * 这意味着 `fromFetch` observable 将在接收到主体之前发出一个 `Response` - 然后完成。当调用 `Response` 上的其中一种方法（如 `text()` 或 `json()` 时，返回的 Promise 将在收到整个正文之前不会解析。取消订阅任何使用 Promise 作为可观察输入的可观察对象不会中止请求。
+ * 这意味着 `fromFetch` observable 将在接收到主体之前发出一个 `Response` - 然后完成。当调用 `Response` 上的其中一种方法（如 `text()` 或 `json()` 时，返回的 Promise 将在收到整个正文之前不会解析。取消订阅任何使用 Promise 作为可观察输入的可观察者不会中止请求。
  *
  * To facilitate aborting the retrieval of responses that use chunked transfer encoding,
  * a `selector` can be specified via the `init` parameter:

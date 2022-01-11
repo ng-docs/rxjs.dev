@@ -49,7 +49,7 @@ A contract where a [consumer](#consumer) is [observing](#observation) values pus
 
 The primary type in RxJS. At its highest level, an observable represents a template for connecting an [Observer](#observer), as a [consumer](#consumer), to a [producer](#producer), via a [subscribe](#subscribe) action, resulting in a [subscription](#subscription).
 
-RxJS 中的主要类型。在其最高级别，可观察对象表示一个模板，用于通过[订阅](#subscribe)操作将[观察者](#observer)作为[消费者](#consumer)连接到[生产者](#producer)，从而产生[订阅](#subscription)。
+RxJS 中的主要类型。在其最高级别，可观察者表示一个模板，用于通过[订阅](#subscribe)操作将[观察者](#observer)作为[消费者](#consumer)连接到[生产者](#producer)，从而产生[订阅](#subscription)。
 
 ### Observer
 
@@ -146,7 +146,7 @@ The act of a [producer](#producer) pushing [nexted](#next) values, [errors](#err
 
 Some of what we discuss is conceptual. These are mostly common traits of behaviors that can manifest in observables or in push-based reactive systems.
 
-我们讨论的一些内容是概念性的。这些主要是行为的常见特征，可以在可观察对象或基于推送的反应系统中表现出来。
+我们讨论的一些内容是概念性的。这些主要是行为的常见特征，可以在可观察者或基于推送的反应系统中表现出来。
 
 ### Multicast
 
@@ -179,7 +179,7 @@ An observable is "cold" when it creates a new [producer](#producer) during [subs
 An observable is "hot", when its [producer](#producer) was created outside of the context of the [subscribe](#subscribe) action. This means that the "hot" observable is almost always [multicast](#multicast). It is possible that a "hot" observable is still _technically_ unicast, if it is engineered to only allow one [subscription](#subscription) at a time, however, there is no straightforward mechanism for this in RxJS, and the scenario is a unlikely. For the purposes of discussion, all "hot" observables can
 be assumed to be [multicast](#multicast). Hot observables cannot be made [cold](#cold).
 
-一个可观察对象是“热的”，当它的[生产者](#producer)是在[订阅](#subscribe)操作的上下文之外创建时。这意味着“热”的 observable 几乎总是[multicast](#multicast)。一个“热”的 observable 可能在*技术上*仍然是单播的，如果它被设计为一次只允许一个[订阅](#subscription)，但是，在 RxJS 中没有直接的机制，这种情况不太可能发生。出于讨论的目的，可以假设所有“热”可观察对象都是[多播](#multicast)的。热的 observables 不能[变冷](#cold)。
+一个可观察者是“热的”，当它的[生产者](#producer)是在[订阅](#subscribe)操作的上下文之外创建时。这意味着“热”的 observable 几乎总是[multicast](#multicast)。一个“热”的 observable 可能在*技术上*仍然是单播的，如果它被设计为一次只允许一个[订阅](#subscription)，但是，在 RxJS 中没有直接的机制，这种情况不太可能发生。出于讨论的目的，可以假设所有“热”可观察者都是[多播](#multicast)的。热的 observables 不能[变冷](#cold)。
 
 ### Push
 
@@ -234,7 +234,7 @@ During [subscription](#subscription) to that observable, operations are performe
 A "stream" or "streaming" in the case of observables, refers to the collection of [operations](#operation), as they are processed during a [subscription](#subscription). This is not to be confused with node [Streams](https://nodejs.org/api/stream.html), and the word "stream", on its own, should be used _sparingly_ in documentation and articles. Instead, prefer [observation chain](#observation-chain), [operations](#operation), or [subscription](#subscription). "Streaming" is less ambiguous, and is fine to
 use given this defined meaning.
 
-对于可观察对象，“流”或“流”是指[操作](#operation)的集合，因为它们是在[订阅](#subscription)期间处理的。不要与 node [Streams](https://nodejs.org/api/stream.html)混淆，“流”一词本身应在文档和文章中 _ 谨慎使用 _。相反，更喜欢[观察链](#observation-chain)、[操作](#operation)或[订阅](#subscription)。“流式传输”不那么模棱两可，考虑到这个定义的含义，可以很好地使用。
+对于可观察者，“流”或“流”是指[操作](#operation)的集合，因为它们是在[订阅](#subscription)期间处理的。不要与 node [Streams](https://nodejs.org/api/stream.html)混淆，“流”一词本身应在文档和文章中 _ 谨慎使用 _。相反，更喜欢[观察链](#observation-chain)、[操作](#operation)或[订阅](#subscription)。“流式传输”不那么模棱两可，考虑到这个定义的含义，可以很好地使用。
 
 ### Source
 
@@ -258,7 +258,7 @@ A "observable input" ([defined as a type here](/api/index/type-alias/ObservableI
 
 An [observable](#observable) that is being used to notify another [observable](#observable) that it needs to perform some action. The action should only occur on a [next notification](#next), and never on [error](#error) or [complete](#complete). Generally, notifiers are used with specific operators, such as [`takeUntil`](/api/operators/takeUntil), [`buffer`](/api/operators/buffer), or [`delayWhen`](/api/operators/delayWhen). A notifier may be passed directly, or it may be returned by a callback.
 
-用于通知另一个[可观察](#observable)[对象](#observable)它需要执行某些操作的可观察对象。该操作应该只[在下一次通知](#next)时发生，而永远不会在[错误](#error)或[完成](#complete)时发生。通常，通知器与特定的操作符一起使用，例如[`takeUntil`](/api/operators/takeUntil)、[`buffer`](/api/operators/buffer)或[`delayWhen`](/api/operators/delayWhen)。通知程序可以直接传递，也可以由回调返回。
+用于通知另一个[可观察](#observable)[对象](#observable)它需要执行某些操作的可观察者。该操作应该只[在下一次通知](#next)时发生，而永远不会在[错误](#error)或[完成](#complete)时发生。通常，通知器与特定的操作符一起使用，例如[`takeUntil`](/api/operators/takeUntil)、[`buffer`](/api/operators/buffer)或[`delayWhen`](/api/operators/delayWhen)。通知程序可以直接传递，也可以由回调返回。
 
 ### Inner Source
 

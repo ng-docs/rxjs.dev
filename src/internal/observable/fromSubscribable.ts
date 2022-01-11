@@ -5,7 +5,7 @@ import { Subscribable } from '../types';
 /**
  * Used to convert a subscribable to an observable.
  *
- * 用于将可订阅对象转换为可观察对象。
+ * 用于将可订阅对象转换为可观察者。
  *
  * Currently, this is only used within internals.
  *

@@ -18,7 +18,7 @@ import { scheduleReadableStreamLike } from './scheduleReadableStreamLike';
  * Converts from a common {@link ObservableInput} type to an observable where subscription and emissions
  * are scheduled on the provided scheduler.
  *
- * 从常见的 {@link ObservableInput} 类型转换为在提供的调度程序上安排订阅和排放的可观察对象。
+ * 从常见的 {@link ObservableInput} 类型转换为在提供的调度程序上安排订阅和排放的可观察者。
  *
  * @see {@link from}
  * @see {@link of}

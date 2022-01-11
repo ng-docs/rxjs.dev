@@ -53,7 +53,7 @@ export class Subject<T> extends Observable<T> implements SubscriptionLike {
   /**
    * Creates a "subject" by basically gluing an observer to an observable.
    *
-   * 通过基本上将观察者粘合到可观察对象来创建“主题”。
+   * 通过基本上将观察者粘合到可观察者来创建“主题”。
    *
    * @nocollapse
    * @deprecated Recommended you do not use. Will be removed at some point in the future. Plans for replacement still under discussion.

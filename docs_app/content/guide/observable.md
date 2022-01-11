@@ -411,7 +411,7 @@ const observable = new Observable(function subscribe(subscriber) {
 
 <span class="informal">Observables can be created with `new Observable`. Most commonly, observables are created using creation functions, like `of`, `from`, `interval`, etc.</span>
 
-可以使用 `new Observable`。最常见的是，可观察对象是使用创建函数创建的，例如 `of`、`from`、`interval` 等。
+可以使用 `new Observable`。最常见的是，可观察者是使用创建函数创建的，例如 `of`、`from`、`interval` 等。
 
 In the example above, the `subscribe` function is the most important piece to describe the Observable. Let's look at what subscribing means.
 

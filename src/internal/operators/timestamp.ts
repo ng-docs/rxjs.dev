@@ -5,7 +5,7 @@ import { map } from './map';
 /**
  * Attaches a timestamp to each item emitted by an observable indicating when it was emitted
  *
- * 将时间戳附加到由可观察对象发出的每个项目上，指示它何时发出
+ * 将时间戳附加到由可观察者发出的每个项目上，指示它何时发出
  *
  * The `timestamp` operator maps the *source* observable stream to an object of type
  * `{value: T, timestamp: R}`. The properties are generically typed. The `value` property contains the value

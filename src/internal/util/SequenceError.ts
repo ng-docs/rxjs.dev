@@ -17,7 +17,7 @@ export interface SequenceErrorCtor {
  * An error thrown when something is wrong with the sequence of
  * values arriving on the observable.
  *
- * 当到达可观察对象的值序列出现问题时引发错误。
+ * 当到达可观察者的值序列出现问题时引发错误。
  *
  * @see {@link operators/single}
  * @class SequenceError

@@ -37,7 +37,7 @@ import { isValidDate } from '../util/isDate';
  * {@link concatMapTo} or {@link concatMap} in order to wait
  * a few seconds and start a subscription to a source.
  *
- * 你可能希望使用 `timer` 将订阅可观察对象延迟设定的时间。在这里，我们使用带有 {@link concatMapTo} 或 {@link concatMap} 的计时器，以便等待几秒钟并开始订阅源。
+ * 你可能希望使用 `timer` 将订阅可观察者延迟设定的时间。在这里，我们使用带有 {@link concatMapTo} 或 {@link concatMap} 的计时器，以便等待几秒钟并开始订阅源。
  *
  * ```ts
  * import { of, timer, concatMap } from 'rxjs';

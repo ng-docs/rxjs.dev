@@ -70,7 +70,7 @@ Although `run()` executes entirely synchronously, the helper functions inside yo
 
 - `hot(marbleDiagram: string, values?: object, error?: any)` - creates a "hot" observable (like a subject) that will behave as though it's already "running" when the test begins. An interesting difference is that `hot` marbles allow a `^` character to signal where the "zero frame" is. That is the point at which the subscription to observables being tested begins.
 
-  `hot(marbleDiagram: string, values?: object, error?: any)` - 创建一个“热”的可观察对象（就像一个主题），当测试开始时，它的行为就像它已经“运行”一样。一个有趣的区别是 `hot` 弹珠允许 `^` 字符表示“零帧”在哪里。这就是订阅被测试的 observables 的开始。
+  `hot(marbleDiagram: string, values?: object, error?: any)` - 创建一个“热”的可观察者（就像一个主题），当测试开始时，它的行为就像它已经“运行”一样。一个有趣的区别是 `hot` 弹珠允许 `^` 字符表示“零帧”在哪里。这就是订阅被测试的 observables 的开始。
 
 - `expectObservable(actual: Observable<T>, subscriptionMarbles?: string).toBe(marbleDiagram: string, values?: object, error?: any)` - schedules an assertion for when the TestScheduler flushes. Give `subscriptionMarbles` as parameter to change the schedule of subscription and unsubscription. If you don't provide the `subscriptionMarbles` parameter it will subscribe at the beginning and never unsubscribe. Read below about subscription marble diagram.
 
@@ -146,7 +146,7 @@ How many virtual milliseconds one frame represents depends on the value of `Test
 
 - `'|'` complete: The successful completion of an observable. This is the observable producer signaling `complete()`.
 
-  `'|'` 完成：一个可观察对象的成功完成。这是可观察者生产者信号 `complete()`。
+  `'|'` 完成：一个可观察者的成功完成。这是可观察者生产者信号 `complete()`。
 
 - `'#'` error: An error terminating the observable. This is the observable producer signaling `error()`.
 
@@ -184,7 +184,7 @@ expectObservable(someStreamForTesting).toBe(expected, values);
 
 - `'^'` subscription point: (hot observables only) shows the point at which the tested observables will be subscribed to the hot observable. This is the "zero frame" for that observable, every frame before the `^` will be negative. Negative time might seem pointless, but there are in fact advanced cases where this is necessary, usually involving ReplaySubjects.
 
-  `'^'` 订阅点：（仅限 hot observables）显示测试的 observables 将订阅 hot observable 的点。这是该可观察对象的“零帧”，`^` 之前的每一帧都是负数。负时间可能看起来毫无意义，但实际上在高级情况下这是必要的，通常涉及 ReplaySubjects。
+  `'^'` 订阅点：（仅限 hot observables）显示测试的 observables 将订阅 hot observable 的点。这是该可观察者的“零帧”，`^` 之前的每一帧都是负数。负时间可能看起来毫无意义，但实际上在高级情况下这是必要的，通常涉及 ReplaySubjects。
 
 ### Time progression syntax
 
@@ -230,7 +230,7 @@ expectObservable(result).toBe(expected);
 
 `'-'` or `'------'`: Equivalent to {@link NEVER}, or an observable that never emits or errors or completes.
 
-`'-'` 或 `'------'` ：等价于 {@link NEVER}，或者是一个从不发射、错误或完成的可观察对象。
+`'-'` 或 `'------'` ：等价于 {@link NEVER}，或者是一个从不发射、错误或完成的可观察者。
 
 `|`: Equivalent to {@link EMPTY}, or an observable that never emits and completes immediately.
 
@@ -238,11 +238,11 @@ expectObservable(result).toBe(expected);
 
 `#`: Equivalent to {@link throwError}, or an observable that never emits and errors immediately.
 
-`#` ：等价于 {@link throwError}，或者是一个永远不会立即发出错误的可观察对象。
+`#` ：等价于 {@link throwError}，或者是一个永远不会立即发出错误的可观察者。
 
 `'--a--'`: An observable that waits 2 "frames", emits value `a` on frame 2 and then never completes.
 
-`'--a--'` ：一个等待 2 个“帧”的可观察对象，在第 2 帧上发出值 `a` 然后永远不会完成。
+`'--a--'` ：一个等待 2 个“帧”的可观察者，在第 2 帧上发出值 `a` 然后永远不会完成。
 
 `'--a--b--|'`: On frame 2 emit `a`, on frame 5 emit `b`, and on frame 8, `complete`.
 
@@ -278,7 +278,7 @@ expectObservable(result).toBe(expected);
 
 The `expectSubscriptions` helper allows you to assert that a `cold()` or `hot()` Observable you created was subscribed/unsubscribed to at the correct point in time. The `subscriptionMarbles` parameter to `expectObservable` allows your test to defer subscription to a later virtual time, and/or unsubscribe even if the observable being tested has not yet completed.
 
-`expectSubscriptions` 帮助器允许你断言你创建的 `cold()` 或 `hot()` 可观察对象在正确的时间点被订阅/取消订阅。`expectObservable` 的 `subscriptionMarbles` 参数允许你的测试将订阅推迟到以后的虚拟时间，和/或取消订阅，即使正在测试的 observable 尚未完成。
+`expectSubscriptions` 帮助器允许你断言你创建的 `cold()` 或 `hot()` 可观察者在正确的时间点被订阅/取消订阅。`expectObservable` 的 `subscriptionMarbles` 参数允许你的测试将订阅推迟到以后的虚拟时间，和/或取消订阅，即使正在测试的 observable 尚未完成。
 
 The subscription marble syntax is slightly different to conventional marble syntax.
 

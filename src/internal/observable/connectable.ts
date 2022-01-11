@@ -54,7 +54,7 @@ const DEFAULT_CONFIG: ConnectableConfig<unknown> = {
  * @returns A "connectable" observable, that has a `connect()` method, that you must call to
  * connect the source to all consumers through the subject provided as the connector.
  *
- * 具有 `connect()` 方法的“可连接”可观察对象，你必须调用该方法以通过作为连接器提供的主题将源连接到所有消费者。
+ * 具有 `connect()` 方法的“可连接”可观察者，你必须调用该方法以通过作为连接器提供的主题将源连接到所有消费者。
  *
  */
 export function connectable<T>(source: ObservableInput<T>, config: ConnectableConfig<T> = DEFAULT_CONFIG): Connectable<T> {

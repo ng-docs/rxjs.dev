@@ -122,7 +122,7 @@ export interface Subscribable<T> {
 /**
  * Valid types that can be converted to observables.
  *
- * 可以转换为可观察对象的有效类型。
+ * 可以转换为可观察者的有效类型。
  *
  */
 export type ObservableInput<T> =
@@ -163,7 +163,7 @@ export interface InteropObservable<T> {
  * A notification representing a "next" from an observable.
  * Can be used with {@link dematerialize}.
  *
- * 表示来自可观察对象的“下一个”的通知。可以与 {@link dematerialize} 一起使用。
+ * 表示来自可观察者的“下一个”的通知。可以与 {@link dematerialize} 一起使用。
  *
  */
 export interface NextNotification<T> {
@@ -187,7 +187,7 @@ export interface NextNotification<T> {
  * A notification representing an "error" from an observable.
  * Can be used with {@link dematerialize}.
  *
- * 表示来自可观察对象的“错误”的通知。可以与 {@link dematerialize} 一起使用。
+ * 表示来自可观察者的“错误”的通知。可以与 {@link dematerialize} 一起使用。
  *
  */
 export interface ErrorNotification {
@@ -205,7 +205,7 @@ export interface ErrorNotification {
  * A notification representing a "completion" from an observable.
  * Can be used with {@link dematerialize}.
  *
- * 表示来自可观察对象的“完成”的通知。可以与 {@link dematerialize} 一起使用。
+ * 表示来自可观察者的“完成”的通知。可以与 {@link dematerialize} 一起使用。
  *
  */
 export interface CompleteNotification {
@@ -445,7 +445,7 @@ export interface ReadableStreamLike<T> {
  * An observable with a `connect` method that is used to create a subscription
  * to an underlying source, connecting it with all consumers via a multicast.
  *
- * 一个带有 `connect` 方法的可观察对象，用于创建对底层源的订阅，通过多播将其与所有消费者连接。
+ * 一个带有 `connect` 方法的可观察者，用于创建对底层源的订阅，通过多播将其与所有消费者连接。
  *
  */
 export interface Connectable<T> extends Observable<T> {

@@ -26,7 +26,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * **Warning**: Using `takeLast` with an observable that never completes will result
  * in an observable that never emits a value.
  *
- * **警告**：将 `takeLast` 与永远不会完成的可观察对象一起使用将导致永远不会发出值的可观察对象。
+ * **警告**：将 `takeLast` 与永远不会完成的可观察者一起使用将导致永远不会发出值的可观察者。
  *
  * ## Example
  *

@@ -4,7 +4,7 @@ import { merge } from './merge';
 /**
  * Merge the values from all observables to a single observable result.
  *
- * 将所有可观察对象的值合并为单个可观察结果。
+ * 将所有可观察者的值合并为单个可观察结果。
  *
  * Creates an observable, that when subscribed to, subscribes to the source
  * observable, and all other sources provided as arguments. All values from

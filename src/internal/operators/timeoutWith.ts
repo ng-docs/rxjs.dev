@@ -24,7 +24,7 @@ import { timeout } from './timeout';
  *
  * @param switchTo The observable to switch to when timeout occurs.
  *
- * 发生超时时切换到的可观察对象。
+ * 发生超时时切换到的可观察者。
  *
  * @param scheduler The scheduler to use with time-related operations within this operator. Defaults to {@link asyncScheduler}
  *
@@ -41,7 +41,7 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  * When the passed timespan elapses before the source emits any given value, it will unsubscribe from the source,
  * and switch the subscription to another observable.
  *
- * 当在源发出任何给定值之前经过的时间跨度过去时，它将从源取消订阅，并将订阅切换到另一个可观察对象。
+ * 当在源发出任何给定值之前经过的时间跨度过去时，它将从源取消订阅，并将订阅切换到另一个可观察者。
  *
  * <span class="informal">Used to switch to a different observable if your source is being slow</span>
 *
@@ -112,7 +112,7 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  *
  * @param switchTo The observable to switch to when timeout occurs.
  *
- * 发生超时时切换到的可观察对象。
+ * 发生超时时切换到的可观察者。
  *
  * @param scheduler The scheduler to use with time-related operations within this operator. Defaults to {@link asyncScheduler}
  *

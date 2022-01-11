@@ -36,7 +36,7 @@ const DEFAULT_CONFIG: ConnectConfig<unknown> = {
  * Creates an observable by multicasting the source within a function that
  * allows the developer to define the usage of the multicast prior to connection.
  *
- * 通过在允许开发人员在连接之前定义多播的用法的函数中多播源来创建可观察对象。
+ * 通过在允许开发人员在连接之前定义多播的用法的函数中多播源来创建可观察者。
  *
  * This is particularly useful if the observable source you wish to multicast could
  * be synchronous or asynchronous. This sets it apart from {@link share}, which, in the

@@ -463,7 +463,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - The observable returned by the `audit` operator's duration selector must emit a next notification to end the duration. Complete notifications no longer end the duration.
 
-  `audit` 操作员的持续时间选择器返回的可观察对象必须发出下一个通知以结束持续时间。完成通知不再结束持续时间。
+  `audit` 操作员的持续时间选择器返回的可观察者必须发出下一个通知以结束持续时间。完成通知不再结束持续时间。
 
 - `audit` now emits the last value from the source when the source completes. Previously, `audit` would mirror the completion without emitting the value.
 
@@ -767,7 +767,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - The `windowBoundaries` observable no longer completes the result. It was only ever meant to notify of the window boundary. To get the same behavior as the old behavior, you would need to add an `endWith` and a `skipLast(1)` like so: `source$.pipe(window(notifier$.pipe(endWith(true))), skipLast(1))`.
 
-  `windowBoundaries` 可观察对象不再完成结果。它只是用来通知窗口边界。要获得与旧行为相同的行为，你需要添加一个 `endWith` 和一个 `skipLast(1)`，如下所示： `source$.pipe(window(notifier$.pipe(endWith(true))), skipLast(1))` .
+  `windowBoundaries` 可观察者不再完成结果。它只是用来通知窗口边界。要获得与旧行为相同的行为，你需要添加一个 `endWith` 和一个 `skipLast(1)`，如下所示： `source$.pipe(window(notifier$.pipe(endWith(true))), skipLast(1))` .
 
 ### windowToggle
 
@@ -938,5 +938,5 @@ No changes.
 
 - A new means of comparing the equality of to observables. If all emissions are the same, and at the same time, then they are equal. This is primarily useful for refactoring operator chains and making sure that they are equivalent.
 
-  一种比较可观察对象的相等性的新方法。如果所有排放量都相同，并且同时，那么它们是相等的。这主要用于重构操作符链并确保它们是等价的。
+  一种比较可观察者的相等性的新方法。如果所有排放量都相同，并且同时，那么它们是相等的。这主要用于重构操作符链并确保它们是等价的。
 

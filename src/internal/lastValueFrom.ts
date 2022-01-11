@@ -32,7 +32,7 @@ export function lastValueFrom<T>(source: Observable<T>): Promise<T>;
  * this situation, look into adding something like {@link timeout}, {@link take},
  * {@link takeWhile}, or {@link takeUntil} amongst others.
  *
- * **警告**：仅将其与你*知道*将完成的可观察对象一起使用。如果源 observable 没有完成，你最终会得到一个被挂起的 Promise，并且可能所有异步函数的状态都挂在内存中。为避免这种情况，请考虑添加 {@link timeout}、{@link take}、{@link takeWhile} 或 {@link takeUntil} 等内容。
+ * **警告**：仅将其与你*知道*将完成的可观察者一起使用。如果源 observable 没有完成，你最终会得到一个被挂起的 Promise，并且可能所有异步函数的状态都挂在内存中。为避免这种情况，请考虑添加 {@link timeout}、{@link take}、{@link takeWhile} 或 {@link takeUntil} 等内容。
  *
  * ## Example
  *

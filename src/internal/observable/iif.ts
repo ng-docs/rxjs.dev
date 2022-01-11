@@ -101,7 +101,7 @@ import { ObservableInput } from '../types';
  *
  * @return An observable that proxies to `trueResult` or `falseResult`, depending on the result of the `condition` function.
  *
- * 代理 `trueResult` 或 `falseResult` 的可观察对象，具体取决于 `condition` 函数的结果。
+ * 代理 `trueResult` 或 `falseResult` 的可观察者，具体取决于 `condition` 函数的结果。
  *
  */
 export function iif<T, F>(condition: () => boolean, trueResult: ObservableInput<T>, falseResult: ObservableInput<F>): Observable<T | F> {

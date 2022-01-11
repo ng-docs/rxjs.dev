@@ -11,7 +11,7 @@ import { executeSchedule } from '../util/executeSchedule';
  *
  * @param input The iterable to create an observable from
  *
- * 创建可观察对象的可迭代对象
+ * 创建可观察者的可迭代对象
  *
  * @param scheduler The scheduler to use
  *

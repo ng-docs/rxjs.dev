@@ -5,7 +5,7 @@ import { combineLatest } from './combineLatest';
  * Create an observable that combines the latest values from all passed observables and the source
  * into arrays and emits them.
  *
- * 创建一个可观察对象，它将所有传递的可观察对象和源中的最新值组合到数组中并发出它们。
+ * 创建一个可观察者，它将所有传递的可观察者和源中的最新值组合到数组中并发出它们。
  *
  * Returns an observable, that when subscribed to, will subscribe to the source observable and all
  * sources provided as arguments. Once all sources emit at least one value, all of the latest values

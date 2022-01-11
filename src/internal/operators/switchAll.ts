@@ -22,7 +22,7 @@ import { identity } from '../util/identity';
  * source observable completes, *and* any currently subscribed to inner observable also has completed,
  * if there are any.
  *
- * `switchAll` 订阅的源是可观察对象的可观察对象，也称为“高阶可观察对象”（或 `Observable<Observable<T>>`）。它订阅源发出的最近提供的“内部 observable”，取消订阅任何先前订阅的内部 observable，这样在任何时间点都只能订阅最近的内部 observable。`switchAll` 返回的结果 observable 只有在源 observable 完成时才会完成，*并且*任何当前订阅的内部 observable 也已完成（如果有的话）。
+ * `switchAll` 订阅的源是可观察者的可观察者，也称为“高阶可观察者”（或 `Observable<Observable<T>>`）。它订阅源发出的最近提供的“内部 observable”，取消订阅任何先前订阅的内部 observable，这样在任何时间点都只能订阅最近的内部 observable。`switchAll` 返回的结果 observable 只有在源 observable 完成时才会完成，*并且*任何当前订阅的内部 observable 也已完成（如果有的话）。
  *
  * ## Examples
  *

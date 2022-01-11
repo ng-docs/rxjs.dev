@@ -82,7 +82,7 @@ export class Observable<T> implements Subscribable<T> {
    * @method lift
    * @param operator the operator defining the operation to take on the observable
    *
-   * 定义对可观察对象进行操作的操作员
+   * 定义对可观察者进行操作的操作员
    *
    * @return a new observable with the Operator applied
    *
@@ -337,7 +337,7 @@ export class Observable<T> implements Subscribable<T> {
    * this situation, look into adding something like {@link timeout}, {@link take},
    * {@link takeWhile}, or {@link takeUntil} amongst others.
    *
-   * **警告**：仅将其与你*知道*将完成的可观察对象一起使用。如果源 observable 没有完成，你最终会得到一个被挂起的 Promise，并且可能所有异步函数的状态都挂在内存中。为避免这种情况，请考虑添加 {@link timeout}、{@link take}、{@link takeWhile} 或 {@link takeUntil} 等内容。
+   * **警告**：仅将其与你*知道*将完成的可观察者一起使用。如果源 observable 没有完成，你最终会得到一个被挂起的 Promise，并且可能所有异步函数的状态都挂在内存中。为避免这种情况，请考虑添加 {@link timeout}、{@link take}、{@link takeWhile} 或 {@link takeUntil} 等内容。
    *
    * ## Example
    *
@@ -372,7 +372,7 @@ export class Observable<T> implements Subscribable<T> {
    * ```
    * @param next a handler for each value emitted by the observable
    *
-   * 可观察对象发出的每个值的处理程序
+   * 可观察者发出的每个值的处理程序
    *
    * @return a promise that either resolves on observable completion or
    *  rejects with the handled error
@@ -385,7 +385,7 @@ export class Observable<T> implements Subscribable<T> {
   /**
    * @param next a handler for each value emitted by the observable
    *
-   * 可观察对象发出的每个值的处理程序
+   * 可观察者发出的每个值的处理程序
    *
    * @param promiseCtor a constructor function used to instantiate the Promise
    *
@@ -584,7 +584,7 @@ export class Observable<T> implements Subscribable<T> {
    * this situation, look into adding something like {@link timeout}, {@link take},
    * {@link takeWhile}, or {@link takeUntil} amongst others.
    *
-   * **警告**：仅将其与你*知道*将完成的可观察对象一起使用。如果源 observable 没有完成，你最终会得到一个被挂起的 Promise，并且可能所有异步函数的状态都挂在内存中。为避免这种情况，请考虑添加 {@link timeout}、{@link take}、{@link takeWhile} 或 {@link takeUntil} 等内容。
+   * **警告**：仅将其与你*知道*将完成的可观察者一起使用。如果源 observable 没有完成，你最终会得到一个被挂起的 Promise，并且可能所有异步函数的状态都挂在内存中。为避免这种情况，请考虑添加 {@link timeout}、{@link take}、{@link takeWhile} 或 {@link takeUntil} 等内容。
    *
    * @method toPromise
    * @param [promiseCtor] a constructor function used to instantiate
