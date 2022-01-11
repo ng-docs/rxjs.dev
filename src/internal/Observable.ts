@@ -61,7 +61,7 @@ export class Observable<T> implements Subscribable<T> {
    * @param {Function} subscribe? the subscriber function to be passed to the Observable constructor
    * @return {Observable} a new observable
    *
-   * 一个新的可观察的
+   * 一个新的可观察者
    *
    * @nocollapse
    * @deprecated Use `new Observable()` instead. Will be removed in v8.

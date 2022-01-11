@@ -58,7 +58,7 @@ export interface GenerateOptions<T, S> extends GenerateBaseOptions<S> {
  * producing the sequence's elements, using the specified scheduler
  * to send out observer messages.
  *
- * 通过运行一个状态驱动的循环来生成一个可观察的序列，该循环产生序列的元素，使用指定的调度程序发送观察者消息。
+ * 通过运行一个状态驱动的循环来生成一个可观察者序列，该循环产生序列的元素，使用指定的调度程序发送观察者消息。
  *
  * ![](generate.png)
  *
@@ -333,7 +333,7 @@ export function generate<S>(
  * The overload accepts options object that might contain initial state, iterate,
  * condition and scheduler.
  *
- * 通过运行一个状态驱动的循环来生成一个可观察的序列，该循环产生序列的元素，使用指定的调度程序发送观察者消息。重载接受可能包含初始状态、迭代、条件和调度程序的选项对象。
+ * 通过运行一个状态驱动的循环来生成一个可观察者序列，该循环产生序列的元素，使用指定的调度程序发送观察者消息。重载接受可能包含初始状态、迭代、条件和调度程序的选项对象。
  *
  * ![](generate.png)
  *
@@ -385,7 +385,7 @@ export function generate<S>(options: GenerateBaseOptions<S>): Observable<S>;
  * The overload accepts options object that might contain initial state, iterate,
  * condition, result selector and scheduler.
  *
- * 通过运行一个状态驱动的循环来生成一个可观察的序列，该循环产生序列的元素，使用指定的调度程序发送观察者消息。重载接受可能包含初始状态、迭代、条件、结果选择器和调度程序的选项对象。
+ * 通过运行一个状态驱动的循环来生成一个可观察者序列，该循环产生序列的元素，使用指定的调度程序发送观察者消息。重载接受可能包含初始状态、迭代、条件、结果选择器和调度程序的选项对象。
  *
  * ![](generate.png)
  *

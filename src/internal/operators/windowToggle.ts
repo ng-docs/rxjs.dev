@@ -64,7 +64,7 @@ import { arrRemove } from '../util/arrRemove';
  * which, when it emits a next notification, signals that the
  * associated window should complete.
  *
- * 一个函数，它接受由可观察的 `openings` 发出的值并返回一个可观察的，当它发出下一个通知时，表示关联的窗口应该完成。
+ * 一个函数，它接受由可观察者 `openings` 发出的值并返回一个可观察者，当它发出下一个通知时，表示关联的窗口应该完成。
  *
  * @return A function that returns an Observable of windows, which in turn are
  * Observables.

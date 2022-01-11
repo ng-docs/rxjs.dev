@@ -111,7 +111,7 @@ export type SubscribableOrPromise<T> = Subscribable<T> | Subscribable<never> | P
 /**
  * OBSERVABLE INTERFACES
  *
- * 可观察的界面
+ * 可观察者界面
  *
  */
 

@@ -146,7 +146,7 @@ How many virtual milliseconds one frame represents depends on the value of `Test
 
 - `'|'` complete: The successful completion of an observable. This is the observable producer signaling `complete()`.
 
-  `'|'` 完成：一个可观察对象的成功完成。这是可观察的生产者信号 `complete()`。
+  `'|'` 完成：一个可观察对象的成功完成。这是可观察者生产者信号 `complete()`。
 
 - `'#'` error: An error terminating the observable. This is the observable producer signaling `error()`.
 

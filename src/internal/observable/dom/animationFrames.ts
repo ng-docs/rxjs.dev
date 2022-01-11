@@ -7,7 +7,7 @@ import { animationFrameProvider } from '../../scheduler/animationFrameProvider';
 /**
  * An observable of animation frames
  *
- * 可观察的动画帧
+ * 可观察者动画帧
  *
  * Emits the amount of time elapsed since subscription and the timestamp on each animation frame.
  * Defaults to milliseconds provided to the requestAnimationFrame's callback. Does not end on its own.

@@ -87,7 +87,7 @@ export function windowWhen<T>(closingSelector: () => ObservableInput<any>): Oper
      * inevitably *should* call openWindow -- but may not if
      * it is a "never" observable.
      *
-     * 每次我们需要打开一个窗口时调用。递归的，因为它将启动关闭通知程序，这不可避免地*应该*调用 openWindow ——但如果它是“从不”可观察的，则可能不会。
+     * 每次我们需要打开一个窗口时调用。递归的，因为它将启动关闭通知程序，这不可避免地*应该*调用 openWindow ——但如果它是“从不”可观察者，则可能不会。
      *
      */
     const openWindow = () => {

@@ -33,7 +33,7 @@ import { zip } from './zip';
  *
  * @param otherInputs other observable inputs to collate values from.
  *
- * 其他可观察的输入来整理值。
+ * 其他可观察者输入来整理值。
  *
  * @return A function that returns an Observable that emits items by index
  * combined from the source Observable and provided Observables, in form of an

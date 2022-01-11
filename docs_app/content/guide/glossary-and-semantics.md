@@ -16,7 +16,7 @@ While not all of the documentation for RxJS reflects this terminology, it is a g
 
 There are high level entities that are frequently discussed. It's important to define them separately from other lower-level concepts, because they relate to the nature of observable.
 
-有经常讨论的高级实体。将它们与其他较低级别的概念分开定义很重要，因为它们与可观察的性质有关。
+有经常讨论的高级实体。将它们与其他较低级别的概念分开定义很重要，因为它们与可观察者性质有关。
 
 ### Consumer
 
@@ -41,7 +41,7 @@ action, in which case it is one-to-many, resulting in a [multicast](#multicast).
 
 A contract where a [consumer](#consumer) is [observing](#observation) values pushed by a [producer](#producer). The subscription (not to be confused with the `Subscription` class or type), is an ongoing process that amounts to the function of the observable from the Consumer's perspective. Subscription starts the moment a [subscribe](#subscribe) action is initiated, even before the [subscribe](#subscribe) action is finished.
 
-[消费者](#consumer)[观察](#observation)[生产者](#producer)推送的值的合同。订阅（不要与 `Subscription` 类或类型混淆）是一个持续的过程，从消费者的角度来看，它相当于可观察的功能。订阅从发起[订阅](#subscribe)操作的那一刻开始，甚至在[订阅](#subscribe)操作完成之前。
+[消费者](#consumer)[观察](#observation)[生产者](#producer)推送的值的合同。订阅（不要与 `Subscription` 类或类型混淆）是一个持续的过程，从消费者的角度来看，它相当于可观察者功能。订阅从发起[订阅](#subscribe)操作的那一刻开始，甚至在[订阅](#subscribe)操作完成之前。
 
 ### Observable
 
@@ -242,11 +242,11 @@ use given this defined meaning.
 
 A [observable](#observable) or [valid observable input](#observable-inputs) having been converted to an observable, that will supply values to another [observable](#observable), either as the result of an [operator](#operator) or other function that creates one observable as another. This [source](#source), will be the [producer](#producer) for the resulting [observable](#observable) and all of its [subscriptions](#subscriptions). Sources may generally be any type of observable.
 
-一个[observable](#observable)或[有效的 observable 输入](#observable-inputs)已经被转换为一个 observable，它将为另一个[observable](#observable)提供值，或者是作为[操作符](#operator)的结果，或者是创建一个 observable 作为另一个 observable 的其他函数的结果。这个[源](#source)将是结果[observable](#observable)及其所有[订阅](#subscriptions)的[生产者](#producer)。源通常可以是任何类型的可观察的。
+一个[observable](#observable)或[有效的 observable 输入](#observable-inputs)已经被转换为一个 observable，它将为另一个[observable](#observable)提供值，或者是作为[操作符](#operator)的结果，或者是创建一个 observable 作为另一个 observable 的其他函数的结果。这个[源](#source)将是结果[observable](#observable)及其所有[订阅](#subscriptions)的[生产者](#producer)。源通常可以是任何类型的可观察者。
 
 ### Observable Inputs
 
-### 可观察的输入
+### 可观察者输入
 
 A "observable input" ([defined as a type here](/api/index/type-alias/ObservableInput)), is any type that can easily converted to an [Observable](#observable). Observable Inputs may sometimes be referred to as "valid observable sources".
 

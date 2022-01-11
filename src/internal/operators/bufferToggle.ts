@@ -59,7 +59,7 @@ import { arrRemove } from '../util/arrRemove';
  * which, when it emits, signals that the associated buffer should be emitted
  * and cleared.
  *
- * 一个函数，它获取由可观察的 `openings` 发出的值并返回一个 Subscribable 或 Promise，当它发出时，表示应该发出并清除关联的缓冲区。
+ * 一个函数，它获取由可观察者 `openings` 发出的值并返回一个 Subscribable 或 Promise，当它发出时，表示应该发出并清除关联的缓冲区。
  *
  * @return A function that returns an Observable of arrays of buffered values.
  *

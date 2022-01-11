@@ -1,6 +1,6 @@
 # Observable
 
-# 可观察的
+# 可观察者
 
 Observables are lazy Push collections of multiple values. They fill the missing spot in the following table:
 

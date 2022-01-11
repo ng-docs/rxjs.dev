@@ -680,7 +680,7 @@ export class TestScheduler extends VirtualTimeScheduler {
    * is, in 'run mode' there is no need to explicitly pass a `TestScheduler`
    * instance to observable creators or operators.
    *
-   * `run` 方法在“运行模式”下执行测试——测试中使用的调度程序自动委托给 `TestScheduler`。也就是说，在“运行模式”中，不需要显式地将 `TestScheduler` 实例传递给可观察的创建者或操作员。
+   * `run` 方法在“运行模式”下执行测试——测试中使用的调度程序自动委托给 `TestScheduler`。也就是说，在“运行模式”中，不需要显式地将 `TestScheduler` 实例传递给可观察者创建者或操作员。
    *
    * @see {@link /guide/testing/marble-testing}
    */
