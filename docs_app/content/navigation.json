@@ -2,15 +2,15 @@
   "TopBar": [
     {
       "url": "guide/overview",
-      "title": "Overview"
+      "title": "概览"
     },
     {
       "url": "api",
-      "title": "Reference"
+      "title": "参考手册"
     },
     {
       "url": "team",
-      "title": "Team"
+      "title": "团队"
     },
     {
       "url": "https://blog.ralph.wang",
@@ -21,86 +21,86 @@
   "SideNav": [
     {
       "url": "guide/overview",
-      "title": "Overview",
-      "tooltip": "RxJS Overview",
+      "title": "概览",
+      "tooltip": "RxJS 概览",
       "children": [
         {
           "url": "guide/observable",
-          "title": "Observables"
+          "title": "可观察者（Observables）"
         },
         {
           "url": "guide/observer",
-          "title": "Observer"
+          "title": "观察者（Observer）"
         },
         {
           "url": "guide/operators",
-          "title": "Operators"
+          "title": "操作符（Operators）"
         },
         {
           "url": "guide/subscription",
-          "title": "Subscription"
+          "title": "订阅（Subscription）"
         },
         {
           "url": "guide/subject",
-          "title": "Subjects"
+          "title": "主体（Subjects）"
         },
         {
           "url": "guide/scheduler",
-          "title": "Scheduler"
+          "title": "调度器（Scheduler）"
         },
         {
           "url": "guide/testing/marble-testing",
-          "title": "Marble Testing"
+          "title": "弹珠测试"
         }
       ]
     },
     {
       "url": "guide/installation",
-      "title": "Installation",
-      "tooltip": "Installation"
+      "title": "安装",
+      "tooltip": "安装"
     },
     {
       "url": "guide/importing",
-      "title": "Importing",
-      "tooltip": "RxJS Importing"
+      "title": "导入",
+      "tooltip": "导入 RxJS"
     },
     {
       "url": "api",
-      "title": "Reference",
-      "tooltip": "RxJS Reference"
+      "title": "参考手册",
+      "tooltip": "RxJS 参考手册"
     },
     {
       "url": "guide/glossary-and-semantics",
-      "title": "Glossary",
-      "tooltip": "Glossary and Semantics"
+      "title": "词汇表",
+      "tooltip": "词汇表及其语义"
     },
     {
-      "tooltip": "Operator Decision Tree",
+      "tooltip": "操作符决策树",
       "url": "operator-decision-tree",
-      "title": "Operator Decision Tree"
+      "title": "操作符决策树"
     },
     {
-      "title": "Deprecations & Breaking Changes",
+      "title": "弃用 & 重大变更",
       "children": [
         {
           "url": "deprecations/breaking-changes",
-          "title": "Breaking Changes"
+          "title": "重大变更"
         },
         {
           "url": "deprecations/scheduler-argument",
-          "title": "Scheduler Argument"
+          "title": "Scheduler 参数"
         },
         {
           "url": "deprecations/subscribe-arguments",
-          "title": "Subscribe Arguments"
+          "title": "Subscribe 参数"
         },
         {
           "url": "deprecations/resultSelector",
-          "title": "ResultSelector Arguments"
+          "title": "ResultSelector 参数"
         },
         {
           "url": "deprecations/array-argument",
-          "title": "Array Arguments"
+          "title": "Array 参数"
         },
         {
           "url": "deprecations/multicasting",
@@ -108,19 +108,19 @@
         },
         {
           "url": "deprecations/to-promise",
-          "title": "Conversion to Promises"
+          "title": "转换为 Promises"
         }
       ]
     },
     {
       "url": "6-to-7-change-summary",
-      "title": "Detailed Change List",
-      "tooltip": "Detailed Change List"
+      "title": "详细变更列表",
+      "tooltip": "详细变更列表"
     },
     {
       "url": "code-of-conduct",
-      "title": "Code of Conduct",
-      "tooltip": "Code of Conduct"
+      "title": "行为规范",
+      "tooltip": "行为规范"
     }
   ],
   "docVersions": [

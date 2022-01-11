@@ -8,13 +8,13 @@
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
-import { combineLatest, Observable, ReplaySubject } from 'rxjs';
-
 import { LocationService } from 'app/shared/location.service';
-import { ApiSection, ApiService } from './api.service';
 
 import { Option } from 'app/shared/select/select.component';
+
+import { combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ApiSection, ApiService } from './api.service';
 
 class SearchCriteria {
   query ? = '';
@@ -41,19 +41,19 @@ export class ApiListComponent implements OnInit {
 
   // API types
   types: Option[] = [
-    { value: 'all', title: 'All' },
-    { value: 'class', title: 'Class' },
-    { value: 'const', title: 'Const'},
-    { value: 'enum', title: 'Enum' },
-    { value: 'function', title: 'Function' },
-    { value: 'interface', title: 'Interface' },
-    { value: 'type-alias', title: 'Type alias' },
+    { value: 'all', title: '全部' },
+    { value: 'class', title: '类' },
+    { value: 'const', title: '常量'},
+    { value: 'enum', title: '枚举' },
+    { value: 'function', title: '函数' },
+    { value: 'interface', title: '接口' },
+    { value: 'type-alias', title: '类型别名' },
   ];
 
   statuses: Option[] = [
-    { value: 'all', title: 'All' },
-    { value: 'deprecated', title: 'Deprecated' },
-    { value: 'security-risk', title: 'Security Risk' }
+    { value: 'all', title: '全部' },
+    { value: 'deprecated', title: '已弃用' },
+    { value: 'security-risk', title: '有安全风险' }
   ];
 
   @ViewChild('filter', { static: true }) queryEl: ElementRef;

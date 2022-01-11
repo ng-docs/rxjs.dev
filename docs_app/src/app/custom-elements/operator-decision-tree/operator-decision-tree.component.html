@@ -1,5 +1,5 @@
 <h1 class="mat-heading" tabindex="0">
-  Operator Decision Tree
+  操作符决策树
 </h1>
 <ng-container *ngIf="!(hasError$ | async); else hasErrorTemplate">
   <h2 class="mat-subheading-2" tabindex="0">
@@ -7,26 +7,28 @@
   </h2>
   <ng-container *ngIf="isBeyondInitialQuestion$ | async">
     <section>
-      <button 
-        (click)="back()"
-        mat-button
-        class="back"
-      >Back</button>
-      <button 
-        (click)="startOver()"
-        mat-button
-        color="warn"
-        class="start-over"
-      >Start Over</button>
+      <button
+              (click)="back()"
+              mat-button
+              class="back"
+      >后退
+      </button>
+      <button
+              (click)="startOver()"
+              mat-button
+              color="warn"
+              class="start-over"
+      >重新开始
+      </button>
     </section>
   </ng-container>
   <div>
     <ng-container *ngFor="let option of options$ | async">
       <ng-container *ngIf="option.options; else operatorTempalte">
-        <button 
-          class="option mat-body-1"
-          (click)="selectOption(option.id, $event)"
-          [@flyIn]
+        <button
+                class="option mat-body-1"
+                (click)="selectOption(option.id, $event)"
+                [@flyIn]
         >
           <mat-card matRipple>
             {{option.label}}
@@ -35,12 +37,13 @@
       </ng-container>
       <ng-template #operatorTempalte>
         <p *ngIf="option.method" class="mat-body-1">
-          You want the {{option.method}} of the {{option.docType}} 
-          <a href="{{option.path}}#{{option.method}}">{{option.label}}</a>.
+          你需要
+          <a href="{{option.path}}#{{option.method}}">{{option.label}}</a>  {{option.docType|docTypeName}}
+          中的 {{option.method}} 方法。
         </p>
         <p *ngIf="!option.method" class="mat-body-1">
-          You want the {{option.docType}} 
-          <a href="{{option.path}}">{{option.label}}</a>.
+          你需要
+          <a href="{{option.path}}">{{option.label}} {{option.docType | docTypeName}}</a>。
         </p>
       </ng-template>
     </ng-container>
@@ -49,7 +52,14 @@
 
 <ng-template #hasErrorTemplate>
   <div class="mat-body-1 error">
-    <p>Oops! There was an issue loading the decision tree.. we're real sorry about that. Please try reloading the page.</p>
-    <p>You can also try <a href="https://github.com/ReactiveX/rxjs/issues/new?template=documentation.md" target="_blank">submitting an issue on Github</a>.</p>
+    <p translation-result="on">啊哦！加载决策树时出了点问题……非常抱歉。请尝试刷新本页面。</p>
+    <p translation-origin="off">Oops! There was an issue loading the decision tree.. we're real sorry about that. Please
+      try reloading the page.</p>
+    <p translation-result="on">你还可以试试<a href="https://github.com/ReactiveX/rxjs/issues/new?template=documentation.md"
+                                        target="_blank">在 Github
+      提交一个 Issue</a>。</p>
+    <p translation-origin="off">You can also try <a
+            href="https://github.com/ReactiveX/rxjs/issues/new?template=documentation.md" target="_blank">submitting an
+      issue on Github</a>.</p>
   </div>
 </ng-template>

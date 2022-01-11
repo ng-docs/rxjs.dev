@@ -135,6 +135,7 @@ export type FlattenedApiList = {
 
 export interface TreeNodeRaw {
   label: string;
+  labelCn?: string;
   children?: TreeNodeRaw[];
   method?: string;
 }

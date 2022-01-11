@@ -1,5 +1,5 @@
-import { TreeNode, TreeNodeRaw } from './interfaces';
 import { generateUniqueId } from './generateUniqueId';
+import { TreeNode, TreeNodeRaw } from './interfaces';
 
 /**
  * Recursively walks the tree and adds unique ids.
@@ -16,9 +16,9 @@ export function addUniqueId(tree: TreeNodeRaw[], depth = 0): TreeNode[] {
   return tree.map(node => {
     let treeNode: TreeNode;
     treeNode = {
-      label: node.label,
+      label: node.labelCn ?? node.label,
       id: generateUniqueId(),
-      depth // used later in extractInitialSequence to determine the initial options
+      depth, // used later in extractInitialSequence to determine the initial options
     };
 
     if (node.children) {

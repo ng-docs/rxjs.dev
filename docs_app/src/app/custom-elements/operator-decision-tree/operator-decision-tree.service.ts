@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
-import { filter, map, mapTo, shareReplay, catchError } from 'rxjs/operators';
+import { catchError, filter, map, mapTo, shareReplay } from 'rxjs/operators';
 import { OperatorDecisionTree, OperatorTreeNode, State } from './interfaces';
 import { OperatorDecisionTreeDataService } from './operator-decision-tree-data.service';
 import { isInitialDecision, nodeHasOptions, treeIsErrorFree } from './utils';
@@ -25,13 +25,13 @@ export class OperatorDecisionTreeService {
   ).pipe(
     filter(([tree]) => treeIsErrorFree(tree)),
     map(([tree, { previousBranchIds }]) =>
-      isInitialDecision(previousBranchIds)
-        ? 'Start by choosing an option from the list below.'
-        : `${previousBranchIds
-            .map(entityId => {
-              return tree[entityId].label;
-            })
-            .join(' ')}...`.trim()
+        isInitialDecision(previousBranchIds)
+            ? '从下表中选择一个选项，以开始决策'
+            : `${previousBranchIds
+                .map(entityId => {
+                  return tree[entityId].label;
+                })
+                .join(' ')}...`.trim()
     )
   );
 

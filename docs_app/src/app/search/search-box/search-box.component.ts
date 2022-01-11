@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { LocationService } from 'app/shared/location.service';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -16,13 +16,13 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 @Component({
   selector: 'aio-search-box',
   template: `<input #searchBox
-    type="search"
-    aria-label="search"
-    placeholder="Search"
-    (input)="doSearch()"
-    (keyup)="doSearch()"
-    (focus)="doFocus()"
-    (click)="doSearch()">`
+                    type="search"
+                    aria-label="search"
+                    placeholder="搜索"
+                    (input)="doSearch()"
+                    (keyup)="doSearch()"
+                    (focus)="doFocus()"
+                    (click)="doSearch()">`
 })
 export class SearchBoxComponent implements OnInit {
 
