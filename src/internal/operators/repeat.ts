@@ -43,7 +43,7 @@ export interface RepeatConfig {
  * combination with closing operators like {@link take}, {@link takeUntil}, {@link first}, or {@link takeWhile},
  * as it can be used to restart a source again from scratch.
  *
- * 重复将从源输出值，直到源完成，然后它将重新订阅源指定的次数，并具有指定的延迟。重复与 {@link take}、{@link takeUntil}、{@link first} 或 {@link takeWhile} 等关闭运算符结合使用特别有用，因为它可用于从头开始重新启动源。
+ * 重复将从源输出值，直到源完成，然后它将重新订阅源指定的次数，并具有指定的延迟。重复与 {@link take}、{@link takeUntil}、{@link first} 或 {@link takeWhile} 等关闭操作符结合使用特别有用，因为它可用于从头开始重新启动源。
  *
  * Repeat is very similar to {@link retry}, where {@link retry} will resubscribe to the source in the error case, but
  * `repeat` will resubscribe if the source completes.

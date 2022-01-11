@@ -41,7 +41,7 @@ export interface MonoTypeOperatorFunction<T> extends OperatorFunction<T, T> {}
  *
  * Emitted by the `timestamp` operator
  *
- * 由 `timestamp` 运算符发出
+ * 由 `timestamp` 操作符发出
  *
  * @see {@link timestamp}
  */
@@ -64,7 +64,7 @@ export interface Timestamp<T> {
  *
  * Emitted by the `timeInterval` operator.
  *
- * 由 `timeInterval` 运算符发出。
+ * 由 `timeInterval` 操作符发出。
  *
  * @see {@link timeInterval}
  */
@@ -290,7 +290,7 @@ export interface TimestampProvider {
    * This is used by types like `ReplaySubject` or operators like `timestamp` to calculate
    * the amount of time passed between events.
    *
-   * `ReplaySubject` 类的类型或 `timestamp` 之类的运算符使用它来计算事件之间传递的时间量。
+   * `ReplaySubject` 类的类型或 `timestamp` 之类的操作符使用它来计算事件之间传递的时间量。
    *
    */
   now(): number;

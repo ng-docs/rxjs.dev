@@ -34,7 +34,7 @@ export function bindNodeCallback<A extends readonly unknown[], R extends readonl
  * whether call was successful. If that object is passed to callback, it means
  * something went wrong.
  *
- * `bindNodeCallback` 不是运算符，因为它的输入和输出不是 Observables。输入是一个带有一些参数的函数 `func`，但最后一个参数必须是 `func` 完成时调用的回调函数。回调函数应遵循 Node.js 约定，其中回调的第一个参数是一个错误对象，表示调用是否成功。如果该对象被传递给回调，则意味着出现问题。
+ * `bindNodeCallback` 不是操作符，因为它的输入和输出不是 Observables。输入是一个带有一些参数的函数 `func`，但最后一个参数必须是 `func` 完成时调用的回调函数。回调函数应遵循 Node.js 约定，其中回调的第一个参数是一个错误对象，表示调用是否成功。如果该对象被传递给回调，则意味着出现问题。
  *
  * The output of `bindNodeCallback` is a function that takes the same
  * parameters as `func`, except the last one (the callback). When the output

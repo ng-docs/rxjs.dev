@@ -8,7 +8,7 @@ import { fromSubscribable } from '../observable/fromSubscribable';
 /**
  * An object used to configure {@link connect} operator.
  *
- * 用于配置 {@link connect} 运算符的对象。
+ * 用于配置 {@link connect} 操作符的对象。
  *
  */
 export interface ConnectConfig<T> {
@@ -57,7 +57,7 @@ const DEFAULT_CONFIG: ConnectConfig<unknown> = {
  * Note that using a {@link takeUntil} inside of `connect`'s `selector` _might_ mean you were looking
  * to use the {@link takeWhile} operator instead.
  *
- * 请注意，在 `connect` 的 `selector` 中使用 {@link takeUntil}_ 可能 _ 意味着你希望使用 {@link takeWhile} 运算符。
+ * 请注意，在 `connect` 的 `selector` 中使用 {@link takeUntil}_ 可能 _ 意味着你希望使用 {@link takeWhile} 操作符。
  *
  * When you subscribe to the result of `connect`, the `selector` function will be called. After
  * the `selector` function returns, the observable it returns will be subscribed to, _then_ the

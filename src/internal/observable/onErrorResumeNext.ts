@@ -41,7 +41,7 @@ export function onErrorResumeNext<A extends readonly unknown[]>(...sources: [...
  * `onErrorResumeNext`. If you want to handle errors thrown in any given source, you can
  * always use the {@link catchError} operator on them before passing them into `onErrorResumeNext`.
  *
- * 请注意，无法通过 `onErrorResumeNext` 的结果处理源引发的任何错误。如果你想处理任何给定源中抛出的错误，你始终可以在将它们传递给 `onErrorResumeNext` 之前对其使用 {@link catchError} 运算符。
+ * 请注意，无法通过 `onErrorResumeNext` 的结果处理源引发的任何错误。如果你想处理任何给定源中抛出的错误，你始终可以在将它们传递给 `onErrorResumeNext` 之前对其使用 {@link catchError} 操作符。
  *
  * ## Example
  *

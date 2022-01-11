@@ -16,7 +16,7 @@ import { captureError } from './util/errorContext';
  * `unsubscribe`. Subscriber is a common type in RxJS, and crucial for
  * implementing operators, but it is rarely used as a public API.
  *
- * 实现 {@link Observer} 接口并扩展 {@link Subscription} 类。虽然 {@link Observer} 是用于使用 {@link Observable} 值的公共 API，但所有 Observers 都被转换为订阅者，以提供类似订阅的功能，例如 `unsubscribe`。订阅者是 RxJS 中的一种常见类型，对于实现运算符至关重要，但它很少用作公共 API。
+ * 实现 {@link Observer} 接口并扩展 {@link Subscription} 类。虽然 {@link Observer} 是用于使用 {@link Observable} 值的公共 API，但所有 Observers 都被转换为订阅者，以提供类似订阅的功能，例如 `unsubscribe`。订阅者是 RxJS 中的一种常见类型，对于实现操作符至关重要，但它很少用作公共 API。
  *
  * @class Subscriber<T>
  */

@@ -16,7 +16,7 @@ import { combineLatest } from './combineLatest';
  *
  * This is a useful operator for eagerly calculating values based off of changed inputs.
  *
- * 这是一个有用的运算符，用于根据更改的输入急切地计算值。
+ * 这是一个有用的操作符，用于根据更改的输入急切地计算值。
  *
  * ## Example
  *

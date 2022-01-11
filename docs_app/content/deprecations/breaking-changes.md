@@ -60,7 +60,7 @@
 
 - Type signatures tightened up around `Notification` and `dematerialize`, may uncover issues with invalid types passed to those operators.
 
-  围绕 `Notification` 和 `dematerialize` 加强类型签名，可能会发现传递给这些运算符的无效类型的问题。
+  围绕 `Notification` 和 `dematerialize` 加强类型签名，可能会发现传递给这些操作符的无效类型的问题。
 
 - Experimental support for `for await` as been removed. Use <https://github.com/benlesh/rxjs-for-await> instead.
 
@@ -168,7 +168,7 @@
 
 - `single` operator will now throw for scenarios where values coming in are either not present, or do not match the provided predicate. Error types have thrown have also been updated, please check documentation for changes.
 
-  现在，`single` 运算符将在传入的值不存在或与提供的谓词不匹配的情况下抛出。引发的错误类型也已更新，请查看文档以了解更改。
+  现在，`single` 操作符将在传入的值不存在或与提供的谓词不匹配的情况下抛出。引发的错误类型也已更新，请查看文档以了解更改。
 
 ### skipLast
 
@@ -216,7 +216,7 @@
 
 - `timestamp` operator accepts a `TimestampProvider`, which is any object with a `now` method that returns a number. This means pulling in less code for the use of the `timestamp` operator. This may cause issues with `TestScheduler` run mode. (see [Issue here](https://github.com/ReactiveX/rxjs/issues/5553))
 
-  `timestamp` 运算符接受 `TimestampProvider`，它是具有返回数字的 `now` 方法的任何对象。这意味着为使用 `timestamp` 运算符引入更少的代码。这可能会导致 `TestScheduler` 运行模式出现问题。（请参阅[此处的问题](https://github.com/ReactiveX/rxjs/issues/5553)）
+  `timestamp` 操作符接受 `TimestampProvider`，它是具有返回数字的 `now` 方法的任何对象。这意味着为使用 `timestamp` 操作符引入更少的代码。这可能会导致 `TestScheduler` 运行模式出现问题。（请参阅[此处的问题](https://github.com/ReactiveX/rxjs/issues/5553)）
 
 ### zip
 
@@ -229,7 +229,7 @@
 - **zip:** `zip` operators will no longer iterate provided iterables "as needed", instead the iterables will be treated as push-streams just like they would be everywhere else in RxJS. This means that passing an endless iterable will result in the thread locking up, as it will endlessly try to read from that iterable. This puts us in-line with all other Rx implementations. To work around this, it is probably best to use `map` or some combination of `map` and `zip`. For example, `zip(source$, iterator)`
   could be `source$.pipe(map(value => [value, iterator.next().value]))`.
 
-  **zip：** `zip` 运算符将不再“根据需要”迭代提供的可迭代对象，而是将可迭代对象视为推送流，就像它们在 RxJS 中的其他任何地方一样。这意味着传递一个无限迭代将导致线程锁定，因为它将无休止地尝试从该迭代中读取。这使我们与所有其他 Rx 实现保持一致。要解决此问题，最好使用 `map` 或 `map` 和 `zip` 的某种组合。例如，`zip(source$, iterator)` 可以是 `source$.pipe(map(value => [value, iterator.next().value]))`。
+  **zip：** `zip` 操作符将不再“根据需要”迭代提供的可迭代对象，而是将可迭代对象视为推送流，就像它们在 RxJS 中的其他任何地方一样。这意味着传递一个无限迭代将导致线程锁定，因为它将无休止地尝试从该迭代中读取。这使我们与所有其他 Rx 实现保持一致。要解决此问题，最好使用 `map` 或 `map` 和 `zip` 的某种组合。例如，`zip(source$, iterator)` 可以是 `source$.pipe(map(value => [value, iterator.next().value]))`。
 
 ## ajax
 

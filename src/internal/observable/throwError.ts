@@ -21,7 +21,7 @@ import { isFunction } from '../util/isFunction';
  * {@link mergeMap}, {@link defer}, and many others, you can simply throw the error, and RxJS will pick
  * that up and notify the consumer of the error.
  *
- * 这个创建函数对于创建一个 observable 很有用，它会在每次订阅时创建一个错误和错误。通常，在大多数运算符中，当你可能想要返回错误的可观察对象时，这是不必要的。在大多数情况下，例如在 {@link concatMap}、{@link mergeMap}、{@link defer} 和许多其他的内部返回中，你可以简单地抛出错误，RxJS 会捡起并通知消费者的错误。
+ * 这个创建函数对于创建一个 observable 很有用，它会在每次订阅时创建一个错误和错误。通常，在大多数操作符中，当你可能想要返回错误的可观察对象时，这是不必要的。在大多数情况下，例如在 {@link concatMap}、{@link mergeMap}、{@link defer} 和许多其他的内部返回中，你可以简单地抛出错误，RxJS 会捡起并通知消费者的错误。
  *
  * ## Example
  *

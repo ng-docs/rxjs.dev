@@ -29,7 +29,7 @@ export function range(start: number, count: number | undefined, scheduler: Sched
  * {@link SchedulerLike} and just delivers the notifications synchronously, but may use
  * an optional {@link SchedulerLike} to regulate those deliveries.
  *
- * `range` 运算符按顺序发出一系列连续整数，你可以在其中选择范围的 `start` 及其 `length`。默认情况下，不使用 {@link SchedulerLike} 并且仅同步传递通知，但可以使用可选的 {@link SchedulerLike} 来规范这些传递。
+ * `range` 操作符按顺序发出一系列连续整数，你可以在其中选择范围的 `start` 及其 `length`。默认情况下，不使用 {@link SchedulerLike} 并且仅同步传递通知，但可以使用可选的 {@link SchedulerLike} 来规范这些传递。
  *
  * ## Example
  *

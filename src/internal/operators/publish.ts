@@ -19,7 +19,7 @@ import { connect } from './connect';
  * `source.pipe(share({ resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))`.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。要创建可连接的 observable，请使用 {@link connectable}。`source.pipe(publish())` 等价于 connectable `connectable(source, { connector: () => new Subject(), resetOnDisconnect: false })`。如果你在 `publish` 后使用 {@link refCount}，请改用 {@link share} 运算符。`source.pipe(publish(), refCount())` 等价于 `source.pipe(share({ resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))`。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 将在 v8 中删除。要创建可连接的 observable，请使用 {@link connectable}。`source.pipe(publish())` 等价于 connectable `connectable(source, { connector: () => new Subject(), resetOnDisconnect: false })`。如果你在 `publish` 后使用 {@link refCount}，请改用 {@link share} 操作符。`source.pipe(publish(), refCount())` 等价于 `source.pipe(share({ resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))`。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function publish<T>(): UnaryFunction<Observable<T>, ConnectableObservable<T>>;
@@ -40,7 +40,7 @@ export function publish<T>(): UnaryFunction<Observable<T>, ConnectableObservable
  * `publish(selector)` is equivalent to `connect(selector)`.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。请改用 {@link connect} 运算符。`publish(selector)` 等价于 `connect(selector)`。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 将在 v8 中删除。请改用 {@link connect} 操作符。`publish(selector)` 等价于 `connect(selector)`。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function publish<T, O extends ObservableInput<any>>(selector: (shared: Observable<T>) => O): OperatorFunction<T, ObservedValueOf<O>>;
@@ -64,7 +64,7 @@ export function publish<T, O extends ObservableInput<any>>(selector: (shared: Ob
  * Make `source$` hot by applying `publish` operator, then merge each inner observable into a single one
  * and subscribe
  *
- * 通过应用 `publish` 运算符使 `source$` 变热，然后将每个内部 observable 合并为一个并订阅
+ * 通过应用 `publish` 操作符使 `source$` 变热，然后将每个内部 observable 合并为一个并订阅
  *
  * ```ts
  * import { zip, interval, of, map, publish, merge, tap } from 'rxjs';
@@ -109,7 +109,7 @@ export function publish<T, O extends ObservableInput<any>>(selector: (shared: Ob
  * behaviors.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。请改用 {@link connectable} observable、{@link connect} 运算符或 {@link share} 运算符。有关此运算符行为的等效替换示例，请参见下面的重载。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 将在 v8 中删除。请改用 {@link connectable} observable、{@link connect} 操作符或 {@link share} 操作符。有关此操作符行为的等效替换示例，请参见下面的重载。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function publish<T, R>(selector?: OperatorFunction<T, R>): MonoTypeOperatorFunction<T> | OperatorFunction<T, R> {

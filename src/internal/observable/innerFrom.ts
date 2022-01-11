@@ -67,7 +67,7 @@ export function fromInteropObservable<T>(obj: any) {
  * make direct use of the same logic, and there's no reason to make them run through
  * `from` conditionals because we *know* they're dealing with an array.
  *
- * 同步发出类似数组的值并完成。这是导出的，因为有创建函数和运算符需要直接使用相同的逻辑，并且没有理由让它们 `from` 条件中运行，因为我们*知道*它们正在处理一个数组。
+ * 同步发出类似数组的值并完成。这是导出的，因为有创建函数和操作符需要直接使用相同的逻辑，并且没有理由让它们 `from` 条件中运行，因为我们*知道*它们正在处理一个数组。
  *
  * @param array The array to emit values from
  *

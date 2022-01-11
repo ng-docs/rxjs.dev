@@ -4,7 +4,7 @@
 
 To unify the API surface of `forkJoin` and `combineLatest` we deprecated some signatures. Since that it is recommended to either pass an Object or an Array to these operators.
 
-为了统一 `forkJoin` 和 `combineLatest` 的 API 表面，我们弃用了一些签名。因此，建议将 Object 或 Array 传递给这些运算符。
+为了统一 `forkJoin` 和 `combineLatest` 的 API 表面，我们弃用了一些签名。因此，建议将 Object 或 Array 传递给这些操作符。
 
 <div class="alert is-important">
     <span>

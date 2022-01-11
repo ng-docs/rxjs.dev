@@ -1,18 +1,18 @@
 # RxJS Operators
 
-# RxJS 运算符
+# RxJS 操作符
 
 RxJS is mostly useful for its _operators_, even though the Observable is the foundation. Operators are the essential pieces that allow complex asynchronous code to be easily composed in a declarative manner.
 
-尽管 Observable 是基础，但 RxJS 对它的*操作符*最有用。运算符是允许以声明方式轻松组合复杂异步代码的基本部分。
+尽管 Observable 是基础，但 RxJS 对它的*操作符*最有用。操作符是允许以声明方式轻松组合复杂异步代码的基本部分。
 
 ## What are operators?
 
-## 什么是运算符？
+## 什么是操作符？
 
 Operators are **functions**. There are two kinds of operators:
 
-运算符是**函数**。有两种运算符：
+操作符是**函数**。有两种操作符：
 
 **Pipeable Operators** are the kind that can be piped to Observables using the syntax `observableInstance.pipe(operator())`. These include, [`filter(...)`](/api/operators/filter), and [`mergeMap(...)`](/api/operators/mergeMap). When called, they do not _change_ the existing Observable instance. Instead, they return a _new_ Observable, whose subscription logic is based on the first Observable.
 
@@ -28,11 +28,11 @@ Pipeable Operator 本质上是一个纯函数，它将一个 Observable 作为�
 
 **Creation Operators** are the other kind of operator, which can be called as standalone functions to create a new Observable. For example: `of(1, 2, 3)` creates an observable that will emit 1, 2, and 3, one right after another. Creation operators will be discussed in more detail in a later section.
 
-**Creation Operators**是另一种运算符，可以作为独立函数调用以创建新的 Observable。例如： `of(1, 2, 3)` 创建一个 observable，它将一个接一个地发出 1、2 和 3。创建运算符将在后面的部分中更详细地讨论。
+**Creation Operators**是另一种操作符，可以作为独立函数调用以创建新的 Observable。例如： `of(1, 2, 3)` 创建一个 observable，它将一个接一个地发出 1、2 和 3。创建操作符将在后面的部分中更详细地讨论。
 
 For example, the operator called [`map`](/api/operators/map) is analogous to the Array method of the same name. Just as `[1, 2, 3].map(x => x * x)` will yield `[1, 4, 9]`, the Observable created like this:
 
-例如，名为[`map`](/api/operators/map)的运算符类似于同名的 Array 方法。正如 `[1, 2, 3].map(x => x * x)` 将产生 `[1, 4, 9]`，Observable 创建如下：
+例如，名为[`map`](/api/operators/map)的操作符类似于同名的 Array 方法。正如 `[1, 2, 3].map(x => x * x)` 将产生 `[1, 4, 9]`，Observable 创建如下：
 
 ```ts
 import { of, map } from 'rxjs';
@@ -49,7 +49,7 @@ of(1, 2, 3)
 
 will emit `1`, `4`, `9`. Another useful operator is [`first`](/api/operators/first):
 
-将发出 `1` , `4` , `9`。另一个有用的运算符是[`first`](/api/operators/first) ：
+将发出 `1` , `4` , `9`。另一个有用的操作符是[`first`](/api/operators/first) ：
 
 ```ts
 import { of, first } from 'rxjs';
@@ -64,7 +64,7 @@ of(1, 2, 3)
 
 Note that `map` logically must be constructed on the fly, since it must be given the mapping function to. By contrast, `first` could be a constant, but is nonetheless constructed on the fly. As a general practice, all operators are constructed, whether they need arguments or not.
 
-请注意，`map` 必须在逻辑上动态构建，因为它必须被赋予映射函数。相比之下，`first` 可能是一个常数，但仍然是动态构建的。作为一般实践，所有运算符都是构造的，无论它们是否需要参数。
+请注意，`map` 必须在逻辑上动态构建，因为它必须被赋予映射函数。相比之下，`first` 可能是一个常数，但仍然是动态构建的。作为一般实践，所有操作符都是构造的，无论它们是否需要参数。
 
 ## Piping
 
@@ -72,7 +72,7 @@ Note that `map` logically must be constructed on the fly, since it must be given
 
 Pipeable operators are functions, so they _could_ be used like ordinary functions: `op()(obs)` — but in practice, there tend to be many of them convolved together, and quickly become unreadable: `op4()(op3()(op2()(op1()(obs))))`. For that reason, Observables have a method called `.pipe()` that accomplishes the same thing while being much easier to read:
 
-可管道运算符是函数，因此它们*可以*像普通函数一样使用： `op()(obs)` — 但实际上，它们中的许多往往会卷积在一起，很快就会变得不可读： `op4()(op3()(op2()(op1()(obs))))`。出于这个原因，Observables 有一个名为 `.pipe()` 的方法，它完成了同样的事情，同时更容易阅读：
+可管道操作符是函数，因此它们*可以*像普通函数一样使用： `op()(obs)` — 但实际上，它们中的许多往往会卷积在一起，很快就会变得不可读： `op4()(op3()(op2()(op1()(obs))))`。出于这个原因，Observables 有一个名为 `.pipe()` 的方法，它完成了同样的事情，同时更容易阅读：
 
 ```ts
 obs.pipe(op1(), op2(), op3(), op4());
@@ -80,19 +80,19 @@ obs.pipe(op1(), op2(), op3(), op4());
 
 As a stylistic matter, `op()(obs)` is never used, even if there is only one operator; `obs.pipe(op())` is universally preferred.
 
-作为一种文体问题，即使只有一个运算符，也从不使用 `op()(obs)` ； `obs.pipe(op())` 是普遍首选的。
+作为一种文体问题，即使只有一个操作符，也从不使用 `op()(obs)` ； `obs.pipe(op())` 是普遍首选的。
 
 ## Creation Operators
 
-## 创建运算符
+## 创建操作符
 
 **What are creation operators?** Distinct from pipeable operators, creation operators are functions that can be used to create an Observable with some common predefined behavior or by joining other Observables.
 
-**什么是创建运算符？**与可管道操作符不同，创建操作符是可用于创建具有一些常见预定义行为或加入其他 Observable 的 Observable 的函数。
+**什么是创建操作符？**与可管道操作符不同，创建操作符是可用于创建具有一些常见预定义行为或加入其他 Observable 的 Observable 的函数。
 
 A typical example of a creation operator would be the `interval` function. It takes a number (not an Observable) as input argument, and produces an Observable as output:
 
-创建运算符的典型示例是 `interval` 函数。它将一个数字（不是 Observable）作为输入参数，并产生一个 Observable 作为输出：
+创建操作符的典型示例是 `interval` 函数。它将一个数字（不是 Observable）作为输入参数，并产生一个 Observable 作为输出：
 
 ```ts
 import { interval } from 'rxjs';
@@ -102,7 +102,7 @@ const observable = interval(1000 /* number of milliseconds */);
 
 See the list of all static creation operators [here](#creation-operators-list).
 
-在[此处](#creation-operators-list)查看所有静态创建运算符的列表。
+在[此处](#creation-operators-list)查看所有静态创建操作符的列表。
 
 ## Higher-order Observables
 
@@ -133,7 +133,7 @@ const fileObservable = urlObservable.pipe(
 
 The [`concatAll()`](/api/operators/concatAll) operator subscribes to each "inner" Observable that comes out of the "outer" Observable, and copies all the emitted values until that Observable completes, and goes on to the next one. All of the values are in that way concatenated. Other useful flattening operators (called [_join operators_](#join-operators)) are
 
-[`concatAll()`](/api/operators/concatAll)操作符订阅从“外部” Observable 出来的每个“内部” Observable，并复制所有发出的值，直到该 Observable 完成，然后继续下一个。所有值都以这种方式连接。其他有用的展平运算符（称为[_ 连接运算符 _](#join-operators)）是
+[`concatAll()`](/api/operators/concatAll)操作符订阅从“外部” Observable 出来的每个“内部” Observable，并复制所有发出的值，直到该 Observable 完成，然后继续下一个。所有值都以这种方式连接。其他有用的展平操作符（称为[_ 连接操作符 _](#join-operators)）是
 
 - [`mergeAll()`](/api/operators/mergeAll) — subscribes to each inner Observable as it arrives, then emits each value as it arrives
 
@@ -150,7 +150,7 @@ The [`concatAll()`](/api/operators/concatAll) operator subscribes to each "inner
 Just as many array libraries combine [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) and [`flat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) (or `flatten()`) into a single [`flatMap()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap), there are mapping equivalents of all the RxJS flattening operators [`concatMap()`](/api/operators/concatMap)
 , [`mergeMap()`](/api/operators/mergeMap), [`switchMap()`](/api/operators/switchMap), and [`exhaustMap()`](/api/operators/exhaustMap).
 
-正如许多数组库将[`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)和[`flat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)（或 `flatten()`）组合成一个[`flatMap()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap)一样，所有 RxJS 展平运算符[`concatMap()`](/api/operators/concatMap)、[`mergeMap()`](/api/operators/mergeMap)、[`switchMap()`](/api/operators/switchMap)和[`
+正如许多数组库将[`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)和[`flat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)（或 `flatten()`）组合成一个[`flatMap()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap)一样，所有 RxJS 展平操作符[`concatMap()`](/api/operators/concatMap)、[`mergeMap()`](/api/operators/mergeMap)、[`switchMap()`](/api/operators/switchMap)和[`
 exhaustMap()`](/api/operators/exhaustMap)都有映射等价物[`exhaustMap()`](/api/operators/exhaustMap)。
 
 ## Marble diagrams
@@ -159,7 +159,7 @@ exhaustMap()`](/api/operators/exhaustMap)都有映射等价物[`exhaustMap()`](/
 
 To explain how operators work, textual descriptions are often not enough. Many operators are related to time, they may for instance delay, sample, throttle, or debounce value emissions in different ways. Diagrams are often a better tool for that. _Marble Diagrams_ are visual representations of how operators work, and include the input Observable(s), the operator and its parameters, and the output Observable.
 
-要解释运算符的工作原理，文字描述通常是不够的。许多算子都与时间有关，他们可能以不同的方式延迟、采样、节流或去抖动值发射。图表通常是更好的工具。_ 大理石图 _ 是算子如何工作的可视化表示，包括输入 Observable(s)、算子及其参数以及输出 Observable。
+要解释操作符的工作原理，文字描述通常是不够的。许多算子都与时间有关，他们可能以不同的方式延迟、采样、节流或去抖动值发射。图表通常是更好的工具。_ 大理石图 _ 是算子如何工作的可视化表示，包括输入 Observable(s)、算子及其参数以及输出 Observable。
 
 <span class="informal">In a marble diagram, time flows to the right, and the diagram describes how values ("marbles") are emitted on the Observable execution.</span>
 
@@ -181,7 +181,7 @@ Throughout this documentation site, we extensively use marble diagrams to explai
 
 There are operators for different purposes, and they may be categorized as: creation, transformation, filtering, joining, multicasting, error handling, utility, etc. In the following list you will find all the operators organized in categories.
 
-有用于不同目的的运算符，它们可以分类为：创建、转换、过滤、加入、多播、错误处理、实用程序等。在以下列表中，你将找到按类别组织的所有运算符。
+有用于不同目的的操作符，它们可以分类为：创建、转换、过滤、加入、多播、错误处理、实用程序等。在以下列表中，你将找到按类别组织的所有操作符。
 
 For a complete overview, see the [references page](/api).
 
@@ -189,7 +189,7 @@ For a complete overview, see the [references page](/api).
 
 ### <a id="creation-operators-list"></a>Creation Operators
 
-### 创建运算符
+### 创建操作符
 
 - [`ajax`](/api/ajax/ajax)
 - [`bindCallback`](/api/index/function/bindCallback)
@@ -209,11 +209,11 @@ For a complete overview, see the [references page](/api).
 
 ### <a id="join-creation-operators"></a>Join Creation Operators
 
-### 加入创建运算符
+### 加入创建操作符
 
 These are Observable creation operators that also have join functionality -- emitting values of multiple source Observables.
 
-这些是 Observable 创建运算符，它们也具有连接功能——发出多个源 Observable 的值。
+这些是 Observable 创建操作符，它们也具有连接功能——发出多个源 Observable 的值。
 
 - [`combineLatest`](/api/index/function/combineLatest)
 - [`concat`](/api/index/function/concat)
@@ -225,7 +225,7 @@ These are Observable creation operators that also have join functionality -- emi
 
 ### Transformation Operators
 
-### 转换运算符
+### 转换操作符
 
 - [`buffer`](/api/operators/buffer)
 - [`bufferCount`](/api/operators/bufferCount)
@@ -258,7 +258,7 @@ These are Observable creation operators that also have join functionality -- emi
 
 ### Filtering Operators
 
-### 过滤运算符
+### 过滤操作符
 
 - [`audit`](/api/operators/audit)
 - [`auditTime`](/api/operators/auditTime)
@@ -292,7 +292,7 @@ These are Observable creation operators that also have join functionality -- emi
 
 Also see the [Join Creation Operators](#join-creation-operators) section above.
 
-另请参阅上面的[连接创建运算符](#join-creation-operators)部分。
+另请参阅上面的[连接创建操作符](#join-creation-operators)部分。
 
 - [`combineLatestAll`](/api/operators/combineLatestAll)
 - [`concatAll`](/api/operators/concatAll)
@@ -304,7 +304,7 @@ Also see the [Join Creation Operators](#join-creation-operators) section above.
 
 ### Multicasting Operators
 
-### 多播运算符
+### 多播操作符
 
 - [`multicast`](/api/operators/multicast)
 - [`publish`](/api/operators/publish)
@@ -315,7 +315,7 @@ Also see the [Join Creation Operators](#join-creation-operators) section above.
 
 ### Error Handling Operators
 
-### 错误处理运算符
+### 错误处理操作符
 
 - [`catchError`](/api/operators/catchError)
 - [`retry`](/api/operators/retry)
@@ -340,7 +340,7 @@ Also see the [Join Creation Operators](#join-creation-operators) section above.
 
 ### Conditional and Boolean Operators
 
-### 条件和布尔运算符
+### 条件和布尔操作符
 
 - [`defaultIfEmpty`](/api/operators/defaultIfEmpty)
 - [`every`](/api/operators/every)
@@ -350,7 +350,7 @@ Also see the [Join Creation Operators](#join-creation-operators) section above.
 
 ### Mathematical and Aggregate Operators
 
-### 数学和聚合运算符
+### 数学和聚合操作符
 
 - [`count`](/api/operators/count)
 - [`max`](/api/operators/max)
@@ -359,15 +359,15 @@ Also see the [Join Creation Operators](#join-creation-operators) section above.
 
 ## Creating custom operators
 
-## 创建自定义运算符
+## 创建自定义操作符
 
 ### Use the `pipe()` function to make new operators
 
-### 使用 `pipe()` 函数创建新的运算符
+### 使用 `pipe()` 函数创建新的操作符
 
 If there is a commonly used sequence of operators in your code, use the `pipe()` function to extract the sequence into a new operator. Even if a sequence is not that common, breaking it out into a single operator can improve readability.
 
-如果代码中有常用的运算符序列，请使用 `pipe()` 函数将序列提取到新的运算符中。即使序列不是那么常见，将其分解为单个运算符也可以提高可读性。
+如果代码中有常用的操作符序列，请使用 `pipe()` 函数将序列提取到新的操作符中。即使序列不是那么常见，将其分解为单个操作符也可以提高可读性。
 
 For example, you could make a function that discarded odd values and doubled even values like this:
 
@@ -390,11 +390,11 @@ function discardOddDoubleEven() {
 
 ### Creating new operators from scratch
 
-### 从头开始创建新的运算符
+### 从头开始创建新的操作符
 
 It is more complicated, but if you have to write an operator that cannot be made from a combination of existing operators (a rare occurrance), you can write an operator from scratch using the Observable constructor, like this:
 
-它更复杂，但如果你必须编写一个不能由现有运算符组合而成的运算符（很少发生），你可以使用 Observable 构造函数从头开始编写一个运算符，如下所示：
+它更复杂，但如果你必须编写一个不能由现有操作符组合而成的操作符（很少发生），你可以使用 Observable 构造函数从头开始编写一个操作符，如下所示：
 
 ```ts
 import { Observable, of } from 'rxjs';
@@ -470,5 +470,5 @@ Note that you must
 
 Of course, this is only an example; the [`delay()`](/api/operators/delay) operator already exists.
 
-当然，这只是一个例子； [`delay()`](/api/operators/delay)运算符已经存在。
+当然，这只是一个例子； [`delay()`](/api/operators/delay)操作符已经存在。
 

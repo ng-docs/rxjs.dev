@@ -21,7 +21,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * Note that using the {@link share} operator is exactly the same as using the `multicast(() => new Subject())` operator
  * (making the observable hot) and the *refCount* operator in a sequence.
  *
- * 请注意，使用 {@link share} 运算符与使用 `multicast(() => new Subject())` 运算符（使 observable 变热）和*refCount*运算符的顺序完全相同。
+ * 请注意，使用 {@link share} 操作符与使用 `multicast(() => new Subject())` 操作符（使 observable 变热）和*refCount*操作符的顺序完全相同。
  *
  * ![](refCount.png)
  *
@@ -34,7 +34,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * second one does not use it. You will notice that a connectable observable does nothing
  * until you call its connect function.
  *
- * 在下面的示例中，使用*发布*运算符将两个区间转换为可连接的 observable。第一个使用*refCount*运算符，第二个不使用它。你会注意到一个可连接的 observable 在你调用它的 connect 函数之前什么都不做。
+ * 在下面的示例中，使用*发布*操作符将两个区间转换为可连接的 observable。第一个使用*refCount*操作符，第二个不使用它。你会注意到一个可连接的 observable 在你调用它的 connect 函数之前什么都不做。
  *
  * ```ts
  * import { interval, tap, publish, refCount } from 'rxjs';
@@ -74,7 +74,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * `refCount` operator.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 替换为 {@link share} 运算符。如何使用 `share` 取决于你在 `refCount` 运算符之前创建的可连接 observable。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 替换为 {@link share} 操作符。如何使用 `share` 取决于你在 `refCount` 操作符之前创建的可连接 observable。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function refCount<T>(): MonoTypeOperatorFunction<T> {

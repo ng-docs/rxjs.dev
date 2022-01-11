@@ -22,7 +22,7 @@ import { timer } from './timer';
  * `async` {@link SchedulerLike} to provide a notion of time, but you may pass any
  * {@link SchedulerLike} to it.
  *
- * `interval` 返回一个 Observable，它发出无限的递增整数序列，在这些发射之间有一个恒定的时间间隔。第一个发射不会立即发送，而是在第一个周期过去后发送。默认情况下，此运算符使用 `async` {@link SchedulerLike} 来提供时间概念，但你可以将任何 {@link SchedulerLike} 传递给它。
+ * `interval` 返回一个 Observable，它发出无限的递增整数序列，在这些发射之间有一个恒定的时间间隔。第一个发射不会立即发送，而是在第一个周期过去后发送。默认情况下，此操作符使用 `async` {@link SchedulerLike} 来提供时间概念，但你可以将任何 {@link SchedulerLike} 传递给它。
  *
  * ## Example
  *

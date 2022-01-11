@@ -349,7 +349,7 @@ class GroupBySubscriber<T> extends OperatorSubscriber<T> {
  * An observable of values that is the emitted by the result of a {@link groupBy} operator,
  * contains a `key` property for the grouping.
  *
- * 由 {@link groupBy} 运算符的结果发出的可观察值包含分组的 `key` 属性。
+ * 由 {@link groupBy} 操作符的结果发出的可观察值包含分组的 `key` 属性。
  *
  */
 export interface GroupedObservable<K, T> extends Observable<T> {

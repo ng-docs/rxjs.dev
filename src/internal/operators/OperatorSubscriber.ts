@@ -4,7 +4,7 @@ import { Subscriber } from '../Subscriber';
  * A generic helper for allowing operators to be created with a Subscriber and
  * use closures to capture necessary state from the operator function itself.
  *
- * 一个通用帮助器，用于允许使用订阅者创建运算符并使用闭包从运算符函数本身捕获必要的状态。
+ * 一个通用帮助器，用于允许使用订阅者创建操作符并使用闭包从操作符函数本身捕获必要的状态。
  *
  */
 export class OperatorSubscriber<T> extends Subscriber<T> {

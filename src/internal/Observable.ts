@@ -93,7 +93,7 @@ export class Observable<T> implements Subscribable<T> {
    * operator by simply returning `new Observable()` directly. See "Creating new operators from
    * scratch" section here: <https://rxjs.dev/guide/operators>
    *
-   * 内部实现细节，请勿直接使用。将在 v8 中内部化。如果你已经使用 `lift` 实现了一个运算符，建议你通过直接返回 `new Observable()` 来创建一个运算符。请参阅此处的“从头开始创建新运算符”部分： <https://rxjs.dev/guide/operators>
+   * 内部实现细节，请勿直接使用。将在 v8 中内部化。如果你已经使用 `lift` 实现了一个操作符，建议你通过直接返回 `new Observable()` 来创建一个操作符。请参阅此处的“从头开始创建新操作符”部分： <https://rxjs.dev/guide/operators>
    *
    */
   lift<R>(operator?: Operator<T, R>): Observable<R> {
@@ -160,7 +160,7 @@ export class Observable<T> implements Subscribable<T> {
    * You can, however, subscribe with no parameters at all. This may be the case where you're not interested in terminal events
    * and you also handled emissions internally by using operators (e.g. using `tap`).
    *
-   * 但是，你可以完全不使用任何参数进行订阅。这可能是你对终端事件不感兴趣并且你还通过使用运算符（例如使用 `tap`）在内部处理排放的情况。
+   * 但是，你可以完全不使用任何参数进行订阅。这可能是你对终端事件不感兴趣并且你还通过使用操作符（例如使用 `tap`）在内部处理排放的情况。
    *
    * Whichever style of calling `subscribe` you use, in both cases it returns a Subscription object.
    * This object allows you to call `unsubscribe` on it, which in turn will stop the work that an Observable does and will clean
@@ -520,7 +520,7 @@ export class Observable<T> implements Subscribable<T> {
   /**
    * Used to stitch together functional operators into a chain.
    *
-   * 用于将功能运算符拼接成一个链。
+   * 用于将功能操作符拼接成一个链。
    *
    * @method pipe
    * @return {Observable} the Observable result of all of the operators having

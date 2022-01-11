@@ -29,7 +29,7 @@ export function map<T, R, A>(project: (this: A, value: T, index: number) => R, t
  * applies a projection to each value and emits that projection in the output
  * Observable.
  *
- * 与众所周知的 `Array.prototype.map` 函数类似，此运算符对每个值应用一个投影，并在输出 Observable 中发出该投影。
+ * 与众所周知的 `Array.prototype.map` 函数类似，此操作符对每个值应用一个投影，并在输出 Observable 中发出该投影。
  *
  * ## Example
  *

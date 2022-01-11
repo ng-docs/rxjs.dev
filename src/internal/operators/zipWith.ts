@@ -25,7 +25,7 @@ import { zip } from './zip';
  * values at a much faster rate than the others. Usage should likely be limited to streams that emit
  * at a similar pace, or finite streams of known length.
  *
- * 此运算符的用例是有限的。如果其中一个流以比其他流快得多的速率发出值，则会存在内存问题。使用可能仅限于以相似速度发射的流，或已知长度的有限流。
+ * 此操作符的用例是有限的。如果其中一个流以比其他流快得多的速率发出值，则会存在内存问题。使用可能仅限于以相似速度发射的流，或已知长度的有限流。
  *
  * In many cases, authors want `combineLatestWith` and not `zipWith`.
  *

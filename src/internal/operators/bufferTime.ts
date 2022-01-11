@@ -43,7 +43,7 @@ export function bufferTime<T>(
  * `maxBufferSize` is specified, the buffer will be closed either after
  * `bufferTimeSpan` milliseconds or when it contains `maxBufferSize` elements.
  *
- * 在特定持续时间 `bufferTimeSpan` 中缓冲来自源的值。除非给定可选参数 `bufferCreationInterval`，否则它会每隔 `bufferTimeSpan` 毫秒发出并重置缓冲区。如果给定了 `bufferCreationInterval`，则此运算符每 `bufferCreationInterval` 毫秒打开缓冲区，并每 `bufferTimeSpan` 毫秒关闭（发出和重置）缓冲区。当指定可选参数 `maxBufferSize` 时，缓冲区将在 `bufferTimeSpan` 毫秒后或包含 `maxBufferSize` 元素时关闭。
+ * 在特定持续时间 `bufferTimeSpan` 中缓冲来自源的值。除非给定可选参数 `bufferCreationInterval`，否则它会每隔 `bufferTimeSpan` 毫秒发出并重置缓冲区。如果给定了 `bufferCreationInterval`，则此操作符每 `bufferCreationInterval` 毫秒打开缓冲区，并每 `bufferTimeSpan` 毫秒关闭（发出和重置）缓冲区。当指定可选参数 `maxBufferSize` 时，缓冲区将在 `bufferTimeSpan` 毫秒后或包含 `maxBufferSize` 元素时关闭。
  *
  * ## Examples
  *

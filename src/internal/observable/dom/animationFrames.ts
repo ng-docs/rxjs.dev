@@ -21,7 +21,7 @@ import { animationFrameProvider } from '../../scheduler/animationFrameProvider';
  * execution of animation-related handlers are all executed during the same task by the engine,
  * the `share` operator can be used.
  *
- * 每个订阅都会启动一个单独的动画循环。由于动画帧总是由浏览器调度在重绘之前直接发生，因此同步调度多个动画帧与在单个动画帧期间循环遍历一系列事件应该没有太大区别或开销更大。但是，如果出于某种原因，开发人员希望确保动画相关处理程序的执行都由引擎在同一任务期间执行，则可以使用 `share` 运算符。
+ * 每个订阅都会启动一个单独的动画循环。由于动画帧总是由浏览器调度在重绘之前直接发生，因此同步调度多个动画帧与在单个动画帧期间循环遍历一系列事件应该没有太大区别或开销更大。但是，如果出于某种原因，开发人员希望确保动画相关处理程序的执行都由引擎在同一任务期间执行，则可以使用 `share` 操作符。
  *
  * This is useful for setting up animations with RxJS.
  *

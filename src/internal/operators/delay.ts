@@ -25,7 +25,7 @@ import { timer } from '../observable/timer';
  * If the delay argument is a Date, this operator time shifts the start of the
  * Observable execution until the given date occurs.
  *
- * 如果延迟参数是日期，则此运算符将 Observable 执行的开始时间转移到给定日期发生。
+ * 如果延迟参数是日期，则此操作符将 Observable 执行的开始时间转移到给定日期发生。
  *
  * ## Examples
  *

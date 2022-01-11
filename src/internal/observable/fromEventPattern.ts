@@ -40,7 +40,7 @@ export function fromEventPattern<T>(
  * returned by the operator is subscribed, so registering handler in API will not
  * necessarily happen when `fromEventPattern` is called.
  *
- * 该运算符接受 `addHandler` 函数作为第一个参数，该函数将被注入处理程序参数。该处理程序实际上是一个事件处理程序函数，你现在可以将其传递给期望它的 API。`addHandler` 会在操作者返回的 Observable 被订阅时被调用，因此在调用 `fromEventPattern` 时不一定会在 API 中注册处理程序。
+ * 该操作符接受 `addHandler` 函数作为第一个参数，该函数将被注入处理程序参数。该处理程序实际上是一个事件处理程序函数，你现在可以将其传递给期望它的 API。`addHandler` 会在操作者返回的 Observable 被订阅时被调用，因此在调用 `fromEventPattern` 时不一定会在 API 中注册处理程序。
  *
  * After registration, every time an event that we listen to happens,
  * Observable returned by `fromEventPattern` will emit value that event handler

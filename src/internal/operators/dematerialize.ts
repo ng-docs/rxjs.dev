@@ -26,7 +26,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  * Use this operator in conjunction with {@link materialize}.
  *
- * 将此运算符与 {@link materialize} 结合使用。
+ * 将此操作符与 {@link materialize} 结合使用。
  *
  * ## Example
  *

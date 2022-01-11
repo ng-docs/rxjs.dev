@@ -26,7 +26,7 @@ import { mergeInternals } from './mergeInternals';
  * whose value is initially set to the `seed` parameter (the second parameter
  * passed to the `mergeScan` operator).
  *
- * 调用 `accumulator` 函数时传递给它的三个参数： `acc`、`value` 和 `index`。`acc` 参数用作状态参数，其值最初设置为 `seed` 参数（传递给 `mergeScan` 运算符的第二个参数）。
+ * 调用 `accumulator` 函数时传递给它的三个参数： `acc`、`value` 和 `index`。`acc` 参数用作状态参数，其值最初设置为 `seed` 参数（传递给 `mergeScan` 操作符的第二个参数）。
  *
  * `mergeScan` internally keeps the value of the `acc` parameter: as long as the
  * source Observable emits without inner Observable emitting, the `acc` will be

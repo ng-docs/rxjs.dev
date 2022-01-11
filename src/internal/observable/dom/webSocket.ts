@@ -77,7 +77,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * were two separate sockets is desirable. This eliminates manually registering and unregistering in a gateway for
  * given service and filter out messages of interest. This is exactly what `multiplex` method is for.
  *
- * `WebSocketSubject` 有一个额外的运算符，在其他 Subjects 中没有。它被称为 `multiplex`，它用于模拟打开多个套接字连接，而实际上只维护一个。例如，一个应用程序既有聊天面板，也有关于体育新闻的实时通知。由于这是两个不同的功能，因此为每个功能设置两个单独的连接是有意义的。也许甚至可以有两个带有 WebSocket 端点的单独服务，在单独的机器上运行，只有 GUI 将它们组合在一起。每个功能都有一个套接字连接可能会变得过于昂贵。将单个 WebSocket 端点用作其他服务（在本例中为聊天和体育新闻服务）的网关是一种常见模式。即使客户端应用程序中只有一个连接，也希望能够像处理两个单独的套接字一样操作流。这消除了在网关中手动注册和注销给定服务并过滤掉感兴趣的消息。这正是 `multiplex` 方法的用途。
+ * `WebSocketSubject` 有一个额外的操作符，在其他 Subjects 中没有。它被称为 `multiplex`，它用于模拟打开多个套接字连接，而实际上只维护一个。例如，一个应用程序既有聊天面板，也有关于体育新闻的实时通知。由于这是两个不同的功能，因此为每个功能设置两个单独的连接是有意义的。也许甚至可以有两个带有 WebSocket 端点的单独服务，在单独的机器上运行，只有 GUI 将它们组合在一起。每个功能都有一个套接字连接可能会变得过于昂贵。将单个 WebSocket 端点用作其他服务（在本例中为聊天和体育新闻服务）的网关是一种常见模式。即使客户端应用程序中只有一个连接，也希望能够像处理两个单独的套接字一样操作流。这消除了在网关中手动注册和注销给定服务并过滤掉感兴趣的消息。这正是 `multiplex` 方法的用途。
  *
  * Method accepts three parameters. First two are functions returning subscription and unsubscription messages
  * respectively. These are messages that will be sent to the server, whenever consumer of resulting Observable

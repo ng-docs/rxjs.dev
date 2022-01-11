@@ -695,7 +695,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - The `single` operator will now throw for scenarios where values coming in are either not present, or do not match the provided predicate. Error types have thrown have also been updated, please check documentation for changes.
 
-  现在，`single` 运算符将在传入的值不存在或与提供的谓词不匹配的情况下抛出。引发的错误类型也已更新，请查看文档以了解更改。
+  现在，`single` 操作符将在传入的值不存在或与提供的谓词不匹配的情况下抛出。引发的错误类型也已更新，请查看文档以了解更改。
 
 ### skipLast
 
@@ -800,7 +800,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 - `zip` operators will no longer iterate provided iterables "as needed", instead the iterables will be treated as push-streams just like they would be everywhere else in RxJS. This means that passing an endless iterable will result in the thread locking up, as it will endlessly try to read from that iterable. This puts us in-line with all other Rx implementations. To work around this, it is probably best to use `map` or some combination of `map` and `zip`. For example, `zip(source$, iterator)` could
   be `source$.pipe(map(value => [value, iterator.next().value]))`.
 
-  `zip` 运算符将不再“根据需要”迭代提供的可迭代对象，而是将可迭代对象视为推送流，就像它们在 RxJS 中的其他任何地方一样。这意味着传递一个无限迭代将导致线程锁定，因为它将无休止地尝试从该迭代中读取。这使我们与所有其他 Rx 实现保持一致。要解决此问题，最好使用 `map` 或 `map` 和 `zip` 的某种组合。例如，`zip(source$, iterator)` 可以是 `source$.pipe(map(value => [value, iterator.next().value]))`。
+  `zip` 操作符将不再“根据需要”迭代提供的可迭代对象，而是将可迭代对象视为推送流，就像它们在 RxJS 中的其他任何地方一样。这意味着传递一个无限迭代将导致线程锁定，因为它将无休止地尝试从该迭代中读取。这使我们与所有其他 Rx 实现保持一致。要解决此问题，最好使用 `map` 或 `map` 和 `zip` 的某种组合。例如，`zip(source$, iterator)` 可以是 `source$.pipe(map(value => [value, iterator.next().value]))`。
 
 ## New Features
 
@@ -812,7 +812,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - New operator to cover the use cases of `publish` variants that use a `selector`. Wherein the selector allows the user to define multicast behavior prior to connection to the source observable for the multicast.
 
-  新运算符涵盖使用 `selector` 的 `publish` 变体的用例。其中选择器允许用户在连接到多播可观察的源之前定义多播行为。
+  新操作符涵盖使用 `selector` 的 `publish` 变体的用例。其中选择器允许用户在连接到多播可观察的源之前定义多播行为。
 
 ### share
 
@@ -938,5 +938,5 @@ No changes.
 
 - A new means of comparing the equality of to observables. If all emissions are the same, and at the same time, then they are equal. This is primarily useful for refactoring operator chains and making sure that they are equivalent.
 
-  一种比较可观察对象的相等性的新方法。如果所有排放量都相同，并且同时，那么它们是相等的。这主要用于重构运算符链并确保它们是等价的。
+  一种比较可观察对象的相等性的新方法。如果所有排放量都相同，并且同时，那么它们是相等的。这主要用于重构操作符链并确保它们是等价的。
 

@@ -28,7 +28,7 @@ export function reduce<V, A, S = A>(accumulator: (acc: A | S, value: V, index: n
  * one value, only when the source Observable completes. It is equivalent to
  * applying operator {@link scan} followed by operator {@link last}.
  *
- * 与[Array.prototype.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)一样，`reduce` 对累积和源 Observable 的每个值（来自过去）应用 `accumulator` 函数以将其减少为单个值，在输出 Observable 上发出。请注意，`reduce` 只会在源 Observable 完成时发出一个值。这相当于应用运算符 {@link scan} 后跟运算符 {@link last}。
+ * 与[Array.prototype.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)一样，`reduce` 对累积和源 Observable 的每个值（来自过去）应用 `accumulator` 函数以将其减少为单个值，在输出 Observable 上发出。请注意，`reduce` 只会在源 Observable 完成时发出一个值。这相当于应用操作符 {@link scan} 后跟操作符 {@link last}。
  *
  * Returns an Observable that applies a specified `accumulator` function to each
  * item emitted by the source Observable. If a `seed` value is specified, then

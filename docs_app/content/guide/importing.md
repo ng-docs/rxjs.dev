@@ -18,7 +18,7 @@ There are different ways you can {@link guide/installation install} RxJS. Using/
 export site. This means that the preferred way to import operators is from `'rxjs'`, while
 `'rxjs/operators'` export site has been deprecated.**</span>
 
-**在 RxJS v7.2.0 中，大多数运算符已移至 `{@link api#index 'rxjs'}` 导出站点。这意味着导入操作符的首选方式是从 `'rxjs'`，而 `'rxjs/operators'` 导出站点已被弃用。**
+**在 RxJS v7.2.0 中，大多数操作符已移至 `{@link api#index 'rxjs'}` 导出站点。这意味着导入操作符的首选方式是从 `'rxjs'`，而 `'rxjs/operators'` 导出站点已被弃用。**
 
 For example, instead of using:
 
@@ -38,7 +38,7 @@ import { map } from 'rxjs';
 
 Although the old way of importing operators is still active, it will be removed in one of the next major versions.
 
-虽然导入运算符的旧方式仍然有效，但它将在下一个主要版本中删除。
+虽然导入操作符的旧方式仍然有效，但它将在下一个主要版本中删除。
 
 Click {@link #how-to-migrate here to see} how to migrate.
 
@@ -83,11 +83,11 @@ RxJS v7 导出 6 个不同的位置，你可以从中导入你需要的内容。
 While nothing has been removed from `'rxjs/operators'`, it is strongly recommended doing the operator imports from `'rxjs'`. Almost all operator function exports have been moved to `'rxjs'`, but only a couple of old and deprecated operators have stayed in the `'rxjs/operators'`. Those operator functions are now mostly deprecated and most of them have their either static operator substitution or are kept as operators, but have a new name so that they are different to their static creation counter-part (
 usually ending with `With`). Those are:
 
-虽然没有从 `'rxjs/operators'` 中删除任何内容，但强烈建议从 `'rxjs'` 导入运算符。几乎所有运算符函数导出都已移至 `'rxjs'`，但只有几个旧的和已弃用的运算符保留在 `'rxjs/operators'` 中。这些运算符函数现在大多已被弃用，其中大多数具有静态运算符替换或保留为运算符，但有一个新名称，因此它们与其静态创建对应部分不同（通常以 `With` 结尾）。那些是：
+虽然没有从 `'rxjs/operators'` 中删除任何内容，但强烈建议从 `'rxjs'` 导入操作符。几乎所有操作符函数导出都已移至 `'rxjs'`，但只有几个旧的和已弃用的操作符保留在 `'rxjs/operators'` 中。这些操作符函数现在大多已被弃用，其中大多数具有静态操作符替换或保留为操作符，但有一个新名称，因此它们与其静态创建对应部分不同（通常以 `With` 结尾）。那些是：
 
 | `'rxjs/operators'` Operator | Replace With Static Creation Operator | Replace With New Operator Name |
 | --------------------------- | ------------------------------------- | ------------------------------ |
-| `'rxjs/operators'` 运算符 | 替换为静态创建运算符 | 替换为新的操作员名称 |
+| `'rxjs/operators'` 操作符 | 替换为静态创建操作符 | 替换为新的操作员名称 |
 | [`combineLatest`](/api/operators/combineLatest) | {@link combineLatest} | {@link combineLatestWith} |
 | [`combineLatest`](/api/operators/combineLatest) | {@link combineLatest} | {@link combineLatestWith} |
 | [`concat`](/api/operators/concat) | {@link concat} | {@link concatWith} |
@@ -130,7 +130,7 @@ merge(a$, b$).subscribe();
 
 Or it could be written using a pipeable {@link mergeWith} operator:
 
-或者可以使用可管道 {@link mergeWith} 运算符编写：
+或者可以使用可管道 {@link mergeWith} 操作符编写：
 
 ```ts
 import { mergeWith } from 'rxjs';

@@ -124,7 +124,7 @@ export function combineLatest<T extends Record<string, ObservableInput<any>>>(
  * corresponding to the order of the passed Observables (the value from the first Observable
  * will be at index 0 of the array and so on).
  *
- * `combineLatest` 组合来自 observables 数组中传递的所有 Observables 的值。这是通过按顺序订阅每个 Observable 来完成的，并且每当有任何 Observable 发出时，都会从每个 Observable 中收集一个包含最新值的数组。因此，如果你将 `n` Observables 传递给此运算符，则返回的 Observable 将始终发出一个包含 `n` 值的数组，其顺序与传递的 Observables 的顺序相对应（第一个 Observable 的值将位于数组的索引 0 处，因此在）。
+ * `combineLatest` 组合来自 observables 数组中传递的所有 Observables 的值。这是通过按顺序订阅每个 Observable 来完成的，并且每当有任何 Observable 发出时，都会从每个 Observable 中收集一个包含最新值的数组。因此，如果你将 `n` Observables 传递给此操作符，则返回的 Observable 将始终发出一个包含 `n` 值的数组，其顺序与传递的 Observables 的顺序相对应（第一个 Observable 的值将位于数组的索引 0 处，因此在）。
  *
  * Static version of `combineLatest` accepts an array of Observables. Note that an array of
  * Observables is a good choice, if you don't know beforehand how many Observables

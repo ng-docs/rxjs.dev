@@ -37,7 +37,7 @@ export function endWith<T, A extends unknown[] = T[]>(...values: A): OperatorFun
  * This is useful for knowing when an observable ends. Particularly when paired with an
  * operator like {@link takeUntil}
  *
- * 这对于了解 observable 何时结束很有用。特别是与像 {@link takeUntil} 这样的运算符配对时
+ * 这对于了解 observable 何时结束很有用。特别是与像 {@link takeUntil} 这样的操作符配对时
  *
  * ![](endWith.png)
  *

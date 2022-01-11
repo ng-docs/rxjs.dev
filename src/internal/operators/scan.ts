@@ -24,7 +24,7 @@ export function scan<V, A, S>(accumulator: (acc: A | S, value: V, index: number)
  *
  * This operator maintains an internal state and emits it after processing each value as follows:
  *
- * 该运算符维护一个内部状态，并在处理每个值后发出它，如下所示：
+ * 该操作符维护一个内部状态，并在处理每个值后发出它，如下所示：
  *
  * 1. First value arrives
  *

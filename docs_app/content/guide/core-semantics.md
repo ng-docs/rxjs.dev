@@ -4,7 +4,7 @@
 
 Starting in version 8, all RxJS operators that are provided in the core library MUST meet the following semantics. In the current version, version 7, all operators SHOULD meet the following semantics (as guidelines). If they do not, we need to track the issue on [GitHub](https://github.com/ReactiveX/rxjs/issues).
 
-从版本 8 开始，核心库中提供的所有 RxJS 运算符必须满足以下语义。在当前版本 7 中，所有运算符都应该满足以下语义（作为准则）。如果没有，我们需要在[GitHub 上](https://github.com/ReactiveX/rxjs/issues)跟踪问题。
+从版本 8 开始，核心库中提供的所有 RxJS 操作符必须满足以下语义。在当前版本 7 中，所有操作符都应该满足以下语义（作为准则）。如果没有，我们需要在[GitHub 上](https://github.com/ReactiveX/rxjs/issues)跟踪问题。
 
 ## Purpose
 
@@ -12,7 +12,7 @@ Starting in version 8, all RxJS operators that are provided in the core library 
 
 The purpose of these semantics is provide predictable behavior for the users of our library, and to ensure consistent behavior between our many different operators. It should be noted that at the time of this writing, we don't always adhere to these semantic guidelines. This document is to serve as a goalpost for upcoming changes and work as much as it is to help describe the library. This is also a "living document" and is subject to change.
 
-这些语义的目的是为我们库的用户提供可预测的行为，并确保我们的许多不同运算符之间的行为一致。应该注意的是，在撰写本文时，我们并不总是遵守这些语义准则。本文档将作为即将发生的更改的目标，并尽可能地帮助描述库。这也是一份“活文件”，可能会发生变化。
+这些语义的目的是为我们库的用户提供可预测的行为，并确保我们的许多不同操作符之间的行为一致。应该注意的是，在撰写本文时，我们并不总是遵守这些语义准则。本文档将作为即将发生的更改的目标，并尽可能地帮助描述库。这也是一份“活文件”，可能会发生变化。
 
 ## General Design Guidelines
 
@@ -21,7 +21,7 @@ The purpose of these semantics is provide predictable behavior for the users of 
 **Functions such as operators, constructors, and creation functions, should use named parameters in cases where there is more than 1 argument, and arguments after the first are non-obvious.** The primary use case should be streamlined to work without configuration. For example, `fakeFlattenMap(n => of(n))` is fine, but `fakeFlattenMap(n => of(n), 1)` is less readable than `fakeFlattenMap(n => of(n), { maxConcurrent: 1 })`. Other things, like `of(1, 2, 3)` are obvious enough that named parameters don't make
 sense.
 
-**运算符、构造函数和创建函数等函数在有多个参数的情况下应使用命名参数，并且第一个参数之后的参数不明显。**应简化主要用例，使其无需配置即可工作。例如，`fakeFlattenMap(n => of(n))` 很好，但 `fakeFlattenMap(n => of(n), 1)` 的可读性不如 `fakeFlattenMap(n => of(n), { maxConcurrent: 1 })`。其他的东西，比如 `of(1, 2, 3)` 很明显，命名参数没有意义。
+**操作符、构造函数和创建函数等函数在有多个参数的情况下应使用命名参数，并且第一个参数之后的参数不明显。**应简化主要用例，使其无需配置即可工作。例如，`fakeFlattenMap(n => of(n))` 很好，但 `fakeFlattenMap(n => of(n), 1)` 的可读性不如 `fakeFlattenMap(n => of(n), { maxConcurrent: 1 })`。其他的东西，比如 `of(1, 2, 3)` 很明显，命名参数没有意义。
 
 ## Operators
 
@@ -33,7 +33,7 @@ sense.
 
 - The returned operator function MUST be [referentially transparent](https://en.wikipedia.org/wiki/Referential_transparency). That is to say, that if you capture the return value of the operator (e.g. `const double => map(x => x + x)`), you can use that value to operate on any many observables as you like without changing any underlying state in the operator reference. (e.g. `a$.pipe(double)` and `b$.pipe(double)`).
 
-  返回的操作符函数必须是[引用透明](https://en.wikipedia.org/wiki/Referential_transparency)的。也就是说，如果你捕获运算符的返回值（例如 `const double => map(x => x + x)`），你可以使用该值对任意多个 observables 进行任意操作，而无需更改任何底层操作员参考中的状态。（例如 `a$.pipe(double)` 和 `b$.pipe(double)`）。
+  返回的操作符函数必须是[引用透明](https://en.wikipedia.org/wiki/Referential_transparency)的。也就是说，如果你捕获操作符的返回值（例如 `const double => map(x => x + x)`），你可以使用该值对任意多个 observables 进行任意操作，而无需更改任何底层操作员参考中的状态。（例如 `a$.pipe(double)` 和 `b$.pipe(double)`）。
 
 - The observable returned by the operator function MUST subscribe to the source.
 
@@ -45,7 +45,7 @@ sense.
 
 - Operators that accept a "notifier", that is another observable source that is used to trigger some behavior, must accept any type that can be converted to an `Observable` with `from`. For example `takeUntil`.
 
-  接受“通知者”的运算符，即另一个用于触发某些行为的可观察源，必须接受可以转换为 `Observable` 的任何类型 `from`。例如 `takeUntil`。
+  接受“通知者”的操作符，即另一个用于触发某些行为的可观察源，必须接受可以转换为 `Observable` 的任何类型 `from`。例如 `takeUntil`。
 
 - Operators that accept "notifiers" (as described above), MUST ONLY recognized next values from the notifier as "notifications". Emitted completions may not be used a source of notification.
 
@@ -77,7 +77,7 @@ sense.
 
 - SHOULD NOT have "result selectors". This is a secondary argument that provides the ability to "map" values after performing the primary operation of the operator.
 
-  不应该有“结果选择器”。这是一个辅助参数，它提供了在执行运算符的主要操作之后“映射”值的能力。
+  不应该有“结果选择器”。这是一个辅助参数，它提供了在执行操作符的主要操作之后“映射”值的能力。
 
 ## Creation Functions
 

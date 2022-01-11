@@ -160,15 +160,15 @@ The `async` Scheduler is one of the built-in schedulers provided by RxJS. Each o
 You may have already used schedulers in your RxJS code without explicitly stating the type of schedulers to be used. This is because all Observable operators that deal with concurrency have optional schedulers. If you do not provide the scheduler, RxJS will pick a default scheduler by using the principle of least concurrency. This means that the scheduler which introduces the least amount of concurrency that satisfies the needs of the operator is chosen. For example, for operators returning an observable
 with a finite and small number of messages, RxJS uses no Scheduler, i.e. `null` or `undefined`. For operators returning a potentially large or infinite number of messages, `queue` Scheduler is used. For operators which use timers, `async` is used.
 
-你可能已经在你的 RxJS 代码中使用了调度器，而没有明确说明要使用的调度器的类型。这是因为所有处理并发的 Observable 操作符都有可选的调度器。如果你不提供调度器，RxJS 会根据最小并发的原则选择一个默认的调度器。这意味着选择引入满足操作员需求的最少并发量的调度程序。例如，对于返回具有有限且少量消息的 observable 的操作符，RxJS 不使用调度程序，即 `null` 或 `undefined`。对于返回可能大量或无限数量的消息的操作员，使用 `queue` 调度程序。对于使用计时器的运算符，使用 `async`。
+你可能已经在你的 RxJS 代码中使用了调度器，而没有明确说明要使用的调度器的类型。这是因为所有处理并发的 Observable 操作符都有可选的调度器。如果你不提供调度器，RxJS 会根据最小并发的原则选择一个默认的调度器。这意味着选择引入满足操作员需求的最少并发量的调度程序。例如，对于返回具有有限且少量消息的 observable 的操作符，RxJS 不使用调度程序，即 `null` 或 `undefined`。对于返回可能大量或无限数量的消息的操作员，使用 `queue` 调度程序。对于使用计时器的操作符，使用 `async`。
 
 Because RxJS uses the least concurrency scheduler, you can pick a different scheduler if you want to introduce concurrency for performance purpose. To specify a particular scheduler, you can use those operator methods that take a scheduler, e.g., `from([10, 20, 30], asyncScheduler)`.
 
-因为 RxJS 使用最少的并发调度器，如果你想为了性能目的引入并发，你可以选择一个不同的调度器。要指定特定的调度程序，你可以使用那些采用调度程序的运算符方法，例如 `from([10, 20, 30], asyncScheduler)`。
+因为 RxJS 使用最少的并发调度器，如果你想为了性能目的引入并发，你可以选择一个不同的调度器。要指定特定的调度程序，你可以使用那些采用调度程序的操作符方法，例如 `from([10, 20, 30], asyncScheduler)`。
 
 **Static creation operators usually take a Scheduler as argument.** For instance, `from(array, scheduler)` lets you specify the Scheduler to use when delivering each notification converted from the `array`. It is usually the last argument to the operator. The following static creation operators take a Scheduler argument:
 
-**静态创建操作符通常以 Scheduler 作为参数。**例如，`from(array, scheduler)` 允许你指定在传递从 `array` 转换的每个通知时要使用的调度程序。它通常是运算符的最后一个参数。以下静态创建运算符采用 Scheduler 参数：
+**静态创建操作符通常以 Scheduler 作为参数。**例如，`from(array, scheduler)` 允许你指定在传递从 `array` 转换的每个通知时要使用的调度程序。它通常是操作符的最后一个参数。以下静态创建操作符采用 Scheduler 参数：
 
 - `bindCallback`
 - `bindNodeCallback`
@@ -186,7 +186,7 @@ Because RxJS uses the least concurrency scheduler, you can pick a different sche
 
 **Use `subscribeOn` to schedule in what context will the `subscribe()` call happen.** By default, a `subscribe()` call on an Observable will happen synchronously and immediately. However, you may delay or schedule the actual subscription to happen on a given Scheduler, using the instance operator `subscribeOn(scheduler)`, where `scheduler` is an argument you provide.
 
-**使用 `subscribeOn` 来安排 `subscribe()` 调用将在什么上下文中发生。**默认情况下，对 Observable 的 `subscribe()` 调用将同步并立即发生。但是，你可以使用实例运算符 `subscribeOn(scheduler)` 延迟或安排在给定调度程序上发生的实际订阅，其中 `scheduler` 是你提供的参数。
+**使用 `subscribeOn` 来安排 `subscribe()` 调用将在什么上下文中发生。**默认情况下，对 Observable 的 `subscribe()` 调用将同步并立即发生。但是，你可以使用实例操作符 `subscribeOn(scheduler)` 延迟或安排在给定调度程序上发生的实际订阅，其中 `scheduler` 是你提供的参数。
 
 **Use `observeOn` to schedule in what context will notifications be delivered.** As we saw in the examples above, instance operator `observeOn(scheduler)` introduces a mediator Observer between the source Observable and the destination Observer, where the mediator schedules calls to the destination Observer using your given `scheduler`.
 
@@ -194,11 +194,11 @@ Because RxJS uses the least concurrency scheduler, you can pick a different sche
 
 **Instance operators may take a Scheduler as argument.**
 
-**实例运算符可以将调度程序作为参数。**
+**实例操作符可以将调度程序作为参数。**
 
 Time-related operators like `bufferTime`, `debounceTime`, `delay`, `auditTime`, `sampleTime`, `throttleTime`, `timeInterval`, `timeout`, `timeoutWith`, `windowTime` all take a Scheduler as the last argument, and otherwise operate by default on the `asyncScheduler`.
 
-与时间相关的运算符，如 `bufferTime`、`debounceTime`、`delay`、`auditTime`、`sampleTime`、`throttleTime`、`timeInterval`、`timeout`、`timeoutWith`、`windowTime` 都将 Scheduler 作为最后一个参数，否则默认在 `asyncScheduler` 上运行。
+与时间相关的操作符，如 `bufferTime`、`debounceTime`、`delay`、`auditTime`、`sampleTime`、`throttleTime`、`timeInterval`、`timeout`、`timeoutWith`、`windowTime` 都将 Scheduler 作为最后一个参数，否则默认在 `asyncScheduler` 上运行。
 
 Other instance operators that take a Scheduler as argument: `cache`, `combineLatest`, `concat`, `expand`, `merge`, `publishReplay`, `startWith`.
 

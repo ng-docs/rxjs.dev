@@ -47,7 +47,7 @@ import { operate } from '../util/lift';
  *
  * If we instead use the `subscribeOn` operator declaring that we want to use the {@link asyncScheduler} for values emitted by Observable `a`:
  *
- * 如果我们改为使用 `subscribeOn` 运算符声明我们想要使用 {@link asyncScheduler} 来处理 Observable `a` 发出的值：
+ * 如果我们改为使用 `subscribeOn` 操作符声明我们想要使用 {@link asyncScheduler} 来处理 Observable `a` 发出的值：
  *
  * ```ts
  * import { of, subscribeOn, asyncScheduler, merge } from 'rxjs';

@@ -27,7 +27,7 @@ export enum NotificationKind {
  * with metadata of, for instance, what type of push message it is (`next`,
  * `error`, or `complete`).
  *
- * 表示 {@link Observable} 可以发出的基于推送的事件或值。此类对于管理通知的运算符特别有用，例如 {@link materialize}、{@link dematerialize}、{@link observeOn} 等。除了包装实际交付的值之外，它还使用元数据对其进行注释，例如，它是什么类型的推送消息（`next`、`error` 或 `complete`）。
+ * 表示 {@link Observable} 可以发出的基于推送的事件或值。此类对于管理通知的操作符特别有用，例如 {@link materialize}、{@link dematerialize}、{@link observeOn} 等。除了包装实际交付的值之外，它还使用元数据对其进行注释，例如，它是什么类型的推送消息（`next`、`error` 或 `complete`）。
  *
  * @see {@link materialize}
  * @see {@link dematerialize}

@@ -80,7 +80,7 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * or a dictionary of input observables. If no input observables are provided (e.g. an empty array is passed),
  * then the resulting stream will complete immediately.
  *
- * `forkJoin` 是一个运算符，它接受任意数量的输入 observable，这些输入 observable 可以作为数组或输入 observable 的字典传递。如果没有提供输入 observables（例如传递一个空数组），那么结果流将立即完成。
+ * `forkJoin` 是一个操作符，它接受任意数量的输入 observable，这些输入 observable 可以作为数组或输入 observable 的字典传递。如果没有提供输入 observables（例如传递一个空数组），那么结果流将立即完成。
  *
  * `forkJoin` will wait for all passed observables to emit and complete and then it will emit an array or an object with last
  * values from corresponding observables.

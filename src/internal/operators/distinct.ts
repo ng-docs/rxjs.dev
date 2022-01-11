@@ -17,14 +17,14 @@ import { noop } from '../util/noop';
  *
  * In JavaScript runtimes that support `Set`, this operator will use a `Set` to improve performance of the distinct value checking.
  *
- * 在支持 `Set` 的 JavaScript 运行时中，此运算符将使用 `Set` 来提高不同值检查的性能。
+ * 在支持 `Set` 的 JavaScript 运行时中，此操作符将使用 `Set` 来提高不同值检查的性能。
  *
  * In other runtimes, this operator will use a minimal implementation of `Set` that relies on an `Array` and `indexOf` under the
  * hood, so performance will degrade as more values are checked for distinction. Even in newer browsers, a long-running `distinct`
  * use might result in memory leaks. To help alleviate this in some scenarios, an optional `flushes` parameter is also provided so
  * that the internal `Set` can be "flushed", basically clearing it of values.
  *
- * 在其他运行时，此运算符将使用 `Set` 的最小实现，该实现依赖于 `Array` 和 `indexOf` 在引擎盖下，因此性能会随着检查更多值的区别而降低。即使在较新的浏览器中，长时间运行 `distinct` 用途也可能导致内存泄漏。为了在某些情况下帮助缓解这种情况，还提供了一个可选的 `flushes` 参数，以便可以“刷新”内部 `Set`，基本上清除它的值。
+ * 在其他运行时，此操作符将使用 `Set` 的最小实现，该实现依赖于 `Array` 和 `indexOf` 在引擎盖下，因此性能会随着检查更多值的区别而降低。即使在较新的浏览器中，长时间运行 `distinct` 用途也可能导致内存泄漏。为了在某些情况下帮助缓解这种情况，还提供了一个可选的 `flushes` 参数，以便可以“刷新”内部 `Set`，基本上清除它的值。
  *
  * ## Examples
  *

@@ -439,7 +439,7 @@ subject.complete();
 
 The AsyncSubject is similar to the [`last()`](/api/operators/last) operator, in that it waits for the `complete` notification in order to deliver a single value.
 
-AsyncSubject 类似于[`last()`](/api/operators/last)运算符，因为它等待 `complete` 通知以传递单个值。
+AsyncSubject 类似于[`last()`](/api/operators/last)操作符，因为它等待 `complete` 通知以传递单个值。
 
 ## Void subject
 

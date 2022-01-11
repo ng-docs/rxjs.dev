@@ -58,7 +58,7 @@ export function catchError<T, O extends ObservableInput<any>>(
  *
  * Retry the caught source Observable again in case of error, similar to `retry()` operator
  *
- * 发生错误时再次重试捕获的源 Observable，类似于 `retry()` 运算符
+ * 发生错误时再次重试捕获的源 Observable，类似于 `retry()` 操作符
  *
  * ```ts
  * import { of, map, catchError, take } from 'rxjs';

@@ -16,7 +16,7 @@ import { timeout } from './timeout';
  * Can be used to set a timeout only for the first value, however it's recommended to use the {@link timeout} operator with
  * the `first` configuration to get that effect.
  *
- * 仅可用于为第一个值设置超时，但建议在 `first` 配置中使用 {@link timeout} 运算符以获得该效果。
+ * 仅可用于为第一个值设置超时，但建议在 `first` 配置中使用 {@link timeout} 操作符以获得该效果。
  *
  * @param dueBy The exact time, as a `Date`, at which the timeout will be triggered if the first value does not arrive.
  *
@@ -28,7 +28,7 @@ import { timeout } from './timeout';
  *
  * @param scheduler The scheduler to use with time-related operations within this operator. Defaults to {@link asyncScheduler}
  *
- * 在此运算符中与时间相关的操作一起使用的调度程序。默认为 {@link asyncScheduler}
+ * 在此操作符中与时间相关的操作一起使用的调度程序。默认为 {@link asyncScheduler}
  *
  * @deprecated Replaced with {@link timeout}. Instead of `timeoutWith(someDate, a$, scheduler)`, use the configuration object `timeout({ first: someDate, with: () => a$, scheduler })`. Will be removed in v8.
  *
@@ -116,7 +116,7 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  *
  * @param scheduler The scheduler to use with time-related operations within this operator. Defaults to {@link asyncScheduler}
  *
- * 在此运算符中与时间相关的操作一起使用的调度程序。默认为 {@link asyncScheduler}
+ * 在此操作符中与时间相关的操作一起使用的调度程序。默认为 {@link asyncScheduler}
  *
  * @return A function that returns an Observable that mirrors behaviour of the
  * source Observable, unless timeout happens when it starts emitting values

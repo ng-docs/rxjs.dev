@@ -190,7 +190,7 @@ export function windowTime<T>(windowTimeSpan: number, ...otherArgs: any[]): Oper
      * The reason we copy the array is that reentrant code could mutate the array while
      * we are iterating over it.
      *
-     * 我们需要在此运算符中多次循环窗口记录的副本。这是为了节省线路上的字节数。我们复制数组的原因是可重入代码在我们迭代数组时可能会改变它。
+     * 我们需要在此操作符中多次循环窗口记录的副本。这是为了节省线路上的字节数。我们复制数组的原因是可重入代码在我们迭代数组时可能会改变它。
      *
      */
     const loop = (cb: (record: WindowRecord<T>) => void) => windowRecords!.slice().forEach(cb);

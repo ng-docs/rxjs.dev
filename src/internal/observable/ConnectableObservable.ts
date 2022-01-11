@@ -13,7 +13,7 @@ import { hasLift } from '../util/lift';
  * instead.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。使用 {@link connectable} 创建一个可连接的 observable。如果你使用的是 `ConnectableObservable` 的 `refCount` 方法，请改用 {@link share} 运算符。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 将在 v8 中删除。使用 {@link connectable} 创建一个可连接的 observable。如果你使用的是 `ConnectableObservable` 的 `refCount` 方法，请改用 {@link share} 操作符。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export class ConnectableObservable<T> extends Observable<T> {
@@ -38,7 +38,7 @@ export class ConnectableObservable<T> extends Observable<T> {
    * `source.pipe(share({ connector: factory }))`.
    * Details: <https://rxjs.dev/deprecations/multicasting>
    *
-   * 将在 v8 中删除。使用 {@link connectable} 创建一个可连接的 observable。`new ConnectableObservable(source, factory)` 等价于 connectable(source `connectable(source, { connector: factory })`。当需要 `refCount()` 方法时，应使用 {@link share} 运算符： `new ConnectableObservable(source, factory).refCount()` 等效于 `source.pipe(share({ connector: factory }))`。详细信息： <https://rxjs.dev/deprecations/multicasting>
+   * 将在 v8 中删除。使用 {@link connectable} 创建一个可连接的 observable。`new ConnectableObservable(source, factory)` 等价于 connectable(source `connectable(source, { connector: factory })`。当需要 `refCount()` 方法时，应使用 {@link share} 操作符： `new ConnectableObservable(source, factory).refCount()` 等效于 `source.pipe(share({ connector: factory }))`。详细信息： <https://rxjs.dev/deprecations/multicasting>
    *
    */
   constructor(public source: Observable<T>, protected subjectFactory: () => Subject<T>) {
@@ -113,7 +113,7 @@ export class ConnectableObservable<T> extends Observable<T> {
    * @deprecated {@link ConnectableObservable} will be removed in v8. Use the {@link share} operator instead.
    * Details: <https://rxjs.dev/deprecations/multicasting>
    *
-   * 将在 v8 中删除。请改用 {@link share} 运算符。详细信息： <https://rxjs.dev/deprecations/multicasting>
+   * 将在 v8 中删除。请改用 {@link share} 操作符。详细信息： <https://rxjs.dev/deprecations/multicasting>
    *
    */
   refCount(): Observable<T> {

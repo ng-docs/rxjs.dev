@@ -31,7 +31,7 @@ export function bindCallback<A extends readonly unknown[], R extends readonly un
  * last parameter must be a callback function that `func` calls when it is
  * done.
  *
- * `bindCallback` 不是运算符，因为它的输入和输出不是 Observable。输入是一个带有一些参数的函数 `func`。最后一个参数必须是 `func` 完成时调用的回调函数。
+ * `bindCallback` 不是操作符，因为它的输入和输出不是 Observable。输入是一个带有一些参数的函数 `func`。最后一个参数必须是 `func` 完成时调用的回调函数。
  *
  * The output of `bindCallback` is a function that takes the same parameters
  * as `func`, except the last one (the callback). When the output function

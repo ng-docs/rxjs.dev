@@ -38,7 +38,7 @@ export function concat<T extends readonly unknown[]>(
  * {@link merge} instead, especially with optional `concurrent` parameter. As a matter of fact,
  * `concat` is an equivalent of `merge` operator with `concurrent` parameter set to `1`.
  *
- * `concat` 将订阅第一个输入 Observable 并发出其所有值，而不会以任何方式更改或影响它们。当该 Observable 完成时，它将订阅然后传递的下一个 Observable，并再次发出其值。这将重复，直到操作员用完 Observables。当最后一个输入 Observable 完成时，`concat` 也将完成。在任何给定时刻，只有一个传递给操作员的 Observable 发出值。如果你想同时从传递的 Observable 中发出值，请查看 {@link merge}，尤其是使用可选的 `concurrent` 参数。事实上，`concat` 相当于将 `concurrent` 参数设置为 `1` 的 `merge` 运算符。
+ * `concat` 将订阅第一个输入 Observable 并发出其所有值，而不会以任何方式更改或影响它们。当该 Observable 完成时，它将订阅然后传递的下一个 Observable，并再次发出其值。这将重复，直到操作员用完 Observables。当最后一个输入 Observable 完成时，`concat` 也将完成。在任何给定时刻，只有一个传递给操作员的 Observable 发出值。如果你想同时从传递的 Observable 中发出值，请查看 {@link merge}，尤其是使用可选的 `concurrent` 参数。事实上，`concat` 相当于将 `concurrent` 参数设置为 `1` 的 `merge` 操作符。
  *
  * Note that if some input Observable never completes, `concat` will also never complete
  * and Observables following the one that did not complete will never be subscribed. On the other

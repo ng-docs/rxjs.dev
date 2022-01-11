@@ -243,7 +243,7 @@ function ajaxGetJSON<T>(url: string, headers?: Record<string, string>): Observab
 /**
  * There is an ajax operator on the Rx object.
  *
- * Rx 对象上有一个 ajax 运算符。
+ * Rx 对象上有一个 ajax 操作符。
  *
  * It creates an observable for an Ajax request with either a request object with
  * url, headers, etc or a string for a URL.

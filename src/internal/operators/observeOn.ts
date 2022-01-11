@@ -37,7 +37,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * for any kind of delaying of values in the stream, while using `observeOn` to specify which scheduler should be used
  * for notification emissions in general.
  *
- * 事实上，`observeOn` 接受第二个参数，它以毫秒为单位指定将发出什么延迟通知。{@link delay} 运算符和 `observeOn` 的主要区别在于 `observeOn` 会延迟所有通知——包括错误通知——而 `delay` 会在源 Observable 发出错误时立即传递它。一般来说，强烈建议对流中的任何类型的值延迟使用 `delay` 运算符，同时使用 `observeOn` 指定通常应该使用哪个调度程序来发出通知。
+ * 事实上，`observeOn` 接受第二个参数，它以毫秒为单位指定将发出什么延迟通知。{@link delay} 操作符和 `observeOn` 的主要区别在于 `observeOn` 会延迟所有通知——包括错误通知——而 `delay` 会在源 Observable 发出错误时立即传递它。一般来说，强烈建议对流中的任何类型的值延迟使用 `delay` 操作符，同时使用 `observeOn` 指定通常应该使用哪个调度程序来发出通知。
  *
  * ## Example
  *

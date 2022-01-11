@@ -6,7 +6,7 @@ import { isFunction } from '../util/isFunction';
  * The Min operator operates on an Observable that emits numbers (or items that can be compared with a provided function),
  * and when source Observable completes it emits a single item: the item with the smallest value.
  *
- * Min 运算符对发出数字（或可与提供的函数比较的项目）的 Observable 进行操作，当源 Observable 完成时，它会发出单个项目：具有最小值的项目。
+ * Min 操作符对发出数字（或可与提供的函数比较的项目）的 Observable 进行操作，当源 Observable 完成时，它会发出单个项目：具有最小值的项目。
  *
  * ![](min.png)
  *

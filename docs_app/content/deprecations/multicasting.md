@@ -100,7 +100,7 @@ tick$.connect();
 
 In situations in which the `refCount` method is used, the [share](/api/operators/share) operator can be used instead.
 
-在使用 `refCount` 方法的情况下，可以使用[share](/api/operators/share)运算符。
+在使用 `refCount` 方法的情况下，可以使用[share](/api/operators/share)操作符。
 
 <!-- prettier-ignore -->
 
@@ -304,7 +304,7 @@ const tick$ = timer(1_000).pipe(
 
 If [publish](/api/operators/publish) is being called with a selector, you can use the [connect](/api/operators/connect) operator instead.
 
-如果使用选择器调用[发布](/api/operators/publish)，则可以改用[连接](/api/operators/connect)运算符。
+如果使用选择器调用[发布](/api/operators/publish)，则可以改用[连接](/api/operators/connect)操作符。
 
 <!-- prettier-ignore -->
 
@@ -361,7 +361,7 @@ const tick$ = connectable(timer(1_000), {
 
 And if [refCount](/api/operators/refCount) is being applied to the result of [publishBehavior](/api/operators/publishBehavior), you can use the [share](/api/operators/share) operator - with a [BehaviorSubject](api/index/class/BehaviorSubject) connector - to replace both.
 
-如果将[refCount](/api/operators/refCount)应用于[publishBehavior](/api/operators/publishBehavior)的结果，则可以使用[共享](/api/operators/share)运算符（带有[BehaviorSubject](api/index/class/BehaviorSubject)连接器）来替换两者。
+如果将[refCount](/api/operators/refCount)应用于[publishBehavior](/api/operators/publishBehavior)的结果，则可以使用[共享](/api/operators/share)操作符（带有[BehaviorSubject](api/index/class/BehaviorSubject)连接器）来替换两者。
 
 <!-- prettier-ignore -->
 
@@ -424,7 +424,7 @@ const tick$ = connectable(timer(1_000), {
 
 And if [refCount](/api/operators/refCount) is being applied to the result of [publishLast](/api/operators/publishLast), you can use the [share](/api/operators/share) operator - with an [AsyncSubject](api/index/class/AsyncSubject) connector - to replace both.
 
-如果将[refCount](/api/operators/refCount)应用于[publishLast](/api/operators/publishLast)的结果，则可以使用[共享](/api/operators/share)运算符（带有[AsyncSubject](api/index/class/AsyncSubject)连接器）来替换两者。
+如果将[refCount](/api/operators/refCount)应用于[publishLast](/api/operators/publishLast)的结果，则可以使用[共享](/api/operators/share)操作符（带有[AsyncSubject](api/index/class/AsyncSubject)连接器）来替换两者。
 
 <!-- prettier-ignore -->
 
@@ -487,7 +487,7 @@ const tick$ = connectable(timer(1_000), {
 
 And if [refCount](/api/operators/refCount) is being applied to the result of [publishReplay](/api/operators/publishReplay), you can use the [share](/api/operators/share) operator - with a [ReplaySubject](api/index/class/ReplaySubject) connector - to replace both.
 
-如果将[refCount](/api/operators/refCount)应用于[publishReplay](/api/operators/publishReplay)的结果，你可以使用[共享](/api/operators/share)运算符（带有[ReplaySubject](api/index/class/ReplaySubject)连接器）来替换两者。
+如果将[refCount](/api/operators/refCount)应用于[publishReplay](/api/operators/publishReplay)的结果，你可以使用[共享](/api/operators/share)操作符（带有[ReplaySubject](api/index/class/ReplaySubject)连接器）来替换两者。
 
 <!-- prettier-ignore -->
 
@@ -519,7 +519,7 @@ const tick$ = timer(1_000).pipe(
 
 If [publishReplay](/api/operators/publishReplay) is being called with a selector, you can use the [connect](/api/operators/connect) operator - with a [ReplaySubject](api/index/class/ReplaySubject) connector - instead.
 
-如果使用选择器调用[publishReplay](/api/operators/publishReplay)，则可以使用[连接](/api/operators/connect)运算符 - 带有[ReplaySubject](api/index/class/ReplaySubject)连接器 - 代替。
+如果使用选择器调用[publishReplay](/api/operators/publishReplay)，则可以使用[连接](/api/operators/connect)操作符 - 带有[ReplaySubject](api/index/class/ReplaySubject)连接器 - 代替。
 
 <!-- prettier-ignore -->
 
@@ -552,9 +552,9 @@ const tick$ = timer(1_000).pipe(
 Instead of applying the [refCount](/api/operators/refCount) operator to the [ConnectableObservable](/api/index/class/ConnectableObservable) obtained from a [multicast](/api/operators/multicast)
 or [publish](/api/operators/publish) operator, use the [share](/api/operators/share) operator to replace both.
 
-不要将[refCount](/api/operators/refCount)运算符应用于从[多播](/api/operators/multicast)或[发布](/api/operators/publish)运算符获得的[ConnectableObservable](/api/index/class/ConnectableObservable)，而是使用[共享](/api/operators/share)运算符来替换两者。
+不要将[refCount](/api/operators/refCount)操作符应用于从[多播](/api/operators/multicast)或[发布](/api/operators/publish)操作符获得的[ConnectableObservable](/api/index/class/ConnectableObservable)，而是使用[共享](/api/operators/share)操作符来替换两者。
 
 The properties passed to [share](/api/operators/share) will depend upon the operators that are being replaced. The refactors for using [refCount](/api/operators/refCount) with [multicast](/api/operators/multicast), [publish](/api/operators/publish), [publishBehavior](/api/operators/publishBehavior), [publishLast](/api/operators/publishLast) and [publishReplay](/api/operators/publishReplay) are detailed above.
 
-传递给[share](/api/operators/share)的属性将取决于被替换的运算符。上面详细介绍了将[refCount](/api/operators/refCount)与[multicast](/api/operators/multicast)、[publish](/api/operators/publish)、[publishBehavior](/api/operators/publishBehavior)、[publishLast](/api/operators/publishLast)和[publishReplay](/api/operators/publishReplay)一起使用的重构。
+传递给[share](/api/operators/share)的属性将取决于被替换的操作符。上面详细介绍了将[refCount](/api/operators/refCount)与[multicast](/api/operators/multicast)、[publish](/api/operators/publish)、[publishBehavior](/api/operators/publishBehavior)、[publishLast](/api/operators/publishLast)和[publishReplay](/api/operators/publishReplay)一起使用的重构。
 

@@ -46,7 +46,7 @@ export function onErrorResumeNext<T, A extends readonly unknown[]>(
  * in series only if previous one successfully completed, `onErrorResumeNext` subscribes even if it ended with
  * an error.
  *
- * 因此 `onErrorResumeNext` 可以被认为是 {@link concat} 运算符的版本，当涉及到其输入 Observables 发出的错误时，它更加宽容。`concat` 仅在前一个 Observable 成功完成时才订阅系列中的下一个 Observable，`onErrorResumeNext` 订阅即使它以错误结束。
+ * 因此 `onErrorResumeNext` 可以被认为是 {@link concat} 操作符的版本，当涉及到其输入 Observables 发出的错误时，它更加宽容。`concat` 仅在前一个 Observable 成功完成时才订阅系列中的下一个 Observable，`onErrorResumeNext` 订阅即使它以错误结束。
  *
  * Note that you do not get any access to errors emitted by the Observables. In particular do not
  * expect these errors to appear in error callback passed to {@link Observable#subscribe}. If you want to take

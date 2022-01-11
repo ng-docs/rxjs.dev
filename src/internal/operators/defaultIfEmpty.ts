@@ -11,7 +11,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * <span class="informal">If the source Observable turns out to be empty, then
  * this operator will emit a default value.</span>
  *
- * <span class="informal">如果源 Observable 为空，则此运算符将发出一个默认值。</span>
+ * <span class="informal">如果源 Observable 为空，则此操作符将发出一个默认值。</span>
  *
  * ![](defaultIfEmpty.png)
  *

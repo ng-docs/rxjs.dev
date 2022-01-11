@@ -4,7 +4,7 @@
 
 You might have seen that we deprecated some signatures of the `subscribe` method, which might have caused some confusion. The `subscribe` method itself is not deprecated. This deprecation also affects the [`tap` operator](../../api/operators/tap), as tap supports the same signature as the `subscribe` method.
 
-你可能已经看到我们弃用了 `subscribe` 方法的一些签名，这可能会引起一些混乱。`subscribe` 方法本身没有被弃用。这种弃用也会影响[`tap` 运算符](../../api/operators/tap)，因为 tap 支持与 `subscribe` 方法相同的签名。
+你可能已经看到我们弃用了 `subscribe` 方法的一些签名，这可能会引起一些混乱。`subscribe` 方法本身没有被弃用。这种弃用也会影响[`tap` 操作符](../../api/operators/tap)，因为 tap 支持与 `subscribe` 方法相同的签名。
 
 This is to get ready for a future where we may allow configuration of `subscribe` via the second argument, for things like `AbortSignal` or the like (imagine `source$.subscribe(fn, { signal })`, etc). This deprecation is also because 2-3 function arguments can contribute to harder-to-read code. For example someone could name functions poorly and confuse the next reader: `source$.subscribe(doSomething, doSomethingElse, lol)` With that signature, you have to know unapparent details about `subscribe`, where
 using a partial observer solves that neatly: `source$.subscribe({ next: doSomething, error: doSomethingElse, complete: lol })`.

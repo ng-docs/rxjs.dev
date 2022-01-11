@@ -32,7 +32,7 @@ The Observable returned in the `concatMap` function is usually referred to as a 
 
 The [`concatMap()`](/api/operators/concatMap) operator subscribes to each "inner" Observable, buffers all further emissions of the "outer" Observable, and copies all the emitted values until the inner Observable completes, and continues processing the values of the "outer Observable". All of the values are in that way concatenated. Other useful flattening operators are
 
-[`concatMap()`](/api/operators/concatMap)操作符订阅每个“内部” Observable，缓冲“外部” Observable 的所有进一步发射，并复制所有发射的值，直到内部 Observable 完成，并继续处理“外部 Observable”的值。所有值都以这种方式连接。其他有用的展平运算符是
+[`concatMap()`](/api/operators/concatMap)操作符订阅每个“内部” Observable，缓冲“外部” Observable 的所有进一步发射，并复制所有发射的值，直到内部 Observable 完成，并继续处理“外部 Observable”的值。所有值都以这种方式连接。其他有用的展平操作符是
 
 * [`mergeMap()`](/api/operators/mergeMap) — subscribes to each inner Observable as it arrives, then emits each value as it arrives
 

@@ -30,7 +30,7 @@ export interface TimeoutConfig<T, O extends ObservableInput<unknown> = Observabl
   /**
    * The scheduler to use with time-related operations within this operator. Defaults to {@link asyncScheduler}
    *
-   * 在此运算符中与时间相关的操作一起使用的调度程序。默认为 {@link asyncScheduler}
+   * 在此操作符中与时间相关的操作一起使用的调度程序。默认为 {@link asyncScheduler}
    *
    */
   scheduler?: SchedulerLike;
@@ -115,7 +115,7 @@ export interface TimeoutErrorCtor {
 /**
  * An error thrown by the {@link timeout} operator.
  *
- * {@link timeout} 运算符引发的错误。
+ * {@link timeout} 操作符引发的错误。
  *
  * Provided so users can use as a type and do quality comparisons.
  * We recommend you do not subclass this or create instances of this class directly.
