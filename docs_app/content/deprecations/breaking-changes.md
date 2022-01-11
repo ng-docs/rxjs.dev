@@ -76,7 +76,7 @@
 
 ## Operators
 
-## 运营商
+## 操作符
 
 ### concat
 

@@ -177,7 +177,7 @@ Throughout this documentation site, we extensively use marble diagrams to explai
 
 ## Categories of operators
 
-## 运营商的类别
+## 操作符的类别
 
 There are operators for different purposes, and they may be categorized as: creation, transformation, filtering, joining, multicasting, error handling, utility, etc. In the following list you will find all the operators organized in categories.
 
@@ -288,7 +288,7 @@ These are Observable creation operators that also have join functionality -- emi
 
 ### <a id="join-operators"></a>Join Operators
 
-### 加入运营商
+### 加入操作符
 
 Also see the [Join Creation Operators](#join-creation-operators) section above.
 
@@ -323,7 +323,7 @@ Also see the [Join Creation Operators](#join-creation-operators) section above.
 
 ### Utility Operators
 
-### 公用事业运营商
+### 公用事业操作符
 
 - [`tap`](/api/operators/tap)
 - [`delay`](/api/operators/delay)

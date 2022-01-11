@@ -18,7 +18,7 @@ To support this transition the [scheduled creation function](/api/index/function
 
 ## Operators affected by this Change
 
-## 受此变更影响的运营商
+## 受此变更影响的操作符
 
 - [from](/api/index/function/from)
 

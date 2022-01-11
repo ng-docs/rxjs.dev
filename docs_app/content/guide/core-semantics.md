@@ -25,7 +25,7 @@ sense.
 
 ## Operators
 
-## 运营商
+## 操作符
 
 - MUST be a function that returns an [operator function](https://rxjs.dev/api/index/interface/OperatorFunction). That is `(source: Observable<In>) => Observable<Out>`.
 
@@ -53,7 +53,7 @@ sense.
 
 - "Notifiers" provided directly to the operator MUST be subscribed to _before_ the source is subscribed to. "Notifiers" created via factory function provided to the operator SHOULD be subscribed to at the earliest possible moment.
 
-  直接提供给运营商的“通知程序”必须在订阅源 _ 之前 _ 订阅。通过提供给操作员的工厂函数创建的“通知程序”应该尽早订阅。
+  直接提供给操作符的“通知程序”必须在订阅源 _ 之前 _ 订阅。通过提供给操作员的工厂函数创建的“通知程序”应该尽早订阅。
 
 - The observable returned by the operator function is considered to be the "consumer" of the source. As such, the consumer MUST unsubscribe from the source as soon as it knows it no longer needs values before proceeding to do _any_ action.
 

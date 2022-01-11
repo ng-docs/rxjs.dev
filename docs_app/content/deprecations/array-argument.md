@@ -14,7 +14,7 @@ To unify the API surface of `forkJoin` and `combineLatest` we deprecated some si
 
 ## Operators affected by this Change
 
-## 受此变更影响的运营商
+## 受此变更影响的操作符
 
 - [combineLatest](/api/index/function/combineLatest)
 

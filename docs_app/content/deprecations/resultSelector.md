@@ -26,7 +26,7 @@ There were two reasons for actually deprecating those parameters:
 
 ## Operators affected by this Change
 
-## 受此变更影响的运营商
+## 受此变更影响的操作符
 
 - [concatMap](/api/operators/concatMap)
 
