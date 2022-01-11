@@ -812,7 +812,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - New operator to cover the use cases of `publish` variants that use a `selector`. Wherein the selector allows the user to define multicast behavior prior to connection to the source observable for the multicast.
 
-  新操作符涵盖使用 `selector` 的 `publish` 变体的用例。其中选择器允许用户在连接到多播可观察的源之前定义多播行为。
+  新操作符涵盖使用 `selector` 的 `publish` 变体的用例。其中选择器允许用户在连接到多播来源可观察者之前定义多播行为。
 
 ### share
 
