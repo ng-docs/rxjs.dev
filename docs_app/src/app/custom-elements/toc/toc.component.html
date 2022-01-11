@@ -1,15 +1,15 @@
 <div *ngIf="type !== 'None'" class="toc-inner no-print" [class.collapsed]="isCollapsed">
 
   <div *ngIf="type === 'EmbeddedSimple'" class="toc-heading embedded">
-    Contents
+    目录
   </div>
 
   <button *ngIf="type === 'EmbeddedExpandable'" type="button" (click)="toggle(false)"
     class="toc-heading embedded secondary"
-    title="Expand/collapse contents"
-    aria-label="Expand/collapse contents"
+    title="展开/折叠目录"
+    aria-label="展开/折叠目录"
     [attr.aria-pressed]="!isCollapsed">
-    Contents
+    目录
     <mat-icon class="rotating-icon" svgIcon="keyboard_arrow_right" [class.collapsed]="isCollapsed"></mat-icon>
   </button>
 
@@ -24,8 +24,8 @@
 
   <button *ngIf="type === 'EmbeddedExpandable'" type="button" (click)="toggle()"
     class="toc-more-items embedded material-icons" [class.collapsed]="isCollapsed"
-    title="Expand/collapse contents"
-    aria-label="Expand/collapse contents"
+    title="展开/折叠目录"
+    aria-label="展开/折叠目录"
     [attr.aria-pressed]="!isCollapsed">
   </button>
 </div>

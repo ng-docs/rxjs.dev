@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
   <meta charset="utf-8">
   <title>RxJS</title>
@@ -9,20 +9,20 @@
 
   <link rel="icon" type="image/x-icon" href="assets/images/favicons/favicon.ico">
   <!--<link rel="icon" type="image/png" href="assets/images/favicons/favicon-32x32.png"-->
-        <!--sizes="32x32">-->
+  <!--sizes="32x32">-->
   <!--<link rel="icon" type="image/png" href="assets/images/favicons/favicon-194x194.png"-->
-        <!--sizes="194x194">-->
+  <!--sizes="194x194">-->
   <!--<link rel="icon" type="image/png" href="assets/images/favicons/favicon-96x96.png"-->
-        <!--sizes="96x96">-->
+  <!--sizes="96x96">-->
   <!--<link rel="icon" type="image/png" href="assets/images/favicons/favicon-16x16.png"-->
-        <!--sizes="16x16">-->
+  <!--sizes="16x16">-->
   <!--<link rel="apple-touch-icon" sizes="144x144" href="assets/images/favicons/apple-touch-icon-144x144.png">-->
   <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicons/apple-touch-icon-144x144.png">-->
 
   <!-- NOTE: These need to be kept in sync with `ngsw-config.json`. -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/assets/css/material-icons.css" rel="stylesheet">
+  <link href="/assets/css/roboto-mono.css" rel="stylesheet">
+  <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
   <!-- -->
 
   <link rel="manifest" href="pwa-manifest.json">
@@ -32,7 +32,9 @@
 
   <script>
     // Dynamically, pre-emptively, add `noindex`, which will be removed when the doc is ready and valid
-    var tag = document.createElement('meta'); tag.name = 'robots'; tag.content = 'noindex';
+    var tag = document.createElement('meta');
+    tag.name = 'robots';
+    tag.content = 'noindex';
     document.head.appendChild(tag);
   </script>
 
@@ -158,9 +160,10 @@
       </div>
     </section>
     <h2 style="color: red; text-align: center;">
-      <b><i>This website requires JavaScript.</i></b>
+      <b><i>本站需要启用 JavaScript。</i></b>
     </h2>
   </noscript>
   <script src="assets/js/devtools-welcome.js"></script>
+  <script src="assets/js/translator.js"></script>
 </body>
 </html>

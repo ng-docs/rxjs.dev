@@ -78,7 +78,7 @@
     }
 
     /* used to target the short description */
-    > p:nth-child(2) {
+    > p:nth-child(2), > p:nth-child(3) {
         border-left: 5px solid $pink;
         font-size: 1rem;
         line-height: 1.25;

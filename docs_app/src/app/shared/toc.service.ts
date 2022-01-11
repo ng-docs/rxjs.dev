@@ -1,8 +1,8 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ReplaySubject } from 'rxjs';
 import { ScrollSpyInfo, ScrollSpyService } from 'app/shared/scroll-spy.service';
+import { ReplaySubject } from 'rxjs';
 
 
 export interface TocItem {
@@ -77,7 +77,7 @@ export class TocService {
 
   private findTocHeadings(docElement: Element): HTMLHeadingElement[] {
     const headings = docElement.querySelectorAll('h1,h2,h3');
-    const skipNoTocHeadings = (heading: HTMLHeadingElement) => !/(?:no-toc|notoc)/i.test(heading.className);
+    const skipNoTocHeadings = (heading: HTMLHeadingElement) => !/(?:no-toc|notoc)/i.test(heading.className) && !isOriginalText(heading);
 
     return Array.prototype.filter.call(headings, skipNoTocHeadings);
   }
@@ -113,3 +113,17 @@ export class TocService {
     }
   }
 }
+
+function isOriginalText(heading: HTMLHeadingElement): boolean {
+  if (heading && heading.hasAttribute('translation-origin')) {
+    let prevNode = heading.previousElementSibling;
+    if (prevNode && prevNode.tagName === 'AIO-TOC') {
+      prevNode = prevNode.previousElementSibling;
+    }
+    if (prevNode && prevNode.hasAttribute('translation-result')) {
+      return true;
+    }
+  }
+  return false;
+}
+

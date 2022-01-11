@@ -2,6 +2,7 @@ const remark = require('remark');
 const html = require('remark-html');
 const code = require('./handlers/code');
 const mapHeadings = require('./plugins/mapHeadings');
+const {mark} = require('./translator');
 
 /**
  * @dgService renderMarkdown
@@ -14,17 +15,17 @@ module.exports = function renderMarkdown() {
   return function renderMarkdownImpl(content, headingMap) {
 
     const renderer = remark()
-      .use(inlineTagDefs)
-      .use(noIndentedCodeBlocks)
-      .use(plainHTMLBlocks)
-      // USEFUL DEBUGGING CODE
-      // .use(() => tree => {
-      //   console.log(require('util').inspect(tree, { colors: true, depth: 4 }));
-      // })
-      .use(mapHeadings(headingMap))
-      .use(html, { handlers: { code }, sanitize: false });
+        .use(inlineTagDefs)
+        .use(noIndentedCodeBlocks)
+        .use(plainHTMLBlocks)
+        // USEFUL DEBUGGING CODE
+        // .use(() => tree => {
+        //   console.log(require('util').inspect(tree, { colors: true, depth: 4 }));
+        // })
+        .use(mapHeadings(headingMap))
+        .use(html, {handlers: {code}, sanitize: false});
 
-    return renderer.processSync(content).toString();
+    return mark(renderer.processSync(content).toString());
   };
 
   /**
@@ -64,7 +65,7 @@ module.exports = function renderMarkdown() {
         }
         return eat(match[0])({
           'type': 'inlineTag',
-          'value': match[0]
+          'value': match[0],
         });
       }
     }
@@ -103,9 +104,9 @@ module.exports = function renderMarkdown() {
           }
           return eat(fullMatch[0])({
             type: 'html',
-            value: fullMatch[0]
+            value: fullMatch[0],
           });
-        } catch(e) {
+        } catch (e) {
           this.file.fail('Unmatched plain HTML block tag ' + e.message);
         }
       }
@@ -153,7 +154,7 @@ function matchRecursiveRegExp(str, left, right, flags) {
       str.slice(matchPos[i].wholeMatch.start, matchPos[i].wholeMatch.end),
       str.slice(matchPos[i].match.start, matchPos[i].match.end),
       str.slice(matchPos[i].left.start, matchPos[i].left.end),
-      str.slice(matchPos[i].right.start, matchPos[i].right.end)
+      str.slice(matchPos[i].right.start, matchPos[i].right.end),
     ]);
   }
   return results;
@@ -182,7 +183,7 @@ function rgxFindMatchPos(str, left, right, flags) {
           left: {start: start, end: index},
           match: {start: index, end: match.index},
           right: {start: match.index, end: end},
-          wholeMatch: {start: start, end: end}
+          wholeMatch: {start: start, end: end},
         };
         pos.push(obj);
         if (!global) {

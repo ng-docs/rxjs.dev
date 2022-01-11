@@ -11,14 +11,14 @@ module.exports = function splitDescription() {
     $process(docs) {
       docs.forEach(doc => {
         if (this.docTypes.indexOf(doc.docType) !== -1 && doc.description !== undefined) {
+          const match = doc.description.match(/^(.*)\n\s*\n(.*)\n\s*\n([\s\S]*)$/)
           const description = doc.description.trim();
-          const endOfParagraph = description.search(/\n\s*\n/);
-          if (endOfParagraph === -1) {
+          if (!match) {
             doc.shortDescription = description;
             doc.description = '';
           } else {
-            doc.shortDescription = description.substr(0, endOfParagraph).trim();
-            doc.description = description.substr(endOfParagraph).trim();
+            doc.shortDescription = `${match[1]}\n\n${match[2]}`;
+            doc.description = match[3];
           }
         }
       });
