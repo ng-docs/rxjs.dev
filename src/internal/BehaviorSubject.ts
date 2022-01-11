@@ -6,6 +6,8 @@ import { Subscription } from './Subscription';
  * A variant of Subject that requires an initial value and emits its current
  * value whenever it is subscribed to.
  *
+ * Subject 的一种变体，它需要一个初始值并在订阅时发出其当前值。
+ *
  * @class BehaviorSubject<T>
  */
 export class BehaviorSubject<T> extends Subject<T> {

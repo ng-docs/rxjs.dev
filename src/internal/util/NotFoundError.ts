@@ -5,7 +5,10 @@ export interface NotFoundError extends Error {}
 export interface NotFoundErrorCtor {
   /**
    * @deprecated Internal implementation detail. Do not construct error instances.
-   * Cannot be tagged as internal: https://github.com/ReactiveX/rxjs/issues/6269
+   * Cannot be tagged as internal: <https://github.com/ReactiveX/rxjs/issues/6269>
+   *
+   * 内部实现细节。不要构造错误实例。不能标记为内部： [https](https://github.com/ReactiveX/rxjs/issues/6269) ://github.com/ReactiveX/rxjs/issues/6269
+   *
    */
   new (message: string): NotFoundError;
 }
@@ -14,8 +17,9 @@ export interface NotFoundErrorCtor {
  * An error thrown when a value or values are missing from an
  * observable sequence.
  *
- * @see {@link operators/single}
+ * 当可观察序列中缺少一个或多个值时引发的错误。
  *
+ * @see {@link operators/single}
  * @class NotFoundError
  */
 export const NotFoundError: NotFoundErrorCtor = createErrorClass(

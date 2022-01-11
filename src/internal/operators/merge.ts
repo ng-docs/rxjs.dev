@@ -5,17 +5,37 @@ import { mergeAll } from './mergeAll';
 import { popNumber, popScheduler } from '../util/args';
 import { from } from '../observable/from';
 
-/** @deprecated Replaced with {@link mergeWith}. Will be removed in v8. */
+/**
+ * @deprecated Replaced with {@link mergeWith}. Will be removed in v8.
+ *
+ * 替换为 {@link mergeWith}。将在 v8 中删除。
+ *
+ */
 export function merge<T, A extends readonly unknown[]>(...sources: [...ObservableInputTuple<A>]): OperatorFunction<T, T | A[number]>;
-/** @deprecated Replaced with {@link mergeWith}. Will be removed in v8. */
+/**
+ * @deprecated Replaced with {@link mergeWith}. Will be removed in v8.
+ *
+ * 替换为 {@link mergeWith}。将在 v8 中删除。
+ *
+ */
 export function merge<T, A extends readonly unknown[]>(
   ...sourcesAndConcurrency: [...ObservableInputTuple<A>, number]
 ): OperatorFunction<T, T | A[number]>;
-/** @deprecated Replaced with {@link mergeWith}. Will be removed in v8. */
+/**
+ * @deprecated Replaced with {@link mergeWith}. Will be removed in v8.
+ *
+ * 替换为 {@link mergeWith}。将在 v8 中删除。
+ *
+ */
 export function merge<T, A extends readonly unknown[]>(
   ...sourcesAndScheduler: [...ObservableInputTuple<A>, SchedulerLike]
 ): OperatorFunction<T, T | A[number]>;
-/** @deprecated Replaced with {@link mergeWith}. Will be removed in v8. */
+/**
+ * @deprecated Replaced with {@link mergeWith}. Will be removed in v8.
+ *
+ * 替换为 {@link mergeWith}。将在 v8 中删除。
+ *
+ */
 export function merge<T, A extends readonly unknown[]>(
   ...sourcesAndConcurrencyAndScheduler: [...ObservableInputTuple<A>, number, SchedulerLike]
 ): OperatorFunction<T, T | A[number]>;

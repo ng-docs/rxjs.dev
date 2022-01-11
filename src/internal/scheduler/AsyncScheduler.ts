@@ -7,6 +7,9 @@ export class AsyncScheduler extends Scheduler {
   /**
    * A flag to indicate whether the Scheduler is currently executing a batch of
    * queued actions.
+   *
+   * 指示调度程序当前是否正在执行一批排队的操作的标志。
+   *
    * @type {boolean}
    * @internal
    */
@@ -15,6 +18,9 @@ export class AsyncScheduler extends Scheduler {
    * An internal ID used to track the latest asynchronous task such as those
    * coming from `setTimeout`, `setInterval`, `requestAnimationFrame`, and
    * others.
+   *
+   * 用于跟踪最新异步任务的内部 ID，例如来自 `setTimeout` 、 `setInterval` 、 `requestAnimationFrame` 等的任务。
+   *
    * @type {any}
    * @internal
    */

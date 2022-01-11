@@ -10,7 +10,11 @@ import { Observer, NextObserver } from '../../types';
  * WebSocketSubjectConfig is a plain Object that allows us to make our
  * webSocket configurable.
  *
+ * WebSocketSubjectConfig 是一个普通的对象，它允许我们使我们的 webSocket 可配置。
+ *
  * <span class="informal">Provides flexibility to {@link webSocket}</span>
+ *
+ * 为 {@link webSocket} 提供灵活性
  *
  * It defines a set of properties to provide custom behavior in specific
  * moments of the socket's lifecycle. When the connection opens we can
@@ -20,11 +24,17 @@ import { Observer, NextObserver } from '../../types';
  * to the socket client. By default, `deserializer` is going to apply `JSON.parse` to each message coming
  * from the Server.
  *
+ * 它定义了一组属性以在套接字生命周期的特定时刻提供自定义行为。当连接打开时我们可以使用 `openObserver` ，当连接关闭时 `closeObserver` ，如果我们有兴趣监听来自服务器的数据： `deserializer` ，它允许我们在将数据传递给套接字客户端之前自定义数据的反序列化策略。默认情况下， `deserializer` 化器 `JSON.parse` 应用于来自服务器的每条消息。
+ *
  * ## Examples
+ *
+ * ## 例子
  *
  * **deserializer**, the default for this property is `JSON.parse` but since there are just two options
  * for incoming data, either be text or binarydata. We can apply a custom deserialization strategy
  * or just simply skip the default behaviour.
+ *
+ * **deserializer** ，此属性的默认值为 `JSON.parse` 但由于传入数据只有两个选项，文本或二进制数据。我们可以应用自定义反序列化策略，或者只是跳过默认行为。
  *
  * ```ts
  * import { webSocket } from 'rxjs/webSocket';
@@ -44,6 +54,8 @@ import { Observer, NextObserver } from '../../types';
  * ```
  *
  * **serializer** allows us to apply custom serialization strategy but for the outgoing messages.
+ *
+ * **序列化**程序允许我们应用自定义序列化策略，但用于传出消息。
  *
  * ```ts
  * import { webSocket } from 'rxjs/webSocket';
@@ -66,6 +78,8 @@ import { Observer, NextObserver } from '../../types';
  *
  * **closeObserver** allows us to set a custom error when an error raises up.
  *
+ * **closeObserver**允许我们在出现错误时设置自定义错误。
+ *
  * ```ts
  * import { webSocket } from 'rxjs/webSocket';
  *
@@ -87,6 +101,8 @@ import { Observer, NextObserver } from '../../types';
  * webSocket or sending notification that the connection was successful, this is when
  * openObserver is useful for.
  *
+ * **openObserver** ，假设我们需要在向 webSocket 发送/接收 msgs 或发送连接成功的通知之前进行某种初始化任务，这就是 openObserver 有用的时候。
+ *
  * ```ts
  * import { webSocket } from 'rxjs/webSocket';
  *
@@ -104,42 +120,80 @@ import { Observer, NextObserver } from '../../types';
  * ```
  */
 export interface WebSocketSubjectConfig<T> {
-  /** The url of the socket server to connect to */
+  /**
+   * The url of the socket server to connect to
+   *
+   * 要连接的套接字服务器的 url
+   *
+   */
   url: string;
-  /** The protocol to use to connect */
+  /**
+   * The protocol to use to connect
+   *
+   * 用于连接的协议
+   *
+   */
   protocol?: string | Array<string>;
-  /** @deprecated Will be removed in v8. Use {@link deserializer} instead. */
+  /**
+   * @deprecated Will be removed in v8. Use {@link deserializer} instead.
+   *
+   * 将在 v8 中删除。请改用 {@link 反序列化器}。
+   *
+   */
   resultSelector?: (e: MessageEvent) => T;
   /**
    * A serializer used to create messages from passed values before the
    * messages are sent to the server. Defaults to JSON.stringify.
+   *
+   * 用于在将消息发送到服务器之前从传递的值创建消息的序列化程序。默认为 JSON.stringify。
+   *
    */
   serializer?: (value: T) => WebSocketMessage;
   /**
    * A deserializer used for messages arriving on the socket from the
    * server. Defaults to JSON.parse.
+   *
+   * 用于从服务器到达套接字的消息的反序列化器。默认为 JSON.parse。
+   *
    */
   deserializer?: (e: MessageEvent) => T;
   /**
    * An Observer that watches when open events occur on the underlying web socket.
+   *
+   * 一个观察者，当打开事件发生在底层网络套接字上时进行观察。
+   *
    */
   openObserver?: NextObserver<Event>;
   /**
    * An Observer that watches when close events occur on the underlying web socket
+   *
+   * 一个观察者在关闭事件发生在底层网络套接字上时进行观察
+   *
    */
   closeObserver?: NextObserver<CloseEvent>;
   /**
    * An Observer that watches when a close is about to occur due to
    * unsubscription.
+   *
+   * 一个观察者，当由于取消订阅而即将发生关闭时进行观察。
+   *
    */
   closingObserver?: NextObserver<void>;
   /**
    * A WebSocket constructor to use. This is useful for situations like using a
    * WebSocket impl in Node (WebSocket is a DOM API), or for mocking a WebSocket
    * for testing purposes
+   *
+   * 要使用的 WebSocket 构造函数。这对于在 Node 中使用 WebSocket 实现（WebSocket 是一种 DOM API）或模拟 WebSocket 以进行测试等情况很有用
+   *
    */
   WebSocketCtor?: { new (url: string, protocols?: string | string[]): WebSocket };
-  /** Sets the `binaryType` property of the underlying WebSocket. */
+  /**
+   * Sets the `binaryType` property of the underlying WebSocket.
+   *
+   * 设置底层 WebSocket 的 `binaryType` 属性。
+   *
+   */
   binaryType?: 'blob' | 'arraybuffer';
 }
 
@@ -191,7 +245,12 @@ export class WebSocketSubject<T> extends AnonymousSubject<T> {
     }
   }
 
-  /** @deprecated Internal implementation detail, do not use directly. Will be made internal in v8. */
+  /**
+   * @deprecated Internal implementation detail, do not use directly. Will be made internal in v8.
+   *
+   * 内部实现细节，请勿直接使用。将在 v8 中内部化。
+   *
+   */
   lift<R>(operator: Operator<T, R>): WebSocketSubject<R> {
     const sock = new WebSocketSubject<R>(this._config as WebSocketSubjectConfig<any>, this.destination as any);
     sock.operator = operator;
@@ -216,14 +275,25 @@ export class WebSocketSubject<T> extends AnonymousSubject<T> {
    * unsubscription, completion, or error, a message defined by the `unsubMsg`
    * argument will be sent to the server over the WebSocketSubject.
    *
+   * 创建一个 {@link Observable}，当订阅它时，通过套接字向服务器发送一条由 `subMsg` 函数定义的消息，以开始通过该套接字订阅数据。一旦数据到达， `messageFilter` 参数将用于为生成的 Observable 选择适当的数据。当由于取消订阅、完成或错误而发生拆卸时，由 `unsubMsg` 参数定义的消息将通过 WebSocketSubject 发送到服务器。
+   *
    * @param subMsg A function to generate the subscription message to be sent to
    * the server. This will still be processed by the serializer in the
    * WebSocketSubject's config. (Which defaults to JSON serialization)
+   *
+   * 生成要发送到服务器的订阅消息的函数。这仍将由 WebSocketSubject 配置中的序列化程序处理。 （默认为 JSON 序列化）
+   *
    * @param unsubMsg A function to generate the unsubscription message to be
    * sent to the server at teardown. This will still be processed by the
    * serializer in the WebSocketSubject's config.
+   *
+   * 生成取消订阅消息以在拆卸时发送到服务器的函数。这仍将由 WebSocketSubject 配置中的序列化程序处理。
+   *
    * @param messageFilter A predicate for selecting the appropriate messages
    * from the server for the output stream.
+   *
+   * 用于从服务器为输出流选择适当消息的谓词。
+   *
    */
   multiplex(subMsg: () => any, unsubMsg: () => any, messageFilter: (value: T) => boolean) {
     const self = this;

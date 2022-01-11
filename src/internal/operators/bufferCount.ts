@@ -7,8 +7,12 @@ import { arrRemove } from '../util/arrRemove';
  * Buffers the source Observable values until the size hits the maximum
  * `bufferSize` given.
  *
+ * 缓冲源 Observable 值，直到大小达到给定的最大 `bufferSize` 。
+ *
  * <span class="informal">Collects values from the past as an array, and emits
  * that array only when its size reaches `bufferSize`.</span>
+ *
+ * 将过去的值收集为一个数组，并仅在其大小达到 `bufferSize` 时发出该数组。
  *
  * ![](bufferCount.png)
  *
@@ -18,9 +22,15 @@ import { arrRemove } from '../util/arrRemove';
  * `null`, then new buffers are started immediately at the start of the source
  * and when each buffer closes and is emitted.
  *
+ * 通过 `bufferSize` 缓冲来自源 Observable 的多个值，然后发出缓冲区并清除它，并为每个 `startBufferEvery` 值启动一个新缓冲区。如果 `startBufferEvery` 未提供或为 `null` ，则新缓冲区会在源开始处以及每个缓冲区关闭并发出时立即启动。
+ *
  * ## Examples
  *
+ * ## 例子
+ *
  * Emit the last two click events as an array
+ *
+ * 将最后两个点击事件作为数组发出
  *
  * ```ts
  * import { fromEvent, bufferCount } from 'rxjs';
@@ -32,6 +42,8 @@ import { arrRemove } from '../util/arrRemove';
  *
  * On every click, emit the last two click events as an array
  *
+ * 每次单击时，将最后两个单击事件作为数组发出
+ *
  * ```ts
  * import { fromEvent, bufferCount } from 'rxjs';
  *
@@ -39,20 +51,24 @@ import { arrRemove } from '../util/arrRemove';
  * const buffered = clicks.pipe(bufferCount(2, 1));
  * buffered.subscribe(x => console.log(x));
  * ```
- *
  * @see {@link buffer}
  * @see {@link bufferTime}
  * @see {@link bufferToggle}
  * @see {@link bufferWhen}
  * @see {@link pairwise}
  * @see {@link windowCount}
- *
  * @param {number} bufferSize The maximum size of the buffer emitted.
+ *
+ * 发出的缓冲区的最大大小。
+ *
  * @param {number} [startBufferEvery] Interval at which to start a new buffer.
  * For example if `startBufferEvery` is `2`, then a new buffer will be started
  * on every other value from the source. A new buffer is started at the
  * beginning of the source by default.
  * @return A function that returns an Observable of arrays of buffered values.
+ *
+ * 返回缓冲值数组的 Observable 的函数。
+ *
  */
 export function bufferCount<T>(bufferSize: number, startBufferEvery: number | null = null): OperatorFunction<T, T[]> {
   // If no `startBufferEvery` value was supplied, then we're

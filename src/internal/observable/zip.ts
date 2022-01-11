@@ -20,12 +20,20 @@ export function zip<A extends readonly unknown[], R>(
  * Combines multiple Observables to create an Observable whose values are calculated from the values, in order, of each
  * of its input Observables.
  *
+ * 组合多个 Observable 以创建一个 Observable，其值是按顺序从其每个输入 Observable 的值中计算出来的。
+ *
  * If the last parameter is a function, this function is used to compute the created value from the input values.
  * Otherwise, an array of the input values is returned.
  *
+ * 如果最后一个参数是函数，则此函数用于根据输入值计算创建的值。否则，返回输入值数组。
+ *
  * ## Example
  *
+ * ## 例子
+ *
  * Combine age and name from different sources
+ *
+ * 结合不同来源的年龄和姓名
  *
  * ```ts
  * import { of, zip, map } from 'rxjs';
@@ -44,7 +52,6 @@ export function zip<A extends readonly unknown[], R>(
  * // { age: 25, name: 'Bar', isDev: true }
  * // { age: 29, name: 'Beer', isDev: false }
  * ```
- *
  * @param sources
  * @return {Observable<R>}
  */

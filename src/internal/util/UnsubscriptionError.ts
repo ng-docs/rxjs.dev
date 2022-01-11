@@ -7,7 +7,10 @@ export interface UnsubscriptionError extends Error {
 export interface UnsubscriptionErrorCtor {
   /**
    * @deprecated Internal implementation detail. Do not construct error instances.
-   * Cannot be tagged as internal: https://github.com/ReactiveX/rxjs/issues/6269
+   * Cannot be tagged as internal: <https://github.com/ReactiveX/rxjs/issues/6269>
+   *
+   * 内部实现细节。不要构造错误实例。不能标记为内部： [https](https://github.com/ReactiveX/rxjs/issues/6269) ://github.com/ReactiveX/rxjs/issues/6269
+   *
    */
   new (errors: any[]): UnsubscriptionError;
 }
@@ -15,6 +18,9 @@ export interface UnsubscriptionErrorCtor {
 /**
  * An error thrown when one or more errors have occurred during the
  * `unsubscribe` of a {@link Subscription}.
+ *
+ * 在 `unsubscribe` {@link Subscription} 期间发生一个或多个错误时引发的错误。
+ *
  */
 export const UnsubscriptionError: UnsubscriptionErrorCtor = createErrorClass(
   (_super) =>

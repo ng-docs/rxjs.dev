@@ -9,17 +9,29 @@ import { operate } from '../util/lift';
  * accumulator function itself returns an Observable, emitting values
  * only from the most recently returned Observable.
  *
+ * 在源 Observable 上应用一个累加器函数，其中累加器函数本身返回一个 Observable，仅从最近返回的 Observable 发出值。
+ *
  * <span class="informal">It's like {@link mergeScan}, but only the most recent
  * Observable returned by the accumulator is merged into the outer Observable.</span>
+ *
+ * 类似于 {@link mergeScan}，但只有累加器返回的最新 Observable 才会合并到外部 Observable 中。
  *
  * @see {@link scan}
  * @see {@link mergeScan}
  * @see {@link switchMap}
- *
  * @param accumulator
  * The accumulator function called on each source value.
+ *
+ * 对每个源值调用的累加器函数。
+ *
  * @param seed The initial accumulation value.
+ *
+ * 初始累积值。
+ *
  * @return A function that returns an observable of the accumulated values.
+ *
+ * 返回累积值的可观察值的函数。
+ *
  */
 export function switchScan<T, R, O extends ObservableInput<any>>(
   accumulator: (acc: R, value: T, index: number) => O,

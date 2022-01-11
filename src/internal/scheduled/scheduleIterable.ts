@@ -6,8 +6,17 @@ import { executeSchedule } from '../util/executeSchedule';
 
 /**
  * Used in {@link scheduled} to create an observable from an Iterable.
+ *
+ * 在 {@link scheduled} 中用于从 Iterable 创建一个 observable。
+ *
  * @param input The iterable to create an observable from
+ *
+ * 创建可观察对象的可迭代对象
+ *
  * @param scheduler The scheduler to use
+ *
+ * 要使用的调度程序
+ *
  */
 export function scheduleIterable<T>(input: Iterable<T>, scheduler: SchedulerLike) {
   return new Observable<T>((subscriber) => {

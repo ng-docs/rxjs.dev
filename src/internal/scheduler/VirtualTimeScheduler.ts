@@ -4,7 +4,12 @@ import { AsyncScheduler } from './AsyncScheduler';
 import { SchedulerAction } from '../types';
 
 export class VirtualTimeScheduler extends AsyncScheduler {
-  /** @deprecated Not used in VirtualTimeScheduler directly. Will be removed in v8. */
+  /**
+   * @deprecated Not used in VirtualTimeScheduler directly. Will be removed in v8.
+   *
+   * 不直接在 VirtualTimeScheduler 中使用。将在 v8 中删除。
+   *
+   */
   static frameTimeFactor = 10;
 
   /**
@@ -12,12 +17,21 @@ export class VirtualTimeScheduler extends AsyncScheduler {
    * between two "frames" is synonymous with the passage of "virtual time units". So if
    * you record `scheduler.frame` to be `1`, then later, observe `scheduler.frame` to be at `11`,
    * that means `10` virtual time units have passed.
+   *
+   * 虚拟调度程序实例状态的当前帧。两个“帧”之间的差异与“虚拟时间单位”的通过同义。因此，如果你将 `scheduler.frame` 记录为 `1` ，那么稍后，观察 `scheduler.frame` 为 `11` ，这意味着已经过去了 `10` 虚拟时间单位。
+   *
    */
   public frame: number = 0;
 
   /**
    * Used internally to examine the current virtual action index being processed.
+   *
+   * 在内部用于检查正在处理的当前虚拟操作索引。
+   *
    * @deprecated Internal implementation detail, do not use directly. Will be made internal in v8.
+   *
+   * 内部实现细节，请勿直接使用。将在 v8 中内部化。
+   *
    */
   public index: number = -1;
 
@@ -25,8 +39,16 @@ export class VirtualTimeScheduler extends AsyncScheduler {
    * This creates an instance of a `VirtualTimeScheduler`. Experts only. The signature of
    * this constructor is likely to change in the long run.
    *
+   * 这将创建一个 `VirtualTimeScheduler` 的实例。仅限专家。从长远来看，此构造函数的签名可能会发生变化。
+   *
    * @param schedulerActionCtor The type of Action to initialize when initializing actions during scheduling.
+   *
+   * 在调度期间初始化操作时要初始化的操作类型。
+   *
    * @param maxFrames The maximum number of frames to process before stopping. Used to prevent endless flush cycles.
+   *
+   * 停止前要处理的最大帧数。用于防止无休止的冲洗循环。
+   *
    */
   constructor(schedulerActionCtor: typeof AsyncAction = VirtualAction as any, public maxFrames: number = Infinity) {
     super(schedulerActionCtor, () => this.frame);
@@ -35,6 +57,9 @@ export class VirtualTimeScheduler extends AsyncScheduler {
   /**
    * Prompt the Scheduler to execute all of its queued actions, therefore
    * clearing its queue.
+   *
+   * 提示调度程序执行其所有排队的操作，从而清除其队列。
+   *
    * @return {void}
    */
   public flush(): void {

@@ -27,8 +27,12 @@ export function first<T, D = T>(
  * Emits only the first value (or the first value that meets some condition)
  * emitted by the source Observable.
  *
+ * 仅发出源 Observable 发出的第一个值（或满足某些条件的第一个值）。
+ *
  * <span class="informal">Emits only the first value. Or emits only the first
  * value that passes some test.</span>
+ *
+ * 仅发出第一个值。或仅发出通过某些测试的第一个值。
  *
  * ![](first.png)
  *
@@ -37,9 +41,15 @@ export function first<T, D = T>(
  * emits the first value of the source that matches the specified condition. Throws an error if
  * `defaultValue` was not provided and a matching element is not found.
  *
+ * 如果不带参数调用， `first` 发出源 Observable 的第一个值，然后完成。如果使用 `predicate` 函数调用，则 `first` 发出与指定条件匹配的源的第一个值。如果未提供 `defaultValue` 且未找到匹配元素，则会引发错误。
+ *
  * ## Examples
  *
+ * ## 例子
+ *
  * Emit only the first click that happens on the DOM
+ *
+ * 仅发出在 DOM 上发生的第一次点击
  *
  * ```ts
  * import { fromEvent, first } from 'rxjs';
@@ -50,6 +60,8 @@ export function first<T, D = T>(
  * ```
  *
  * Emits the first click that happens on a DIV
+ *
+ * 发出在 DIV 上发生的第一次点击
  *
  * ```ts
  * import { fromEvent, first } from 'rxjs';
@@ -62,14 +74,14 @@ export function first<T, D = T>(
  * const result = clicks.pipe(first(ev => (<HTMLElement>ev.target).tagName === 'DIV'));
  * result.subscribe(x => console.log(x));
  * ```
- *
  * @see {@link filter}
  * @see {@link find}
  * @see {@link take}
- *
  * @throws {EmptyError} Delivers an EmptyError to the Observer's `error`
  * callback if the Observable completes before any `next` notification was sent.
  * This is how `first()` is different from {@link take}(1) which completes instead.
+ *
+ * 如果 Observable 在发送任何 `next` 通知之前完成，则将 EmptyError 传递给 Observer 的 `error` 回调。这就是 `first()` 与 {@link take}(1) 的不同之处，后者完成了。
  *
  * @param {function(value: T, index: number, source: Observable<T>): boolean} [predicate]
  * An optional function called with each item to test for condition matching.
@@ -77,6 +89,9 @@ export function first<T, D = T>(
  * was found on the source.
  * @return A function that returns an Observable that emits the first item that
  * matches the condition.
+ *
+ * 一个返回 Observable 的函数，该 Observable 发出与条件匹配的第一个项目。
+ *
  */
 export function first<T, D>(
   predicate?: ((value: T, index: number, source: Observable<T>) => boolean) | null,

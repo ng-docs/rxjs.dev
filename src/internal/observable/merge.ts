@@ -8,11 +8,21 @@ import { from } from './from';
 
 export function merge<A extends readonly unknown[]>(...sources: [...ObservableInputTuple<A>]): Observable<A[number]>;
 export function merge<A extends readonly unknown[]>(...sourcesAndConcurrency: [...ObservableInputTuple<A>, number?]): Observable<A[number]>;
-/** @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: https://rxjs.dev/deprecations/scheduler-argument */
+/**
+ * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
+ *
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `mergeAll` 。详细信息： [https](https://rxjs.dev/deprecations/scheduler-argument) ://rxjs.dev/deprecations/scheduler-argument
+ *
+ */
 export function merge<A extends readonly unknown[]>(
   ...sourcesAndScheduler: [...ObservableInputTuple<A>, SchedulerLike?]
 ): Observable<A[number]>;
-/** @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: https://rxjs.dev/deprecations/scheduler-argument */
+/**
+ * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
+ *
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `mergeAll` 。详细信息： [https](https://rxjs.dev/deprecations/scheduler-argument) ://rxjs.dev/deprecations/scheduler-argument
+ *
+ */
 export function merge<A extends readonly unknown[]>(
   ...sourcesAndConcurrencyAndScheduler: [...ObservableInputTuple<A>, number?, SchedulerLike?]
 ): Observable<A[number]>;
@@ -21,8 +31,12 @@ export function merge<A extends readonly unknown[]>(
  * Creates an output Observable which concurrently emits all values from every
  * given input Observable.
  *
+ * 创建一个输出 Observable，它同时从每个给定的输入 Observable 发出所有值。
+ *
  * <span class="informal">Flattens multiple Observables together by blending
  * their values into one Observable.</span>
+ *
+ * 通过将多个 Observable 的值混合到一个 Observable 中来将多个 Observable 扁平化。
  *
  * ![](merge.png)
  *
@@ -32,9 +46,15 @@ export function merge<A extends readonly unknown[]>(
  * once all input Observables have completed. Any error delivered by an input
  * Observable will be immediately emitted on the output Observable.
  *
+ * `merge` 订阅每个给定的输入 Observable（作为参数），并简单地将所有输入 Observable 中的所有值转发（不做任何转换）到输出 Observable。只有在所有输入 Observable 都完成后，输出 Observable 才会完成。输入 Observable 传递的任何错误都会立即在输出 Observable 上发出。
+ *
  * ## Examples
  *
+ * ## 例子
+ *
  * Merge together two Observables: 1s interval and clicks
+ *
+ * 将两个 Observable 合并在一起：1s 间隔和点击
  *
  * ```ts
  * import { merge, fromEvent, interval } from 'rxjs';
@@ -52,6 +72,8 @@ export function merge<A extends readonly unknown[]>(
  * ```
  *
  * Merge together 3 Observables, but run only 2 concurrently
+ *
+ * 合并 3 个 Observable，但同时运行 2 个
  *
  * ```ts
  * import { interval, take, merge } from 'rxjs';
@@ -73,19 +95,26 @@ export function merge<A extends readonly unknown[]>(
  * // - when timer2 hits its max iteration it terminates, and
  * //   timer3 will continue to emit a value every 500ms until it is complete
  * ```
- *
  * @see {@link mergeAll}
  * @see {@link mergeMap}
  * @see {@link mergeMapTo}
  * @see {@link mergeScan}
- *
  * @param {...ObservableInput} observables Input Observables to merge together.
+ *
+ * 输入 Observables 以合并在一起。
+ *
  * @param {number} [concurrent=Infinity] Maximum number of input
  * Observables being subscribed to concurrently.
  * @param {SchedulerLike} [scheduler=null] The {@link SchedulerLike} to use for managing
  * concurrency of input Observables.
+ *
+ * 用于管理输入 Observables 的并发性。
+ *
  * @return {Observable} an Observable that emits items that are the result of
  * every input Observable.
+ *
+ * 一个 Observable，它发出的项目是每个输入 Observable 的结果。
+ *
  */
 export function merge(...args: (ObservableInput<unknown> | number | SchedulerLike)[]): Observable<unknown> {
   const scheduler = popScheduler(args);

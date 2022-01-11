@@ -6,8 +6,12 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * Groups pairs of consecutive emissions together and emits them as an array of
  * two values.
  *
+ * 将成对的连续发射组合在一起，并将它们作为两个值的数组发射。
+ *
  * <span class="informal">Puts the current value and previous value together as
  * an array, and emits that.</span>
+ *
+ * 将当前值和先前值放在一起作为一个数组，并发出它。
  *
  * ![](pairwise.png)
  *
@@ -17,9 +21,15 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * emissions from the source Observable, but not on the first emission, because
  * there is no previous value in that case.
  *
+ * 来自源 Observable 的第 N 个发射将导致输出 Observable 发射一个数组[(N-1)th，][(n-1)th,%20nth]前一个值和当前值的第 N 个，作为一对。出于这个原因，在源 Observable 的第二次和后续发射时， `pairwise` 发射，但不是在第一次发射时发射，因为在这种情况下没有先前的值。
+ *
  * ## Example
  *
+ * ## 例子
+ *
  * On every click (starting from the second), emit the relative distance to the previous click
+ *
+ * 在每次点击时（从第二次开始），发出与前一次点击的相对距离
  *
  * ```ts
  * import { fromEvent, pairwise, map } from 'rxjs';
@@ -38,12 +48,13 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  * distance.subscribe(x => console.log(x));
  * ```
- *
  * @see {@link buffer}
  * @see {@link bufferCount}
- *
  * @return A function that returns an Observable of pairs (as arrays) of
  * consecutive values from the source Observable.
+ *
+ * 一个从源 Observable 返回连续值对（作为数组）的 Observable 的函数。
+ *
  */
 export function pairwise<T>(): OperatorFunction<T, [T, T]> {
   return operate((source, subscriber) => {

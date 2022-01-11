@@ -7,8 +7,12 @@ import { animationFrameProvider } from '../../scheduler/animationFrameProvider';
 /**
  * An observable of animation frames
  *
+ * 可观察的动画帧
+ *
  * Emits the amount of time elapsed since subscription and the timestamp on each animation frame.
  * Defaults to milliseconds provided to the requestAnimationFrame's callback. Does not end on its own.
+ *
+ * 发出自订阅以来经过的时间量和每个动画帧上的时间戳。默认为提供给 requestAnimationFrame 回调的毫秒数。不会自行结束。
  *
  * Every subscription will start a separate animation loop. Since animation frames are always scheduled
  * by the browser to occur directly before a repaint, scheduling more than one animation frame synchronously
@@ -17,11 +21,19 @@ import { animationFrameProvider } from '../../scheduler/animationFrameProvider';
  * execution of animation-related handlers are all executed during the same task by the engine,
  * the `share` operator can be used.
  *
+ * 每个订阅都会启动一个单独的动画循环。由于动画帧总是由浏览器调度在重绘之前直接发生，因此同步调度多个动画帧与在单个动画帧期间循环遍历一系列事件应该没有太大区别或开销更大。但是，如果出于某种原因，开发人员希望确保动画相关处理程序的执行都由引擎在同一任务期间执行，则可以使用 `share` 运算符。
+ *
  * This is useful for setting up animations with RxJS.
+ *
+ * 这对于使用 RxJS 设置动画很有用。
  *
  * ## Examples
  *
+ * ## 例子
+ *
  * Tweening a div to move it on the screen
+ *
+ * 补间 div 以在屏幕上移动它
  *
  * ```ts
  * import { animationFrames, map, takeWhile, endWith } from 'rxjs';
@@ -56,6 +68,8 @@ import { animationFrameProvider } from '../../scheduler/animationFrameProvider';
  *
  * Providing a custom timestamp provider
  *
+ * 提供自定义时间戳提供程序
+ *
  * ```ts
  * import { animationFrames, TimestampProvider } from 'rxjs';
  *
@@ -70,8 +84,10 @@ import { animationFrameProvider } from '../../scheduler/animationFrameProvider';
  * // Log increasing numbers 0...1...2... on every animation frame.
  * source$.subscribe(({ elapsed }) => console.log(elapsed));
  * ```
- *
  * @param timestampProvider An object with a `now` method that provides a numeric timestamp
+ *
+ * 具有提供数字时间戳的 `now` 方法的对象
+ *
  */
 export function animationFrames(timestampProvider?: TimestampProvider) {
   return timestampProvider ? animationFramesFactory(timestampProvider) : DEFAULT_ANIMATION_FRAMES;
@@ -79,7 +95,13 @@ export function animationFrames(timestampProvider?: TimestampProvider) {
 
 /**
  * Does the work of creating the observable for `animationFrames`.
+ *
+ * 为 `animationFrames` 创建 observable 的工作。
+ *
  * @param timestampProvider The timestamp provider to use to create the observable
+ *
+ * 用于创建 observable 的时间戳提供程序
+ *
  */
 function animationFramesFactory(timestampProvider?: TimestampProvider) {
   const { schedule } = animationFrameProvider;
@@ -119,5 +141,8 @@ function animationFramesFactory(timestampProvider?: TimestampProvider) {
 /**
  * In the common case, where the timestamp provided by the rAF API is used,
  * we use this shared observable to reduce overhead.
+ *
+ * 在使用 rAF API 提供的时间戳的常见情况下，我们使用这个共享的 observable 来减少开销。
+ *
  */
 const DEFAULT_ANIMATION_FRAMES = animationFramesFactory();

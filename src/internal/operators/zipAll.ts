@@ -7,6 +7,8 @@ import { joinAllInternals } from './joinAllInternals';
  * it will subscribe to all inner sources, combining their values by index and emitting
  * them.
  *
+ * 从源收集所有可观察的内部源，一旦源完成，它将订阅所有内部源，通过索引组合它们的值并发出它们。
+ *
  * @see {@link zipWith}
  * @see {@link zip}
  */

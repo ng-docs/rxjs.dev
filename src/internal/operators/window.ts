@@ -9,8 +9,12 @@ import { noop } from '../util/noop';
  * Branch out the source Observable values as a nested Observable whenever
  * `windowBoundaries` emits.
  *
+ * 每当 `windowBoundaries` 发出时，将源 Observable 值分支为嵌套的 Observable。
+ *
  * <span class="informal">It's like {@link buffer}, but emits a nested Observable
  * instead of an array.</span>
+ *
+ * 它类似于 {@link buffer}，但发出一个嵌套的 Observable 而不是一个数组。
  *
  * ![](window.png)
  *
@@ -20,9 +24,15 @@ import { noop } from '../util/noop';
  * Observable `windowBoundaries` emits an item. Because each window is an
  * Observable, the output is a higher-order Observable.
  *
+ * 返回一个 Observable，它发出从源 Observable 收集的项目的窗口。输出 Observable 发出连接的、不重叠的窗口。只要 Observable `windowBoundaries` 发出一个项目，它就会发出当前窗口并打开一个新窗口。因为每个窗口都是一个 Observable，所以输出是一个高阶 Observable。
+ *
  * ## Example
  *
+ * ## 例子
+ *
  * In every window of 1 second each, emit at most 2 click events
+ *
+ * 在每个 1 秒的窗口中，最多发出 2 个点击事件
  *
  * ```ts
  * import { fromEvent, interval, window, map, take, mergeAll } from 'rxjs';
@@ -36,17 +46,21 @@ import { noop } from '../util/noop';
  * );
  * result.subscribe(x => console.log(x));
  * ```
- *
  * @see {@link windowCount}
  * @see {@link windowTime}
  * @see {@link windowToggle}
  * @see {@link windowWhen}
  * @see {@link buffer}
- *
  * @param {Observable<any>} windowBoundaries An Observable that completes the
  * previous window and starts a new window.
+ *
+ * 一个完成前一个窗口并启动一个新窗口的 Observable。
+ *
  * @return A function that returns an Observable of windows, which are
  * Observables emitting values of the source Observable.
+ *
+ * 一个返回窗口的 Observable 的函数，这些窗口是 Observable 发出源 Observable 的值。
+ *
  */
 export function window<T>(windowBoundaries: Observable<any>): OperatorFunction<T, Observable<T>> {
   return operate((source, subscriber) => {

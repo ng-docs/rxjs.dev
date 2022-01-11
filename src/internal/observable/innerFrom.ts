@@ -42,7 +42,13 @@ export function innerFrom<T>(input: ObservableInput<T>): Observable<T> {
 
 /**
  * Creates an RxJS Observable from an object that implements `Symbol.observable`.
+ *
+ * 从实现 `Symbol.observable` 的对象创建一个 RxJS Observable。
+ *
  * @param obj An object that properly implements `Symbol.observable`.
+ *
+ * 正确实现 `Symbol.observable` 的对象。
+ *
  */
 export function fromInteropObservable<T>(obj: any) {
   return new Observable((subscriber: Subscriber<T>) => {
@@ -60,7 +66,13 @@ export function fromInteropObservable<T>(obj: any) {
  * This is exported because there are creation functions and operators that need to
  * make direct use of the same logic, and there's no reason to make them run through
  * `from` conditionals because we *know* they're dealing with an array.
+ *
+ * 同步发出类似数组的值并完成。这是导出的，因为有创建函数和运算符需要直接使用相同的逻辑，并且没有理由让它们 `from` 条件中运行，因为我们*知道*它们正在处理一个数组。
+ *
  * @param array The array to emit values from
+ *
+ * 要从中发出值的数组
+ *
  */
 export function fromArrayLike<T>(array: ArrayLike<T>) {
   return new Observable((subscriber: Subscriber<T>) => {
