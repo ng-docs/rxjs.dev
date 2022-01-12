@@ -12,8 +12,8 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * 使用可选的比较器函数按顺序比较两个可观察对象的所有值，并返回表示两个序列是否相等的单个布尔值的可观察对象。
  *
  * <span class="informal">Checks to see of all values emitted by both observables are equal, in order.</span>
- *
- * 按顺序检查两个可观察对象发出的所有值是否相等。
+*
+ * <span class="informal">按顺序检查两个可观察对象发出的所有值是否相等。</span>
  *
  * ![](sequenceEqual.png)
  *

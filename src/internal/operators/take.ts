@@ -11,7 +11,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * <span class="informal">Takes the first `count` values from the source, then
  * completes.</span>
  *
- * 从源中获取第一个 `count` 数值，然后完成。
+ * <span class="informal">从源中获取第一个 `count` 数值，然后完成。</span>
  *
  * ![](take.png)
  *

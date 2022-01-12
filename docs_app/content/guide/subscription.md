@@ -19,7 +19,7 @@ subscription.unsubscribe();
 
 <span class="informal">A Subscription essentially just has an `unsubscribe()` function to release resources or cancel Observable executions.</span>
 
-Subscription 本质上只有一个 `unsubscribe()` 函数来释放资源或取消 Observable 执行。
+<span class="informal">Subscription 本质上只有一个 `unsubscribe()` 函数来释放资源或取消 Observable 执行。</span>
 
 Subscriptions can also be put together, so that a call to an `unsubscribe()` of one Subscription may unsubscribe multiple Subscriptions. You can do this by "adding" one subscription into another:
 

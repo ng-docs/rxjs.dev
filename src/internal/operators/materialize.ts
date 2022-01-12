@@ -14,7 +14,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * {@link Notification} objects, emitted as `next` on the output Observable.
  * </span>
  *
- * 在 {@link Notification} 对象中包装 `next` 、 `error` 和 `complete` 发射，作为输出 Observable 上的 `next` 发射。
+ * <span class="informal">在 {@link Notification} 对象中包装 `next` 、 `error` 和 `complete` 发射，作为输出 Observable 上的 `next` 发射。</span>
  *
  * ![](materialize.png)
  *

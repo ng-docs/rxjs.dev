@@ -43,7 +43,7 @@ export function mergeMap<T, R, O extends ObservableInput<any>>(
  * <span class="informal">Maps each value to an Observable, then flattens all of
  * these inner Observables using {@link mergeAll}.</span>
  *
- * 将每个值映射到一个 Observable，然后使用 {@link mergeAll} 展平所有这些内部 Observable。
+ * <span class="informal">将每个值映射到一个 Observable，然后使用 {@link mergeAll} 展平所有这些内部 Observable。</span>
  *
  * ![](mergeMap.png)
  *

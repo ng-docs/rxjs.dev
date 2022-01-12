@@ -13,8 +13,8 @@ import { Observer, NextObserver } from '../../types';
  * WebSocketSubjectConfig 是一个普通的对象，它允许我们使我们的 webSocket 可配置。
  *
  * <span class="informal">Provides flexibility to {@link webSocket}</span>
- *
- * 为 {@link webSocket} 提供灵活性
+*
+ * <span class="informal">为 {@link webSocket} 提供灵活性</span>
  *
  * It defines a set of properties to provide custom behavior in specific
  * moments of the socket's lifecycle. When the connection opens we can

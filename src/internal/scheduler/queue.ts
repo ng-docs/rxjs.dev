@@ -7,8 +7,8 @@ import { QueueScheduler } from './QueueScheduler';
  * 队列调度器
  *
  * <span class="informal">Put every next task on a queue, instead of executing it immediately</span>
- *
- * 将每个下一个任务放在队列中，而不是立即执行
+*
+ * <span class="informal">将每个下一个任务放在队列中，而不是立即执行</span>
  *
  * `queue` scheduler, when used with delay, behaves the same as {@link asyncScheduler} scheduler.
  *

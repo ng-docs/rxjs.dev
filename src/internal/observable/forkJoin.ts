@@ -72,7 +72,7 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * <span class="informal">Wait for Observables to complete and then combine last values they emitted;
  * complete immediately if an empty array is passed.</span>
  *
- * 等待 Observables 完成，然后组合它们发出的最后一个值；如果传递了一个空数组，则立即完成。
+ * <span class="informal">等待 Observables 完成，然后组合它们发出的最后一个值；如果传递了一个空数组，则立即完成。</span>
  *
  * ![](forkJoin.png)
  *

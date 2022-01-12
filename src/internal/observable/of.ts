@@ -43,8 +43,8 @@ export function of<A extends readonly unknown[]>(...values: A): Observable<Value
  * 将参数转换为可观察序列。
  *
  * <span class="informal">Each argument becomes a `next` notification.</span>
- *
- * 每个参数都成为 `next` 通知。
+*
+ * <span class="informal">每个参数都成为 `next` 通知。</span>
  *
  * ![](of.png)
  *

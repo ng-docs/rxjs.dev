@@ -15,7 +15,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * <span class="informal">It's like {@link auditTime}, but the silencing
  * duration is determined by a second Observable.</span>
  *
- * 就像 {@link auditTime}，但静音持续时间由第二个 Observable 决定。
+ * <span class="informal">就像 {@link auditTime}，但静音持续时间由第二个 Observable 决定。</span>
  *
  * ![](audit.svg)
  *

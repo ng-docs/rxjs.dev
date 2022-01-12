@@ -20,8 +20,8 @@ export function onErrorResumeNext<T, A extends readonly unknown[]>(
  * 当任何提供的 Observable 发出完成或错误通知时，它会立即订阅下一个传递的通知。
  *
  * <span class="informal">Execute series of Observables, subscribes to next one on error or complete.</span>
- *
- * 执行一系列 Observable，在错误或完成时订阅下一个。
+*
+ * <span class="informal">执行一系列 Observable，在错误或完成时订阅下一个。</span>
  *
  * ![](onErrorResumeNext.png)
  *

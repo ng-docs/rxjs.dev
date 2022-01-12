@@ -10,8 +10,8 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * 使用指定的调度程序从源 Observable 重新发出所有通知。
  *
  * <span class="informal">Ensure a specific scheduler is used, from outside of an Observable.</span>
- *
- * 确保从 Observable 外部使用特定的调度程序。
+*
+ * <span class="informal">确保从 Observable 外部使用特定的调度程序。</span>
  *
  * `observeOn` is an operator that accepts a scheduler as a first parameter, which will be used to reschedule
  * notifications emitted by the source Observable. It might be useful, if you do not have control over

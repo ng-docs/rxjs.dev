@@ -112,7 +112,7 @@ export function combineLatest<T extends Record<string, ObservableInput<any>>>(
  * computes a formula using the latest values from all the inputs, then emits
  * the output of that formula.</span>
  *
- * 每当任何输入 Observable 发出一个值时，它都会使用来自所有输入的最新值计算一个公式，然后发出该公式的输出。
+ * <span class="informal">每当任何输入 Observable 发出一个值时，它都会使用来自所有输入的最新值计算一个公式，然后发出该公式的输出。</span>
  *
  * ![](combineLatest.png)
  *

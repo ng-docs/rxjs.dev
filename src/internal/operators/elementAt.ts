@@ -13,8 +13,8 @@ import { take } from './take';
  * 在源 Observable 的发射序列中在指定 `index` 处发射单个值。
  *
  * <span class="informal">Emits only the i-th value, then completes.</span>
- *
- * 仅发出第 i 个值，然后完成。
+*
+ * <span class="informal">仅发出第 i 个值，然后完成。</span>
  *
  * ![](elementAt.png)
  *

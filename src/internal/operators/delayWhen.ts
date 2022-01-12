@@ -27,7 +27,7 @@ export function delayWhen<T>(delayDurationSelector: (value: T, index: number) =>
  * <span class="informal">It's like {@link delay}, but the time span of the
  * delay duration is determined by a second Observable.</span>
  *
- * 类似于 {@link delay}，但延迟持续时间的时间跨度由第二个 Observable 决定。
+ * <span class="informal">类似于 {@link delay}，但延迟持续时间的时间跨度由第二个 Observable 决定。</span>
  *
  * ![](delayWhen.png)
  *

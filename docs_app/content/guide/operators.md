@@ -163,7 +163,7 @@ To explain how operators work, textual descriptions are often not enough. Many o
 
 <span class="informal">In a marble diagram, time flows to the right, and the diagram describes how values ("marbles") are emitted on the Observable execution.</span>
 
-在弹珠图中，时间向右流动，该图描述了值（“弹珠”）是如何在 Observable 执行时发出的。
+<span class="informal">在弹珠图中，时间向右流动，该图描述了值（“弹珠”）是如何在 Observable 执行时发出的。</span>
 
 Below you can see the anatomy of a marble diagram.
 

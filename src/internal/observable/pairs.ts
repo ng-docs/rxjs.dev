@@ -40,8 +40,8 @@ export function pairs(
  * 将对象转换为 `[key, value]` 对的 Observable。
  *
  * <span class="informal">Turn entries of an object into a stream.</span>
- *
- * 将对象的条目转换为流。
+*
+ * <span class="informal">将对象的条目转换为流。</span>
  *
  * ![](pairs.png)
  *

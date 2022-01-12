@@ -16,7 +16,7 @@ export function reduce<V, A, S = A>(accumulator: (acc: A | S, value: V, index: n
  * using an accumulator function that knows how to join a new source value into
  * the accumulation from the past.</span>
  *
- * 使用累加器函数将源上发出的所有值组合在一起，该函数知道如何将新的源值加入过去的累加中。
+ * <span class="informal">使用累加器函数将源上发出的所有值组合在一起，该函数知道如何将新的源值加入过去的累加中。</span>
  *
  * ![](reduce.png)
  *

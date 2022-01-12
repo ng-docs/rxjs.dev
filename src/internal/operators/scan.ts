@@ -18,7 +18,7 @@ export function scan<V, A, S>(accumulator: (acc: A | S, value: V, index: number)
  * <span class="informal">It's like {@link reduce}, but emits the current
  * accumulation state after each update</span>
  *
- * 类似于 {@link reduce}，但在每次更新后发出当前的累积状态
+ * <span class="informal">类似于 {@link reduce}，但在每次更新后发出当前的累积状态</span>
  *
  * ![](scan.png)
  *

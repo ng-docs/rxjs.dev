@@ -10,8 +10,8 @@ const arrReducer = (arr: any[], value: any) => (arr.push(value), arr);
  * 收集所有源排放，并在源完成时将它们作为数组发射。
  *
  * <span class="informal">Get all values inside an array when the source completes</span>
- *
- * 源完成时获取数组中的所有值
+*
+ * <span class="informal">源完成时获取数组中的所有值</span>
  *
  * ![](toArray.png)
  *

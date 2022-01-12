@@ -11,7 +11,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * <span class="informal">Puts the current value and previous value together as
  * an array, and emits that.</span>
  *
- * 将当前值和先前值放在一起作为一个数组，并发出它。
+ * <span class="informal">将当前值和先前值放在一起作为一个数组，并发出它。</span>
  *
  * ![](pairwise.png)
  *

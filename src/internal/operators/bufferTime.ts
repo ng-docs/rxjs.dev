@@ -30,7 +30,7 @@ export function bufferTime<T>(
  * <span class="informal">Collects values from the past as an array, and emits
  * those arrays periodically in time.</span>
  *
- * 将过去的值作为数组收集，并及时定期发出这些数组。
+ * <span class="informal">将过去的值作为数组收集，并及时定期发出这些数组。</span>
  *
  * ![](bufferTime.png)
  *

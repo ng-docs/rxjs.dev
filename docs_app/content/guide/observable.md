@@ -130,7 +130,7 @@ RxJS 引入了 Observables，一个新的 JavaScript 推送系统。 Observable 
 
 <span class="informal">For more info about what to use when converting Observables to Promises, please refer to [this guide](/deprecations/to-promise).</span>
 
-有关将 Observables 转换为 Promise 时使用什么的更多信息，请参阅[本指南](/deprecations/to-promise)。
+<span class="informal">有关将 Observables 转换为 Promise 时使用什么的更多信息，请参阅[本指南](/deprecations/to-promise)。</span>
 
 ## Observables as generalizations of functions
 
@@ -209,7 +209,7 @@ execution regardless of the existence of subscribers, Observables have no shared
 
 <span class="informal">Subscribing to an Observable is analogous to calling a Function.</span>
 
-订阅 Observable 类似于调用函数。
+<span class="informal">订阅 Observable 类似于调用函数。</span>
 
 Some people claim that Observables are asynchronous. That is not true. If you surround a function call with logs, like this:
 
@@ -261,7 +261,7 @@ Which proves the subscription of `foo` was entirely synchronous, just like a fun
 
 <span class="informal">Observables are able to deliver values either synchronously or asynchronously.</span>
 
-Observables 能够同步或异步地传递值。
+<span class="informal">Observables 能够同步或异步地传递值。</span>
 
 What is the difference between an Observable and a function? **Observables can "return" multiple values over time**, something which functions cannot. You can't do this:
 
@@ -487,7 +487,7 @@ next*(error|complete)?
 
 <span class="informal">In an Observable Execution, zero to infinite Next notifications may be delivered. If either an Error or Complete notification is delivered, then nothing else can be delivered afterwards.</span>
 
-在 Observable Execution 中，可能会传递零到无限的 Next 通知。如果发送了错误或完成通知，则之后无法发送任何其他通知。
+<span class="informal">在 Observable Execution 中，可能会传递零到无限的 Next 通知。如果发送了错误或完成通知，则之后无法发送任何其他通知。</span>
 
 The following is an example of an Observable execution that delivers three Next notifications, then completes:
 
@@ -570,7 +570,7 @@ subscription.unsubscribe();
 
 <span class="informal">When you subscribe, you get back a Subscription, which represents the ongoing execution. Just call `unsubscribe()` to cancel the execution.</span>
 
-当你订阅时，你会得到一个订阅，它代表正在进行的执行。只需调用 `unsubscribe()` 即可取消执行。
+<span class="informal">当你订阅时，你会得到一个订阅，它代表正在进行的执行。只需调用 `unsubscribe()` 即可取消执行。</span>
 
 Each Observable must define how to dispose resources of that execution when we create the Observable using `create()`. You can do that by returning a custom `unsubscribe` function from within `function subscribe()`.
 

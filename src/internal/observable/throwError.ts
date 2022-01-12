@@ -10,8 +10,8 @@ import { isFunction } from '../util/isFunction';
  * 创建一个 observable，它将创建一个错误实例，并在订阅后立即将其作为错误推送给消费者。
  *
  * <span class="informal">Just errors and does nothing else</span>
- *
- * 只是错误，什么都不做
+*
+ * <span class="informal">只是错误，什么都不做</span>
  *
  * ![](throw.png)
  *

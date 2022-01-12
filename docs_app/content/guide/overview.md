@@ -8,7 +8,7 @@ RxJS 是一个使用可观察序列编写异步和基于事件的程序的库。
 
 <span class="informal">Think of RxJS as Lodash for events.</span>
 
-将 RxJS 视为事件的 Lodash。
+<span class="informal">将 RxJS 视为事件的 Lodash。</span>
 
 ReactiveX combines the [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern) with the [Iterator pattern](https://en.wikipedia.org/wiki/Iterator_pattern) and [functional programming with collections](http://martinfowler.com/articles/collection-pipeline/#NestedOperatorExpressions) to fill the need for an ideal way of managing sequences of events.
 

@@ -9,8 +9,8 @@ import { identity } from '../util/identity';
  * 将高阶 Observable 转换为一阶 Observable，仅从最近的 observable 序列中产生值
  *
  * <span class="informal">Flattens an Observable-of-Observables.</span>
- *
- * 将 Observable-of-Observables 展平。
+*
+ * <span class="informal">将 Observable-of-Observables 展平。</span>
  *
  * ![](switchAll.png)
  *

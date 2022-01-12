@@ -52,8 +52,8 @@ export function publish<T, O extends ObservableInput<any>>(selector: (shared: Ob
  * 返回一个 ConnectableObservable，它是一个 Observable 的变体，它一直等到它的 connect 方法被调用，然后才开始向订阅了它的 Observer 发送项目。
  *
  * <span class="informal">Makes a cold Observable hot</span>
- *
- * 使冷 Observable 变热
+*
+ * <span class="informal">使冷 Observable 变热</span>
  *
  * ![](publish.png)
  *

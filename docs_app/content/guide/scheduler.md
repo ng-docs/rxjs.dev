@@ -20,7 +20,7 @@
 
 <span class="informal">A Scheduler lets you define in what execution context will an Observable deliver notifications to its Observer.</span>
 
-调度程序允许你定义 Observable 将在什么执行上下文中向其观察者传递通知。
+<span class="informal">调度程序允许你定义 Observable 将在什么执行上下文中向其观察者传递通知。</span>
 
 In the example below, we take the usual simple Observable that emits values `1`, `2`, `3` synchronously, and use the operator `observeOn` to specify the `async` scheduler to use for delivering those values.
 

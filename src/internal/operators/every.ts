@@ -34,7 +34,7 @@ export function every<T>(predicate: (value: T, index: number, source: Observable
  * <span class="informal">If all values pass predicate before the source completes, emits true before completion,
  * otherwise emit false, then complete.</span>
  *
- * 如果所有值在源完成之前通过谓词，则在完成之前发出 true，否则发出 false，然后完成。
+ * <span class="informal">如果所有值在源完成之前通过谓词，则在完成之前发出 true，否则发出 false，然后完成。</span>
  *
  * ![](every.png)
  *

@@ -10,8 +10,8 @@ import { timeout } from './timeout';
  * 如果传递的 Date 对象的时间在第一个值从源到达之前到达，它将从源取消订阅并将订阅切换到另一个 observable。
  *
  * <span class="informal">Use to switch to a different observable if the first value doesn't arrive by a specific time</span>
- *
- * 如果第一个值没有在特定时间到达，则用于切换到不同的 observable
+*
+ * <span class="informal">如果第一个值没有在特定时间到达，则用于切换到不同的 observable</span>
  *
  * Can be used to set a timeout only for the first value, however it's recommended to use the {@link timeout} operator with
  * the `first` configuration to get that effect.
@@ -44,8 +44,8 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  * 当在源发出任何给定值之前经过的时间跨度过去时，它将从源取消订阅，并将订阅切换到另一个可观察对象。
  *
  * <span class="informal">Used to switch to a different observable if your source is being slow</span>
- *
- * 如果你的源很慢，用于切换到不同的 observable
+*
+ * <span class="informal">如果你的源很慢，用于切换到不同的 observable</span>
  *
  * Useful in cases where:
  *

@@ -13,7 +13,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * <span class="informal">It's like {@link delay}, but passes only the most
  * recent notification from each burst of emissions.</span>
  *
- * 类似于 {@link delay}，但只传递每次发射爆发的最新通知。
+ * <span class="informal">类似于 {@link delay}，但只传递每次发射爆发的最新通知。</span>
  *
  * ![](debounceTime.png)
  *

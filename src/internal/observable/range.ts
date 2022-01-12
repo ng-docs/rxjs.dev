@@ -19,8 +19,8 @@ export function range(start: number, count: number | undefined, scheduler: Sched
  * 创建一个可发出指定范围内的数字序列的 Observable。
  *
  * <span class="informal">Emits a sequence of numbers in a range.</span>
- *
- * 发出一个范围内的数字序列。
+*
+ * <span class="informal">发出一个范围内的数字序列。</span>
  *
  * ![](range.png)
  *

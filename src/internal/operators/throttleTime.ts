@@ -12,7 +12,7 @@ import { timer } from '../observable/timer';
  * <span class="informal">Lets a value pass, then ignores source values for the
  * next `duration` milliseconds.</span>
  *
- * 让一个值通过，然后在下一个 `duration` 毫秒内忽略源值。
+ * <span class="informal">让一个值通过，然后在下一个 `duration` 毫秒内忽略源值。</span>
  *
  * ![](throttleTime.png)
  *

@@ -12,7 +12,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * <span class="informal">Unwraps {@link ObservableNotification} objects as actual `next`,
  * `error` and `complete` emissions. The opposite of {@link materialize}.</span>
  *
- * 将 {@link ObservableNotification} 对象解包为实际的 `next` 、 `error` 和 `complete` 排放。 {@link materialize} 的反义词。
+ * <span class="informal">将 {@link ObservableNotification} 对象解包为实际的 `next` 、 `error` 和 `complete` 排放。 {@link materialize} 的反义词。</span>
  *
  * ![](dematerialize.png)
  *

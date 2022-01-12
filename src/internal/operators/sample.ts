@@ -13,7 +13,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * <span class="informal">It's like {@link sampleTime}, but samples whenever
  * the `notifier` Observable emits something.</span>
  *
- * 它就像 {@link sampleTime}，但只要 `notifier` Observable 发出一些东西就会采样。
+ * <span class="informal">它就像 {@link sampleTime}，但只要 `notifier` Observable 发出一些东西就会采样。</span>
  *
  * ![](sample.png)
  *

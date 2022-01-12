@@ -18,7 +18,7 @@ import { map } from './map';
  * <span class="informal">Convert an Observable that emits items into one that
  * emits indications of the amount of time elapsed between those emissions.</span>
  *
- * 将发出项目的 Observable 转换为发出这些发射之间经过的时间量指示的 Observable。
+ * <span class="informal">将发出项目的 Observable 转换为发出这些发射之间经过的时间量指示的 Observable。</span>
  *
  * ![](timeInterval.png)
  *

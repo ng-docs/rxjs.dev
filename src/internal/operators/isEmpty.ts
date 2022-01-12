@@ -9,8 +9,8 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * 如果输入 Observable 发出任何值，则发出 `false` ，或者如果输入 Observable 完成但没有发出任何值，则发出 `true` 。
  *
  * <span class="informal">Tells whether any values are emitted by an Observable.</span>
- *
- * 判断 Observable 是否发出任何值。
+*
+ * <span class="informal">判断 Observable 是否发出任何值。</span>
  *
  * ![](isEmpty.png)
  *

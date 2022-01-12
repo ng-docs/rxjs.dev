@@ -30,8 +30,8 @@ export function tap<T>(
  * 用于对来自源 observable 的通知执行副作用
  *
  * <span class="informal">Used when you want to affect outside state with a notification without altering the notification</span>
- *
- * 当你想通过通知影响外部状态而不更改通知时使用
+*
+ * <span class="informal">当你想通过通知影响外部状态而不更改通知时使用</span>
  *
  * ![](tap.png)
  *

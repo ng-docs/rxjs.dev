@@ -8,8 +8,8 @@ import { SchedulerLike } from '../types';
  * 任何对 {@link empty} 的调用都返回相同的 Observable 实例，而无需 `scheduler` 。最好在 `empty()` 上使用它。
  *
  * <span class="informal">Just emits 'complete', and nothing else.</span>
- *
- * 只是发出“完整”，没有别的。
+*
+ * <span class="informal">只是发出“完整”，没有别的。</span>
  *
  * ![](empty.png)
  *
@@ -42,8 +42,8 @@ export const EMPTY = new Observable<never>((subscriber) => subscriber.complete()
  * 创建一个不向观察者发出任何项目并立即发出完整通知的 Observable。
  *
  * <span class="informal">Just emits 'complete', and nothing else.</span>
- *
- * 只是发出“完整”，没有别的。
+*
+ * <span class="informal">只是发出“完整”，没有别的。</span>
  *
  * ![](empty.png)
  *

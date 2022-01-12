@@ -15,7 +15,7 @@ import { innerFrom } from '../observable/innerFrom';
  * starts collecting values, it calls a function that returns an Observable that
  * tells when to close the buffer and restart collecting.</span>
  *
- * 将过去的值作为数组收集。当它开始收集值时，它会调用一个返回 Observable 的函数，该函数告诉何时关闭缓冲区并重新开始收集。
+ * <span class="informal">将过去的值作为数组收集。当它开始收集值时，它会调用一个返回 Observable 的函数，该函数告诉何时关闭缓冲区并重新开始收集。</span>
  *
  * ![](bufferWhen.png)
  *

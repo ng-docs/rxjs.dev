@@ -11,8 +11,8 @@ import { isValidDate } from '../util/isDate';
  * 创建一个 observable，它将等待指定的时间段或确切的日期，然后发出数字 0。
  *
  * <span class="informal">Used to emit a notification after a delay.</span>
- *
- * 用于在延迟后发出通知。
+*
+ * <span class="informal">用于在延迟后发出通知。</span>
  *
  * This observable is useful for creating delays in code, or racing against other values
  * for ad-hoc timeouts.

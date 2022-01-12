@@ -36,7 +36,7 @@ export function startWith<T, A extends readonly unknown[] = T[]>(...values: A): 
  * <span class="informal">First emits its arguments in order, and then any
  * emissions from the source.</span>
  *
- * 首先按顺序发出其参数，然后是源的任何排放。
+ * <span class="informal">首先按顺序发出其参数，然后是源的任何排放。</span>
  *
  * ![](startWith.png)
  *

@@ -7,8 +7,8 @@ import { AnimationFrameScheduler } from './AnimationFrameScheduler';
  * 动画帧调度器
  *
  * <span class="informal">Perform task when `window.requestAnimationFrame` would fire</span>
- *
- * 在 `window.requestAnimationFrame` 触发时执行任务
+*
+ * <span class="informal">在 `window.requestAnimationFrame` 触发时执行任务</span>
  *
  * When `animationFrame` scheduler is used with delay, it will fall back to {@link asyncScheduler} scheduler
  * behaviour.

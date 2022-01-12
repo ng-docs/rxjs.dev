@@ -9,8 +9,8 @@ import { EMPTY } from './empty';
  * 创建一个使用资源的 Observable，该资源将与 Observable 同时释放。
  *
  * <span class="informal">Use it when you catch yourself cleaning up after an Observable.</span>
- *
- * 当你发现自己在 Observable 之后清理时使用它。
+*
+ * <span class="informal">当你发现自己在 Observable 之后清理时使用它。</span>
  *
  * `using` is a factory operator, which accepts two functions. First function returns a disposable resource.
  * It can be an arbitrary object that implements `unsubscribe` method. Second function will be injected with

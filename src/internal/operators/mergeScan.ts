@@ -12,7 +12,7 @@ import { mergeInternals } from './mergeInternals';
  * <span class="informal">It's like {@link scan}, but the Observables returned
  * by the accumulator are merged into the outer Observable.</span>
  *
- * 就像 {@link scan} 一样，但是累加器返回的 Observable 被合并到外部的 Observable 中。
+ * <span class="informal">就像 {@link scan} 一样，但是累加器返回的 Observable 被合并到外部的 Observable 中。</span>
  *
  * The first parameter of the `mergeScan` is an `accumulator` function which is
  * being called every time the source Observable emits a value. `mergeScan` will

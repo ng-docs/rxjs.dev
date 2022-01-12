@@ -38,7 +38,7 @@ export function find<T>(predicate: (value: T, index: number, source: Observable<
  * <span class="informal">Finds the first value that passes some test and emits
  * that.</span>
  *
- * 找到通过一些测试并发出它的第一个值。
+ * <span class="informal">找到通过一些测试并发出它的第一个值。</span>
  *
  * ![](find.png)
  *

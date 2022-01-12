@@ -19,7 +19,7 @@ export function takeWhile<T>(predicate: (value: T, index: number) => boolean, in
  * <span class="informal">Takes values from the source only while they pass the
  * condition given. When the first value does not satisfy, it completes.</span>
  *
- * 仅当它们通过给定条件时才从源中获取值。当第一个值不满足时，它完成。
+ * <span class="informal">仅当它们通过给定条件时才从源中获取值。当第一个值不满足时，它完成。</span>
  *
  * ![](takeWhile.png)
  *

@@ -12,7 +12,7 @@ import { interval } from '../observable/interval';
  * <span class="informal">Samples the source Observable at periodic time
  * intervals, emitting what it samples.</span>
  *
- * 以周期性的时间间隔对源 Observable 进行采样，发出它所采样的内容。
+ * <span class="informal">以周期性的时间间隔对源 Observable 进行采样，发出它所采样的内容。</span>
  *
  * ![](sampleTime.png)
  *

@@ -35,7 +35,7 @@ export function concatMapTo<T, R, O extends ObservableInput<unknown>>(
  * <span class="informal">It's like {@link concatMap}, but maps each value
  * always to the same inner Observable.</span>
  *
- * 它就像 {@link concatMap}，但总是将每个值映射到同一个内部 Observable。
+ * <span class="informal">它就像 {@link concatMap}，但总是将每个值映射到同一个内部 Observable。</span>
  *
  * ![](concatMapTo.png)
  *

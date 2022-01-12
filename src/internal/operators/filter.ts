@@ -30,7 +30,7 @@ export function filter<T>(predicate: (value: T, index: number) => boolean): Mono
  * [Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter),
  * it only emits a value from the source if it passes a criterion function.</span>
  *
- * 像[Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)一样，如果它通过了一个标准函数，它只会从源发出一个值。
+ * <span class="informal">像[Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)一样，如果它通过了一个标准函数，它只会从源发出一个值。</span>
  *
  * ![](filter.png)
  *

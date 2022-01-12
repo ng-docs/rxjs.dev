@@ -9,8 +9,8 @@ import { OperatorFunction, ObservableInput, ObservedValueOf } from '../types';
  * 将高阶 Observable 转换为一阶 Observable，它同时传递在内部 Observable 上发出的所有值。
  *
  * <span class="informal">Flattens an Observable-of-Observables.</span>
- *
- * 将 Observable-of-Observables 展平。
+*
+ * <span class="informal">将 Observable-of-Observables 展平。</span>
  *
  * ![](mergeAll.png)
  *

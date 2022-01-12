@@ -17,8 +17,8 @@ export function onErrorResumeNext<A extends readonly unknown[]>(...sources: [...
  * 当任何提供的 Observable 发出完成或错误通知时，它会立即订阅下一个传递的通知。
  *
  * <span class="informal">Execute series of Observables no matter what, even if it means swallowing errors.</span>
- *
- * 无论如何都要执行一系列 Observables，即使这意味着吞下错误。
+*
+ * <span class="informal">无论如何都要执行一系列 Observables，即使这意味着吞下错误。</span>
  *
  * ![](onErrorResumeNext.png)
  *

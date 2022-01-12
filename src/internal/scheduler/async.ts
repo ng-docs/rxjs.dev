@@ -7,8 +7,8 @@ import { AsyncScheduler } from './AsyncScheduler';
  * 异步调度器
  *
  * <span class="informal">Schedule task as if you used setTimeout(task, duration)</span>
- *
- * 像使用 setTimeout(task, duration) 一样安排任务
+*
+ * <span class="informal">像使用 setTimeout(task, duration) 一样安排任务</span>
  *
  * `async` scheduler schedules tasks asynchronously, by putting them on the JavaScript
  * event loop queue. It is best used to delay tasks in time or to schedule tasks repeating

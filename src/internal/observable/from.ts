@@ -18,8 +18,8 @@ export function from<O extends ObservableInput<any>>(input: O, scheduler: Schedu
  * 从 Array、类数组对象、Promise、可迭代对象或类 Observable 对象创建 Observable。
  *
  * <span class="informal">Converts almost anything to an Observable.</span>
- *
- * 将几乎任何东西都转换为 Observable。
+*
+ * <span class="informal">将几乎任何东西都转换为 Observable。</span>
  *
  * ![](from.png)
  *

@@ -6,8 +6,8 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * 围绕浏览器提供的与 w3c 兼容的 WebSocket 对象进行包装。
  *
  * <span class="informal">{@link Subject} that communicates with a server via WebSocket</span>
- *
- * {@link Subject} 通过 WebSocket 与服务器通信
+*
+ * <span class="informal">{@link Subject} 通过 WebSocket 与服务器通信</span>
  *
  * `webSocket` is a factory function that produces a `WebSocketSubject`,
  * which can be used to make WebSocket connection with an arbitrary endpoint.

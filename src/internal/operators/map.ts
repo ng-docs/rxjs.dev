@@ -21,7 +21,7 @@ export function map<T, R, A>(project: (this: A, value: T, index: number) => R, t
  * it passes each source value through a transformation function to get
  * corresponding output values.</span>
  *
- * 与[Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)一样，它通过转换函数将每个源值传递以获取相应的输出值。
+ * <span class="informal">与[Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)一样，它通过转换函数将每个源值传递以获取相应的输出值。</span>
  *
  * ![](map.png)
  *

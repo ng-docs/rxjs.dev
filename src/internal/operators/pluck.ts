@@ -52,7 +52,7 @@ export function pluck<T>(...properties: string[]): OperatorFunction<T, unknown>;
  * <span class="informal">Like {@link map}, but meant only for picking one of
  * the nested properties of every emitted value.</span>
  *
- * 与 {@link map} 类似，但仅用于选择每个发出值的嵌套属性之一。
+ * <span class="informal">与 {@link map} 类似，但仅用于选择每个发出值的嵌套属性之一。</span>
  *
  * ![](pluck.png)
  *

@@ -145,8 +145,8 @@ export function generate<T, S>(
  * 通过运行一个状态驱动的循环来生成一个 Observable，该循环在每次迭代时发出一个元素。
  *
  * <span class="informal">Use it instead of nexting values in a for loop.</span>
- *
- * 使用它代替 for 循环中的下一个值。
+*
+ * <span class="informal">使用它代替 for 循环中的下一个值。</span>
  *
  * ![](generate.png)
  *

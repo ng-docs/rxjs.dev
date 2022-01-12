@@ -24,7 +24,7 @@ export function bindNodeCallback<A extends readonly unknown[], R extends readonl
  * <span class="informal">It's just like {@link bindCallback}, but the
  * callback is expected to be of type `callback(error, result)`.</span>
  *
- * 就像 {@link bindCallback} 一样，但是回调的类型应该是 `callback(error, result)` 。
+ * <span class="informal">就像 {@link bindCallback} 一样，但是回调的类型应该是 `callback(error, result)` 。</span>
  *
  * `bindNodeCallback` is not an operator because its input and output are not
  * Observables. The input is a function `func` with some parameters, but the

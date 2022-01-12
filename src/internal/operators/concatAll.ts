@@ -10,7 +10,7 @@ import { OperatorFunction, ObservableInput, ObservedValueOf } from '../types';
  * <span class="informal">Flattens an Observable-of-Observables by putting one
  * inner Observable after the other.</span>
  *
- * 通过将一个内部 Observable 放在另一个之后来展平 Observable-of-Observables。
+ * <span class="informal">通过将一个内部 Observable 放在另一个之后来展平 Observable-of-Observables。</span>
  *
  * ![](concatAll.svg)
  *

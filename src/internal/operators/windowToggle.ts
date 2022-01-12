@@ -18,7 +18,7 @@ import { arrRemove } from '../util/arrRemove';
  * <span class="informal">It's like {@link bufferToggle}, but emits a nested
  * Observable instead of an array.</span>
  *
- * 它类似于 {@link bufferToggle}，但发出一个嵌套的 Observable 而不是一个数组。
+ * <span class="informal">它类似于 {@link bufferToggle}，但发出一个嵌套的 Observable 而不是一个数组。</span>
  *
  * ![](windowToggle.png)
  *

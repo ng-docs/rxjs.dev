@@ -13,7 +13,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * <span class="informal">It's like {@link bufferCount}, but emits a nested
  * Observable instead of an array.</span>
  *
- * 它类似于 {@link bufferCount}，但发出一个嵌套的 Observable 而不是一个数组。
+ * <span class="informal">它类似于 {@link bufferCount}，但发出一个嵌套的 Observable 而不是一个数组。</span>
  *
  * ![](windowCount.png)
  *

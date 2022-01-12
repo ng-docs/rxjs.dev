@@ -12,7 +12,7 @@ import { arrRemove } from '../util/arrRemove';
  * <span class="informal">Collects values from the past as an array, and emits
  * that array only when its size reaches `bufferSize`.</span>
  *
- * 将过去的值收集为一个数组，并仅在其大小达到 `bufferSize` 时发出该数组。
+ * <span class="informal">将过去的值收集为一个数组，并仅在其大小达到 `bufferSize` 时发出该数组。</span>
  *
  * ![](bufferCount.png)
  *

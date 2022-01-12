@@ -8,7 +8,7 @@
 
 <span class="informal">A Subject is like an Observable, but can multicast to many Observers. Subjects are like EventEmitters: they maintain a registry of many listeners.</span>
 
-Subject 类似于 Observable，但可以多播到多个 Observer。 Subjects 就像 EventEmitters：它们维护着许多监听器的注册表。
+<span class="informal">Subject 类似于 Observable，但可以多播到多个 Observer。 Subjects 就像 EventEmitters：它们维护着许多监听器的注册表。</span>
 
 **Every Subject is an Observable.** Given a Subject, you can `subscribe` to it, providing an Observer, which will start receiving values normally. From the perspective of the Observer, it cannot tell whether the Observable execution is coming from a plain unicast Observable or a Subject.
 
@@ -95,7 +95,7 @@ A "multicasted Observable" passes notifications through a Subject which may have
 
 <span class="informal">A multicasted Observable uses a Subject under the hood to make multiple Observers see the same Observable execution.</span>
 
-多播的 Observable 在底层使用 Subject 来让多个 Observer 看到相同的 Observable 执行。
+<span class="informal">多播的 Observable 在底层使用 Subject 来让多个 Observer 看到相同的 Observable 执行。</span>
 
 Under the hood, this is how the `multicast` operator works: Observers subscribe to an underlying Subject, and the Subject subscribes to the source Observable. The following example is similar to the previous example which used `observable.subscribe(subject)`:
 
@@ -223,7 +223,7 @@ If we wish to avoid explicit calls to `connect()`, we can use ConnectableObserva
 
 <span class="informal">`refCount` makes the multicasted Observable automatically start executing when the first subscriber arrives, and stop executing when the last subscriber leaves.</span>
 
-`refCount` 使多播的 Observable 在第一个订阅者到达时自动开始执行，并在最后一个订阅者离开时停止执行。
+<span class="informal">`refCount` 使多播的 Observable 在第一个订阅者到达时自动开始执行，并在最后一个订阅者离开时停止执行。</span>
 
 Below is an example:
 
@@ -288,7 +288,7 @@ Subjects 的变体之一是 `BehaviorSubject` ，它具有“当前值”的概�
 
 <span class="informal">BehaviorSubjects are useful for representing "values over time". For instance, an event stream of birthdays is a Subject, but the stream of a person's age would be a BehaviorSubject.</span>
 
-BehaviorSubjects 对于表示“随时间变化的值”很有用。例如，生日事件流是一个主题，但一个人的年龄流是一个行为主题。
+<span class="informal">BehaviorSubjects 对于表示“随时间变化的值”很有用。例如，生日事件流是一个主题，但一个人的年龄流是一个行为主题。</span>
 
 In the following example, the BehaviorSubject is initialized with the value `0` which the first Observer receives when it subscribes. The second Observer receives the value `2` even though it subscribed after the value `2` was sent.
 
@@ -330,7 +330,7 @@ A `ReplaySubject` is similar to a `BehaviorSubject` in that it can send old valu
 
 <span class="informal">A `ReplaySubject` records multiple values from the Observable execution and replays them to new subscribers.</span>
 
-`ReplaySubject` 记录来自 Observable 执行的多个值，并将它们重播给新订阅者。
+<span class="informal">`ReplaySubject` 记录来自 Observable 执行的多个值，并将它们重播给新订阅者。</span>
 
 When creating a `ReplaySubject`, you can specify how many values to replay:
 
@@ -489,5 +489,5 @@ setTimeout(() => subject.next(), 1000);
 
 <span class="informal">Before version 7, the default type of Subject values was `any`. `Subject<any>` disables type checking of the emitted values, whereas `Subject<void>` prevents accidental access to the emitted value. If you want the old behavior, then replace `Subject` with `Subject<any>`.</span>
 
-在版本 7 之前，Subject 值的默认类型是 `any` 。 `Subject<any>` 禁用发出值的类型检查，而 `Subject<void>` 防止意外访问发出的值。如果你想要旧行为，请将 `Subject` 替换为 `Subject<any>` 。
+<span class="informal">在版本 7 之前，Subject 值的默认类型是 `any` 。 `Subject<any>` 禁用发出值的类型检查，而 `Subject<void>` 防止意外访问发出的值。如果你想要旧行为，请将 `Subject` 替换为 `Subject<any>` 。</span>
 

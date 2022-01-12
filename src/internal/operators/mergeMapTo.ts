@@ -29,7 +29,7 @@ export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(
  * <span class="informal">It's like {@link mergeMap}, but maps each value always
  * to the same inner Observable.</span>
  *
- * 它就像 {@link mergeMap}，但总是将每个值映射到同一个内部 Observable。
+ * <span class="informal">它就像 {@link mergeMap}，但总是将每个值映射到同一个内部 Observable。</span>
  *
  * ![](mergeMapTo.png)
  *

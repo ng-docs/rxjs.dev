@@ -13,7 +13,7 @@ import { UnaryFunction } from '../types';
  * one like the output of {@link filter}, and the other with values that did not
  * pass the condition.</span>
  *
- * 它类似于 {@link filter}，但返回两个 Observable：一个类似于 {@link filter} 的输出，另一个具有未通过条件的值。
+ * <span class="informal">它类似于 {@link filter}，但返回两个 Observable：一个类似于 {@link filter} 的输出，另一个具有未通过条件的值。</span>
  *
  * ![](partition.png)
  *

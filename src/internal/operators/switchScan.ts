@@ -14,7 +14,7 @@ import { operate } from '../util/lift';
  * <span class="informal">It's like {@link mergeScan}, but only the most recent
  * Observable returned by the accumulator is merged into the outer Observable.</span>
  *
- * 类似于 {@link mergeScan}，但只有累加器返回的最新 Observable 才会合并到外部 Observable 中。
+ * <span class="informal">类似于 {@link mergeScan}，但只有累加器返回的最新 Observable 才会合并到外部 Observable 中。</span>
  *
  * @see {@link scan}
  * @see {@link mergeScan}

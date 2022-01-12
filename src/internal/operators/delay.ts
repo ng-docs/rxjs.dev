@@ -12,7 +12,7 @@ import { timer } from '../observable/timer';
  * <span class="informal">Time shifts each item by some specified amount of
  * milliseconds.</span>
  *
- * 时间将每个项目移动某个指定的毫秒数。
+ * <span class="informal">时间将每个项目移动某个指定的毫秒数。</span>
  *
  * ![](delay.png)
  *

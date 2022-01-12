@@ -13,7 +13,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * <span class="informal">Flattens an Observable-of-Observables by dropping the
  * next inner Observables while the current inner is still executing.</span>
  *
- * 通过在当前内部仍在执行时删除下一个内部 Observables 来展平 Observable-of-Observables。
+ * <span class="informal">通过在当前内部仍在执行时删除下一个内部 Observables 来展平 Observable-of-Observables。</span>
  *
  * ![](exhaust.png)
  *

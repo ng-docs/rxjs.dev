@@ -33,7 +33,7 @@ export function expand<T, O extends ObservableInput<unknown>>(
  * projection function to every source value as well as every output value.
  * It's recursive.</span>
  *
- * 它类似于 {@link mergeMap}，但将投影函数应用于每个源值以及每个输出值。它是递归的。
+ * <span class="informal">它类似于 {@link mergeMap}，但将投影函数应用于每个源值以及每个输出值。它是递归的。</span>
  *
  * ![](expand.png)
  *

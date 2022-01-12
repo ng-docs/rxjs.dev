@@ -23,7 +23,7 @@ export function withLatestFrom<T, O extends unknown[], R>(
  * computes a formula using that value plus the latest values from other input
  * Observables, then emits the output of that formula.</span>
  *
- * 每当源 Observable 发出一个值时，它会使用该值加上来自其他输入 Observable 的最新值计算一个公式，然后发出该公式的输出。
+ * <span class="informal">每当源 Observable 发出一个值时，它会使用该值加上来自其他输入 Observable 的最新值计算一个公式，然后发出该公式的输出。</span>
  *
  * ![](withLatestFrom.png)
  *

@@ -119,7 +119,7 @@ export class Observable<T> implements Subscribable<T> {
    *
    * <span class="informal">Use it when you have all these Observables, but still nothing is happening.</span>
    *
-   * 当你拥有所有这些 Observables 时使用它，但仍然没有发生任何事情。
+   * <span class="informal">当你拥有所有这些 Observables 时使用它，但仍然没有发生任何事情。</span>
    *
    * `subscribe` is not a regular operator, but a method that calls Observable's internal `subscribe` function. It
    * might be for example a function that you passed to Observable's constructor, but most of the time it is

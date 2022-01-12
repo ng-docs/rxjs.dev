@@ -32,7 +32,7 @@ export function first<T, D = T>(
  * <span class="informal">Emits only the first value. Or emits only the first
  * value that passes some test.</span>
  *
- * 仅发出第一个值。或仅发出通过某些测试的第一个值。
+ * <span class="informal">仅发出第一个值。或仅发出通过某些测试的第一个值。</span>
  *
  * ![](first.png)
  *

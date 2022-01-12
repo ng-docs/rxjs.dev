@@ -36,7 +36,7 @@ export function merge<A extends readonly unknown[]>(
  * <span class="informal">Flattens multiple Observables together by blending
  * their values into one Observable.</span>
  *
- * 通过将多个 Observable 的值混合到一个 Observable 中来将多个 Observable 扁平化。
+ * <span class="informal">通过将多个 Observable 的值混合到一个 Observable 中来将多个 Observable 扁平化。</span>
  *
  * ![](merge.png)
  *

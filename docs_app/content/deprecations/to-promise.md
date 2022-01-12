@@ -80,7 +80,7 @@ execute();
 
 <span class="informal">Both functions will return a Promise that rejects if the source Observable errors. The Promise will reject with the same error that the Observable has errored with.</span>
 
-如果源 Observable 出错，这两个函数都会返回一个拒绝的 Promise。 Promise 将拒绝与 Observable 错误相同的错误。
+<span class="informal">如果源 Observable 出错，这两个函数都会返回一个拒绝的 Promise。 Promise 将拒绝与 Observable 错误相同的错误。</span>
 
 # Use default value
 

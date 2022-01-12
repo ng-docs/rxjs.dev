@@ -144,8 +144,8 @@ export const TimeoutError: TimeoutErrorCtor = createErrorClass(
  * 如果提供 `with` ，这将返回一个 observable，如果源没有在指定的时间参数内推送值，它将切换到不同的 observable。
  *
  * <span class="informal">The most flexible option for creating a timeout behavior.</span>
- *
- * 创建超时行为的最灵活选项。
+*
+ * <span class="informal">创建超时行为的最灵活选项。</span>
  *
  * The first thing to know about the configuration is if you do not provide a `with` property to the configuration,
  * when timeout conditions are met, this operator will emit a {@link TimeoutError}. Otherwise, it will use the factory
@@ -233,8 +233,8 @@ export function timeout<T, O extends ObservableInput<unknown>, M = unknown>(
  * 如果源没有在指定的时间参数内推送值，则返回一个将出错或切换到不同的 observable 的 observable。
  *
  * <span class="informal">The most flexible option for creating a timeout behavior.</span>
- *
- * 创建超时行为的最灵活选项。
+*
+ * <span class="informal">创建超时行为的最灵活选项。</span>
  *
  * The first thing to know about the configuration is if you do not provide a `with` property to the configuration,
  * when timeout conditions are met, this operator will emit a {@link TimeoutError}. Otherwise, it will use the factory
@@ -349,8 +349,8 @@ export function timeout<T, M = unknown>(config: Omit<TimeoutConfig<T, any, M>, '
  * 如果源在作为 `Date` 传递的指定时间之前未推送其第一个值，则返回一个 observable 将出错。这在功能上与 `timeout({ first: someDate })` 相同。
  *
  * <span class="informal">Errors if the first value doesn't show up before the given date and time</span>
- *
- * 如果第一个值在给定的日期和时间之前没有出现，则会出错
+*
+ * <span class="informal">如果第一个值在给定的日期和时间之前没有出现，则会出错</span>
  *
  * ![](timeout.png)
  * @param first The date to at which the resulting observable will timeout if the source observable
@@ -372,8 +372,8 @@ export function timeout<T>(first: Date, scheduler?: SchedulerLike): MonoTypeOper
  * 如果源没有在指定时间内以毫秒为单位推送值，则返回一个将出错的 observable。这在功能上与 `timeout({ each: milliseconds })` 相同。
  *
  * <span class="informal">Errors if it waits too long between any value</span>
- *
- * 如果在任何值之间等待太久，则会出错
+*
+ * <span class="informal">如果在任何值之间等待太久，则会出错</span>
  *
  * ![](timeout.png)
  * @param each The time allowed between each pushed value from the source before the resulting observable
@@ -394,8 +394,8 @@ export function timeout<T>(each: number, scheduler?: SchedulerLike): MonoTypeOpe
  * 如果 Observable 在给定的时间范围内没有发出值，则会出错。
  *
  * <span class="informal">Timeouts on Observable that doesn't emit values fast enough.</span>
- *
- * Observable 上的超时不会足够快地发出值。
+*
+ * <span class="informal">Observable 上的超时不会足够快地发出值。</span>
  *
  * ![](timeout.png)
  * @see {@link timeoutWith}

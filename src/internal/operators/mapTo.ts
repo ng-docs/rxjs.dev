@@ -19,7 +19,7 @@ export function mapTo<T, R>(value: R): OperatorFunction<T, R>;
  * <span class="informal">Like {@link map}, but it maps every source value to
  * the same output value every time.</span>
  *
- * 与 {@link map} 类似，但它每次都将每个源值映射到相同的输出值。
+ * <span class="informal">与 {@link map} 类似，但它每次都将每个源值映射到相同的输出值。</span>
  *
  * ![](mapTo.png)
  *

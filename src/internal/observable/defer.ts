@@ -12,7 +12,7 @@ import { innerFrom } from './innerFrom';
  * is subscribed.
  * </span>
  *
- * 延迟创建 Observable，即仅在订阅时创建。
+ * <span class="informal">推迟创建 Observable，即仅在订阅时创建。</span>
  *
  * ![](defer.png)
  *

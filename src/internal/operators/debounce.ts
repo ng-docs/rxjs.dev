@@ -14,7 +14,7 @@ import { innerFrom } from '../observable/innerFrom';
  * <span class="informal">It's like {@link debounceTime}, but the time span of
  * emission silence is determined by a second Observable.</span>
  *
- * 就像 {@link debounceTime}，但发射静默的时间跨度由第二个 Observable 决定。
+ * <span class="informal">就像 {@link debounceTime}，但发射静默的时间跨度由第二个 Observable 决定。</span>
  *
  * ![](debounce.svg)
  *

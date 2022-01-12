@@ -7,8 +7,8 @@ import { AsapScheduler } from './AsapScheduler';
  * 尽快调度程序
  *
  * <span class="informal">Perform task as fast as it can be performed asynchronously</span>
- *
- * 尽可能快地执行任务，因为它可以异步执行
+*
+ * <span class="informal">尽可能快地执行任务，因为它可以异步执行</span>
  *
  * `asap` scheduler behaves the same as {@link asyncScheduler} scheduler when you use it to delay task
  * in time. If however you set delay to `0`, `asap` will wait for current synchronously executing

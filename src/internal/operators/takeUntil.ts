@@ -13,7 +13,7 @@ import { noop } from '../util/noop';
  * <span class="informal">Lets values pass until a second Observable,
  * `notifier`, emits a value. Then, it completes.</span>
  *
- * 让值传递，直到第二个 Observable， `notifier` 发出一个值。然后，它就完成了。
+ * <span class="informal">让值传递，直到第二个 Observable， `notifier` 发出一个值。然后，它就完成了。</span>
  *
  * ![](takeUntil.png)
  *

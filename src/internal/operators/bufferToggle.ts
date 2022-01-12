@@ -16,7 +16,7 @@ import { arrRemove } from '../util/arrRemove';
  * collecting only when `opening` emits, and calls the `closingSelector`
  * function to get an Observable that tells when to close the buffer.</span>
  *
- * 将过去的值作为数组收集。仅在 `opening` 发出时开始收集，并调用 `closingSelector` 函数以获取一个告诉何时关闭缓冲区的 Observable。
+ * <span class="informal">将过去的值作为数组收集。仅在 `opening` 发出时开始收集，并调用 `closingSelector` 函数以获取一个告诉何时关闭缓冲区的 Observable。</span>
  *
  * ![](bufferToggle.png)
  *

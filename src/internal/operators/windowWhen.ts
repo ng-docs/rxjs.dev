@@ -16,7 +16,7 @@ import { innerFrom } from '../observable/innerFrom';
  * <span class="informal">It's like {@link bufferWhen}, but emits a nested
  * Observable instead of an array.</span>
  *
- * 它类似于 {@link bufferWhen}，但发出一个嵌套的 Observable 而不是一个数组。
+ * <span class="informal">它类似于 {@link bufferWhen}，但发出一个嵌套的 Observable 而不是一个数组。</span>
  *
  * ![](windowWhen.png)
  *

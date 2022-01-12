@@ -10,8 +10,8 @@ import { timer } from './timer';
  * 创建一个 Observable，它在指定的 {@link SchedulerLike} 上每隔指定的时间间隔发出序列号。
  *
  * <span class="informal">Emits incremental numbers periodically in time.</span>
- *
- * 及时定期发出增量数字。
+*
+ * <span class="informal">及时定期发出增量数字。</span>
  *
  * ![](interval.png)
  *

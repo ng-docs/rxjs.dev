@@ -32,7 +32,7 @@ export function findIndex<T>(predicate: (value: T, index: number, source: Observ
  * <span class="informal">It's like {@link find}, but emits the index of the
  * found value, not the value itself.</span>
  *
- * 它类似于 {@link find}，但发出找到值的索引，而不是值本身。
+ * <span class="informal">它类似于 {@link find}，但发出找到值的索引，而不是值本身。</span>
  *
  * ![](findIndex.png)
  *

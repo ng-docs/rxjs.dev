@@ -10,7 +10,7 @@ import { reduce } from './reduce';
  * <span class="informal">Tells how many values were emitted, when the source
  * completes.</span>
  *
- * 告诉源完成时发出了多少值。
+ * <span class="informal">告诉源完成时发出了多少值。</span>
  *
  * ![](count.png)
  *
