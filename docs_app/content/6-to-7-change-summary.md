@@ -675,7 +675,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### sample
 
-### 样本
+### sample(采样)
 
 - The `sample` operator's notifier observable must emit a next notification to effect a sample. Complete notifications no longer effect a sample.
 

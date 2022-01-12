@@ -224,7 +224,7 @@ export function combineLatest<T extends Record<string, ObservableInput<any>>>(
  *
  * Use map operator to dynamically calculate the Body-Mass Index
  *
- * 使用 map 算子动态计算 Body-Mass Index
+ * 使用 map 操作符动态计算 Body-Mass Index
  *
  * ```ts
  * import { of, combineLatest, map } from 'rxjs';

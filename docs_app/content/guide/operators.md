@@ -159,7 +159,7 @@ exhaustMap()`](/api/operators/exhaustMap)都有映射等价物[`exhaustMap()`](/
 
 To explain how operators work, textual descriptions are often not enough. Many operators are related to time, they may for instance delay, sample, throttle, or debounce value emissions in different ways. Diagrams are often a better tool for that. _Marble Diagrams_ are visual representations of how operators work, and include the input Observable(s), the operator and its parameters, and the output Observable.
 
-要解释操作符的工作原理，文字描述通常是不够的。许多算子都与时间有关，他们可能以不同的方式延迟、采样、节流或去抖动值发射。图表通常是更好的工具。_ 弹珠图 _ 是算子如何工作的可视化表示，包括输入 Observable(s)、算子及其参数以及输出 Observable。
+要解释操作符的工作原理，文字描述通常是不够的。许多操作符都与时间有关，他们可能以不同的方式延迟、采样、节流或防抖后发出。图表通常是更好的工具。*弹珠图*是操作符如何工作的可视化表示，包括输入 Observable、操作符及其参数以及输出 Observable。
 
 <span class="informal">In a marble diagram, time flows to the right, and the diagram describes how values ("marbles") are emitted on the Observable execution.</span>
 

@@ -37,7 +37,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * they did on the source Observable. Optionally takes a {@link SchedulerLike} for
  * managing timers.
  *
- * 这是一个限速算子，因为不可能在任何持续时间的时间窗口内发出多个 `dueTime`，但它也是一个类似延迟的算子，因为输出发射不会与它们同时发生在源 Observable 上。可以选择使用 {@link SchedulerLike} 来管理计时器。
+ * 这是一个限速操作符，因为不可能在任何持续时间的时间窗口内发出多个 `dueTime`，但它也是一个类似延迟的操作符，因为输出发射不会与它们同时发生在源 Observable 上。可以选择使用 {@link SchedulerLike} 来管理计时器。
  *
  * ## Example
  *

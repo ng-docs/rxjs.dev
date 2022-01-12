@@ -38,7 +38,7 @@ import { innerFrom } from '../observable/innerFrom';
  * delay-like operator since output emissions do not necessarily occur at the
  * same time as they did on the source Observable.
  *
- * 像 {@link debounceTime} 一样，这是一个限速算子，也是一个类似延迟的算子，因为输出发射不一定与源 Observable 上的同时发生。
+ * 像 {@link debounceTime} 一样，这是一个限速操作符，也是一个类似延迟的操作符，因为输出发射不一定与源 Observable 上的同时发生。
  *
  * ## Example
  *
