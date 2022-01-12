@@ -68,7 +68,7 @@ import { animationFrameProvider } from '../../scheduler/animationFrameProvider';
  *
  * Providing a custom timestamp provider
  *
- * 提供自定义时间戳提供程序
+ * 提供自定义时间戳提供者
  *
  * ```ts
  * import { animationFrames, TimestampProvider } from 'rxjs';
@@ -100,7 +100,7 @@ export function animationFrames(timestampProvider?: TimestampProvider) {
  *
  * @param timestampProvider The timestamp provider to use to create the observable
  *
- * 用于创建 observable 的时间戳提供程序
+ * 用于创建 observable 的时间戳提供者
  *
  */
 function animationFramesFactory(timestampProvider?: TimestampProvider) {

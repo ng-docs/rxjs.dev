@@ -20,7 +20,7 @@ import { isFunction } from '../util/isFunction';
  *
  * @param timestampProvider The timestamp provider for the underlying {@link ReplaySubject}.
  *
- * 底层 {@link ReplaySubject} 的时间戳提供程序。
+ * 底层 {@link ReplaySubject} 的时间戳提供者。
  *
  * @deprecated Will be removed in v8. To create a connectable observable that uses a
  * {@link ReplaySubject} under the hood, use {@link connectable}.
@@ -66,7 +66,7 @@ export function publishReplay<T>(
  *
  * @param timestampProvider The timestamp provider for the underlying {@link ReplaySubject}.
  *
- * 底层 {@link ReplaySubject} 的时间戳提供程序。
+ * 底层 {@link ReplaySubject} 的时间戳提供者。
  *
  * @deprecated Will be removed in v8. Use the {@link connect} operator instead.
  * `source.pipe(publishReplay(size, window, selector, scheduler))` is equivalent to
@@ -103,7 +103,7 @@ export function publishReplay<T, O extends ObservableInput<any>>(
  *
  * @param timestampProvider The timestamp provider for the underlying {@link ReplaySubject}.
  *
- * 底层 {@link ReplaySubject} 的时间戳提供程序。
+ * 底层 {@link ReplaySubject} 的时间戳提供者。
  *
  * @deprecated Will be removed in v8. To create a connectable observable that uses a
  * {@link ReplaySubject} under the hood, use {@link connectable}.
