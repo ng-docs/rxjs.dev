@@ -106,7 +106,7 @@ export function switchMap<T, R, O extends ObservableInput<any>>(
  * `resultSelector`) to each item emitted by the source Observable and taking
  * only the values from the most recently projected inner Observable.
  *
- * 一个返回 Observable 的函数，该函数发出将投影函数（和可选的不推荐使用的 `resultSelector`）应用于源 Observable 发出的每个项目的结果，并且仅从最近投影的内部 Observable 中获取值。
+ * 一个返回 Observable 的函数，该函数发出将投影函数（和可选的已弃用的 `resultSelector`）应用于源 Observable 发出的每个项目的结果，并且仅从最近投影的内部 Observable 中获取值。
  *
  */
 export function switchMap<T, R, O extends ObservableInput<any>>(

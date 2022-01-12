@@ -105,7 +105,7 @@ scheduled([of('hello '), of('World')], asyncScheduler)
 
 You can apply this pattern to refactor deprecated usage of `concat`, `startWith` and `endWith` but do notice that you will want to use [mergeAll](/api/operators/mergeAll) to refactor the deprecated usage of `merge`.
 
-你可以应用此模式来重构不推荐使用的 `concat`、`startWith` 和 `endWith`，但请注意你将希望使用[mergeAll](/api/operators/mergeAll)重构不推荐使用的 `merge`。
+你可以应用此模式来重构已弃用的 `concat`、`startWith` 和 `endWith`，但请注意你将希望使用[mergeAll](/api/operators/mergeAll)重构已弃用的 `merge`。
 
 With `combineLatest`, you will want to use [combineLatestAll](/api/operators/combineLatestAll)
 

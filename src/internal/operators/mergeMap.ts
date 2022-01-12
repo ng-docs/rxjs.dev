@@ -101,7 +101,7 @@ export function mergeMap<T, R, O extends ObservableInput<any>>(
  * `resultSelector`) to each item emitted by the source Observable and merging
  * the results of the Observables obtained from this transformation.
  *
- * 一个返回 Observable 的函数，该函数发出将投影函数（以及可选的不推荐使用的 `resultSelector`）应用于源 Observable 发出的每个项目并合并从此转换获得的 Observables 的结果的结果。
+ * 一个返回 Observable 的函数，该函数发出将投影函数（以及可选的已弃用的 `resultSelector`）应用于源 Observable 发出的每个项目并合并从此转换获得的 Observables 的结果的结果。
  *
  */
 export function mergeMap<T, R, O extends ObservableInput<any>>(

@@ -36,7 +36,7 @@ export function multicast<T>(subject: Subject<T>): UnaryFunction<Observable<T>, 
  * rather than duplicate the effort of documenting the same behavior, please see documentation for the
  * {@link connect} operator.
  *
- * 由于不推荐使用 {@link connect} 操作符，并且文档记录不佳，而不是重复记录相同行为的工作，请参阅 {@link connect} 操作符的文档。
+ * 由于已弃用 {@link connect} 操作符，并且文档记录不佳，而不是重复记录相同行为的工作，请参阅 {@link connect} 操作符的文档。
  *
  * @param subject The subject used to multicast.
  *

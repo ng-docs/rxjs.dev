@@ -74,7 +74,7 @@ RxJS 中主要实体之间发生的特定动作和事件需要定义。这些主
 The act of a [consumer](#consumer) requesting an Observable set up a [subscription](#subscription) so that it may [observe](#observation) a [producer](#producer). A subscribe action can occur with an observable via many different mechanisms. The primary mechanism is the [`subscribe` method](/api/index/class/Observable#subscribe) on the [Observable class](/api/index/class/Observable). Other mechanisms include the [`forEach` method](/api/index/class/Observable#forEach), functions
 like [`lastValueFrom`](/api/index/function/lastValueFrom), and [`firstValueFrom`](/api/index/function/firstValueFrom), and the deprecated [`toPromise` method](/api/index/class/Observable#forEach).
 
-[消费者](#consumer)请求 Observable 的行为设置[订阅](#subscription)，以便它可以[观察](#observation)[生产者](#producer)。订阅操作可以通过许多不同的机制与 observable 一起发生。主要机制是[Observable 类](/api/index/class/Observable)的[`subscribe` 方法](/api/index/class/Observable#subscribe)。其他机制包括[`forEach` 方法](/api/index/class/Observable#forEach)、[`lastValueFrom`](/api/index/function/lastValueFrom)和[`firstValueFrom`](/api/index/function/firstValueFrom)等函数，以及不推荐使用的[`toPromise` 方法](/api/index/class/Observable#forEach)。
+[消费者](#consumer)请求 Observable 的行为设置[订阅](#subscription)，以便它可以[观察](#observation)[生产者](#producer)。订阅操作可以通过许多不同的机制与 observable 一起发生。主要机制是[Observable 类](/api/index/class/Observable)的[`subscribe` 方法](/api/index/class/Observable#subscribe)。其他机制包括[`forEach` 方法](/api/index/class/Observable#forEach)、[`lastValueFrom`](/api/index/function/lastValueFrom)和[`firstValueFrom`](/api/index/function/firstValueFrom)等函数，以及已弃用的[`toPromise` 方法](/api/index/class/Observable#forEach)。
 
 ### Teardown
 
