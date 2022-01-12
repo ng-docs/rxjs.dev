@@ -24,12 +24,12 @@ By default, RxJS 7.x will provide different variants of the code based on the co
 
 * When RxJS 7.4+ is used via a bundler targeting a browser (or other non-Node.js platform) ES module code targetting ES5 will be provided by default with the option to use ES2015 code. 7.x versions prior to 7.4.0 will only provide ES5 code.
 
-  当通过针对浏览器（或其他非 Node.js 平台）的捆绑程序使用 RxJS 7.4+ 时，将默认提供针对 ES5 的 ES 模块代码，并提供使用 ES2015 代码的选项。7.4.0 之前的 7.x 版本将仅提供 ES5 代码。
+  当通过针对浏览器（或其他非 Node.js 平台）的捆绑器使用 RxJS 7.4+ 时，将默认提供针对 ES5 的 ES 模块代码，并提供使用 ES2015 代码的选项。7.4.0 之前的 7.x 版本将仅提供 ES5 代码。
 
 If the target browsers for a project support ES2015+ or the bundle process supports down-leveling to ES5 then the bundler can optionally be configured to allow the ES2015 RxJS code to be used instead. You can enable support for using the ES2015 RxJS code by configuring a bundler to use the `es2015` custom export condition during module resolution. Configuring a bundler to use the `es2015` custom export condition is specific to each bundler. If you are interested in using this option, please consult the
 documentation of your bundler for additional information. However, some general information can be found here: <https://webpack.js.org/guides/package-exports/#conditions-custom>
 
-如果项目的目标浏览器支持 ES2015+ 或捆绑过程支持降级到 ES5，则可以选择将捆绑器配置为允许使用 ES2015 RxJS 代码。你可以通过将捆绑器配置为在模块解析期间使用 `es2015` 自定义导出条件来启用对使用 ES2015 RxJS 代码的支持。将捆绑器配置为使用 `es2015` 自定义导出条件特定于每个捆绑器。如果你有兴趣使用此选项，请查阅捆绑程序的文档以获取更多信息。但是，可以在此处找到一些一般信息： [https](https://webpack.js.org/guides/package-exports/#conditions-custom) ://webpack.js.org/guides/package-exports/#conditions-custom
+如果项目的目标浏览器支持 ES2015+ 或捆绑过程支持降级到 ES5，则可以选择将捆绑器配置为允许使用 ES2015 RxJS 代码。你可以通过将捆绑器配置为在模块解析期间使用 `es2015` 自定义导出条件来启用对使用 ES2015 RxJS 代码的支持。将捆绑器配置为使用 `es2015` 自定义导出条件特定于每个捆绑器。如果你有兴趣使用此选项，请查阅捆绑器的文档以获取更多信息。但是，可以在此处找到一些一般信息： [https](https://webpack.js.org/guides/package-exports/#conditions-custom) ://webpack.js.org/guides/package-exports/#conditions-custom
 
 To import only what you need, please {@link guide/importing#es6-via-npm check out this} guide.
 
