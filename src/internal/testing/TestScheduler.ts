@@ -102,7 +102,7 @@ export class TestScheduler extends VirtualTimeScheduler {
   /**
    * @param marbles A diagram in the marble DSL. Letters map to keys in `values` if provided.
    *
-   * 大理石 DSL 中的图表。如果提供，字母映射到 `values` 中的键。
+   * 弹珠 DSL 中的图表。如果提供，字母映射到 `values` 中的键。
    *
    * @param values Values to use for the letters in `marbles`. If ommitted, the letters themselves are used.
    *
@@ -129,7 +129,7 @@ export class TestScheduler extends VirtualTimeScheduler {
   /**
    * @param marbles A diagram in the marble DSL. Letters map to keys in `values` if provided.
    *
-   * 大理石 DSL 中的图表。如果提供，字母映射到 `values` 中的键。
+   * 弹珠 DSL 中的图表。如果提供，字母映射到 `values` 中的键。
    *
    * @param values Values to use for the letters in `marbles`. If ommitted, the letters themselves are used.
    *

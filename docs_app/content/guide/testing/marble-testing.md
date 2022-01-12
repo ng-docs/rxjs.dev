@@ -1,6 +1,6 @@
 # Testing RxJS Code with Marble Diagrams
 
-# 用大理石图测试 RxJS 代码
+# 用弹珠图测试 RxJS 代码
 
 <div class="alert is-helpful">
   <span>This guide refers to usage of marble diagrams when using the new <code>testScheduler.run(callback)</code>. Some details here do not apply to using the TestScheduler manually, without using the <code>run()</code> helper.</span>
@@ -8,7 +8,7 @@
 
 We can test our _asynchronous_ RxJS code _synchronously_ and deterministically by virtualizing time using the TestScheduler. **Marble diagrams** provide a visual way for us to represent the behavior of an Observable. We can use them to assert that a particular Observable behaves as expected, as well as to create [hot and cold Observables](https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339) we can use as mocks.
 
-我们可以通过使用 TestScheduler 虚拟化时间来 _ 同步 _ 和确定地测试我们的\_ 异步\_RxJS 代码。**大理石图为**我们提供了一种可视化的方式来表示 Observable 的行为。我们可以使用它们来断言特定的 Observable 的行为符合预期，以及创建可以用作模拟的[冷热 Observable](https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339)。
+我们可以通过使用 TestScheduler 虚拟化时间来 _ 同步 _ 和确定地测试我们的\_ 异步\_RxJS 代码。**弹珠图为**我们提供了一种可视化的方式来表示 Observable 的行为。我们可以使用它们来断言特定的 Observable 的行为符合预期，以及创建可以用作模拟的[冷热 Observable](https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339)。
 
 > At this time, the TestScheduler can only be used to test code that uses RxJS schedulers - `AsyncScheduler`, etc. If the code consumes a Promise, for example, it cannot be reliably tested with `TestScheduler`, but instead should be tested more traditionally. See the [Known Issues](#known-issues) section for more details.
 >
@@ -74,12 +74,12 @@ Although `run()` executes entirely synchronously, the helper functions inside yo
 
 - `expectObservable(actual: Observable<T>, subscriptionMarbles?: string).toBe(marbleDiagram: string, values?: object, error?: any)` - schedules an assertion for when the TestScheduler flushes. Give `subscriptionMarbles` as parameter to change the schedule of subscription and unsubscription. If you don't provide the `subscriptionMarbles` parameter it will subscribe at the beginning and never unsubscribe. Read below about subscription marble diagram.
 
-  `expectObservable(actual: Observable<T>, subscriptionMarbles?: string).toBe(marbleDiagram: string, values?: object, error?: any)` - 在 TestScheduler 刷新时安排一个断言。给 `subscriptionMarbles` 作为参数来改变订阅和取消订阅的时间表。如果你不提供 `subscriptionMarbles` 参数，它将在开始时订阅并且永远不会取消订阅。阅读以下有关订阅大理石图的信息。
+  `expectObservable(actual: Observable<T>, subscriptionMarbles?: string).toBe(marbleDiagram: string, values?: object, error?: any)` - 在 TestScheduler 刷新时安排一个断言。给 `subscriptionMarbles` 作为参数来改变订阅和取消订阅的时间表。如果你不提供 `subscriptionMarbles` 参数，它将在开始时订阅并且永远不会取消订阅。阅读以下有关订阅弹珠图的信息。
 
 - `expectSubscriptions(actualSubscriptionLogs: SubscriptionLog[]).toBe(subscriptionMarbles: string)` - like `expectObservable` schedules an assertion for when the testScheduler flushes. Both `cold()` and `hot()` return an observable with a property `subscriptions` of type `SubscriptionLog[]`. Give `subscriptions` as parameter to `expectSubscriptions` to assert whether it matches the `subscriptionsMarbles` marble diagram given in `toBe()`. Subscription marble diagrams are slightly different than Observable
   marble diagrams. Read more below.
 
-  `expectSubscriptions(actualSubscriptionLogs: SubscriptionLog[]).toBe(subscriptionMarbles: string)` - 像 `expectObservable` 一样，在 testScheduler 刷新时安排一个断言。`cold()` 和 `hot()` 都返回一个带有 `SubscriptionLog[]` 类型的属性 `subscriptions` 的 observable。将 `subscriptions` 作为参数提供给 `expectSubscriptions` 以断言它是否与 `toBe()` 中给出的 `subscriptionsMarbles` 大理石图匹配。订阅弹珠图与可观察弹珠图略有不同。在下面阅读更多内容。
+  `expectSubscriptions(actualSubscriptionLogs: SubscriptionLog[]).toBe(subscriptionMarbles: string)` - 像 `expectObservable` 一样，在 testScheduler 刷新时安排一个断言。`cold()` 和 `hot()` 都返回一个带有 `SubscriptionLog[]` 类型的属性 `subscriptions` 的 observable。将 `subscriptions` 作为参数提供给 `expectSubscriptions` 以断言它是否与 `toBe()` 中给出的 `subscriptionsMarbles` 弹珠图匹配。订阅弹珠图与可观察弹珠图略有不同。在下面阅读更多内容。
 
 - `flush()` - immediately starts virtual time. Not often used since `run()` will automatically flush for you when your callback returns, but in some cases you may wish to flush more than once or otherwise have more control.
 
@@ -117,7 +117,7 @@ Although `run()` executes entirely synchronously, the helper functions inside yo
 
 ## Marble syntax
 
-## 大理石语法
+## 弹珠语法
 
 In the context of TestScheduler, a marble diagram is a string containing special syntax representing events happening over virtual time. Time progresses by _frames_. The first character of any marble string always represents the _zero frame_, or the start of time. Inside of `testScheduler.run(callback)` the frameTimeFactor is set to 1, which means one frame is equal to one virtual millisecond.
 
@@ -134,7 +134,7 @@ How many virtual milliseconds one frame represents depends on the value of `Test
 
 - `' '` whitespace: horizontal whitespace is ignored, and can be used to help vertically align multiple marble diagrams.
 
-  `' '` 空白：忽略水平空白，可用于帮助垂直对齐多个大理石图。
+  `' '` 空白：忽略水平空白，可用于帮助垂直对齐多个弹珠图。
 
 - `'-'` frame: 1 "frame" of virtual time passing (see above description of frames).
 
@@ -180,7 +180,7 @@ expectObservable(someStreamForTesting).toBe(expected, values);
 - `'()'` sync groupings: When multiple events need to be in the same frame synchronously, parentheses are used to group those events. You can group next'd values, a completion, or an error in this manner. The position of the initial `(` determines the time at which its values are emitted. While it can be counter-intuitive at first, after all the values have synchronously emitted time will progress a number of frames equal to the number of ASCII characters in the group, including the parentheses.
   e.g. `'(abc)'` will emit the values of a, b, and c synchronously in the same frame and then advance virtual time by 5 frames, `'(abc)'.length === 5`. This is done because it often helps you vertically align your marble diagrams, but it's a known pain point in real-world testing. [Learn more about known issues](#known-issues).
 
-  `'()'` 同步分组：当多个事件需要同步在同一帧中时，括号用于对这些事件进行分组。你可以通过这种方式对下一个值、完成或错误进行分组。初始值 `(` 的位置决定了它的值被发出的时间。虽然一开始它可能是违反直觉的，但在所有值同步发出后，时间将前进的帧数等于组中的 ASCII 字符数, 包括括号。例如 `'(abc)'` 将在同一帧中同步发出 a、b 和 c 的值，然后将虚拟时间提前 5 帧，`'(abc)'.length === 5`。这是完成是因为它通常可以帮助你垂直对齐大理石图，但这是实际测试中的一个已知痛点。[了解有关已知问题](#known-issues)的更多信息。
+  `'()'` 同步分组：当多个事件需要同步在同一帧中时，括号用于对这些事件进行分组。你可以通过这种方式对下一个值、完成或错误进行分组。初始值 `(` 的位置决定了它的值被发出的时间。虽然一开始它可能是违反直觉的，但在所有值同步发出后，时间将前进的帧数等于组中的 ASCII 字符数, 包括括号。例如 `'(abc)'` 将在同一帧中同步发出 a、b 和 c 的值，然后将虚拟时间提前 5 帧，`'(abc)'.length === 5`。这是完成是因为它通常可以帮助你垂直对齐弹珠图，但这是实际测试中的一个已知痛点。[了解有关已知问题](#known-issues)的更多信息。
 
 - `'^'` subscription point: (hot observables only) shows the point at which the tested observables will be subscribed to the hot observable. This is the "zero frame" for that observable, every frame before the `^` will be negative. Negative time might seem pointless, but there are in fact advanced cases where this is necessary, usually involving ReplaySubjects.
 

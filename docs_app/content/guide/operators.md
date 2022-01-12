@@ -155,11 +155,11 @@ exhaustMap()`](/api/operators/exhaustMap)都有映射等价物[`exhaustMap()`](/
 
 ## Marble diagrams
 
-## 大理石图
+## 弹珠图
 
 To explain how operators work, textual descriptions are often not enough. Many operators are related to time, they may for instance delay, sample, throttle, or debounce value emissions in different ways. Diagrams are often a better tool for that. _Marble Diagrams_ are visual representations of how operators work, and include the input Observable(s), the operator and its parameters, and the output Observable.
 
-要解释操作符的工作原理，文字描述通常是不够的。许多算子都与时间有关，他们可能以不同的方式延迟、采样、节流或去抖动值发射。图表通常是更好的工具。_ 大理石图 _ 是算子如何工作的可视化表示，包括输入 Observable(s)、算子及其参数以及输出 Observable。
+要解释操作符的工作原理，文字描述通常是不够的。许多算子都与时间有关，他们可能以不同的方式延迟、采样、节流或去抖动值发射。图表通常是更好的工具。_ 弹珠图 _ 是算子如何工作的可视化表示，包括输入 Observable(s)、算子及其参数以及输出 Observable。
 
 <span class="informal">In a marble diagram, time flows to the right, and the diagram describes how values ("marbles") are emitted on the Observable execution.</span>
 
@@ -167,13 +167,13 @@ To explain how operators work, textual descriptions are often not enough. Many o
 
 Below you can see the anatomy of a marble diagram.
 
-你可以在下面看到大理石图的解剖结构。
+你可以在下面看到弹珠图的解剖结构。
 
 <img src="assets/images/guide/marble-diagram-anatomy.svg">
 
 Throughout this documentation site, we extensively use marble diagrams to explain how operators work. They may be really useful in other contexts too, like on a whiteboard or even in our unit tests (as ASCII diagrams).
 
-在整个文档站点中，我们广泛使用大理石图来解释操作员的工作方式。它们在其他环境中也可能非常有用，比如在白板上，甚至在我们的单元测试中（如 ASCII 图表）。
+在整个文档站点中，我们广泛使用弹珠图来解释操作员的工作方式。它们在其他环境中也可能非常有用，比如在白板上，甚至在我们的单元测试中（如 ASCII 图表）。
 
 ## Categories of operators
 
