@@ -191,7 +191,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  *
  * @return {WebSocketSubject} Subject which allows to both send and receive messages via WebSocket connection.
  *
- * 允许通过 WebSocket 连接发送和接收消息的主题。
+ * 允许通过 WebSocket 连接发送和接收消息的主体。
  *
  */
 export function webSocket<T>(urlConfigOrSource: string | WebSocketSubjectConfig<T>): WebSocketSubject<T> {

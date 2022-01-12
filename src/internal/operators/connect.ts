@@ -16,7 +16,7 @@ export interface ConnectConfig<T> {
    * A factory function used to create the Subject through which the source
    * is multicast. By default, this creates a {@link Subject}.
    *
-   * 一个工厂函数，用于创建通过其源进行多播的主题。默认情况下，这会创建一个 {@link Subject}。
+   * 一个工厂函数，用于创建通过其源进行多播的主体。默认情况下，这会创建一个 {@link Subject}。
    *
    */
   connector: () => SubjectLike<T>;

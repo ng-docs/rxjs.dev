@@ -70,7 +70,7 @@ Although `run()` executes entirely synchronously, the helper functions inside yo
 
 - `hot(marbleDiagram: string, values?: object, error?: any)` - creates a "hot" observable (like a subject) that will behave as though it's already "running" when the test begins. An interesting difference is that `hot` marbles allow a `^` character to signal where the "zero frame" is. That is the point at which the subscription to observables being tested begins.
 
-  `hot(marbleDiagram: string, values?: object, error?: any)` - 创建一个“热”的可观察者（就像一个主题），当测试开始时，它的行为就像它已经“运行”一样。一个有趣的区别是 `hot` 弹珠允许 `^` 字符表示“零帧”在哪里。这就是订阅被测试的 observables 的开始。
+  `hot(marbleDiagram: string, values?: object, error?: any)` - 创建一个“热”的可观察者（就像一个主体），当测试开始时，它的行为就像它已经“运行”一样。一个有趣的区别是 `hot` 弹珠允许 `^` 字符表示“零帧”在哪里。这就是订阅被测试的 observables 的开始。
 
 - `expectObservable(actual: Observable<T>, subscriptionMarbles?: string).toBe(marbleDiagram: string, values?: object, error?: any)` - schedules an assertion for when the TestScheduler flushes. Give `subscriptionMarbles` as parameter to change the schedule of subscription and unsubscription. If you don't provide the `subscriptionMarbles` parameter it will subscribe at the beginning and never unsubscribe. Read below about subscription marble diagram.
 

@@ -11,12 +11,12 @@ import { errorContext } from './util/errorContext';
  * A Subject is a special type of Observable that allows values to be
  * multicasted to many Observers. Subjects are like EventEmitters.
  *
- * Subject 是一种特殊类型的 Observable，它允许将值多播到多个 Observer。主题就像 EventEmitters。
+ * Subject 是一种特殊类型的 Observable，它允许将值多播到多个 Observer。主体就像 EventEmitters。
  *
  * Every Subject is an Observable and an Observer. You can subscribe to a
  * Subject, and you can call next to feed values as well as error and complete.
  *
- * 每个 Subject 都是 Observable 和 Observer。你可以订阅一个主题，并且你可以调用 next 提要值以及错误和完成。
+ * 每个 Subject 都是 Observable 和 Observer。你可以订阅一个主体，并且你可以调用 next 提要值以及错误和完成。
  *
  */
 export class Subject<T> extends Observable<T> implements SubscriptionLike {
@@ -53,7 +53,7 @@ export class Subject<T> extends Observable<T> implements SubscriptionLike {
   /**
    * Creates a "subject" by basically gluing an observer to an observable.
    *
-   * 通过基本上将观察者粘合到可观察者来创建“主题”。
+   * 通过基本上将观察者粘合到可观察者来创建“主体”。
    *
    * @nocollapse
    * @deprecated Recommended you do not use. Will be removed at some point in the future. Plans for replacement still under discussion.

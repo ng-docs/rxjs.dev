@@ -12,7 +12,7 @@ export interface ShareConfig<T> {
    * The factory used to create the subject that will connect the source observable to
    * multicast consumers.
    *
-   * 工厂用于创建将源 observable 连接到多播消费者的主题。
+   * 工厂用于创建将源 observable 连接到多播消费者的主体。
    *
    */
   connector?: () => SubjectLike<T>;
@@ -26,7 +26,7 @@ export interface ShareConfig<T> {
    * It is also possible to pass a notifier factory returning an observable instead which grants more fine-grained
    * control over how and when the reset should happen. This allows behaviors like conditional or delayed resets.
    *
-   * 如果为真，则生成的 observable 将在源错误时重置内部状态并返回“冷”状态。这允许在发生错误时“重试”生成的 observable。如果为 false，当错误来自源时，它会将错误推送到连接主题，并且主题将保持连接主题，这意味着生成的 observable 不会再次“冷”，随后的重试或重新订阅将重新订阅该主题同一主题。在所有情况下，RxJS 主题都会再次发出相同的错误，但是 {@link ReplaySubject} 也会在推送错误之前推送其缓冲值。也可以通过一个通知工厂返回一个 observable 来代替，它可以对重置的方式和时间进行更细粒度的控制。这允许有条件或延迟重置等行为。
+   * 如果为真，则生成的 observable 将在源错误时重置内部状态并返回“冷”状态。这允许在发生错误时“重试”生成的 observable。如果为 false，当错误来自源时，它会将错误推送到连接主体，并且主体将保持连接主体，这意味着生成的 observable 不会再次“冷”，随后的重试或重新订阅将重新订阅该主体同一主体。在所有情况下，RxJS 主体都会再次发出相同的错误，但是 {@link ReplaySubject} 也会在推送错误之前推送其缓冲值。也可以通过一个通知工厂返回一个 observable 来代替，它可以对重置的方式和时间进行更细粒度的控制。这允许有条件或延迟重置等行为。
    *
    */
   resetOnError?: boolean | ((error: any) => Observable<any>);
@@ -39,7 +39,7 @@ export interface ShareConfig<T> {
    * It is also possible to pass a notifier factory returning an observable instead which grants more fine-grained
    * control over how and when the reset should happen. This allows behaviors like conditional or delayed resets.
    *
-   * 如果为真，则生成的 observable 将在源完成时重置内部状态并返回“冷”状态。这允许在完成后“重复”生成的 observable。如果为 false，当源完成时，它将通过连接主题推送完成，主题将保持连接主题，这意味着生成的 observable 不会再次“冷”，后续重复或重新订阅将重新订阅同一主题.也可以通过一个通知工厂返回一个 observable 来代替，它可以对重置的方式和时间进行更细粒度的控制。这允许有条件或延迟重置等行为。
+   * 如果为真，则生成的 observable 将在源完成时重置内部状态并返回“冷”状态。这允许在完成后“重复”生成的 observable。如果为 false，当源完成时，它将通过连接主体推送完成，主体将保持连接主体，这意味着生成的 observable 不会再次“冷”，后续重复或重新订阅将重新订阅同一主体.也可以通过一个通知工厂返回一个 observable 来代替，它可以对重置的方式和时间进行更细粒度的控制。这允许有条件或延迟重置等行为。
    *
    */
   resetOnComplete?: boolean | (() => Observable<any>);
@@ -53,7 +53,7 @@ export interface ShareConfig<T> {
    * It is also possible to pass a notifier factory returning an observable instead which grants more fine-grained
    * control over how and when the reset should happen. This allows behaviors like conditional or delayed resets.
    *
-   * 如果为 true，则当结果 observable 的订阅者数量由于订阅者取消订阅而达到零时，内部状态将被重置，结果 observable 将返回“冷”状态。这意味着下一次订阅生成的 observable 时，将创建一个新的主题并再次订阅源。如果为 false，当结果 observable 的订阅者数量由于取消订阅而达到零时，主题将保持与源的连接，并且对结果的新订阅将通过同一主题连接。也可以通过一个通知工厂返回一个 observable 来代替，它可以对重置的方式和时间进行更细粒度的控制。这允许有条件或延迟重置等行为。
+   * 如果为 true，则当结果 observable 的订阅者数量由于订阅者取消订阅而达到零时，内部状态将被重置，结果 observable 将返回“冷”状态。这意味着下一次订阅生成的 observable 时，将创建一个新的主体并再次订阅源。如果为 false，当结果 observable 的订阅者数量由于取消订阅而达到零时，主体将保持与源的连接，并且对结果的新订阅将通过同一主体连接。也可以通过一个通知工厂返回一个 observable 来代替，它可以对重置的方式和时间进行更细粒度的控制。这允许有条件或延迟重置等行为。
    *
    */
   resetOnRefCountZero?: boolean | (() => Observable<any>);

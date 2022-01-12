@@ -820,7 +820,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - Added functionality to allow complete configuration of what type of `Subject` is used to multicast, and when that subject is reset.
 
-  添加了允许完整配置用于多播的 `Subject` 类型以及该主题何时重置的功能。
+  添加了允许完整配置用于多播的 `Subject` 类型以及该主体何时重置的功能。
 
 ### timeout
 

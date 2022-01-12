@@ -67,7 +67,7 @@ export function repeatWhen<T>(notifier: (notifications: Observable<void>) => Obs
      * Gets the subject to send errors through. If it doesn't exist,
      * we know we need to setup the notifier.
      *
-     * 获取要发送错误的主题。如果它不存在，我们知道我们需要设置通知程序。
+     * 获取要发送错误的主体。如果它不存在，我们知道我们需要设置通知程序。
      *
      */
     const getCompletionSubject = () => {

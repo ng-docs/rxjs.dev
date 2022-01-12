@@ -458,7 +458,7 @@ export interface Connectable<T> extends Observable<T> {
    * @returns A subscription, that when unsubscribed, will "disconnect" the source from the connector subject,
    * severing notifications to all consumers.
    *
-   * 取消订阅时，订阅将“断开”源与连接器主题的连接，将通知切断给所有消费者。
+   * 取消订阅时，订阅将“断开”源与连接器主体的连接，将通知切断给所有消费者。
    *
    */
   connect(): Subscription;

@@ -28,7 +28,7 @@ export class ConnectableObservable<T> extends Observable<T> {
    *
    * @param subjectFactory The factory that creates the subject used internally.
    *
-   * 创建内部使用的主题的工厂。
+   * 创建内部使用的主体的工厂。
    *
    * @deprecated Will be removed in v8. Use {@link connectable} to create a connectable observable.
    * `new ConnectableObservable(source, factory)` is equivalent to

@@ -9,7 +9,7 @@ export interface ConnectableConfig<T> {
    * A factory function used to create the Subject through which the source
    * is multicast. By default this creates a {@link Subject}.
    *
-   * 一个工厂函数，用于创建通过其源进行多播的主题。默认情况下，这会创建一个 {@link Subject}。
+   * 一个工厂函数，用于创建通过其源进行多播的主体。默认情况下，这会创建一个 {@link Subject}。
    *
    */
   connector: () => SubjectLike<T>;
@@ -21,7 +21,7 @@ export interface ConnectableConfig<T> {
    * connecting subject, meaning the resulting observable will not go "cold" again,
    * and subsequent repeats or resubscriptions will resubscribe to that same subject.
    *
-   * 如果为真，则结果 observable 将在断开连接时重置内部状态并返回“冷”状态。这允许重新连接生成的 observable。如果为 false，则在断开连接时，连接主体将保持连接主体，这意味着生成的 observable 不会再次“冷”，随后的重复或重新订阅将重新订阅同一主题。
+   * 如果为真，则结果 observable 将在断开连接时重置内部状态并返回“冷”状态。这允许重新连接生成的 observable。如果为 false，则在断开连接时，连接主体将保持连接主体，这意味着生成的 observable 不会再次“冷”，随后的重复或重新订阅将重新订阅同一主体。
    *
    */
   resetOnDisconnect?: boolean;
@@ -54,7 +54,7 @@ const DEFAULT_CONFIG: ConnectableConfig<unknown> = {
  * @returns A "connectable" observable, that has a `connect()` method, that you must call to
  * connect the source to all consumers through the subject provided as the connector.
  *
- * 具有 `connect()` 方法的“可连接”可观察者，你必须调用该方法以通过作为连接器提供的主题将源连接到所有消费者。
+ * 具有 `connect()` 方法的“可连接”可观察者，你必须调用该方法以通过作为连接器提供的主体将源连接到所有消费者。
  *
  */
 export function connectable<T>(source: ObservableInput<T>, config: ConnectableConfig<T> = DEFAULT_CONFIG): Connectable<T> {

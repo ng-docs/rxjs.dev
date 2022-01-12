@@ -155,7 +155,7 @@ export function groupBy<T, K, R>(
  * @param connector Factory function to create an
  * intermediate Subject through which grouped elements are emitted.
  *
- * 工厂函数创建一个中间主题，通过该主题发出分组元素。
+ * 工厂函数创建一个中间主体，通过该主体发出分组元素。
  *
  * @return A function that returns an Observable that emits GroupedObservables,
  * each of which corresponds to a unique key value and each of which emits
@@ -289,7 +289,7 @@ export function groupBy<T, K, R>(
      *
      * @param groupSubject The subject that fuels the group
      *
-     * 推动小组的主题
+     * 推动小组的主体
      *
      */
     function createGroupedObservable(key: K, groupSubject: SubjectLike<any>) {

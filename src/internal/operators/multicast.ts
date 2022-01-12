@@ -10,11 +10,11 @@ import { connect } from './connect';
  * with the `connect` method, will use the provided subject to multicast the values
  * from the source to all consumers.
  *
- * 一个创建 {@link ConnectableObservable} 的操作员，当连接时，使用 `connect` 方法，将使用提供的主题将值从源多播到所有消费者。
+ * 一个创建 {@link ConnectableObservable} 的操作员，当连接时，使用 `connect` 方法，将使用提供的主体将值从源多播到所有消费者。
  *
  * @param subject The subject to multicast through.
  *
- * 多播通过的主题。
+ * 多播通过的主体。
  *
  * @return A function that returns a {@link ConnectableObservable}
  *
@@ -40,7 +40,7 @@ export function multicast<T>(subject: Subject<T>): UnaryFunction<Observable<T>, 
  *
  * @param subject The subject used to multicast.
  *
- * 用于多播的主题。
+ * 用于多播的主体。
  *
  * @param selector A setup function to setup the multicast
  *
@@ -68,13 +68,13 @@ export function multicast<T, O extends ObservableInput<any>>(
  * with the `connect` method, will use the provided subject to multicast the values
  * from the source to all consumers.
  *
- * 一个创建 {@link ConnectableObservable} 的操作员，当连接时，使用 `connect` 方法，将使用提供的主题将值从源多播到所有消费者。
+ * 一个创建 {@link ConnectableObservable} 的操作员，当连接时，使用 `connect` 方法，将使用提供的主体将值从源多播到所有消费者。
  *
  * @param subjectFactory A factory that will be called to create the subject. Passing a function here
  * will cause the underlying subject to be "reset" on error, completion, or refCounted unsubscription of
  * the source.
  *
- * 将被调用以创建主题的工厂。在此处传递函数将导致基础主题在错误、完成或 refCounted 取消订阅源时“重置”。
+ * 将被调用以创建主体的工厂。在此处传递函数将导致基础主体在错误、完成或 refCounted 取消订阅源时“重置”。
  *
  * @return A function that returns a {@link ConnectableObservable}
  *
@@ -100,7 +100,7 @@ export function multicast<T>(subjectFactory: () => Subject<T>): UnaryFunction<Ob
  *
  * @param subjectFactory A factory that creates the subject used to multicast.
  *
- * 创建用于多播的主题的工厂。
+ * 创建用于多播的主体的工厂。
  *
  * @param selector A function to setup the multicast and select the output.
  *

@@ -131,7 +131,7 @@ const tick$ = timer(1_000).pipe(
 
 Where [multicast](/api/operators/multicast) is called with a subject factory, can be replaced with [connectable](/api/index/function/connectable).
 
-使用主题工厂调用[多播](/api/operators/multicast)的地方，可以用[connectable](/api/index/function/connectable)替换。
+使用主体工厂调用[多播](/api/operators/multicast)的地方，可以用[connectable](/api/index/function/connectable)替换。
 
 <!-- prettier-ignore -->
 
@@ -157,7 +157,7 @@ const tick$ = connectable(timer(1_000), {
 
 Where [multicast](/api/operators/multicast) is called with a subject instance, it can be replaced with [connectable](/api/index/function/connectable) and a local subject instance.
 
-如果使用主题实例调用[多播](/api/operators/multicast)，则可以将其替换为[可连接](/api/index/function/connectable)的和本地主题实例。
+如果使用主体实例调用[多播](/api/operators/multicast)，则可以将其替换为[可连接](/api/index/function/connectable)的和本地主体实例。
 
 <!-- prettier-ignore -->
 

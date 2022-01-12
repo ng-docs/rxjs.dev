@@ -1,10 +1,10 @@
 # Subject
 
-# 主题
+# 主体
 
 **What is a Subject?** An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers. While plain Observables are unicast (each subscribed Observer owns an independent execution of the Observable), Subjects are multicast.
 
-**什么是主题？** RxJS Subject 是一种特殊类型的 Observable，它允许将值多播到多个 Observer。虽然普通的 Observable 是单播的（每个订阅的 Observer 都拥有 Observable 的独立执行），但 Subjects 是多播的。
+**什么是主体？** RxJS Subject 是一种特殊类型的 Observable，它允许将值多播到多个 Observer。虽然普通的 Observable 是单播的（每个订阅的 Observer 都拥有 Observable 的独立执行），但 Subjects 是多播的。
 
 <span class="informal">A Subject is like an Observable, but can multicast to many Observers. Subjects are like EventEmitters: they maintain a registry of many listeners.</span>
 
@@ -20,11 +20,11 @@ Internally to the Subject, `subscribe` does not invoke a new execution that deli
 
 **Every Subject is an Observer.** It is an object with the methods `next(v)`, `error(e)`, and `complete()`. To feed a new value to the Subject, just call `next(theValue)`, and it will be multicasted to the Observers registered to listen to the Subject.
 
-**每个主题都是观察者。**它是一个具有方法 `next(v)`、`error(e)` 和 `complete()` 的对象。要为 Subject 提供一个新值，只需调用 `next(theValue)`，它将被多播到注册监听 Subject 的观察者。
+**每个主体都是观察者。**它是一个具有方法 `next(v)`、`error(e)` 和 `complete()` 的对象。要为 Subject 提供一个新值，只需调用 `next(theValue)`，它将被多播到注册监听 Subject 的观察者。
 
 In the example below, we have two Observers attached to a Subject, and we feed some values to the Subject:
 
-在下面的示例中，我们有两个观察者附加到一个主题，我们向主题提供一些值：
+在下面的示例中，我们有两个观察者附加到一个主体，我们向主体提供一些值：
 
 ```ts
 import { Subject } from 'rxjs';
@@ -99,7 +99,7 @@ A "multicasted Observable" passes notifications through a Subject which may have
 
 Under the hood, this is how the `multicast` operator works: Observers subscribe to an underlying Subject, and the Subject subscribes to the source Observable. The following example is similar to the previous example which used `observable.subscribe(subject)`:
 
-在底层，这就是 `multicast` 操作符的工作方式：观察者订阅底层主题，主题订阅源 Observable。下面的例子类似于前面使用 `observable.subscribe(subject)` 的例子：
+在底层，这就是 `multicast` 操作符的工作方式：观察者订阅底层主体，主体订阅源 Observable。下面的例子类似于前面使用 `observable.subscribe(subject)` 的例子：
 
 ```ts
 import { from, Subject, multicast } from 'rxjs';
@@ -280,7 +280,7 @@ The `refCount()` method only exists on ConnectableObservable, and it returns an 
 
 ## BehaviorSubject
 
-## BehaviorSubject(行为主体)
+## 行为主体
 
 One of the variants of Subjects is the `BehaviorSubject`, which has a notion of "the current value". It stores the latest value emitted to its consumers, and whenever a new Observer subscribes, it will immediately receive the "current value" from the `BehaviorSubject`.
 
@@ -288,7 +288,7 @@ Subjects 的变体之一是 `BehaviorSubject`，它具有“当前值”的概�
 
 <span class="informal">BehaviorSubjects are useful for representing "values over time". For instance, an event stream of birthdays is a Subject, but the stream of a person's age would be a BehaviorSubject.</span>
 
-<span class="informal">BehaviorSubjects 对于表示“随时间变化的值”很有用。例如，生日事件流是一个主题，但一个人的年龄流是一个行为主题。</span>
+<span class="informal">BehaviorSubjects 对于表示“随时间变化的值”很有用。例如，生日事件流是一个主体，但一个人的年龄流是一个行为主体。</span>
 
 In the following example, the BehaviorSubject is initialized with the value `0` which the first Observer receives when it subscribes. The second Observer receives the value `2` even though it subscribed after the value `2` was sent.
 
@@ -322,7 +322,7 @@ subject.next(3);
 
 ## ReplaySubject
 
-## ReplaySubject(重播主体)
+## 重播主体
 
 A `ReplaySubject` is similar to a `BehaviorSubject` in that it can send old values to new subscribers, but it can also _record_ a part of the Observable execution.
 
@@ -406,7 +406,7 @@ setTimeout(() => {
 
 ## AsyncSubject
 
-## AsyncSubject(异步主体)
+## 异步主体
 
 The AsyncSubject is a variant where only the last value of the Observable execution is sent to its observers, and only when the execution completes.
 
@@ -443,7 +443,7 @@ AsyncSubject 类似于[`last()`](/api/operators/last)操作符，因为它等待
 
 ## Void subject
 
-## 无效主题
+## 无效主体
 
 Sometimes the emitted value doesn't matter as much as the fact that a value was emitted.
 

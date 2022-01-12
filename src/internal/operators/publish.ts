@@ -30,7 +30,7 @@ export function publish<T>(): UnaryFunction<Observable<T>, ConnectableObservable
  * that selector function and subscribes to it, sending its values to the consumer, _then_ connects
  * the subject to the original source.
  *
- * 返回一个 observable，当订阅它时，创建一个底层 {@link Subject}，向选择器函数提供它的可观察视图，获取该 `selector` 函数的可观察结果并订阅它，将其值发送给消费者，_ 然后 _ 将主题与原始来源联系起来。
+ * 返回一个 observable，当订阅它时，创建一个底层 {@link Subject}，向选择器函数提供它的可观察视图，获取该 `selector` 函数的可观察结果并订阅它，将其值发送给消费者，_ 然后 _ 将主体与原始来源联系起来。
  *
  * @param selector A function used to setup multicasting prior to automatic connection.
  *
