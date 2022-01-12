@@ -231,8 +231,6 @@ of(1, 2, 3).pipe(map((x) => x + '!!!')); // etc
 
 ## CDN
 
-## 内容分发网络
-
 If you installed a library {@link guide/installation#cdn using CDN}, the global namespace for rxjs is
 `rxjs`.
 

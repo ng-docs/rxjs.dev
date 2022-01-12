@@ -66,7 +66,7 @@ fromEvent(document, 'click').subscribe(() => console.log('Clicked!'));
 
 ### Purity
 
-### 纯度
+### Purity(纯函数)
 
 What makes RxJS powerful is its ability to produce values using pure functions. That means your code is less prone to errors.
 
@@ -99,7 +99,7 @@ The **scan** operator works just like **reduce** for arrays. It takes a value wh
 
 ### Flow
 
-### 流动
+### Flow(流动)
 
 RxJS has a whole range of operators that helps you control how the events flow through your observables.
 
@@ -142,7 +142,7 @@ Other flow control operators are [**filter**](../api/operators/filter), [**delay
 
 ### Values
 
-### 价值观
+### Values(值)
 
 You can transform the values passed through your observables.
 

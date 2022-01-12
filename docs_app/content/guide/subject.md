@@ -280,7 +280,7 @@ The `refCount()` method only exists on ConnectableObservable, and it returns an 
 
 ## BehaviorSubject
 
-## 行为主体
+## BehaviorSubject(行为主体)
 
 One of the variants of Subjects is the `BehaviorSubject`, which has a notion of "the current value". It stores the latest value emitted to its consumers, and whenever a new Observer subscribes, it will immediately receive the "current value" from the `BehaviorSubject`.
 
@@ -322,7 +322,7 @@ subject.next(3);
 
 ## ReplaySubject
 
-## 重播主题
+## ReplaySubject(重播主体)
 
 A `ReplaySubject` is similar to a `BehaviorSubject` in that it can send old values to new subscribers, but it can also _record_ a part of the Observable execution.
 
@@ -406,7 +406,7 @@ setTimeout(() => {
 
 ## AsyncSubject
 
-## 异步主题
+## AsyncSubject(异步主体)
 
 The AsyncSubject is a variant where only the last value of the Observable execution is sent to its observers, and only when the execution completes.
 

@@ -16,7 +16,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### AsyncSubject
 
-### 异步主题
+### AsyncSubject(异步主体)
 
 - `_subscribe` method is no longer `public` and is now `protected`.
 
@@ -28,7 +28,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### BehaviorSubject
 
-### 行为主体
+### BehaviorSubject(行为主体)
 
 - `_subscribe` method is no longer `public` and is now `protected`.
 
@@ -40,7 +40,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### bindCallback
 
-### 绑定回调
+### bindCallback(绑定回调)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -48,7 +48,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### combineLatest
 
-### 结合最新
+### combineLatest(组合最新的)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -56,13 +56,15 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### concat
 
-### 连接
+### concat(串联)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
   通用签名已更改。不要显式传递泛型。
 
 ### ConnectableObservable
+
+### ConnectableObservable(可连接的可观察者)
 
 - `_isComplete` is no longer a property.
 
@@ -74,7 +76,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### defer
 
-### 推迟
+### defer(推迟)
 
 - Generic argument no longer extends `void`.
 
@@ -86,7 +88,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### forkJoin
 
-### 分叉加入
+### forkJoin(分叉加入)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -94,13 +96,15 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### fromEvent
 
-### 从事件
+### fromEvent(从事件)
 
 - The `fromEvent` signatures have been changed and there are now separate signatures for each type of target - DOM, Node, jQuery, etc. That means that an attempt to pass options - like `{ once: true }` - to a target that does not support an options argument will result in a TypeScript error.
 
   `fromEvent` 签名已更改，现在每种类型的目标（DOM、Node、jQuery 等）都有单独的签名。这意味着尝试将选项（例如 `{ once: true }`）传递给不支持 options 参数将导致 TypeScript 错误。
 
 ### GroupedObservable
+
+### GroupedObservable(已分组的可观察者)
 
 - No longer publicly exposes `_subscribe`
 
@@ -116,7 +120,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### iif
 
-### 伊夫
+### iif(如果)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -128,7 +132,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### isObservable
 
-### 是可观察的
+### isObservable(是可观察者)
 
 - No longer has a generic and returns `Observable<unknown>`, you must cast the result.
 
@@ -136,7 +140,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### merge
 
-### 合并
+### merge(合并)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -144,7 +148,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### Notification
 
-### 通知
+### Notification(通知)
 
 - The `error` property is now `readonly`.
 
@@ -168,7 +172,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### Observable
 
-### 可观察的
+### Observable(可观察者)
 
 - `_isScalar` property removed.
 
@@ -200,7 +204,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### of
 
-### 的
+### of(对...包装成)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -214,7 +218,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### pairs
 
-### 对
+### pairs(配对)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -226,7 +230,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### partition
 
-### 划分
+### partition(划分)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -234,7 +238,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### pipe
 
-### 管道
+### pipe(管道)
 
 - Calls with `9` or more arguments will now return `(arg: A) => unknown` rather than `(arg: A) => {}`.
 
@@ -242,7 +246,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### race
 
-### 种族
+### race(竞速)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -254,7 +258,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### ReplaySubject
 
-### 重播主题
+### ReplaySubject(重播主体)
 
 - `_getNow` method has been removed.
 
@@ -266,7 +270,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### Subscribable
 
-### 可订阅
+### Subscribable(可订阅的)
 
 - `subscribe` will accept `Partial<Observer<T>>` now. All overloads with functions as arguments have been removed. This is because `Subscribable` is intended to map to the basic observable contract from the TC39 proposal and the the return type of a call to `[Symbol.observable]()`.
 
@@ -274,7 +278,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### SubscribableOrPromise
 
-### 订阅或承诺
+### SubscribableOrPromise(订阅或承诺)
 
 - See notes on `Subscribable` above.
 
@@ -282,7 +286,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### Subscriber
 
-### 订户
+### Subscriber(订阅者)
 
 - `destination` property must now be a `Subscriber` or full `Observer`.
 
@@ -306,7 +310,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### Subscription
 
-### 订阅
+### Subscription(订阅)
 
 - `_parentOrParents` property has been removed.
 
@@ -319,7 +323,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### VirtualAction
 
-### 虚拟动作
+### VirtualAction(虚拟动作)
 
 - The static `sortActions` method has been removed.
 
@@ -327,7 +331,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### zip
 
-### 压缩
+### zip(拉合)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -345,7 +349,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### animationFrames
 
-### 动画帧
+### animationFrames(动画帧)
 
 - A new method for creating a stream of animation frames. Each event will carry with it a high-resolution timestamp, and an elapsed time since observation was started.
 
@@ -353,7 +357,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### config
 
-### 配置
+### config(配置)
 
 #### onUnhandledError
 
@@ -362,8 +366,6 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
   当观察者中没有错误处理程序时，用于处理一直到观察链“末端”的错误的处理程序。对于在 RxJS 可观察链中记录未处理的错误等事情很有用。
 
 #### onStoppedNotification
-
-#### 停止通知
 
 - A handler for edge cases where a subscriber within RxJS is notified after it has already "stopped", that is, a point in time where it has received an error or complete, but hasn't yet finalized. This is mostly useful for logging purposes.
 
@@ -377,7 +379,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### connectable
 
-### 可连接
+### connectable(可连接的)
 
 - This is the new means for creating a `ConnectableObservable`, and really is a replacement for non-selector usage of `multicast` and `publish` variants. Simply pass your source observable to `connectable` with the `Subject` you'd like to connect through.
 
@@ -385,7 +387,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### firstValueFrom
 
-### 第一个值来自
+### firstValueFrom(第一个值来自)
 
 - A better, more tree-shakable replacement for `toPromise()` (which is now deprecated). This function allows the user to convert any `Observable` in to a `Promise` that will resolve when the source observable emits its first value. If the source observable closes without emitting a value, the returned promise will reject with an `EmptyError`, or it will resolve with a configured `defaultValue`. For more information, see the [deprecation guide](/deprecations/to-promise).
 
@@ -393,7 +395,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### lastValueFrom
 
-### 最后一个值来自
+### lastValueFrom(最后一个值来自)
 
 - A better, more tree-shakable replacement for `toPromise()` (which is now deprecated). This function allows the user to convert any `Observable` in to a `Promise` that will resolve when the source observable emits the last value. If the source observable closes without emitting a value, the returned promise will reject with an `EmptyError`, or it will resolve with a configured `defaultValue`. For more information, see the [deprecation guide](/deprecations/to-promise).
 
@@ -401,7 +403,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### ObservableInput
 
-### 可观察输入
+### ObservableInput(可观察者的输入)
 
 - This is just a type, but it's important. This type defines the allowed types that can be passed to almost every API within RxJS that accepts an Observable. It has always accepted `Observable`, `Promise`, `Iterable`, and `ArrayLike`. Now it will also accept `AsyncIterable` and `ReadableStream`.
 
@@ -409,7 +411,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 #### AsyncIterable
 
-#### 异步可迭代
+#### AsyncIterable(异步可迭代者)
 
 - `AsyncIterables` such as those defined by `IxJS` or by async generators (`async function*`), may now be passed to any API that accepts an observable, and can be converted to an `Observable` directly using `from`.
 
@@ -417,7 +419,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 #### ReadableStream
 
-#### 可读流
+#### ReadableStream(可读流)
 
 - `ReadableStream` such as those returned by `fetch`, et al, can be passed to any API that accepts an observable, and can be converted to `Observable` directly using `from`.
 
@@ -425,7 +427,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### ReplaySubject
 
-### 重播主题
+### ReplaySubject(重播主体)
 
 - A [bug was fixed](https://github.com/ReactiveX/rxjs/pull/5696) that prevented a completed or errored `ReplaySubject` from accumulating values in its buffer when resubscribed to another source. This breaks some uses - like [this StackOverflow answer](https://stackoverflow.com/a/54957061) - that depended upon the buggy behavior.
 
@@ -433,7 +435,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### Subscription
 
-### 订阅
+### Subscription(订阅)
 
 - Now allows adding and removing of functions directly via `add` and `remove` methods.
 
@@ -441,7 +443,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### throwError
 
-### 抛出错误
+### throwError(抛出错误)
 
 - Now accepts an `errorFactory` of `() => any` to defer the creation of the error until the time it will be emitted. It is recommended to use this method, as Errors created in most popular JavaScript runtimes will retain all values in the current scope for debugging purposes.
 
@@ -457,7 +459,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### audit
 
-### 审计
+### audit(审计)
 
 - The observable returned by the `audit` operator's duration selector must emit a next notification to end the duration. Complete notifications no longer end the duration.
 
@@ -469,7 +471,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### auditTime
 
-### 审计时间
+### auditTime(审计时间)
 
 - `auditTime` now emits the last value from the source when the source completes, after the audit duration elapses. Previously, `auditTime` would mirror the completion without emitting the value and without waiting for the audit duration to elapse.
 
@@ -477,7 +479,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### buffer
 
-### 缓冲
+### buffer(缓冲)
 
 - `buffer` now subscribes to the source observable before it subscribes to the closing notifier. Previously, it subscribed to the closing notifier first.
 
@@ -493,7 +495,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### bufferToggle
 
-### 缓冲区切换
+### bufferToggle(缓冲区切换)
 
 - The observable returned by the `bufferToggle` operator's closing selector must emit a next notification to close the buffer. Complete notifications no longer close the buffer.
 
@@ -501,7 +503,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### bufferWhen
 
-### 缓冲时间
+### bufferWhen(当...时缓冲)
 
 - The observable returned by the `bufferWhen` operator's closing selector must emit a next notification to close the buffer. Complete notifications no longer close the buffer.
 
@@ -509,7 +511,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### combineLatest
 
-### 结合最新
+### combineLatest(组合最新的)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -517,7 +519,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### concat
 
-### 连接
+### concat(串联)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -529,7 +531,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### concatAll
 
-### 连接所有
+### concatAll(串联所有)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -537,13 +539,15 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### concatMapTo
 
+### concatMapTo(串联映射为)
+
 - Generic signatures have changed. Do not explicitly pass generics.
 
   通用签名已更改。不要显式传递泛型。
 
 ### count
 
-### 数数
+### count(计数)
 
 - No longer passes `source` observable as a third argument to the predicate. That feature was rarely used, and of limited value. The workaround is to simply close over the source inside of the function if you need to access it in there.
 
@@ -551,7 +555,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### debounce
 
-### 去抖
+### debounce(防抖)
 
 - The observable returned by the `debounce` operator's duration selector must emit a next notification to end the duration. Complete notifications no longer end the duration.
 
@@ -559,7 +563,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### debounceTime
 
-### 去抖时间
+### debounceTime(按时间防抖)
 
 - The `debounceTime` implementation is more efficient and no longer schedules an action for each received next notification. However, because the implementation now uses the scheduler's concept of time, any tests using Jasmine's `clock` will need to ensure that [`jasmine.clock().mockDate()`](https://jasmine.github.io/api/edge/Clock.html#mockDate) is called after `jasmine.clock().install()` - because Jasmine does not mock `Date.now()` by default.
 
@@ -567,7 +571,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### defaultIfEmpty
 
-### 默认 IfEmpty
+### defaultIfEmpty(如果为空则默认)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -579,7 +583,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### delayWhen
 
-### 延迟时间
+### delayWhen(当...时延迟)
 
 - `delayWhen` will no longer emit if the duration selector simply completes without a value. Notifiers must notify with a value, not a completion.
 
@@ -587,13 +591,15 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### endWith
 
+### endWith(以...结束)
+
 - Generic signatures have changed. Do not explicitly pass generics.
 
   通用签名已更改。不要显式传递泛型。
 
 ### expand
 
-### 扩张
+### expand(展开)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -601,7 +607,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### finalize
 
-### 敲定
+### finalize(最终处理)
 
 - `finalize` will now unsubscribe from its source _before_ it calls its callback. That means that `finalize` callbacks will run in the order in which they occur in the pipeline: `source.pipe(finalize(() => console.log(1)), finalize(() => console.log(2)))` will log `1` and then `2`. Previously, callbacks were called in the reverse order.
 
@@ -609,7 +615,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### map
 
-### 地图
+### map(映射)
 
 - `thisArg` will now default to `undefined`. The previous default of `MapSubscriber` never made any sense. This will only affect code that calls map with a `function` and references `this` like so: `source.pipe(map(function () { console.log(this); }))`. There wasn't anything useful about doing this, so the breakage is expected to be very minimal. If anything we're no longer leaking an implementation detail.
 
@@ -617,7 +623,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### merge
 
-### 合并
+### merge(合并)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -629,7 +635,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### mergeAll
 
-### 合并所有
+### mergeAll(合并所有)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -637,7 +643,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### mergeScan
 
-### 合并扫描
+### mergeScan(合并扫描)
 
 - `mergeScan` will no longer emit its inner state again upon completion.
 
@@ -645,7 +651,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### pluck
 
-### 采摘
+### pluck(抽取)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -653,7 +659,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### race
 
-### 种族
+### race(竞速)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -661,7 +667,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### reduce
 
-### 减少
+### reduce(归结)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -677,7 +683,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### scan
 
-### 扫描
+### scan(扫描)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -685,7 +691,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### single
 
-### 单身的
+### single(单值)
 
 - The `single` operator will now throw for scenarios where values coming in are either not present, or do not match the provided predicate. Error types have thrown have also been updated, please check documentation for changes.
 
@@ -693,7 +699,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### skipLast
 
-### 跳过最后
+### skipLast(跳过最后)
 
 - `skipLast` will no longer error when passed a negative number, rather it will simply return the source, as though `0` was passed.
 
@@ -701,7 +707,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### startWith
 
-### 从...开始
+### startWith(从...开始)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -709,7 +715,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### switchAll
 
-### 全部切换
+### switchAll(全部切换)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -717,7 +723,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### switchMapTo
 
-### 切换映射到
+### switchMapTo(切换映射为)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -725,7 +731,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### take
 
-### 拿
+### take(取出)
 
 - `take` and will now throw runtime error for arguments that are negative or NaN, this includes non-TS calls like `take()`.
 
@@ -733,7 +739,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### takeLast
 
-### 最后
+### takeLast(取出最后)
 
 - `takeLast` now has runtime assertions that throw `TypeError`s for invalid arguments. Calling takeLast without arguments or with an argument that is `NaN` will throw a `TypeError`.
 
@@ -741,7 +747,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### throttle
 
-### 风门
+### throttle(瓶颈)
 
 - The observable returned by the `throttle` operator's duration selector must emit a next notification to end the duration. Complete notifications no longer end the duration.
 
@@ -749,7 +755,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### throwError
 
-### 抛出错误
+### throwError(抛出错误)
 
 - In an extreme corner case for usage, `throwError` is no longer able to emit a function as an error directly. If you need to push a function as an error, you will have to use the factory function to return the function like so: `throwError(() => functionToEmit)`, in other words `throwError(() => () => console.log('called later'))`.
 
@@ -757,7 +763,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### window
 
-### 窗户
+### window(窗户)
 
 - The `windowBoundaries` observable no longer completes the result. It was only ever meant to notify of the window boundary. To get the same behavior as the old behavior, you would need to add an `endWith` and a `skipLast(1)` like so: `source$.pipe(window(notifier$.pipe(endWith(true))), skipLast(1))`.
 
@@ -765,7 +771,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### windowToggle
 
-### 窗口切换
+### windowToggle(窗口切换)
 
 - The observable returned by the `windowToggle` operator's closing selector must emit a next notification to close the window. Complete notifications no longer close the window.
 
@@ -773,7 +779,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### withLatestFrom
 
-### 与最新从
+### withLatestFrom(与来自...的最新值合成)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -781,7 +787,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### zip
 
-### 压缩
+### zip(拉合)
 
 - Generic signatures have changed. Do not explicitly pass generics.
 
@@ -802,7 +808,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### connect
 
-### 连接
+### connect(连接)
 
 - New operator to cover the use cases of `publish` variants that use a `selector`. Wherein the selector allows the user to define multicast behavior prior to connection to the source observable for the multicast.
 
@@ -810,7 +816,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### share
 
-### 分享
+### share(分享)
 
 - Added functionality to allow complete configuration of what type of `Subject` is used to multicast, and when that subject is reset.
 
@@ -818,15 +824,13 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### timeout
 
-### 暂停
+### timeout(超时)
 
 - Added more configuration options to `timeout`, so it could be used to timeout just if the first item doesn't arrive quickly enough, or it could be used as a timeout between each item. Users may also pass a `Date` object to define an absolute time for a timeout for the first time to arrive. Adds additional information to the timeout error, and the ability to pass along metadata with the timeout for identification purposes.
 
   为 `timeout` 添加了更多配置选项，因此它可以用于仅当第一个项目没有足够快地到达时才超时，或者它可以用作每个项目之间的超时。用户还可以传递一个 `Date` 对象来定义第一次到达超时的绝对时间。将附加信息添加到超时错误中，并能够将元数据与超时一起传递以进行识别。
 
 ### zipWith, concatWith, mergeWith, raceWith
-
-### zipWith、concatWith、mergeWith、raceWith
 
 - Simply renamed versions of the operators `zip`, `concat`, `merge`, and `race`. So we can deprecate those old names and use the new names without collisions.
 
@@ -841,8 +845,6 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 ## 重大变化
 
 ### ajax
-
-### 阿贾克斯
 
 - `ajax` body serialization will now use default XHR behavior in all cases. If the body is a `Blob`, `ArrayBuffer`, any array buffer view (like a byte sequence, e.g. `Uint8Array`, etc), `FormData`, `URLSearchParams`, `string`, or `ReadableStream`, default handling is use. If the `body` is otherwise `typeof` `"object"`, then it will be converted to JSON via `JSON.stringify`, and the `Content-Type` header will be set to `application/json;charset=utf-8`. All other types will emit an error.
 
@@ -862,7 +864,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### AjaxRequest
 
-### Ajax 请求
+### AjaxRequest(Ajax 请求)
 
 - `AjaxRequest` is no longer used to type the configuration argument for calls to `ajax`. The new type is `AjaxConfig`. This was done to disambiguate two very similar types with different use cases. `AjaxRequest` is still there, but properties have changed, and it is used to show what final request information was send as part of an event response.
 
@@ -874,7 +876,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### AjaxResponse
 
-### Ajax 响应
+### AjaxResponse(Ajax 响应)
 
 - Now includes `responseHeaders`.
 
@@ -886,7 +888,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### includeUploadProgress
 
-### 包括上传进度
+### includeUploadProgress(包括上传进度)
 
 - A flag to make a request that will include streaming upload progress events in the returned observable.
 
@@ -894,7 +896,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### includeDownloadProgress
 
-### 包括下载进度
+### includeDownloadProgress(包括下载进度)
 
 - A flag to make a request that will include streaming upload progress events in the returned observable.
 
@@ -902,7 +904,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### queryParams
 
-### 查询参数
+### queryParams(查询参数)
 
 - Configuration for setting query parameters in the URL of the request to be made.
 

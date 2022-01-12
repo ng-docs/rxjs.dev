@@ -24,7 +24,7 @@ And [shareReplay](/api/operators/shareReplay) - which is a thin wrapper around t
 
 Other APIs that relate to multicasting are now deprecated.
 
-其他与多播相关的 API 现在已弃用。
+其他与多播相关的 API 现在均已弃用。
 
 <div class="alert is-important">
     <span>
@@ -127,7 +127,7 @@ const tick$ = timer(1_000).pipe(
 
 ### multicast
 
-### 多播
+### multicast(多播)
 
 Where [multicast](/api/operators/multicast) is called with a subject factory, can be replaced with [connectable](/api/index/function/connectable).
 
@@ -242,7 +242,7 @@ const tick$ = timer(1_000).pipe(
 
 ### publish
 
-### 发布
+### publish(发布)
 
 If you're using [publish](/api/operators/publish) to create a [ConnectableObservable](/api/index/class/ConnectableObservable), you can use [connectable](/api/index/function/connectable) instead.
 
@@ -330,7 +330,7 @@ const tick$ = timer(1_000).pipe(
 
 ### publishBehavior
 
-### 发布行为
+### publishBehavior(发布行为)
 
 If you're using [publishBehavior](/api/operators/publishBehavior) to create a [ConnectableObservable](/api/index/class/ConnectableObservable), you can use [connectable](/api/index/function/connectable) and a [BehaviorSubject](api/index/class/BehaviorSubject) instead.
 
@@ -393,7 +393,7 @@ const tick$ = timer(1_000).pipe(
 
 ### publishLast
 
-### 发布最后
+### publishLast(发布最后)
 
 If you're using [publishLast](/api/operators/publishLast) to create a [ConnectableObservable](/api/index/class/ConnectableObservable), you can use [connectable](/api/index/function/connectable) and an [AsyncSubject](api/index/class/AsyncSubject) instead.
 
@@ -456,7 +456,7 @@ const tick$ = timer(1_000).pipe(
 
 ### publishReplay
 
-### 发布重播
+### publishReplay(发布重播)
 
 If you're using [publishReplay](/api/operators/publishReplay) to create a [ConnectableObservable](/api/index/class/ConnectableObservable), you can use [connectable](/api/index/function/connectable) and a [ReplaySubject](api/index/class/ReplaySubject) instead.
 
@@ -547,7 +547,7 @@ const tick$ = timer(1_000).pipe(
 
 ### refCount
 
-### 引用计数
+### refCount(引用计数)
 
 Instead of applying the [refCount](/api/operators/refCount) operator to the [ConnectableObservable](/api/index/class/ConnectableObservable) obtained from a [multicast](/api/operators/multicast)
 or [publish](/api/operators/publish) operator, use the [share](/api/operators/share) operator to replace both.
