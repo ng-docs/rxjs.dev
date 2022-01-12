@@ -75,7 +75,7 @@ export class Scheduler implements SchedulerLike {
    * @return {Subscription} A subscription in order to be able to unsubscribe
    * the scheduled work.
    *
-   * 订阅以便能够取消订阅计划的工作。
+   * 订阅以便能够退订计划的工作。
    *
    */
   public schedule<T>(work: (this: SchedulerAction<T>, state?: T) => void, delay: number = 0, state?: T): Subscription {

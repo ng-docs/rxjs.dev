@@ -16,7 +16,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * refCount has only a single subscription independently of the number of subscribers to the target
  * observable.
  *
- * 在内部，它计算对 observable 的订阅，如果订阅数大于 0，则订阅（仅一次）源。如果订阅数小于 1，则从源取消订阅。这样，你可以确保*发布*的 refCount 之前的所有内容都只有一个订阅，而与目标 observable 的订阅者数量无关。
+ * 在内部，它计算对 observable 的订阅，如果订阅数大于 0，则订阅（仅一次）源。如果订阅数小于 1，则从源退订。这样，你可以确保*发布*的 refCount 之前的所有内容都只有一个订阅，而与目标 observable 的订阅者数量无关。
  *
  * Note that using the {@link share} operator is exactly the same as using the `multicast(() => new Subject())` operator
  * (making the observable hot) and the *refCount* operator in a sequence.

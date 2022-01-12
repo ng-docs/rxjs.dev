@@ -126,7 +126,7 @@ multicasted.connect();
 
 The `connect()` method is important to determine exactly when the shared Observable execution will start. Because `connect()` does `source.subscribe(subject)` under the hood, `connect()` returns a Subscription, which you can unsubscribe from in order to cancel the shared Observable execution.
 
-`connect()` 方法对于确定共享的 Observable 执行何时开始非常重要。因为 `connect()` 在后台执行 `source.subscribe(subject)`，所以 `connect()` 返回一个订阅，你可以取消订阅以取消共享的 Observable 执行。
+`connect()` 方法对于确定共享的 Observable 执行何时开始非常重要。因为 `connect()` 在后台执行 `source.subscribe(subject)`，所以 `connect()` 返回一个订阅，你可以退订以取消共享的 Observable 执行。
 
 ### Reference counting
 
@@ -134,7 +134,7 @@ The `connect()` method is important to determine exactly when the shared Observa
 
 Calling `connect()` manually and handling the Subscription is often cumbersome. Usually, we want to _automatically_ connect when the first Observer arrives, and automatically cancel the shared execution when the last Observer unsubscribes.
 
-手动调用 `connect()` 并处理订阅通常很麻烦。通常，我们希望在第一个 Observer 到达时*自动*连接，并在最后一个 Observer 取消订阅时自动取消共享执行。
+手动调用 `connect()` 并处理订阅通常很麻烦。通常，我们希望在第一个 Observer 到达时*自动*连接，并在最后一个 Observer 退订时自动取消共享执行。
 
 Consider the following example where subscriptions occur as outlined by this list:
 
@@ -166,7 +166,7 @@ Consider the following example where subscriptions occur as outlined by this lis
 
 7. First Observer unsubscribes from the multicasted Observable
 
-   First Observer 取消订阅多播的 Observable
+   First Observer 退订多播的 Observable
 
 8. The `next` value `2` is delivered to the second Observer
 
@@ -174,11 +174,11 @@ Consider the following example where subscriptions occur as outlined by this lis
 
 9. Second Observer unsubscribes from the multicasted Observable
 
-   第二个观察者取消订阅多播的 Observable
+   第二个观察者退订多播的 Observable
 
 10. **The connection to the multicasted Observable is unsubscribed**
 
-    **与多播的 Observable 的连接被取消订阅**
+    **与多播的 Observable 的连接被退订**
 
 To achieve that with explicit calls to `connect()`, we write the following code:
 
@@ -219,7 +219,7 @@ setTimeout(() => {
 
 If we wish to avoid explicit calls to `connect()`, we can use ConnectableObservable's `refCount()` method (reference counting), which returns an Observable that keeps track of how many subscribers it has. When the number of subscribers increases from `0` to `1`, it will call `connect()` for us, which starts the shared execution. Only when the number of subscribers decreases from `1` to `0` will it be fully unsubscribed, stopping further execution.
 
-如果我们希望避免显式调用 `connect()`，我们可以使用 ConnectableObservable 的 `refCount()` 方法（引用计数），它返回一个 Observable 来跟踪它有多少订阅者。当订阅者数量从 `0` 增加到 `1` 时，它会为我们调用 `connect()`，从而开始共享执行。只有当订阅者数量从 `1` 减少到 `0` 时，才会完全取消订阅，停止进一步执行。
+如果我们希望避免显式调用 `connect()`，我们可以使用 ConnectableObservable 的 `refCount()` 方法（引用计数），它返回一个 Observable 来跟踪它有多少订阅者。当订阅者数量从 `0` 增加到 `1` 时，它会为我们调用 `connect()`，从而开始共享执行。只有当订阅者数量从 `1` 减少到 `0` 时，才会完全退订，停止进一步执行。
 
 <span class="informal">`refCount` makes the multicasted Observable automatically start executing when the first subscriber arrives, and stop executing when the last subscriber leaves.</span>
 

@@ -383,7 +383,7 @@ export class Notification<T> {
    *
    * @return {Notification<any>} The valueless "complete" Notification.
    *
-   * 毫无价值的“完成”通知。
+   * 无值的“完成”通知。
    *
    * @nocollapse
    * @deprecated It is NOT recommended to create instances of `Notification` directly.

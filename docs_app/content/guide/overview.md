@@ -183,5 +183,5 @@ fromEvent(document, 'click')
 
 Other value producing operators are [**pluck**](../api/operators/pluck), [**pairwise**](../api/operators/pairwise), [**sample**](../api/operators/sample) etc.
 
-其他产生价值的操作符是[**pluck**](../api/operators/pluck)、[**pairwise**](../api/operators/pairwise)、[**sample**](../api/operators/sample)等。
+其他产生值的操作符是[**pluck**](../api/operators/pluck)、[**pairwise**](../api/operators/pairwise)、[**sample**](../api/operators/sample)等。
 

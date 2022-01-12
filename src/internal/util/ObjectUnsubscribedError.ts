@@ -17,7 +17,7 @@ export interface ObjectUnsubscribedErrorCtor {
  * An error thrown when an action is invalid because the object has been
  * unsubscribed.
  *
- * 由于对象已取消订阅而导致操作无效时引发的错误。
+ * 由于对象已退订而导致操作无效时引发的错误。
  *
  * @see {@link Subject}
  * @see {@link BehaviorSubject}

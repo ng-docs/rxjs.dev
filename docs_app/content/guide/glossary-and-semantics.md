@@ -114,7 +114,7 @@ When an [observable](#observable) uses another [observable](#observable) as a [p
 
 A value has been pushed to the [consumer](#consumer) to be [observed](#observation). Will only happen during [subscription](#subscription), and cannot happen after [error](#error), [complete](#error), or [unsubscription](#unsubscription). Logically, this also means it cannot happen after [teardown](#teardown).
 
-已将一个值推送给要[观察](#observation)的[消费者](#consumer)。只会在[订阅](#subscription)期间发生，在[错误](#error)、[完成](#error)或[取消订阅](#unsubscription)后不会发生。从逻辑上讲，这也意味着它不会在[teardown](#teardown)之后发生。
+已将一个值推送给要[观察](#observation)的[消费者](#consumer)。只会在[订阅](#subscription)期间发生，在[错误](#error)、[完成](#error)或[退订](#unsubscription)后不会发生。从逻辑上讲，这也意味着它不会在[teardown](#teardown)之后发生。
 
 ### Error
 
@@ -122,7 +122,7 @@ A value has been pushed to the [consumer](#consumer) to be [observed](#observati
 
 The [producer](#producer) has encountered a problem and is notifying the [consumer](#consumer). This is a notification that the [producer](#producer) will no longer send values and will [teardown](#teardown). This cannot occur after [complete](#complete), any other [error](#error), or [unsubscription](#unsubscription). Logically, this also means it cannot happen after [teardown](#teardown).
 
-[生产者](#producer)遇到问题，正在通知[消费者](#consumer)。这是[生产者](#producer)将不再发送值并将[拆除](#teardown)的通知。这在[完成](#complete)、任何其他[错误](#error)或[取消订阅](#unsubscription)后不会发生。从逻辑上讲，这也意味着它不会在[teardown](#teardown)之后发生。
+[生产者](#producer)遇到问题，正在通知[消费者](#consumer)。这是[生产者](#producer)将不再发送值并将[拆除](#teardown)的通知。这在[完成](#complete)、任何其他[错误](#error)或[退订](#unsubscription)后不会发生。从逻辑上讲，这也意味着它不会在[teardown](#teardown)之后发生。
 
 ### Complete
 
@@ -130,7 +130,7 @@ The [producer](#producer) has encountered a problem and is notifying the [consum
 
 The [producer](#producer) is notifying the [consumer](#consumer) that it is done [nexting](#next) values, without error, will send no more values, and it will [teardown](#teardown). [Completion](#complete) cannot occur after an [error](#error), or [unsubscribe](#unsubscription). [Complete](#complete) cannot be called twice. [Complete](#complete), if it occurs, will always happen before [teardown](#teardown).
 
-[生产者](#producer)正在通知[消费者](#consumer)它已完成[下一个](#next)值，没有错误，将不再发送任何值，并且它将[拆除](#teardown)。[出错](#error)后无法[完成](#complete)，或[取消订阅](#unsubscription)。[Complete](#complete)不能被调用两次。[Complete](#complete)，如果发生，总是会在[teardown](#teardown)之前发生。
+[生产者](#producer)正在通知[消费者](#consumer)它已完成[下一个](#next)值，没有错误，将不再发送任何值，并且它将[拆除](#teardown)。[出错](#error)后无法[完成](#complete)，或[退订](#unsubscription)。[Complete](#complete)不能被调用两次。[Complete](#complete)，如果发生，总是会在[teardown](#teardown)之前发生。
 
 ### Notification
 

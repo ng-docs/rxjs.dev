@@ -57,7 +57,7 @@ sense.
 
 - The observable returned by the operator function is considered to be the "consumer" of the source. As such, the consumer MUST unsubscribe from the source as soon as it knows it no longer needs values before proceeding to do _any_ action.
 
-  operator 函数返回的 observable 被认为是源的“消费者”。因此，消费者必须在知道不再需要值后立即取消订阅源，然后再继续执行 _ 任何 _ 操作。
+  operator 函数返回的 observable 被认为是源的“消费者”。因此，消费者必须在知道不再需要值后立即退订源，然后再继续执行 _ 任何 _ 操作。
 
 - Events that happen after the completion of a source SHOULD happen after the source finalizes. This is to ensure that finalization always happens in a predictable time frame relative to the event.
 

@@ -23,7 +23,7 @@ subscription.unsubscribe();
 
 Subscriptions can also be put together, so that a call to an `unsubscribe()` of one Subscription may unsubscribe multiple Subscriptions. You can do this by "adding" one subscription into another:
 
-订阅也可以放在一起，以便调用一个订阅的 `unsubscribe()` 可以取消订阅多个订阅。你可以通过将一个订阅“添加”到另一个订阅中来做到这一点：
+订阅也可以放在一起，以便调用一个订阅的 `unsubscribe()` 可以退订多个订阅。你可以通过将一个订阅“添加”到另一个订阅中来做到这一点：
 
 ```ts
 import { interval } from 'rxjs';

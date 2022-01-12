@@ -44,7 +44,7 @@ export function multicast<T>(subject: Subject<T>): UnaryFunction<Observable<T>, 
  *
  * @param selector A setup function to setup the multicast
  *
- * 设置组播的设置函数
+ * 设置多播的设置函数
  *
  * @return A function that returns an observable that mirrors the observable returned by the selector.
  *
@@ -74,7 +74,7 @@ export function multicast<T, O extends ObservableInput<any>>(
  * will cause the underlying subject to be "reset" on error, completion, or refCounted unsubscription of
  * the source.
  *
- * 将被调用以创建主体的工厂。在此处传递函数将导致基础主体在错误、完成或 refCounted 取消订阅源时“重置”。
+ * 将被调用以创建主体的工厂。在此处传递函数将导致基础主体在错误、完成或 refCounted 退订源时“重置”。
  *
  * @return A function that returns a {@link ConnectableObservable}
  *

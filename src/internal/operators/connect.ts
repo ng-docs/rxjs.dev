@@ -63,7 +63,7 @@ const DEFAULT_CONFIG: ConnectConfig<unknown> = {
  * the `selector` function returns, the observable it returns will be subscribed to, _then_ the
  * multicast will be connected to the source.
  *
- * 当你订阅 `connect` 的结果时，将调用 `selector` 函数。`selector` 函数返回后，它返回的 observable 将被订阅，_ 然后 _ 组播将连接到源。
+ * 当你订阅 `connect` 的结果时，将调用 `selector` 函数。`selector` 函数返回后，它返回的 observable 将被订阅，_ 然后 _ 多播将连接到源。
  *
  * ## Example
  *

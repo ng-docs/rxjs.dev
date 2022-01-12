@@ -7,7 +7,7 @@ import { timeout } from './timeout';
  * If the time of the Date object passed arrives before the first value arrives from the source, it will unsubscribe
  * from the source and switch the subscription to another observable.
  *
- * 如果传递的 Date 对象的时间在第一个值从源到达之前到达，它将从源取消订阅并将订阅切换到另一个 observable。
+ * 如果传递的 Date 对象的时间在第一个值从源到达之前到达，它将从源退订并将订阅切换到另一个 observable。
  *
  * <span class="informal">Use to switch to a different observable if the first value doesn't arrive by a specific time</span>
 *
@@ -41,7 +41,7 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  * When the passed timespan elapses before the source emits any given value, it will unsubscribe from the source,
  * and switch the subscription to another observable.
  *
- * 当在源发出任何给定值之前经过的时间跨度过去时，它将从源取消订阅，并将订阅切换到另一个可观察者。
+ * 当在源发出任何给定值之前经过的时间跨度过去时，它将从源退订，并将订阅切换到另一个可观察者。
  *
  * <span class="informal">Used to switch to a different observable if your source is being slow</span>
 *

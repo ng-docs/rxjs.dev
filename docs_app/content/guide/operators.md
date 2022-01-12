@@ -141,7 +141,7 @@ The [`concatAll()`](/api/operators/concatAll) operator subscribes to each "inner
 
 - [`switchAll()`](/api/operators/switchAll) — subscribes to the first inner Observable when it arrives, and emits each value as it arrives, but when the next inner Observable arrives, unsubscribes to the previous one, and subscribes to the new one.
 
-  [`switchAll()`](/api/operators/switchAll) — 在第一个内部 Observable 到达时订阅它，并在它到达时发出每个值，但是当下一个内部 Observable 到达时，取消订阅前一个，并订阅新的。
+  [`switchAll()`](/api/operators/switchAll) — 在第一个内部 Observable 到达时订阅它，并在它到达时发出每个值，但是当下一个内部 Observable 到达时，退订前一个，并订阅新的。
 
 - [`exhaustAll()`](/api/operators/exhaustAll) — subscribes to the first inner Observable when it arrives, and emits each value as it arrives, discarding all newly arriving inner Observables until that first one completes, then waits for the next inner Observable.
 
@@ -462,7 +462,7 @@ Note that you must
 
 2. implement a "teardown" function that cleans up when the Observable completes (in this case by unsubscribing and clearing any pending timeouts).
 
-   实现一个“拆卸”功能，在 Observable 完成时进行清理（在这种情况下，通过取消订阅和清除任何挂起的超时）。
+   实现一个“拆卸”功能，在 Observable 完成时进行清理（在这种情况下，通过退订和清除任何挂起的超时）。
 
 3. return that teardown function from the function passed to the Observable constructor.
 

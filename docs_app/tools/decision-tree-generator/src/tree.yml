@@ -405,7 +405,7 @@
           children:
             - label: concat
     - label: when it completes, errors or unsubscribes, I want to execute a function
-      labelCn: 当它完成、出错或取消订阅时，我要执行某个函数
+      labelCn: 当它完成、出错或退订时，我要执行某个函数
       children:
         - label: finalize
     - label: I want to change the scheduler

@@ -155,7 +155,7 @@ export function combineLatest<T extends Record<string, ObservableInput<any>>>(
  * emitted value. On the other hand, if any Observable errors, `combineLatest`
  * will error immediately as well, and all other Observables will be unsubscribed.
  *
- * 如果至少一个 Observable 被传递给 `combineLatest` 并且所有传递的 Observables 都发出了一些东西，那么当所有组合流完成时，生成的 Observable 将完成。因此，即使某些 Observable 完成，`combineLatest` 的结果仍然会在其他 Observable 完成时发出值。如果是一个完整的 Observable，从现在开始，它的值将永远是最后一个发出的值。另一方面，如果有任何 Observable 错误，`combineLatest` 也会立即出错，并且所有其他 Observable 都将被取消订阅。
+ * 如果至少一个 Observable 被传递给 `combineLatest` 并且所有传递的 Observables 都发出了一些东西，那么当所有组合流完成时，生成的 Observable 将完成。因此，即使某些 Observable 完成，`combineLatest` 的结果仍然会在其他 Observable 完成时发出值。如果是一个完整的 Observable，从现在开始，它的值将永远是最后一个发出的值。另一方面，如果有任何 Observable 错误，`combineLatest` 也会立即出错，并且所有其他 Observable 都将被退订。
  *
  * ## Examples
  *

@@ -125,7 +125,7 @@ export function bufferTime<T>(bufferTimeSpan: number, ...otherArgs: any[]): Oper
      * the work of scheduling a job at the requested bufferTimeSpan
      * that will emit the buffer (if it's not unsubscribed before then).
      *
-     * 每次我们开始一个新的缓冲区时调用。这会在请求的 bufferTimeSpan 处调度作业，该作业将发出缓冲区（如果在此之前未取消订阅）。
+     * 每次我们开始一个新的缓冲区时调用。这会在请求的 bufferTimeSpan 处调度作业，该作业将发出缓冲区（如果在此之前未退订）。
      *
      */
     const startBuffer = () => {

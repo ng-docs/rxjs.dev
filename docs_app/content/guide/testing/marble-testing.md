@@ -74,7 +74,7 @@ Although `run()` executes entirely synchronously, the helper functions inside yo
 
 - `expectObservable(actual: Observable<T>, subscriptionMarbles?: string).toBe(marbleDiagram: string, values?: object, error?: any)` - schedules an assertion for when the TestScheduler flushes. Give `subscriptionMarbles` as parameter to change the schedule of subscription and unsubscription. If you don't provide the `subscriptionMarbles` parameter it will subscribe at the beginning and never unsubscribe. Read below about subscription marble diagram.
 
-  `expectObservable(actual: Observable<T>, subscriptionMarbles?: string).toBe(marbleDiagram: string, values?: object, error?: any)` - 在 TestScheduler 刷新时安排一个断言。给 `subscriptionMarbles` 作为参数来改变订阅和取消订阅的时间表。如果你不提供 `subscriptionMarbles` 参数，它将在开始时订阅并且永远不会取消订阅。阅读以下有关订阅弹珠图的信息。
+  `expectObservable(actual: Observable<T>, subscriptionMarbles?: string).toBe(marbleDiagram: string, values?: object, error?: any)` - 在 TestScheduler 刷新时安排一个断言。给 `subscriptionMarbles` 作为参数来改变订阅和退订的时间表。如果你不提供 `subscriptionMarbles` 参数，它将在开始时订阅并且永远不会退订。阅读以下有关订阅弹珠图的信息。
 
 - `expectSubscriptions(actualSubscriptionLogs: SubscriptionLog[]).toBe(subscriptionMarbles: string)` - like `expectObservable` schedules an assertion for when the testScheduler flushes. Both `cold()` and `hot()` return an observable with a property `subscriptions` of type `SubscriptionLog[]`. Give `subscriptions` as parameter to `expectSubscriptions` to assert whether it matches the `subscriptionsMarbles` marble diagram given in `toBe()`. Subscription marble diagrams are slightly different than Observable
   marble diagrams. Read more below.
@@ -278,7 +278,7 @@ expectObservable(result).toBe(expected);
 
 The `expectSubscriptions` helper allows you to assert that a `cold()` or `hot()` Observable you created was subscribed/unsubscribed to at the correct point in time. The `subscriptionMarbles` parameter to `expectObservable` allows your test to defer subscription to a later virtual time, and/or unsubscribe even if the observable being tested has not yet completed.
 
-`expectSubscriptions` 帮助器允许你断言你创建的 `cold()` 或 `hot()` 可观察者在正确的时间点被订阅/取消订阅。`expectObservable` 的 `subscriptionMarbles` 参数允许你的测试将订阅推迟到以后的虚拟时间，和/或取消订阅，即使正在测试的 observable 尚未完成。
+`expectSubscriptions` 帮助器允许你断言你创建的 `cold()` 或 `hot()` 可观察者在正确的时间点被订阅/退订。`expectObservable` 的 `subscriptionMarbles` 参数允许你的测试将订阅推迟到以后的虚拟时间，和/或退订，即使正在测试的 observable 尚未完成。
 
 The subscription marble syntax is slightly different to conventional marble syntax.
 
@@ -314,7 +314,7 @@ There should be **at most one** `^` point in a subscription marble diagram, and 
 
 `'--^--'`: a subscription happened after 2 "frames" of time passed, and the subscription was not unsubscribed.
 
-`'--^--'` ：订阅发生在 2“帧”时间过去后，并且订阅没有取消订阅。
+`'--^--'` ：订阅发生在 2“帧”时间过去后，并且订阅没有退订。
 
 `'--^--!-'`: on frame 2 a subscription happened, and on frame 5 was unsubscribed.
 
@@ -343,7 +343,7 @@ testScheduler.run(({ hot, expectObservable }) => {
 
 Manually unsubscribe from a source that will never complete:
 
-手动取消订阅永远不会完成的源：
+手动退订永远不会完成的源：
 
 ```ts
 it('should repeat forever', () => {

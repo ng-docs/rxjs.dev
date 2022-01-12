@@ -15,7 +15,7 @@ import { arrRemove } from './util/arrRemove';
  * When a Subscription is unsubscribed, all its children (and its grandchildren)
  * will be unsubscribed as well.
  *
- * 此外，订阅可以通过 `add()` 方法组合在一起，该方法会将子订阅附加到当前订阅。当订阅被取消订阅时，它的所有子（及其孙子）也将被取消订阅。
+ * 此外，订阅可以通过 `add()` 方法组合在一起，该方法会将子订阅附加到当前订阅。当订阅被退订时，它的所有子（及其孙子）也将被退订。
  *
  * @class Subscription
  */
@@ -30,7 +30,7 @@ export class Subscription implements SubscriptionLike {
   /**
    * A flag to indicate whether this Subscription has already been unsubscribed.
    *
-   * 指示此订阅是否已取消订阅的标志。
+   * 指示此订阅是否已退订的标志。
    *
    */
   public closed = false;
@@ -41,7 +41,7 @@ export class Subscription implements SubscriptionLike {
    * The list of registered teardowns to execute upon unsubscription. Adding and removing from this
    * list occurs in the {@link #add} and {@link #remove} methods.
    *
-   * 在取消订阅时执行的已注册拆卸列表。在此列表中添加和删除发生在 {@link #add} 和 {@link #remove} 方法中。
+   * 在退订时执行的已注册拆卸列表。在此列表中添加和删除发生在 {@link #add} 和 {@link #remove} 方法中。
    *
    */
   private _teardowns: Exclude<TeardownLogic, void>[] | null = null;
@@ -121,7 +121,7 @@ export class Subscription implements SubscriptionLike {
    * because it has already been unsubscribed, then whatever teardown is passed to it
    * will automatically be executed (unless the teardown itself is also a closed subscription).
    *
-   * 向此订阅添加拆解，以便在取消订阅此订阅时取消订阅/调用拆解。如果这个订阅已经是 {@link #close}，因为它已经被取消订阅，那么任何传递给它的拆解都会自动执行（除非拆解本身也是一个关闭的订阅）。
+   * 向此订阅添加拆解，以便在退订此订阅时退订/调用拆解。如果这个订阅已经是 {@link #close}，因为它已经被退订，那么任何传递给它的拆解都会自动执行（除非拆解本身也是一个关闭的订阅）。
    *
    * Closed Subscriptions cannot be added as teardowns to any subscription. Adding a closed
    * subscription to a any subscription will result in no operation. (A noop).
@@ -137,7 +137,7 @@ export class Subscription implements SubscriptionLike {
    * if they are unsubscribed. Functions and {@link Unsubscribable} objects that you wish to remove
    * will need to be removed manually with {@link #remove}
    *
-   * 添加到此实例的 `Subscription` 实例在取消订阅后将自动删除。你希望删除的函数和 {@link Unsubscribable} 对象需要使用 {@link #remove} 手动删除
+   * 添加到此实例的 `Subscription` 实例在退订后将自动删除。你希望删除的函数和 {@link Unsubscribable} 对象需要使用 {@link #remove} 手动删除
    *
    * @param teardown The teardown logic to add to this subscription.
    *
@@ -186,7 +186,7 @@ export class Subscription implements SubscriptionLike {
    * Adds a parent to this subscription so it can be removed from the parent if it
    * unsubscribes on it's own.
    *
-   * 将父级添加到此订阅，以便可以在它自己取消订阅时从父级中删除它。
+   * 将父级添加到此订阅，以便可以在它自己退订时从父级中删除它。
    *
    * NOTE: THIS ASSUMES THAT {@link \_hasParent} HAS ALREADY BEEN CHECKED.
    *
@@ -230,7 +230,7 @@ export class Subscription implements SubscriptionLike {
    * from every other `Subscription` they have been added to. This means that using the `remove` method
    * is not a common thing and should be used thoughtfully.
    *
-   * 请注意，`Subscription` 实例在取消订阅时会自动从它们添加到的所有其他 `Subscription` 中删除。这意味着使用 `remove` 方法并不是一件常见的事情，应该慎重使用。
+   * 请注意，`Subscription` 实例在退订时会自动从它们添加到的所有其他 `Subscription` 中删除。这意味着使用 `remove` 方法并不是一件常见的事情，应该慎重使用。
    *
    * If you add the same teardown instance of a function or an unsubscribable object to a `Subcription` instance
    * more than once, you will need to call `remove` the same number of times to remove all instances.
@@ -239,7 +239,7 @@ export class Subscription implements SubscriptionLike {
    *
    * All teardown instances are removed to free up memory upon unsubscription.
    *
-   * 取消订阅时将删除所有拆卸实例以释放内存。
+   * 退订时将删除所有拆卸实例以释放内存。
    *
    * @param teardown The teardown to remove from this subscription
    *

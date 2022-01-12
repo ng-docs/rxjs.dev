@@ -21,7 +21,7 @@ export function race<T extends readonly unknown[]>(...inputs: [...ObservableInpu
  * The resulting observable will forward all notifications, including error and completion, from the "winning"
  * source observable.
  *
- * `race` 返回一个 observable，当订阅它时，它会立即订阅所有源 observables。一旦其中一个源 observables 发出一个值，结果就会取消订阅其他源。生成的 observable 将转发来自“获胜”源 observable 的所有通知，包括错误和完成。
+ * `race` 返回一个 observable，当订阅它时，它会立即订阅所有源 observables。一旦其中一个源 observables 发出一个值，结果就会退订其他源。生成的 observable 将转发来自“获胜”源 observable 的所有通知，包括错误和完成。
  *
  * If one of the used source observable throws an errors before a first notification
  * the race operator will also throw an error, no matter if another source observable

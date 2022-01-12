@@ -25,7 +25,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * only if there are no more subscribers still listening. If after some time a consumer starts
  * subscribing again, connection is reestablished.
  *
- * 当 `WebSocketSubject` 被订阅时，它会尝试建立一个套接字连接，除非已经建立了一个。这意味着许多订阅者将始终在同一个套接字上侦听，从而节省资源。但是，如果两个实例由 `WebSocketSubject` 组成，即使这两个实例提供了相同的 url，它们也会尝试建立单独的连接。当 `WebSocketSubject` 的消费者取消订阅时，只有在没有更多订阅者仍在监听的情况下，才会关闭套接字连接。如果一段时间后消费者再次开始订阅，则重新建立连接。
+ * 当 `WebSocketSubject` 被订阅时，它会尝试建立一个套接字连接，除非已经建立了一个。这意味着许多订阅者将始终在同一个套接字上侦听，从而节省资源。但是，如果两个实例由 `WebSocketSubject` 组成，即使这两个实例提供了相同的 url，它们也会尝试建立单独的连接。当 `WebSocketSubject` 的消费者退订时，只有在没有更多订阅者仍在监听的情况下，才会关闭套接字连接。如果一段时间后消费者再次开始订阅，则重新建立连接。
  *
  * Once connection is made, whenever a new message comes from the server, `WebSocketSubject` will emit that
  * message as a value in the stream. By default, a message from the socket is parsed via `JSON.parse`. If you
@@ -90,7 +90,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * might stop sending messages, since it got unsubscription message. This needs to be handled
  * on the server or using {@link publish} on a Observable returned from 'multiplex'.
  *
- * 方法接受三个参数。前两个是分别返回订阅和取消订阅消息的函数。每当结果 Observable 的消费者订阅和取消订阅时，这些消息都会发送到服务器。服务器可以使用它们来验证某种消息应该开始还是停止转发给客户端。在上面的示例应用程序中，在获得具有适当标识符的订阅消息后，网关服务器可以决定它应该连接到真实的体育新闻服务并开始从中转发消息。请注意，这两条消息都将作为函数返回的内容发送，默认情况下，它们使用 JSON.stringify 序列化，就像通过 `next` 推送的消息一样。另请记住，这些消息将在*每次*订阅和取消订阅时发送。这是潜在的危险，因为 Observable 的一个消费者可能会取消订阅，并且服务器可能会停止发送消息，因为它收到了取消订阅消息。这需要在服务器上处理，或者在从“multiplex”返回的 Observable 上使用 {@link publish}。
+ * 方法接受三个参数。前两个是分别返回订阅和退订消息的函数。每当结果 Observable 的消费者订阅和退订时，这些消息都会发送到服务器。服务器可以使用它们来验证某种消息应该开始还是停止转发给客户端。在上面的示例应用程序中，在获得具有适当标识符的订阅消息后，网关服务器可以决定它应该连接到真实的体育新闻服务并开始从中转发消息。请注意，这两条消息都将作为函数返回的内容发送，默认情况下，它们使用 JSON.stringify 序列化，就像通过 `next` 推送的消息一样。另请记住，这些消息将在*每次*订阅和退订时发送。这是潜在的危险，因为 Observable 的一个消费者可能会退订，并且服务器可能会停止发送消息，因为它收到了退订消息。这需要在服务器上处理，或者在从“multiplex”返回的 Observable 上使用 {@link publish}。
  *
  * Last argument to `multiplex` is a `messageFilter` function which should return a boolean. It is used to filter out messages
  * sent by the server to only those that belong to simulated WebSocket stream. For example, server might mark these

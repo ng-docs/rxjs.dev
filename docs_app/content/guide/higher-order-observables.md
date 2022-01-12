@@ -40,7 +40,7 @@ The [`concatMap()`](/api/operators/concatMap) operator subscribes to each "inner
 
 * [`switchMap()`](/api/operators/switchMap) — subscribes to the first inner Observable when it arrives, and emits each value as it arrives, but when the next inner Observable arrives, unsubscribes to the previous one, and subscribes to the new one.
 
-  [`switchMap()`](/api/operators/switchMap) — 在第一个内部 Observable 到达时订阅它，并在它到达时发出每个值，但是当下一个内部 Observable 到达时，取消订阅前一个，并订阅新的。
+  [`switchMap()`](/api/operators/switchMap) — 在第一个内部 Observable 到达时订阅它，并在它到达时发出每个值，但是当下一个内部 Observable 到达时，退订前一个，并订阅新的。
 
 * [`exhaustMap()`](/api/operators/exhaustMap) — subscribes to the first inner Observable when it arrives, and emits each value as it arrives, discarding all newly arriving inner Observables until that first one completes, then waits for the next inner Observable.
 

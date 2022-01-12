@@ -167,7 +167,7 @@ export class Observable<T> implements Subscribable<T> {
    * up all resources that an Observable used. Note that cancelling a subscription will not call `complete` callback
    * provided to `subscribe` function, which is reserved for a regular completion signal that comes from an Observable.
    *
-   * 无论你使用哪种调用方式 `subscribe`，在这两种情况下它都会返回一个 Subscription 对象。这个对象允许你在它上面调用 `unsubscribe`，这反过来会停止 Observable 所做的工作并清理 Observable 使用的所有资源。请注意，取消订阅不会调用提供给 `subscribe` 函数的 `complete` 回调，该回调是为来自 Observable 的常规完成信号保留的。
+   * 无论你使用哪种调用方式 `subscribe`，在这两种情况下它都会返回一个 Subscription 对象。这个对象允许你在它上面调用 `unsubscribe`，这反过来会停止 Observable 所做的工作并清理 Observable 使用的所有资源。请注意，退订不会调用提供给 `subscribe` 函数的 `complete` 回调，该回调是为来自 Observable 的常规完成信号保留的。
    *
    * Remember that callbacks provided to `subscribe` are not guaranteed to be called asynchronously.
    * It is an Observable itself that decides when these functions will be called. For example {@link of}
@@ -239,7 +239,7 @@ export class Observable<T> implements Subscribable<T> {
    *
    * Cancel a subscription
    *
-   * 取消订阅
+   * 退订
    *
    * ```ts
    * import { interval } from 'rxjs';
@@ -329,7 +329,7 @@ export class Observable<T> implements Subscribable<T> {
    * Used as a NON-CANCELLABLE means of subscribing to an observable, for use with
    * APIs that expect promises, like `async/await`. You cannot unsubscribe from this.
    *
-   * 用作订阅 observable 的不可取消的方式，用于期望承诺的 API，如 `async/await`。你不能取消订阅。
+   * 用作订阅 observable 的不可取消的方式，用于期望承诺的 API，如 `async/await`。你不能退订。
    *
    * **WARNING**: Only use this with observables you *know* will complete. If the source
    * observable does not complete, you will end up with a promise that is hung up, and

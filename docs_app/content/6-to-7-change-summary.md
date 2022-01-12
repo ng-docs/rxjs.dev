@@ -611,7 +611,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - `finalize` will now unsubscribe from its source _before_ it calls its callback. That means that `finalize` callbacks will run in the order in which they occur in the pipeline: `source.pipe(finalize(() => console.log(1)), finalize(() => console.log(2)))` will log `1` and then `2`. Previously, callbacks were called in the reverse order.
 
-  `finalize` 现在将在调用其回调*之前*取消订阅其源。这意味着 `finalize` 回调将按照它们在管道中出现的顺序运行： `source.pipe(finalize(() => console.log(1)), finalize(() => console.log(2)))` 将记录 `1` 然后 `2`。以前，回调是按相反的顺序调用的。
+  `finalize` 现在将在调用其回调*之前*退订其源。这意味着 `finalize` 回调将按照它们在管道中出现的顺序运行： `source.pipe(finalize(() => console.log(1)), finalize(() => console.log(2)))` 将记录 `1` 然后 `2`。以前，回调是按相反的顺序调用的。
 
 ### map
 

@@ -53,7 +53,7 @@ export interface ShareConfig<T> {
    * It is also possible to pass a notifier factory returning an observable instead which grants more fine-grained
    * control over how and when the reset should happen. This allows behaviors like conditional or delayed resets.
    *
-   * 如果为 true，则当结果 observable 的订阅者数量由于订阅者取消订阅而达到零时，内部状态将被重置，结果 observable 将返回“冷”状态。这意味着下一次订阅生成的 observable 时，将创建一个新的主体并再次订阅源。如果为 false，当结果 observable 的订阅者数量由于取消订阅而达到零时，主体将保持与源的连接，并且对结果的新订阅将通过同一主体连接。也可以通过一个通知工厂返回一个 observable 来代替，它可以对重置的方式和时间进行更细粒度的控制。这允许有条件或延迟重置等行为。
+   * 如果为 true，则当结果 observable 的订阅者数量由于订阅者退订而达到零时，内部状态将被重置，结果 observable 将返回“冷”状态。这意味着下一次订阅生成的 observable 时，将创建一个新的主体并再次订阅源。如果为 false，当结果 observable 的订阅者数量由于退订而达到零时，主体将保持与源的连接，并且对结果的新订阅将通过同一主体连接。也可以通过一个通知工厂返回一个 observable 来代替，它可以对重置的方式和时间进行更细粒度的控制。这允许有条件或延迟重置等行为。
    *
    */
   resetOnRefCountZero?: boolean | (() => Observable<any>);
@@ -69,7 +69,7 @@ export function share<T>(options: ShareConfig<T>): MonoTypeOperatorFunction<T>;
  * unsubscribe from the source Observable. Because the Observable is multicasting it makes the stream `hot`.
  * This is an alias for `multicast(() => new Subject()), refCount()`.
  *
- * 返回一个多播（共享）原始 Observable 的新 Observable。只要至少有一个订阅者，这个 Observable 就会被订阅并发送数据。当所有订阅者都取消订阅后，它将取消订阅源 Observable。因为 Observable 正在多播，所以它使流变 `hot`。这是 `multicast(() => new Subject()), refCount()` 的别名。
+ * 返回一个多播（共享）原始 Observable 的新 Observable。只要至少有一个订阅者，这个 Observable 就会被订阅并发送数据。当所有订阅者都退订后，它将退订源 Observable。因为 Observable 正在多播，所以它使流变 `hot`。这是 `multicast(() => new Subject()), refCount()` 的别名。
  *
  * The subscription to the underlying source Observable can be reset (unsubscribe and resubscribe for new subscribers),
  * if the subscriber count to the shared observable drops to 0, or if the source Observable errors or completes. It is
@@ -79,7 +79,7 @@ export function share<T>(options: ShareConfig<T>): MonoTypeOperatorFunction<T>;
  * closed. Only new subscribers after a reset on error or complete happened will cause a fresh subscription to the
  * source. To achieve transparent retries or restarts pipe the source through appropriate operators before sharing.
  *
- * 如果共享 observable 的订阅者计数降至 0，或者源 Observable 出错或完成，则可以重置对底层源 Observable 的订阅（取消订阅并重新订阅新订阅者）。可以使用通知工厂进行重置，以允许有条件或延迟重置等行为。请注意，在源 Observable 发生错误或完成时重置不会像透明的重试或重新启动源一样，因为错误或完成将被转发给所有订阅者并且他们的订阅将被关闭。只有发生错误或完成重置后的新订阅者才会重新订阅源。为了实现透明的重试或重新启动，在共享之前通过适当的操作符对源进行管道传输。
+ * 如果共享 observable 的订阅者计数降至 0，或者源 Observable 出错或完成，则可以重置对底层源 Observable 的订阅（退订并重新订阅新订阅者）。可以使用通知工厂进行重置，以允许有条件或延迟重置等行为。请注意，在源 Observable 发生错误或完成时重置不会像透明的重试或重新启动源一样，因为错误或完成将被转发给所有订阅者并且他们的订阅将被关闭。只有发生错误或完成重置后的新订阅者才会重新订阅源。为了实现透明的重试或重新启动，在共享之前通过适当的操作符对源进行管道传输。
  *
  * ![](share.png)
  *

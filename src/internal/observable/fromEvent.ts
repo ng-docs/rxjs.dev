@@ -148,7 +148,7 @@ export function fromEvent<T, R>(
  * passed as a first argument to registered function will be emitted by output Observable.
  * When Observable is unsubscribed, function will be unregistered from event target.
  *
- * 每次订阅生成的 Observable 时，事件处理函数都会注册到给定事件类型的事件目标。当该事件触发时，作为第一个参数传递给注册函数的值将由输出 Observable 发出。当 Observable 被取消订阅时，函数将从事件目标中取消注册。
+ * 每次订阅生成的 Observable 时，事件处理函数都会注册到给定事件类型的事件目标。当该事件触发时，作为第一个参数传递给注册函数的值将由输出 Observable 发出。当 Observable 被退订时，函数将从事件目标中取消注册。
  *
  * Note that if event target calls registered function with more than one argument, second
  * and following arguments will not appear in resulting stream. In order to get access to them,
@@ -222,7 +222,7 @@ export function fromEvent<T, R>(
  * it contains and install event handler function in every of them. When returned Observable
  * is unsubscribed, function will be removed from all Nodes.
  *
- * 虽然这个集合本身不是事件目标，`fromEvent` 将遍历它包含的所有节点并在每个节点中安装事件处理函数。当返回的 Observable 被取消订阅时，函数将从所有节点中移除。
+ * 虽然这个集合本身不是事件目标，`fromEvent` 将遍历它包含的所有节点并在每个节点中安装事件处理函数。当返回的 Observable 被退订时，函数将从所有节点中移除。
  *
  * **DOM HtmlCollection**
  *

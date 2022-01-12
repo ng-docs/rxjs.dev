@@ -175,7 +175,7 @@ export interface WebSocketSubjectConfig<T> {
    * An Observer that watches when a close is about to occur due to
    * unsubscription.
    *
-   * 一个观察者，当由于取消订阅而即将发生关闭时进行观察。
+   * 一个观察者，当由于退订而即将发生关闭时进行观察。
    *
    */
   closingObserver?: NextObserver<void>;
@@ -275,7 +275,7 @@ export class WebSocketSubject<T> extends AnonymousSubject<T> {
    * unsubscription, completion, or error, a message defined by the `unsubMsg`
    * argument will be sent to the server over the WebSocketSubject.
    *
-   * 创建一个 {@link Observable}，当订阅它时，通过套接字向服务器发送一条由 `subMsg` 函数定义的消息，以开始通过该套接字订阅数据。一旦数据到达，`messageFilter` 参数将用于为生成的 Observable 选择适当的数据。当由于取消订阅、完成或错误而发生拆卸时，由 `unsubMsg` 参数定义的消息将通过 WebSocketSubject 发送到服务器。
+   * 创建一个 {@link Observable}，当订阅它时，通过套接字向服务器发送一条由 `subMsg` 函数定义的消息，以开始通过该套接字订阅数据。一旦数据到达，`messageFilter` 参数将用于为生成的 Observable 选择适当的数据。当由于退订、完成或错误而发生拆卸时，由 `unsubMsg` 参数定义的消息将通过 WebSocketSubject 发送到服务器。
    *
    * @param subMsg A function to generate the subscription message to be sent to
    * the server. This will still be processed by the serializer in the
@@ -287,7 +287,7 @@ export class WebSocketSubject<T> extends AnonymousSubject<T> {
    * sent to the server at teardown. This will still be processed by the
    * serializer in the WebSocketSubject's config.
    *
-   * 生成取消订阅消息以在拆卸时发送到服务器的函数。这仍将由 WebSocketSubject 配置中的序列化程序处理。
+   * 生成退订消息以在拆卸时发送到服务器的函数。这仍将由 WebSocketSubject 配置中的序列化程序处理。
    *
    * @param messageFilter A predicate for selecting the appropriate messages
    * from the server for the output stream.

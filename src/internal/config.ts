@@ -49,7 +49,7 @@ export interface GlobalConfig {
    * we do not want errors thrown in this user-configured handler to interfere with the
    * behavior of the library.
    *
-   * 由于已完成、出错或已明确取消订阅而无法发送给订阅者的通知的注册点。默认情况下，发送给停止订阅者的下一个、完成和错误通知是 noops。但是，有时调用者可能想要不同的行为。例如，对于尝试向停止的订阅者报告错误的源，调用者可以将 RxJS 配置为抛出未处理的错误。这将*始终*在运行时的另一个作业上异步调用。这是因为我们不希望在这个用户配置的处理程序中抛出的错误干扰库的行为。
+   * 由于已完成、出错或已明确退订而无法发送给订阅者的通知的注册点。默认情况下，发送给停止订阅者的下一个、完成和错误通知是 noops。但是，有时调用者可能想要不同的行为。例如，对于尝试向停止的订阅者报告错误的源，调用者可以将 RxJS 配置为抛出未处理的错误。这将*始终*在运行时的另一个作业上异步调用。这是因为我们不希望在这个用户配置的处理程序中抛出的错误干扰库的行为。
    *
    */
   onStoppedNotification: ((notification: ObservableNotification<any>, subscriber: Subscriber<any>) => void) | null;
@@ -106,7 +106,7 @@ export interface GlobalConfig {
    * you will have access to a subscription or a signal or token that will allow you to do things like
    * unsubscribe and test closed status. Will be removed in v8.
    *
-   * 从版本 8 开始，RxJS 将不再支持更改作为订阅观察者的一部分提供的下一个函数的上下文。相反，你将有权访问订阅或信号或令牌，从而允许你执行取消订阅和测试关闭状态等操作。将在 v8 中删除。
+   * 从版本 8 开始，RxJS 将不再支持更改作为订阅观察者的一部分提供的下一个函数的上下文。相反，你将有权访问订阅或信号或令牌，从而允许你执行退订和测试关闭状态等操作。将在 v8 中删除。
    *
    */
   useDeprecatedNextContext: boolean;

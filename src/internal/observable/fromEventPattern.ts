@@ -55,7 +55,7 @@ export function fromEventPattern<T>(
  * it from the API. `removeHandler` will be called when consumer of resulting Observable
  * unsubscribes from it.
  *
- * 如果你使用的 API 也允许取消注册事件处理程序，你可以将另一个函数 - `removeHandler` - 作为第二个参数传递给 `fromEventPattern`。它将注入与以前相同的处理函数，现在你可以使用它从 API 中注销它。当结果 Observable 的消费者取消订阅时，将调用 `removeHandler`。
+ * 如果你使用的 API 也允许取消注册事件处理程序，你可以将另一个函数 - `removeHandler` - 作为第二个参数传递给 `fromEventPattern`。它将注入与以前相同的处理函数，现在你可以使用它从 API 中注销它。当结果 Observable 的消费者退订时，将调用 `removeHandler`。
  *
  * In some APIs unregistering is actually handled differently. Method registering an event handler
  * returns some kind of token, which is later used to identify which function should

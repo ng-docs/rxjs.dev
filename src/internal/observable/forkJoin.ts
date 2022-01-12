@@ -118,7 +118,7 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * If any given observable errors at some point, `forkJoin` will error as well and immediately unsubscribe
  * from the other observables.
  *
- * 如果在某个时候任何给定的 observable 错误，`forkJoin` 也会出错并立即取消订阅其他 observables。
+ * 如果在某个时候任何给定的 observable 错误，`forkJoin` 也会出错并立即退订其他 observables。
  *
  * Optionally `forkJoin` accepts a `resultSelector` function, that will be called with values which normally
  * would land in the emitted array. Whatever is returned by the `resultSelector`, will appear in the output

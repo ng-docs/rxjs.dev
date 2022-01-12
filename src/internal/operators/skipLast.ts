@@ -26,7 +26,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * After subscribing, unsubscribing will not result in the emission of the buffered
  * skipped values.
  *
- * 订阅后，取消订阅不会导致发送缓冲的跳过值。
+ * 订阅后，退订不会导致发送缓冲的跳过值。
  *
  * ## Example
  *
