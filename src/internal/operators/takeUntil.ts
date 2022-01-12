@@ -23,7 +23,7 @@ import { noop } from '../util/noop';
  * and completes. If the `notifier` doesn't emit any value and completes
  * then `takeUntil` will pass all values.
  *
- * `takeUntil` 订阅并开始镜像源 Observable。它还监视你提供的第二个 Observable `notifier`。如果 `notifier` 发出一个值，则输出 Observable 将停止镜像源 Observable 并完成。如果 `notifier` 程序没有发出任何值并完成，则 `takeUntil` 将传递所有值。
+ * `takeUntil` 订阅并开始镜像源 Observable。它还监视你提供的第二个 Observable `notifier`。如果此 `notifier` 发出一个值，则输出 Observable 将停止镜像源 Observable 并完成。如果此 `notifier` 没有发出任何值并完成，则 `takeUntil` 将传递所有值。
  *
  * ## Example
  *
@@ -54,7 +54,7 @@ import { noop } from '../util/noop';
  * @return A function that returns an Observable that emits the values from the
  * source Observable until `notifier` emits its first value.
  *
- * 一个返回 Observable 的函数，它从源 Observable 发出值，直到 `notifier` 程序发出它的第一个值。
+ * 一个返回 Observable 的函数，它从源 Observable 发出值，直到 `notifier` 发出它的第一个值。
  *
  */
 export function takeUntil<T>(notifier: ObservableInput<any>): MonoTypeOperatorFunction<T> {
