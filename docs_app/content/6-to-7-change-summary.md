@@ -463,7 +463,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - The observable returned by the `audit` operator's duration selector must emit a next notification to end the duration. Complete notifications no longer end the duration.
 
-  `audit` 操作员的持续时间选择器返回的可观察者必须发出下一个通知以结束持续时间。完成通知不再结束持续时间。
+  `audit` 操作符的持续时间选择器返回的可观察者必须发出下一个通知以结束持续时间。完成通知不再结束持续时间。
 
 - `audit` now emits the last value from the source when the source completes. Previously, `audit` would mirror the completion without emitting the value.
 
@@ -679,7 +679,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - The `sample` operator's notifier observable must emit a next notification to effect a sample. Complete notifications no longer effect a sample.
 
-  `sample` 操作员的通知器 observable 必须发出下一个通知来影响样本。完整的通知不再影响样本。
+  `sample` 操作符的通知器 observable 必须发出下一个通知来影响样本。完整的通知不再影响样本。
 
 ### scan
 

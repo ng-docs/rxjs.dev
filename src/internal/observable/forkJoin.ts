@@ -97,7 +97,7 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * objects will have the same keys as the dictionary passed, with their last values they have emitted
  * located at the corresponding key.
  *
- * 如果你将可观察者的字典传递给操作员，则生成的对象将具有与传递的字典相同的键，它们发出的最后一个值位于相应的键处。
+ * 如果你将可观察者的字典传递给操作符，则生成的对象将具有与传递的字典相同的键，它们发出的最后一个值位于相应的键处。
  *
  * That means `forkJoin` will not emit more than once and it will complete after that. If you need to emit combined
  * values not only at the end of the lifecycle of passed observables, but also throughout it, try out {@link combineLatest}
@@ -180,7 +180,7 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * @param {...ObservableInput} args Any number of Observables provided either as an array or as an arguments
  * passed directly to the operator.
  *
- * 任意数量的 Observables 作为数组或作为直接传递给操作员的参数提供。
+ * 任意数量的 Observables 作为数组或作为直接传递给操作符的参数提供。
  *
  * @param {function} [project] Function that takes values emitted by input Observables and returns value
  * that will appear in resulting Observable instead of default array.

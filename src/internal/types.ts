@@ -20,7 +20,7 @@ declare global {
 /**
  * OPERATOR INTERFACES
  *
- * 操作员界面
+ * 操作符界面
  *
  */
 
@@ -51,7 +51,7 @@ export interface Timestamp<T> {
    * The timestamp. By default, this is in epoch milliseconds.
    * Could vary based on the timestamp provider passed to the operator.
    *
-   * 时间戳。默认情况下，这是以纪元毫秒为单位。可能会因传递给操作员的时间戳提供程序而异。
+   * 时间戳。默认情况下，这是以纪元毫秒为单位。可能会因传递给操作符的时间戳提供程序而异。
    *
    */
   timestamp: number;

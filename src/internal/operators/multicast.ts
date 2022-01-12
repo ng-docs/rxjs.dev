@@ -10,7 +10,7 @@ import { connect } from './connect';
  * with the `connect` method, will use the provided subject to multicast the values
  * from the source to all consumers.
  *
- * 一个创建 {@link ConnectableObservable} 的操作员，当连接时，使用 `connect` 方法，将使用提供的主体将值从源多播到所有消费者。
+ * 一个创建 {@link ConnectableObservable} 的操作符，当连接时，使用 `connect` 方法，将使用提供的主体将值从源多播到所有消费者。
  *
  * @param subject The subject to multicast through.
  *
@@ -68,7 +68,7 @@ export function multicast<T, O extends ObservableInput<any>>(
  * with the `connect` method, will use the provided subject to multicast the values
  * from the source to all consumers.
  *
- * 一个创建 {@link ConnectableObservable} 的操作员，当连接时，使用 `connect` 方法，将使用提供的主体将值从源多播到所有消费者。
+ * 一个创建 {@link ConnectableObservable} 的操作符，当连接时，使用 `connect` 方法，将使用提供的主体将值从源多播到所有消费者。
  *
  * @param subjectFactory A factory that will be called to create the subject. Passing a function here
  * will cause the underlying subject to be "reset" on error, completion, or refCounted unsubscription of

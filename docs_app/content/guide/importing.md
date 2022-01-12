@@ -8,7 +8,7 @@ There are different ways you can {@link guide/installation install} RxJS. Using/
 
 [Pipeable operators](https://v6.rxjs.dev/guide/v6/pipeable-operators) were introduced in RxJS version 5.5. This enabled all operators to be exported from a single place. This new export site was introduced with RxJS version 6 where all pipeable operators could have been imported from `'rxjs/operators'`. For example, `import { map } from 'rxjs/operators'`.
 
-[Pipeable 操作符](https://v6.rxjs.dev/guide/v6/pipeable-operators)是在 RxJS 5.5 版中引入的。这使得所有操作员都可以从一个地方导出。这个新的导出站点是在 RxJS 版本 6 中引入的，其中所有可管道操作符都可以从 `'rxjs/operators'` 导入。例如，`import { map } from 'rxjs/operators'`。
+[Pipeable 操作符](https://v6.rxjs.dev/guide/v6/pipeable-operators)是在 RxJS 5.5 版中引入的。这使得所有操作符都可以从一个地方导出。这个新的导出站点是在 RxJS 版本 6 中引入的，其中所有可管道操作符都可以从 `'rxjs/operators'` 导入。例如，`import { map } from 'rxjs/operators'`。
 
 # New in RxJS v7.2.0
 
@@ -87,7 +87,7 @@ usually ending with `With`). Those are:
 
 | `'rxjs/operators'` Operator | Replace With Static Creation Operator | Replace With New Operator Name |
 | --------------------------- | ------------------------------------- | ------------------------------ |
-| `'rxjs/operators'` 操作符 | 替换为静态创建操作符 | 替换为新的操作员名称 |
+| `'rxjs/operators'` 操作符 | 替换为静态创建操作符 | 替换为新的操作符名称 |
 | [`combineLatest`](/api/operators/combineLatest) | {@link combineLatest} | {@link combineLatestWith} |
 | [`combineLatest`](/api/operators/combineLatest) | {@link combineLatest} | {@link combineLatestWith} |
 | [`concat`](/api/operators/concat) | {@link concat} | {@link concatWith} |

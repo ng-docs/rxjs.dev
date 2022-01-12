@@ -173,7 +173,7 @@ Below you can see the anatomy of a marble diagram.
 
 Throughout this documentation site, we extensively use marble diagrams to explain how operators work. They may be really useful in other contexts too, like on a whiteboard or even in our unit tests (as ASCII diagrams).
 
-在整个文档站点中，我们广泛使用弹珠图来解释操作员的工作方式。它们在其他环境中也可能非常有用，比如在白板上，甚至在我们的单元测试中（如 ASCII 图表）。
+在整个文档站点中，我们广泛使用弹珠图来解释操作符的工作方式。它们在其他环境中也可能非常有用，比如在白板上，甚至在我们的单元测试中（如 ASCII 图表）。
 
 ## Categories of operators
 

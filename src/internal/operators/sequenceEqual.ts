@@ -24,7 +24,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * observable emits before completing, the returned observable will emit `false` and complete. If one observable never
  * completes or emits after the other completes, the returned observable will never complete.
  *
- * `sequenceEqual` 订阅两个 observable 并缓冲来自每个 observable 的传入值。每当任何一个 observable 发出一个值时，该值都会被缓冲，并且缓冲区会从底部向上移动和比较；如果任何值对不匹配，则返回的 observable 将发出 `false` 并完成。如果其中一个 observable 完成，则操作员将等待另一个 observable 完成；如果其他 observable 在完成之前发出，则返回的 observable 将发出 `false` 并完成。如果一个 observable 从未完成或在另一个完成后发出，则返回的 observable 将永远不会完成。
+ * `sequenceEqual` 订阅两个 observable 并缓冲来自每个 observable 的传入值。每当任何一个 observable 发出一个值时，该值都会被缓冲，并且缓冲区会从底部向上移动和比较；如果任何值对不匹配，则返回的 observable 将发出 `false` 并完成。如果其中一个 observable 完成，则操作符将等待另一个 observable 完成；如果其他 observable 在完成之前发出，则返回的 observable 将发出 `false` 并完成。如果一个 observable 从未完成或在另一个完成后发出，则返回的 observable 将永远不会完成。
  *
  * ## Example
  *

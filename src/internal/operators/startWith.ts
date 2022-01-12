@@ -27,7 +27,7 @@ export function startWith<T, A extends readonly unknown[] = T[]>(...values: A): 
  * values provided to this operator, then subscribe to the source and mirror all of its emissions
  * to subscribers.
  *
- * 返回一个 observable，在订阅的那一刻，它将同步发送提供给此操作员的所有值，然后订阅源并将其所有发送镜像给订阅者。
+ * 返回一个 observable，在订阅的那一刻，它将同步发送提供给此操作符的所有值，然后订阅源并将其所有发送镜像给订阅者。
  *
  * This is a useful way to know when subscription has occurred on an existing observable.
  *

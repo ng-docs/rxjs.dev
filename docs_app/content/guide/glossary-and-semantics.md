@@ -208,7 +208,7 @@ Pull-based systems are the opposite of [push](#Push)-based. In a pull-based type
 A factory function that creates an [operator function](#operator-function). Examples of this in rxjs are functions like [`map`](/api/operators/map) and [`mergeMap`](/api/operators/mergeMap), which are generally passed to [`pipe`](/api/index/class/Observable#pipe). The result of calling many operators, and passing their resulting [operator functions](#operator-function) into pipe on an observable [source](#source) will be another [observable](#observable), and will generally not result
 in [subscription](#subscription).
 
-创建[操作员函数的工厂函数](#operator-function)。rxjs 中的示例是[`map`](/api/operators/map)和[`mergeMap`](/api/operators/mergeMap)之类的函数，它们通常传递给[`pipe`](/api/index/class/Observable#pipe)。调用许多操作符，并将其结果[操作符函数](#operator-function)传递到可观察[源](#source)上的管道中的结果将是另一个[可观察](#observable)的，并且通常不会导致[订阅](#subscription)。
+创建[操作符函数的工厂函数](#operator-function)。rxjs 中的示例是[`map`](/api/operators/map)和[`mergeMap`](/api/operators/mergeMap)之类的函数，它们通常传递给[`pipe`](/api/index/class/Observable#pipe)。调用许多操作符，并将其结果[操作符函数](#operator-function)传递到可观察[源](#source)上的管道中的结果将是另一个[可观察](#observable)的，并且通常不会导致[订阅](#subscription)。
 
 ### Operator Function
 
@@ -225,7 +225,7 @@ A function that takes an [observable](#observable), and maps it to a new [observ
 An action taken while handling a [notification](#notification), as set up by an [operator](#operator) and/or [operator function](#operator-function). In RxJS, a developer can chain several [operator functions](#operator-function) together by calling [operators](#operator) and passing the created [operator functions](#operator-function) to the [`pipe`](/api/index/class/Observable#pipe) method of [`Observable`](/api/index/class/Observable), which results in a new [observable](#observable).
 During [subscription](#subscription) to that observable, operations are performed in an order dictated by the [observation chain](#observation-chain).
 
-处理[通知](#notification)时采取的操作，由[操作员](#operator)和/或[操作员功能](#operator-function)设置。在 RxJS 中，开发人员可以通过调用[操作符](#operator)并将创建的[操作符函数](#operator-function)传递给[`Observable`](/api/index/class/Observable)的[`pipe`](/api/index/class/Observable#pipe)方法，将多个[操作符函数](#operator-function)链接在一起，从而产生一个新的[observable](#observable)。在[订阅](#subscription)该 observable 期间，操作按照[观察链](#observation-chain)指定的顺序执行。
+处理[通知](#notification)时采取的操作，由[操作符](#operator)和/或[操作符功能](#operator-function)设置。在 RxJS 中，开发人员可以通过调用[操作符](#operator)并将创建的[操作符函数](#operator-function)传递给[`Observable`](/api/index/class/Observable)的[`pipe`](/api/index/class/Observable#pipe)方法，将多个[操作符函数](#operator-function)链接在一起，从而产生一个新的[observable](#observable)。在[订阅](#subscription)该 observable 期间，操作按照[观察链](#observation-chain)指定的顺序执行。
 
 ### Stream
 

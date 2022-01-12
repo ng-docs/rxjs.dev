@@ -160,7 +160,7 @@ The `async` Scheduler is one of the built-in schedulers provided by RxJS. Each o
 You may have already used schedulers in your RxJS code without explicitly stating the type of schedulers to be used. This is because all Observable operators that deal with concurrency have optional schedulers. If you do not provide the scheduler, RxJS will pick a default scheduler by using the principle of least concurrency. This means that the scheduler which introduces the least amount of concurrency that satisfies the needs of the operator is chosen. For example, for operators returning an observable
 with a finite and small number of messages, RxJS uses no Scheduler, i.e. `null` or `undefined`. For operators returning a potentially large or infinite number of messages, `queue` Scheduler is used. For operators which use timers, `async` is used.
 
-你可能已经在你的 RxJS 代码中使用了调度器，而没有明确说明要使用的调度器的类型。这是因为所有处理并发的 Observable 操作符都有可选的调度器。如果你不提供调度器，RxJS 会根据最小并发的原则选择一个默认的调度器。这意味着选择引入满足操作员需求的最少并发量的调度器。例如，对于返回具有有限且少量消息的 observable 的操作符，RxJS 不使用调度器，即 `null` 或 `undefined`。对于返回可能大量或无限数量的消息的操作员，使用 `queue` 调度器。对于使用计时器的操作符，使用 `async`。
+你可能已经在你的 RxJS 代码中使用了调度器，而没有明确说明要使用的调度器的类型。这是因为所有处理并发的 Observable 操作符都有可选的调度器。如果你不提供调度器，RxJS 会根据最小并发的原则选择一个默认的调度器。这意味着选择引入满足操作符需求的最少并发量的调度器。例如，对于返回具有有限且少量消息的 observable 的操作符，RxJS 不使用调度器，即 `null` 或 `undefined`。对于返回可能大量或无限数量的消息的操作符，使用 `queue` 调度器。对于使用计时器的操作符，使用 `async`。
 
 Because RxJS uses the least concurrency scheduler, you can pick a different scheduler if you want to introduce concurrency for performance purpose. To specify a particular scheduler, you can use those operator methods that take a scheduler, e.g., `from([10, 20, 30], asyncScheduler)`.
 

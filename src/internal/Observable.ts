@@ -82,7 +82,7 @@ export class Observable<T> implements Subscribable<T> {
    * @method lift
    * @param operator the operator defining the operation to take on the observable
    *
-   * 定义对可观察者进行操作的操作员
+   * 定义对可观察者进行操作的操作符
    *
    * @return a new observable with the Operator applied
    *

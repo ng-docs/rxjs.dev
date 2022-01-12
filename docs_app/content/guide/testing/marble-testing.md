@@ -87,7 +87,7 @@ Although `run()` executes entirely synchronously, the helper functions inside yo
 
 - `time()` - converts marbles into a number indicating number of frames. It can be used by operators expecting a specific timeout. It measures time based on the position of the complete (`|`) signal:
 
-  `time()` - 将弹珠转换为表示帧数的数字。期望特定超时的操作员可以使用它。它根据完整 ( `|` ) 信号的位置测量时间：
+  `time()` - 将弹珠转换为表示帧数的数字。期望特定超时的操作符可以使用它。它根据完整 ( `|` ) 信号的位置测量时间：
 
   ```ts
   testScheduler.run((helpers) => {
@@ -442,7 +442,7 @@ to [use the TestScheduler outside](https://github.com/ReactiveX/rxjs/blob/7113ae
 
 - The testScheduler instance is _not_ automatically used by operators that use `AsyncScheduler`, e.g. `delay`, `debounceTime`, etc., so you have to explicitly pass it to them.
 
-  使用 AsyncScheduler 的操作员 _ 不会 _ 自动使用 `AsyncScheduler` 实例，例如 `delay`、`debounceTime` 等，因此你必须将其显式传递给它们。
+  使用 AsyncScheduler 的操作符 _ 不会 _ 自动使用 `AsyncScheduler` 实例，例如 `delay`、`debounceTime` 等，因此你必须将其显式传递给它们。
 
 - There is NO support for time progression syntax e.g. `-a 100ms b-|`.
 

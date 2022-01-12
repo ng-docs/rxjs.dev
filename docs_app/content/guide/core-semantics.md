@@ -33,7 +33,7 @@ sense.
 
 - The returned operator function MUST be [referentially transparent](https://en.wikipedia.org/wiki/Referential_transparency). That is to say, that if you capture the return value of the operator (e.g. `const double => map(x => x + x)`), you can use that value to operate on any many observables as you like without changing any underlying state in the operator reference. (e.g. `a$.pipe(double)` and `b$.pipe(double)`).
 
-  返回的操作符函数必须是[引用透明](https://en.wikipedia.org/wiki/Referential_transparency)的。也就是说，如果你捕获操作符的返回值（例如 `const double => map(x => x + x)`），你可以使用该值对任意多个 observables 进行任意操作，而无需更改任何底层操作员参考中的状态。（例如 `a$.pipe(double)` 和 `b$.pipe(double)`）。
+  返回的操作符函数必须是[引用透明](https://en.wikipedia.org/wiki/Referential_transparency)的。也就是说，如果你捕获操作符的返回值（例如 `const double => map(x => x + x)`），你可以使用该值对任意多个 observables 进行任意操作，而无需更改任何底层操作符参考中的状态。（例如 `a$.pipe(double)` 和 `b$.pipe(double)`）。
 
 - The observable returned by the operator function MUST subscribe to the source.
 
@@ -41,7 +41,7 @@ sense.
 
 - If the operation performed by the operator can tell it not change anything about the output of the source, it MUST return the reference to the source. For example `take(Infinity)` or `skip(0)`.
 
-  如果操作员执行的操作可以告诉它不会改变源输出的任何内容，它必须返回对源的引用。例如 `take(Infinity)` 或 `skip(0)`。
+  如果操作符执行的操作可以告诉它不会改变源输出的任何内容，它必须返回对源的引用。例如 `take(Infinity)` 或 `skip(0)`。
 
 - Operators that accept a "notifier", that is another observable source that is used to trigger some behavior, must accept any type that can be converted to an `Observable` with `from`. For example `takeUntil`.
 
@@ -49,11 +49,11 @@ sense.
 
 - Operators that accept "notifiers" (as described above), MUST ONLY recognized next values from the notifier as "notifications". Emitted completions may not be used a source of notification.
 
-  接受“通知器”（如上所述）的操作员必须仅将来自通知器的下一个值识别为“通知”。发出的完成不能用作通知源。
+  接受“通知器”（如上所述）的操作符必须仅将来自通知器的下一个值识别为“通知”。发出的完成不能用作通知源。
 
 - "Notifiers" provided directly to the operator MUST be subscribed to _before_ the source is subscribed to. "Notifiers" created via factory function provided to the operator SHOULD be subscribed to at the earliest possible moment.
 
-  直接提供给操作符的“通知程序”必须在订阅源 _ 之前 _ 订阅。通过提供给操作员的工厂函数创建的“通知程序”应该尽早订阅。
+  直接提供给操作符的“通知程序”必须在订阅源 _ 之前 _ 订阅。通过提供给操作符的工厂函数创建的“通知程序”应该尽早订阅。
 
 - The observable returned by the operator function is considered to be the "consumer" of the source. As such, the consumer MUST unsubscribe from the source as soon as it knows it no longer needs values before proceeding to do _any_ action.
 
@@ -85,7 +85,7 @@ sense.
 
 - Names MUST NOT end in `With`. That is reserved for the operator counter parts of creation functions.
 
-  名称不得以 `With` 结尾。这是为创建功能的操作员计数器部分保留的。
+  名称不得以 `With` 结尾。这是为创建功能的操作符计数器部分保留的。
 
 - MAY have "result selectors". This is a secondary argument that provides the ability to "map" values before they're emitted from the resulting observable.
 

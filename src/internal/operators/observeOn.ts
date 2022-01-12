@@ -28,7 +28,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * Observable directly (usually into the operator that creates it). `observeOn` simply delays notifications a
  * little bit more, to ensure that they are emitted at expected moments.
  *
- * 返回的 Observable 发出与源 Observable 相同的通知（下一个值、完成和错误事件），但使用提供的调度器重新调度。请注意，这并不意味着源 Observables 内部调度器将以任何方式被替换。原来的调度器仍然会被使用，但是当源 Observable 发出通知时，它会立即再次被调度——这次调度器被传递给了 `observeOn`。一个反模式是在 Observable 上调用 `observeOn` 同步发射大量值，将发射分成异步块。为此，必须将调度器直接传递给源 Observable（通常传递给创建它的操作员）。`observeOn` 只是稍微延迟通知，以确保它们在预期的时刻发出。
+ * 返回的 Observable 发出与源 Observable 相同的通知（下一个值、完成和错误事件），但使用提供的调度器重新调度。请注意，这并不意味着源 Observables 内部调度器将以任何方式被替换。原来的调度器仍然会被使用，但是当源 Observable 发出通知时，它会立即再次被调度——这次调度器被传递给了 `observeOn`。一个反模式是在 Observable 上调用 `observeOn` 同步发射大量值，将发射分成异步块。为此，必须将调度器直接传递给源 Observable（通常传递给创建它的操作符）。`observeOn` 只是稍微延迟通知，以确保它们在预期的时刻发出。
  *
  * As a matter of fact, `observeOn` accepts second parameter, which specifies in milliseconds with what delay notifications
  * will be emitted. The main difference between {@link delay} operator and `observeOn` is that `observeOn`

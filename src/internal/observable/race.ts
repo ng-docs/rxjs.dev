@@ -27,7 +27,7 @@ export function race<T extends readonly unknown[]>(...inputs: [...ObservableInpu
  * the race operator will also throw an error, no matter if another source observable
  * could potentially win the race.
  *
- * 如果一个使用的源 observable 在第一次通知之前抛出一个错误，那么无论另一个源 observable 是否有可能赢得比赛，比赛操作员也会抛出一个错误。
+ * 如果一个使用的源 observable 在第一次通知之前抛出一个错误，那么无论另一个源 observable 是否有可能赢得比赛，比赛操作符也会抛出一个错误。
  *
  * `race` can be useful for selecting the response from the fastest network connection for
  * HTTP or WebSockets. `race` can also be useful for switching observable context based on user
@@ -75,7 +75,7 @@ export function race<T>(...sources: (ObservableInput<T> | ObservableInput<T>[])[
  * An observable initializer function for both the static version and the
  * operator version of race.
  *
- * 用于静态版本和操作员版本的可观察初始化函数。
+ * 用于静态版本和操作符版本的可观察初始化函数。
  *
  * @param sources The sources to race
  *

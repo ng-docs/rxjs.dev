@@ -182,7 +182,7 @@ export function generate<T, S>(
  * of calling `generate` allows you to omit `condition` as well. If you omit it, that means
  * condition always holds, or in other words the resulting Observable will never complete.
  *
- * 如果你在 `generate` 调用中发现三个匿名函数难以阅读，你可以向操作员提供一个对象，而不是该对象具有以下属性： `initialState`、`condition`、`iterate` 和 `resultSelector`，它们应该具有你通常传递给 `generate` 的相应值. `resultSelector` 仍然是可选的，但调用 `generate` 的这种形式也允许你省略 `condition`。如果省略它，则意味着条件始终成立，或者换句话说，生成的 Observable 永远不会完成。
+ * 如果你在 `generate` 调用中发现三个匿名函数难以阅读，你可以向操作符提供一个对象，而不是该对象具有以下属性： `initialState`、`condition`、`iterate` 和 `resultSelector`，它们应该具有你通常传递给 `generate` 的相应值. `resultSelector` 仍然是可选的，但调用 `generate` 的这种形式也允许你省略 `condition`。如果省略它，则意味着条件始终成立，或者换句话说，生成的 Observable 永远不会完成。
  *
  * Both forms of `generate` can optionally accept a scheduler. In case of a multi-parameter call,
  * scheduler simply comes as a last argument (no matter if there is a `resultSelector`
@@ -193,7 +193,7 @@ export function generate<T, S>(
  * on a separate task in the event loop, you could use the `async` scheduler. Note that
  * by default (when no scheduler is passed) values are simply emitted synchronously.
  *
- * 两种形式的 `generate` 可以选择接受调度器。在多参数调用的情况下，调度器只是作为最后一个参数出现（无论是否有 `resultSelector` 函数）。在单参数调用的情况下，你可以将其作为 `scheduler` 属性提供给传递给操作员的对象。在这两种情况下，调度器决定下一次循环迭代何时发生，因此下一个值何时由 Observable 发出。例如，要确保在事件循环中的单独任务上将每个值推送到观察者，你可以使用 `async` 调度器。请注意，默认情况下（当没有传递调度器时）值只是同步发出。
+ * 两种形式的 `generate` 可以选择接受调度器。在多参数调用的情况下，调度器只是作为最后一个参数出现（无论是否有 `resultSelector` 函数）。在单参数调用的情况下，你可以将其作为 `scheduler` 属性提供给传递给操作符的对象。在这两种情况下，调度器决定下一次循环迭代何时发生，因此下一个值何时由 Observable 发出。例如，要确保在事件循环中的单独任务上将每个值推送到观察者，你可以使用 `async` 调度器。请注意，默认情况下（当没有传递调度器时）值只是同步发出。
  *
  * ## Examples
  *
