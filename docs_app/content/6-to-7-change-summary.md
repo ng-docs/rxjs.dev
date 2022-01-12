@@ -363,19 +363,19 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - A handler for dealing with errors that make it all the way down to the "end" of the observation chain when there is no error handler in the observer. Useful for doing things like logging unhandled errors in RxJS observable chains.
 
-  当观察者中没有错误处理程序时，用于处理一直到观察链“末端”的错误的处理程序。对于在 RxJS 可观察链中记录未处理的错误等事情很有用。
+  当观察者中没有错误处理器时，用于处理一直到观察链“末端”的错误的处理器。对于在 RxJS 可观察链中记录未处理的错误等事情很有用。
 
 #### onStoppedNotification
 
 - A handler for edge cases where a subscriber within RxJS is notified after it has already "stopped", that is, a point in time where it has received an error or complete, but hasn't yet finalized. This is mostly useful for logging purposes.
 
-  边缘情况的处理程序，其中 RxJS 中的订阅者在它已经“停止”之后得到通知，即它收到错误或完成但尚未完成的时间点。这主要用于记录目的。
+  边缘情况的处理器，其中 RxJS 中的订阅者在它已经“停止”之后得到通知，即它收到错误或完成但尚未完成的时间点。这主要用于记录目的。
 
 #### useDeprecatedNextContext
 
 - In RxJS 6, a little used feature allowed users to access the `subscriber` directly as `this` within a call to the `next` handler. The problem with this is it incurred heavy performance penalties. That behavior has been changed (because it wasn't really documented and it was barely ever used) to not change the `this` context of any user-provided subscription handlers. If you need to get that feature back, you can switch it on with this flag. Note this behavior will be removed completely in version 8.
 
-  在 RxJS 6 中，一个很少使用的功能允许用户在调用 `this` `next` 处理程序时直接访问 `subscriber` 者。这样做的问题是它招致了严重的性能损失。该行为已更改（因为它没有真正记录并且几乎从未使用过）以不更改任何用户提供的订阅处理程序的 `this` 上下文。如果你需要恢复该功能，可以使用此标志打开它。请注意，此行为将在版本 8 中完全删除。
+  在 RxJS 6 中，一个很少使用的功能允许用户在调用 `this` `next` 处理器时直接访问 `subscriber` 者。这样做的问题是它招致了严重的性能损失。该行为已更改（因为它没有真正记录并且几乎从未使用过）以不更改任何用户提供的订阅处理器的 `this` 上下文。如果你需要恢复该功能，可以使用此标志打开它。请注意，此行为将在版本 8 中完全删除。
 
 ### connectable
 

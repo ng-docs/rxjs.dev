@@ -57,7 +57,7 @@ RxJS 中的主要类型。在其最高级别，可观察者表示一个模板，
 
 The manifestation of a [consumer](#consumer). A type that may have some (or all) handlers for each type of [notification](#notification): [next](#next), [error](#error), and [complete](#complete). Having all three types of handlers generally gets this to be called an "observer", where if it is missing any of the notification handlers, it may be called a ["partial observer"](#partial-observer).
 
-一个[消费者](#consumer)的体现。一种可能对每种类型的[通知](#notification)都有一些（或全部）处理程序的类型： [next](#next)、[error](#error)和[complete](#complete)。拥有所有三种类型的处理程序通常会将此称为“观察者”，如果缺少任何通知处理程序，则可以将其称为[“部分观察者”](#partial-observer)。
+一个[消费者](#consumer)的体现。一种可能对每种类型的[通知](#notification)都有一些（或全部）处理器的类型： [next](#next)、[error](#error)和[complete](#complete)。拥有所有三种类型的处理器通常会将此称为“观察者”，如果缺少任何通知处理器，则可以将其称为[“部分观察者”](#partial-observer)。
 
 ## Major Actions
 
@@ -286,7 +286,7 @@ An [observer](#observer) that lacks all necessary [notification](#notification) 
 
 An "unhandled error" is any [error](#error) that is not handled by a [consumer](#consumer)-provided function, which is generally provided during the [subscribe](#subscribe) action. If no error handler was provided, RxJS will assume the error is "unhandled" and rethrow the error on a new callstack or prevent ["producer interference"](#producer-interface)
 
-“未处理的错误”是[消费者](#consumer)提供的函数未处理的任何[错误](#error)，通常在[订阅](#subscribe)操作期间提供。如果没有提供错误处理程序，RxJS 将假定错误是“未处理的”并在新的调用堆栈上重新抛出错误或防止[“生产者干扰”](#producer-interface)
+“未处理的错误”是[消费者](#consumer)提供的函数未处理的任何[错误](#error)，通常在[订阅](#subscribe)操作期间提供。如果没有提供错误处理器，RxJS 将假定错误是“未处理的”并在新的调用堆栈上重新抛出错误或防止[“生产者干扰”](#producer-interface)
 
 ### Producer Interference
 

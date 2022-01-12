@@ -156,7 +156,7 @@ export function fromEvent<T, R>(
  * passed to event handler. Output Observable will then emit value returned by project function,
  * instead of the usual value.
  *
- * 请注意，如果事件目标调用具有多个参数的注册函数，则第二个和后续参数将不会出现在结果流中。为了访问它们，你可以传递给 `fromEvent` 可选项目函数，该函数将使用传递给事件处理程序的所有参数进行调用。然后，Output Observable 将发出项目函数返回的值，而不是通常的值。
+ * 请注意，如果事件目标调用具有多个参数的注册函数，则第二个和后续参数将不会出现在结果流中。为了访问它们，你可以传递给 `fromEvent` 可选项目函数，该函数将使用传递给事件处理器的所有参数进行调用。然后，Output Observable 将发出项目函数返回的值，而不是通常的值。
  *
  * Remember that event targets listed below are checked via duck typing. It means that
  * no matter what kind of object you have and no matter what environment you work in,
@@ -172,7 +172,7 @@ export function fromEvent<T, R>(
  * unregister it), you should use {@link bindCallback} or {@link bindNodeCallback}
  * instead.
  *
- * 如果你使用的 API 更多的是回调然后面向事件处理程序（订阅的回调函数只触发一次，因此无需手动取消注册它），你应该使用 {@link bindCallback} 或 {@link bindNodeCallback} 代替。
+ * 如果你使用的 API 更多的是回调然后面向事件处理器（订阅的回调函数只触发一次，因此无需手动取消注册它），你应该使用 {@link bindCallback} 或 {@link bindNodeCallback} 代替。
  *
  * `fromEvent` supports following types of event targets:
  *
@@ -277,7 +277,7 @@ export function fromEvent<T, R>(
  * @param {FromEventTarget<T>} target The DOM EventTarget, Node.js
  * EventEmitter, JQuery-like event target, NodeList or HTMLCollection to attach the event handler to.
  *
- * DOM EventTarget、Node.js EventEmitter、类似 JQuery 的事件目标、NodeList 或 HTMLCollection 来附加事件处理程序。
+ * DOM EventTarget、Node.js EventEmitter、类似 JQuery 的事件目标、NodeList 或 HTMLCollection 来附加事件处理器。
  *
  * @param {string} eventName The event name of interest, being emitted by the
  * `target`.
@@ -355,7 +355,7 @@ export function fromEvent<T>(
  * from a target in the most common handler pattern, where there are only two arguments.
  * (e.g.  `on(name, fn)`, `off(name, fn)`, `addListener(name, fn)`, or `removeListener(name, fn)`)
  *
- * 用于创建 `add` 和 `remove` 函数，以在最常见的处理程序模式中从目标注册和取消注册事件处理程序，其中只有两个参数。（例如 `on(name, fn)`、`off(name, fn)`、`addListener(name, fn)` 或 `removeListener(name, fn)`）
+ * 用于创建 `add` 和 `remove` 函数，以在最常见的处理器模式中从目标注册和取消注册事件处理器，其中只有两个参数。（例如 `on(name, fn)`、`off(name, fn)`、`addListener(name, fn)` 或 `removeListener(name, fn)`）
  *
  * @param target The target we're calling methods on
  *
@@ -374,7 +374,7 @@ function toCommonHandlerRegistry(target: any, eventName: string) {
  * Checks to see if the target implements the required node-style EventEmitter methods
  * for adding and removing event handlers.
  *
- * 检查目标是否实现了添加和删除事件处理程序所需的节点样式 EventEmitter 方法。
+ * 检查目标是否实现了添加和删除事件处理器所需的节点样式 EventEmitter 方法。
  *
  * @param target the object to check
  *
@@ -389,7 +389,7 @@ function isNodeStyleEventEmitter(target: any): target is NodeStyleEventEmitter {
  * Checks to see if the target implements the required jQuery-style EventEmitter methods
  * for adding and removing event handlers.
  *
- * 检查目标是否实现了添加和删除事件处理程序所需的 jQuery 样式 EventEmitter 方法。
+ * 检查目标是否实现了添加和删除事件处理器所需的 jQuery 样式 EventEmitter 方法。
  *
  * @param target the object to check
  *
@@ -404,7 +404,7 @@ function isJQueryStyleEventEmitter(target: any): target is JQueryStyleEventEmitt
  * Checks to see if the target implements the required EventTarget methods
  * for adding and removing event handlers.
  *
- * 检查目标是否实现了添加和删除事件处理程序所需的 EventTarget 方法。
+ * 检查目标是否实现了添加和删除事件处理器所需的 EventTarget 方法。
  *
  * @param target the object to check
  *

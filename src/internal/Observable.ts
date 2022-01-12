@@ -115,7 +115,7 @@ export class Observable<T> implements Subscribable<T> {
   /**
    * Invokes an execution of an Observable and registers Observer handlers for notifications it will emit.
    *
-   * 调用 Observable 的执行并为它将发出的通知注册 Observer 处理程序。
+   * 调用 Observable 的执行并为它将发出的通知注册 Observer 处理器。
    *
    * <span class="informal">Use it when you have all these Observables, but still nothing is happening.</span>
    *
@@ -146,7 +146,7 @@ export class Observable<T> implements Subscribable<T> {
    * `process.on('error)`) to be notified of unhandled errors. Because of this, it's recommended that you provide
    * an `error` method to avoid missing thrown errors.
    *
-   * 第一种方法是创建一个实现 {@link Observer} 接口的对象。它应该具有由该接口定义的方法，但请注意，它应该只是一个常规的 JavaScript 对象，你可以以任何你想要的方式创建它（ES6 类、经典函数构造函数、对象字面量等）。特别是，不要尝试使用任何 RxJS 实现细节来创建观察者——你不需要它们。还要记住，你的对象不必实现所有方法。如果你发现自己创建了一个什么都不做的方法，你可以简单地省略它。但是请注意，如果没有提供 `error` 方法并且发生错误，它将被异步抛出。使用 `try` / `catch` 无法捕获异步抛出的错误。相反，使用 {@link onUnhandledError} 配置选项或使用运行时处理程序（如 `window.onerror` 或 `process.on('error)`）来通知未处理的错误。因此，建议你提供 `error` 方法以避免丢失抛出的错误。
+   * 第一种方法是创建一个实现 {@link Observer} 接口的对象。它应该具有由该接口定义的方法，但请注意，它应该只是一个常规的 JavaScript 对象，你可以以任何你想要的方式创建它（ES6 类、经典函数构造函数、对象字面量等）。特别是，不要尝试使用任何 RxJS 实现细节来创建观察者——你不需要它们。还要记住，你的对象不必实现所有方法。如果你发现自己创建了一个什么都不做的方法，你可以简单地省略它。但是请注意，如果没有提供 `error` 方法并且发生错误，它将被异步抛出。使用 `try` / `catch` 无法捕获异步抛出的错误。相反，使用 {@link onUnhandledError} 配置选项或使用运行时处理器（如 `window.onerror` 或 `process.on('error)`）来通知未处理的错误。因此，建议你提供 `error` 方法以避免丢失抛出的错误。
    *
    * The second way is to give up on Observer object altogether and simply provide callback functions in place of its methods.
    * This means you can provide three functions as arguments to `subscribe`, where the first function is equivalent
@@ -268,20 +268,20 @@ export class Observable<T> implements Subscribable<T> {
    * or the first of three possible handlers, which is the handler for each value emitted from the subscribed
    * Observable.
    *
-   *（可选）具有要调用的方法的观察者，或者三个可能的处理程序中的第一个，它是从订阅的 Observable 发出的每个值的处理程序。
+   *（可选）具有要调用的方法的观察者，或者三个可能的处理器中的第一个，它是从订阅的 Observable 发出的每个值的处理器。
    *
    * @param {Function} error (optional) A handler for a terminal event resulting from an error. If no error handler is provided,
    * the error will be thrown asynchronously as unhandled.
    *
-   *（可选）由错误导致的终端事件的处理程序。如果未提供错误处理程序，则错误将作为未处理异步抛出。
+   *（可选）由错误导致的终端事件的处理器。如果未提供错误处理器，则错误将作为未处理异步抛出。
    *
    * @param {Function} complete (optional) A handler for a terminal event resulting from successful completion.
    *
-   *（可选）成功完成导致的终端事件的处理程序。
+   *（可选）成功完成导致的终端事件的处理器。
    *
    * @return {Subscription} a subscription reference to the registered handlers
    *
-   * 对已注册处理程序的订阅引用
+   * 对已注册处理器的订阅引用
    *
    * @method subscribe
    */
@@ -372,7 +372,7 @@ export class Observable<T> implements Subscribable<T> {
    * ```
    * @param next a handler for each value emitted by the observable
    *
-   * 可观察者发出的每个值的处理程序
+   * 可观察者发出的每个值的处理器
    *
    * @return a promise that either resolves on observable completion or
    *  rejects with the handled error
@@ -385,7 +385,7 @@ export class Observable<T> implements Subscribable<T> {
   /**
    * @param next a handler for each value emitted by the observable
    *
-   * 可观察者发出的每个值的处理程序
+   * 可观察者发出的每个值的处理器
    *
    * @param promiseCtor a constructor function used to instantiate the Promise
    *

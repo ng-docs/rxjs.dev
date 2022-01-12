@@ -50,11 +50,11 @@ export function tap<T>(
  * The observable returned by `tap` is an exact mirror of the source, with one exception: Any error that occurs -- synchronously -- in a handler
  * provided to `tap` will be emitted as an error from the returned observable.
  *
- * `tap` 返回的 observable 是源的精确镜像，但有一个例外：在提供给 `tap` 的处理程序中同步发生的任何错误都将作为返回的 observable 的错误发出。
+ * `tap` 返回的 observable 是源的精确镜像，但有一个例外：在提供给 `tap` 的处理器中同步发生的任何错误都将作为返回的 observable 的错误发出。
  *
  * > Be careful! You can mutate objects as they pass through the `tap` operator's handlers.
  * >
- * > 当心！你可以在对象通过 `tap` 操作符的处理程序时对其进行变异。
+ * > 当心！你可以在对象通过 `tap` 操作符的处理器时对其进行变异。
  * >
  *
  * The most common use of `tap` is actually for debugging. You can place a `tap(console.log)` anywhere
@@ -126,15 +126,15 @@ export function tap<T>(
  * @see {@link Observable#subscribe}
  * @param observerOrNext A next handler or partial observer
  *
- * 下一个处理程序或部分观察者
+ * 下一个处理器或部分观察者
  *
  * @param error An error handler
  *
- * 错误处理程序
+ * 错误处理器
  *
  * @param complete A completion handler
  *
- * 完成处理程序
+ * 完成处理器
  *
  * @return A function that returns an Observable identical to the source, but
  * runs the specified Observer or callback(s) for each item.

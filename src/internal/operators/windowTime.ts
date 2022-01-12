@@ -199,7 +199,7 @@ export function windowTime<T>(windowTimeSpan: number, ...otherArgs: any[]): Oper
      * Used to notify all of the windows and the subscriber in the same way
      * in the error and complete handlers.
      *
-     * 用于在错误和完成处理程序中以相同的方式通知所有窗口和订阅者。
+     * 用于在错误和完成处理器中以相同的方式通知所有窗口和订阅者。
      *
      */
     const terminate = (cb: (consumer: Observer<any>) => void) => {

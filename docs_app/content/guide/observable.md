@@ -443,7 +443,7 @@ This shows how `subscribe` calls are not shared among multiple Observers of the 
 
 This is drastically different to event handler APIs like `addEventListener` / `removeEventListener`. With `observable.subscribe`, the given Observer is not registered as a listener in the Observable. The Observable does not even maintain a list of attached Observers.
 
-这与 `addEventListener` / `removeEventListener` 等事件处理程序 API 截然不同。使用 `observable.subscribe`，给定的 Observer 不会在 Observable 中注册为监听器。Observable 甚至不维护附加的观察者列表。
+这与 `addEventListener` / `removeEventListener` 等事件处理器 API 截然不同。使用 `observable.subscribe`，给定的 Observer 不会在 Observable 中注册为监听器。Observable 甚至不维护附加的观察者列表。
 
 A `subscribe` call is simply a way to start an "Observable execution" and deliver values or events to an Observer of that execution.
 

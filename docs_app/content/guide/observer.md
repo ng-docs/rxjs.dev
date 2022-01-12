@@ -51,5 +51,4 @@ observable.subscribe(x => console.log('Observer got a next value: ' + x));
 
 Internally in `observable.subscribe`, it will create an `Observer` object using the callback argument as the `next` handler.
 
-在 `observable.subscribe` 内部，它将使用回调参数作为 `next` 处理程序创建一个 `Observer` 对象。
-
+在 `observable.subscribe` 内部，它将使用回调参数作为 `next` **处理器**创建一个 `Observer` 对象。

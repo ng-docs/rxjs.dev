@@ -120,7 +120,7 @@ export class Notification<T> {
    * If the handler is missing it will do nothing. Even if the notification is an error, if
    * there is no error handler on the observer, an error will not be thrown, it will noop.
    *
-   * 在给定通知 `kind` 的传递的 `observer` 上执行适当的处理程序。如果处理程序丢失，它将什么也不做。即使通知是错误的，如果观察者上没有错误处理程序，也不会抛出错误，它会 noop。
+   * 在给定通知 `kind` 的传递的 `observer` 上执行适当的处理器。如果处理器丢失，它将什么也不做。即使通知是错误的，如果观察者上没有错误处理器，也不会抛出错误，它会 noop。
    *
    * @param observer The observer to notify.
    *
@@ -136,19 +136,19 @@ export class Notification<T> {
    * If a handler is missing for the kind of notification, nothing is called
    * and no error is thrown, it will be a noop.
    *
-   * 从提供的列表中对适当的处理程序执行通知。如果缺少通知类型的处理程序，则不调用任何内容并且不引发错误，这将是一个 noop。
+   * 从提供的列表中对适当的处理器执行通知。如果缺少通知类型的处理器，则不调用任何内容并且不引发错误，这将是一个 noop。
    *
    * @param next A next handler
    *
-   * 下一个处理程序
+   * 下一个处理器
    *
    * @param error An error handler
    *
-   * 错误处理程序
+   * 错误处理器
    *
    * @param complete A complete handler
    *
-   * 一个完整的处理程序
+   * 一个完整的处理器
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
@@ -161,15 +161,15 @@ export class Notification<T> {
    * If a handler is missing for the kind of notification, nothing is called
    * and no error is thrown, it will be a noop.
    *
-   * 从提供的列表中对适当的处理程序执行通知。如果缺少通知类型的处理程序，则不调用任何内容并且不引发错误，这将是一个 noop。
+   * 从提供的列表中对适当的处理器执行通知。如果缺少通知类型的处理器，则不调用任何内容并且不引发错误，这将是一个 noop。
    *
    * @param next A next handler
    *
-   * 下一个处理程序
+   * 下一个处理器
    *
    * @param error An error handler
    *
-   * 错误处理程序
+   * 错误处理器
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
@@ -181,11 +181,11 @@ export class Notification<T> {
    * Executes the next handler if the Notification is of `kind` `"N"`. Otherwise
    * this will not error, and it will be a noop.
    *
-   * 如果 Notification `kind` 为 `"N"`，则执行下一个处理程序。否则这不会出错，而且会是一个 noop。
+   * 如果 Notification `kind` 为 `"N"`，则执行下一个处理器。否则这不会出错，而且会是一个 noop。
    *
    * @param next The next handler
    *
-   * 下一个处理程序
+   * 下一个处理器
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
@@ -203,19 +203,19 @@ export class Notification<T> {
    * If a handler is missing for the kind of notification, nothing is called
    * and no error is thrown, it will be a noop.
    *
-   * 从提供的列表中对适当的处理程序执行通知。如果缺少通知类型的处理程序，则不调用任何内容并且不引发错误，这将是一个 noop。
+   * 从提供的列表中对适当的处理器执行通知。如果缺少通知类型的处理器，则不调用任何内容并且不引发错误，这将是一个 noop。
    *
    * @param next A next handler
    *
-   * 下一个处理程序
+   * 下一个处理器
    *
    * @param error An error handler
    *
-   * 错误处理程序
+   * 错误处理器
    *
    * @param complete A complete handler
    *
-   * 一个完整的处理程序
+   * 一个完整的处理器
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
@@ -228,15 +228,15 @@ export class Notification<T> {
    * If a handler is missing for the kind of notification, nothing is called
    * and no error is thrown, it will be a noop.
    *
-   * 从提供的列表中对适当的处理程序执行通知。如果缺少通知类型的处理程序，则不调用任何内容并且不引发错误，这将是一个 noop。
+   * 从提供的列表中对适当的处理器执行通知。如果缺少通知类型的处理器，则不调用任何内容并且不引发错误，这将是一个 noop。
    *
    * @param next A next handler
    *
-   * 下一个处理程序
+   * 下一个处理器
    *
    * @param error An error handler
    *
-   * 错误处理程序
+   * 错误处理器
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
@@ -248,11 +248,11 @@ export class Notification<T> {
    * Executes the next handler if the Notification is of `kind` `"N"`. Otherwise
    * this will not error, and it will be a noop.
    *
-   * 如果 Notification `kind` 为 `"N"`，则执行下一个处理程序。否则这不会出错，而且会是一个 noop。
+   * 如果 Notification `kind` 为 `"N"`，则执行下一个处理器。否则这不会出错，而且会是一个 noop。
    *
    * @param next The next handler
    *
-   * 下一个处理程序
+   * 下一个处理器
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
@@ -266,7 +266,7 @@ export class Notification<T> {
    * If the handler is missing it will do nothing. Even if the notification is an error, if
    * there is no error handler on the observer, an error will not be thrown, it will noop.
    *
-   * 在给定通知 `kind` 的传递的 `observer` 上执行适当的处理程序。如果处理程序丢失，它将什么也不做。即使通知是错误的，如果观察者上没有错误处理程序，也不会抛出错误，它会 noop。
+   * 在给定通知 `kind` 的传递的 `observer` 上执行适当的处理器。如果处理器丢失，它将什么也不做。即使通知是错误的，如果观察者上没有错误处理器，也不会抛出错误，它会 noop。
    *
    * @param observer The observer to notify.
    *
@@ -404,7 +404,7 @@ export class Notification<T> {
  * If the handler is missing it will do nothing. Even if the notification is an error, if
  * there is no error handler on the observer, an error will not be thrown, it will noop.
  *
- * 在给定通知 `kind` 的传递的 `observer` 上执行适当的处理程序。如果处理程序丢失，它将什么也不做。即使通知是错误的，如果观察者上没有错误处理程序，也不会抛出错误，它会 noop。
+ * 在给定通知 `kind` 的传递的 `observer` 上执行适当的处理器。如果处理器丢失，它将什么也不做。即使通知是错误的，如果观察者上没有错误处理器，也不会抛出错误，它会 noop。
  *
  * @param notification The notification object to observe.
  *

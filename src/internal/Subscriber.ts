@@ -227,11 +227,11 @@ export class SafeSubscriber<T> extends Subscriber<T> {
  * Wraps a user-provided handler (or our {@link defaultErrorHandler} in one case) to
  * ensure that any thrown errors are caught and handled appropriately.
  *
- * 包装用户提供的处理程序（或我们的 {@link defaultErrorHandler} 在一种情况下）以确保捕获并正确处理任何抛出的错误。
+ * 包装用户提供的处理器（或我们的 {@link defaultErrorHandler} 在一种情况下）以确保捕获并正确处理任何抛出的错误。
  *
  * @param handler The handler to wrap
  *
- * 要包装的处理程序
+ * 要包装的处理器
  *
  * @param instance The SafeSubscriber instance we're going to mark if there's an error.
  *
@@ -258,7 +258,7 @@ function wrapForErrorHandling(handler: (arg?: any) => void, instance: SafeSubscr
  * to the SafeSubscriber -- meaning no error handler was supplied
  * do the `subscribe` call on our observable.
  *
- * 当没有向 SafeSubscriber 提供错误处理程序时使用的错误处理程序——这意味着在我们的 observable 上进行 `subscribe` 调用时没有提供错误处理程序。
+ * 当没有向 SafeSubscriber 提供错误处理器时使用的错误处理器——这意味着在我们的 observable 上进行 `subscribe` 调用时没有提供错误处理器。
  *
  * @param err The error to handle
  *
@@ -272,7 +272,7 @@ function defaultErrorHandler(err: any) {
 /**
  * A handler for notifications that cannot be sent to a stopped subscriber.
  *
- * 无法发送给已停止订阅者的通知的处理程序。
+ * 无法发送给已停止订阅者的通知的处理器。
  *
  * @param notification The notification being sent
  *

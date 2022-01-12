@@ -266,7 +266,7 @@ export function timeout<T, O extends ObservableInput<unknown>, M = unknown>(
  * the error would be with {@link catchError}, although you could use {@link tap} or just the error handler in your `subscribe` call
  * directly, if your error handling is only a side effect (such as notifying the user, or logging).
  *
- * 如果没有 `with` 属性，订阅结果 observable 可能会发出 {@link TimeoutError} 错误。超时错误提供了你在处理错误时可以检查的有用信息。处理错误的最常见方法是使用 {@link catchError}，尽管你可以使用 {@link tap} 或直接在 `subscribe` 调用中使用错误处理程序，如果你的错误处理只是一个副作用（例如通知用户或日志记录）。
+ * 如果没有 `with` 属性，订阅结果 observable 可能会发出 {@link TimeoutError} 错误。超时错误提供了你在处理错误时可以检查的有用信息。处理错误的最常见方法是使用 {@link catchError}，尽管你可以使用 {@link tap} 或直接在 `subscribe` 调用中使用错误处理器，如果你的错误处理只是一个副作用（例如通知用户或日志记录）。
  *
  * In this case, you would check the error for `instanceof TimeoutError` to validate that the error was indeed from `timeout`, and
  * not from some other source. If it's not from `timeout`, you should probably rethrow it if you're in a `catchError`.
