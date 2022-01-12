@@ -261,7 +261,7 @@ export interface SubjectLike<T> extends Observer<T>, Subscribable<T> {}
 /**
  * SCHEDULER INTERFACES
  *
- * 调度程序接口
+ * 调度器接口
  *
  */
 

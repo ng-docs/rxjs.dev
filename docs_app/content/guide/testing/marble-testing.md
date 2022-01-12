@@ -462,7 +462,7 @@ to [use the TestScheduler outside](https://github.com/ReactiveX/rxjs/blob/7113ae
 
 - You must explicitly flush the scheduler.
 
-  你必须显式刷新调度程序。
+  你必须显式刷新调度器。
 
 While at this time usage of the TestScheduler outside of `testScheduler.run(callback)` has not been officially deprecated, it is discouraged because it is likely to cause confusion.
 

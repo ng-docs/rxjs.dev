@@ -68,7 +68,7 @@
 
 - `ReplaySubject` no longer schedules emissions when a scheduler is provided. If you need that behavior, please compose in `observeOn` using `pipe`, for example: `new ReplaySubject(2, 3000).pipe(observeOn(asap))`
 
-  提供调度程序时，`ReplaySubject` 不再调度排放。如果你需要该行为，请使用 `pipe` 在 `observeOn` 中编写，例如： `new ReplaySubject(2, 3000).pipe(observeOn(asap))`
+  提供调度器时，`ReplaySubject` 不再调度排放。如果你需要该行为，请使用 `pipe` 在 `observeOn` 中编写，例如： `new ReplaySubject(2, 3000).pipe(observeOn(asap))`
 
 - **rxjs-compat:** `rxjs/Rx` is no longer a valid import site.
 

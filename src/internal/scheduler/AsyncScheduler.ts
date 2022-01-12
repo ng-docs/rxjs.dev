@@ -8,7 +8,7 @@ export class AsyncScheduler extends Scheduler {
    * A flag to indicate whether the Scheduler is currently executing a batch of
    * queued actions.
    *
-   * 指示调度程序当前是否正在执行一批排队的操作的标志。
+   * 指示调度器当前是否正在执行一批排队的操作的标志。
    *
    * @type {boolean}
    * @internal

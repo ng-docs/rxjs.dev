@@ -15,7 +15,7 @@ import { executeSchedule } from '../util/executeSchedule';
  *
  * @param scheduler The scheduler to use
  *
- * 要使用的调度程序
+ * 要使用的调度器
  *
  */
 export function scheduleIterable<T>(input: Iterable<T>, scheduler: SchedulerLike) {

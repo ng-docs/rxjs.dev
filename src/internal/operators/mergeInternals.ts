@@ -39,7 +39,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * @param innerSubScheduler A scheduler to use to schedule inner subscriptions,
  * this is to support the expand strategy, mostly, and should be deprecated
  *
- * 用于调度内部订阅的调度程序，主要用于支持扩展策略，应弃用
+ * 用于调度内部订阅的调度器，主要用于支持扩展策略，应弃用
  *
  */
 export function mergeInternals<T, R>(

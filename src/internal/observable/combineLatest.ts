@@ -357,7 +357,7 @@ export function combineLatestInit(
  * A small utility to handle the couple of locations where we want to schedule if a scheduler was provided,
  * but we don't if there was no scheduler.
  *
- * 如果提供了调度程序，一个小实用程序可以处理我们想要调度的几个位置，但如果没有调度程序，我们就不会。
+ * 如果提供了调度器，一个小实用程序可以处理我们想要调度的几个位置，但如果没有调度器，我们就不会。
  *
  */
 function maybeSchedule(scheduler: SchedulerLike | undefined, execute: () => void, subscription: Subscription) {

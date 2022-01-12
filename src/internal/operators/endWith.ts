@@ -32,7 +32,7 @@ export function endWith<T, A extends unknown[] = T[]>(...values: A): OperatorFun
  * NOTE: Passing a last argument of a Scheduler is _deprecated_, and may result in incorrect
  * types in TypeScript.
  *
- * 注意：_ 不推荐 _ 传递调度程序的最后一个参数，并且可能导致 TypeScript 中的类型不正确。
+ * 注意：_ 不推荐 _ 传递调度器的最后一个参数，并且可能导致 TypeScript 中的类型不正确。
  *
  * This is useful for knowing when an observable ends. Particularly when paired with an
  * operator like {@link takeUntil}

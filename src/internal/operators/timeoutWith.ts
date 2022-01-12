@@ -28,7 +28,7 @@ import { timeout } from './timeout';
  *
  * @param scheduler The scheduler to use with time-related operations within this operator. Defaults to {@link asyncScheduler}
  *
- * 在此操作符中与时间相关的操作一起使用的调度程序。默认为 {@link asyncScheduler}
+ * 在此操作符中与时间相关的操作一起使用的调度器。默认为 {@link asyncScheduler}
  *
  * @deprecated Replaced with {@link timeout}. Instead of `timeoutWith(someDate, a$, scheduler)`, use the configuration object `timeout({ first: someDate, with: () => a$, scheduler })`. Will be removed in v8.
  *
@@ -116,7 +116,7 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  *
  * @param scheduler The scheduler to use with time-related operations within this operator. Defaults to {@link asyncScheduler}
  *
- * 在此操作符中与时间相关的操作一起使用的调度程序。默认为 {@link asyncScheduler}
+ * 在此操作符中与时间相关的操作一起使用的调度器。默认为 {@link asyncScheduler}
  *
  * @return A function that returns an Observable that mirrors behaviour of the
  * source Observable, unless timeout happens when it starts emitting values

@@ -122,7 +122,7 @@ export function windowTime<T>(
  * @param scheduler The scheduler on which to schedule the
  * intervals that determine window boundaries.
  *
- * 调度确定窗口边界的间隔的调度程序。
+ * 调度确定窗口边界的间隔的调度器。
  *
  * @return A function that returns an Observable of windows, which in turn are
  * Observables.

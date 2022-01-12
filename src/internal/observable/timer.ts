@@ -22,7 +22,7 @@ import { isValidDate } from '../util/isDate';
  * The `delay` is specified by default in milliseconds, however providing a custom scheduler could
  * create a different behavior.
  *
- * 默认情况下以毫秒为单位指定 `delay`，但是提供自定义调度程序可能会创建不同的行为。
+ * 默认情况下以毫秒为单位指定 `delay`，但是提供自定义调度器可能会创建不同的行为。
  *
  * ## Examples
  *
@@ -108,7 +108,7 @@ import { isValidDate } from '../util/isDate';
  *
  * @param scheduler The scheduler to use to schedule the delay. Defaults to {@link asyncScheduler}.
  *
- * 用于调度延迟的调度程序。默认为 {@link asyncScheduler}。
+ * 用于调度延迟的调度器。默认为 {@link asyncScheduler}。
  *
  */
 export function timer(due: number | Date, scheduler?: SchedulerLike): Observable<0>;
@@ -122,7 +122,7 @@ export function timer(due: number | Date, scheduler?: SchedulerLike): Observable
  * The `delay` and `intervalDuration` are specified by default in milliseconds, however providing a custom scheduler could
  * create a different behavior.
  *
- * 默认情况下，`delay` 和 `intervalDuration` 以毫秒为单位指定，但是提供自定义调度程序可能会创建不同的行为。
+ * 默认情况下，`delay` 和 `intervalDuration` 以毫秒为单位指定，但是提供自定义调度器可能会创建不同的行为。
  *
  * ## Example
  *
@@ -178,7 +178,7 @@ export function timer(due: number | Date, scheduler?: SchedulerLike): Observable
  *
  * @param scheduler The scheduler to use to schedule the delay. Defaults to {@link asyncScheduler}.
  *
- * 用于调度延迟的调度程序。默认为 {@link asyncScheduler}。
+ * 用于调度延迟的调度器。默认为 {@link asyncScheduler}。
  *
  */
 export function timer(startDue: number | Date, intervalDuration: number, scheduler?: SchedulerLike): Observable<number>;

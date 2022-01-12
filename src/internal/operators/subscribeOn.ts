@@ -8,11 +8,11 @@ import { operate } from '../util/lift';
  *
  * With `subscribeOn` you can decide what type of scheduler a specific Observable will be using when it is subscribed to.
  *
- * 使用 `subscribeOn`，你可以决定特定 Observable 在订阅时将使用哪种类型的调度程序。
+ * 使用 `subscribeOn`，你可以决定特定 Observable 在订阅时将使用哪种类型的调度器。
  *
  * Schedulers control the speed and order of emissions to observers from an Observable stream.
  *
- * 调度程序控制从 Observable 流向观察者发送的速度和顺序。
+ * 调度器控制从 Observable 流向观察者发送的速度和顺序。
  *
  * ![](subscribeOn.png)
  *
@@ -77,7 +77,7 @@ import { operate } from '../util/lift';
  *
  * @param delay A delay to pass to the scheduler to delay subscriptions
  *
- * 传递给调度程序以延迟订阅的延迟
+ * 传递给调度器以延迟订阅的延迟
  *
  * @return A function that returns an Observable modified so that its
  * subscriptions happen on the specified {@link SchedulerLike}.

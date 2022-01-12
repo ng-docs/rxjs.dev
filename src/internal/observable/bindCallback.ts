@@ -57,7 +57,7 @@ export function bindCallback<A extends readonly unknown[], R extends readonly un
  * and call `subscribe` on the output Observable, all function calls that are currently executing
  * will end before `func` is invoked.
  *
- * 最后一个可选参数 - `scheduler` - 可用于控制在有人订阅 Observable 后何时调用 `func`，以及何时发出传递给回调的结果。默认情况下，订阅 Observable 会同步调用 `func`，但使用 {@link asyncScheduler} 作为最后一个参数将推迟对 `func` 的调用，就像将调用包装在 `setTimeout` 中并设置超时时间为 `0` 一样。如果你要使用异步调度程序并在输出 Observable 上调用 `subscribe`，则当前正在执行的所有函数调用将在调用 `func` 之前结束。
+ * 最后一个可选参数 - `scheduler` - 可用于控制在有人订阅 Observable 后何时调用 `func`，以及何时发出传递给回调的结果。默认情况下，订阅 Observable 会同步调用 `func`，但使用 {@link asyncScheduler} 作为最后一个参数将推迟对 `func` 的调用，就像将调用包装在 `setTimeout` 中并设置超时时间为 `0` 一样。如果你要使用异步调度器并在输出 Observable 上调用 `subscribe`，则当前正在执行的所有函数调用将在调用 `func` 之前结束。
  *
  * By default, results passed to the callback are emitted immediately after `func` invokes the callback.
  * In particular, if the callback is called synchronously, then the subscription of the resulting Observable
@@ -126,7 +126,7 @@ export function bindCallback<A extends readonly unknown[], R extends readonly un
  *
  * ### Compare behaviour with and without async Scheduler
  *
- * ### 比较使用和不使用异步调度程序的行为
+ * ### 比较使用和不使用异步调度器的行为
  *
  * ```ts
  * import { bindCallback, asyncScheduler } from 'rxjs';

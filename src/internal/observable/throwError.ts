@@ -136,7 +136,7 @@ export function throwError(error: any): Observable<never>;
 /**
  * Notifies the consumer of an error using a given scheduler by scheduling it at delay `0` upon subscription.
  *
- * 通过在订阅时的延迟 `0` 处调度它，使用给定的调度程序通知消费者错误。
+ * 通过在订阅时的延迟 `0` 处调度它，使用给定的调度器通知消费者错误。
  *
  * @param errorOrErrorFactory An error instance or error factory
  *
@@ -144,7 +144,7 @@ export function throwError(error: any): Observable<never>;
  *
  * @param scheduler A scheduler to use to schedule the error notification
  *
- * 用于安排错误通知的调度程序
+ * 用于安排错误通知的调度器
  *
  * @deprecated The `scheduler` parameter will be removed in v8.
  * Use `throwError` in combination with {@link observeOn}: `throwError(() => new Error('test')).pipe(observeOn(scheduler));`.

@@ -40,7 +40,7 @@ export class Scheduler implements SchedulerLike {
    * (at the time this function was called) according to the scheduler's own
    * internal clock.
    *
-   * 根据调度程序自己的内部时钟返回一个表示当前时间（调用此函数时）的数字的 getter 方法。
+   * 根据调度器自己的内部时钟返回一个表示当前时间（调用此函数时）的数字的 getter 方法。
    *
    * @return {number} A number that represents the current time. May or may not
    * have a relation to wall-clock time. May or may not refer to a time unit
@@ -66,7 +66,7 @@ export class Scheduler implements SchedulerLike {
    * @param {function(state: ?T): ?Subscription} work A function representing a
    * task, or some unit of work to be executed by the Scheduler.
    *
-   * 表示任务的函数，或由调度程序执行的某个工作单元。
+   * 表示任务的函数，或由调度器执行的某个工作单元。
    *
    * @param {number} [delay] Time to wait before executing the work, where the
    * time unit is implicit and defined by the Scheduler itself.

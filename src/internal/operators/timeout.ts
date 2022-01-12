@@ -30,7 +30,7 @@ export interface TimeoutConfig<T, O extends ObservableInput<unknown> = Observabl
   /**
    * The scheduler to use with time-related operations within this operator. Defaults to {@link asyncScheduler}
    *
-   * 在此操作符中与时间相关的操作一起使用的调度程序。默认为 {@link asyncScheduler}
+   * 在此操作符中与时间相关的操作一起使用的调度器。默认为 {@link asyncScheduler}
    *
    */
   scheduler?: SchedulerLike;
@@ -360,7 +360,7 @@ export function timeout<T, M = unknown>(config: Omit<TimeoutConfig<T, any, M>, '
  *
  * @param scheduler The scheduler to use. Defaults to {@link asyncScheduler}.
  *
- * 要使用的调度程序。默认为 {@link asyncScheduler}。
+ * 要使用的调度器。默认为 {@link asyncScheduler}。
  *
  */
 export function timeout<T>(first: Date, scheduler?: SchedulerLike): MonoTypeOperatorFunction<T>;
@@ -383,7 +383,7 @@ export function timeout<T>(first: Date, scheduler?: SchedulerLike): MonoTypeOper
  *
  * @param scheduler The scheduler to use. Defaults to {@link asyncScheduler}.
  *
- * 要使用的调度程序。默认为 {@link asyncScheduler}。
+ * 要使用的调度器。默认为 {@link asyncScheduler}。
  *
  */
 export function timeout<T>(each: number, scheduler?: SchedulerLike): MonoTypeOperatorFunction<T>;

@@ -1,6 +1,6 @@
 # Scheduler Argument
 
-# 调度程序参数
+# Scheduler(调度器)参数
 
 To limit the API surface of some operators, but also prepare for a [major refactoring in V8](https://github.com/ReactiveX/rxjs/pull/4583), we agreed on deprecating the `scheduler` argument from many operators. It solely deprecates those methods where this argument is rarely used. So `time` related operators, like [`interval`](https://rxjs.dev/api/index/function/interval) are not affected by this deprecation.
 
@@ -83,7 +83,7 @@ scheduled([1, 2, 3], asyncScheduler).subscribe((x) => console.log(x));
 
 In case you used to pass a scheduler argument to one of these operators you probably had code like this:
 
-如果你曾经将调度程序参数传递给这些操作符之一，你可能有这样的代码：
+如果你曾经将调度器参数传递给这些操作符之一，可能有这样的代码：
 
 ```ts
 import { concat, of, asyncScheduler } from 'rxjs';
