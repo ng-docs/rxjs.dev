@@ -55,7 +55,7 @@ import { Observer, NextObserver } from '../../types';
  *
  * **serializer** allows us to apply custom serialization strategy but for the outgoing messages.
  *
- * **序列化**程序允许我们应用自定义序列化策略，但用于传出消息。
+ * **序列化**器允许我们应用自定义序列化策略，但用于传出消息。
  *
  * ```ts
  * import { webSocket } from 'rxjs/webSocket';
@@ -145,7 +145,7 @@ export interface WebSocketSubjectConfig<T> {
    * A serializer used to create messages from passed values before the
    * messages are sent to the server. Defaults to JSON.stringify.
    *
-   * 用于在将消息发送到服务器之前从传递的值创建消息的序列化程序。默认为 JSON.stringify。
+   * 用于在将消息发送到服务器之前从传递的值创建消息的序列化器。默认为 JSON.stringify。
    *
    */
   serializer?: (value: T) => WebSocketMessage;
@@ -281,13 +281,13 @@ export class WebSocketSubject<T> extends AnonymousSubject<T> {
    * the server. This will still be processed by the serializer in the
    * WebSocketSubject's config. (Which defaults to JSON serialization)
    *
-   * 生成要发送到服务器的订阅消息的函数。这仍将由 WebSocketSubject 配置中的序列化程序处理。（默认为 JSON 序列化）
+   * 生成要发送到服务器的订阅消息的函数。这仍将由 WebSocketSubject 配置中的序列化器处理。（默认为 JSON 序列化）
    *
    * @param unsubMsg A function to generate the unsubscription message to be
    * sent to the server at teardown. This will still be processed by the
    * serializer in the WebSocketSubject's config.
    *
-   * 生成退订消息以在拆卸时发送到服务器的函数。这仍将由 WebSocketSubject 配置中的序列化程序处理。
+   * 生成退订消息以在拆卸时发送到服务器的函数。这仍将由 WebSocketSubject 配置中的序列化器处理。
    *
    * @param messageFilter A predicate for selecting the appropriate messages
    * from the server for the output stream.
