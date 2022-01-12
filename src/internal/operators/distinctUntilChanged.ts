@@ -31,7 +31,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * because it's distinct in comparison to the _previously emitted_ value,
  * not in comparison to _all other emitted values_.
  *
- * 一个没有 `comparator` 的非常基本的示例。请注意，`1` 被多次发出，因为它与 _ 先前发出 _ 的值相比是不同的，而不是与 _ 所有其他发出的值 _ 相比。
+ * 一个没有 `comparator` 的非常基本的示例。请注意，`1` 被多次发出，因为它与*先前发出*的值相比是不同的，而不是与*所有其他发出的值*相比。
  *
  * ```ts
  * import { of, distinctUntilChanged } from 'rxjs';

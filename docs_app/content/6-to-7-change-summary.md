@@ -315,7 +315,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 - `add` method returns `void` and no longer returns a `Subscription`. Returning `Subscription` was an old behavior from the early days of version 5. If you add a function to a subscription (i.e. `subscription.add(fn)`), you can remove that function directly by calling `remove` with the same function instance. (i.e. `subscription.remove(fn)`). Previously, you needed to get the returned `Subscription` object and pass _that_ to `remove`. In version 6 and lower, the `Subscription` returned by calling `add` with
   another `Subscription` was always the same subscription you passed in. (meaning `subscription.add(subs1).add(subs2)` was an antipattern and the same as `subscription.add(subs1); subs1.add(subs2);`.
 
-  `add` 方法返回 `void` 并且不再返回 `Subscription`。返回 `Subscription` 是版本 5 早期的一个旧行为。如果你向订阅添加一个函数（即 `subscription.add(fn)`），你可以通过使用相同的函数实例调用 `remove` 直接删除该函数。（即 `subscription.remove(fn)`）。以前，你需要获取返回的 `Subscription` 对象并将 _ 其传递 _ 给 `remove`。在版本 6 及更低版本中，使用另一个 `Subscription` 调用 `add` 返回的 `Subscription` 始终与你传入的订阅相同。（意味着 `subscription.add(subs1).add(subs2)` 是一个反模式，与 `subscription.add(subs1); subs1.add(subs2);` .
+  `add` 方法返回 `void` 并且不再返回 `Subscription`。返回 `Subscription` 是版本 5 早期的一个旧行为。如果你向订阅添加一个函数（即 `subscription.add(fn)`），你可以通过使用相同的函数实例调用 `remove` 直接删除该函数。（即 `subscription.remove(fn)`）。以前，你需要获取返回的 `Subscription` 对象并将*其传递*给 `remove`。在版本 6 及更低版本中，使用另一个 `Subscription` 调用 `add` 返回的 `Subscription` 始终与你传入的订阅相同。（意味着 `subscription.add(subs1).add(subs2)` 是一个反模式，与 `subscription.add(subs1); subs1.add(subs2);` .
 
 ### VirtualAction
 
@@ -605,7 +605,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - `finalize` will now unsubscribe from its source _before_ it calls its callback. That means that `finalize` callbacks will run in the order in which they occur in the pipeline: `source.pipe(finalize(() => console.log(1)), finalize(() => console.log(2)))` will log `1` and then `2`. Previously, callbacks were called in the reverse order.
 
-  `finalize` 现在将在调用其回调 _ 之前 _ 取消订阅其源。这意味着 `finalize` 回调将按照它们在管道中出现的顺序运行： `source.pipe(finalize(() => console.log(1)), finalize(() => console.log(2)))` 将记录 `1` 然后 `2`。以前，回调是按相反的顺序调用的。
+  `finalize` 现在将在调用其回调*之前*取消订阅其源。这意味着 `finalize` 回调将按照它们在管道中出现的顺序运行： `source.pipe(finalize(() => console.log(1)), finalize(() => console.log(2)))` 将记录 `1` 然后 `2`。以前，回调是按相反的顺序调用的。
 
 ### map
 

@@ -34,7 +34,7 @@ export interface GlobalConfig {
    * we do not want errors thrown in this user-configured handler to interfere with the
    * behavior of the library.
    *
-   * 来自 RxJS 的未处理错误的注册点。这些错误不能通过在通常的订阅路径中使用代码来处理。例如，如果你配置了这个，并且你订阅了一个 observable 而没有提供错误处理程序，那么来自该订阅的错误将在这里结束。这将 _ 始终 _ 在运行时的另一个作业上异步调用。这是因为我们不希望在这个用户配置的处理程序中抛出的错误干扰库的行为。
+   * 来自 RxJS 的未处理错误的注册点。这些错误不能通过在通常的订阅路径中使用代码来处理。例如，如果你配置了这个，并且你订阅了一个 observable 而没有提供错误处理程序，那么来自该订阅的错误将在这里结束。这将*始终*在运行时的另一个作业上异步调用。这是因为我们不希望在这个用户配置的处理程序中抛出的错误干扰库的行为。
    *
    */
   onUnhandledError: ((err: any) => void) | null;
@@ -49,7 +49,7 @@ export interface GlobalConfig {
    * we do not want errors thrown in this user-configured handler to interfere with the
    * behavior of the library.
    *
-   * 由于已完成、出错或已明确取消订阅而无法发送给订阅者的通知的注册点。默认情况下，发送给停止订阅者的下一个、完成和错误通知是 noops。但是，有时调用者可能想要不同的行为。例如，对于尝试向停止的订阅者报告错误的源，调用者可以将 RxJS 配置为抛出未处理的错误。这将 _ 始终 _ 在运行时的另一个作业上异步调用。这是因为我们不希望在这个用户配置的处理程序中抛出的错误干扰库的行为。
+   * 由于已完成、出错或已明确取消订阅而无法发送给订阅者的通知的注册点。默认情况下，发送给停止订阅者的下一个、完成和错误通知是 noops。但是，有时调用者可能想要不同的行为。例如，对于尝试向停止的订阅者报告错误的源，调用者可以将 RxJS 配置为抛出未处理的错误。这将*始终*在运行时的另一个作业上异步调用。这是因为我们不希望在这个用户配置的处理程序中抛出的错误干扰库的行为。
    *
    */
   onStoppedNotification: ((notification: ObservableNotification<any>, subscriber: Subscriber<any>) => void) | null;

@@ -21,7 +21,7 @@ export interface RetryConfig {
    * completes _without_ emitting, the resulting observable will complete without error,
    * if the notifier errors, the error will be pushed to the result.
    *
-   * 重试前延迟的毫秒数，或返回延迟通知器的函数。如果给定一个函数，该函数应该返回一个通知器，当它发出时将重试源。如果通知器在 _ 没有 _ 发出的情况下完成，则生成的 observable 将在没有错误的情况下完成，如果通知器出错，错误将被推送到结果中。
+   * 重试前延迟的毫秒数，或返回延迟通知器的函数。如果给定一个函数，该函数应该返回一个通知器，当它发出时将重试源。如果通知器在*没有*发出的情况下完成，则生成的 observable 将在没有错误的情况下完成，如果通知器出错，错误将被推送到结果中。
    *
    */
   delay?: number | ((error: any, retryCount: number) => ObservableInput<any>);

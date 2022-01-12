@@ -159,14 +159,14 @@ export const TimeoutError: TimeoutErrorCtor = createErrorClass(
  * the first value from the source _only_. The timings of all subsequent values  from the source will be checked
  * against the time period provided by `each`, if it was provided.
  *
- * 第 `first` 属性可以是特定时间的 `Date`、相对于订阅点的时间段的 `number`，也可以被跳过。此属性 _ 仅 _ 用于检查来自源的第一个值到达的超时条件。来自源的所有后续值的时间将根据 `each` 提供的时间段进行检查（如果提供的话）。
+ * 第 `first` 属性可以是特定时间的 `Date`、相对于订阅点的时间段的 `number`，也可以被跳过。此属性*仅*用于检查来自源的第一个值到达的超时条件。来自源的所有后续值的时间将根据 `each` 提供的时间段进行检查（如果提供的话）。
  *
  * The `each` property can be either a `number` or skipped. If a value for `each` is provided, it represents the amount of
  * time the resulting observable will wait between the arrival of values from the source before timing out. Note that if
  * `first` is _not_ provided, the value from `each` will be used to check timeout conditions for the arrival of the first
  * value and all subsequent values. If `first` _is_ provided, `each` will only be use to check all values after the first.
  *
- * `each` 属性可以是 `number` 或跳过。如果为 `each` 提供了一个值，则它表示生成的 observable 在超时之前在源值到达之间等待的时间量。请注意，如果 _ 未 _ 提供 `first`，则 `each` 中的值将用于检查第一个值和所有后续值到达的超时条件。如果提供了 `first`，_ 则 _`each` 将仅用于检查第一个之后的所有值。
+ * `each` 属性可以是 `number` 或跳过。如果为 `each` 提供了一个值，则它表示生成的 observable 在超时之前在源值到达之间等待的时间量。请注意，如果*未*提供 `first`，则 `each` 中的值将用于检查第一个值和所有后续值到达的超时条件。如果提供了 `first`，_ 则 _`each` 将仅用于检查第一个之后的所有值。
  *
  * ## Examples
  *
@@ -248,14 +248,14 @@ export function timeout<T, O extends ObservableInput<unknown>, M = unknown>(
  * the first value from the source _only_. The timings of all subsequent values  from the source will be checked
  * against the time period provided by `each`, if it was provided.
  *
- * 第 `first` 属性可以是特定时间的 `Date`、相对于订阅点的时间段的 `number`，也可以被跳过。此属性 _ 仅 _ 用于检查来自源的第一个值到达的超时条件。来自源的所有后续值的时间将根据 `each` 提供的时间段进行检查（如果提供的话）。
+ * 第 `first` 属性可以是特定时间的 `Date`、相对于订阅点的时间段的 `number`，也可以被跳过。此属性*仅*用于检查来自源的第一个值到达的超时条件。来自源的所有后续值的时间将根据 `each` 提供的时间段进行检查（如果提供的话）。
  *
  * The `each` property can be either a `number` or skipped. If a value for `each` is provided, it represents the amount of
  * time the resulting observable will wait between the arrival of values from the source before timing out. Note that if
  * `first` is _not_ provided, the value from `each` will be used to check timeout conditions for the arrival of the first
  * value and all subsequent values. If `first` _is_ provided, `each` will only be use to check all values after the first.
  *
- * `each` 属性可以是 `number` 或跳过。如果为 `each` 提供了一个值，则它表示生成的 observable 在超时之前在源值到达之间等待的时间量。请注意，如果 _ 未 _ 提供 `first`，则 `each` 中的值将用于检查第一个值和所有后续值到达的超时条件。如果提供了 `first`，_ 则 _`each` 将仅用于检查第一个之后的所有值。
+ * `each` 属性可以是 `number` 或跳过。如果为 `each` 提供了一个值，则它表示生成的 observable 在超时之前在源值到达之间等待的时间量。请注意，如果*未*提供 `first`，则 `each` 中的值将用于检查第一个值和所有后续值到达的超时条件。如果提供了 `first`，_ 则 _`each` 将仅用于检查第一个之后的所有值。
  *
  * ### Handling TimeoutErrors
  *
@@ -279,7 +279,7 @@ export function timeout<T, O extends ObservableInput<unknown>, M = unknown>(
  *
  * Emit a {@link TimeoutError} if the first value, and _only_ the first value, does not arrive within 5 seconds
  *
- * 如果第一个值（并且 _ 只有 _ 第一个值）在 5 秒内未到达，则发出 {@link TimeoutError}
+ * 如果第一个值（并且*只有*第一个值）在 5 秒内未到达，则发出 {@link TimeoutError}
  *
  * ```ts
  * import { interval, timeout } from 'rxjs';

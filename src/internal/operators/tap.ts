@@ -40,7 +40,7 @@ export function tap<T>(
  * make it so you can't do things like memoize those functions. The `tap` operator is designed solely for such side-effects to
  * help you remove side-effects from other operations.
  *
- * Tap 旨在让开发者在指定的地方执行副作用。虽然你 _ 可以 _ 在 `map` 或 `mergeMap` 内部执行副作用，但这会使它们的映射函数不纯，这并不总是什么大不了的，但会使你无法执行诸如 memoize 这些函数之类的事情。`tap` 运算符专为此类副作用而设计，以帮助你消除其他操作的副作用。
+ * Tap 旨在让开发者在指定的地方执行副作用。虽然你*可以*在 `map` 或 `mergeMap` 内部执行副作用，但这会使它们的映射函数不纯，这并不总是什么大不了的，但会使你无法执行诸如 memoize 这些函数之类的事情。`tap` 运算符专为此类副作用而设计，以帮助你消除其他操作的副作用。
  *
  * For any notification, next, error, or complete, `tap` will call the appropriate callback you have provided to it, via a function
  * reference, or a partial observer, then pass that notification down the stream.

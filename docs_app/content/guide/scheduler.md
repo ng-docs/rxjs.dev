@@ -129,7 +129,7 @@ The `async` Scheduler operates with a `setTimeout` or `setInterval`, even if the
 
 The `schedule()` method of a Scheduler takes a `delay` argument, which refers to a quantity of time relative to the Scheduler's own internal clock. A Scheduler's clock need not have any relation to the actual wall-clock time. This is how temporal operators like `delay` operate not on actual time, but on time dictated by the Scheduler's clock. This is specially useful in testing, where a _virtual time Scheduler_ may be used to fake wall-clock time while in reality executing scheduled tasks synchronously.
 
-Scheduler 的 `schedule()` 方法接受一个 `delay` 参数，它指的是相对于 Scheduler 自己的内部时钟的时间量。调度程序的时钟不需要与实际的挂钟时间有任何关系。这就是像 `delay` 这样的时间操作符不是在实际时间上运行的，而是在调度器时钟指定的时间上运行的。这在测试中特别有用，其中可以使用 _ 虚拟时间调度程序 _ 来伪造挂钟时间，而实际上是同步执行计划任务。
+Scheduler 的 `schedule()` 方法接受一个 `delay` 参数，它指的是相对于 Scheduler 自己的内部时钟的时间量。调度器的时钟不需要与实际的挂钟时间有任何关系。这就是像 `delay` 这样的时间操作符不是在实际时间上运行的，而是在调度器时钟指定的时间上运行的。这在测试中特别有用，其中可以使用*虚拟时间调度器*来伪造挂钟时间，而实际上是同步执行计划任务。
 
 ## Scheduler Types
 

@@ -4,7 +4,7 @@
 
 RxJS is mostly useful for its _operators_, even though the Observable is the foundation. Operators are the essential pieces that allow complex asynchronous code to be easily composed in a declarative manner.
 
-尽管 Observable 是基础，但 RxJS 对它的 _ 操作符 _ 最有用。运算符是允许以声明方式轻松组合复杂异步代码的基本部分。
+尽管 Observable 是基础，但 RxJS 对它的*操作符*最有用。运算符是允许以声明方式轻松组合复杂异步代码的基本部分。
 
 ## What are operators?
 
@@ -16,7 +16,7 @@ Operators are **functions**. There are two kinds of operators:
 
 **Pipeable Operators** are the kind that can be piped to Observables using the syntax `observableInstance.pipe(operator())`. These include, [`filter(...)`](/api/operators/filter), and [`mergeMap(...)`](/api/operators/mergeMap). When called, they do not _change_ the existing Observable instance. Instead, they return a _new_ Observable, whose subscription logic is based on the first Observable.
 
-可管道**操作符**是可以使用语法 `observableInstance.pipe(operator())` 管道传输到 Observables 的类型。其中包括[`filter(...)`](/api/operators/filter)和[`mergeMap(...)`](/api/operators/mergeMap)。调用时，它们不会 _ 更改 _ 现有的 Observable 实例。相反，它们返回一个 _ 新 _ 的 Observable，其订阅逻辑基于第一个 Observable。
+可管道**操作符**是可以使用语法 `observableInstance.pipe(operator())` 管道传输到 Observables 的类型。其中包括[`filter(...)`](/api/operators/filter)和[`mergeMap(...)`](/api/operators/mergeMap)。调用时，它们不会*更改*现有的 Observable 实例。相反，它们返回一个*新*的 Observable，其订阅逻辑基于第一个 Observable。
 
 <span class="informal">A Pipeable Operator is a function that takes an Observable as its input and returns another Observable. It is a pure operation: the previous Observable stays unmodified.</span>
 
@@ -72,7 +72,7 @@ Note that `map` logically must be constructed on the fly, since it must be given
 
 Pipeable operators are functions, so they _could_ be used like ordinary functions: `op()(obs)` — but in practice, there tend to be many of them convolved together, and quickly become unreadable: `op4()(op3()(op2()(op1()(obs))))`. For that reason, Observables have a method called `.pipe()` that accomplishes the same thing while being much easier to read:
 
-可管道运算符是函数，因此它们 _ 可以 _ 像普通函数一样使用： `op()(obs)` — 但实际上，它们中的许多往往会卷积在一起，很快就会变得不可读： `op4()(op3()(op2()(op1()(obs))))`。出于这个原因，Observables 有一个名为 `.pipe()` 的方法，它完成了同样的事情，同时更容易阅读：
+可管道运算符是函数，因此它们*可以*像普通函数一样使用： `op()(obs)` — 但实际上，它们中的许多往往会卷积在一起，很快就会变得不可读： `op4()(op3()(op2()(op1()(obs))))`。出于这个原因，Observables 有一个名为 `.pipe()` 的方法，它完成了同样的事情，同时更容易阅读：
 
 ```ts
 obs.pipe(op1(), op2(), op3(), op4());

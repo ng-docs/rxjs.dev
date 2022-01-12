@@ -24,7 +24,7 @@ There are high level entities that are frequently discussed. It's important to d
 
 The code that is subscribing to the observable. This is whoever is being _notified_ of [nexted](#next) values, and [errors](#error) or [completions](#complete).
 
-订阅 observable 的代码。这是 _ 通知 _ 下[一个](#next)值、[错误](#error)或[完成](#complete)的人。
+订阅 observable 的代码。这是*通知*下[一个](#next)值、[错误](#error)或[完成](#complete)的人。
 
 ### Producer
 
@@ -170,7 +170,7 @@ The act of one [producer](#producer) being [observed](#observation) **only one**
 
 An observable is "cold" when it creates a new [producer](#producer) during [subscribe](#subscribe) for every new [subscription](#subscription). As a result, a "cold" observables are _always_ [unicast](#unicast), being one [producer](#producer) [observed](#observation) by one [consumer](#consumer). Cold observables can be made [hot](#hot) but not the other way around.
 
-当一个 observable 在[subscribe](#subscribe)期间为每个新的[订阅](#subscription)创建一个新的[生产者](#producer)时，它是“冷的”。结果，“冷”可观察对象 _ 始终 _ 是[单播](#unicast)的，即一个[生产者](#producer)被一个[消费者](#consumer)[观察到](#observation)。冷的 observables 可以变[热](#hot)，但反过来不行。
+当一个 observable 在[subscribe](#subscribe)期间为每个新的[订阅](#subscription)创建一个新的[生产者](#producer)时，它是“冷的”。结果，“冷”可观察者*始终*是[单播](#unicast)的，即一个[生产者](#producer)被一个[消费者](#consumer)[观察到](#observation)。冷的 observables 可以变[热](#hot)，但反过来不行。
 
 ### Hot
 
@@ -179,7 +179,7 @@ An observable is "cold" when it creates a new [producer](#producer) during [subs
 An observable is "hot", when its [producer](#producer) was created outside of the context of the [subscribe](#subscribe) action. This means that the "hot" observable is almost always [multicast](#multicast). It is possible that a "hot" observable is still _technically_ unicast, if it is engineered to only allow one [subscription](#subscription) at a time, however, there is no straightforward mechanism for this in RxJS, and the scenario is a unlikely. For the purposes of discussion, all "hot" observables can
 be assumed to be [multicast](#multicast). Hot observables cannot be made [cold](#cold).
 
-一个可观察对象是“热的”，当它的[生产者](#producer)是在[订阅](#subscribe)操作的上下文之外创建时。这意味着“热”的 observable 几乎总是[multicast](#multicast)。一个“热”的 observable 可能在 _ 技术上 _ 仍然是单播的，如果它被设计为一次只允许一个[订阅](#subscription)，但是，在 RxJS 中没有直接的机制，这种情况不太可能发生。出于讨论的目的，可以假设所有“热”可观察对象都是[多播](#multicast)的。热的 observables 不能[变冷](#cold)。
+一个可观察对象是“热的”，当它的[生产者](#producer)是在[订阅](#subscribe)操作的上下文之外创建时。这意味着“热”的 observable 几乎总是[multicast](#multicast)。一个“热”的 observable 可能在*技术上*仍然是单播的，如果它被设计为一次只允许一个[订阅](#subscription)，但是，在 RxJS 中没有直接的机制，这种情况不太可能发生。出于讨论的目的，可以假设所有“热”可观察对象都是[多播](#multicast)的。热的 observables 不能[变冷](#cold)。
 
 ### Push
 
@@ -303,5 +303,5 @@ of version 6, RxJS goes out of its way to prevent producer interference by ensur
 
 The order in which [notifications](#notification) are processed by [operations](#operation) in a [stream](#stream) have a directionality to them. "Upstream" refers to an [operation](#operation) that was already processed before the current [operation](#operation), and "downstream" refers to an [operation](#operation) that _will_ be processed _after_ the current [operation](#operation). See also: [Streaming](#stream).
 
-[流](#stream)中的[操作](#operation)处理[通知](#notification)的顺序对它们具有方向性。“上游”是指在当前[操作](#operation)之前已经处理的[操作](#operation)，“下游”是指 _ 将 _ 在当前[操作](#operation)_ 之后 _ 处理的[操作](#operation)。另请参阅：[流式传输](#stream)。
+[流](#stream)中的[操作](#operation)处理[通知](#notification)的顺序对它们具有方向性。“上游”是指在当前[操作](#operation)之前已经处理的[操作](#operation)，“下游”是指*将*在当前[操作](#operation)_ 之后 _ 处理的[操作](#operation)。另请参阅：[流式传输](#stream)。
 

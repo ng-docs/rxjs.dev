@@ -134,7 +134,7 @@ The `connect()` method is important to determine exactly when the shared Observa
 
 Calling `connect()` manually and handling the Subscription is often cumbersome. Usually, we want to _automatically_ connect when the first Observer arrives, and automatically cancel the shared execution when the last Observer unsubscribes.
 
-手动调用 `connect()` 并处理订阅通常很麻烦。通常，我们希望在第一个 Observer 到达时 _ 自动 _ 连接，并在最后一个 Observer 取消订阅时自动取消共享执行。
+手动调用 `connect()` 并处理订阅通常很麻烦。通常，我们希望在第一个 Observer 到达时*自动*连接，并在最后一个 Observer 取消订阅时自动取消共享执行。
 
 Consider the following example where subscriptions occur as outlined by this list:
 
