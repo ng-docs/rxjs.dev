@@ -86,7 +86,7 @@ export function sequenceEqual<T>(
     /**
      * A utility to emit and complete
      *
-     * 发出和完成的实用程序
+     * 发出和完成的实用工具
      *
      */
     const emit = (isEqual: boolean) => {
