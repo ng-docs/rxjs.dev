@@ -258,7 +258,7 @@ A "observable input" ([defined as a type here](/api/index/type-alias/ObservableI
 
 An [observable](#observable) that is being used to notify another [observable](#observable) that it needs to perform some action. The action should only occur on a [next notification](#next), and never on [error](#error) or [complete](#complete). Generally, notifiers are used with specific operators, such as [`takeUntil`](/api/operators/takeUntil), [`buffer`](/api/operators/buffer), or [`delayWhen`](/api/operators/delayWhen). A notifier may be passed directly, or it may be returned by a callback.
 
-用于通知另一个[可观察](#observable)[对象](#observable)它需要执行某些操作的可观察者。该操作应该只[在下一次通知](#next)时发生，而永远不会在[错误](#error)或[完成](#complete)时发生。通常，通知器与特定的操作符一起使用，例如[`takeUntil`](/api/operators/takeUntil)、[`buffer`](/api/operators/buffer)或[`delayWhen`](/api/operators/delayWhen)。通知程序可以直接传递，也可以由回调返回。
+用于通知另一个[可观察](#observable)[对象](#observable)它需要执行某些操作的可观察者。该操作应该只[在下一次通知](#next)时发生，而永远不会在[错误](#error)或[完成](#complete)时发生。通常，通知器与特定的操作符一起使用，例如[`takeUntil`](/api/operators/takeUntil)、[`buffer`](/api/operators/buffer)或[`delayWhen`](/api/operators/delayWhen)。通知器可以直接传递，也可以由回调返回。
 
 ### Inner Source
 

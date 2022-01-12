@@ -40,7 +40,7 @@ export function delayWhen<T>(delayDurationSelector: (value: T, index: number) =>
  * The completion of the notifier triggering the emission of the source value
  * is deprecated behavior and will be removed in future versions.
  *
- * `delayWhen` 将每个发出的值从源 Observable 偏移一个由另一个 Observable 确定的时间跨度。当源发出一个值时，以源值作为参数调用 `delayDurationSelector` 函数，并且应该返回一个 Observable，称为“duration” Observable。只有当持续时间 Observable 发出一个值或完成时，源值才会在输出 Observable 上发出。触发源值发射的通知程序的完成是不推荐的行为，将在未来的版本中删除。
+ * `delayWhen` 将每个发出的值从源 Observable 偏移一个由另一个 Observable 确定的时间跨度。当源发出一个值时，以源值作为参数调用 `delayDurationSelector` 函数，并且应该返回一个 Observable，称为“duration” Observable。只有当持续时间 Observable 发出一个值或完成时，源值才会在输出 Observable 上发出。触发源值发射的通知器的完成是不推荐的行为，将在未来的版本中删除。
  *
  * Optionally, `delayWhen` takes a second argument, `subscriptionDelay`, which
  * is an Observable. When `subscriptionDelay` emits its first value or

@@ -49,11 +49,11 @@ sense.
 
 - Operators that accept "notifiers" (as described above), MUST ONLY recognized next values from the notifier as "notifications". Emitted completions may not be used a source of notification.
 
-  接受“通知器”（如上所述）的操作符必须仅将来自通知器的下一个值识别为“通知”。发出的完成不能用作通知源。
+  接受“通知器”（如上所述）的操作符只能将来自通知器的下一个值看做“通知”。已发出完成事件的通知器不能用作通知源。
 
 - "Notifiers" provided directly to the operator MUST be subscribed to _before_ the source is subscribed to. "Notifiers" created via factory function provided to the operator SHOULD be subscribed to at the earliest possible moment.
 
-  直接提供给操作符的“通知程序”必须在订阅源 _ 之前 _ 订阅。通过提供给操作符的工厂函数创建的“通知程序”应该尽早订阅。
+  直接提供给操作符的“通知器”必须在订阅源*之前*订阅。通过提供给操作符的工厂函数创建的“通知器”应该尽早订阅。
 
 - The observable returned by the operator function is considered to be the "consumer" of the source. As such, the consumer MUST unsubscribe from the source as soon as it knows it no longer needs values before proceeding to do _any_ action.
 

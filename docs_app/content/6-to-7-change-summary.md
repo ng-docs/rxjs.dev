@@ -483,7 +483,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - `buffer` now subscribes to the source observable before it subscribes to the closing notifier. Previously, it subscribed to the closing notifier first.
 
-  `buffer` 现在在订阅关闭通知器之前订阅源 observable。以前，它首先订阅关闭通知程序。
+  `buffer` 现在在订阅关闭通知器之前订阅源 observable。以前，它首先订阅关闭通知器。
 
 - Final buffered values will now always be emitted. To get the same behavior as the previous release, you can use `endWith` and `skipLast(1)`, like so: `source$.pipe(buffer(notifier$.pipe(endWith(true))), skipLast(1))`
 
