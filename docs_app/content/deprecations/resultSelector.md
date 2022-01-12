@@ -30,28 +30,31 @@ There were two reasons for actually deprecating those parameters:
 
 - [concatMap](/api/operators/concatMap)
 
-  [连接图](/api/operators/concatMap)
+  [concatMap(串联映射)](/api/operators/concatMap)
 
 - [concatMapTo](/api/operators/concatMapTo)
+
+  [concatMapTo(串联映射为)](/api/operators/concatMapTo)
+
 - [exhaustMap](/api/operators/exhaustMap)
 
-  [排气图](/api/operators/exhaustMap)
+  [exhaustMap(耗尽映射)](/api/operators/exhaustMap)
 
 - [mergeMap](/api/operators/mergeMap)
 
-  [合并地图](/api/operators/mergeMap)
+  [mergeMap(合并映射)](/api/operators/mergeMap)
 
 - [mergeMapTo](/api/operators/mergeMapTo)
 
-  [合并地图到](/api/operators/mergeMapTo)
+  [mergeMapTo(合并映射为)](/api/operators/mergeMapTo)
 
 - [switchMap](/api/operators/switchMap)
 
-  [切换地图](/api/operators/switchMap)
+  [switchMap(切换映射)](/api/operators/switchMap)
 
 - [swithMapTo](/api/operators/swithMapTo)
 
-  [切换映射到](/api/operators/swithMapTo)
+  [swithMapTo(切换映射为)](/api/operators/swithMapTo)
 
 ## How to Refactor
 

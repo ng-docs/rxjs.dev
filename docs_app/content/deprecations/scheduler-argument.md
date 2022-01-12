@@ -22,28 +22,31 @@ To support this transition the [scheduled creation function](/api/index/function
 
 - [from](/api/index/function/from)
 
-  [从](/api/index/function/from)
+  [from(从...转为)](/api/index/function/from)
 
 - [of](/api/index/function/of)
 
-  [的](/api/index/function/of)
+  [of(把...包装为)](/api/index/function/of)
 
 - [merge](/api/index/function/merge)
 
-  [合并](/api/index/function/merge)
+  [merge(合并)](/api/index/function/merge)
 
 - [concat](/api/index/function/concat)
 
-  [连接](/api/index/function/concat)
+  [concat(串联)](/api/index/function/concat)
 
 - [startWith](/api/operators/startWith)
 
-  [从...开始](/api/operators/startWith)
+  [startWith(以...开始)](/api/operators/startWith)
 
 - [endWith](/api/operators/endWith)
+
+  [endWith(以...结尾)](/api/operators/endWith)
+
 - [combineLatest](/api/index/function/combineLatest)
 
-  [结合最新](/api/index/function/combineLatest)
+  [combineLatest(组合最新的)](/api/index/function/combineLatest)
 
 ## How to Refactor
 

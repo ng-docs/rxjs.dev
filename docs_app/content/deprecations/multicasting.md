@@ -8,19 +8,19 @@ In version 7, the multicasting APIs were simplified to just a few functions:
 
 - [connectable](/api/index/function/connectable)
 
-  [可连接](/api/index/function/connectable)
+  [connectable(可连接者)](/api/index/function/connectable)
 
 - [connect](/api/operators/connect)
 
-  [连接](/api/operators/connect)
+  [connect(连接)](/api/operators/connect)
 
 - [share](/api/operators/share)
 
-  [分享](/api/operators/share)
+  [share(共享)](/api/operators/share)
 
 And [shareReplay](/api/operators/shareReplay) - which is a thin wrapper around the now highly-configurable [share](/api/operators/share) operator.
 
-和[shareReplay](/api/operators/shareReplay) - 它是现在高度可配置的[共享](/api/operators/share)操作符的薄包装。
+以及 [shareReplay(共享重播)](/api/operators/shareReplay) - 它是高度可配置的 [share(共享)](/api/operators/share) 操作符的浅层包装。
 
 Other APIs that relate to multicasting are now deprecated.
 
@@ -37,29 +37,32 @@ Other APIs that relate to multicasting are now deprecated.
 ## 受此变更影响的 API
 
 - [ConnectableObservable](/api/index/class/ConnectableObservable)
+  
+  [ConnectableObservable(可连接的可观察者)](/api/index/class/ConnectableObservable)
+  
 - [multicast](/api/operators/multicast)
 
-  [多播](/api/operators/multicast)
+  [multicast(多播)](/api/operators/multicast)
 
 - [publish](/api/operators/publish)
 
-  [发布](/api/operators/publish)
+  [publish(发布)](/api/operators/publish)
 
 - [publishBehavior](/api/operators/publishBehavior)
 
-  [发布行为](/api/operators/publishBehavior)
+  [publishBehavior(发布行为)](/api/operators/publishBehavior)
 
 - [publishLast](/api/operators/publishLast)
 
-  [发布最后](/api/operators/publishLast)
+  [publishLast(发布末尾)](/api/operators/publishLast)
 
 - [publishReplay](/api/operators/publishReplay)
 
-  [发布重播](/api/operators/publishReplay)
+  [publishReplay(发布重播)](/api/operators/publishReplay)
 
 - [refCount](/api/operators/refCount)
 
-  [引用计数](/api/operators/refCount)
+  [refCount(引用计数)](/api/operators/refCount)
 
 ## How to refactor
 
