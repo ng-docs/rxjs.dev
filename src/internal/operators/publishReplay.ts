@@ -46,7 +46,7 @@ export function publishReplay<T>(
  * the `selector` function, which then returns an observable that is subscribed to before
  * "connecting" the source to the internal `ReplaySubject`.
  *
- * 创建一个 observable，当订阅它时，将创建一个 {@link ReplaySubject}，并从它传递一个 observable（使用[asObservable](api/index/class/Subject#asObservable)）到 `selector` 函数，然后返回一个在将源“连接”到源之前订阅的 observable 内部 `ReplaySubject`。
+ * 创建一个 observable，当订阅它时，将创建一个 {@link ReplaySubject}，并从它传一个 observable（使用[asObservable](api/index/class/Subject#asObservable)）到 `selector` 函数，然后返回一个 observable，该 Observable 被订阅后，会将此源“连接”到内部 `ReplaySubject`。
  *
  * Since this is deprecated, for additional details see the documentation for {@link connect}.
  *
@@ -99,7 +99,7 @@ export function publishReplay<T, O extends ObservableInput<any>>(
  *
  * @param selector Passing `undefined` here determines that this operator will return a {@link ConnectableObservable}.
  *
- * 在此处传递 `undefined` 确定此操作符将返回 {@link ConnectableObservable}。
+ * 在此传入 `undefined` 会决定此操作符要返回 {@link ConnectableObservable}。
  *
  * @param timestampProvider The timestamp provider for the underlying {@link ReplaySubject}.
  *
@@ -130,7 +130,7 @@ export function publishReplay<T, O extends ObservableInput<any>>(
  * behaviors.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。请改用 {@link connectable} observable、{@link connect} 操作符或 {@link share} 操作符。有关此操作符行为的等效替换示例，请参见下面的重载。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 将在 v8 中删除。请改用 {@link connectable} observable、{@link connect} 操作符或 {@link share} 操作符。有关此操作符行为的等效替换示例，请参见其它的重载。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function publishReplay<T, R>(

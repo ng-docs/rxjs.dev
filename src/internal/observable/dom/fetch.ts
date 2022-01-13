@@ -16,7 +16,7 @@ export function fromFetch(input: string | Request, init?: RequestInit): Observab
  * Uses [the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to
  * make an HTTP request.
  *
- * 使用 [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) 发送 HTTP 请求。
+ * 使用 [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) 发出 HTTP 请求。
  *
  * **WARNING** Parts of the fetch API are still experimental. `AbortController` is
  * required for this implementation to work and use cancellation appropriately.
@@ -32,7 +32,7 @@ export function fromFetch(input: string | Request, init?: RequestInit): Observab
  * `fetch`. If the provided `signal` aborts, the error that `fetch` normally rejects with
  * in that scenario will be emitted as an error from the observable.
  *
- * 如果一个 `signal` 是通过 `init` 参数提供的，它的行为就像它通常对 `fetch` 所做的那样。如果提供的 `signal` 中止了，那么在这种情况下通常会拒绝 `fetch` 的错误，并将其作为此 observable 的错误进行发送。
+ * 如果一个 `signal` 是通过 `init` 参数提供的，它的行为就像它通常对 `fetch` 所做的那样。如果提供的 `signal` 中止了，那么在这种情况下通常会拒绝 `fetch` 的错误，并将其作为此 observable 的错误发出。
  *
  * ## Examples
  *
@@ -85,7 +85,7 @@ export function fromFetch(input: string | Request, init?: RequestInit): Observab
  * resolve until the entire body has been received. Unsubscribing from any observable
  * that uses the promise as an observable input will not abort the request.
  *
- * 这意味着 `fromFetch` observable 将在接收到 body 之前发送一个 `Response` - 然后完成。当调用 `Response` 上的方法之一（如 `text()` 或 `json()` 时，返回的 Promise 将在收到整个 body 之前不会解析。退订任何使用 Promise 作为可观察输入的可观察者不会中止请求。
+ * 这意味着 `fromFetch` observable 将在接收到 body 之前发出一个 `Response` - 然后完成。当调用 `Response` 上的方法之一（如 `text()` 或 `json()` 时，返回的 Promise 将在收到整个 body 之前不会解析。退订任何使用 Promise 作为可观察输入的可观察者不会中止请求。
  *
  * To facilitate aborting the retrieval of responses that use chunked transfer encoding,
  * a `selector` can be specified via the `init` parameter:

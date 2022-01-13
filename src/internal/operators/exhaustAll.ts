@@ -8,12 +8,12 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * Converts a higher-order Observable into a first-order Observable by dropping
  * inner Observables while the previous inner Observable has not yet completed.
  *
- * 在前一个内部 Observable 尚未完成时，通过丢弃内部 Observable 将高阶 Observable 转换为一阶 Observable。
+ * 在前一个内部 Observable 尚未完成时，通过丢弃其它内部 Observable 将高阶 Observable 转换为一阶 Observable。
  *
  * <span class="informal">Flattens an Observable-of-Observables by dropping the
  * next inner Observables while the current inner is still executing.</span>
  *
- * <span class="informal">通过在当前内部仍在执行时删除下一个内部 Observables 来展平 Observable-of-Observables。</span>
+ * <span class="informal">通过在当前内部 Observable 仍在执行时丢弃其它内部 Observables 来展平某个发送 Observables 的 Observable。</span>
  *
  * ![](exhaust.png)
  *
@@ -25,7 +25,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * not yet completed. Once that one completes, it will accept and flatten the
  * next inner Observable and repeat this process.
  *
- * `exhaustAll` 订阅了一个发送 Observables 的 Observable，也称为高阶 Observable。每次它观察到这些发送的内部 Observable 之一时，输出 Observable 就会开始发送由该内部 Observable 发送的条目。到目前为止，它的行为类似于 {@link mergeAll}。但是，如果前一个 Observable 尚未完成，`exhaustAll` 忽略每个新的内部 Observable。一旦完成，它将接受并展平下一个内部 Observable 并重复此过程。
+ * `exhaustAll` 订阅了一个发送 Observables 的 Observable，也称为高阶 Observable。每次它观察到发出的这些内部 Observable 之一时，输出 Observable 就会开始发送由该内部 Observable 发送的条目。到目前为止，它的行为类似于 {@link mergeAll}。但是，如果前一个 Observable 尚未完成，则 `exhaustAll` 会忽略每个新的内部 Observable。一旦完成，它将接受并展平下一个内部 Observable 并重复此过程。
  *
  * ## Example
  *
@@ -33,7 +33,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  * Run a finite timer for each click, only if there is no currently active timer
  *
- * 仅当当前没有活动计时器时，才为每次点击运行有限计时器
+ * 仅当目前没有活动计时器时，才会为每次点击运行一个有限计时器
  *
  * ```ts
  * import { fromEvent, map, interval, take, exhaustAll } from 'rxjs';
@@ -56,7 +56,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * Observables and propagates the first Observable exclusively until it
  * completes before subscribing to the next.
  *
- * 一个返回 Observable 的函数，该函数接受 Observable 的源并以独占方式传播第一个 Observable，直到它完成，然后再订阅下一个。
+ * 一个返回 Observable 的函数，该函数接受 Observable 的源并以独占方式转发第一个 Observable 中的值，直到它完成，才订阅下一个。
  *
  */
 export function exhaustAll<O extends ObservableInput<any>>(): OperatorFunction<O, ObservedValueOf<O>> {

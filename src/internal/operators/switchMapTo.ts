@@ -30,12 +30,12 @@ export function switchMapTo<T, R, O extends ObservableInput<unknown>>(
  * Projects each source value to the same Observable which is flattened multiple
  * times with {@link switchMap} in the output Observable.
  *
- * 将每个源值投影到同一个 Observable，该 Observable 在输出 Observable 中使用 {@link switchMap} 进行多次展平。
+ * 将每个源值投影到同一个 Observable，该 Observable 会在输出 Observable 中使用 {@link switchMap} 进行多次展平。
  *
  * <span class="informal">It's like {@link switchMap}, but maps each value
  * always to the same inner Observable.</span>
  *
- * <span class="informal">它就像 {@link switchMap}，但总是将每个值映射到同一个内部 Observable。</span>
+ * <span class="informal">它很像 {@link switchMap}，但总是将每个值都映射到同一个内部 Observable。</span>
  *
  * ![](switchMapTo.png)
  *
@@ -45,7 +45,7 @@ export function switchMapTo<T, R, O extends ObservableInput<unknown>>(
  * emits values only from the most recently emitted instance of
  * `innerObservable`.
  *
- * 将每个源值映射到给定的 Observable `innerObservable`，而不考虑源值，然后将这些结果 Observable 展平为一个 Observable，即输出 Observable。输出 Observables 仅从最近发送的 `innerObservable` 实例发送值。
+ * 将每个源值映射到给定的 `innerObservable`，而不管源值是什么，然后将这些结果 Observable 展平为一个 Observable，即输出 Observable。输出 Observables 仅从最近发送的 `innerObservable` 实例中发送值。
  *
  * ## Example
  *
@@ -53,7 +53,7 @@ export function switchMapTo<T, R, O extends ObservableInput<unknown>>(
  *
  * Restart an interval Observable on every click event
  *
- * 在每个点击事件上重新启动一个时间间隔 Observable
+ * 在每个点击事件上重新启动一个定时器 Observable
  *
  * ```ts
  * import { fromEvent, switchMapTo, interval } from 'rxjs';
@@ -69,7 +69,7 @@ export function switchMapTo<T, R, O extends ObservableInput<unknown>>(
  * @param {ObservableInput} innerObservable An Observable to replace each value from
  * the source Observable.
  *
- * 用于替换源 Observable 中的每个值的 Observable。
+ * 一个 Observable，用于替换源 Observable 中的每个值。
  *
  * @return A function that returns an Observable that emits items from the
  * given `innerObservable` (and optionally transformed through the deprecated
@@ -77,7 +77,7 @@ export function switchMapTo<T, R, O extends ObservableInput<unknown>>(
  * and taking only the values from the most recently projected inner
  * Observable.
  *
- * 一个函数，它返回一个 Observable，每次在源 Observable 上发送一个值时，它会从给定的 `innerObservable` 发送条目（并且可以选择通过已弃用的 `resultSelector` 进行转换），并且只从最近投影的内部 Observable 中获取值。
+ * 一个函数，它返回一个 Observable，每当源 Observable 上发送一个值时，它就会从给定的 `innerObservable` 中发送条目（并且可以通过已弃用的可选参数 `resultSelector` 进行转换），并且仅从最近投影出来的内部 Observable 中获取值。
  *
  */
 export function switchMapTo<T, R, O extends ObservableInput<unknown>>(

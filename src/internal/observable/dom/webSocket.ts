@@ -34,7 +34,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * any errors. If at any point (starting, maintaining or closing a connection) there is an error,
  * stream will also error with whatever WebSocket API has thrown.
  *
- * 一旦建立连接，每当有新消息来自服务器时，`WebSocketSubject` 都会将该消息作为流中的值发送。默认情况下，来自 Socket 的消息会通过 `JSON.parse` 解析。如果你想自定义如何处理反序列化（如果有的话），你可以在 {@link WebSocketSubject} 中提供自定义 `resultSelector` 函数。当连接关闭时，流将完成，前提是它没有任何错误发生。如果在任何时候（启动、维护或关闭连接）出现错误，无论 WebSocket API 抛出什么，流都会出错。
+ * 一旦建立连接，每当有新消息来自服务器时，`WebSocketSubject` 都会将该消息作为流中的值发出。默认情况下，来自 Socket 的消息会通过 `JSON.parse` 解析。如果你想自定义如何处理反序列化（如果有的话），你可以在 {@link WebSocketSubject} 中提供自定义 `resultSelector` 函数。当连接关闭时，流将完成，前提是它没有任何错误发生。如果在任何时候（启动、维护或关闭连接）出现错误，无论 WebSocket API 抛出什么，流都会出错。
  *
  * By virtue of being a {@link Subject}, `WebSocketSubject` allows for receiving and sending messages from the server. In order
  * to communicate with a connected endpoint, use `next`, `error` and `complete` methods. `next` sends a value to the server, so bear in mind
@@ -98,7 +98,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * if there is such identifier on an object emitted by the socket. Messages which returns `false` in `messageFilter` are simply skipped,
  * and are not passed down the stream.
  *
- * `multiplex` 的最后一个参数是一个 `messageFilter` 函数，它应该返回一个布尔值。它用于过滤服务器发送的消息，只发送给那些属于模拟 WebSocket 流的消息。例如，服务器可能会在消息对象上用某种字符串标识符标记这些消息，如果 Socket 发送的对象上有这样的标识符，则 `messageFilter` 将返回 `true`。在 `messageFilter` 中返回 `false` 的消息将被简单地跳过，并且不会沿着流向下传递。
+ * `multiplex` 的最后一个参数是一个 `messageFilter` 函数，它应该返回一个布尔值。它用于过滤服务器发送的消息，只发送给那些属于模拟 WebSocket 流的消息。例如，服务器可能会在消息对象上用某种字符串标识符标记这些消息，如果 Socket 发出的对象上有这样的标识符，则 `messageFilter` 将返回 `true`。在 `messageFilter` 中返回 `false` 的消息将被简单地跳过，并且不会沿着流向下传递。
  *
  * Return value of `multiplex` is an Observable with messages incoming from emulated socket connection. Note that this
  * is not a `WebSocketSubject`, so calling `next` or `multiplex` again will fail. For pushing values to the

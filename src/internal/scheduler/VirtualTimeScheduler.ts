@@ -7,7 +7,7 @@ export class VirtualTimeScheduler extends AsyncScheduler {
   /**
    * @deprecated Not used in VirtualTimeScheduler directly. Will be removed in v8.
    *
-   * 不直接在 VirtualTimeScheduler 中使用。将在 v8 中删除。
+   * 不要直接在 VirtualTimeScheduler 中使用。将在 v8 中删除。
    *
    */
   static frameTimeFactor = 10;
@@ -18,7 +18,7 @@ export class VirtualTimeScheduler extends AsyncScheduler {
    * you record `scheduler.frame` to be `1`, then later, observe `scheduler.frame` to be at `11`,
    * that means `10` virtual time units have passed.
    *
-   * 虚拟调度器实例状态的当前帧。两个“帧”之间的差异与“虚拟时间单位”的通过同义。因此，如果你将 `scheduler.frame` 记录为 `1`，那么稍后，观察 `scheduler.frame` 为 `11`，这意味着已经过去了 `10` 虚拟时间单位。
+   * 虚拟调度器实例状态的当前帧。两个“帧”之间的差异等价于“虚拟时间单位”的流逝。因此，如果你将 `scheduler.frame` 记录为 `1`，那么当稍后观察到 `scheduler.frame` 为 `11` 时，这意味着已经过去了 `10` 个虚拟时间单位。
    *
    */
   public frame: number = 0;
@@ -26,7 +26,7 @@ export class VirtualTimeScheduler extends AsyncScheduler {
   /**
    * Used internally to examine the current virtual action index being processed.
    *
-   * 在内部用于检查正在处理的当前虚拟操作索引。
+   * 在内部用于检查正在处理的当前虚拟操作序号。
    *
    * @deprecated Internal implementation detail, do not use directly. Will be made internal in v8.
    *
@@ -47,7 +47,7 @@ export class VirtualTimeScheduler extends AsyncScheduler {
    *
    * @param maxFrames The maximum number of frames to process before stopping. Used to prevent endless flush cycles.
    *
-   * 停止前要处理的最大帧数。用于防止无休止的冲洗循环。
+   * 停止前要处理的最大帧数。用于防止无休止的 flush 循环。
    *
    */
   constructor(schedulerActionCtor: typeof AsyncAction = VirtualAction as any, public maxFrames: number = Infinity) {

@@ -1,13 +1,13 @@
-import { isFunction } from "./isFunction";
+import { isFunction } from './isFunction';
 
 /**
  * Tests to see if the object is "thennable".
  *
- * 测试对象是否是“thennable”。
+ * 测试此对象是否是为 “thennable”。
  *
  * @param value the object to test
  *
- * 测试的对象
+ * 要测试的对象
  *
  */
 export function isPromise(value: any): value is PromiseLike<any> {

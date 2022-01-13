@@ -17,7 +17,7 @@ export interface ArgumentOutOfRangeErrorCtor {
  * An error thrown when an element was queried at a certain index of an
  * Observable, but no such index or position exists in that sequence.
  *
- * 在 Observable 的某个索引处查询元素时抛出的错误，但该序列中不存在这样的索引或位置。
+ * 在 Observable 的某个索引处查询元素时将抛出的错误，但该序列中不存在这样的索引或位置。
  *
  * @see {@link elementAt}
  * @see {@link take}

@@ -14,14 +14,14 @@ export function of(value: undefined): Observable<undefined>;
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 的 .详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
+ * `scheduler` 参数将在 v8 中删除。请改用 `scheduled`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function of(scheduler: SchedulerLike): Observable<never>;
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 的 .详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
+ * `scheduler` 参数将在 v8 中删除。请改用 `scheduled`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function of<A extends readonly unknown[]>(...valuesAndScheduler: [...A, SchedulerLike]): Observable<ValueFromArray<A>>;
@@ -44,7 +44,7 @@ export function of<A extends readonly unknown[]>(...values: A): Observable<Value
  *
  * <span class="informal">Each argument becomes a `next` notification.</span>
 *
- * <span class="informal">每个参数都成为 `next` 通知。</span>
+ * <span class="informal">每个参数都会成为 `next` 通知。</span>
  *
  * ![](of.png)
  *

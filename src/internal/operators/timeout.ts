@@ -13,7 +13,7 @@ export interface TimeoutConfig<T, O extends ObservableInput<unknown> = Observabl
   /**
    * The time allowed between values from the source before timeout is triggered.
    *
-   * 触发超时之前源值之间允许的时间。
+   * 触发超时之前源的多个值之间允许的时间。
    *
    */
   each?: number;
@@ -22,7 +22,7 @@ export interface TimeoutConfig<T, O extends ObservableInput<unknown> = Observabl
    * The relative time as a `number` in milliseconds, or a specific time as a `Date` object,
    * by which the first value must arrive from the source before timeout is triggered.
    *
-   * 以毫秒为单位的 `number` 的相对时间，或作为 `Date` 对象的特定时间，在触发超时之前，第一个值必须从源抵达。
+   * 一个相对时间，或者是一个以毫秒为单位的 `number`，或者是一个 `Date` 对象形式的具体时间，在触发超时之前，第一个值必须已从源抵达。
    *
    */
   first?: number | Date;
@@ -40,7 +40,7 @@ export interface TimeoutConfig<T, O extends ObservableInput<unknown> = Observabl
    * a {@link TimeoutInfo} about the source observable's emissions and what delay or
    * exact time triggered the timeout.
    *
-   * 用于创建可观察到的工厂，以在发生超时时切换到。提供关于源 observable 的排放以及触发超时的延迟或确切时间的 {@link TimeoutInfo}。
+   * 用于创建 Observable 的工厂，以便在发生超时的时候切换过去。 这里提供的 {@link TimeoutInfo} 参数是关于源 observable 的发送以及触发超时的延迟或确切时间的。
    *
    */
   with?: (info: TimeoutInfo<T, M>) => O;
@@ -51,7 +51,7 @@ export interface TimeoutConfig<T, O extends ObservableInput<unknown> = Observabl
    * This can be used to help identify the source of a timeout or pass along
    * other information related to the timeout.
    *
-   * 你可以提供给处理超时的代码的可选附加元数据将通过 {@link TimeoutError} 提供。这可用于帮助识别超时的来源或传递与超时相关的其他信息。
+   * 你可以提供给处理超时的代码的可选额外元数据，它将通过 {@link TimeoutError} 提供。这可用于帮助识别超时的来源或传递与超时相关的其他信息。
    *
    */
   meta?: M;
@@ -61,21 +61,21 @@ export interface TimeoutInfo<T, M = unknown> {
   /**
    * Optional metadata that was provided to the timeout configuration.
    *
-   * 提供给超时配置的可选元数据。
+   * 提供给此超时配置的可选元数据。
    *
    */
   readonly meta: M;
   /**
    * The number of messages seen before the timeout
    *
-   * 超时前看到的消息数
+   * 超时前已看到的消息数
    *
    */
   readonly seen: number;
   /**
    * The last message seen
    *
-   * 看到的最后一条消息
+   * 已看到的最后一条消息
    *
    */
   readonly lastValue: T | null;
@@ -84,7 +84,7 @@ export interface TimeoutInfo<T, M = unknown> {
 /**
  * An error emitted when a timeout occurs.
  *
- * 发生超时时发送的错误。
+ * 发生超时的时候会发送的错误。
  *
  */
 export interface TimeoutError<T = unknown, M = unknown> extends Error {
@@ -95,7 +95,7 @@ export interface TimeoutError<T = unknown, M = unknown> extends Error {
    * (Note that using this constructor directly is not recommended,
    * you should create your own errors)
    *
-   * 由创建错误的超时操作提供给错误的信息。如果直接在具有空构造函数的非 RxJS 代码中使用，将为 `null`。（注意不建议直接使用这个构造函数，你应该自己创建错误）
+   * 由创建错误的超时操作提供给此错误的信息。如果直接在具有空构造函数的非 RxJS 代码中使用，将为 `null`。（注意，不建议直接使用这个构造函数，你应该自己创建错误）
    *
    */
   info: TimeoutInfo<T, M> | null;
@@ -106,7 +106,7 @@ export interface TimeoutErrorCtor {
    * @deprecated Internal implementation detail. Do not construct error instances.
    * Cannot be tagged as internal: <https://github.com/ReactiveX/rxjs/issues/6269>
    *
-   * 内部实现细节。不要构造错误实例。不能标记为内部： <https://github.com/ReactiveX/rxjs/issues/6269>
+   * 内部实现细节。不要构造此错误实例。不能标记为内部： <https://github.com/ReactiveX/rxjs/issues/6269>
    *
    */
   new <T = unknown, M = unknown>(info?: TimeoutInfo<T, M>): TimeoutError<T, M>;
@@ -122,7 +122,7 @@ export interface TimeoutErrorCtor {
  * If you have need of a error representing a timeout, you should
  * create your own error class and use that.
  *
- * 提供以便用户可以将其用作类型并进行质量比较。我们建议你不要将其子类化或直接创建此类的实例。如果你需要一个表示超时的错误，你应该创建自己的错误类并使用它。
+ * 提供它，以便用户可以将其用作类型并更好地进行比较。我们建议你不要将其子类化或直接创建此类的实例。如果你需要一个表示超时的错误，你应该创建自己的错误类并使用它。
  *
  * @see {@link timeout}
  * @class TimeoutError
@@ -144,7 +144,7 @@ export const TimeoutError: TimeoutErrorCtor = createErrorClass(
  * 如果提供 `with`，这将返回一个 observable，如果源没有在指定的时间参数内推送值，它将切换到不同的 observable。
  *
  * <span class="informal">The most flexible option for creating a timeout behavior.</span>
-*
+ *
  * <span class="informal">创建超时行为的最灵活选项。</span>
  *
  * The first thing to know about the configuration is if you do not provide a `with` property to the configuration,
@@ -233,7 +233,7 @@ export function timeout<T, O extends ObservableInput<unknown>, M = unknown>(
  * 如果源没有在指定的时间参数内推送值，则返回一个将出错或切换到不同的 observable 的 observable。
  *
  * <span class="informal">The most flexible option for creating a timeout behavior.</span>
-*
+ *
  * <span class="informal">创建超时行为的最灵活选项。</span>
  *
  * The first thing to know about the configuration is if you do not provide a `with` property to the configuration,
@@ -349,7 +349,7 @@ export function timeout<T, M = unknown>(config: Omit<TimeoutConfig<T, any, M>, '
  * 如果源在作为 `Date` 传递的指定时间之前未推送其第一个值，则返回一个 observable 将出错。这在功能上与 `timeout({ first: someDate })` 相同。
  *
  * <span class="informal">Errors if the first value doesn't show up before the given date and time</span>
-*
+ *
  * <span class="informal">如果第一个值在给定的日期和时间之前没有出现，则会出错</span>
  *
  * ![](timeout.png)
@@ -372,7 +372,7 @@ export function timeout<T>(first: Date, scheduler?: SchedulerLike): MonoTypeOper
  * 如果源没有在指定时间内以毫秒为单位推送值，则返回一个将出错的 observable。这在功能上与 `timeout({ each: milliseconds })` 相同。
  *
  * <span class="informal">Errors if it waits too long between any value</span>
-*
+ *
  * <span class="informal">如果在任何值之间等待太久，则会出错</span>
  *
  * ![](timeout.png)
@@ -394,7 +394,7 @@ export function timeout<T>(each: number, scheduler?: SchedulerLike): MonoTypeOpe
  * 如果 Observable 在给定的时间范围内没有发送值，则会出错。
  *
  * <span class="informal">Timeouts on Observable that doesn't emit values fast enough.</span>
-*
+ *
  * <span class="informal">Observable 上的超时不会足够快地发送值。</span>
  *
  * ![](timeout.png)
@@ -416,11 +416,13 @@ export function timeout<T, O extends ObservableInput<any>, M>(
   // we destructure that into what we're going to use, setting important defaults as we do.
   // NOTE: The default for `scheduler` will be the `scheduler` argument if it exists, or
   // it will default to the `asyncScheduler`.
-  const { first, each, with: _with = timeoutErrorFactory, scheduler = schedulerArg ?? asyncScheduler, meta = null! } = (isValidDate(config)
-    ? { first: config }
-    : typeof config === 'number'
-    ? { each: config }
-    : config) as TimeoutConfig<T, O, M>;
+  const {
+    first,
+    each,
+    with: _with = timeoutErrorFactory,
+    scheduler = schedulerArg ?? asyncScheduler,
+    meta = null!,
+  } = (isValidDate(config) ? { first: config } : typeof config === 'number' ? { each: config } : config) as TimeoutConfig<T, O, M>;
 
   if (first == null && each == null) {
     // Ensure timeout was provided at runtime.
@@ -506,7 +508,7 @@ export function timeout<T, O extends ObservableInput<any>, M>(
  *
  * @param info The information about the timeout to pass along to the error
  *
- * 传递给错误的超时信息
+ * 传给错误的超时信息
  *
  */
 function timeoutErrorFactory(info: TimeoutInfo<any>): Observable<never> {

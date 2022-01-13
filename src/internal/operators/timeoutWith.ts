@@ -7,16 +7,16 @@ import { timeout } from './timeout';
  * If the time of the Date object passed arrives before the first value arrives from the source, it will unsubscribe
  * from the source and switch the subscription to another observable.
  *
- * 如果传递的 Date 对象的时间在第一个值从源抵达之前抵达，它将从源退订并将订阅切换到另一个 observable。
+ * 如果传入的 Date 对象的时间在第一个值从源抵达之前抵达，它将退订源并转而订阅另一个 observable。
  *
  * <span class="informal">Use to switch to a different observable if the first value doesn't arrive by a specific time</span>
  *
- * <span class="informal">如果第一个值没有在特定时间抵达，则用于切换到不同的 observable</span>
+ * <span class="informal">如果第一个值没能在指定时间内抵达，则将切换到另一个 observable</span>
  *
  * Can be used to set a timeout only for the first value, however it's recommended to use the {@link timeout} operator with
  * the `first` configuration to get that effect.
  *
- * 仅可用于为第一个值设置超时，但建议在 `first` 配置中使用 {@link timeout} 操作符以获得该效果。
+ * 仅可用于为第一个值设置超时，不过更建议使用带有 `first` 的配置参数的 {@link timeout} 操作符以获得此效果。
  *
  * @param dueBy The exact time, as a `Date`, at which the timeout will be triggered if the first value does not arrive.
  *
@@ -24,15 +24,15 @@ import { timeout } from './timeout';
  *
  * @param switchTo The observable to switch to when timeout occurs.
  *
- * 发生超时时切换到的可观察者。
+ * 当发生超时时要切换到的可观察者。
  *
  * @param scheduler The scheduler to use with time-related operations within this operator. Defaults to {@link asyncScheduler}
  *
- * 在此操作符中与时间相关的操作一起使用的调度器。默认为 {@link asyncScheduler}
+ * 一个调度器，用于执行此操作符中与时间相关的操作。默认为 {@link asyncScheduler}
  *
  * @deprecated Replaced with {@link timeout}. Instead of `timeoutWith(someDate, a$, scheduler)`, use the configuration object `timeout({ first: someDate, with: () => a$, scheduler })`. Will be removed in v8.
  *
- * 已替换为 {@link timeout}。代替 `timeoutWith(someDate, a$, scheduler)`，使用配置对象 `timeout({ first: someDate, with: () => a$, scheduler })`。将在 v8 中删除。
+ * 已替换为 {@link timeout}。把 `timeoutWith(someDate, a$, scheduler)` 替换为使用配置对象的 `timeout({ first: someDate, with: () => a$, scheduler })`。将在 v8 中删除。
  *
  */
 export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, scheduler?: SchedulerLike): OperatorFunction<T, T | R>;
@@ -41,11 +41,11 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  * When the passed timespan elapses before the source emits any given value, it will unsubscribe from the source,
  * and switch the subscription to another observable.
  *
- * 当在源发送任何给定值之前经过的时间跨度过去时，它将从源退订，并将订阅切换到另一个可观察者。
+ * 当在源发送任何给定值之前应该已经过去的时间跨度，它将从源退订，并将此订阅切换到另一个可观察者。
  *
  * <span class="informal">Used to switch to a different observable if your source is being slow</span>
  *
- * <span class="informal">如果你的源很慢，用于切换到不同的 observable</span>
+ * <span class="informal">如果你的源很慢，可以用它切换到不同的 observable</span>
  *
  * Useful in cases where:
  *
@@ -53,11 +53,11 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  *
  * - You want to switch to a different source that may be faster
  *
- *   你想切换到可能更快的不同来源
+ *   你想切换到另一个可能更快的源
  *
  * - You want to notify a user that the data stream is slow
  *
- *   你想通知用户数据流很慢
+ *   你想通知用户此数据流很慢
  *
  * - You want to emit a custom error rather than the {@link TimeoutError} emitted
  *   by the default usage of {@link timeout}.
@@ -108,25 +108,25 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  * @see {@link timeout}
  * @param waitFor The time allowed between values from the source before timeout is triggered.
  *
- * 触发超时之前源值之间允许的时间。
+ * 在触发超时之前，源值之间允许的最大时间间隔。
  *
  * @param switchTo The observable to switch to when timeout occurs.
  *
- * 发生超时时切换到的可观察者。
+ * 当发生超时时要切换到的可观察者。
  *
  * @param scheduler The scheduler to use with time-related operations within this operator. Defaults to {@link asyncScheduler}
  *
- * 在此操作符中与时间相关的操作一起使用的调度器。默认为 {@link asyncScheduler}
+ * 一个调度器，用于执行此操作符中与时间相关的操作。默认为 {@link asyncScheduler}
  *
  * @return A function that returns an Observable that mirrors behaviour of the
  * source Observable, unless timeout happens when it starts emitting values
  * from the Observable passed as a second parameter.
  *
- * 返回一个反映源 Observable 行为的 Observable 的函数，除非在它开始从作为第二个参数传递的 Observable 发送值时发生超时。
+ * 一个函数，会返回源 Observable 的镜像 Observable，但如果发生了超时，就会发出作为第二参数传入的 Observable 的各个值。
  *
  * @deprecated Replaced with {@link timeout}. Instead of `timeoutWith(100, a$, scheduler)`, use the configuration object `timeout({ each: 100, with: () => a$, scheduler })`. Will be removed in v8.
  *
- * 已替换为 {@link timeout}。代替 `timeoutWith(100, a$, scheduler)`，使用配置对象 `timeout({ each: 100, with: () => a$, scheduler })`。将在 v8 中删除。
+ * 已替换为 {@link timeout}。请把 `timeoutWith(100, a$, scheduler)` 替换为使用配置对象的 `timeout({ each: 100, with: () => a$, scheduler })`。将在 v8 中删除。
  *
  */
 export function timeoutWith<T, R>(waitFor: number, switchTo: ObservableInput<R>, scheduler?: SchedulerLike): OperatorFunction<T, T | R>;

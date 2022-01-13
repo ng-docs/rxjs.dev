@@ -5,11 +5,11 @@ import { isFunction } from './isFunction';
 /**
  * Tests to see if the object is an RxJS {@link Observable}
  *
- * 测试对象是否为 RxJS {@link Observable}
+ * 测试此对象是否为 RxJS {@link Observable}
  *
  * @param obj the object to test
  *
- * 测试的对象
+ * 要测试的对象
  *
  */
 export function isObservable(obj: any): obj is Observable<unknown> {

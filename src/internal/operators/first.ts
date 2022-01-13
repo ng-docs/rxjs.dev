@@ -32,7 +32,7 @@ export function first<T, D = T>(
  * <span class="informal">Emits only the first value. Or emits only the first
  * value that passes some test.</span>
  *
- * <span class="informal">仅发送第一个值。或仅发送通过某些测试的第一个值。</span>
+ * <span class="informal">仅发送第一个值或能通过某些测试的第一个值。</span>
  *
  * ![](first.png)
  *
@@ -41,7 +41,7 @@ export function first<T, D = T>(
  * emits the first value of the source that matches the specified condition. Throws an error if
  * `defaultValue` was not provided and a matching element is not found.
  *
- * 如果不带参数调用，`first` 发送源 Observable 的第一个值，然后完成。如果使用 `predicate` 函数调用，则 `first` 发送与指定条件匹配的源的第一个值。如果未提供 `defaultValue` 且未找到匹配元素，则会引发错误。
+ * 如果不带参数调用，`first` 就会发送源 Observable 的第一个值，然后完成。如果调用时带有 `predicate` 函数，则 `first` 会发送与指定条件匹配的源的第一个值。如果未提供 `defaultValue` 且未找到匹配元素，则会引发错误。
  *
  * ## Examples
  *
@@ -81,7 +81,7 @@ export function first<T, D = T>(
  * callback if the Observable completes before any `next` notification was sent.
  * This is how `first()` is different from {@link take}(1) which completes instead.
  *
- * 如果 Observable 在发送任何 `next` 通知之前完成，则将 EmptyError 传递给 Observer 的 `error` 回调。这就是 `first()` 与 {@link take}(1) 的不同之处，后者完成了。
+ * 如果此 Observable 在发送任何 `next` 通知之前就已完成，则将 EmptyError 传给 Observer 的 `error` 回调。这就是 `first()` 与 {@link take}(1) 的不同之处，后者会直接完成。
  *
  * @param {function(value: T, index: number, source: Observable<T>): boolean} [predicate]
  * An optional function called with each item to test for condition matching.
@@ -90,7 +90,7 @@ export function first<T, D = T>(
  * @return A function that returns an Observable that emits the first item that
  * matches the condition.
  *
- * 一个返回 Observable 的函数，该 Observable 发送与条件匹配的第一个条目。
+ * 一个返回 Observable 的函数，该 Observable 会发送满足此条件的第一个条目。
  *
  */
 export function first<T, D>(

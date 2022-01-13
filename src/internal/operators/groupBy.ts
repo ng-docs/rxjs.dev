@@ -59,28 +59,28 @@ export function groupBy<T, K, R>(
  * and emits these grouped items as `GroupedObservables`, one
  * {@link GroupedObservable} per group.
  *
- * 根据指定的标准对 Observable 发送的条目进行分组，并将这些分组的条目作为 `GroupedObservables` 发送，每组一个 {@link GroupedObservable}。
+ * 根据指定的标准对 Observable 发送的条目进行分组，并将这些分组后的条目作为 `GroupedObservables` 发送，每组都对应一个 {@link GroupedObservable}。
  *
  * ![](groupBy.png)
  *
  * When the Observable emits an item, a key is computed for this item with the key function.
  *
- * 当 Observable 发送一个条目时，使用 key 函数为这个条目计算一个键。
+ * 当 Observable 发送一个条目时，使用 key 函数为这个条目计算出一个键。
  *
  * If a {@link GroupedObservable} for this key exists, this {@link GroupedObservable} emits. Otherwise, a new
  * {@link GroupedObservable} for this key is created and emits.
  *
- * 如果此键的 {@link GroupedObservable} 存在，则此 {@link GroupedObservable} 发送。否则，将为该键创建一个新的 {@link GroupedObservable} 并发送。
+ * 如果此键的 {@link GroupedObservable} 存在，则发送此 {@link GroupedObservable} 。否则，将为该键创建一个新的 {@link GroupedObservable} 并发送。
  *
  * A {@link GroupedObservable} represents values belonging to the same group represented by a common key. The common
  * key is available as the `key` field of a {@link GroupedObservable} instance.
  *
- * {@link GroupedObservable} 表示属于由公共键表示的同一组的值。公共键可用作 {@link GroupedObservable} 实例的 `key` 字段。
+ * {@link GroupedObservable} 表示属于拥有共有键的分组的值。此共有键可用作 {@link GroupedObservable} 实例的 `key` 字段。
  *
  * The elements emitted by {@link GroupedObservable}s are by default the items emitted by the Observable, or elements
  * returned by the element function.
  *
- * {@link GroupedObservable} 发送的元素默认是 Observable 发送的条目，或者是 element 函数返回的元素。
+ * {@link GroupedObservable} 发送的元素默认是此 Observable 发送的条目，或是由 element 函数返回的元素。
  *
  * ## Examples
  *
@@ -88,7 +88,7 @@ export function groupBy<T, K, R>(
  *
  * Group objects by `id` and return as array
  *
- * 按 `id` 对对象进行分组并以数组形式返回
+ * 按 `id` 对一些对象进行分组并以数组形式返回
  *
  * ```ts
  * import { of, groupBy, mergeMap, reduce } from 'rxjs';
@@ -144,24 +144,24 @@ export function groupBy<T, K, R>(
  * @param element A function that extracts the
  * return element for each item.
  *
- * 提取每个条目的返回元素的函数。
+ * 一个函数，它会抽取每个条目所返回元素。
  *
  * @param duration
  * A function that returns an Observable to determine how long each group should
  * exist.
  *
- * 一个返回 Observable 以确定每个组应该存在多长时间的函数。
+ * 一个返回 Observable 的函数，用以确定每个组应该存在多长时间。
  *
  * @param connector Factory function to create an
  * intermediate Subject through which grouped elements are emitted.
  *
- * 工厂函数创建一个中间主体，通过该主体发送分组元素。
+ * 一个工厂函数，用于创建一个中间主体（Subject），并通过该主体发送分组后的元素。
  *
  * @return A function that returns an Observable that emits GroupedObservables,
  * each of which corresponds to a unique key value and each of which emits
  * those items from the source Observable that share that key value.
  *
- * 一个函数，它返回一个发送 GroupedObservables 的 Observable，每个都对应一个唯一的键值，每个都从源 Observable 发送共享该键值的那些条目。
+ * 一个函数，它返回一个发送 GroupedObservables 的 Observable，每个 GroupedObservable 都对应一个唯一的键值，每个都会从源 Observable 发送共享此键值的那些条目。
  *
  * @deprecated Use the options parameter instead.
  *
@@ -317,21 +317,21 @@ export function groupBy<T, K, R>(
  * subscriptions have to keep the subscription to the source alive until they
  * are torn down.
  *
- * 创建它是因为 groupBy 有点独特，因为具有订阅的发送组必须保持对源的订阅处于活动状态，直到它们被拆解。
+ * 之所以创建 groupBy 是因为它有点独特，像这种具有一些订阅的发送组必须确保对源的订阅始终处于活动状态，直到它们被拆解。
  *
  */
 class GroupBySubscriber<T> extends OperatorSubscriber<T> {
   /**
    * The number of actively subscribed groups
    *
-   * 积极订阅的群组数
+   * 主动订阅的群组数
    *
    */
   activeGroups = 0;
   /**
    * Whether or not teardown was attempted on this subscription.
    *
-   * 是否尝试对此订阅进行拆解。
+   * 是否要尝试对此订阅进行拆解。
    *
    */
   teardownAttempted = false;
@@ -349,7 +349,7 @@ class GroupBySubscriber<T> extends OperatorSubscriber<T> {
  * An observable of values that is the emitted by the result of a {@link groupBy} operator,
  * contains a `key` property for the grouping.
  *
- * 由 {@link groupBy} 操作符的结果发送的可观察值包含分组的 `key` 属性。
+ * 由 {@link groupBy} 操作符的结果发出的可观察者类型的值里包含了此分组的 `key` 属性。
  *
  */
 export interface GroupedObservable<K, T> extends Observable<T> {

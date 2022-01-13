@@ -36,7 +36,7 @@ export function exhaustMap<T, I, R>(
  * Projects each source value to an Observable which is merged in the output
  * Observable only if the previous projected Observable has completed.
  *
- * 将每个源值投影到一个 Observable，该 Observable 仅在前一个投影的 Observable 完成时才合并到输出 Observable 中。
+ * 将每个源值投影成一个 Observable，该 Observable 仅在前一个投影的 Observable 完成时才会合并到输出 Observable 中。
  *
  * <span class="informal">Maps each value to an Observable, then flattens all of
  * these inner Observables using {@link exhaust}.</span>
@@ -54,7 +54,7 @@ export function exhaustMap<T, I, R>(
  * that one completes, it will accept and flatten the next projected Observable
  * and repeat this process.
  *
- * 返回一个 Observable，该 Observable 基于应用你提供给源 Observable 发送的每个条目的函数来发送条目，其中该函数返回一个（所谓的“内部”）Observable。当它将源值投影到 Observable 时，输出 Observable 开始发送由该投影的 Observable 发送的条目。但是，如果前一个投影的 Observable 尚未完成，`exhaustMap` 忽略每个新的投影 Observable。一旦完成，它将接受并展平下一个投影的 Observable 并重复此过程。
+ * 返回一个 Observable，该 Observable 会针对源 Observable 发送的每个条目调用某个函数并发送其结果，该函数会返回一个（所谓的“内部”）Observable。当它将源值投影到 Observable 时，输出 Observable 就会开始发送由该投影出的 Observable 发送的条目。但是，如果前一个投影出的 Observable 尚未完成，`exhaustMap` 就会忽略每个新的投影 Observable。一旦完成，它将接受并展平下一个投影出的 Observable 并重复此过程。
  *
  * ## Example
  *
@@ -62,7 +62,7 @@ export function exhaustMap<T, I, R>(
  *
  * Run a finite timer for each click, only if there is no currently active timer
  *
- * 仅当当前没有活动计时器时，才为每次点击运行有限计时器
+ * 仅当目前没有活动计时器时，才为每次点击运行有限计时器
  *
  * ```ts
  * import { fromEvent, exhaustMap, interval, take } from 'rxjs';
@@ -81,13 +81,13 @@ export function exhaustMap<T, I, R>(
  * that, when applied to an item emitted by the source Observable, returns an
  * Observable.
  *
- * 一个函数，当应用于源 Observable 发送的条目时，返回一个 Observable。
+ * 一个函数，当针对源 Observable 发送的条目调用它时，会返回一个 Observable。
  *
  * @return A function that returns an Observable containing projected
  * Observables of each item of the source, ignoring projected Observables that
  * start before their preceding Observable has completed.
  *
- * 一个函数，它返回一个包含源中每个条目的投影 Observable 的 Observable，忽略在其前一个 Observable 完成之前开始的投影 Observable。
+ * 一个函数，它会返回一个 Observable，其中包含根据源中每个条目投影出的 Observable ，并忽略在前一个 Observable 完成之前已开始的那些投影出的 Observable。
  *
  */
 export function exhaustMap<T, R, O extends ObservableInput<any>>(

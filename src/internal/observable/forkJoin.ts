@@ -67,12 +67,12 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * an {@link Observable} that emits either an array of values in the exact same order as the passed array,
  * or a dictionary of values in the same shape as the passed dictionary.
  *
- * 接受一个 {@link ObservableInput} 的 `Array` 或 {@link ObservableInput} 的字典 `Object`，并返回一个 {@link Observable}，它用与传入的数组完全相同的顺序发送一个值数组，或者用与传入的字典相同的构型。
+ * 接受一个 {@link ObservableInput} 的 `Array` 或 {@link ObservableInput} 的字典 `Object`，并返回一个 {@link Observable}，它用与传入的数组完全相同的顺序发出一个值数组，或者用与传入的字典相同的构型。
  *
  * <span class="informal">Wait for Observables to complete and then combine last values they emitted;
  * complete immediately if an empty array is passed.</span>
  *
- * <span class="informal">等待这些 Observables 完成，然后把它们发送的最后一个值组合起来；如果传递了一个空数组，则立即完成。</span>
+ * <span class="informal">等待这些 Observables 完成，然后把它们发出的最后一个值组合起来；如果传递了一个空数组，则立即完成。</span>
  *
  * ![](forkJoin.png)
  *
@@ -85,25 +85,25 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * `forkJoin` will wait for all passed observables to emit and complete and then it will emit an array or an object with last
  * values from corresponding observables.
  *
- * `forkJoin` 将等待所有传入的 observables 发送并完成，然后它会发送一个数组或一个对象，其中包含来自相应 observables 的最后一个值。
+ * `forkJoin` 将等待所有传入的 observables 发出并完成，然后它会发出一个数组或一个对象，其中包含来自相应 observables 的最后一个值。
  *
  * If you pass an array of `n` observables to the operator, then the resulting
  * array will have `n` values, where the first value is the last one emitted by the first observable,
  * second value is the last one emitted by the second observable and so on.
  *
- * 如果你将一个包含 `n` 个 observable 的数组传给本操作符，那么结果数组将有 `n` 个值，其第一个值是第一个 observable 发送的最后一个值，第二个值是第二个 observable 发送的最后一个值，依此类推。
+ * 如果你将一个包含 `n` 个 observable 的数组传给本操作符，那么结果数组将有 `n` 个值，其第一个值是第一个 observable 发出的最后一个值，第二个值是第二个 observable 发出的最后一个值，依此类推。
  *
  * If you pass a dictionary of observables to the operator, then the resulting
  * objects will have the same keys as the dictionary passed, with their last values they have emitted
  * located at the corresponding key.
  *
- * 如果你将可观察者的字典传递给操作符，则生成的对象将具有与传递的字典相同的键名，它们发送的最后一个值位于相应的键名处。
+ * 如果你将可观察者的字典传递给操作符，则生成的对象将具有与传递的字典相同的键名，它们发出的最后一个值位于相应的键名处。
  *
  * That means `forkJoin` will not emit more than once and it will complete after that. If you need to emit combined
  * values not only at the end of the lifecycle of passed observables, but also throughout it, try out {@link combineLatest}
  * or {@link zip} instead.
  *
- * 这意味着 `forkJoin` 不会发送超过一个值，并且会在此之后完成。如果你不仅需要在传入的可观察者的生命周期结束时发送组合值，而且还需要在整个生命周期中发送组合值，请尝试使用 {@link combineLatest} 或 {@link zip}。
+ * 这意味着 `forkJoin` 不会发出超过一个值，并且会在此之后完成。如果你不仅需要在传入的可观察者的生命周期结束时发出组合值，而且还需要在整个生命周期中发出组合值，请尝试使用 {@link combineLatest} 或 {@link zip}。
  *
  * In order for the resulting array to have the same length as the number of input observables, whenever any of
  * the given observables completes without emitting any value, `forkJoin` will complete at that moment as well
@@ -113,7 +113,7 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * the previous case. Overall, in order for `forkJoin` to emit a value, all given observables
  * have to emit something at least once and complete.
  *
- * 为了使结果数组的长度与输入的 observables 的数量相同，只要任何给定的 observables 完成而没有发送任何值，`forkJoin` 也会在那个时刻完成并且它也不会发送任何值，即使它已经具有来自其他可观察者的一些最后值。相反，如果有一个 observable 永远不会完成，`forkJoin` 也永远不会完成，除非其他 observable 在某个时刻都完成而不发送值，这会让我们回到前面的情况。总而言之，为了让 `forkJoin` 发送一个值，所有给定的 observables 都必须至少发送一次并完成。
+ * 为了使结果数组的长度与输入的 observables 的数量相同，只要任何给定的 observables 完成而没有发出任何值，`forkJoin` 也会在那个时刻完成并且它也不会发出任何值，即使它已经具有来自其他可观察者的一些最后值。相反，如果有一个 observable 永远不会完成，`forkJoin` 也永远不会完成，除非其他 observable 在某个时刻都完成而不发出值，这会让我们回到前面的情况。总而言之，为了让 `forkJoin` 发出一个值，所有给定的 observables 都必须至少发出一次并完成。
  *
  * If any given observable errors at some point, `forkJoin` will error as well and immediately unsubscribe
  * from the other observables.
@@ -126,7 +126,7 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * all its arguments and puts them into an array. Note that the `resultSelector` will be called only
  * when `forkJoin` is supposed to emit a result.
  *
- * `forkJoin` 会接受一个可选的 `resultSelector` 函数为参数，该函数将使用要发送的数组中的值为参数进行调用。无论 `resultSelector` 返回什么，都会出现在输出 observable 中。这意味着默认的 `resultSelector` 可以被认为是一个函数，它接受它的所有参数并将它们放入一个数组中。请注意，只有当 `forkJoin` 应该发送结果时才会调用 `resultSelector`。
+ * `forkJoin` 会接受一个可选的 `resultSelector` 函数为参数，该函数将使用要发出的数组中的值为参数进行调用。无论 `resultSelector` 返回什么，都会出现在输出 observable 中。这意味着默认的 `resultSelector` 可以被认为是一个函数，它接受它的所有参数并将它们放入一个数组中。请注意，只有当 `forkJoin` 应该发出结果时才会调用 `resultSelector`。
  *
  * ## Examples
  *
@@ -187,7 +187,7 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * @return {Observable} Observable emitting either an array of last values emitted by passed Observables
  * or value from project function.
  *
- * Observable 发送由传入的 Observables 发送的最后一个值的数组或来自投影函数的值。
+ * Observable 发出由传入的 Observables 发出的最后一个值的数组或来自投影函数的值。
  *
  */
 export function forkJoin(...args: any[]): Observable<any> {

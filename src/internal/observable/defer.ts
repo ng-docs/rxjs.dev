@@ -6,7 +6,7 @@ import { innerFrom } from './innerFrom';
  * Creates an Observable that, on subscribe, calls an Observable factory to
  * make an Observable for each new Observer.
  *
- * 创建一个 Observable，在订阅时调用 Observable 工厂为每个新的 Observer 创建一个 Observable。
+ * 创建一个 Observable。在订阅时会调用 Observable 工厂为来每个新的 Observer 创建一个 Observable。
  *
  * <span class="informal">Creates the Observable lazily, that is, only when it
  * is subscribed.
@@ -24,7 +24,7 @@ import { innerFrom } from './innerFrom';
  * Observable instead. Last but not least, an exception during the factory
  * function call is transferred to the Observer by calling `error`.
  *
- * `defer` 允许你仅在 Observer 订阅时创建 Observable。它等到 Observer 订阅它，调用给定的工厂函数来获取 Observable——工厂函数通常会生成一个新的 Observable——然后将 Observer 订阅到这个 Observable。如果工厂函数返回一个假值，则将 EMPTY 用作 Observable。最后但并非最不重要的一点是，工厂函数调用期间的异常通过调用 `error` 传递给观察者。
+ * `defer` 能让你仅当有 Observer 订阅时才创建 Observable。它会等待 Observer 订阅它，并调用给定的工厂函数来获取 Observable —— 工厂函数通常会生成一个新的 Observable —— 然后将 Observer 订阅到这个 Observable。如果工厂函数返回了一个假值，则会改用 EMPTY 作为结果 Observable。最后，但仍然很重要的一点是，工厂函数调用期间抛出的异常会通过调用 `error` 传递给观察者。
  *
  * ## Example
  *
@@ -32,7 +32,7 @@ import { innerFrom } from './innerFrom';
  *
  * Subscribe to either an Observable of clicks or an Observable of interval, at random
  *
- * 随机订阅点击的 Observable 或间隔的 Observable
+ * 随机订阅点击事件的 Observable 或定时发送的 Observable
  *
  * ```ts
  * import { defer, fromEvent, interval } from 'rxjs';
@@ -56,7 +56,7 @@ import { innerFrom } from './innerFrom';
  * Observable. May also return a Promise, which will be converted on the fly
  * to an Observable.
  *
- * 为订阅输出 Observable 的每个 Observer 调用的 Observable 工厂函数。也可以返回一个 Promise，它将在运行中转换为 Observable。
+ * 为订阅了输出 Observable 的每个 Observer 调用的 Observable 工厂函数。也可以返回一个 Promise，它将在运行期间转换为 Observable。
  *
  * @return {Observable} An Observable whose Observers' subscriptions trigger
  * an invocation of the given Observable factory function.

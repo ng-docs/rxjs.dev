@@ -10,7 +10,7 @@ export interface AjaxCreationMethod {
    * [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) in
    * global scope by default.
    *
-   * 创建一个 observable，默认情况下将在全局范围内使用[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 AJAX 请求。
+   * 创建一个 observable，默认情况下将使用全局范围内的 [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) 执行 AJAX 请求。
    *
    * This is the most configurable option, and the basis for all other AJAX calls in the library.
    *
@@ -44,7 +44,7 @@ export interface AjaxCreationMethod {
    * [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) in
    * global scope. Defaults to a `responseType` of `"json"`.
    *
-   * 在全局范围内使用[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP GET。默认为 `"json"` 的 `responseType`。
+   * 使用全局范围内的 [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) 执行 HTTP GET。默认的 `responseType` 为 `"json"`。
    *
    * ## Example
    *
@@ -70,11 +70,11 @@ export interface AjaxCreationMethod {
    * [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) in
    * global scope by default, and a `responseType` of `"json"`.
    *
-   * 默认情况下，在全局范围内使用[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP GET，`responseType` 为 `"json"`。
+   * 默认情况下，使用全局范围内的 [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) 执行 HTTP GET，其 `responseType` 为 `"json"`。
    *
    * @param url The URL to get the resource from
    *
-   * 获取资源的 URL
+   * 要获取资源的 URL
    *
    * @param headers Optional headers. Case-Insensitive.
    *
@@ -88,22 +88,22 @@ export interface AjaxCreationMethod {
    * [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) in
    * global scope by default, and a `responseType` of `"json"`.
    *
-   * 默认情况下，使用全局范围内的[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP POST，`responseType` 为 `"json"`。
+   * 默认情况下，使用全局范围内的 [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) 执行 HTTP POST，其 `responseType` 为 `"json"`。
    *
    * Before sending the value passed to the `body` argument, it is automatically serialized
    * based on the specified `responseType`. By default, a JavaScript object will be serialized
    * to JSON. A `responseType` of `application/x-www-form-urlencoded` will flatten any provided
    * dictionary object to a url-encoded string.
    *
-   * 在发送传递给 `body` 参数的值之前，它会根据指定的 `responseType` 自动序列化。默认情况下，JavaScript 对象将被序列化为 JSON。`application/x-www-form-urlencoded` 的 `responseType` 会将任何提供的字典对象展平为 url 编码的字符串。
+   * 在发送要传给 `body` 参数的值之前，它会根据指定的 `responseType` 自动序列化。默认情况下，JavaScript 对象将被序列化为 JSON。`application/x-www-form-urlencoded` 的 `responseType` 会将任何提供的字典对象展平为已进行 url 编码的字符串。
    *
    * @param url The URL to get the resource from
    *
-   * 获取资源的 URL
+   * 要获取资源的 URL
    *
    * @param body The content to send. The body is automatically serialized.
    *
-   * 要发送的内容。正文是自动序列化的。
+   * 要发送的内容。此 body 是自动序列化的。
    *
    * @param headers Optional headers. Case-Insensitive.
    *
@@ -117,22 +117,22 @@ export interface AjaxCreationMethod {
    * [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) in
    * global scope by default, and a `responseType` of `"json"`.
    *
-   * 默认情况下，使用全局范围内的[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP PUT，`responseType` 为 `"json"`。
+   * 默认情况下，使用全局范围内的 [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) 执行 HTTP PUT，其 `responseType` 为 `"json"`。
    *
    * Before sending the value passed to the `body` argument, it is automatically serialized
    * based on the specified `responseType`. By default, a JavaScript object will be serialized
    * to JSON. A `responseType` of `application/x-www-form-urlencoded` will flatten any provided
    * dictionary object to a url-encoded string.
    *
-   * 在发送传递给 `body` 参数的值之前，它会根据指定的 `responseType` 自动序列化。默认情况下，JavaScript 对象将被序列化为 JSON。`application/x-www-form-urlencoded` 的 `responseType` 会将任何提供的字典对象展平为 url 编码的字符串。
+   * 在发送要传给 `body` 参数的值之前，它会根据指定的 `responseType` 自动序列化。默认情况下，JavaScript 对象将被序列化为 JSON。`application/x-www-form-urlencoded` 的 `responseType` 会将任何提供的字典对象展平为已进行 url 编码的字符串。
    *
    * @param url The URL to get the resource from
    *
-   * 获取资源的 URL
+   * 要获取资源的 URL
    *
    * @param body The content to send. The body is automatically serialized.
    *
-   * 要发送的内容。正文是自动序列化的。
+   * 要发送的内容。此 body 是自动序列化的。
    *
    * @param headers Optional headers. Case-Insensitive.
    *
@@ -146,22 +146,22 @@ export interface AjaxCreationMethod {
    * [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) in
    * global scope by default, and a `responseType` of `"json"`.
    *
-   * 默认情况下，使用全局范围内的[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP PATCH，`responseType` 为 `"json"`。
+   * 默认情况下，使用全局范围内的 [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) 执行 HTTP PATCH，其 `responseType` 为 `"json"`。
    *
    * Before sending the value passed to the `body` argument, it is automatically serialized
    * based on the specified `responseType`. By default, a JavaScript object will be serialized
    * to JSON. A `responseType` of `application/x-www-form-urlencoded` will flatten any provided
    * dictionary object to a url-encoded string.
    *
-   * 在发送传递给 `body` 参数的值之前，它会根据指定的 `responseType` 自动序列化。默认情况下，JavaScript 对象将被序列化为 JSON。`application/x-www-form-urlencoded` 的 `responseType` 会将任何提供的字典对象展平为 url 编码的字符串。
+   * 在发送要传给 `body` 参数的值之前，它会根据指定的 `responseType` 自动序列化。默认情况下，JavaScript 对象将被序列化为 JSON。`application/x-www-form-urlencoded` 的 `responseType` 会将任何提供的字典对象展平为 url 编码的字符串。
    *
    * @param url The URL to get the resource from
    *
-   * 获取资源的 URL
+   * 要获取资源的 URL
    *
    * @param body The content to send. The body is automatically serialized.
    *
-   * 要发送的内容。正文是自动序列化的。
+   * 要发送的内容。此 body 是自动序列化的。
    *
    * @param headers Optional headers. Case-Insensitive.
    *
@@ -175,11 +175,11 @@ export interface AjaxCreationMethod {
    * [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) in
    * global scope by default, and a `responseType` of `"json"`.
    *
-   * 默认情况下，使用全局范围内的[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP DELETE，`responseType` 为 `"json"`。
+   * 默认情况下，使用全局范围内的 [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) 执行 HTTP DELETE，其 `responseType` 为 `"json"`。
    *
    * @param url The URL to get the resource from
    *
-   * 获取资源的 URL
+   * 要获取资源的 URL
    *
    * @param headers Optional headers. Case-Insensitive.
    *
@@ -194,11 +194,11 @@ export interface AjaxCreationMethod {
    * global scope by default, and returns the hydrated JavaScript object from the
    * response.
    *
-   * 默认情况下使用全局范围内的[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)执行 HTTP GET，并从响应中返回水合 JavaScript 对象。
+   * 默认情况下使用全局范围内的 [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) 执行 HTTP GET，并从响应中返回水合 JavaScript 对象。
    *
    * @param url The URL to get the resource from
    *
-   * 获取资源的 URL
+   * 要获取资源的 URL
    *
    * @param headers Optional headers. Case-Insensitive.
    *
@@ -248,7 +248,7 @@ function ajaxGetJSON<T>(url: string, headers?: Record<string, string>): Observab
  * It creates an observable for an Ajax request with either a request object with
  * url, headers, etc or a string for a URL.
  *
- * 它为 Ajax 请求创建一个 observable，其中包含带有 url、标头等的请求对象或 URL 的字符串。
+ * 它会为 Ajax 请求创建一个 observable，其中包含带有 url、标头等的请求对象或 URL 字符串。
  *
  * ## Examples
  *
@@ -300,7 +300,7 @@ function ajaxGetJSON<T>(url: string, headers?: Record<string, string>): Observab
  *
  * Using `ajax()` with object as argument and method POST with a two seconds delay
  *
- * 使用 `ajax()` 对象作为参数和方法 POST 有两秒的延迟
+ * 使用 `ajax()` 对象作为参数，使用 POST 方法，并带有两秒钟延迟
  *
  * ```ts
  * import { ajax } from 'rxjs/ajax';
@@ -332,7 +332,7 @@ function ajaxGetJSON<T>(url: string, headers?: Record<string, string>): Observab
  *
  * Using `ajax()` to fetch. An error object that is being returned from the request
  *
- * 使用 `ajax()` 来获取。从请求返回的错误对象
+ * 使用 `ajax()` 来获取。请求会返回一个错误对象
  *
  * ```ts
  * import { ajax } from 'rxjs/ajax';
@@ -497,15 +497,15 @@ export function fromAjax<T>(init: AjaxConfig): Observable<AjaxResponse<T>> {
        * Wires up an event handler that will emit an error when fired. Used
        * for timeout and abort events.
        *
-       * 连接一个事件处理器，该处理器在触发时会发送错误。用于超时和中止事件。
+       * 连接一个事件处理器，该处理器在触发时会发出错误。用于超时和中止事件。
        *
        * @param type The type of event we're treating as an error
        *
-       * 我们视为错误的事件类型
+       * 我们将视为错误的事件类型
        *
        * @param errorFactory A function that creates the type of error to emit.
        *
-       * 创建要发送的错误类型的函数。
+       * 创建要发出的错误类型的函数。
        *
        */
       const addErrorEvent = (type: string, errorFactory: () => any) => {
@@ -532,7 +532,7 @@ export function fromAjax<T>(init: AjaxConfig): Observable<AjaxResponse<T>> {
        * `AjaxResponse` object with "upload_" for events related to uploading and "download_"
        * for events related to downloading.
        *
-       * 与事件相关的方向。在 `AjaxResponse` 对象中为事件 `type` 添加前缀，“upload _”表示与上传相关的事件，“download_ ”表示与下载相关的事件。
+       * 与此事件相关的方向。在 `AjaxResponse` 对象中会为事件的 `type` 添加前缀，“upload_”表示与上传有关的事件，“download_”表示与下载有关的事件。
        *
        * @param event the actual event object.
        *
@@ -548,7 +548,7 @@ export function fromAjax<T>(init: AjaxConfig): Observable<AjaxResponse<T>> {
        * Note that download load handling is a bit different below, because it has
        * more logic it needs to run.
        *
-       * 连接一个事件处理器，该处理器向消费者发送一个 Response 对象，用于所有发送 response、loadstart、progress 和 load 的事件。请注意，下面对下载的处理有点不同，因为它需要执行更多的逻辑。
+       * 连接一个事件处理器，该处理器向消费者发出一个 Response 对象，用于所有发出 response、loadstart、progress 和 load 的事件。请注意，下面对下载的处理有点不同，因为它需要执行更多的逻辑。
        *
        * @param target The target, either the XHR itself or the Upload object.
        *
@@ -561,7 +561,7 @@ export function fromAjax<T>(init: AjaxConfig): Observable<AjaxResponse<T>> {
        * @param direction The "direction", used to prefix the response object that is
        * emitted to the consumer. (e.g. "upload_" or "download_")
        *
-       * “方向”，用于为发送给消费者的响应对象添加前缀。（例如“上传 _”或“下载 _”）
+       * “方向”，用于为发送给消费者的响应对象添加前缀。（例如“upload_”或“download_”）
        *
        */
       const addProgressEvent = (target: any, type: string, direction: AjaxDirection) => {
@@ -665,7 +665,7 @@ export function fromAjax<T>(init: AjaxConfig): Observable<AjaxResponse<T>> {
  * we will serialize it, and attempt to set the `content-type` header, if it's
  * not already set.
  *
- * 检查主体以确定我们是否需要为它们序列化它。如果 body 是 XHR 原生处理的类型，我们只允许它通过，否则，如果 body 是*我们*可以为用户序列化的东西，我们将序列化它，并尝试设置 `content-type` 标头，如果不是已经设置好了。
+ * 检查 body 以确定我们是否需要序列化它们。如果 body 是 XHR 原生处理的类型，我们只是允许它通过，否则，如果 body 是*我们*可以为用户序列化的东西，我们将序列化它，并尝试设置 `content-type` 标头（如果尚未指定）。
  *
  * @param body The body passed in by the user
  *
@@ -673,7 +673,7 @@ export function fromAjax<T>(init: AjaxConfig): Observable<AjaxResponse<T>> {
  *
  * @param headers The normalized headers
  *
- * 标准化的标头
+ * 标准化之后的标头
  *
  */
 function extractContentTypeAndMaybeSerializeBody(body: any, headers: Record<string, string>) {

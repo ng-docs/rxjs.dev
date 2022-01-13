@@ -5,7 +5,7 @@
  * we need to do a JSON.parse() in here, which *could* throw if the response
  * isn't valid JSON.
  *
- * 获取 XHR 的 `response` 属性中应包含的内容。但是，由于我们仍然支持 IE 的最终版本，因此我们需要在这里做一些检查，以确保我们得到正确的东西。最后，我们需要在这里执行 JSON.parse()，如果响应不是有效的 JSON，它*可能会*抛出。
+ * 获取 XHR 的 `response` 属性中应包含的内容。但是，由于我们仍然支持 IE 的最终版本，因此我们需要在这里做一些检查，以确保我们得到了正确的东西。最后，我们需要在这里执行 JSON.parse()，如果此响应不是有效的 JSON，它*可能会*抛出错误。
  *
  * This is used both in creating an AjaxResponse, and in creating certain errors
  * that we throw, so we can give the user whatever was in the response property.

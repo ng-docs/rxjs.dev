@@ -12,7 +12,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * calls `complete` or `error`, then this method will call `complete` or `error` on the child subscription. Otherwise
  * this method will resubscribe to the source Observable.
  *
- * 返回一个镜像源 Observable 的 Observable，但 `complete` 除外。如果源 Observable 调用 `complete`，此方法将发送到从 `notifier` 返回的 Observable。如果该 Observable 调用 `complete` 或 `error`，那么此方法将在子订阅上调用 `complete` 或 `error`。否则此方法将重新订阅源 Observable。
+ * 返回一个镜像源 Observable 的 Observable，但 `complete` 除外。如果源 Observable 调用了 `complete`，此方法将改为发送到从 `notifier` 返回的 Observable。如果该 Observable 调用了 `complete` 或 `error`，那么此方法将在子订阅上调用 `complete` 或 `error`。否则此方法将重新订阅源 Observable。
  *
  * ![](repeatWhen.png)
  *
@@ -22,7 +22,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  * Repeat a message stream on click
  *
- * 单击时重复消息流
+ * 每当单击时重复某个消息流
  *
  * ```ts
  * import { of, fromEvent, repeatWhen } from 'rxjs';
@@ -40,12 +40,12 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * @param {function(notifications: Observable): Observable} notifier - Receives an Observable of notifications with
  *   which a user can `complete` or `error`, aborting the repetition.
  *
- *   接收用户可以 `complete` 或 `error` 的通知的 Observable，中止重复。
+ *   接收一个 Observable，它可以被用户发送 `complete` 或 `error` 的通知以中止重复。
  *
  * @return A function that returns an Observable that that mirrors the source
  * Observable with the exception of a `complete`.
  *
- * 一个返回 Observable 的函数，该 Observable 镜像源 Observable，但 `complete` 除外。
+ * 一个返回 Observable 的函数，该 Observable 会镜像源 Observable，但不会镜像 `complete`。
  *
  */
 export function repeatWhen<T>(notifier: (notifications: Observable<void>) => Observable<any>): MonoTypeOperatorFunction<T> {
@@ -59,7 +59,7 @@ export function repeatWhen<T>(notifier: (notifications: Observable<void>) => Obs
     /**
      * Checks to see if we can complete the result, completes it, and returns `true` if it was completed.
      *
-     * 检查我们是否可以完成结果，完成它，如果完成则返回 `true`。
+     * 检查我们是否可以完成结果，如果可以就完成它，如果已完成，则返回 `true`。
      *
      */
     const checkComplete = () => isMainComplete && isNotifierComplete && (subscriber.complete(), true);
@@ -67,7 +67,7 @@ export function repeatWhen<T>(notifier: (notifications: Observable<void>) => Obs
      * Gets the subject to send errors through. If it doesn't exist,
      * we know we need to setup the notifier.
      *
-     * 获取要发送错误的主体。如果它不存在，我们知道我们需要设置通知器。
+     * 获取要发送错误的主体。如果它不存在，我们就要建立一个通知器。
      *
      */
     const getCompletionSubject = () => {

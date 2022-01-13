@@ -8,7 +8,7 @@ export function find<T>(predicate: BooleanConstructor): OperatorFunction<T, Trut
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 改用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function find<T, S extends T, A>(
@@ -21,7 +21,7 @@ export function find<T, S extends T>(
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 改用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function find<T, A>(
@@ -33,12 +33,12 @@ export function find<T>(predicate: (value: T, index: number, source: Observable<
  * Emits only the first value emitted by the source Observable that meets some
  * condition.
  *
- * 仅发送满足某些条件的源 Observable 发送的第一个值。
+ * 仅发送源 Observable 发来的第一个满足某些条件的值。
  *
  * <span class="informal">Finds the first value that passes some test and emits
  * that.</span>
  *
- * <span class="informal">找到通过一些测试并发送它的第一个值。</span>
+ * <span class="informal">找到能通过某些测试的第一个值并发出它。</span>
  *
  * ![](find.png)
  *
@@ -48,7 +48,7 @@ export function find<T>(predicate: (value: T, index: number, source: Observable<
  * in `find`, and does not emit an error if a valid value is not found
  * (emits `undefined` instead).
  *
- * `find` 搜索源 Observable 中与 `predicate` 包含的指定条件匹配的第一个条目，并返回源中的第一个匹配项。与 {@link first} 不同，`predicate` 在 `find` 中是必需的，如果未找到有效值，则不会发送错误（而是发送 `undefined`）。
+ * `find` 会搜索源 Observable 中能满足指定条件 `predicate` 的第一个条目，并返回它。与 {@link first} 不同，`predicate` 在 `find` 中是必需的，如果未找到有效值，则不会发送错误（而是改为发 `undefined`）。
  *
  * ## Example
  *
@@ -76,14 +76,14 @@ export function find<T>(predicate: (value: T, index: number, source: Observable<
  * @param {function(value: T, index: number, source: Observable<T>): boolean} predicate
  * A function called with each item to test for condition matching.
  *
- * 与每个条目一起调用以测试条件匹配的函数。
+ * 一个函数，它会针对每个条目进行调用，以测试条件是否匹配。
  *
  * @param {any} [thisArg] An optional argument to determine the value of `this`
  * in the `predicate` function.
  * @return A function that returns an Observable that emits the first item that
  * matches the condition.
  *
- * 一个返回 Observable 的函数，该 Observable 发送与条件匹配的第一个条目。
+ * 一个返回 Observable 的函数，该 Observable 会发出满足此条件的第一个条目。
  *
  */
 export function find<T>(

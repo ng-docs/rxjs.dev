@@ -7,7 +7,7 @@ import { QueueScheduler } from './QueueScheduler';
  * 队列调度器
  *
  * <span class="informal">Put every next task on a queue, instead of executing it immediately</span>
-*
+ *
  * <span class="informal">将每个下一个任务放在队列中，而不是立即执行</span>
  *
  * `queue` scheduler, when used with delay, behaves the same as {@link asyncScheduler} scheduler.
@@ -19,12 +19,12 @@ import { QueueScheduler } from './QueueScheduler';
  * another task is scheduled with queue scheduler, instead of executing immediately as well,
  * that task will be put on a queue and wait for current one to finish.
  *
- * 当不延迟使用时，它会同步调度给定的任务 - 在调度时立即执行它。然而，当递归调用时，即在计划任务内部，另一个任务被队列调度器调度，而不是立即执行，该任务将被放入队列并等待当前任务完成。
+ * 当不需要使用延迟时，它会同步调度给定的任务 - 在调度时立即执行它。然而，当递归调用时，也就是在计划任务内部调用时，其它任务会被队列调度器调度，而不是立即执行，该任务将被放入队列并等待当前任务完成。
  *
  * This means that when you execute task with `queue` scheduler, you are sure it will end
  * before any other task scheduled with that scheduler will start.
  *
- * 这意味着当你使用 `queue` 调度器执行任务时，你确定它会在使用该调度器调度的任何其他任务开始之前结束。
+ * 这意味着当你使用 `queue` 调度器执行任务时，你要确保它会在使用该调度器调度的任何其他任务开始之前结束。
  *
  * ## Examples
  *

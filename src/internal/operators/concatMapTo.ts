@@ -30,12 +30,12 @@ export function concatMapTo<T, R, O extends ObservableInput<unknown>>(
  * Projects each source value to the same Observable which is merged multiple
  * times in a serialized fashion on the output Observable.
  *
- * 将每个源值投影到同一个 Observable，该 Observable 在输出 Observable 上以序列化方式多次合并。
+ * 将每个源值投影到同一个 Observable，该 Observable 在输出 Observable 上会以串联的方式多次合并。
  *
  * <span class="informal">It's like {@link concatMap}, but maps each value
  * always to the same inner Observable.</span>
  *
- * <span class="informal">它就像 {@link concatMap}，但总是将每个值映射到同一个内部 Observable。</span>
+ * <span class="informal">它很像 {@link concatMap}，但始终会把每个值都映射到同一个内部 Observable。</span>
  *
  * ![](concatMapTo.png)
  *
@@ -45,19 +45,19 @@ export function concatMapTo<T, R, O extends ObservableInput<unknown>>(
  * instance emitted on the output Observable is concatenated with the previous
  * `innerObservable` instance.
  *
- * 将每个源值映射到给定的 Observable `innerObservable`，而不考虑源值，然后将这些结果 Observable 展平为一个 Observable，即输出 Observable。在输出 Observable 上发送的每个新的 `innerObservable` 实例都与前一个 `innerObservable` 实例连接。
+ * 将每个源值映射都为给定的 `innerObservable`，而不考虑源值的内容，然后将这些结果 Observable 展平为一个 Observable，即输出 Observable。在输出 Observable 上发送的每个新的 `innerObservable` 实例都与前一个 `innerObservable` 实例串联。
  *
  * __Warning:__ if source values arrive endlessly and faster than their
  * corresponding inner Observables can complete, it will result in memory issues
  * as inner Observables amass in an unbounded buffer waiting for their turn to
  * be subscribed to.
  *
- * __ 警告：__ 如果源值无休止地抵达并且比它们相应的内部 Observable 完成的速度更快，这将导致内存问题，因为内部 Observable 堆积在一个无限的缓冲区中等待轮到它们被订阅。
+ * **警告：** 如果源值无休止地抵达并且比这些内部 Observable 完成的速度更快，就会导致内存问题，因为这些内部 Observable 会积压在一个无限的缓冲区中等待被订阅。
  *
  * Note: `concatMapTo` is equivalent to `mergeMapTo` with concurrency parameter
  * set to `1`.
  *
- * 注意： `concatMapTo` 等价于将并发参数设置为 `1` 的 `mergeMapTo`。
+ * 注意： `concatMapTo` 等价于将并发（concurrency）参数设置为 `1` 的 `mergeMapTo`。
  *
  * ## Example
  *
@@ -65,7 +65,7 @@ export function concatMapTo<T, R, O extends ObservableInput<unknown>>(
  *
  * For each click event, tick every second from 0 to 3, with no concurrency
  *
- * 对于每个点击事件，每秒从 0 到 3 打勾，没有并发
+ * 对于每个点击事件，每秒会依次发出 0 到 3，非并发
  *
  * ```ts
  * import { fromEvent, concatMapTo, interval, take } from 'rxjs';
@@ -96,7 +96,7 @@ export function concatMapTo<T, R, O extends ObservableInput<unknown>>(
  * joining the passed Observable with itself, one after the other, for each
  * value emitted from the source.
  *
- * 一个函数，该函数通过将传递的 Observable 与自身一个接一个地连接到源中发送的每个值，返回一个合并在一起的值的 Observable。
+ * 一个返回 Observable 的函数，对于源 Observable 发出的每个值，都会把 innerObservable 与 innerObservable 自身串联并依次发出所有值。
  *
  */
 export function concatMapTo<T, R, O extends ObservableInput<unknown>>(

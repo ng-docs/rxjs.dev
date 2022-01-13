@@ -52,7 +52,7 @@ export function pairs(
  * enumerable keys that are present on an object directly - not ones inherited
  * via prototype chain.
  *
- * `pairs` 接受一个任意对象并返回一个发送数组的 Observable。每个发送的数组都有两个元素——第一个是来自对象的键，第二个是对应于该键的值。键是通过 `Object.keys` 函数从对象中提取的，这意味着它们只是直接存在于对象上的可枚举键——而不是通过原型链继承的键。
+ * `pairs` 接受一个任意对象并返回一个发送数组的 Observable。每个发送的数组都有两个元素 —— 第一个是来自对象的键名，第二个是对应于该键名的值。键名是通过 `Object.keys` 函数从对象中提取的，这意味着它们只有直接存在于对象上的可枚举键名 —— 而没有通过原型链继承的键名。
  *
  * By default, these arrays are emitted synchronously. To change that you can
  * pass a {@link SchedulerLike} as a second argument to `pairs`.
@@ -90,12 +90,12 @@ export function pairs(
  *
  * ### Object.entries required
  *
- * ### 需要对象条目
+ * ### 需要 Object.entries
  *
  * In IE, you will need to polyfill `Object.entries` in order to use this.
  * [MDN has a polyfill here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
  *
- * 在 IE 中，你需要填充 `Object.entries` 才能使用它。[MDN 这里有一个 polyfill](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
+ * 在 IE 中，你需要填补 `Object.entries` 才能使用它。[MDN 这里有一个 polyfill](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
  *
  * @param {Object} obj The object to inspect and turn into an
  * Observable sequence.
@@ -107,7 +107,7 @@ export function pairs(
  * @returns {(Observable<Array<string|T>>)} An observable sequence of
  * [key, value] pairs from the object.
  *
- * 对象中可观察到的[键值][key,%20value]对序列。
+ * 对象中可观察到的 [键名, 值] 对构成的序列。
  *
  * @deprecated Use `from(Object.entries(obj))` instead. Will be removed in v8.
  *

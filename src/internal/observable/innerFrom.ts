@@ -43,11 +43,11 @@ export function innerFrom<T>(input: ObservableInput<T>): Observable<T> {
 /**
  * Creates an RxJS Observable from an object that implements `Symbol.observable`.
  *
- * 从实现 `Symbol.observable` 的对象创建一个 RxJS Observable。
+ * 从实现了 `Symbol.observable` 的对象创建一个 RxJS Observable。
  *
  * @param obj An object that properly implements `Symbol.observable`.
  *
- * 正确实现 `Symbol.observable` 的对象。
+ * 正确实现了 `Symbol.observable` 的对象。
  *
  */
 export function fromInteropObservable<T>(obj: any) {
@@ -67,7 +67,7 @@ export function fromInteropObservable<T>(obj: any) {
  * make direct use of the same logic, and there's no reason to make them run through
  * `from` conditionals because we *know* they're dealing with an array.
  *
- * 同步发送类似数组的值并完成。这是导出的，因为有创建函数和操作符需要直接使用相同的逻辑，并且没有理由让它们 `from` 条件中运行，因为我们*知道*它们正在处理一个数组。
+ * 同步发送数组类似物的各个值并完成。导出它是因为有一些创建函数和操作符需要直接使用这样的逻辑，而没有理由让它们在 `from` 中判断条件再运行，因为我们*知道*它们正在处理的是数组。
  *
  * @param array The array to emit values from
  *

@@ -5,7 +5,7 @@
  *
  * @param input The object that was passed.
  *
- * 传递的对象。
+ * 传入的对象。
  *
  */
 export function createInvalidObservableTypeError(input: any) {

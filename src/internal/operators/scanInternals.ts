@@ -5,27 +5,27 @@ import { OperatorSubscriber } from './OperatorSubscriber';
 /**
  * A basic scan operation. This is used for `scan` and `reduce`.
  *
- * 一个基本的扫描操作。这用于 `scan` 和 `reduce`。
+ * 一个基本的扫描操作。它会被 `scan` 和 `reduce` 使用。
  *
  * @param accumulator The accumulator to use
  *
- * 使用的蓄能器
+ * 要使用的累加器
  *
  * @param seed The seed value for the state to accumulate
  *
- * 状态累积的种子值
+ * 状态累加的种子值
  *
  * @param hasSeed Whether or not a seed was provided
  *
- * 是否提供种子
+ * 是否提供了种子
  *
  * @param emitOnNext Whether or not to emit the state on next
  *
- * 是否在下一个发送状态
+ * 是否在 next 时发送状态
  *
  * @param emitBeforeComplete Whether or not to emit the before completion
  *
- * 是否发送完成前的
+ * 在完成前是否要发送
  *
  */
 

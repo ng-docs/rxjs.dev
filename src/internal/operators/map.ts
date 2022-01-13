@@ -6,7 +6,7 @@ export function map<T, R>(project: (value: T, index: number) => R): OperatorFunc
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 改用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function map<T, R, A>(project: (this: A, value: T, index: number) => R, thisArg: A): OperatorFunction<T, R>;
@@ -15,13 +15,13 @@ export function map<T, R, A>(project: (this: A, value: T, index: number) => R, t
  * Applies a given `project` function to each value emitted by the source
  * Observable, and emits the resulting values as an Observable.
  *
- * 将给定的 `project` 函数应用于源 Observable 发送的每个值，并将结果值作为 Observable 发送。
+ * 针对源 Observable 发送的每个值调用指定的 `project` 函数，并将这些结果作为一个 Observable 发出。
  *
  * <span class="informal">Like [Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map),
  * it passes each source value through a transformation function to get
  * corresponding output values.</span>
  *
- * <span class="informal">与[Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)一样，它通过转换函数将每个源值传递以获取相应的输出值。</span>
+ * <span class="informal">与 [Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 一样，它会针对传入的每个源值调用转换函数，以获取相应的输出值。</span>
  *
  * ![](map.png)
  *
@@ -29,7 +29,7 @@ export function map<T, R, A>(project: (this: A, value: T, index: number) => R, t
  * applies a projection to each value and emits that projection in the output
  * Observable.
  *
- * 与众所周知的 `Array.prototype.map` 函数类似，此操作符对每个值应用一个投影，并在输出 Observable 中发送该投影。
+ * 与众所周知的 `Array.prototype.map` 函数类似，此操作符会针对每个值调用投影函数，并在输出 Observable 中发送该投影结果。
  *
  * ## Example
  *
@@ -37,7 +37,7 @@ export function map<T, R, A>(project: (this: A, value: T, index: number) => R, t
  *
  * Map every click to the `clientX` position of that click
  *
- * 将每次点击映射到该点击的 `clientX` 位置
+ * 将每次点击映射为该点击的 `clientX` 位置
  *
  * ```ts
  * import { fromEvent, map } from 'rxjs';
@@ -54,14 +54,14 @@ export function map<T, R, A>(project: (this: A, value: T, index: number) => R, t
  * the number `i` for the i-th emission that has happened since the
  * subscription, starting from the number `0`.
  *
- * 应用于源 Observable 发送的每个 `value` 的函数。`index` 参数是自订阅以来发生的第 i 个发送的数字 `i`，从数字 `0` 开始。
+ * 应用于源 Observable 发送的每个 `value` 的函数。`index` 参数是自订阅以来的第 `i` 次发送中的数字 `i`，从数字 `0` 开始。
  *
  * @param {any} [thisArg] An optional argument to define what `this` is in the
  * `project` function.
  * @return A function that returns an Observable that emits the values from the
  * source Observable transformed by the given `project` function.
  *
- * 一个返回 Observable 的函数，该函数从给定 `project` 函数转换的源 Observable 发送值。
+ * 一个返回 Observable 的函数，结果 Observable 发送的这些值就是源 Observable 发来的值经过 `project` 函数转换后的结果。
  *
  */
 export function map<T, R>(project: (value: T, index: number) => R, thisArg?: any): OperatorFunction<T, R> {

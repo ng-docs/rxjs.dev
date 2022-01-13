@@ -22,7 +22,7 @@ import { arrRemove } from '../util/arrRemove';
  * `null`, then new buffers are started immediately at the start of the source
  * and when each buffer closes and is emitted.
  *
- * 通过 `bufferSize` 缓冲来自源 Observable 的多个值，然后发送缓冲区并清除它，并为每个 `startBufferEvery` 值启动一个新缓冲区。如果 `startBufferEvery` 未提供或为 `null`，则新缓冲区会在源开始处以及每个缓冲区关闭并发送时立即启动。
+ * 通过 `bufferSize` 缓冲来自源 Observable 的多个值，然后发送缓冲区并清除它，并且每过 `startBufferEvery` 次就启动一个新缓冲区。如果 `startBufferEvery` 未提供或为 `null`，则新缓冲区会在源开始处以及每个缓冲区关闭并发送时启动新缓冲区。
  *
  * ## Examples
  *
@@ -30,7 +30,7 @@ import { arrRemove } from '../util/arrRemove';
  *
  * Emit the last two click events as an array
  *
- * 将最后两个点击事件作为数组发送
+ * 将最后两个点击事件作为数组进行发送
  *
  * ```ts
  * import { fromEvent, bufferCount } from 'rxjs';
@@ -67,7 +67,7 @@ import { arrRemove } from '../util/arrRemove';
  * beginning of the source by default.
  * @return A function that returns an Observable of arrays of buffered values.
  *
- * 返回缓冲值数组的 Observable 的函数。
+ * 一个返回 Observable 的函数，该 Observable 的值是一些缓冲区构成的数组。
  *
  */
 export function bufferCount<T>(bufferSize: number, startBufferEvery: number | null = null): OperatorFunction<T, T[]> {

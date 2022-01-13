@@ -13,12 +13,12 @@ export function concat<T extends readonly unknown[]>(
  * Creates an output Observable which sequentially emits all values from the first given
  * Observable and then moves on to the next.
  *
- * 创建一个输出 Observable，它依次从第一个给定的 Observable 发送所有值，然后移动到下一个。
+ * 创建一个输出 Observable，它依次从第一个给定的 Observable 发出所有值，然后移动到下一个。
  *
  * <span class="informal">Concatenates multiple Observables together by
  * sequentially emitting their values, one Observable after the other.</span>
  *
- * <span class="informal">通过依次发送它们的值来挨个串联多个 Observable。</span>
+ * <span class="informal">通过依次发出它们的值来挨个串联多个 Observable。</span>
  *
  * ![](concat.png)
  *
@@ -38,7 +38,7 @@ export function concat<T extends readonly unknown[]>(
  * {@link merge} instead, especially with optional `concurrent` parameter. As a matter of fact,
  * `concat` is an equivalent of `merge` operator with `concurrent` parameter set to `1`.
  *
- * `concat` 会订阅第一个输入 Observable 并发送其所有值，而不会以任何方式更改或影响它们。当该 Observable 完成时，它将订阅下一个输入 Observable，并再次发送其值。如此往复，直到操作符用完 Observables。当最后一个输入 Observable 完成时，`concat` 也将完成。在任何给定时刻，只有一个传递给操作符的 Observable 会发送值。如果你想同时从传递的 Observable 中发送值，请查看 {@link merge}，特别是它的可选参数 `concurrent`。事实上，`concat` 相当于将 `concurrent` 参数设置为 `1` 的 `merge` 操作符。
+ * `concat` 会订阅第一个输入 Observable 并发出其所有值，而不会以任何方式更改或影响它们。当该 Observable 完成时，它将订阅下一个输入 Observable，并再次发出其值。如此往复，直到操作符用完 Observables。当最后一个输入 Observable 完成时，`concat` 也将完成。在任何给定时刻，只有一个传递给操作符的 Observable 会发出值。如果你想同时从传递的 Observable 中发出值，请查看 {@link merge}，特别是它的可选参数 `concurrent`。事实上，`concat` 相当于将 `concurrent` 参数设置为 `1` 的 `merge` 操作符。
  *
  * Note that if some input Observable never completes, `concat` will also never complete
  * and Observables following the one that did not complete will never be subscribed. On the other
@@ -51,7 +51,7 @@ export function concat<T extends readonly unknown[]>(
  * `concat` will error immediately as well. Observables that would be subscribed after
  * the one that emitted error, never will.
  *
- * 如果此链中的任何一个 Observable 出错，而没有将控制权传递给下一个 Observable，`concat` 也会立即出错。在发送错误之后订阅的 Observables 永远不会生效。
+ * 如果此链中的任何一个 Observable 出错，而没有将控制权传递给下一个 Observable，`concat` 也会立即出错。在发出错误之后订阅的 Observables 永远不会生效。
  *
  * If you pass to `concat` the same Observable many times, its stream of values
  * will be "replayed" on every subscription, which means you can repeat given Observable

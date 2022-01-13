@@ -11,12 +11,12 @@ import { errorContext } from './util/errorContext';
  * A Subject is a special type of Observable that allows values to be
  * multicasted to many Observers. Subjects are like EventEmitters.
  *
- * Subject 是一种特殊类型的 Observable，它允许将值多播到多个 Observer。主体就像 EventEmitters。
+ * Subject（主体）是一种特殊类型的 Observable，它允许将一些值多播到多个 Observer。主体很像 EventEmitters。
  *
  * Every Subject is an Observable and an Observer. You can subscribe to a
  * Subject, and you can call next to feed values as well as error and complete.
  *
- * 每个 Subject 都是 Observable 和 Observer。你可以订阅一个主体，并且你可以调用 next 提要值以及错误和完成。
+ * 每个 Subject 都同时是 Observable 和 Observer。你可以订阅一个主体，也你可以调用 next 来取得值，还能调用 error 和 complete。
  *
  */
 export class Subject<T> extends Observable<T> implements SubscriptionLike {
@@ -53,7 +53,7 @@ export class Subject<T> extends Observable<T> implements SubscriptionLike {
   /**
    * Creates a "subject" by basically gluing an observer to an observable.
    *
-   * 通过基本上将观察者粘合到可观察者来创建“主体”。
+   * 本质上是通过将观察者粘结到可观察者来创建“主体”。
    *
    * @nocollapse
    * @deprecated Recommended you do not use. Will be removed at some point in the future. Plans for replacement still under discussion.
@@ -173,11 +173,11 @@ export class Subject<T> extends Observable<T> implements SubscriptionLike {
    * to create customize Observer-side logic of the Subject and conceal it from
    * code that uses the Observable.
    *
-   * 创建一个以此 Subject 为源的新 Observable。你可以这样做来创建 Subject 的自定义 Observer 端逻辑，并将其隐藏在使用 Observable 的代码中。
+   * 创建一个以此 Subject 为源的新 Observable。你可以像这样创建 Subject 的自定义 Observer 端逻辑，并将其在使用 Observable 的代码中隐身。
    *
    * @return {Observable} Observable that the Subject casts to
    *
-   * 主体投射到的 Observable
+   * 由主体转换成的 Observable
    *
    */
   asObservable(): Observable<T> {

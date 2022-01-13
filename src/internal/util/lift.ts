@@ -6,7 +6,7 @@ import { isFunction } from './isFunction';
 /**
  * Used to determine if an object is an Observable with a lift function.
  *
- * 用于确定一个对象是否是具有提升功能的 Observable。
+ * 用于确定一个对象是否是具有 lift 函数的 Observable。
  *
  */
 export function hasLift(source: any): source is { lift: InstanceType<typeof Observable>['lift'] } {

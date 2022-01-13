@@ -24,12 +24,12 @@ export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(
  * Projects each source value to the same Observable which is merged multiple
  * times in the output Observable.
  *
- * 将每个源值投影到同一个 Observable，该 Observable 在输出 Observable 中多次合并。
+ * 将每个源值投影到同一个 Observable，该 Observable 会被多次合并后发送到输出 Observable 中。
  *
  * <span class="informal">It's like {@link mergeMap}, but maps each value always
  * to the same inner Observable.</span>
  *
- * <span class="informal">它就像 {@link mergeMap}，但总是将每个值映射到同一个内部 Observable。</span>
+ * <span class="informal">它很像 {@link mergeMap}，但总会将每个值映射到同一个内部 Observable。</span>
  *
  * ![](mergeMapTo.png)
  *
@@ -37,7 +37,7 @@ export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(
  * of the source value, and then merges those resulting Observables into one
  * single Observable, which is the output Observable.
  *
- * 无论源值如何，都将每个源值映射到给定的 Observable `innerObservable` Observable，然后将这些生成的 Observable 合并为一个 Observable，即输出 Observable。
+ * 无论源值如何，都会将每个源值映射到给定的 `innerObservable`，然后将生成的这些 Observable 合并为一个 Observable，即输出 Observable。
  *
  * ## Example
  *
@@ -45,7 +45,7 @@ export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(
  *
  * For each click event, start an interval Observable ticking every 1 second
  *
- * 对于每个点击事件，开始一个间隔 Observable 每 1 秒滴答一次
+ * 对于每个点击事件，开始一个每秒一次的定时器 Observable
  *
  * ```ts
  * import { fromEvent, mergeMapTo, interval } from 'rxjs';
@@ -64,14 +64,14 @@ export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(
  * @param {ObservableInput} innerObservable An Observable to replace each value from
  * the source Observable.
  *
- * 用于替换源 Observable 中的每个值的 Observable。
+ * 用于替换源 Observable 中每个值的 Observable。
  *
  * @param {number} [concurrent=Infinity] Maximum number of input
  * Observables being subscribed to concurrently.
  * @return A function that returns an Observable that emits items from the
  * given `innerObservable`.
  *
- * 一个返回 Observable 的函数，该 Observable 从给定的 `innerObservable` 发送条目。
+ * 一个返回 Observable 的函数，该 Observable 会从给定的 `innerObservable` 中发出条目。
  *
  */
 export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(

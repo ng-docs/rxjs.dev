@@ -7,11 +7,11 @@ import { timer } from './timer';
  * Creates an Observable that emits sequential numbers every specified
  * interval of time, on a specified {@link SchedulerLike}.
  *
- * 创建一个 Observable，它在指定的 {@link SchedulerLike} 上每隔指定的时间间隔发送序列号。
+ * 创建一个 Observable，它在指定的 {@link SchedulerLike} 上按照指定的时间间隔发送连续数列。
  *
  * <span class="informal">Emits incremental numbers periodically in time.</span>
-*
- * <span class="informal">及时定期发送增量数字。</span>
+ *
+ * <span class="informal">定期发送增量数字。</span>
  *
  * ![](interval.png)
  *
@@ -22,7 +22,7 @@ import { timer } from './timer';
  * `async` {@link SchedulerLike} to provide a notion of time, but you may pass any
  * {@link SchedulerLike} to it.
  *
- * `interval` 返回一个 Observable，它发送无限的递增整数序列，在这些发送之间有一个恒定的时间间隔。第一个发送不会立即发送，而是在第一个周期过去后发送。默认情况下，此操作符使用 `async` {@link SchedulerLike} 来提供时间概念，但你可以将任何 {@link SchedulerLike} 传递给它。
+ * `interval` 会返回一个 Observable，它发送一个无限递增的整数序列，在这些发送之间有一个恒定的时间间隔。首次发送不会立即发出，而是在第一个周期过去后发出。默认情况下，此操作符使用 `async` {@link SchedulerLike} 来提供时间概念，但你也可以将任何 {@link SchedulerLike} 传给它。
  *
  * ## Example
  *
@@ -59,7 +59,7 @@ import { timer } from './timer';
  * @return {Observable} An Observable that emits a sequential number each time
  * interval.
  *
- * 每个时间间隔发送一个序列号的 Observable。
+ * 每个时间间隔发送一个有序数字的 Observable。
  *
  */
 export function interval(period = 0, scheduler: SchedulerLike = asyncScheduler): Observable<number> {

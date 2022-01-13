@@ -12,7 +12,7 @@ export interface ShareConfig<T> {
    * The factory used to create the subject that will connect the source observable to
    * multicast consumers.
    *
-   * 工厂用于创建将源 observable 连接到多播消费者的主体。
+   * 本工厂用于创建将源 observable 连接到多播消费者的主体。
    *
    */
   connector?: () => SubjectLike<T>;
@@ -26,7 +26,7 @@ export interface ShareConfig<T> {
    * It is also possible to pass a notifier factory returning an observable instead which grants more fine-grained
    * control over how and when the reset should happen. This allows behaviors like conditional or delayed resets.
    *
-   * 如果为真，则生成的 observable 将在源错误时重置内部状态并返回“冷”状态。这允许在发生错误时“重试”生成的 observable。如果为 false，当错误来自源时，它会将错误推送到连接主体，并且主体将保持连接主体，这意味着生成的 observable 不会再次“冷”，随后的重试或重新订阅将重新订阅该主体同一主体。在所有情况下，RxJS 主体都会再次发送相同的错误，但是 {@link ReplaySubject} 也会在推送错误之前推送其缓冲值。也可以通过一个通知工厂返回一个 observable 来代替，它可以对重置的方式和时间进行更细粒度的控制。这允许有条件或延迟重置等行为。
+   * 如果为真，则结果 observable 会在源出错时重置内部状态并返回一个“冷”状态。这允许在发生错误时“重试”结果 observable。如果为 false，当源发来错误时，它会将错误推送到所连接的主体，并且此主体将保持连接，这意味着结果 observable 不会再次变“冷”，随后的重试或重新订阅将重新订阅同一个主体。在所有情况下，RxJS 主体都会再次发送相同的错误，但是 {@link ReplaySubject} 还会在推送错误之前推送其缓冲值。这还可以改为用通知工厂返回一个 observable，它可以对重置的方式和时间进行更细粒度的控制。这样可以支持有条件重置或延迟重置等行为。
    *
    */
   resetOnError?: boolean | ((error: any) => Observable<any>);
@@ -39,7 +39,7 @@ export interface ShareConfig<T> {
    * It is also possible to pass a notifier factory returning an observable instead which grants more fine-grained
    * control over how and when the reset should happen. This allows behaviors like conditional or delayed resets.
    *
-   * 如果为真，则生成的 observable 将在源完成时重置内部状态并返回“冷”状态。这允许在完成后“重复”生成的 observable。如果为 false，当源完成时，它将通过连接主体推送完成，主体将保持连接主体，这意味着生成的 observable 不会再次“冷”，后续重复或重新订阅将重新订阅同一主体.也可以通过一个通知工厂返回一个 observable 来代替，它可以对重置的方式和时间进行更细粒度的控制。这允许有条件或延迟重置等行为。
+   * 如果为真，则结果 observable 将在源完成时重置内部状态并返回“冷”状态。这允许在完成后“重复”此结果 observable。如果为 false，则当源完成时，它将通过所连接的主体推送完成通知，此主体将保持连接，这意味着结果 observable 不会再次变“冷”，后续重复或重新订阅将重新订阅同一个主体。这还可以改为用通知工厂返回一个 observable，它可以对重置的方式和时间进行更细粒度的控制。这样可以支持有条件重置或延迟重置等行为。
    *
    */
   resetOnComplete?: boolean | (() => Observable<any>);
@@ -53,7 +53,7 @@ export interface ShareConfig<T> {
    * It is also possible to pass a notifier factory returning an observable instead which grants more fine-grained
    * control over how and when the reset should happen. This allows behaviors like conditional or delayed resets.
    *
-   * 如果为 true，则当结果 observable 的订阅者数量由于订阅者退订而达到零时，内部状态将被重置，结果 observable 将返回“冷”状态。这意味着下一次订阅生成的 observable 时，将创建一个新的主体并再次订阅源。如果为 false，当结果 observable 的订阅者数量由于退订而达到零时，主体将保持与源的连接，并且对结果的新订阅将通过同一主体连接。也可以通过一个通知工厂返回一个 observable 来代替，它可以对重置的方式和时间进行更细粒度的控制。这允许有条件或延迟重置等行为。
+   * 如果为 true，则当结果 observable 的订阅者的数量由于订阅者退订而达到零时，内部状态将被重置，而结果 observable 将返回“冷”的状态。这意味着下一次订阅结果 observable 时，将创建一个新的主体并再次订阅源。如果为 false，则当结果 observable 的订阅者数量由于退订而达到零时，主体将保持与源的连接，并且对结果的新订阅将通过同一主体进行连接。这还可以改为用通知工厂返回一个 observable，它可以对重置的方式和时间进行更细粒度的控制。这样可以支持有条件重置或延迟重置等行为。
    *
    */
   resetOnRefCountZero?: boolean | (() => Observable<any>);
@@ -69,7 +69,7 @@ export function share<T>(options: ShareConfig<T>): MonoTypeOperatorFunction<T>;
  * unsubscribe from the source Observable. Because the Observable is multicasting it makes the stream `hot`.
  * This is an alias for `multicast(() => new Subject()), refCount()`.
  *
- * 返回一个多播（共享）原始 Observable 的新 Observable。只要至少有一个订阅者，这个 Observable 就会被订阅并发送数据。当所有订阅者都退订后，它将退订源 Observable。因为 Observable 正在多播，所以它使流变 `hot`。这是 `multicast(() => new Subject()), refCount()` 的别名。
+ * 返回一个多播（共享）原始 Observable 的新 Observable。只要至少有一个订阅者，这个 Observable 就会被订阅并发送数据。当所有订阅者都退订后，它将退订源 Observable。因为 Observable 正在多播，所以它会使流变热 `hot`。这是 `multicast(() => new Subject()), refCount()` 的别名。
  *
  * The subscription to the underlying source Observable can be reset (unsubscribe and resubscribe for new subscribers),
  * if the subscriber count to the shared observable drops to 0, or if the source Observable errors or completes. It is
@@ -79,7 +79,7 @@ export function share<T>(options: ShareConfig<T>): MonoTypeOperatorFunction<T>;
  * closed. Only new subscribers after a reset on error or complete happened will cause a fresh subscription to the
  * source. To achieve transparent retries or restarts pipe the source through appropriate operators before sharing.
  *
- * 如果共享 observable 的订阅者计数降至 0，或者源 Observable 出错或完成，则可以重置对底层源 Observable 的订阅（退订并重新订阅新订阅者）。可以使用通知工厂进行重置，以允许有条件或延迟重置等行为。请注意，在源 Observable 发生错误或完成时重置不会像透明的重试或重新启动源一样，因为错误或完成将被转发给所有订阅者并且他们的订阅将被关闭。只有发生错误或完成重置后的新订阅者才会重新订阅源。为了实现透明的重试或重新启动，在共享之前通过适当的操作符对源进行管道传输。
+ * 如果共享 observable 的订阅者计数降至 0，或者源 Observable 已出错或完成，则会重置对底层源 Observable 的订阅（退订并为新的订阅者重新订阅）。可以使用通知工厂进行重置，以支持有条件重置或延迟重置等行为。请注意，当源 Observable 发生错误或完成时进行重置的行为和透明重试或重新启动源是不同的，因为出错或完成将被转发给所有订阅者并且他们的订阅将被关闭。只有在错误或完成引起的重置后出现的新订阅者才会重新订阅此源。为了实现透明的重试或重启动，在共享之前要通过适当的操作符对源进行管道传输。
  *
  * ![](share.png)
  *
@@ -161,7 +161,7 @@ export function share<T>(options: ShareConfig<T>): MonoTypeOperatorFunction<T>;
  * @see {@link shareReplay}
  * @return A function that returns an Observable that mirrors the source.
  *
- * 返回镜像源的 Observable 的函数。
+ * 一个函数，会返回源的镜像 Observable。
  *
  */
 export function share<T>(options: ShareConfig<T> = {}): MonoTypeOperatorFunction<T> {

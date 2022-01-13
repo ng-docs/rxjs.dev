@@ -6,7 +6,7 @@ import { UnaryFunction } from '../types';
 /**
  * Creates a {@link ConnectableObservable} that utilizes a {@link BehaviorSubject}.
  *
- * 创建一个利用 {@link BehaviorSubject} 的 {@link ConnectableObservable}。
+ * 创建一个使用 {@link BehaviorSubject} 的 {@link ConnectableObservable}。
  *
  * @param initialValue The initial value passed to the {@link BehaviorSubject}.
  *

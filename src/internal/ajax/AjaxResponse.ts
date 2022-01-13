@@ -11,7 +11,7 @@ import { getXHRResponse } from './getXHRResponse';
  *
  * - DO NOT subclass this class.
  *
- *   不要子类这个类。
+ *   不要创建此类的子类。
  *
  * It is advised not to hold this object in memory, as it has a reference to
  * the original XHR used to make the request, as well as properties containing
@@ -42,12 +42,12 @@ export class AjaxResponse<T> {
   /**
    * The responseType set on the request. (For example: `""`, `"arraybuffer"`, `"blob"`, `"document"`, `"json"`, or `"text"`)
    *
-   * 在请求上设置的 responseType。（例如： `""`、`"arraybuffer"`、`"blob"`、`"document"`、`"json"` 或 `"text"`）
+   * 在此请求上设置的 responseType。（例如： `""`、`"arraybuffer"`、`"blob"`、`"document"`、`"json"` 或 `"text"`）
    *
    * @deprecated There isn't much reason to examine this. It's the same responseType set (or defaulted) on the ajax config.
    * If you really need to examine this value, you can check it on the `request` or the `xhr`. Will be removed in v8.
    *
-   * 没有太多理由去研究这个。它与 ajax 配置上的相同 responseType 设置（或默认设置）。如果你真的需要检查这个值，你可以在 `request` 或 `xhr` 上检查它。将在 v8 中删除。
+   * 没有太多理由去研究这个。它与 ajax 配置上的 responseType 设置（或默认设置）相同。如果你真的需要检查这个值，你可以在 `request` 或 `xhr` 上检查它。将在 v8 中删除。
    *
    */
   readonly responseType: XMLHttpRequestResponseType;
@@ -57,7 +57,7 @@ export class AjaxResponse<T> {
    * calculating progress. (You will want to set {@link includeDownloadProgress} or
    * {@link includeDownloadProgress})
    *
-   * 到目前为止加载的字节总数。在计算进度时与 {@link total} 一起使用。（你需要设置 {@link includeDownloadProgress} 或 {@link includeDownloadProgress}）
+   * 到目前为止已加载的字节总数。在计算进度时与 {@link total} 一起使用。（你需要设置 {@link includeDownloadProgress} 或 {@link includeDownloadProgress}）
    *
    */
   readonly loaded: number;
@@ -84,7 +84,7 @@ export class AjaxResponse<T> {
    * A normalized response from an AJAX request. To get the data from the response,
    * you will want to read the `response` property.
    *
-   * 来自 AJAX 请求的规范化响应。要从响应中获取数据，你需要读取 `response` 属性。
+   * 来自 AJAX 请求并规范化过的响应对象。要从本响应中获取数据，你需要读取 `response` 属性。
    *
    * - DO NOT create instances of this class directly.
    *
@@ -92,7 +92,7 @@ export class AjaxResponse<T> {
    *
    * - DO NOT subclass this class.
    *
-   *   不要子类这个类。
+   *   不要创建此类的子类。
    *
    * @param originalEvent The original event object from the XHR `onload` event.
    *

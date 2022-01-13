@@ -10,7 +10,7 @@ import { Observer, NextObserver } from '../../types';
  * WebSocketSubjectConfig is a plain Object that allows us to make our
  * webSocket configurable.
  *
- * WebSocketSubjectConfig 是一个普通的对象，它允许我们使我们的 webSocket 可配置。
+ * WebSocketSubjectConfig 是一个普通的对象，它可以让我们的 webSocket 变成可配置的。
  *
  * <span class="informal">Provides flexibility to {@link webSocket}</span>
 *
@@ -24,7 +24,7 @@ import { Observer, NextObserver } from '../../types';
  * to the socket client. By default, `deserializer` is going to apply `JSON.parse` to each message coming
  * from the Server.
  *
- * 它定义了一组属性以在套接字生命周期的特定时刻提供自定义行为。当连接打开时我们可以使用 `openObserver`，当连接关闭时 `closeObserver`，如果我们有兴趣监听来自服务器的数据： `deserializer`，它允许我们在将数据传递给套接字客户端之前自定义数据的反序列化策略。默认情况下，`deserializer` 化器 `JSON.parse` 应用于来自服务器的每条消息。
+ * 它定义了一组属性以在 Socket 生命周期的特定时刻提供自定义行为。当连接打开时我们可以使用 `openObserver`，当连接关闭时使用 `closeObserver`，如果我们有兴趣监听来自服务器的数据，则用 `deserializer`，它允许我们在将数据传递给 Socket 客户端之前自定义数据的反序列化策略。默认情况下，`deserializer` 会用 `JSON.parse` 解析来自服务器的每条消息。
  *
  * ## Examples
  *
@@ -34,7 +34,7 @@ import { Observer, NextObserver } from '../../types';
  * for incoming data, either be text or binarydata. We can apply a custom deserialization strategy
  * or just simply skip the default behaviour.
  *
- * **deserializer**，此属性的默认值为 `JSON.parse` 但由于传入数据只有两个选项，文本或二进制数据。我们可以应用自定义反序列化策略，或者只是跳过默认行为。
+ * **deserializer（反序列化器）**，此属性的默认值为 `JSON.parse`，但由于传入数据只有两个选项：文本或二进制数据。我们可以自定义反序列化策略，或者只是跳过默认行为。
  *
  * ```ts
  * import { webSocket } from 'rxjs/webSocket';
@@ -55,7 +55,7 @@ import { Observer, NextObserver } from '../../types';
  *
  * **serializer** allows us to apply custom serialization strategy but for the outgoing messages.
  *
- * **序列化**器允许我们应用自定义序列化策略，但用于传出消息。
+ * **serializer（序列化器）**允许我们应用自定义的序列化策略，不过这里是用于传出消息。
  *
  * ```ts
  * import { webSocket } from 'rxjs/webSocket';
@@ -78,7 +78,7 @@ import { Observer, NextObserver } from '../../types';
  *
  * **closeObserver** allows us to set a custom error when an error raises up.
  *
- * **closeObserver**允许我们在出现错误时设置自定义错误。
+ * **closeObserver（关闭 Observer）**允许我们在出现错误时设置自定义错误。
  *
  * ```ts
  * import { webSocket } from 'rxjs/webSocket';
@@ -101,7 +101,7 @@ import { Observer, NextObserver } from '../../types';
  * webSocket or sending notification that the connection was successful, this is when
  * openObserver is useful for.
  *
- * **openObserver**，假设我们需要在向 webSocket 发送/接收 msgs 或发送连接成功的通知之前进行某种初始化任务，这就是 openObserver 有用的时候。
+ * **openObserver（开启 Observer）**，假设我们需要在向 webSocket 发送/接收消息或发送连接成功的通知之前进行某种初始化任务，这就是 openObserver 的用武之地。
  *
  * ```ts
  * import { webSocket } from 'rxjs/webSocket';
@@ -123,7 +123,7 @@ export interface WebSocketSubjectConfig<T> {
   /**
    * The url of the socket server to connect to
    *
-   * 要连接的套接字服务器的 url
+   * 要连接的 Socket 服务器的 url
    *
    */
   url: string;
@@ -137,7 +137,7 @@ export interface WebSocketSubjectConfig<T> {
   /**
    * @deprecated Will be removed in v8. Use {@link deserializer} instead.
    *
-   * 将在 v8 中删除。请改用 {@link 反序列化器}。
+   * 将在 v8 中删除。请改用 {@link deserializer}。
    *
    */
   resultSelector?: (e: MessageEvent) => T;
@@ -153,21 +153,21 @@ export interface WebSocketSubjectConfig<T> {
    * A deserializer used for messages arriving on the socket from the
    * server. Defaults to JSON.parse.
    *
-   * 用于从服务器抵达套接字的消息的反序列化器。默认为 JSON.parse。
+   * 用于处理从服务器抵达 Socket 的消息的反序列化器。默认为 JSON.parse。
    *
    */
   deserializer?: (e: MessageEvent) => T;
   /**
    * An Observer that watches when open events occur on the underlying web socket.
    *
-   * 一个观察者，当打开事件发生在底层网络套接字上时进行观察。
+   * 一个 Observer，当底层 Web Socket 上发生 open 事件时进行观察。
    *
    */
   openObserver?: NextObserver<Event>;
   /**
    * An Observer that watches when close events occur on the underlying web socket
    *
-   * 一个观察者在关闭事件发生在底层网络套接字上时进行观察
+   * 一个 Observer，当底层 Web Socket 上发生 close 事件时进行观察
    *
    */
   closeObserver?: NextObserver<CloseEvent>;
@@ -175,7 +175,7 @@ export interface WebSocketSubjectConfig<T> {
    * An Observer that watches when a close is about to occur due to
    * unsubscription.
    *
-   * 一个观察者，当由于退订而即将发生关闭时进行观察。
+   * 一个 Observer，当由于退订而即将发生关闭时进行观察。
    *
    */
   closingObserver?: NextObserver<void>;

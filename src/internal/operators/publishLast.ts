@@ -7,7 +7,7 @@ import { UnaryFunction } from '../types';
  * Returns a connectable observable sequence that shares a single subscription to the
  * underlying sequence containing only the last notification.
  *
- * 返回一个可连接的可观察序列，该序列共享对仅包含最后一个通知的基础序列的单个订阅。
+ * 返回一个可连接的可观察者序列，该序列会共享对仅包含最后一个通知的基础序列的单个订阅。
  *
  * ![](publishLast.png)
  *
@@ -63,7 +63,7 @@ import { UnaryFunction } from '../types';
  * @return A function that returns an Observable that emits elements of a
  * sequence produced by multicasting the source sequence.
  *
- * 一个返回 Observable 的函数，该 Observable 发送由多播源序列产生的序列元素。
+ * 一个返回 Observable 的函数，该 Observable 会发送由多播源序列产生的序列元素。
  *
  * @deprecated Will be removed in v8. To create a connectable observable with an
  * {@link AsyncSubject} under the hood, use {@link connectable}.
@@ -74,7 +74,7 @@ import { UnaryFunction } from '../types';
  * `source.pipe(share({ connector: () => new AsyncSubject(), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))`.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。要在底层使用 {@link AsyncSubject} 创建可连接的 observable，请使用 {@link connectable}。`source.pipe(publishLast())` 等价于 connectable `connectable(source, { connector: () => new AsyncSubject(), resetOnDisconnect: false })`。如果你在 `publishLast` 之后使用 {@link refCount}，请改用 {@link share} 操作符。`source.pipe(publishLast(), refCount())` 等价于 `source.pipe(share({ connector: () => new AsyncSubject(), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))`。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 将在 v8 中删除。如果要在底层使用 {@link AsyncSubject} 创建可连接的 observable，请使用 {@link connectable}。`source.pipe(publishLast())` 等价于 connectable `connectable(source, { connector: () => new AsyncSubject(), resetOnDisconnect: false })`。如果你要在 `publishLast` 之后使用 {@link refCount}，请改用 {@link share} 操作符。`source.pipe(publishLast(), refCount())` 等价于 `source.pipe(share({ connector: () => new AsyncSubject(), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))`。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function publishLast<T>(): UnaryFunction<Observable<T>, ConnectableObservable<T>> {

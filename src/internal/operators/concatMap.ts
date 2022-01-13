@@ -33,7 +33,7 @@ export function concatMap<T, R, O extends ObservableInput<any>>(
  * Observable, in a serialized fashion waiting for each one to complete before
  * merging the next.
  *
- * 将每个源值投影到一个 Observable，该 Observable 合并到输出 Observable 中，以序列化的方式等待每个源值完成，然后再合并下一个。
+ * 将每个源值投影到一个 Observable，该 Observable 会合并到输出 Observable 中，会以串行的方式等待每个源值完成，然后再合并下一个。
  *
  * <span class="informal">Maps each value to an Observable, then flattens all of
  * these inner Observables using {@link concatAll}.</span>
@@ -47,19 +47,19 @@ export function concatMap<T, R, O extends ObservableInput<any>>(
  * returns an (so-called "inner") Observable. Each new inner Observable is
  * concatenated with the previous inner Observable.
  *
- * 返回一个 Observable，该 Observable 基于应用你提供给源 Observable 发送的每个条目的函数来发送条目，其中该函数返回一个（所谓的“内部”）Observable。每个新的内部 Observable 都与之前的内部 Observable 连接。
+ * 返回一个 Observable，该 Observable 会针对源 Observable 的每个条目调用你提供的 `project` 函数，并发送其结果，函数会返回一个 内部 Observable。每个新的内部 Observable 都会与之前的内部 Observable 串联起来。
  *
  * __Warning:__ if source values arrive endlessly and faster than their
  * corresponding inner Observables can complete, it will result in memory issues
  * as inner Observables amass in an unbounded buffer waiting for their turn to
  * be subscribed to.
  *
- * __ 警告：__ 如果源值无休止地抵达并且比它们相应的内部 Observable 完成的速度更快，这将导致内存问题，因为内部 Observable 堆积在一个无限的缓冲区中等待轮到它们被订阅。
+ * **警告：** 如果源值（内部 Observable）会无休止地抵达并且比这些内部 Observable 自身完成的速度更快，就会导致内存问题，因为这些内部 Observable 会积压在一个无限的缓冲区中等待被订阅。
  *
  * Note: `concatMap` is equivalent to `mergeMap` with concurrency parameter set
  * to `1`.
  *
- * 注意： `concatMap` 等价于将并发参数设置为 `1` 的 `mergeMap`。
+ * 注意：`concatMap` 等价于将并发（concurrency）参数设置为 `1` 的 `mergeMap`。
  *
  * ## Example
  *
@@ -67,7 +67,7 @@ export function concatMap<T, R, O extends ObservableInput<any>>(
  *
  * For each click event, tick every second from 0 to 3, with no concurrency
  *
- * 对于每个点击事件，每秒从 0 到 3 打勾，没有并发
+ * 对于每个点击事件，每秒会依次发出 0 到 3，非并发
  *
  * ```ts
  * import { fromEvent, concatMap, interval, take } from 'rxjs';
@@ -94,14 +94,14 @@ export function concatMap<T, R, O extends ObservableInput<any>>(
  * that, when applied to an item emitted by the source Observable, returns an
  * Observable.
  *
- * 一个函数，当应用于源 Observable 发送的条目时，返回一个 Observable。
+ * 一个函数，每当以源 Observable 发出的条目为参数进行调用时，会返回一个 Observable。
  *
  * @return A function that returns an Observable that emits the result of
  * applying the projection function (and the optional deprecated
  * `resultSelector`) to each item emitted by the source Observable and taking
  * values from each projected inner Observable sequentially.
  *
- * 一个返回 Observable 的函数，该函数发送将投影函数（和可选的已弃用的 `resultSelector`）应用于源 Observable 发送的每个条目的结果，并按顺序从每个投影的内部 Observable 中获取值。
+ * 一个返回 Observable 的函数，该 Observable 会针对源 Observable 发送的每个条目调用投影函数（另一个是已弃用的可选参数 `resultSelector`），并依次从每个投影后的内部 Observable 中获取值。
  *
  */
 export function concatMap<T, R, O extends ObservableInput<any>>(

@@ -10,7 +10,7 @@ export interface RetryConfig {
   /**
    * The maximum number of times to retry.
    *
-   * 重试的最大次数。
+   * 要重试的最大次数。
    *
    */
   count?: number;
@@ -21,7 +21,7 @@ export interface RetryConfig {
    * completes _without_ emitting, the resulting observable will complete without error,
    * if the notifier errors, the error will be pushed to the result.
    *
-   * 重试前延迟的毫秒数，或返回延迟通知器的函数。如果给定一个函数，该函数应该返回一个通知器，当它发送时将重试源。如果通知器在*没有*发送的情况下完成，则生成的 observable 将在没有错误的情况下完成，如果通知器出错，错误将被推送到结果中。
+   * 每次重试前要延迟的毫秒数，或一个返回延迟通知器的函数。如果给定一个函数，该函数应该返回一个通知器，当它发送时将重试源。如果通知器在*没有*发送的时候已经完成了，则生成的 observable 将在没有错误的情况下完成，如果通知器出错，此错误将被推送到结果中。
    *
    */
   delay?: number | ((error: any, retryCount: number) => ObservableInput<any>);
@@ -29,7 +29,7 @@ export interface RetryConfig {
    * Whether or not to reset the retry counter when the retried subscription
    * emits its first value.
    *
-   * 当重试订阅发送其第一个值时是否重置重试计数器。
+   * 当已重试的订阅发送其第一个值时是否要重置重试计数器。
    *
    */
   resetOnSuccess?: boolean;
@@ -40,7 +40,7 @@ export interface RetryConfig {
  * calls `error`, this method will resubscribe to the source Observable for a maximum of `count` resubscriptions (given
  * as a number parameter) rather than propagating the `error` call.
  *
- * 返回一个镜像源 Observable 的 Observable，但 `error` 除外。如果源 Observable 调用 `error`，此方法将重新订阅源 Observable 最多重新订阅 `count`（作为数字参数给出），而不是传播 `error` 调用。
+ * 返回一个镜像源 Observable 的 Observable，但 `error` 除外。如果源 Observable 调用 `error`，此方法将重新订阅源 Observable，最多重新订阅 `count`（作为数字参数给出）次，而不是传播 `error` 调用。
  *
  * ![](retry.png)
  *
@@ -49,7 +49,7 @@ export interface RetryConfig {
  * time and emits: `[1, 2, 3, 4, 5]` then the complete stream of emissions and notifications
  * would be: `[1, 2, 1, 2, 3, 4, 5, complete]`.
  *
- * 源 Observable 发送的任何和所有条目都将由结果 Observable 发送，即使是在订阅失败期间发送的那些。例如，如果一个 Observable 第一次失败但发送 `[1, 2]` 然后第二次成功并发送： `[1, 2, 3, 4, 5]` 那么完整的发送和通知流将是： `[1, 2, 1, 2, 3, 4, 5, complete]`。
+ * 源 Observable 发送的任何条目和所有条目都将由结果 Observable 发送，即使是在订阅失败期间发送的那些。例如，如果一个 Observable 第一次失败但发送了 `[1, 2]`，然后第二次成功并发送了 `[1, 2, 3, 4, 5]`，那么完整的发送和通知流将是：`[1, 2, 1, 2, 3, 4, 5, complete]`。
  *
  * ## Example
  *

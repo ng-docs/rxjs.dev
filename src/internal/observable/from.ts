@@ -29,7 +29,7 @@ export function from<O extends ObservableInput<any>>(input: O, scheduler: Schedu
  * as an array of characters. Observable-like objects (contains a function named with the ES2015 Symbol for Observable) can also be
  * converted through this operator.
  *
- * `from` 将各种其他对象和数据类型转换为 Observables。它还将 Promise、数组类似对象或[可迭代](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#iterable)对象转换为可发送该 Promise、数组或可迭代对象中条目的 Observable。在这种情况下，字符串会被视为字符数组。Observable 类似对象（包含一个以 ES2015 Symbol for Observable 命名的函数）也可以通过这个操作符进行转换。
+ * `from` 将各种其他对象和数据类型转换为 Observables。它还将 Promise、数组类似对象或[可迭代](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#iterable)对象转换为可发出该 Promise、数组或可迭代对象中条目的 Observable。在这种情况下，字符串会被视为字符数组。Observable 类似对象（包含一个以 ES2015 Symbol for Observable 命名的函数）也可以通过这个操作符进行转换。
  *
  * ## Examples
  *

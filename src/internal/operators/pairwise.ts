@@ -6,12 +6,12 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * Groups pairs of consecutive emissions together and emits them as an array of
  * two values.
  *
- * 将成对的连续发送组合在一起，并将它们作为两个值的数组发送。
+ * 将连续发送的一些“值对（pair）”进行分组，并将它们作为一些双值数组进行发送。
  *
  * <span class="informal">Puts the current value and previous value together as
  * an array, and emits that.</span>
  *
- * <span class="informal">将当前值和先前值放在一起作为一个数组，并发送它。</span>
+ * <span class="informal">将当前值和先前值放在一起作成一个数组，并发送它。</span>
  *
  * ![](pairwise.png)
  *
@@ -21,7 +21,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * emissions from the source Observable, but not on the first emission, because
  * there is no previous value in that case.
  *
- * 来自源 Observable 的第 N 个发送将导致输出 Observable 发送一个数组[(N-1)th，][(n-1)th,%20nth]前一个值和当前值的第 N 个，作为一对。出于这个原因，在源 Observable 的第二次和后续发送时，`pairwise` 发送，但不是在第一次发送时发送，因为在这种情况下没有先前的值。
+ * 来自源 Observable 的第 N 次发送将导致输出 Observable  把前一个值和当前值配成一对（`[(N-1)th, Nth]`）并作为数组发送。因此，`pairwise` 只会在源 Observable 的第二次和后续发来值时发送，而不会在第一次发来时发送，因为这时候还没有前一个值。
  *
  * ## Example
  *
@@ -53,7 +53,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * @return A function that returns an Observable of pairs (as arrays) of
  * consecutive values from the source Observable.
  *
- * 一个从源 Observable 返回连续值对（作为数组）的 Observable 的函数。
+ * 一个从源 Observable 返回连续值对（以数组形式）的 Observable 的函数。
  *
  */
 export function pairwise<T>(): OperatorFunction<T, [T, T]> {

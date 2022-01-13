@@ -11,18 +11,18 @@ import { isValidDate } from '../util/isDate';
  * 创建一个 observable，它将等待指定的时间段或确切的日期，然后发送数字 0。
  *
  * <span class="informal">Used to emit a notification after a delay.</span>
-*
+ *
  * <span class="informal">用于在延迟后发送通知。</span>
  *
  * This observable is useful for creating delays in code, or racing against other values
  * for ad-hoc timeouts.
  *
- * 此 observable 对于在代码中创建延迟或与其他值竞争即席超时非常有用。
+ * 此 observable 对于在代码中创建延迟或与其它值作超时竞赛时非常有用。
  *
  * The `delay` is specified by default in milliseconds, however providing a custom scheduler could
  * create a different behavior.
  *
- * 默认情况下以毫秒为单位指定 `delay`，但是提供自定义调度器可能会创建不同的行为。
+ * 默认情况下以毫秒为单位指定 `delay`，但如果提供自定义调度器可能会导致不同的行为。
  *
  * ## Examples
  *
@@ -37,7 +37,7 @@ import { isValidDate } from '../util/isDate';
  * {@link concatMapTo} or {@link concatMap} in order to wait
  * a few seconds and start a subscription to a source.
  *
- * 你可能希望使用 `timer` 将订阅可观察者延迟设定的时间。在这里，我们使用带有 {@link concatMapTo} 或 {@link concatMap} 的计时器，以便等待几秒钟并开始订阅源。
+ * 你可能希望使用 `timer` 将订阅 Observable 延迟设定的时间。在这里，我们使用带有 {@link concatMapTo} 或 {@link concatMap} 的计时器，以便等待几秒钟再开始订阅源。
  *
  * ```ts
  * import { of, timer, concatMap } from 'rxjs';
@@ -60,7 +60,7 @@ import { isValidDate } from '../util/isDate';
  * too long to run) in order to stop watching a stream. Leveraging
  * {@link takeUntil}.
  *
- * 使用 `Date` 作为第一次发送的触发器，你可以在为了停止观看流。利用 {@link takeUntil}。
+ * 使用 `Date` 作为首次发送的触发器，比如你可以等到半夜再触发某个事件，或者等待到下一分钟（如果这么做，本范例就会花太长时间才能运行完）。和 {@link takeUntil} 配合使用。
  *
  * ```ts
  * import { interval, takeUntil, timer } from 'rxjs';
@@ -92,23 +92,23 @@ import { isValidDate } from '../util/isDate';
  *
  * - The {@link asyncScheduler} uses `setTimeout` which has limitations for how far in the future it can be scheduled.
  *
- *   {@link asyncScheduler} 使用 `setTimeout`，它对未来可以调度多远有限制。
+ *   {@link asyncScheduler} 会使用 `setTimeout`，它对能调度到多远的未来存在一些限制。
  *
  * - If a `scheduler` is provided that returns a timestamp other than an epoch from `now()`, and
  *   a `Date` object is passed to the `dueTime` argument, the calculation for when the first emission
  *   should occur will be incorrect. In this case, it would be best to do your own calculations
  *   ahead of time, and pass a `number` in as the `dueTime`.
  *
- *   如果提供的 `scheduler` 从 `now()` 返回除纪元以外的时间戳，并且将 `Date` 对象传递给 `dueTime` 参数，则首次发送时间的计算将不正确。在这种情况下，最好提前进行自己的计算，并传入一个 `number` 作为 `dueTime`。
+ *   如果所提供的 `scheduler` 会从 `now()` 返回除公元时间之外的时间戳，并且将 `Date` 对象传递给 `dueTime` 参数，则首次发送时间的计算将不正确。在这种情况下，最好提前进行自己的计算，并传入一个 `number` 作为 `dueTime`。
  *
  * @param due If a `number`, the amount of time in milliseconds to wait before emitting.
  * If a `Date`, the exact time at which to emit.
  *
- * 如果是 `number`，则在发送前等待的时间量（以毫秒为单位）。如果是 `Date`，则发送的确切时间。
+ * 如果是 `number`，则为要在发送前等待的时间量（以毫秒为单位）。如果是 `Date`，则为要发送的确切时间。
  *
  * @param scheduler The scheduler to use to schedule the delay. Defaults to {@link asyncScheduler}.
  *
- * 用于调度延迟的调度器。默认为 {@link asyncScheduler}。
+ * 用于实现调度延迟的调度器。默认为 {@link asyncScheduler}。
  *
  */
 export function timer(due: number | Date, scheduler?: SchedulerLike): Observable<0>;
@@ -117,12 +117,12 @@ export function timer(due: number | Date, scheduler?: SchedulerLike): Observable
  * Creates an observable that starts an interval after a specified delay, emitting incrementing numbers -- starting at `0` --
  * on each interval after words.
  *
- * 创建一个 observable，它在指定的延迟后开始一个间隔，在单词之后的每个间隔上发送递增的数字——从 `0` 开始。
+ * 创建一个 observable，它在指定的延迟后开始一个间隔，在单词之后的每个间隔上发送递增的数字 —— 从 `0` 开始。
  *
  * The `delay` and `intervalDuration` are specified by default in milliseconds, however providing a custom scheduler could
  * create a different behavior.
  *
- * 默认情况下，`delay` 和 `intervalDuration` 以毫秒为单位指定，但是提供自定义调度器可能会创建不同的行为。
+ * 默认情况下，`delay` 和 `intervalDuration` 会以毫秒为单位进行指定，但是提供自定义调度器可能会创建不同的行为。
  *
  * ## Example
  *
@@ -130,14 +130,14 @@ export function timer(due: number | Date, scheduler?: SchedulerLike): Observable
  *
  * ### Start an interval that starts right away
  *
- * ### 开始一个立即开始的间隔
+ * ### 开始一个立即开始的时间间隔
  *
  * Since {@link interval} waits for the passed delay before starting,
  * sometimes that's not ideal. You may want to start an interval immediately.
  * `timer` works well for this. Here we have both side-by-side so you can
  * see them in comparison.
  *
- * 由于 {@link interval} 在开始之前等待传递的延迟，因此有时这并不理想。你可能想立即开始一个间隔。`timer` 适用于此。在这里，我们将两者并排放置，因此你可以比较它们。
+ * 由于 {@link interval} 在开始之前会先等待所传入的延迟，因此有时并不理想。你可能想立即开始一个时间间隔。`timer` 就适用于这种场景。在这里，我们将两者并排放置，以便你比较它们。
  *
  * Note that this observable will never complete.
  *
@@ -156,29 +156,29 @@ export function timer(due: number | Date, scheduler?: SchedulerLike): Observable
  *
  * - The {@link asyncScheduler} uses `setTimeout` which has limitations for how far in the future it can be scheduled.
  *
- *   {@link asyncScheduler} 使用 `setTimeout`，它对未来可以调度多远有限制。
+ *   {@link asyncScheduler} 使用 `setTimeout`，它对能调度到多远的未来存在一些限制。
  *
  * - If a `scheduler` is provided that returns a timestamp other than an epoch from `now()`, and
  *   a `Date` object is passed to the `dueTime` argument, the calculation for when the first emission
  *   should occur will be incorrect. In this case, it would be best to do your own calculations
  *   ahead of time, and pass a `number` in as the `startDue`.
  *
- *   如果提供的 `scheduler` 从 `now()` 返回除纪元以外的时间戳，并且将 `Date` 对象传递给 `dueTime` 参数，则首次发送时间的计算将不正确。在这种情况下，最好提前进行自己的计算，并传入一个 `number` 作为 `startDue`。
+ *   如果所提供的 `scheduler` 从 `now()` 返回除公元时间之外的时间戳，并且将 `Date` 对象传给 `dueTime` 参数，则首次发送时间的计算将不正确。在这种情况下，最好提前进行自己的计算，并传入一个 `number` 作为 `startDue`。
  *
  * @param startDue If a `number`, is the time to wait before starting the interval.
  * If a `Date`, is the exact time at which to start the interval.
  *
- * 如果是 `number`，是开始间隔之前等待的时间。如果是 `Date`，则为开始间隔的确切时间。
+ * 如果是 `number`，则为起始间隔之前等待的时间。如果是 `Date`，则为起始间隔的确切时间。
  *
  * @param intervalDuration The delay between each value emitted in the interval. Passing a
  * negative number here will result in immediate completion after the first value is emitted, as though
  * no `intervalDuration` was passed at all.
  *
- * 间隔中发送的每个值之间的延迟。在此处传递负数将导致在发送第一个值后立即完成，就好像根本没有传递任何 `intervalDuration` 一样。
+ * 间隔中发送的每个值之间存在延迟。在此处传递负数将导致在发送第一个值后立即完成，就好像根本没有传入任何 `intervalDuration` 一样。
  *
  * @param scheduler The scheduler to use to schedule the delay. Defaults to {@link asyncScheduler}.
  *
- * 用于调度延迟的调度器。默认为 {@link asyncScheduler}。
+ * 用于调度这种延迟的调度器。默认为 {@link asyncScheduler}。
  *
  */
 export function timer(startDue: number | Date, intervalDuration: number, scheduler?: SchedulerLike): Observable<number>;

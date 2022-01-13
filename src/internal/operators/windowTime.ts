@@ -26,12 +26,12 @@ export function windowTime<T>(
  * Branch out the source Observable values as a nested Observable periodically
  * in time.
  *
- * 定期将源 Observable 值分支为嵌套的 Observable。
+ * 定期将源 Observable 的每个值分叉为一个嵌套的 Observable。
  *
  * <span class="informal">It's like {@link bufferTime}, but emits a nested
  * Observable instead of an array.</span>
  *
- * <span class="informal">它类似于 {@link bufferTime}，但发送一个嵌套的 Observable 而不是一个数组。</span>
+ * <span class="informal">类似于 {@link bufferTime}，但它会发送一个嵌套的 Observable，而非数组。</span>
  *
  * ![](windowTime.png)
  *
@@ -48,7 +48,7 @@ export function windowTime<T>(
  * after emitting last value and next one still will open as specified by
  * `windowTimeSpan` and `windowCreationInterval` arguments.
  *
- * 返回一个 Observable，它发送从源 Observable 收集的条目的窗口。输出 Observable 定期启动一个新窗口，由 `windowCreationInterval` 参数确定。它在 `windowTimeSpan` 参数指定的固定时间跨度后发送每个窗口。当源 Observable 完成或遇到错误时，输出 Observable 会发送当前窗口并传播来自源 Observable 的通知。如果没有提供 `windowCreationInterval`，则输出 Observable 会在前一个持续时间 `windowTimeSpan` 的窗口完成时启动一个新窗口。如果提供了 `maxWindowCount`，则每个窗口将发送最多固定数量的值。窗口将在发送最后一个值后立即完成，并且下一个仍将按照 `windowTimeSpan` 和 `windowCreationInterval` 参数的指定打开。
+ * 返回一个 Observable，它会发出一些从源 Observable 收集来的条目的窗口。输出 Observable 会定期启动一个新窗口，时间间隔由 `windowCreationInterval` 参数确定。它会在经过 `windowTimeSpan` 参数指定的固定时间跨度后发送每个窗口。当源 Observable 完成或遇到错误时，输出 Observable 会发出当前窗口并转发来自源 Observable 的通知。如果没有提供 `windowCreationInterval`，则输出 Observable 会在持续时间 `windowTimeSpan` 的前一个窗口完成时启动一个新窗口。如果提供了 `maxWindowCount`，则每个窗口将发送最多固定数量的值。窗口将在发出最后一个值后立即完成，并且下一个窗口仍会按照 `windowTimeSpan` 和 `windowCreationInterval` 参数的要求打开。
  *
  * ## Examples
  *
@@ -56,7 +56,7 @@ export function windowTime<T>(
  *
  * In every window of 1 second each, emit at most 2 click events
  *
- * 在每个 1 秒的窗口中，最多发送 2 个点击事件
+ * 在间隔 1 秒的窗口中，每次最多发送 2 个点击事件
  *
  * ```ts
  * import { fromEvent, windowTime, map, take, mergeAll } from 'rxjs';
@@ -88,7 +88,7 @@ export function windowTime<T>(
  *
  * Same as example above but with `maxWindowCount` instead of `take`
  *
- * 与上面的示例相同，但使用 `maxWindowCount` 而不是 `take`
+ * 与上面的示例相同，但使用 `maxWindowCount` 而非 `take`
  *
  * ```ts
  * import { fromEvent, windowTime, mergeAll } from 'rxjs';
@@ -107,27 +107,27 @@ export function windowTime<T>(
  * @see {@link bufferTime}
  * @param windowTimeSpan The amount of time, in milliseconds, to fill each window.
  *
- * 填充每个窗口的时间量（以毫秒为单位）。
+ * 用来填充每个窗口的时间量（以毫秒为单位）。
  *
  * @param windowCreationInterval The interval at which to start new
  * windows.
  *
- * 启动新窗口的时间间隔。
+ * 用来启动新窗口的时间间隔。
  *
  * @param maxWindowSize Max number of
  * values each window can emit before completion.
  *
- * 每个窗口在完成之前可以发送的最大值数。
+ * 每个窗口在完成之前可以发送的值的最大数量。
  *
  * @param scheduler The scheduler on which to schedule the
  * intervals that determine window boundaries.
  *
- * 调度确定窗口边界的间隔的调度器。
+ * 用来确定窗口边界的间隔的调度器。
  *
  * @return A function that returns an Observable of windows, which in turn are
  * Observables.
  *
- * 一个返回窗口的 Observable 的函数，这些窗口又是 Observables。
+ * 一个返回以窗口为条目的 Observable 的函数，这些窗口又都是 Observables。
  *
  */
 export function windowTime<T>(windowTimeSpan: number, ...otherArgs: any[]): OperatorFunction<T, Observable<T>> {
@@ -154,7 +154,7 @@ export function windowTime<T>(windowTimeSpan: number, ...otherArgs: any[]): Oper
      * Called every time we start a new window. This also does
      * the work of scheduling the job to close the window.
      *
-     * 每次我们启动一个新窗口时调用。这也完成了调度作业以关闭窗口的工作。
+     * 每当我们启动一个新窗口时调用。这也会完成调度此作业以关闭窗口的工作。
      *
      */
     const startWindow = () => {
@@ -190,7 +190,7 @@ export function windowTime<T>(windowTimeSpan: number, ...otherArgs: any[]): Oper
      * The reason we copy the array is that reentrant code could mutate the array while
      * we are iterating over it.
      *
-     * 我们需要在此操作符中多次循环窗口记录的副本。这是为了节省线路上的字节数。我们复制数组的原因是可重入代码在我们迭代数组时可能会改变它。
+     * 我们需要在此操作符中多次在窗口记录的副本上进行循环。这是为了节省线路上的字节数。我们复制此数组的原因是：当我们迭代数组时某些可重入代码可能会改变它。
      *
      */
     const loop = (cb: (record: WindowRecord<T>) => void) => windowRecords!.slice().forEach(cb);

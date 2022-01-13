@@ -7,7 +7,7 @@ import { interval } from '../observable/interval';
  * Emits the most recently emitted value from the source Observable within
  * periodic time intervals.
  *
- * 在周期性时间间隔内从源 Observable 发送最近发送的值。
+ * 在周期性时间间隔内发送从源 Observable 中最近发出的值。
  *
  * <span class="informal">Samples the source Observable at periodic time
  * intervals, emitting what it samples.</span>
@@ -23,7 +23,7 @@ import { interval } from '../observable/interval';
  * defined by the optional `scheduler` argument). The sampling starts as soon as
  * the output Observable is subscribed.
  *
- * `sampleTime` 定期查看源 Observable 并发送自上次采样以来它最近发送的任何值，除非源自上次采样以来没有发送任何东西。采样每隔一段时间毫秒（或由可选 `scheduler` 参数定义的 `period` 单位）定期发生。一旦订阅了输出 Observable，采样就开始了。
+ * `sampleTime` 会定期查看源 Observable 并发送自上次采样以来它最近发出的任何值，除非源自上次采样以来没有发送任何东西。采样会每隔几毫秒（或由可选 `scheduler` 参数定义的 `period` 单位）定期发生。一旦订阅了输出 Observable，采样就开始了。
  *
  * ## Example
  *
@@ -31,7 +31,7 @@ import { interval } from '../observable/interval';
  *
  * Every second, emit the most recent click at most once
  *
- * 每秒，最多发送一次最近的点击
+ * 每秒最多发送一次最近的点击
  *
  * ```ts
  * import { fromEvent, sampleTime } from 'rxjs';
@@ -54,13 +54,13 @@ import { interval } from '../observable/interval';
  * @param {SchedulerLike} [scheduler=async] The {@link SchedulerLike} to use for
  * managing the timers that handle the sampling.
  *
- * 用于管理处理采样的定时器。
+ * 用于管理处理采样行为的定时器。
  *
  * @return A function that returns an Observable that emits the results of
  * sampling the values emitted by the source Observable at the specified time
  * interval.
  *
- * 一个返回 Observable 的函数，该函数在指定的时间间隔发送对源 Observable 发送的值进行采样的结果。
+ * 一个返回 Observable 的函数，该 Observable 会在指定的时间间隔内发送对源 Observable 发出的值进行采样的结果。
  *
  */
 export function sampleTime<T>(period: number, scheduler: SchedulerLike = asyncScheduler): MonoTypeOperatorFunction<T> {

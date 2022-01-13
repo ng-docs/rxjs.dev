@@ -1,7 +1,7 @@
 /**
  * Removes an item from an array, mutating it.
  *
- * 从数组中删除一个条目，对其进行变异。
+ * 从数组中删除一个条目，对其进行修改。
  *
  * @param arr The array to remove the item from
  *

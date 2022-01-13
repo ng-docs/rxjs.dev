@@ -10,15 +10,15 @@ export function distinctUntilKeyChanged<T, K extends keyof T>(key: K, compare: (
  * Returns an Observable that emits all items emitted by the source Observable that are distinct by comparison from the previous item,
  * using a property accessed by using the key provided to check if the two items are distinct.
  *
- * 返回一个 Observable，该 Observable 发送源 Observable 发送的所有通过比较与前一个条目不同的条目，使用通过使用提供的键访问的属性来检查这两个条目是否不同。
+ * 返回一个 Observable，该 Observable 会发送源 Observable 发送的所有与前一个条目不同的条目，根据所提供的键来访问某个属性，以检查这两个条目是否不同。
  *
  * If a comparator function is provided, then it will be called for each item to test for whether or not that value should be emitted.
  *
- * 如果提供了一个比较器函数，那么它将为每个条目调用以测试是否应该发送该值。
+ * 如果提供了一个比较器函数，那么它将针对每个条目进行调用以测试是否应该发送该值。
  *
  * If a comparator function is not provided, an equality check is used by default.
  *
- * 如果未提供比较器功能，则默认使用相等检查。
+ * 如果未提供比较器功能，则默认使用全等检查。
  *
  * ## Examples
  *
@@ -73,15 +73,18 @@ export function distinctUntilKeyChanged<T, K extends keyof T>(key: K, compare: (
  * @see {@link distinctUntilChanged}
  * @param {string} key String key for object property lookup on each item.
  *
- * 用于在每个条目上查找对象属性的字符串键。
+ * 用于在每个条目上查找对象属性的键名字符串。
  *
  * @param {function} [compare] Optional comparison function called to test if an item is distinct from the previous item in the source.
  * @return A function that returns an Observable that emits items from the
  * source Observable with distinct values based on the key specified.
  *
- * 一个返回 Observable 的函数，它根据指定的键从源 Observable 发送具有不同值的条目。
+ * 一个返回 Observable 的函数，它会根据指定的键从源 Observable 发出具有不同值的条目。
  *
  */
-export function distinctUntilKeyChanged<T, K extends keyof T>(key: K, compare?: (x: T[K], y: T[K]) => boolean): MonoTypeOperatorFunction<T> {
-  return distinctUntilChanged((x: T, y: T) => compare ? compare(x[key], y[key]) : x[key] === y[key]);
+export function distinctUntilKeyChanged<T, K extends keyof T>(
+  key: K,
+  compare?: (x: T[K], y: T[K]) => boolean
+): MonoTypeOperatorFunction<T> {
+  return distinctUntilChanged((x: T, y: T) => (compare ? compare(x[key], y[key]) : x[key] === y[key]));
 }

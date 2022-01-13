@@ -25,7 +25,7 @@ export function zip<A extends readonly unknown[], R>(
  * If the last parameter is a function, this function is used to compute the created value from the input values.
  * Otherwise, an array of the input values is returned.
  *
- * 如果最后一个参数是函数，则此函数用于根据输入值计算创建的值。否则，返回输入值数组。
+ * 如果最后一个参数是函数，则此函数用于根据输入值计算要创建的值。否则，返回输入值数组。
  *
  * ## Example
  *
@@ -33,7 +33,7 @@ export function zip<A extends readonly unknown[], R>(
  *
  * Combine age and name from different sources
  *
- * 结合不同来源的年龄和姓名
+ * 组合不同来源的年龄和姓名
  *
  * ```ts
  * import { of, zip, map } from 'rxjs';

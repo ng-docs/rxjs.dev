@@ -7,12 +7,12 @@ import { OperatorSubscriber } from './OperatorSubscriber';
 /**
  * Buffers the source Observable values until `closingNotifier` emits.
  *
- * 缓冲源 Observable 值，直到 `closingNotifier` 发送。
+ * 缓冲源 Observable 的值，直到 `closingNotifier` 发出了值才继续。
  *
  * <span class="informal">Collects values from the past as an array, and emits
  * that array only when another Observable emits.</span>
  *
- * 将过去的值收集为一个数组，并仅在另一个 Observable 发送时发送该数组。
+ * <span class="informal">将已过去的值收集为一个数组，并仅当另一个 Observable 发出了值后才发送该数组。</span>
  *
  * ![](buffer.png)
  *
@@ -21,7 +21,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * Observable and starts a new buffer internally, awaiting the next time
  * `closingNotifier` emits.
  *
- * 缓冲传入的 Observable 值，直到给定的 `closingNotifier` Observable 发送一个值，此时它在输出 Observable 上发送缓冲区并在内部启动一个新的缓冲区，等待下一次 `closingNotifier` 发送。
+ * 缓冲传入的 Observable 值，直到给定的 `closingNotifier` Observable 发出了一个值，此时它会在输出 Observable 上发送缓冲区并在内部启动一个新的缓冲区，等待 `closingNotifier` 发出下一个值。
  *
  * ## Example
  *
@@ -29,7 +29,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  * On every click, emit array of most recent interval events
  *
- * 每次点击时，发送最近间隔事件的数组
+ * 每次点击时，发送最近间隔期间所有事件的数组
  *
  * ```ts
  * import { fromEvent, interval, buffer } from 'rxjs';
@@ -47,12 +47,12 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * @param {Observable<any>} closingNotifier An Observable that signals the
  * buffer to be emitted on the output Observable.
  *
- * 一个 Observable，它指示要在输出 Observable 上发送的缓冲区。
+ * 一个 Observable，它指示何时要在输出 Observable 上发送缓冲区。
  *
  * @return A function that returns an Observable of buffers, which are arrays
  * of values.
  *
- * 一个返回可观察缓冲区的函数，这些缓冲区是值数组。
+ * 一个返回 Observable 的函数，该 Observable 的值是一些缓冲区构成的数组。
  *
  */
 export function buffer<T>(closingNotifier: Observable<any>): OperatorFunction<T, T[]> {

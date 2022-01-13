@@ -10,14 +10,14 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * 使用指定的调度器从源 Observable 重新发送所有通知。
  *
  * <span class="informal">Ensure a specific scheduler is used, from outside of an Observable.</span>
-*
- * <span class="informal">确保从 Observable 外部使用特定的调度器。</span>
+ *
+ * <span class="informal">从 Observable 外部指定它使用某个特定的调度器。</span>
  *
  * `observeOn` is an operator that accepts a scheduler as a first parameter, which will be used to reschedule
  * notifications emitted by the source Observable. It might be useful, if you do not have control over
  * internal scheduler of a given Observable, but want to control when its values are emitted nevertheless.
  *
- * `observeOn` 是一个接受调度器作为第一个参数的操作符，它将用于重新调度源 Observable 发送的通知。如果你无法控制给定 Observable 的内部调度器，但仍想控制其值何时发送，这可能很有用。
+ * `observeOn` 是可以通过第一个参数指定调度器的操作符，此调度器将用于重新调度源 Observable 发送的通知。如果你无法控制给定 Observable 的内部调度器，但仍想控制其值的发送时机，可以考虑使用此操作符。
  *
  * Returned Observable emits the same notifications (nexted values, complete and error events) as the source Observable,
  * but rescheduled with provided scheduler. Note that this doesn't mean that source Observables internal
@@ -28,7 +28,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * Observable directly (usually into the operator that creates it). `observeOn` simply delays notifications a
  * little bit more, to ensure that they are emitted at expected moments.
  *
- * 返回的 Observable 发送与源 Observable 相同的通知（下一个值、完成和错误事件），但使用提供的调度器重新调度。请注意，这并不意味着源 Observables 内部调度器将以任何方式被替换。原来的调度器仍然会被使用，但是当源 Observable 发送通知时，它会立即再次被调度——这次调度器被传递给了 `observeOn`。一个反模式是在 Observable 上调用 `observeOn` 同步发送大量值，将发送分成异步块。为此，必须将调度器直接传递给源 Observable（通常传递给创建它的操作符）。`observeOn` 只是稍微延迟通知，以确保它们在预期的时刻发送。
+ * 返回的 Observable 会发送与源 Observable 相同的通知（下一个值、完成和出错事件），但会改用提供的调度器重新调度。请注意，这并不意味着源 Observables 内部调度器将以任何方式被替换。源仍然会被使用原来的调度器，但是当源 Observable 发出通知时，它会立即再次调度一次，但这次会改用传给 `observeOn` 的调度器。这里有个反模式是在会同步发送大量值的 Observable 上调用 `observeOn`，并异步将发出的值分成异步块。这种情况下，调度器将被迫直接传给源 Observable（而正常情况下会传给创建它的操作符）。`observeOn` 只会稍微延迟通知，以确保它们在预期的时机发出。
  *
  * As a matter of fact, `observeOn` accepts second parameter, which specifies in milliseconds with what delay notifications
  * will be emitted. The main difference between {@link delay} operator and `observeOn` is that `observeOn`
@@ -37,7 +37,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * for any kind of delaying of values in the stream, while using `observeOn` to specify which scheduler should be used
  * for notification emissions in general.
  *
- * 事实上，`observeOn` 接受第二个参数，它以毫秒为单位指定将发送什么延迟通知。{@link delay} 操作符和 `observeOn` 的主要区别在于 `observeOn` 会延迟所有通知——包括错误通知——而 `delay` 会在源 Observable 发送错误时立即传递它。一般来说，强烈建议对流中的任何类型的值延迟使用 `delay` 操作符，同时使用 `observeOn` 指定通常应该使用哪个调度器来发送通知。
+ * 事实上，`observeOn` 还能接受第二个参数，它以毫秒为单位指定将延迟多久发送通知。{@link delay} 操作符和 `observeOn` 的主要区别在于 `observeOn` 会延迟所有通知（包括错误通知）而 `delay` 会在源 Observable 发送错误通知时立即传递它。一般来说，强烈建议对流中的任何类型的值延迟使用 `delay` 操作符，而一般会用 `observeOn` 来指定应该使用哪个调度器来发送通知。
  *
  * ## Example
  *
@@ -45,7 +45,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  * Ensure values in subscribe are called just before browser repaint
  *
- * 确保在浏览器重绘之前调用 subscribe 中的值
+ * 确保在浏览器重绘之前先调用 subscribe 中的值
  *
  * ```ts
  * import { interval, observeOn, animationFrameScheduler } from 'rxjs';
@@ -65,16 +65,16 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * @see {@link delay}
  * @param scheduler Scheduler that will be used to reschedule notifications from source Observable.
  *
- * 用于重新调度来自源 Observable 的通知的调度器。
+ * 一个调度器，用于重新调度来自源 Observable 的通知。
  *
  * @param delay Number of milliseconds that states with what delay every notification should be rescheduled.
  *
- * 说明应该重新安排每个通知的延迟时间的毫秒数。
+ * 一个毫秒数，用于指定重新调度每个通知的延迟时间。
  *
  * @return A function that returns an Observable that emits the same
  * notifications as the source Observable, but with provided scheduler.
  *
- * 一个返回 Observable 的函数，它发送与源 Observable 相同的通知，但带有提供的调度器。
+ * 一个返回 Observable 的函数，它会发送与源 Observable 相同的通知，但使用指定的调度器。
  *
  */
 export function observeOn<T>(scheduler: SchedulerLike, delay = 0): MonoTypeOperatorFunction<T> {

@@ -10,7 +10,7 @@ export interface RepeatConfig {
   /**
    * The number of times to repeat the source. Defaults to `Infinity`.
    *
-   * 重复源的次数。默认为 `Infinity`。
+   * 此源要重复的次数。默认为 `Infinity`。
    *
    */
   count?: number;
@@ -21,7 +21,7 @@ export interface RepeatConfig {
    * and the return value should be a valid observable input that will notify when the source
    * should be repeated. If the notifier observable is empty, the result will complete.
    *
-   * 如果是 `number`，则将源的重复延迟该毫秒数。如果是一个函数，它将提供源被订阅的次数，并且返回值应该是一个有效的可观察输入，它将通知何时应该重复源。如果通知器 observable 为空，则结果将完成。
+   * 如果是 `number`，则将源的重复延迟该毫秒数。如果是一个函数，它将提供源要订阅的次数，并且其返回值应该是一个有效的可观察输入，它将通知何时应该重复源。如果通知器 observable 为空，则结果此将完成。
    *
    */
   delay?: number | ((count: number) => ObservableInput<any>);
@@ -33,8 +33,8 @@ export interface RepeatConfig {
  * 返回一个 Observable，它将在源流完成时重新订阅源流。
  *
  * <span class="informal">Repeats all values emitted on the source. It's like {@link retry}, but for non error cases.</span>
-*
- * <span class="informal">重复源上发送的所有值。这就像 {@link retry}，但对于非错误情况。</span>
+ *
+ * <span class="informal">重复源上发送的所有值。这就像 {@link retry}，但只针对无错的情况。</span>
  *
  * ![](repeat.png)
  *
@@ -43,16 +43,16 @@ export interface RepeatConfig {
  * combination with closing operators like {@link take}, {@link takeUntil}, {@link first}, or {@link takeWhile},
  * as it can be used to restart a source again from scratch.
  *
- * 重复将从源输出值，直到源完成，然后它将重新订阅源指定的次数，并具有指定的延迟。重复与 {@link take}、{@link takeUntil}、{@link first} 或 {@link takeWhile} 等关闭操作符结合使用特别有用，因为它可用于从头开始重新启动源。
+ * repeat 将从源输出一些值，直到源完成，然后它将按指定的次数重新订阅源，并具有指定的延迟。repeat 一般会与 {@link take}、{@link takeUntil}、{@link first} 或 {@link takeWhile} 等关闭操作符结合使用，因为它可用于从头开始重新启动源。
  *
  * Repeat is very similar to {@link retry}, where {@link retry} will resubscribe to the source in the error case, but
  * `repeat` will resubscribe if the source completes.
  *
- * repeat 与 {@link retry} 非常相似，其中 {@link retry} 将在错误情况下重新订阅源，但如果源完成，`repeat` 将重新订阅。
+ * repeat 与 {@link retry} 非常相似，不过 {@link retry} 会在出错的情况下重新订阅源，而 `repeat` 会在源完成的情况下重新订阅。
  *
  * Note that `repeat` will _not_ catch errors. Use {@link retry} for that.
  *
- * 请注意，`repeat`_ 不会 _ 捕获错误。为此使用 {@link retry}。
+ * 请注意，`repeat` *不会* 捕获错误。如果要捕获，请使用 {@link retry}。
  *
  * - `repeat(0)` returns an empty observable
  *
@@ -64,15 +64,15 @@ export interface RepeatConfig {
  *
  * - `repeat({ delay: 200 })` will repeat forever, with a delay of 200ms between repetitions.
  *
- *   `repeat({ delay: 200 })` 将永远重复，重复之间有 200ms 的延迟。
+ *   `repeat({ delay: 200 })` 将永远重复，每次重复之间有 200ms 的延迟。
  *
  * - `repeat({ count: 2, delay: 400 })` will repeat twice, with a delay of 400ms between repetitions.
  *
- *   `repeat({ count: 2, delay: 400 })` 将重复两次，重复之间有 400ms 的延迟。
+ *   `repeat({ count: 2, delay: 400 })` 将重复两次，每次重复之间有 400ms 的延迟。
  *
  * - `repeat({ delay: (count) => timer(count * 1000) })` will repeat forever, but will have a delay that grows by one second for each repetition.
  *
- *   `repeat({ delay: (count) => timer(count * 1000) })` 将永远重复，但每次重复会有一秒的延迟。
+ *   `repeat({ delay: (count) => timer(count * 1000) })` 将永远重复，但每次重复都会增加一秒的延迟。
  *
  * ## Example
  *
@@ -80,7 +80,7 @@ export interface RepeatConfig {
  *
  * Repeat a message stream
  *
- * 重复消息流
+ * 重复某个消息流
  *
  * ```ts
  * import { of, repeat } from 'rxjs';
@@ -121,7 +121,7 @@ export interface RepeatConfig {
  * Note that the second repeat cannot be called until the first
  * repeat as exhausted it's count.
  *
- * 在同一源上定义两个具有延迟的复杂重复。请注意，在第一次重复用尽它的计数之前，不能调用第二次重复。
+ * 在同一个源上定义两个自带延迟的复杂重复。请注意，在第一次重复用尽它的计数之前，不会调用第二次重复。
  *
  * ```ts
  * import { defer, of, repeat } from 'rxjs';
@@ -149,7 +149,7 @@ export interface RepeatConfig {
  * @param count The number of times the source Observable items are repeated, a count of 0 will yield
  * an empty Observable.
  *
- * 源 Observable 条目重复的次数，计数为 0 将产生一个空的 Observable。
+ * 源 Observable 的条目要重复的次数，如果计数为 0 将产生一个空的 Observable。
  *
  */
 export function repeat<T>(countOrConfig?: number | RepeatConfig): MonoTypeOperatorFunction<T> {

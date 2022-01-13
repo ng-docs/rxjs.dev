@@ -10,27 +10,27 @@ export function combineLatestAll<R>(project: (...values: Array<any>) => R): Oper
 /**
  * Flattens an Observable-of-Observables by applying {@link combineLatest} when the Observable-of-Observables completes.
  *
- * 当 Observable-of-Observables 完成时，通过应用 {@link combineLatest} 来展平 Observable-of-Observables。
+ * 当高阶 Observable（Observable-of-Observables）完成时，应用 {@link combineLatest} 来展平它。
  *
  * ![](combineLatestAll.png)
  *
  * `combineLatestAll` takes an Observable of Observables, and collects all Observables from it. Once the outer Observable completes,
  * it subscribes to all collected Observables and combines their values using the {@link combineLatest} strategy, such that:
  *
- * `combineLatestAll` 接受一个 Observable 的 Observable，并从中收集所有的 Observable。一旦外部 Observable 完成，它订阅所有收集的 Observable 并使用 {@link combineLatest} 策略组合它们的值，例如：
+ * `combineLatestAll` 会接受一个高阶 Observable 参数，并从中收集所有的 Observable。一旦外部 Observable 完成，它就会订阅所有收集到的 Observable 并使用 {@link combineLatest} 策略来组合它们的值，例如：
  *
  * * Every time an inner Observable emits, the output Observable emits
  *
- *   每次内部 Observable 发送时，输出 Observable 都会发送
+ *   每次内部 Observable 发送时，输出 Observable 都会发出值
  *
  * * When the returned observable emits, it emits all of the latest values by:
  *
- *   当返回的 observable 发送时，它会通过以下方式发送所有最新值：
+ *   当返回的这个 observable 发出值时，它会通过以下方式发送所有最新值：
  *
  *   - If a `project` function is provided, it is called with each recent value from each inner Observable in whatever order they
  *     arrived, and the result of the `project` function is what is emitted by the output Observable.
  *
- *     如果提供了一个 `project` 函数，它会以来自每个内部 Observable 的每个最近值以它们抵达的任何顺序被调用，并且 `project` 函数的结果是输出 Observable 发送的结果。
+ *     如果提供了一个 `project` 函数，每个内部 Observable 的最新值都会按照它们抵达的顺序调用此函数，而 `project` 函数的返回值就是输出 Observable 所发送的结果。
  *
  *   - If there is no `project` function, an array of all the most recent values is emitted by the output Observable.
  *
@@ -42,7 +42,7 @@ export function combineLatestAll<R>(project: (...values: Array<any>) => R): Oper
  *
  * Map two click events to a finite interval Observable, then apply `combineLatestAll`
  *
- * 将两个点击事件映射到一个有限区间 Observable，然后应用 `combineLatestAll`
+ * 将两个点击事件映射到一个有限的随机间隔 Observable，然后对其应用 `combineLatestAll`
  *
  * ```ts
  * import { fromEvent, map, interval, take, combineLatestAll } from 'rxjs';
@@ -62,12 +62,12 @@ export function combineLatestAll<R>(project: (...values: Array<any>) => R): Oper
  * @param project optional function to map the most recent values from each inner Observable into a new result.
  * Takes each of the most recent values from each collected inner Observable as arguments, in order.
  *
- * 可选函数，用于将每个内部 Observable 的最新值映射到新结果中。按顺序将每个收集的内部 Observable 中的每个最新值作为参数。
+ * 可选函数，用于将每个内部 Observable 的最新值映射到新结果中。每个收集到的内部 Observable 中的每个最新值都会依次调用此函数。
  *
  * @return A function that returns an Observable that flattens Observables
  * emitted by the source Observable.
  *
- * 一个返回 Observable 的函数，该函数将源 Observable 发送的 Observable 展平。
+ * 一个返回 Observable 的函数，该函数会展平源 Observable 发送出来的这些 Observable。
  *
  */
 export function combineLatestAll<R>(project?: (...values: Array<any>) => R) {

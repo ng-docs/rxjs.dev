@@ -17,7 +17,7 @@ export type AjaxResponseType = `${AjaxDirection}_${ProgressEventType}`;
 /**
  * The object containing values RxJS used to make the HTTP request.
  *
- * 包含 RxJS 用于发送 HTTP 请求的值的对象。
+ * 包含 RxJS 用于发出 HTTP 请求的值的对象。
  *
  * This is provided in {@link AjaxError} instances as the `request`
  * object.
@@ -45,7 +45,7 @@ export interface AjaxRequest {
   /**
    * The HTTP method used to make the HTTP request.
    *
-   * 用于发送 HTTP 请求的 HTTP 方法。
+   * 用于发出 HTTP 请求的 HTTP 方法。
    *
    */
   method: string;
@@ -53,7 +53,7 @@ export interface AjaxRequest {
   /**
    * Whether or not the request was made asynchronously.
    *
-   * 请求是否是异步发送的。
+   * 请求是否是异步发出的。
    *
    */
   async: boolean;
@@ -143,7 +143,7 @@ export interface AjaxConfig {
    * to the body will be serialized as URL, using key-value pairs based off of the keys and values of the object.
    * In all other cases, the body will be passed directly.
    *
-   * 默认情况下，这是基于 `"content-type"` 标头的值进行序列化的。例如，如果 `"content-type"` 是 `"application/json"`，则正文（body）将被序列化为 JSON。如果 `"content-type"` 是 `"application/x-www-form-urlencoded"`，则传递给正文的任何对象都将被序列化为 URL，使用基于对象的键和值的键值对。在所有其他情况下，正文将直接传递。
+   * 默认情况下，这是基于 `"content-type"` 标头的值进行序列化的。例如，如果 `"content-type"` 是 `"application/json"`，则正文（body）将被序列化为 JSON。如果 `"content-type"` 是 `"application/x-www-form-urlencoded"`，则传给正文的任何对象都将被序列化为 URL，使用基于对象的键和值的键值对。在所有其他情况下，正文将直接传递。
    *
    */
   body?: any;
@@ -183,7 +183,7 @@ export interface AjaxConfig {
    *    (meaning it is not a CORS request), a `"x-requested-with"` header with a value of `"XMLHttpRequest"` will be set automatically.
    *    This header is generally meaningless, and is set by libraries and frameworks using `XMLHttpRequest` to make HTTP requests.
    *
-   *    如果 `"x-requested-with"` 标头**未**设置，并且 `crossDomain` 配置属性**未**显式设置为 `true`（意味着它不是 CORS 请求），则 `"x-requested-with"` 标头的值将自动设置为 `"XMLHttpRequest"`。此标头通常没有意义，由库和框架在使用 `XMLHttpRequest` 发送 HTTP 请求时设置。
+   *    如果 `"x-requested-with"` 标头**未**设置，并且 `crossDomain` 配置属性**未**显式设置为 `true`（意味着它不是 CORS 请求），则 `"x-requested-with"` 标头的值将自动设置为 `"XMLHttpRequest"`。此标头通常没有意义，由库和框架在使用 `XMLHttpRequest` 发出 HTTP 请求时设置。
    *
    */
   headers?: Readonly<Record<string, any>>;
@@ -227,7 +227,7 @@ export interface AjaxConfig {
    * In particular, the section on [Simple Requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Simple_requests) is useful
    * for understanding when CORS will not be used.
    *
-   * 将在版本 8 中删除。跨域请求和创建跨域请求的内容由浏览器决定，强制它为跨域的布尔值没有意义。如果你需要强制跨域，请确保你发送安全请求，然后向请求添加自定义标头或使用 `withCredentials`。有关触发跨域请求的更多信息，请参阅 [MDN 文档](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#Requests_with_credentials)。特别是，[简单请求](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Simple_requests)部分有助于理解何时不使用 CORS。
+   * 将在版本 8 中删除。跨域请求和创建跨域请求的内容由浏览器决定，强制它为跨域的布尔值没有意义。如果你需要强制跨域，请确保你发出安全请求，然后向请求添加自定义标头或使用 `withCredentials`。有关触发跨域请求的更多信息，请参阅 [MDN 文档](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#Requests_with_credentials)。特别是，[简单请求](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Simple_requests)部分有助于理解何时不使用 CORS。
    *
    */
   crossDomain?: boolean;
@@ -281,7 +281,7 @@ export interface AjaxConfig {
    * This is useful in environments that lack `XMLHttpRequest`, or in situations where you
    * wish to override the default `XMLHttpRequest` for some reason.
    *
-   * 用于创建用来发送 AJAX 请求的 XMLHttpRequest 对象的可选工厂。这在缺少 `XMLHttpRequest` 的环境中或在出于某种原因希望覆盖默认 `XMLHttpRequest` 的情况下很有用。
+   * 用于创建用来发出 AJAX 请求的 XMLHttpRequest 对象的可选工厂。这在缺少 `XMLHttpRequest` 的环境中或在出于某种原因希望覆盖默认 `XMLHttpRequest` 的情况下很有用。
    *
    * If not provided, the `XMLHttpRequest` in global scope will be used.
    *
@@ -301,7 +301,7 @@ export interface AjaxConfig {
    * emit progress events, and completes on the final upload load event, will error for
    * any XHR error or timeout.
    *
-   * 用于观察 HTTP 请求的上传进度的观察者。将发送进度事件，并在最终上传加载事件时完成，任何 XHR 错误或超时都会出错。
+   * 用于观察 HTTP 请求的上传进度的观察者。将发出进度事件，并在最终上传加载事件时完成，任何 XHR 错误或超时都会出错。
    *
    * This will **not** error for errored status codes. Rather, it will always _complete_ when
    * the HTTP response comes back.
@@ -320,12 +320,12 @@ export interface AjaxConfig {
    * If `true`, will emit all download progress and load complete events as {@link AjaxResponse}
    * from the observable. The final download event will also be emitted as a {@link AjaxResponse}.
    *
-   * 如果为 `true`，将从 observable 中以 {@link AjaxResponse} 的形式发送所有下载进度和加载完成事件。下载完成的事件也将作为 {@link AjaxResponse} 发送。
+   * 如果为 `true`，将从 observable 中以 {@link AjaxResponse} 的形式发出所有下载进度和加载完成事件。下载完成的事件也将作为 {@link AjaxResponse} 发出。
    *
    * If both this and {@link includeUploadProgress} are `false`, then only the {@link AjaxResponse} will
    * be emitted from the resulting observable.
    *
-   * 如果此属性和 {@link includeUploadProgress} 都是 `false`，那么结果 observable 中只会发送 {@link AjaxResponse}。
+   * 如果此属性和 {@link includeUploadProgress} 都是 `false`，那么结果 observable 中只会发出 {@link AjaxResponse}。
    *
    */
   includeDownloadProgress?: boolean;
@@ -334,12 +334,12 @@ export interface AjaxConfig {
    * If `true`, will emit all upload progress and load complete events as {@link AjaxResponse}
    * from the observable. The final download event will also be emitted as a {@link AjaxResponse}.
    *
-   * 如果为 `true`，将从 observable 中以 {@link AjaxResponse} 的形式发送所有上传进度和加载完成事件。上传完成的事件也将作为 {@link AjaxResponse} 发送。
+   * 如果为 `true`，将从 observable 中以 {@link AjaxResponse} 的形式发出所有上传进度和加载完成事件。上传完成的事件也将作为 {@link AjaxResponse} 发出。
    *
    * If both this and {@link includeDownloadProgress} are `false`, then only the {@link AjaxResponse} will
    * be emitted from the resulting observable.
    *
-   * 如果此属性和 {@link includeDownloadProgress} 都是 `false`，那么结果 observable 中只会发送 {@link AjaxResponse}。
+   * 如果此属性和 {@link includeDownloadProgress} 都是 `false`，那么结果 observable 中只会发出 {@link AjaxResponse}。
    *
    */
   includeUploadProgress?: boolean;

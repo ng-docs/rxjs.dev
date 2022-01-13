@@ -10,7 +10,7 @@ import { isFunction } from './util/isFunction';
  * @deprecated Use a string literal instead. `NotificationKind` will be replaced with a type alias in v8.
  * It will not be replaced with a const enum as those are not compatible with isolated modules.
  *
- * 请改用字符串文字。`NotificationKind` 在 v8 中将被替换为类型别名。它不会被 const 枚举替换，因为它们与隔离模块不兼容。
+ * 请改用字符串字面量代替。`NotificationKind` 在 v8 中将被替换为类型别名。它不会被 const 枚举替换，因为它们与隔离（isolated）模块不兼容。
  *
  */
 export enum NotificationKind {
@@ -27,7 +27,7 @@ export enum NotificationKind {
  * with metadata of, for instance, what type of push message it is (`next`,
  * `error`, or `complete`).
  *
- * 表示 {@link Observable} 可以发送的基于推送的事件或值。此类对于管理通知的操作符特别有用，例如 {@link materialize}、{@link dematerialize}、{@link observeOn} 等。除了包装实际交付的值之外，它还使用元数据对其进行注释，例如，它是什么类型的推送消息（`next`、`error` 或 `complete`）。
+ * 表示 {@link Observable} 可以发送的基于推送的事件或值。此类对于那些管理通知的操作符特别有用，例如 {@link materialize}、{@link dematerialize}、{@link observeOn} 等。除了包装实际交付的值之外，它还会使用元数据对其进行注解，例如，它是什么类型的推送消息（`next`、`error` 或 `complete`）。
  *
  * @see {@link materialize}
  * @see {@link dematerialize}
@@ -37,7 +37,7 @@ export enum NotificationKind {
  * For example: `{ kind: 'N', value: 1 }`, `{ kind: 'E', error: new Error('bad') }`, or `{ kind: 'C' }`.
  * Will be removed in v8.
  *
- * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中概述的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }`。将在 v8 中删除。
+ * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中简述过的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }`。将在 v8 中删除。
  *
  */
 export class Notification<T> {
@@ -45,11 +45,11 @@ export class Notification<T> {
    * A value signifying that the notification will "next" if observed. In truth,
    * This is really synonymous with just checking `kind === "N"`.
    *
-   * 一个值，表示如果观察到通知将“下一个”。事实上，这实际上是检查 `kind === "N"` 的同义词。
+   * 一个值，表示观察到的通知是否为 “next”（如果有）。这实际上是检查 `kind === "N"` 的同义词。
    *
    * @deprecated Will be removed in v8. Instead, just check to see if the value of `kind` is `"N"`.
    *
-   * 将在 v8 中删除。相反，只需检查 `kind` 的值是否为 `"N"`。
+   * 将在 v8 中删除。改为检查 `kind` 的值是否为 `"N"` 即可。
    *
    */
   readonly hasValue: boolean;
@@ -57,7 +57,7 @@ export class Notification<T> {
   /**
    * Creates a "Next" notification object.
    *
-   * 创建一个“下一个”通知对象。
+   * 创建一个 “next” 通知对象。
    *
    * @param kind Always `'N'`
    *
@@ -65,7 +65,7 @@ export class Notification<T> {
    *
    * @param value The value to notify with if observed.
    *
-   * 如果观察到，则通知的值。
+   * 要通知的值（如果有）。
    *
    * @deprecated Internal implementation detail. Use {@link Notification#createNext createNext} instead.
    *
@@ -76,7 +76,7 @@ export class Notification<T> {
   /**
    * Creates an "Error" notification object.
    *
-   * 创建一个“错误”通知对象。
+   * 创建一个 “error” 通知对象。
    *
    * @param kind Always `'E'`
    *
@@ -84,11 +84,11 @@ export class Notification<T> {
    *
    * @param value Always `undefined`
    *
-   * 始终 `undefined`
+   * 始终是 `undefined`
    *
    * @param error The error to notify with if observed.
    *
-   * 如果观察到要通知的错误。
+   * 要通知的错误（如果有）。
    *
    * @deprecated Internal implementation detail. Use {@link Notification#createError createError} instead.
    *
@@ -99,7 +99,7 @@ export class Notification<T> {
   /**
    * Creates a "completion" notification object.
    *
-   * 创建一个“完成”通知对象。
+   * 创建一个“complete”通知对象。
    *
    * @param kind Always `'C'`
    *
@@ -120,11 +120,11 @@ export class Notification<T> {
    * If the handler is missing it will do nothing. Even if the notification is an error, if
    * there is no error handler on the observer, an error will not be thrown, it will noop.
    *
-   * 在给定通知 `kind` 的传递的 `observer` 上执行适当的处理器。如果处理器丢失，它将什么也不做。即使通知是错误的，如果观察者上没有错误处理器，也不会抛出错误，它会 noop。
+   * 给定通知的 `kind`，在传入的 `observer` 上执行适当的处理器。如果没有给出处理器，它将什么也不做。即使此通知是一个错误，如果此 `observer` 上没有错误处理器，也不会抛出错误，相当于 noop。
    *
    * @param observer The observer to notify.
    *
-   * 通知的观察者。
+   * 要通知的观察者。
    *
    */
   observe(observer: PartialObserver<T>): void {
@@ -136,11 +136,11 @@ export class Notification<T> {
    * If a handler is missing for the kind of notification, nothing is called
    * and no error is thrown, it will be a noop.
    *
-   * 从提供的列表中对适当的处理器执行通知。如果缺少通知类型的处理器，则不调用任何内容并且不引发错误，这将是一个 noop。
+   * 从列表所提供的中使用适当的处理器执行通知。如果缺少此通知类型的处理器，则不调用任何处理器也不引发错误，相当于 noop。
    *
    * @param next A next handler
    *
-   * 下一个处理器
+   * 下一个值处理器
    *
    * @param error An error handler
    *
@@ -148,7 +148,7 @@ export class Notification<T> {
    *
    * @param complete A complete handler
    *
-   * 一个完整的处理器
+   * 完成处理器
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
@@ -161,11 +161,11 @@ export class Notification<T> {
    * If a handler is missing for the kind of notification, nothing is called
    * and no error is thrown, it will be a noop.
    *
-   * 从提供的列表中对适当的处理器执行通知。如果缺少通知类型的处理器，则不调用任何内容并且不引发错误，这将是一个 noop。
+   * 从列表所提供的中使用适当的处理器执行通知。如果缺少此通知类型的处理器，则不调用任何处理器也不引发错误，相当于 noop。
    *
    * @param next A next handler
    *
-   * 下一个处理器
+   * 下一个值处理器
    *
    * @param error An error handler
    *
@@ -181,11 +181,11 @@ export class Notification<T> {
    * Executes the next handler if the Notification is of `kind` `"N"`. Otherwise
    * this will not error, and it will be a noop.
    *
-   * 如果 Notification `kind` 为 `"N"`，则执行下一个处理器。否则这不会出错，而且会是一个 noop。
+   * 如果 Notification `kind` 为 `"N"`，则执行下一个值处理器。否则也不会出错，相当于 noop。
    *
    * @param next The next handler
    *
-   * 下一个处理器
+   * 下一个值处理器
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
@@ -203,11 +203,11 @@ export class Notification<T> {
    * If a handler is missing for the kind of notification, nothing is called
    * and no error is thrown, it will be a noop.
    *
-   * 从提供的列表中对适当的处理器执行通知。如果缺少通知类型的处理器，则不调用任何内容并且不引发错误，这将是一个 noop。
+   * 从列表所提供的中使用适当的处理器执行通知。如果缺少此通知类型的处理器，则不调用任何处理器也不引发错误，相当于 noop。
    *
    * @param next A next handler
    *
-   * 下一个处理器
+   * 下一个值处理器
    *
    * @param error An error handler
    *
@@ -215,7 +215,7 @@ export class Notification<T> {
    *
    * @param complete A complete handler
    *
-   * 一个完整的处理器
+   * 完成处理器
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
@@ -228,11 +228,11 @@ export class Notification<T> {
    * If a handler is missing for the kind of notification, nothing is called
    * and no error is thrown, it will be a noop.
    *
-   * 从提供的列表中对适当的处理器执行通知。如果缺少通知类型的处理器，则不调用任何内容并且不引发错误，这将是一个 noop。
+   * 从列表所提供的中使用适当的处理器执行通知。如果缺少此通知类型的处理器，则不调用任何处理器也不引发错误，相当于 noop。
    *
    * @param next A next handler
    *
-   * 下一个处理器
+   * 下一个值处理器
    *
    * @param error An error handler
    *
@@ -248,11 +248,11 @@ export class Notification<T> {
    * Executes the next handler if the Notification is of `kind` `"N"`. Otherwise
    * this will not error, and it will be a noop.
    *
-   * 如果 Notification `kind` 为 `"N"`，则执行下一个处理器。否则这不会出错，而且会是一个 noop。
+   * 如果 Notification `kind` 为 `"N"`，则执行下一个值处理器。否则也不会出错，相当于 noop。
    *
    * @param next The next handler
    *
-   * 下一个处理器
+   * 下一个值处理器
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
@@ -266,11 +266,11 @@ export class Notification<T> {
    * If the handler is missing it will do nothing. Even if the notification is an error, if
    * there is no error handler on the observer, an error will not be thrown, it will noop.
    *
-   * 在给定通知 `kind` 的传递的 `observer` 上执行适当的处理器。如果处理器丢失，它将什么也不做。即使通知是错误的，如果观察者上没有错误处理器，也不会抛出错误，它会 noop。
+   * 在给定 `kind` 的通知上执行传入的 `observer` 中的适当处理器。如果缺少处理器，它将什么也不做。即使通知是错误的，如果观察者上没有错误处理器，也不会抛出错误，相当于 noop。
    *
    * @param observer The observer to notify.
    *
-   * 通知的观察者。
+   * 要通知的观察者。
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
@@ -288,7 +288,7 @@ export class Notification<T> {
    * Returns a simple Observable that just delivers the notification represented
    * by this Notification instance.
    *
-   * 返回一个简单的 Observable，它只传递此 Notification 实例表示的通知。
+   * 返回一个简单的 Observable，它只会传出此 Notification 实例所表示的通知。
    *
    * @deprecated Will be removed in v8. To convert a `Notification` to an {@link Observable},
    * use {@link of} and {@link dematerialize}: `of(notification).pipe(dematerialize())`.
@@ -344,7 +344,7 @@ export class Notification<T> {
    * For example: `{ kind: 'N', value: 1 }`, `{ kind: 'E', error: new Error('bad') }`, or `{ kind: 'C' }`.
    * Will be removed in v8.
    *
-   * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中概述的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }`。将在 v8 中删除。
+   * 不建议直接创建 `Notification` 实例。相反，要尝试创建与 {@link ObservableNotification} 中简述过的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }`。将在 v8 中删除。
    *
    */
   static createNext<T>(value: T) {
@@ -355,7 +355,7 @@ export class Notification<T> {
    * A shortcut to create a Notification instance of the type `error` from a
    * given error.
    *
-   * 从给定错误创建类型 `error` 的通知实例的快捷方式。
+   * 一个快捷方式，用于从给定的错误创建类型 `error` 的通知实例。
    *
    * @param {any} [err] The `error` error.
    * @return {Notification<T>} The "error" Notification representing the
@@ -369,7 +369,7 @@ export class Notification<T> {
    * For example: `{ kind: 'N', value: 1 }`, `{ kind: 'E', error: new Error('bad') }`, or `{ kind: 'C' }`.
    * Will be removed in v8.
    *
-   * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中概述的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }`。将在 v8 中删除。
+   * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中简述过的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }`。将在 v8 中删除。
    *
    */
   static createError(err?: any) {
@@ -379,7 +379,7 @@ export class Notification<T> {
   /**
    * A shortcut to create a Notification instance of the type `complete`.
    *
-   * 创建 `complete` 类型的 Notification 实例的快捷方式。
+   * 一个快捷方式，用于创建 `complete` 类型的 Notification 实例。
    *
    * @return {Notification<any>} The valueless "complete" Notification.
    *
@@ -391,7 +391,7 @@ export class Notification<T> {
    * For example: `{ kind: 'N', value: 1 }`, `{ kind: 'E', error: new Error('bad') }`, or `{ kind: 'C' }`.
    * Will be removed in v8.
    *
-   * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中概述的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }`。将在 v8 中删除。
+   * 不建议直接创建 `Notification` 实例。相反，尝试创建与 {@link ObservableNotification} 中简述过的签名匹配的 POJO。例如： `{ kind: 'N', value: 1 }` , `{ kind: 'E', error: new Error('bad') }` 或 `{ kind: 'C' }`。将在 v8 中删除。
    *
    */
   static createComplete(): Notification<never> & CompleteNotification {
@@ -404,7 +404,7 @@ export class Notification<T> {
  * If the handler is missing it will do nothing. Even if the notification is an error, if
  * there is no error handler on the observer, an error will not be thrown, it will noop.
  *
- * 在给定通知 `kind` 的传递的 `observer` 上执行适当的处理器。如果处理器丢失，它将什么也不做。即使通知是错误的，如果观察者上没有错误处理器，也不会抛出错误，它会 noop。
+ * 在给定 `kind` 的通知上执行 `observer` 中传入的适当处理器。如果缺少处理器，它将什么也不做。即使此通知是错误，如果此观察者上没有错误处理器，也不会抛出错误，相当于 noop。
  *
  * @param notification The notification object to observe.
  *
@@ -412,7 +412,7 @@ export class Notification<T> {
  *
  * @param observer The observer to notify.
  *
- * 通知的观察者。
+ * 要通知的观察者。
  *
  */
 export function observeNotification<T>(notification: ObservableNotification<T>, observer: PartialObserver<T>) {

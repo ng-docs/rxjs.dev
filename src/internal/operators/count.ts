@@ -5,12 +5,12 @@ import { reduce } from './reduce';
  * Counts the number of emissions on the source and emits that number when the
  * source completes.
  *
- * 计算源上的排放数量，并在源完成时发送该数量。
+ * 对源上发送过的值进行计数，并在源完成时发送该数量。
  *
  * <span class="informal">Tells how many values were emitted, when the source
  * completes.</span>
  *
- * <span class="informal">告诉源完成时发送了多少值。</span>
+ * <span class="informal">报告在源完成时发送过多少值。</span>
  *
  * ![](count.png)
  *
@@ -23,7 +23,7 @@ import { reduce } from './reduce';
  * as argument, in which case the output emission will represent the number of
  * source values that matched `true` with the `predicate`.
  *
- * `count` 将发送值的 Observable 转换为发送单个值的 Observable，该值表示源 Observable 发送的值的数量。如果源 Observable 因错误而终止，`count` 将传递此错误通知，而不首先发送值。如果源 Observable 根本没有终止，则 `count` 既不会发送值也不会终止。此操作符将可选的 `predicate` 函数作为参数，在这种情况下，输出发送将表示与 `predicate` 匹配 `true` 源值的数量。
+ * `count` 会将发送值的 Observable 转换为发送单个值的 Observable，该值表示源 Observable 发送过的值的数量。如果源 Observable 因错误而终止，`count` 将传递此错误通知，而不首先发送值。如果源 Observable 根本没有终止，则 `count` 既不会发送值也不会终止。此操作符将可选的 `predicate` 函数作为参数，在这种情况下，输出发送的是 `predicate` 的结果为 `true` 的源值的数量。
  *
  * ## Examples
  *
@@ -31,7 +31,7 @@ import { reduce } from './reduce';
  *
  * Counts how many seconds have passed before the first click happened
  *
- * 计算在第一次点击发生之前经过了多少秒
+ * 计算在首次点击之前经过了多少秒
  *
  * ```ts
  * import { interval, fromEvent, takeUntil, count } from 'rxjs';
@@ -64,12 +64,12 @@ import { reduce } from './reduce';
  * and return `false` to keep the count the same.
  * If the predicate is not provided, every value will be counted.
  *
- * 用于分析值和索引并确定是否增加计数的函数。返回 `true` 以增加计数，返回 `false` 以保持计数不变。如果未提供谓词，则将计算每个值。
+ * 用于分析值和序号并确定是否要增加计数的函数。返回 `true` 时增加计数，返回 `false` 时保持计数不变。如果未提供此谓词，则将对每个值进行计数。
  *
  * @return A function that returns an Observable that emits one number that
  * represents the count of emissions.
  *
- * 一个返回 Observable 的函数，该 Observable 发送一个表示排放计数的数字。
+ * 一个返回 Observable 的函数，该 Observable 会发送一个数量，表示已发送的值的技术结果。
  *
  */
 export function count<T>(predicate?: (value: T, index: number) => boolean): OperatorFunction<T, number> {

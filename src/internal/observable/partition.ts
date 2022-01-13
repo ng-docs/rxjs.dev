@@ -7,7 +7,7 @@ import { innerFrom } from './innerFrom';
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 改用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function partition<T, U extends T, A>(
@@ -23,7 +23,7 @@ export function partition<T, U extends T>(
 /**
  * @deprecated Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
  *
- * 使用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
+ * 改用闭包而不是 `thisArg`。接受 `thisArg` 的签名将在 v8 中被删除。
  *
  */
 export function partition<T, A>(
@@ -37,13 +37,13 @@ export function partition<T>(source: ObservableInput<T>, predicate: (value: T, i
  * Splits the source Observable into two, one with values that satisfy a
  * predicate, and another with values that don't satisfy the predicate.
  *
- * 将源 Observable 拆分为两个，一个具有满足谓词的值，另一个具有不满足谓词的值。
+ * 将源 Observable 拆分为两个，一个拥有满足此谓词的值，另一个拥有不满足此谓词的值。
  *
  * <span class="informal">It's like {@link filter}, but returns two Observables:
  * one like the output of {@link filter}, and the other with values that did not
  * pass the condition.</span>
  *
- * <span class="informal">它类似于 {@link filter}，但返回两个 Observable：一个类似于 {@link filter} 的输出，另一个具有未通过条件的值。</span>
+ * <span class="informal">它类似于 {@link filter}，但返回两个 Observable：一个类似于 {@link filter} 的输出，另一个则具有未通过条件的值。</span>
  *
  * ![](partition.png)
  *
@@ -54,7 +54,7 @@ export function partition<T>(source: ObservableInput<T>, predicate: (value: T, i
  * predicate returns false. The first behaves like {@link filter} and the second
  * behaves like {@link filter} with the predicate negated.
  *
- * `partition` 输出一个包含两个 Observable 的数组，它们通过给定的 `predicate` 函数对源 Observable 中的值进行分区。该数组中的第一个 Observable 发送谓词参数返回 true 的源值。第二个 Observable 发送谓词返回 false 的源值。第一个行为类似于 {@link filter}，第二个行为类似于 {@link filter}，谓词被否定。
+ * `partition` 会输出一个包含两个 Observable 的数组，它们通过给定的 `predicate` 函数对源 Observable 中的值进行划分。该数组中的第一个 Observable 会发送源值中谓词参数返回 `true` 的值。第二个 Observable 会发送源值中谓词参数返回 `false` 的值。第一个行为类似于 {@link filter}，第二个行为类似于带有否定谓词的 {@link filter}。
  *
  * ## Example
  *
@@ -62,7 +62,7 @@ export function partition<T>(source: ObservableInput<T>, predicate: (value: T, i
  *
  * Partition a set of numbers into odds and evens observables
  *
- * 将一组数字划分为奇数和偶数可观测值
+ * 将一组数字划分为奇数可观察者和偶数可观察者
  *
  * ```ts
  * import { of, partition } from 'rxjs';
@@ -89,7 +89,7 @@ export function partition<T>(source: ObservableInput<T>, predicate: (value: T, i
  * `index` parameter is the number `i` for the i-th source emission that has
  * happened since the subscription, starting from the number `0`.
  *
- * 评估源 Observable 发送的每个值的函数。如果返回 `true`，则在返回数组中的第一个 Observable 上发送该值，如果为 `false`，则在数组中的第二个 Observable 上发送该值。`index` 参数是自订阅以来发生的第 i 个源排放的数字 `i`，从数字 `0` 开始。
+ * 用来评估源 Observable 发送的每个值的函数。如果返回 `true`，则在返回数组中的第一个 Observable 上发送该值，如果为 `false`，则在数组中的第二个 Observable 上发送该值。`index` 参数是自本次订阅以来在来源上发送的条目的序号，从数字 `0` 开始。
  *
  * @param {any} [thisArg] An optional argument to determine the value of `this`
  * in the `predicate` function.
@@ -97,7 +97,7 @@ export function partition<T>(source: ObservableInput<T>, predicate: (value: T, i
  * with values that passed the predicate, and another with values that did not
  * pass the predicate.
  *
- * 一个包含两个 Observable 的数组：一个具有通过谓词的值，另一个具有未通过谓词的值。
+ * 一个包含两个 Observable 的数组：一个具有通过谓词检查的值，另一个具有未通过谓词检查的值。
  *
  */
 export function partition<T>(

@@ -9,7 +9,7 @@ export interface ConnectableConfig<T> {
    * A factory function used to create the Subject through which the source
    * is multicast. By default this creates a {@link Subject}.
    *
-   * 一个工厂函数，用于创建通过其源进行多播的主体。默认情况下，这会创建一个 {@link Subject}。
+   * 一个工厂函数，用于创建通过其来源进行多播的主体。默认情况下，这会创建一个 {@link Subject}。
    *
    */
   connector: () => SubjectLike<T>;
@@ -21,7 +21,7 @@ export interface ConnectableConfig<T> {
    * connecting subject, meaning the resulting observable will not go "cold" again,
    * and subsequent repeats or resubscriptions will resubscribe to that same subject.
    *
-   * 如果为真，则结果 observable 将在断开连接时重置内部状态并返回“冷”状态。这允许重新连接生成的 observable。如果为 false，则在断开连接时，连接主体将保持连接主体，这意味着生成的 observable 不会再次“冷”，随后的重复或重新订阅将重新订阅同一主体。
+   * 如果为真，则结果 observable 将在断开连接时重置内部状态并返回“冷的”状态。这允许重新连接生成的 observable。如果为 false，则在断开连接时，正在连接的主体将会保留自己，这意味着它生成的 observable 不会再次“变冷”，随后的重复执行或再次订阅将重新订阅同一个主体。
    *
    */
   resetOnDisconnect?: boolean;
@@ -41,11 +41,11 @@ const DEFAULT_CONFIG: ConnectableConfig<unknown> = {
 /**
  * Creates an observable that multicasts once `connect()` is called on it.
  *
- * 创建一个在其上调用 `connect()` 后进行多播的 observable。
+ * 创建一个 observable，一旦对其调用了 `connect()` 就会进行多播。
  *
  * @param source The observable source to make connectable.
  *
- * 使可连接的可观察源。
+ * 要把它变成可连接者的可观察者来源。
  *
  * @param config The configuration object for `connectable`.
  *
@@ -54,7 +54,7 @@ const DEFAULT_CONFIG: ConnectableConfig<unknown> = {
  * @returns A "connectable" observable, that has a `connect()` method, that you must call to
  * connect the source to all consumers through the subject provided as the connector.
  *
- * 具有 `connect()` 方法的“可连接”可观察者，你必须调用该方法以通过作为连接器提供的主体将源连接到所有消费者。
+ * 具有 `connect()` 方法的“可连接”的可观察者，你必须调用此方法，并传入用作连接器的主体，以将此来源连接到所有消费者。
  *
  */
 export function connectable<T>(source: ObservableInput<T>, config: ConnectableConfig<T> = DEFAULT_CONFIG): Connectable<T> {
