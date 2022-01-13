@@ -98,12 +98,12 @@ export function single<T>(predicate?: (value: T, index: number, source: Observab
  *
  * @param {Function} predicate - A predicate function to evaluate items emitted by the source Observable.
  *
- *   一个谓词函数，用于评估源 Observable 发出的项目。
+ *   一个谓词函数，用于评估源 Observable 发出的条目。
  *
  * @return A function that returns an Observable that emits the single item
  * emitted by the source Observable that matches the predicate.
  *
- * 一个返回 Observable 的函数，该 Observable 发出与谓词匹配的源 Observable 发出的单个项目。
+ * 一个返回 Observable 的函数，该 Observable 发出与谓词匹配的源 Observable 发出的单个条目。
  *
  */
 export function single<T>(predicate?: (value: T, index: number, source: Observable<T>) => boolean): MonoTypeOperatorFunction<T> {

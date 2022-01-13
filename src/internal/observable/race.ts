@@ -12,7 +12,7 @@ export function race<T extends readonly unknown[]>(...inputs: [...ObservableInpu
 /**
  * Returns an observable that mirrors the first source observable to emit an item.
  *
- * 返回一个镜像第一个源 observable 以发射项目的 observable。
+ * 返回一个镜像第一个源 observable 以发射条目的 observable。
  *
  * ![](race.png)
  *
@@ -62,7 +62,7 @@ export function race<T extends readonly unknown[]>(...inputs: [...ObservableInpu
  *
  * @return {Observable} an Observable that mirrors the output of the first Observable to emit an item.
  *
- * 一个 Observable，它反映了第一个 Observable 的输出以发射一个项目。
+ * 一个 Observable，它反映了第一个 Observable 的输出以发射一个条目。
  *
  */
 export function race<T>(...sources: (ObservableInput<T> | ObservableInput<T>[])[]): Observable<any> {

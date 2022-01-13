@@ -8,7 +8,7 @@ import { noop } from '../util/noop';
 /**
  * Returns an Observable that skips items emitted by the source Observable until a second Observable emits an item.
  *
- * 返回一个 Observable，它会跳过源 Observable 发出的项目，直到第二个 Observable 发出一个项目。
+ * 返回一个 Observable，它会跳过源 Observable 发出的条目，直到第二个 Observable 发出一个条目。
  *
  * The `skipUntil` operator causes the observable stream to skip the emission of values until the passed in observable emits the first value.
  * This can be particularly useful in combination with user interactions, responses of http requests or waiting for specific times to pass by.
@@ -52,13 +52,13 @@ import { noop } from '../util/noop';
  * @param {Observable} notifier - The second Observable that has to emit an item before the source Observable's elements begin to
  *   be mirrored by the resulting Observable.
  *
- *   第二个 Observable 必须在源 Observable 的元素开始被生成的 Observable 镜像之前发出一个项目。
+ *   第二个 Observable 必须在源 Observable 的元素开始被生成的 Observable 镜像之前发出一个条目。
  *
  * @return A function that returns an Observable that skips items from the
  * source Observable until the second Observable emits an item, then emits the
  * remaining items.
  *
- * 返回一个 Observable 的函数，它跳过源 Observable 中的项目，直到第二个 Observable 发出一个项目，然后发出剩余的项目。
+ * 返回一个 Observable 的函数，它跳过源 Observable 中的条目，直到第二个 Observable 发出一个条目，然后发出剩余的条目。
  *
  */
 export function skipUntil<T>(notifier: Observable<any>): MonoTypeOperatorFunction<T> {

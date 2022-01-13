@@ -41,7 +41,7 @@ const arrReducer = (arr: any[], value: any) => (arr.push(value), arr);
  * @return A function that returns an Observable that emits an array of items
  * emitted by the source Observable when source completes.
  *
- * 一个函数，它返回一个 Observable，它在源完成时发出源 Observable 发出的一组项目。
+ * 一个函数，它返回一个 Observable，它在源完成时发出源 Observable 发出的一组条目。
  *
  */
 export function toArray<T>(): OperatorFunction<T, T[]> {

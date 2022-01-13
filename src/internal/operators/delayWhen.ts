@@ -22,7 +22,7 @@ export function delayWhen<T>(delayDurationSelector: (value: T, index: number) =>
  * Delays the emission of items from the source Observable by a given time span
  * determined by the emissions of another Observable.
  *
- * 将源 Observable 中项目的发射延迟给定的时间跨度，该时间跨度由另一个 Observable 的发射确定。
+ * 将源 Observable 中条目的发射延迟给定的时间跨度，该时间跨度由另一个 Observable 的发射确定。
  *
  * <span class="informal">It's like {@link delay}, but the time span of the
  * delay duration is determined by a second Observable.</span>
@@ -82,7 +82,7 @@ export function delayWhen<T>(delayDurationSelector: (value: T, index: number) =>
  * is then used to delay the emission of that item on the output Observable
  * until the Observable returned from this function emits a value.
  *
- * 一个函数，它为源 Observable 发出的每个值返回一个 Observable，然后用于延迟该项目在输出 Observable 上的发射，直到从该函数返回的 Observable 发射一个值。
+ * 一个函数，它为源 Observable 发出的每个值返回一个 Observable，然后用于延迟该条目在输出 Observable 上的发射，直到从该函数返回的 Observable 发射一个值。
  *
  * @param {Observable} subscriptionDelay An Observable that triggers the
  * subscription to the source Observable once it emits any value.

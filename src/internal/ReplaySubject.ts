@@ -27,7 +27,7 @@ import { dateTimestampProvider } from './scheduler/dateTimestampProvider';
  *
  * 1. `bufferSize` - This will determine how many items are stored in the buffer, defaults to infinite.
  *
- *    `bufferSize` - 这将确定缓冲区中存储了多少项目，默认为无限。
+ *    `bufferSize` - 这将确定缓冲区中存储了多少条目，默认为无限。
  *
  * 2. `windowTime` - The amount of time to hold a value in the buffer before removing it from the buffer.
  *
@@ -69,7 +69,7 @@ export class ReplaySubject<T> extends Subject<T> {
    *
    * @param windowTime The amount of time the buffered items will say buffered
    *
-   * 缓冲项目会说缓冲的时间量
+   * 缓冲条目会说缓冲的时间量
    *
    * @param timestampProvider An object with a `now()` method that provides the current timestamp. This is used to
    * calculate the amount of time something has been buffered.

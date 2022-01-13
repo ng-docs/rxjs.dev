@@ -24,7 +24,7 @@ import { noop } from '../util/noop';
  * Observable `windowBoundaries` emits an item. Because each window is an
  * Observable, the output is a higher-order Observable.
  *
- * 返回一个 Observable，它发出从源 Observable 收集的项目的窗口。输出 Observable 发出连接的、不重叠的窗口。只要 Observable `windowBoundaries` 发出一个项目，它就会发出当前窗口并打开一个新窗口。因为每个窗口都是一个 Observable，所以输出是一个高阶 Observable。
+ * 返回一个 Observable，它发出从源 Observable 收集的条目的窗口。输出 Observable 发出连接的、不重叠的窗口。只要 Observable `windowBoundaries` 发出一个条目，它就会发出当前窗口并打开一个新窗口。因为每个窗口都是一个 Observable，所以输出是一个高阶 Observable。
  *
  * ## Example
  *

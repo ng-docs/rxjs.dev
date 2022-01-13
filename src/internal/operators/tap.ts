@@ -139,7 +139,7 @@ export function tap<T>(
  * @return A function that returns an Observable identical to the source, but
  * runs the specified Observer or callback(s) for each item.
  *
- * 返回与源相同的 Observable 的函数，但为每个项目运行指定的 Observer 或回调。
+ * 返回与源相同的 Observable 的函数，但为每个条目运行指定的 Observer 或回调。
  *
  */
 export function tap<T>(

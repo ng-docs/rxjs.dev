@@ -48,7 +48,7 @@ export function find<T>(predicate: (value: T, index: number, source: Observable<
  * in `find`, and does not emit an error if a valid value is not found
  * (emits `undefined` instead).
  *
- * `find` 搜索源 Observable 中与 `predicate` 包含的指定条件匹配的第一个项目，并返回源中的第一个匹配项。与 {@link first} 不同，`predicate` 在 `find` 中是必需的，如果未找到有效值，则不会发出错误（而是发出 `undefined`）。
+ * `find` 搜索源 Observable 中与 `predicate` 包含的指定条件匹配的第一个条目，并返回源中的第一个匹配项。与 {@link first} 不同，`predicate` 在 `find` 中是必需的，如果未找到有效值，则不会发出错误（而是发出 `undefined`）。
  *
  * ## Example
  *
@@ -76,14 +76,14 @@ export function find<T>(predicate: (value: T, index: number, source: Observable<
  * @param {function(value: T, index: number, source: Observable<T>): boolean} predicate
  * A function called with each item to test for condition matching.
  *
- * 与每个项目一起调用以测试条件匹配的函数。
+ * 与每个条目一起调用以测试条件匹配的函数。
  *
  * @param {any} [thisArg] An optional argument to determine the value of `this`
  * in the `predicate` function.
  * @return A function that returns an Observable that emits the first item that
  * matches the condition.
  *
- * 一个返回 Observable 的函数，该 Observable 发出与条件匹配的第一个项目。
+ * 一个返回 Observable 的函数，该 Observable 发出与条件匹配的第一个条目。
  *
  */
 export function find<T>(

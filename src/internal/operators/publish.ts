@@ -49,7 +49,7 @@ export function publish<T, O extends ObservableInput<any>>(selector: (shared: Ob
  * Returns a ConnectableObservable, which is a variety of Observable that waits until its connect method is called
  * before it begins emitting items to those Observers that have subscribed to it.
  *
- * 返回一个 ConnectableObservable，它是一个 Observable 的变体，它一直等到它的 connect 方法被调用，然后才开始向订阅了它的 Observer 发送项目。
+ * 返回一个 ConnectableObservable，它是一个 Observable 的变体，它一直等到它的 connect 方法被调用，然后才开始向订阅了它的 Observer 发送条目。
  *
  * <span class="informal">Makes a cold Observable hot</span>
 *
@@ -102,7 +102,7 @@ export function publish<T, O extends ObservableInput<any>>(selector: (shared: Ob
  * @return A function that returns a ConnectableObservable that upon connection
  * causes the source Observable to emit items to its Observers.
  *
- * 一个返回 ConnectableObservable 的函数，该函数在连接时会导致源 Observable 向其 Observers 发出项目。
+ * 一个返回 ConnectableObservable 的函数，该函数在连接时会导致源 Observable 向其 Observers 发出条目。
  *
  * @deprecated Will be removed in v8. Use the {@link connectable} observable, the {@link connect} operator or the
  * {@link share} operator instead. See the overloads below for equivalent replacement examples of this operator's

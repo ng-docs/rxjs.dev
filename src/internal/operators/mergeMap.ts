@@ -52,7 +52,7 @@ export function mergeMap<T, R, O extends ObservableInput<any>>(
  * returns an Observable, and then merging those resulting Observables and
  * emitting the results of this merger.
  *
- * 返回一个 Observable，该 Observable 基于将你提供的函数应用于源 Observable 发出的每个项目，其中该函数返回一个 Observable，然后合并这些结果 Observable 并发出此合并的结果，从而发出项目。
+ * 返回一个 Observable，该 Observable 基于将你提供的函数应用于源 Observable 发出的每个条目，其中该函数返回一个 Observable，然后合并这些结果 Observable 并发出此合并的结果，从而发出条目。
  *
  * ## Example
  *
@@ -92,7 +92,7 @@ export function mergeMap<T, R, O extends ObservableInput<any>>(
  * that, when applied to an item emitted by the source Observable, returns an
  * Observable.
  *
- * 一个函数，当应用于源 Observable 发出的项目时，返回一个 Observable。
+ * 一个函数，当应用于源 Observable 发出的条目时，返回一个 Observable。
  *
  * @param {number} [concurrent=Infinity] Maximum number of input
  * Observables being subscribed to concurrently.
@@ -101,7 +101,7 @@ export function mergeMap<T, R, O extends ObservableInput<any>>(
  * `resultSelector`) to each item emitted by the source Observable and merging
  * the results of the Observables obtained from this transformation.
  *
- * 一个返回 Observable 的函数，该函数发出将投影函数（以及可选的已弃用的 `resultSelector`）应用于源 Observable 发出的每个项目并合并从此转换获得的 Observables 的结果的结果。
+ * 一个返回 Observable 的函数，该函数发出将投影函数（以及可选的已弃用的 `resultSelector`）应用于源 Observable 发出的每个条目并合并从此转换获得的 Observables 的结果的结果。
  *
  */
 export function mergeMap<T, R, O extends ObservableInput<any>>(

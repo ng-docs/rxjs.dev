@@ -49,7 +49,7 @@ export interface RetryConfig {
  * time and emits: `[1, 2, 3, 4, 5]` then the complete stream of emissions and notifications
  * would be: `[1, 2, 1, 2, 3, 4, 5, complete]`.
  *
- * 源 Observable 发出的任何和所有项目都将由结果 Observable 发出，即使是在订阅失败期间发出的那些。例如，如果一个 Observable 第一次失败但发出 `[1, 2]` 然后第二次成功并发出： `[1, 2, 3, 4, 5]` 那么完整的发射和通知流将是： `[1, 2, 1, 2, 3, 4, 5, complete]`。
+ * 源 Observable 发出的任何和所有条目都将由结果 Observable 发出，即使是在订阅失败期间发出的那些。例如，如果一个 Observable 第一次失败但发出 `[1, 2]` 然后第二次成功并发出： `[1, 2, 3, 4, 5]` 那么完整的发射和通知流将是： `[1, 2, 1, 2, 3, 4, 5, complete]`。
  *
  * ## Example
  *

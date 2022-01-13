@@ -35,7 +35,7 @@ export function reduce<V, A, S = A>(accumulator: (acc: A | S, value: V, index: n
  * that value will be used as the initial value for the accumulator. If no seed
  * value is specified, the first item of the source is used as the seed.
  *
- * 返回一个 Observable，它将指定的 `accumulator` 函数应用于源 Observable 发出的每个项目。如果指定了 `seed` 值，则该值将用作累加器的初始值。如果未指定种子值，则将源的第一项用作种子。
+ * 返回一个 Observable，它将指定的 `accumulator` 函数应用于源 Observable 发出的每个条目。如果指定了 `seed` 值，则该值将用作累加器的初始值。如果未指定种子值，则将源的第一项用作种子。
  *
  * ## Example
  *

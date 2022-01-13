@@ -70,14 +70,14 @@ export function findIndex<T>(predicate: (value: T, index: number, source: Observ
  * @param {function(value: T, index: number, source: Observable<T>): boolean} predicate
  * A function called with each item to test for condition matching.
  *
- * 与每个项目一起调用以测试条件匹配的函数。
+ * 与每个条目一起调用以测试条件匹配的函数。
  *
  * @param {any} [thisArg] An optional argument to determine the value of `this`
  * in the `predicate` function.
  * @return A function that returns an Observable that emits the index of the
  * first item that matches the condition.
  *
- * 一个返回 Observable 的函数，它发出与条件匹配的第一个项目的索引。
+ * 一个返回 Observable 的函数，它发出与条件匹配的第一个条目的索引。
  *
  */
 export function findIndex<T>(

@@ -6,20 +6,20 @@ import { noop } from '../util/noop';
 /**
  * Ignores all items emitted by the source Observable and only passes calls of `complete` or `error`.
  *
- * 忽略源 Observable 发出的所有项目，只传递 `complete` 或 `error` 的调用。
+ * 忽略源 Observable 发出的所有条目，只传递 `complete` 或 `error` 的调用。
  *
  * ![](ignoreElements.png)
  *
  * The `ignoreElements` operator suppresses all items emitted by the source Observable,
  * but allows its termination notification (either `error` or `complete`) to pass through unchanged.
  *
- * `ignoreElements` 操作符抑制源 Observable 发出的所有项目，但允许其终止通知（`error` 或 `complete`）通过不变。
+ * `ignoreElements` 操作符抑制源 Observable 发出的所有条目，但允许其终止通知（`error` 或 `complete`）通过不变。
  *
  * If you do not care about the items being emitted by an Observable, but you do want to be notified
  * when it completes or when it terminates with an error, you can apply the `ignoreElements` operator
  * to the Observable, which will ensure that it will never call its observers’ `next` handlers.
  *
- * 如果你不关心 Observable 发出的项目，但你确实希望在它完成或因错误终止时收到通知，你可以将 `ignoreElements` 操作符应用于 Observable，这将确保它永远不会调用它的观察者的 `next` 处理器。
+ * 如果你不关心 Observable 发出的条目，但你确实希望在它完成或因错误终止时收到通知，你可以将 `ignoreElements` 操作符应用于 Observable，这将确保它永远不会调用它的观察者的 `next` 处理器。
  *
  * ## Example
  *

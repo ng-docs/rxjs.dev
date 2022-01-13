@@ -90,7 +90,7 @@ export function last<T, D = T>(
  *
  * @throws - Throws if no items that match the predicate are emitted by the source Observable.
  *
- *   如果源 Observable 没有发出与谓词匹配的项目，则抛出。
+ *   如果源 Observable 没有发出与谓词匹配的条目，则抛出。
  *
  */
 export function last<T, D>(

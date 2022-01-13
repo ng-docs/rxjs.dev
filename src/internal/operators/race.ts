@@ -30,7 +30,7 @@ export function race<T, A extends readonly unknown[]>(...otherSources: [...Obser
  * @return A function that returns an Observable that mirrors the output of the
  * first Observable to emit an item.
  *
- * 一个返回 Observable 的函数，该函数反映了第一个 Observable 的输出以发射项目。
+ * 一个返回 Observable 的函数，该函数反映了第一个 Observable 的输出以发射条目。
  *
  * @deprecated Replaced with {@link raceWith}. Will be removed in v8.
  *

@@ -26,7 +26,7 @@ import { innerFrom } from '../observable/innerFrom';
  * produced by the specified `closingSelector` function emits an item. The first
  * window is opened immediately when subscribing to the output Observable.
  *
- * 返回一个 Observable，它发出从源 Observable 收集的项目的窗口。输出 Observable 发出连接的、不重叠的窗口。每当指定的 `closingSelector` 函数生成的 Observable 发出一个项目时，它就会发出当前窗口并打开一个新窗口。第一个窗口在订阅输出 Observable 时立即打开。
+ * 返回一个 Observable，它发出从源 Observable 收集的条目的窗口。输出 Observable 发出连接的、不重叠的窗口。每当指定的 `closingSelector` 函数生成的 Observable 发出一个条目时，它就会发出当前窗口并打开一个新窗口。第一个窗口在订阅输出 Observable 时立即打开。
  *
  * ## Example
  *

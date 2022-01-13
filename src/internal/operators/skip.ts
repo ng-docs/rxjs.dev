@@ -38,7 +38,7 @@ import { filter } from './filter';
  * @see {@link skipLast}
  * @param {Number} count - The number of times, items emitted by source Observable should be skipped.
  *
- *   应该跳过源 Observable 发出的项目的次数。
+ *   应该跳过源 Observable 发出的条目的次数。
  *
  * @return A function that returns an Observable that skips the first `count`
  * values emitted by the source Observable.

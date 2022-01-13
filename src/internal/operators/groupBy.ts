@@ -59,13 +59,13 @@ export function groupBy<T, K, R>(
  * and emits these grouped items as `GroupedObservables`, one
  * {@link GroupedObservable} per group.
  *
- * 根据指定的标准对 Observable 发出的项目进行分组，并将这些分组的项目作为 `GroupedObservables` 发出，每组一个 {@link GroupedObservable}。
+ * 根据指定的标准对 Observable 发出的条目进行分组，并将这些分组的条目作为 `GroupedObservables` 发出，每组一个 {@link GroupedObservable}。
  *
  * ![](groupBy.png)
  *
  * When the Observable emits an item, a key is computed for this item with the key function.
  *
- * 当 Observable 发出一个项目时，使用 key 函数为这个项目计算一个键。
+ * 当 Observable 发出一个条目时，使用 key 函数为这个条目计算一个键。
  *
  * If a {@link GroupedObservable} for this key exists, this {@link GroupedObservable} emits. Otherwise, a new
  * {@link GroupedObservable} for this key is created and emits.
@@ -80,7 +80,7 @@ export function groupBy<T, K, R>(
  * The elements emitted by {@link GroupedObservable}s are by default the items emitted by the Observable, or elements
  * returned by the element function.
  *
- * {@link GroupedObservable} 发出的元素默认是 Observable 发出的项目，或者是 element 函数返回的元素。
+ * {@link GroupedObservable} 发出的元素默认是 Observable 发出的条目，或者是 element 函数返回的元素。
  *
  * ## Examples
  *
@@ -139,12 +139,12 @@ export function groupBy<T, K, R>(
  * @param key A function that extracts the key
  * for each item.
  *
- * 为每个项目提取密钥的函数。
+ * 为每个条目提取密钥的函数。
  *
  * @param element A function that extracts the
  * return element for each item.
  *
- * 提取每个项目的返回元素的函数。
+ * 提取每个条目的返回元素的函数。
  *
  * @param duration
  * A function that returns an Observable to determine how long each group should
@@ -161,7 +161,7 @@ export function groupBy<T, K, R>(
  * each of which corresponds to a unique key value and each of which emits
  * those items from the source Observable that share that key value.
  *
- * 一个函数，它返回一个发出 GroupedObservables 的 Observable，每个都对应一个唯一的键值，每个都从源 Observable 发出共享该键值的那些项目。
+ * 一个函数，它返回一个发出 GroupedObservables 的 Observable，每个都对应一个唯一的键值，每个都从源 Observable 发出共享该键值的那些条目。
  *
  * @deprecated Use the options parameter instead.
  *

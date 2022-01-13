@@ -149,7 +149,7 @@ export interface RepeatConfig {
  * @param count The number of times the source Observable items are repeated, a count of 0 will yield
  * an empty Observable.
  *
- * 源 Observable 项目重复的次数，计数为 0 将产生一个空的 Observable。
+ * 源 Observable 条目重复的次数，计数为 0 将产生一个空的 Observable。
  *
  */
 export function repeat<T>(countOrConfig?: number | RepeatConfig): MonoTypeOperatorFunction<T> {

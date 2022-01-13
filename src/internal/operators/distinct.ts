@@ -74,7 +74,7 @@ import { noop } from '../util/noop';
  * @return A function that returns an Observable that emits items from the
  * source Observable with distinct values.
  *
- * 一个返回 Observable 的函数，该 Observable 从源 Observable 发出具有不同值的项目。
+ * 一个返回 Observable 的函数，该 Observable 从源 Observable 发出具有不同值的条目。
  *
  */
 export function distinct<T, K>(keySelector?: (value: T) => K, flushes?: Observable<any>): MonoTypeOperatorFunction<T> {

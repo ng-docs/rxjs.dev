@@ -4,7 +4,7 @@ import { noop } from '../util/noop';
 /**
  * An Observable that emits no items to the Observer and never completes.
  *
- * 一个不向观察者发出任何项目并且永远不会完成的 Observable。
+ * 一个不向观察者发出任何条目并且永远不会完成的 Observable。
  *
  * ![](never.png)
  *

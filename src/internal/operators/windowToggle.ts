@@ -28,7 +28,7 @@ import { arrRemove } from '../util/arrRemove';
  * Observable emits an item and when the Observable returned by
  * `closingSelector` emits an item.
  *
- * 返回一个 Observable，它发出从源 Observable 收集的项目的窗口。输出 Observable 发出窗口，其中包含源 Observable 在从 `openings` Observable 发出一个项目到 `closingSelector` 返回的 Observable 发出一个项目之间发出的那些项目。
+ * 返回一个 Observable，它发出从源 Observable 收集的条目的窗口。输出 Observable 发出窗口，其中包含源 Observable 在从 `openings` Observable 发出一个条目到 `closingSelector` 返回的 Observable 发出一个条目之间发出的那些条目。
  *
  * ## Example
  *

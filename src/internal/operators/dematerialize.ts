@@ -61,7 +61,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * notifications embedded in Notification objects emitted by the source
  * Observable.
  *
- * 一个返回 Observable 的函数，该 Observable 发出嵌入在由源 Observable 发出的 Notification 对象中的项目和通知。
+ * 一个返回 Observable 的函数，该 Observable 发出嵌入在由源 Observable 发出的 Notification 对象中的条目和通知。
  *
  */
 export function dematerialize<N extends ObservableNotification<any>>(): OperatorFunction<N, ValueFromNotification<N>> {

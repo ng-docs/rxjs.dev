@@ -39,7 +39,7 @@ import { zip } from './zip';
  * combined from the source Observable and provided Observables, in form of an
  * array.
  *
- * 一个返回 Observable 的函数，该函数按索引从源 Observable 和提供的 Observables 以数组的形式发出项目。
+ * 一个返回 Observable 的函数，该函数按索引从源 Observable 和提供的 Observables 以数组的形式发出条目。
  *
  */
 export function zipWith<T, A extends readonly unknown[]>(...otherInputs: [...ObservableInputTuple<A>]): OperatorFunction<T, Cons<T, A>> {

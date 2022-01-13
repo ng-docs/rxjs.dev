@@ -90,7 +90,7 @@ export function first<T, D = T>(
  * @return A function that returns an Observable that emits the first item that
  * matches the condition.
  *
- * 一个返回 Observable 的函数，该 Observable 发出与条件匹配的第一个项目。
+ * 一个返回 Observable 的函数，该 Observable 发出与条件匹配的第一个条目。
  *
  */
 export function first<T, D>(

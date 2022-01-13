@@ -113,7 +113,7 @@ export function merge<A extends readonly unknown[]>(
  * @return {Observable} an Observable that emits items that are the result of
  * every input Observable.
  *
- * 一个 Observable，它发出的项目是每个输入 Observable 的结果。
+ * 一个 Observable，它发出的条目是每个输入 Observable 的结果。
  *
  */
 export function merge(...args: (ObservableInput<unknown> | number | SchedulerLike)[]): Observable<unknown> {

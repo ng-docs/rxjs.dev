@@ -105,7 +105,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * @return A function that returns an Observable that emits items from the
  * source Observable with distinct values.
  *
- * 一个返回 Observable 的函数，该 Observable 从源 Observable 发出具有不同值的项目。
+ * 一个返回 Observable 的函数，该 Observable 从源 Observable 发出具有不同值的条目。
  *
  */
 export function distinctUntilChanged<T>(comparator?: (previous: T, current: T) => boolean): MonoTypeOperatorFunction<T>;
@@ -178,7 +178,7 @@ export function distinctUntilChanged<T>(comparator?: (previous: T, current: T) =
  * @return A function that returns an Observable that emits items from the
  * source Observable with distinct values.
  *
- * 一个返回 Observable 的函数，该 Observable 从源 Observable 发出具有不同值的项目。
+ * 一个返回 Observable 的函数，该 Observable 从源 Observable 发出具有不同值的条目。
  *
  */
 export function distinctUntilChanged<T, K>(

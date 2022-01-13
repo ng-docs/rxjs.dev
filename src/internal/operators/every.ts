@@ -29,7 +29,7 @@ export function every<T>(predicate: (value: T, index: number, source: Observable
 /**
  * Returns an Observable that emits whether or not every item of the source satisfies the condition specified.
  *
- * 返回一个 Observable，它发出源中的每个项目是否满足指定的条件。
+ * 返回一个 Observable，它发出源中的每个条目是否满足指定的条件。
  *
  * <span class="informal">If all values pass predicate before the source completes, emits true before completion,
  * otherwise emit false, then complete.</span>
@@ -55,13 +55,13 @@ export function every<T>(predicate: (value: T, index: number, source: Observable
  * ```
  * @param {function} predicate A function for determining if an item meets a specified condition.
  *
- * 用于确定项目是否满足指定条件的函数。
+ * 用于确定条目是否满足指定条件的函数。
  *
  * @param {any} [thisArg] Optional object to use for `this` in the callback.
  * @return A function that returns an Observable of booleans that determines if
  * all items of the source Observable meet the condition specified.
  *
- * 一个返回布尔值的 Observable 的函数，用于确定源 Observable 的所有项目是否满足指定的条件。
+ * 一个返回布尔值的 Observable 的函数，用于确定源 Observable 的所有条目是否满足指定的条件。
  *
  */
 export function every<T>(

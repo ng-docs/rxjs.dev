@@ -74,7 +74,7 @@ export function fromEventPattern<T>(
  * that default project can be thought of as function that takes its first parameter
  * and ignores the rest.
  *
- * 如果你需要访问所有事件处理器参数（不仅是第一个），或者你需要以任何方式转换它们，你可以使用可选的第三个参数调用 `fromEventPattern` - 项目函数，它将接受传递给事件处理器的所有参数叫。从项目函数返回的任何内容都将出现在结果流上，而不是通常的事件处理器的第一个参数。这意味着可以将默认项目视为接受其第一个参数并忽略其余参数的函数。
+ * 如果你需要访问所有事件处理器参数（不仅是第一个），或者你需要以任何方式转换它们，你可以使用可选的第三个参数调用 `fromEventPattern` - 投影函数，它将接受传递给事件处理器的所有参数叫。从投影函数返回的任何内容都将出现在结果流上，而不是通常的事件处理器的第一个参数。这意味着可以将默认投影函数视为接受其第一个参数并忽略其余参数的函数。
  *
  * ## Examples
  *
@@ -124,7 +124,7 @@ export function fromEventPattern<T>(
  *
  * Use with project function
  *
- * 与项目功能一起使用
+ * 与投影函数一起使用
  *
  * ```ts
  * import { fromEventPattern } from 'rxjs';
@@ -163,7 +163,7 @@ export function fromEventPattern<T>(
  * passed to registered event handler. Alternatively it emits whatever project function returns
  * at that moment.
  *
- * Observable，当事件发生时，它会发出第一个参数传递给注册的事件处理器。或者，它会发出当时返回的任何项目函数。
+ * Observable，当事件发生时，它会发出第一个参数传递给注册的事件处理器。或者，它会发出当时返回的任何投影函数。
  *
  */
 export function fromEventPattern<T>(

@@ -24,7 +24,7 @@ import { take } from './take';
  * not given and the `index` is out of range, the output Observable will emit an
  * `ArgumentOutOfRangeError` error.
  *
- * `elementAt` 返回一个 Observable，它在源 Observable 中的指定 `index` 处发出项目，或者如果该 `index` 超出范围并且提供了 `default` 参数，则返回一个默认值。如果未给出 `default` 参数并且 `index` 超出范围，则输出 Observable 将发出 `ArgumentOutOfRangeError` 错误。
+ * `elementAt` 返回一个 Observable，它在源 Observable 中的指定 `index` 处发出条目，或者如果该 `index` 超出范围并且提供了 `default` 参数，则返回一个默认值。如果未给出 `default` 参数并且 `index` 超出范围，则输出 Observable 将发出 `ArgumentOutOfRangeError` 错误。
  *
  * ## Example
  *
@@ -67,7 +67,7 @@ import { take } from './take';
  * it is found. Otherwise, it will emit the default value if given. If not, it
  * emits an error.
  *
- * 一个返回 Observable 的函数，该 Observable 发出单个项目（如果找到的话）。否则，如果给定，它将发出默认值。如果不是，它会发出错误。
+ * 一个返回 Observable 的函数，该 Observable 发出单个条目（如果找到的话）。否则，如果给定，它将发出默认值。如果不是，它会发出错误。
  *
  */
 export function elementAt<T, D = T>(index: number, defaultValue?: D): OperatorFunction<T, T | D> {

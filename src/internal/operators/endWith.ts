@@ -78,7 +78,7 @@ export function endWith<T, A extends unknown[] = T[]>(...values: A): OperatorFun
  * @see {@link takeUntil}
  * @param values Items you want the modified Observable to emit last.
  *
- * 你希望修改后的 Observable 最后发出的项目。
+ * 你希望修改后的 Observable 最后发出的条目。
  *
  * @return A function that returns an Observable that emits all values from the
  * source, then synchronously emits the provided value(s) immediately after the

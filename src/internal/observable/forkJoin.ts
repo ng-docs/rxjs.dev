@@ -187,7 +187,7 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * @return {Observable} Observable emitting either an array of last values emitted by passed Observables
  * or value from project function.
  *
- * Observable 发出由传递的 Observables 发出的最后一个值的数组或来自项目函数的值。
+ * Observable 发出由传递的 Observables 发出的最后一个值的数组或来自投影函数的值。
  *
  */
 export function forkJoin(...args: any[]): Observable<any> {

@@ -77,7 +77,7 @@ export function switchMapTo<T, R, O extends ObservableInput<unknown>>(
  * and taking only the values from the most recently projected inner
  * Observable.
  *
- * 一个函数，它返回一个 Observable，每次在源 Observable 上发出一个值时，它会从给定的 `innerObservable` 发出项目（并且可以选择通过已弃用的 `resultSelector` 进行转换），并且只从最近投影的内部 Observable 中获取值。
+ * 一个函数，它返回一个 Observable，每次在源 Observable 上发出一个值时，它会从给定的 `innerObservable` 发出条目（并且可以选择通过已弃用的 `resultSelector` 进行转换），并且只从最近投影的内部 Observable 中获取值。
  *
  */
 export function switchMapTo<T, R, O extends ObservableInput<unknown>>(

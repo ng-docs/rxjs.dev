@@ -82,7 +82,7 @@ export function filter<T>(predicate: (value: T, index: number) => boolean): Mono
  * @return A function that returns an Observable that emits items from the
  * source Observable that satisfy the specified `predicate`.
  *
- * 一个返回 Observable 的函数，该 Observable 从源 Observable 发出满足指定 `predicate` 的项目。
+ * 一个返回 Observable 的函数，该 Observable 从源 Observable 发出满足指定 `predicate` 的条目。
  *
  */
 export function filter<T>(predicate: (value: T, index: number) => boolean, thisArg?: any): MonoTypeOperatorFunction<T> {
