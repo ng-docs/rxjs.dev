@@ -10,7 +10,7 @@ export function skipWhile<T>(predicate: (value: T, index: number) => boolean): M
  * Returns an Observable that skips all items emitted by the source Observable as long as a specified condition holds
  * true, but emits all further source items as soon as the condition becomes false.
  *
- * 返回一个 Observable，只要指定条件成立，它就会跳过源 Observable 发出的所有条目，但一旦条件变为 false，就会发出所有其他源条目。
+ * 返回一个 Observable，只要指定条件成立，它就会跳过源 Observable 发送的所有条目，但一旦条件变为 false，就会发送所有其他源条目。
  *
  * ![](skipWhile.png)
  *
@@ -55,12 +55,12 @@ export function skipWhile<T>(predicate: (value: T, index: number) => boolean): M
  * @see {@link skipLast}
  * @param {Function} predicate - A function to test each item emitted from the source Observable.
  *
- *   用于测试从源 Observable 发出的每个条目的函数。
+ *   用于测试从源 Observable 发送的每个条目的函数。
  *
  * @return A function that returns an Observable that begins emitting items
  * emitted by the source Observable when the specified predicate becomes false.
  *
- * 一个返回 Observable 的函数，当指定的谓词变为 false 时，该 Observable 开始发射源 Observable 发出的条目。
+ * 一个返回 Observable 的函数，当指定的谓词变为 false 时，该 Observable 开始发送源 Observable 发送的条目。
  *
  */
 export function skipWhile<T>(predicate: (value: T, index: number) => boolean): MonoTypeOperatorFunction<T> {

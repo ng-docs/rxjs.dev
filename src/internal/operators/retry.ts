@@ -21,7 +21,7 @@ export interface RetryConfig {
    * completes _without_ emitting, the resulting observable will complete without error,
    * if the notifier errors, the error will be pushed to the result.
    *
-   * 重试前延迟的毫秒数，或返回延迟通知器的函数。如果给定一个函数，该函数应该返回一个通知器，当它发出时将重试源。如果通知器在*没有*发出的情况下完成，则生成的 observable 将在没有错误的情况下完成，如果通知器出错，错误将被推送到结果中。
+   * 重试前延迟的毫秒数，或返回延迟通知器的函数。如果给定一个函数，该函数应该返回一个通知器，当它发送时将重试源。如果通知器在*没有*发送的情况下完成，则生成的 observable 将在没有错误的情况下完成，如果通知器出错，错误将被推送到结果中。
    *
    */
   delay?: number | ((error: any, retryCount: number) => ObservableInput<any>);
@@ -29,7 +29,7 @@ export interface RetryConfig {
    * Whether or not to reset the retry counter when the retried subscription
    * emits its first value.
    *
-   * 当重试订阅发出其第一个值时是否重置重试计数器。
+   * 当重试订阅发送其第一个值时是否重置重试计数器。
    *
    */
   resetOnSuccess?: boolean;
@@ -49,7 +49,7 @@ export interface RetryConfig {
  * time and emits: `[1, 2, 3, 4, 5]` then the complete stream of emissions and notifications
  * would be: `[1, 2, 1, 2, 3, 4, 5, complete]`.
  *
- * 源 Observable 发出的任何和所有条目都将由结果 Observable 发出，即使是在订阅失败期间发出的那些。例如，如果一个 Observable 第一次失败但发出 `[1, 2]` 然后第二次成功并发出： `[1, 2, 3, 4, 5]` 那么完整的发射和通知流将是： `[1, 2, 1, 2, 3, 4, 5, complete]`。
+ * 源 Observable 发送的任何和所有条目都将由结果 Observable 发送，即使是在订阅失败期间发送的那些。例如，如果一个 Observable 第一次失败但发送 `[1, 2]` 然后第二次成功并发送： `[1, 2, 3, 4, 5]` 那么完整的发送和通知流将是： `[1, 2, 1, 2, 3, 4, 5, complete]`。
  *
  * ## Example
  *
@@ -82,7 +82,7 @@ export interface RetryConfig {
  *
  * @param resetOnSuccess - When set to `true` every successful emission will reset the error count
  *
- *   当设置为 `true` 时，每次成功的发射都会重置错误计数
+ *   当设置为 `true` 时，每次成功的发送都会重置错误计数
  *
  * @return A function that returns an Observable that will resubscribe to the
  * source stream when the source stream errors, at most `count` times.

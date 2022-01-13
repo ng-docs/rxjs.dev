@@ -21,20 +21,20 @@ export function combineLatestAll<R>(project: (...values: Array<any>) => R): Oper
  *
  * * Every time an inner Observable emits, the output Observable emits
  *
- *   每次内部 Observable 发射时，输出 Observable 都会发射
+ *   每次内部 Observable 发送时，输出 Observable 都会发送
  *
  * * When the returned observable emits, it emits all of the latest values by:
  *
- *   当返回的 observable 发出时，它会通过以下方式发出所有最新值：
+ *   当返回的 observable 发送时，它会通过以下方式发送所有最新值：
  *
  *   - If a `project` function is provided, it is called with each recent value from each inner Observable in whatever order they
  *     arrived, and the result of the `project` function is what is emitted by the output Observable.
  *
- *     如果提供了一个 `project` 函数，它会以来自每个内部 Observable 的每个最近值以它们抵达的任何顺序被调用，并且 `project` 函数的结果是输出 Observable 发出的结果。
+ *     如果提供了一个 `project` 函数，它会以来自每个内部 Observable 的每个最近值以它们抵达的任何顺序被调用，并且 `project` 函数的结果是输出 Observable 发送的结果。
  *
  *   - If there is no `project` function, an array of all the most recent values is emitted by the output Observable.
  *
- *     如果没有 `project` 函数，则输出 Observable 会发出一个包含所有最新值的数组。
+ *     如果没有 `project` 函数，则输出 Observable 会发送一个包含所有最新值的数组。
  *
  * ## Example
  *
@@ -67,7 +67,7 @@ export function combineLatestAll<R>(project: (...values: Array<any>) => R): Oper
  * @return A function that returns an Observable that flattens Observables
  * emitted by the source Observable.
  *
- * 一个返回 Observable 的函数，该函数将源 Observable 发出的 Observable 展平。
+ * 一个返回 Observable 的函数，该函数将源 Observable 发送的 Observable 展平。
  *
  */
 export function combineLatestAll<R>(project?: (...values: Array<any>) => R) {

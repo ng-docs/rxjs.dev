@@ -19,7 +19,7 @@ import { mergeInternals } from './mergeInternals';
  * subscribe to the value returned by the `accumulator` function and will emit
  * values to the subscriber emitted by inner Observable.
  *
- * `mergeScan` 的第一个参数是一个 `accumulator` 函数，每次源 Observable 发出一个值时都会调用它。`mergeScan` 将订阅 `accumulator` 函数返回的值，并将值发送给内部 Observable 发出的订阅者。
+ * `mergeScan` 的第一个参数是一个 `accumulator` 函数，每次源 Observable 发送一个值时都会调用它。`mergeScan` 将订阅 `accumulator` 函数返回的值，并将值发送给内部 Observable 发送的订阅者。
  *
  * The `accumulator` function is being called with three parameters passed to it:
  * `acc`, `value` and `index`. The `acc` parameter is used as the state parameter
@@ -34,13 +34,13 @@ import { mergeInternals } from './mergeInternals';
  * will internally remember it and it will be passed to the `accumulator`
  * function as `acc` parameter the next time source emits.
  *
- * `mergeScan` 在内部保留 `acc` 参数的值：只要源 Observable 发射而没有内部 Observable 发射，`acc` 就会被设置为 `seed`。下一次内部 Observable 发出一个值时，`mergeScan` 将在内部记住它，并在下次 source 发出时将它作为 `acc` 参数传递给 `accumulator` 函数。
+ * `mergeScan` 在内部保留 `acc` 参数的值：只要源 Observable 发送而没有内部 Observable 发送，`acc` 就会被设置为 `seed`。下一次内部 Observable 发送一个值时，`mergeScan` 将在内部记住它，并在下次 source 发送时将它作为 `acc` 参数传递给 `accumulator` 函数。
  *
  * The `value` parameter of the `accumulator` function is the value emitted by the
  * source Observable, while the `index` is a number which represent the order of the
  * current emission by the source Observable. It starts with 0.
  *
- * `accumulator` 函数的 `value` 参数是源 Observable 发射的值，而 `index` 是一个数字，表示源 Observable 当前发射的顺序。它从 0 开始。
+ * `accumulator` 函数的 `value` 参数是源 Observable 发送的值，而 `index` 是一个数字，表示源 Observable 当前发送的顺序。它从 0 开始。
  *
  * The last parameter to the `mergeScan` is the `concurrent` value which defaults
  * to Infinity. It represents the maximum number of inner Observable subscriptions

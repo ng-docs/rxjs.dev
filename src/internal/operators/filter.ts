@@ -24,13 +24,13 @@ export function filter<T>(predicate: (value: T, index: number) => boolean): Mono
  * Filter items emitted by the source Observable by only emitting those that
  * satisfy a specified predicate.
  *
- * 通过仅发出满足指定谓词的项来过滤源 Observable 发出的项。
+ * 通过仅发送满足指定谓词的项来过滤源 Observable 发送的项。
  *
  * <span class="informal">Like
  * [Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter),
  * it only emits a value from the source if it passes a criterion function.</span>
  *
- * <span class="informal">像[Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)一样，如果它通过了一个标准函数，它只会从源发出一个值。</span>
+ * <span class="informal">像[Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)一样，如果它通过了一个标准函数，它只会从源发送一个值。</span>
  *
  * ![](filter.png)
  *
@@ -38,7 +38,7 @@ export function filter<T>(predicate: (value: T, index: number) => boolean): Mono
  * takes values from the source Observable, passes them through a `predicate`
  * function and only emits those values that yielded `true`.
  *
- * 类似于众所周知的 `Array.prototype.filter` 方法，该操作符从源 Observable 获取值，将它们传递给 `predicate` 函数，并且只发出那些产生 `true` 的值。
+ * 类似于众所周知的 `Array.prototype.filter` 方法，该操作符从源 Observable 获取值，将它们传递给 `predicate` 函数，并且只发送那些产生 `true` 的值。
  *
  * ## Example
  *
@@ -46,7 +46,7 @@ export function filter<T>(predicate: (value: T, index: number) => boolean): Mono
  *
  * Emit only click events whose target was a DIV element
  *
- * 只发出目标是 DIV 元素的点击事件
+ * 只发送目标是 DIV 元素的点击事件
  *
  * ```ts
  * import { fromEvent, filter } from 'rxjs';
@@ -72,7 +72,7 @@ export function filter<T>(predicate: (value: T, index: number) => boolean): Mono
  * emission that has happened since the subscription, starting from the number
  * `0`.
  *
- * 评估源 Observable 发出的每个值的函数。如果它返回 `true`，则发出该值，如果为 `false`，则该值不会传递给输出 Observable。`index` 参数是自订阅以来发生的第 i 个源排放的数字 `i`，从数字 `0` 开始。
+ * 评估源 Observable 发送的每个值的函数。如果它返回 `true`，则发送该值，如果为 `false`，则该值不会传递给输出 Observable。`index` 参数是自订阅以来发生的第 i 个源排放的数字 `i`，从数字 `0` 开始。
  *
  * @param thisArg An optional argument to determine the value of `this`
  * in the `predicate` function.
@@ -82,7 +82,7 @@ export function filter<T>(predicate: (value: T, index: number) => boolean): Mono
  * @return A function that returns an Observable that emits items from the
  * source Observable that satisfy the specified `predicate`.
  *
- * 一个返回 Observable 的函数，该 Observable 从源 Observable 发出满足指定 `predicate` 的条目。
+ * 一个返回 Observable 的函数，该 Observable 从源 Observable 发送满足指定 `predicate` 的条目。
  *
  */
 export function filter<T>(predicate: (value: T, index: number) => boolean, thisArg?: any): MonoTypeOperatorFunction<T> {

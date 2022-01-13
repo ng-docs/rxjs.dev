@@ -497,7 +497,7 @@ export function fromAjax<T>(init: AjaxConfig): Observable<AjaxResponse<T>> {
        * Wires up an event handler that will emit an error when fired. Used
        * for timeout and abort events.
        *
-       * 连接一个事件处理器，该处理器在触发时会发出错误。用于超时和中止事件。
+       * 连接一个事件处理器，该处理器在触发时会发送错误。用于超时和中止事件。
        *
        * @param type The type of event we're treating as an error
        *
@@ -505,7 +505,7 @@ export function fromAjax<T>(init: AjaxConfig): Observable<AjaxResponse<T>> {
        *
        * @param errorFactory A function that creates the type of error to emit.
        *
-       * 创建要发出的错误类型的函数。
+       * 创建要发送的错误类型的函数。
        *
        */
       const addErrorEvent = (type: string, errorFactory: () => any) => {
@@ -548,7 +548,7 @@ export function fromAjax<T>(init: AjaxConfig): Observable<AjaxResponse<T>> {
        * Note that download load handling is a bit different below, because it has
        * more logic it needs to run.
        *
-       * 连接一个事件处理器，该处理器向消费者发出一个 Response 对象，用于所有发出响应、loadstart、progress 和 load 的事件。请注意，下面的下载负载处理有点不同，因为它需要运行更多逻辑。
+       * 连接一个事件处理器，该处理器向消费者发送一个 Response 对象，用于所有发送 response、loadstart、progress 和 load 的事件。请注意，下面对下载的处理有点不同，因为它需要执行更多的逻辑。
        *
        * @param target The target, either the XHR itself or the Upload object.
        *

@@ -18,13 +18,13 @@ export function scan<V, A, S>(accumulator: (acc: A | S, value: V, index: number)
  * <span class="informal">It's like {@link reduce}, but emits the current
  * accumulation state after each update</span>
  *
- * <span class="informal">类似于 {@link reduce}，但在每次更新后发出当前的累积状态</span>
+ * <span class="informal">类似于 {@link reduce}，但在每次更新后发送当前的累积状态</span>
  *
  * ![](scan.png)
  *
  * This operator maintains an internal state and emits it after processing each value as follows:
  *
- * 该操作符维护一个内部状态，并在处理每个值后发出它，如下所示：
+ * 该操作符维护一个内部状态，并在处理每个值后发送它，如下所示：
  *
  * 1. First value arrives
  *
@@ -48,7 +48,7 @@ export function scan<V, A, S>(accumulator: (acc: A | S, value: V, index: number)
  *
  * 3. Emit `state`.
  *
- *    发射 `state`。
+ *    发送 `state`。
  *
  * 4. Next value arrives, let `value = nextValue`, go to 2.
  *
@@ -117,7 +117,7 @@ export function scan<V, A, S>(accumulator: (acc: A | S, value: V, index: number)
  * will be processed by the accumulator function. If this is provided, all values will go through
  * the accumulator function.
  *
- * 初始状态。如果未提供，则源中的第一个值将用作初始状态，并在不经过累加器的情况下发出。所有后续值都将由累加器函数处理。如果提供，所有值都将通过累加器函数。
+ * 初始状态。如果未提供，则源中的第一个值将用作初始状态，并在不经过累加器的情况下发送。所有后续值都将由累加器函数处理。如果提供，所有值都将通过累加器函数。
  *
  * @return A function that returns an Observable of the accumulated values.
  *

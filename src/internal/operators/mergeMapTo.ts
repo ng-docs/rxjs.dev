@@ -71,7 +71,7 @@ export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(
  * @return A function that returns an Observable that emits items from the
  * given `innerObservable`.
  *
- * 一个返回 Observable 的函数，该 Observable 从给定的 `innerObservable` 发出条目。
+ * 一个返回 Observable 的函数，该 Observable 从给定的 `innerObservable` 发送条目。
  *
  */
 export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(

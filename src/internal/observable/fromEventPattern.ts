@@ -47,7 +47,7 @@ export function fromEventPattern<T>(
  * function was called with. Note that if event handler was called with more
  * than one argument, second and following arguments will not appear in the Observable.
  *
- * 注册后，每次我们监听的事件发生时，`fromEventPattern` 返回的 Observable 都会发出调用事件处理函数的值。请注意，如果使用多个参数调用事件处理器，则第二个和后续参数将不会出现在 Observable 中。
+ * 注册后，每次我们监听的事件发生时，`fromEventPattern` 返回的 Observable 都会发送调用事件处理函数的值。请注意，如果使用多个参数调用事件处理器，则第二个和后续参数将不会出现在 Observable 中。
  *
  * If API you are using allows to unregister event handlers as well, you can pass to `fromEventPattern`
  * another function - `removeHandler` - as a second parameter. It will be injected
@@ -82,7 +82,7 @@ export function fromEventPattern<T>(
  *
  * Emits clicks happening on the DOM document
  *
- * 发出在 DOM 文档上发生的点击
+ * 发送在 DOM 文档上发生的点击
  *
  * ```ts
  * import { fromEventPattern } from 'rxjs';
@@ -163,7 +163,7 @@ export function fromEventPattern<T>(
  * passed to registered event handler. Alternatively it emits whatever project function returns
  * at that moment.
  *
- * Observable，当事件发生时，它会发出第一个参数传递给注册的事件处理器。或者，它会发出当时返回的任何投影函数。
+ * Observable，当事件发生时，它会发送第一个参数传递给注册的事件处理器。或者，它会发送当时返回的任何投影函数。
  *
  */
 export function fromEventPattern<T>(

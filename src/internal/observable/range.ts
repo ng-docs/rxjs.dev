@@ -16,11 +16,11 @@ export function range(start: number, count: number | undefined, scheduler: Sched
  * Creates an Observable that emits a sequence of numbers within a specified
  * range.
  *
- * 创建一个可发出指定范围内的数字序列的 Observable。
+ * 创建一个可发送指定范围内的数字序列的 Observable。
  *
  * <span class="informal">Emits a sequence of numbers in a range.</span>
 *
- * <span class="informal">发出一个范围内的数字序列。</span>
+ * <span class="informal">发送一个范围内的数字序列。</span>
  *
  * ![](range.png)
  *
@@ -29,7 +29,7 @@ export function range(start: number, count: number | undefined, scheduler: Sched
  * {@link SchedulerLike} and just delivers the notifications synchronously, but may use
  * an optional {@link SchedulerLike} to regulate those deliveries.
  *
- * `range` 操作符按顺序发出一系列连续整数，你可以在其中选择范围的 `start` 及其 `length`。默认情况下，不使用 {@link SchedulerLike} 并且仅同步传递通知，但可以使用可选的 {@link SchedulerLike} 来规范这些传递。
+ * `range` 操作符按顺序发送一系列连续整数，你可以在其中选择范围的 `start` 及其 `length`。默认情况下，不使用 {@link SchedulerLike} 并且仅同步传递通知，但可以使用可选的 {@link SchedulerLike} 来规范这些传递。
  *
  * ## Example
  *
@@ -70,7 +70,7 @@ export function range(start: number, count: number | undefined, scheduler: Sched
  * @return {Observable} An Observable of numbers that emits a finite range of
  * sequential integers.
  *
- * 一个可观察到的数字，它发出有限范围的连续整数。
+ * 一个可观察到的数字，它发送有限范围的连续整数。
  *
  */
 export function range(start: number, count?: number, scheduler?: SchedulerLike): Observable<number> {

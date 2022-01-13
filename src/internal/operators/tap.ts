@@ -50,7 +50,7 @@ export function tap<T>(
  * The observable returned by `tap` is an exact mirror of the source, with one exception: Any error that occurs -- synchronously -- in a handler
  * provided to `tap` will be emitted as an error from the returned observable.
  *
- * `tap` 返回的 observable 是源的精确镜像，但有一个例外：在提供给 `tap` 的处理器中同步发生的任何错误都将作为返回的 observable 的错误发出。
+ * `tap` 返回的 observable 是源的精确镜像，但有一个例外：在提供给 `tap` 的处理器中同步发生的任何错误都将作为返回的 observable 的错误发送。
  *
  * > Be careful! You can mutate objects as they pass through the `tap` operator's handlers.
  * >
@@ -61,7 +61,7 @@ export function tap<T>(
  * in your observable `pipe`, log out the notifications as they are emitted by the source returned by the previous
  * operation.
  *
- * `tap` 最常见的用途实际上是用于调试。你可以在可观察 `pipe` 中的任何位置放置一个 `tap(console.log)`，注销通知，因为它们是由先前操作返回的源发出的。
+ * `tap` 最常见的用途实际上是用于调试。你可以在可观察 `pipe` 中的任何位置放置一个 `tap(console.log)`，注销通知，因为它们是由先前操作返回的源发送的。
  *
  * ## Examples
  *
@@ -71,7 +71,7 @@ export function tap<T>(
  * and emit `'big'` or `'small'` depending on the size of that number. But we wanted to log what the original number
  * was, so we have added a `tap(console.log)`.
  *
- * 在处理之前检查一个随机数。下面是一个 observable，它将使用 0 到 1 之间的随机数，并根据该数字的大小发出 `'big'` 或 `'small'`。但是我们想记录原始数字是多少，所以我们添加了一个 `tap(console.log)`。
+ * 在处理之前检查一个随机数。下面是一个 observable，它将使用 0 到 1 之间的随机数，并根据该数字的大小发送 `'big'` 或 `'small'`。但是我们想记录原始数字是多少，所以我们添加了一个 `tap(console.log)`。
  *
  * ```ts
  * import { of, tap, map } from 'rxjs';
@@ -86,7 +86,7 @@ export function tap<T>(
  * want to emit numbers 3 or less we get from another source. We can force our observable to error
  * using `tap`.
  *
- * 使用 `tap` 分析值并强制出错。下面是一个 observable，在我们的系统中，我们只想发出从另一个来源获得的 3 或更少的数字。我们可以使用 `tap` 强制我们的 observable 出错。
+ * 使用 `tap` 分析值并强制出错。下面是一个 observable，在我们的系统中，我们只想发送从另一个来源获得的 3 或更少的数字。我们可以使用 `tap` 强制我们的 observable 出错。
  *
  * ```ts
  * import { of, tap } from 'rxjs';
@@ -108,7 +108,7 @@ export function tap<T>(
  * only way we know when one observable completes and moves to the next one, in this case, is because
  * we have added a `tap` with the side effect of logging to console.
  *
- * 我们想知道一个 observable 何时完成，然后再继续下一个 observable。下面的系统将从 3 个不同的 observables 中依次发出一系列随机的 `'X'` 字符。在这种情况下，我们知道一个 observable 何时完成并移动到下一个的唯一方法是因为我们添加了一个带有日志记录到控制台的副作用的 `tap`。
+ * 我们想知道一个 observable 何时完成，然后再继续下一个 observable。下面的系统将从 3 个不同的 observables 中依次发送一系列随机的 `'X'` 字符。在这种情况下，我们知道一个 observable 何时完成并移动到下一个的唯一方法是因为我们添加了一个带有日志记录到控制台的副作用的 `tap`。
  *
  * ```ts
  * import { of, concatMap, interval, take, map, tap } from 'rxjs';

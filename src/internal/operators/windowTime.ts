@@ -31,7 +31,7 @@ export function windowTime<T>(
  * <span class="informal">It's like {@link bufferTime}, but emits a nested
  * Observable instead of an array.</span>
  *
- * <span class="informal">它类似于 {@link bufferTime}，但发出一个嵌套的 Observable 而不是一个数组。</span>
+ * <span class="informal">它类似于 {@link bufferTime}，但发送一个嵌套的 Observable 而不是一个数组。</span>
  *
  * ![](windowTime.png)
  *
@@ -48,7 +48,7 @@ export function windowTime<T>(
  * after emitting last value and next one still will open as specified by
  * `windowTimeSpan` and `windowCreationInterval` arguments.
  *
- * 返回一个 Observable，它发出从源 Observable 收集的条目的窗口。输出 Observable 定期启动一个新窗口，由 `windowCreationInterval` 参数确定。它在 `windowTimeSpan` 参数指定的固定时间跨度后发出每个窗口。当源 Observable 完成或遇到错误时，输出 Observable 会发出当前窗口并传播来自源 Observable 的通知。如果没有提供 `windowCreationInterval`，则输出 Observable 会在前一个持续时间 `windowTimeSpan` 的窗口完成时启动一个新窗口。如果提供了 `maxWindowCount`，则每个窗口将发出最多固定数量的值。窗口将在发出最后一个值后立即完成，并且下一个仍将按照 `windowTimeSpan` 和 `windowCreationInterval` 参数的指定打开。
+ * 返回一个 Observable，它发送从源 Observable 收集的条目的窗口。输出 Observable 定期启动一个新窗口，由 `windowCreationInterval` 参数确定。它在 `windowTimeSpan` 参数指定的固定时间跨度后发送每个窗口。当源 Observable 完成或遇到错误时，输出 Observable 会发送当前窗口并传播来自源 Observable 的通知。如果没有提供 `windowCreationInterval`，则输出 Observable 会在前一个持续时间 `windowTimeSpan` 的窗口完成时启动一个新窗口。如果提供了 `maxWindowCount`，则每个窗口将发送最多固定数量的值。窗口将在发送最后一个值后立即完成，并且下一个仍将按照 `windowTimeSpan` 和 `windowCreationInterval` 参数的指定打开。
  *
  * ## Examples
  *
@@ -56,7 +56,7 @@ export function windowTime<T>(
  *
  * In every window of 1 second each, emit at most 2 click events
  *
- * 在每个 1 秒的窗口中，最多发出 2 个点击事件
+ * 在每个 1 秒的窗口中，最多发送 2 个点击事件
  *
  * ```ts
  * import { fromEvent, windowTime, map, take, mergeAll } from 'rxjs';
@@ -72,7 +72,7 @@ export function windowTime<T>(
  *
  * Every 5 seconds start a window 1 second long, and emit at most 2 click events per window
  *
- * 每 5 秒启动一个 1 秒长的窗口，每个窗口最多发出 2 个点击事件
+ * 每 5 秒启动一个 1 秒长的窗口，每个窗口最多发送 2 个点击事件
  *
  * ```ts
  * import { fromEvent, windowTime, map, take, mergeAll } from 'rxjs';
@@ -117,7 +117,7 @@ export function windowTime<T>(
  * @param maxWindowSize Max number of
  * values each window can emit before completion.
  *
- * 每个窗口在完成之前可以发出的最大值数。
+ * 每个窗口在完成之前可以发送的最大值数。
  *
  * @param scheduler The scheduler on which to schedule the
  * intervals that determine window boundaries.

@@ -17,7 +17,7 @@ import { getXHRResponse } from './getXHRResponse';
  * the original XHR used to make the request, as well as properties containing
  * request and response data.
  *
- * 建议不要将此对象保存在内存中，因为它引用了用于发出请求的原始 XHR，以及包含请求和响应数据的属性。
+ * 建议不要将此对象保存在内存中，因为它引用了用于发送请求的原始 XHR，以及包含请求和响应数据的属性。
  *
  * @see {@link ajax}
  * @see {@link AjaxConfig}
@@ -100,15 +100,15 @@ export class AjaxResponse<T> {
    *
    * @param xhr The `XMLHttpRequest` object used to make the request. This is useful for examining status code, etc.
    *
-   * 用于发出请求的 `XMLHttpRequest` 对象。这对于检查状态代码等很有用。
+   * 用于发送请求的 `XMLHttpRequest` 对象。这对于检查状态代码等很有用。
    *
    * @param request The request settings used to make the HTTP request.
    *
-   * 用于发出 HTTP 请求的请求设置。
+   * 用于发送 HTTP 请求的请求设置。
    *
    * @param type The type of the event emitted by the {@link ajax} Observable
    *
-   * {@link ajax} Observable 发出的事件类型
+   * {@link ajax} Observable 发送的事件类型
    *
    */
   constructor(

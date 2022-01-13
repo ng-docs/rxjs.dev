@@ -12,7 +12,7 @@ export function race<T extends readonly unknown[]>(...inputs: [...ObservableInpu
 /**
  * Returns an observable that mirrors the first source observable to emit an item.
  *
- * 返回一个镜像第一个源 observable 以发射条目的 observable。
+ * 返回一个镜像第一个源 observable 以发送条目的 observable。
  *
  * ![](race.png)
  *
@@ -21,7 +21,7 @@ export function race<T extends readonly unknown[]>(...inputs: [...ObservableInpu
  * The resulting observable will forward all notifications, including error and completion, from the "winning"
  * source observable.
  *
- * `race` 返回一个 observable，当订阅它时，它会立即订阅所有源 observables。一旦其中一个源 observables 发出一个值，结果就会退订其他源。生成的 observable 将转发来自“获胜”源 observable 的所有通知，包括错误和完成。
+ * `race` 返回一个 observable，当订阅它时，它会立即订阅所有源 observables。一旦其中一个源 observables 发送一个值，结果就会退订其他源。生成的 observable 将转发来自“获胜”源 observable 的所有通知，包括错误和完成。
  *
  * If one of the used source observable throws an errors before a first notification
  * the race operator will also throw an error, no matter if another source observable
@@ -41,7 +41,7 @@ export function race<T extends readonly unknown[]>(...inputs: [...ObservableInpu
  *
  * Subscribes to the observable that was the first to start emitting.
  *
- * 订阅第一个开始发射的 observable。
+ * 订阅第一个开始发送的 observable。
  *
  * ```ts
  * import { interval, map, race } from 'rxjs';
@@ -58,11 +58,11 @@ export function race<T extends readonly unknown[]>(...inputs: [...ObservableInpu
  * ```
  * @param {...Observables} ...observables sources used to race for which Observable emits first.
  *
- * 用于竞争 Observable 首先发出的源。
+ * 用于竞争 Observable 首先发送的源。
  *
  * @return {Observable} an Observable that mirrors the output of the first Observable to emit an item.
  *
- * 一个 Observable，它反映了第一个 Observable 的输出以发射一个条目。
+ * 一个 Observable，它反映了第一个 Observable 的输出以发送一个条目。
  *
  */
 export function race<T>(...sources: (ObservableInput<T> | ObservableInput<T>[])[]): Observable<any> {

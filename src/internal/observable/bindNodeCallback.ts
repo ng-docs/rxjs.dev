@@ -44,7 +44,7 @@ export function bindNodeCallback<A extends readonly unknown[], R extends readonl
  * second parameter. If there are more parameters (third and so on),
  * Observable will emit an array with all arguments, except first error argument.
  *
- * `bindNodeCallback` 的输出是一个函数，它采用与 `func` 相同的参数，除了最后一个（回调）。当使用参数调用输出函数时，它将返回一个 Observable。如果 `func` 在存在错误参数的情况下调用其回调，则 Observable 也会使用该值出错。如果没有传递错误参数，Observable 将发出第二个参数。如果有更多参数（第三个等等），Observable 将发出一个包含所有参数的数组，除了第一个错误参数。
+ * `bindNodeCallback` 的输出是一个函数，它采用与 `func` 相同的参数，除了最后一个（回调）。当使用参数调用输出函数时，它将返回一个 Observable。如果 `func` 在存在错误参数的情况下调用其回调，则 Observable 也会使用该值出错。如果没有传递错误参数，Observable 将发送第二个参数。如果有更多参数（第三个等等），Observable 将发送一个包含所有参数的数组，除了第一个错误参数。
  *
  * Note that `func` will not be called at the same time output function is,
  * but rather whenever resulting Observable is subscribed. By default call to
@@ -54,7 +54,7 @@ export function bindNodeCallback<A extends readonly unknown[], R extends readonl
  * To find out more, check out documentation for {@link bindCallback}, where
  * {@link SchedulerLike} works exactly the same.
  *
- * 请注意，`func` 不会在输出函数被调用的同时被调用，而是在订阅结果 Observable 时被调用。默认情况下，对 `func` 的调用将在订阅后同步发生，但可以通过作为可选第三个参数提供的适当 `scheduler` 来更改。{@link SchedulerLike} 还可以控制 Observable 何时发出回调中的值。要了解更多信息，请查看 {@link bindCallback} 的文档，其中 {@link SchedulerLike} 的工作方式完全相同。
+ * 请注意，`func` 不会在输出函数被调用的同时被调用，而是在订阅结果 Observable 时被调用。默认情况下，对 `func` 的调用将在订阅后同步发生，但可以通过作为可选第三个参数提供的适当 `scheduler` 来更改。{@link SchedulerLike} 还可以控制 Observable 何时发送回调中的值。要了解更多信息，请查看 {@link bindCallback} 的文档，其中 {@link SchedulerLike} 的工作方式完全相同。
  *
  * As in {@link bindCallback}, context (`this` property) of input function will be set to context
  * of returned function, when it is called.
@@ -67,7 +67,7 @@ export function bindNodeCallback<A extends readonly unknown[], R extends readonl
  * that call callbacks multiple times, check out {@link fromEvent} or
  * {@link fromEventPattern} instead.
  *
- * Observable 发出值后，会立即完成。这意味着即使 `func` 再次调用回调，来自第二次和连续调用的值也永远不会出现在流中。如果你需要处理多次调用回调的函数，请改用 {@link fromEvent} 或 {@link fromEventPattern}。
+ * Observable 发送值后，会立即完成。这意味着即使 `func` 再次调用回调，来自第二次和连续调用的值也永远不会出现在流中。如果你需要处理多次调用回调的函数，请改用 {@link fromEvent} 或 {@link fromEventPattern}。
  *
  * Note that `bindNodeCallback` can be used in non-Node.js environments as well.
  * "Node.js-style" callbacks are just a convention, so if you write for
@@ -91,7 +91,7 @@ export function bindNodeCallback<A extends readonly unknown[], R extends readonl
  * Note that even if error parameter is technically present in callback, but its value
  * is falsy, it still won't appear in array emitted by Observable.
  *
- * 请注意，即使错误参数在技术上存在于回调中，但它的值是虚假的，它仍然不会出现在 Observable 发出的数组中。
+ * 请注意，即使错误参数在技术上存在于回调中，但它的值是虚假的，它仍然不会出现在 Observable 发送的数组中。
  *
  * ## Examples
  *
@@ -152,7 +152,7 @@ export function bindNodeCallback<A extends readonly unknown[], R extends readonl
  * Observable that delivers the same values the Node.js callback would
  * deliver.
  *
- * 一个返回 Observable 的函数，它提供与 Node.js 回调将提供的值相同的值。
+ * 一个返回 Observable 的函数，该 Observable 将发送与回调函数的返回值相同的值
  *
  */
 export function bindNodeCallback(

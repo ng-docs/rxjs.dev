@@ -36,7 +36,7 @@ export function startWith<T, A extends readonly unknown[] = T[]>(...values: A): 
  * <span class="informal">First emits its arguments in order, and then any
  * emissions from the source.</span>
  *
- * <span class="informal">首先按顺序发出其参数，然后是源的任何排放。</span>
+ * <span class="informal">首先按顺序发送其参数，然后是源的任何排放。</span>
  *
  * ![](startWith.png)
  *
@@ -46,7 +46,7 @@ export function startWith<T, A extends readonly unknown[] = T[]>(...values: A): 
  *
  * Emit a value when a timer starts.
  *
- * 计时器启动时发出一个值。
+ * 计时器启动时发送一个值。
  *
  * ```ts
  * import { timer, map, startWith } from 'rxjs';
@@ -64,12 +64,12 @@ export function startWith<T, A extends readonly unknown[] = T[]>(...values: A): 
  * ```
  * @param values Items you want the modified Observable to emit first.
  *
- * 你希望修改后的 Observable 首先发出的条目。
+ * 你希望修改后的 Observable 首先发送的条目。
  *
  * @return A function that returns an Observable that synchronously emits
  * provided values before subscribing to the source Observable.
  *
- * 一个返回 Observable 的函数，该函数在订阅源 Observable 之前同步发出提供的值。
+ * 一个返回 Observable 的函数，该函数在订阅源 Observable 之前同步发送提供的值。
  *
  * @see {@link endWith}
  * @see {@link finalize}

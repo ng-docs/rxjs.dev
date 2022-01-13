@@ -115,7 +115,7 @@ export class Observable<T> implements Subscribable<T> {
   /**
    * Invokes an execution of an Observable and registers Observer handlers for notifications it will emit.
    *
-   * 调用 Observable 的执行并为它将发出的通知注册 Observer 处理器。
+   * 调用 Observable 的执行并为它将发送的通知注册 Observer 处理器。
    *
    * <span class="informal">Use it when you have all these Observables, but still nothing is happening.</span>
    *
@@ -127,13 +127,13 @@ export class Observable<T> implements Subscribable<T> {
    * that calling `subscribe` is actually the moment when Observable starts its work, not when it is created, as it is often
    * the thought.
    *
-   * `subscribe` 不是一个普通的操作符，而是一个调用 Observable 内部 `subscribe` 函数的方法。例如，它可能是你传递给 Observable 构造函数的函数，但大多数时候它是一个库实现，它定义了 Observable 将发出什么以及何时发出。这意味着调用 `subscribe` 实际上是 Observable 开始工作的时刻，而不是它被创建的时刻，因为它通常是这样想的。
+   * `subscribe` 不是一个普通的操作符，而是一个调用 Observable 内部 `subscribe` 函数的方法。例如，它可能是你传递给 Observable 构造函数的函数，但大多数时候它是一个库实现，它定义了 Observable 将发送什么以及何时发送。这意味着调用 `subscribe` 实际上是 Observable 开始工作的时刻，而不是它被创建的时刻，因为它通常是这样想的。
    *
    * Apart from starting the execution of an Observable, this method allows you to listen for values
    * that an Observable emits, as well as for when it completes or errors. You can achieve this in two
    * of the following ways.
    *
-   * 除了开始执行 Observable 之外，此方法还允许你侦听 Observable 发出的值，以及它何时完成或出错。你可以通过以下两种方式实现此目的。
+   * 除了开始执行 Observable 之外，此方法还允许你侦听 Observable 发送的值，以及它何时完成或出错。你可以通过以下两种方式实现此目的。
    *
    * The first way is creating an object that implements {@link Observer} interface. It should have methods
    * defined by that interface, but note that it should be just a regular JavaScript object, which you can create
@@ -155,7 +155,7 @@ export class Observable<T> implements Subscribable<T> {
    * since `subscribe` recognizes these functions by where they were placed in function call. When it comes
    * to the `error` function, as with an Observer, if not provided, errors emitted by an Observable will be thrown asynchronously.
    *
-   * 第二种方法是完全放弃 Observer 对象，并简单地提供回调函数来代替其方法。这意味着你可以提供三个函数作为 `subscribe` 的参数，其中第一个函数等效于 `next` 方法，第二个函数等效于 `error` 方法，第三个函数等效于 `complete` 方法。就像观察者的情况一样，如果你不需要监听某些东西，你可以通过传递 `undefined` 或 `null` 来省略一个函数，因为 `subscribe` 通过它们在函数调用中的位置来识别这些函数。当涉及到 `error` 函数时，与 Observer 一样，如果未提供，则 Observable 发出的错误将被异步抛出。
+   * 第二种方法是完全放弃 Observer 对象，并简单地提供回调函数来代替其方法。这意味着你可以提供三个函数作为 `subscribe` 的参数，其中第一个函数等效于 `next` 方法，第二个函数等效于 `error` 方法，第三个函数等效于 `complete` 方法。就像观察者的情况一样，如果你不需要监听某些东西，你可以通过传递 `undefined` 或 `null` 来省略一个函数，因为 `subscribe` 通过它们在函数调用中的位置来识别这些函数。当涉及到 `error` 函数时，与 Observer 一样，如果未提供，则 Observable 发送的错误将被异步抛出。
    *
    * You can, however, subscribe with no parameters at all. This may be the case where you're not interested in terminal events
    * and you also handled emissions internally by using operators (e.g. using `tap`).
@@ -174,7 +174,7 @@ export class Observable<T> implements Subscribable<T> {
    * by default emits all its values synchronously. Always check documentation for how given Observable
    * will behave when subscribed and if its default behavior can be modified with a `scheduler`.
    *
-   * 请记住，提供给 `subscribe` 的回调不能保证被异步调用。决定何时调用这些函数的是 Observable 本身。例如 {@link of} 默认同步地发出它的所有值。始终检查文档，了解给定的 Observable 在订阅时的行为方式以及是否可以使用 `scheduler` 修改其默认行为。
+   * 请记住，提供给 `subscribe` 的回调不能保证被异步调用。决定何时调用这些函数的是 Observable 本身。例如 {@link of} 默认同步地发送它的所有值。始终检查文档，了解给定的 Observable 在订阅时的行为方式以及是否可以使用 `scheduler` 修改其默认行为。
    *
    * ## Examples
    *
@@ -268,7 +268,7 @@ export class Observable<T> implements Subscribable<T> {
    * or the first of three possible handlers, which is the handler for each value emitted from the subscribed
    * Observable.
    *
-   *（可选）具有要调用的方法的观察者，或者三个可能的处理器中的第一个，它是从订阅的 Observable 发出的每个值的处理器。
+   *（可选）具有要调用的方法的观察者，或者三个可能的处理器中的第一个，它是从订阅的 Observable 发送的每个值的处理器。
    *
    * @param {Function} error (optional) A handler for a terminal event resulting from an error. If no error handler is provided,
    * the error will be thrown asynchronously as unhandled.
@@ -372,7 +372,7 @@ export class Observable<T> implements Subscribable<T> {
    * ```
    * @param next a handler for each value emitted by the observable
    *
-   * 可观察者发出的每个值的处理器
+   * 可观察者发送的每个值的处理器
    *
    * @return a promise that either resolves on observable completion or
    *  rejects with the handled error
@@ -385,7 +385,7 @@ export class Observable<T> implements Subscribable<T> {
   /**
    * @param next a handler for each value emitted by the observable
    *
-   * 可观察者发出的每个值的处理器
+   * 可观察者发送的每个值的处理器
    *
    * @param promiseCtor a constructor function used to instantiate the Promise
    *
@@ -576,7 +576,7 @@ export class Observable<T> implements Subscribable<T> {
    * Subscribe to this Observable and get a Promise resolving on
    * `complete` with the last emission (if any).
    *
-   * 订阅这个 Observable 并获得一个 Promise 解决 `complete` 最后一个发射（如果有的话）。
+   * 订阅这个 Observable 并获得一个 Promise 解决 `complete` 最后一个发送（如果有的话）。
    *
    * **WARNING**: Only use this with observables you *know* will complete. If the source
    * observable does not complete, you will end up with a promise that is hung up, and
@@ -593,7 +593,7 @@ export class Observable<T> implements Subscribable<T> {
    * rejects on an error. If there were no emissions, Promise
    * resolves with undefined.
    *
-   * 使用最后一个值发出的 Promise，或拒绝错误。如果没有排放，Promise 以 undefined 解析。
+   * 使用最后一个值发送的 Promise，或拒绝错误。如果没有排放，Promise 以 undefined 解析。
    *
    * @deprecated Replaced with {@link firstValueFrom} and {@link lastValueFrom}. Will be removed in v8. Details: <https://rxjs.dev/deprecations/to-promise>
    *

@@ -51,7 +51,7 @@ export function of<A extends readonly unknown[]>(...values: A): Observable<Value
  * Unlike {@link from}, it does not do any flattening and emits each argument in whole
  * as a separate `next` notification.
  *
- * 与 {@link from} 不同，它不进行任何展平，而是将每个参数作为单独的 `next` 通知整体发出。
+ * 与 {@link from} 不同，它不进行任何展平，而是将每个参数作为单独的 `next` 通知整体发送。
  *
  * ## Examples
  *
@@ -59,7 +59,7 @@ export function of<A extends readonly unknown[]>(...values: A): Observable<Value
  *
  * Emit the values `10, 20, 30`
  *
- * 发出值 `10, 20, 30`
+ * 发送值 `10, 20, 30`
  *
  * ```ts
  * import { of } from 'rxjs';
@@ -80,7 +80,7 @@ export function of<A extends readonly unknown[]>(...values: A): Observable<Value
  *
  * Emit the array `[1, 2, 3]`
  *
- * 发出数组 `[1, 2, 3]`
+ * 发送数组 `[1, 2, 3]`
  *
  * ```ts
  * import { of } from 'rxjs';
@@ -100,12 +100,12 @@ export function of<A extends readonly unknown[]>(...values: A): Observable<Value
  * @see {@link range}
  * @param {...T} values A comma separated list of arguments you want to be emitted
  *
- * 要发出的参数的逗号分隔列表
+ * 要发送的参数的逗号分隔列表
  *
  * @return {Observable} An Observable that emits the arguments
  * described above and then completes.
  *
- * 发出上述参数然后完成的 Observable。
+ * 发送上述参数然后完成的 Observable。
  *
  */
 export function of<T>(...args: Array<T | SchedulerLike>): Observable<T> {

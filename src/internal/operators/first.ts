@@ -27,12 +27,12 @@ export function first<T, D = T>(
  * Emits only the first value (or the first value that meets some condition)
  * emitted by the source Observable.
  *
- * 仅发出源 Observable 发出的第一个值（或满足某些条件的第一个值）。
+ * 仅发送源 Observable 发送的第一个值（或满足某些条件的第一个值）。
  *
  * <span class="informal">Emits only the first value. Or emits only the first
  * value that passes some test.</span>
  *
- * <span class="informal">仅发出第一个值。或仅发出通过某些测试的第一个值。</span>
+ * <span class="informal">仅发送第一个值。或仅发送通过某些测试的第一个值。</span>
  *
  * ![](first.png)
  *
@@ -41,7 +41,7 @@ export function first<T, D = T>(
  * emits the first value of the source that matches the specified condition. Throws an error if
  * `defaultValue` was not provided and a matching element is not found.
  *
- * 如果不带参数调用，`first` 发出源 Observable 的第一个值，然后完成。如果使用 `predicate` 函数调用，则 `first` 发出与指定条件匹配的源的第一个值。如果未提供 `defaultValue` 且未找到匹配元素，则会引发错误。
+ * 如果不带参数调用，`first` 发送源 Observable 的第一个值，然后完成。如果使用 `predicate` 函数调用，则 `first` 发送与指定条件匹配的源的第一个值。如果未提供 `defaultValue` 且未找到匹配元素，则会引发错误。
  *
  * ## Examples
  *
@@ -49,7 +49,7 @@ export function first<T, D = T>(
  *
  * Emit only the first click that happens on the DOM
  *
- * 仅发出在 DOM 上发生的第一次点击
+ * 仅发送在 DOM 上发生的第一次点击
  *
  * ```ts
  * import { fromEvent, first } from 'rxjs';
@@ -61,7 +61,7 @@ export function first<T, D = T>(
  *
  * Emits the first click that happens on a DIV
  *
- * 发出在 DIV 上发生的第一次点击
+ * 发送在 DIV 上发生的第一次点击
  *
  * ```ts
  * import { fromEvent, first } from 'rxjs';
@@ -90,7 +90,7 @@ export function first<T, D = T>(
  * @return A function that returns an Observable that emits the first item that
  * matches the condition.
  *
- * 一个返回 Observable 的函数，该 Observable 发出与条件匹配的第一个条目。
+ * 一个返回 Observable 的函数，该 Observable 发送与条件匹配的第一个条目。
  *
  */
 export function first<T, D>(

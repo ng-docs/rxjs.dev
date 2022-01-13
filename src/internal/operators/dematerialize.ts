@@ -7,7 +7,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * Converts an Observable of {@link ObservableNotification} objects into the emissions
  * that they represent.
  *
- * 将 {@link ObservableNotification} 对象的 Observable 转换为它们所代表的发射。
+ * 将 {@link ObservableNotification} 对象的 Observable 转换为它们所代表的发送。
  *
  * <span class="informal">Unwraps {@link ObservableNotification} objects as actual `next`,
  * `error` and `complete` emissions. The opposite of {@link materialize}.</span>
@@ -22,7 +22,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * notifications are then unwrapped using the metadata they contain, and emitted
  * as `next`, `error`, and `complete` on the output Observable.
  *
- * 假设 `dematerialize` 操作的 Observable 只发出 {@link ObservableNotification} 对象作为 `next` 发射，并且不发射任何 `error`。这样的 Observable 是 `materialize` 操作的输出。然后使用它们包含的元数据对这些通知进行解包，并在输出 Observable 上发出 `next`、`error` 和 `complete`。
+ * 假设 `dematerialize` 操作的 Observable 只发送 {@link ObservableNotification} 对象作为 `next` 发送，并且不发送任何 `error`。这样的 Observable 是 `materialize` 操作的输出。然后使用它们包含的元数据对这些通知进行解包，并在输出 Observable 上发送 `next`、`error` 和 `complete`。
  *
  * Use this operator in conjunction with {@link materialize}.
  *
@@ -61,7 +61,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * notifications embedded in Notification objects emitted by the source
  * Observable.
  *
- * 一个返回 Observable 的函数，该 Observable 发出嵌入在由源 Observable 发出的 Notification 对象中的条目和通知。
+ * 一个返回 Observable 的函数，该 Observable 发送嵌入在由源 Observable 发送的 Notification 对象中的条目和通知。
  *
  */
 export function dematerialize<N extends ObservableNotification<any>>(): OperatorFunction<N, ValueFromNotification<N>> {

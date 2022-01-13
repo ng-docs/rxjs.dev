@@ -27,12 +27,12 @@ export function findIndex<T>(predicate: (value: T, index: number, source: Observ
  * Emits only the index of the first value emitted by the source Observable that
  * meets some condition.
  *
- * 仅发出满足某些条件的源 Observable 发出的第一个值的索引。
+ * 仅发送满足某些条件的源 Observable 发送的第一个值的索引。
  *
  * <span class="informal">It's like {@link find}, but emits the index of the
  * found value, not the value itself.</span>
  *
- * <span class="informal">它类似于 {@link find}，但发出找到值的索引，而不是值本身。</span>
+ * <span class="informal">它类似于 {@link find}，但发送找到值的索引，而不是值本身。</span>
  *
  * ![](findIndex.png)
  *
@@ -42,7 +42,7 @@ export function findIndex<T>(predicate: (value: T, index: number, source: Observ
  * {@link first}, the `predicate` is required in `findIndex`, and does not emit
  * an error if a valid value is not found.
  *
- * `findIndex` 在源 Observable 中搜索与 `predicate` 包含的指定条件匹配的第一项，并返回源中第一次出现的（从零开始的）索引。与 {@link first} 不同，`predicate` 在 `findIndex` 中是必需的，如果未找到有效值，则不会发出错误。
+ * `findIndex` 在源 Observable 中搜索与 `predicate` 包含的指定条件匹配的第一项，并返回源中第一次出现的（从零开始的）索引。与 {@link first} 不同，`predicate` 在 `findIndex` 中是必需的，如果未找到有效值，则不会发送错误。
  *
  * ## Example
  *
@@ -50,7 +50,7 @@ export function findIndex<T>(predicate: (value: T, index: number, source: Observ
  *
  * Emit the index of first click that happens on a DIV element
  *
- * 发出发生在 DIV 元素上的第一次点击的索引
+ * 发送发生在 DIV 元素上的第一次点击的索引
  *
  * ```ts
  * import { fromEvent, findIndex } from 'rxjs';
@@ -77,7 +77,7 @@ export function findIndex<T>(predicate: (value: T, index: number, source: Observ
  * @return A function that returns an Observable that emits the index of the
  * first item that matches the condition.
  *
- * 一个返回 Observable 的函数，它发出与条件匹配的第一个条目的索引。
+ * 一个返回 Observable 的函数，它发送与条件匹配的第一个条目的索引。
  *
  */
 export function findIndex<T>(

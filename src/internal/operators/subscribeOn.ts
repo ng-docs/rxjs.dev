@@ -43,11 +43,11 @@ import { operate } from '../util/lift';
  *
  * Both Observable `a` and `b` will emit their values directly and synchronously once they are subscribed to.
  *
- * 一旦订阅，Observable `a` 和 `b` 都会直接同步地发出它们的值。
+ * 一旦订阅，Observable `a` 和 `b` 都会直接同步地发送它们的值。
  *
  * If we instead use the `subscribeOn` operator declaring that we want to use the {@link asyncScheduler} for values emitted by Observable `a`:
  *
- * 如果我们改为使用 `subscribeOn` 操作符声明我们想要使用 {@link asyncScheduler} 来处理 Observable `a` 发出的值：
+ * 如果我们改为使用 `subscribeOn` 操作符声明我们想要使用 {@link asyncScheduler} 来处理 Observable `a` 发送的值：
  *
  * ```ts
  * import { of, subscribeOn, asyncScheduler, merge } from 'rxjs';
@@ -69,7 +69,7 @@ import { operate } from '../util/lift';
  * The reason for this is that Observable `b` emits its values directly and synchronously like before
  * but the emissions from `a` are scheduled on the event loop because we are now using the {@link asyncScheduler} for that specific Observable.
  *
- * 这样做的原因是 Observable `b` 像以前一样直接和同步地发出它的值，但是来自 `a` 的发射是在事件循环上安排的，因为我们现在正在为那个特定的 Observable 使用 {@link asyncScheduler}。
+ * 这样做的原因是 Observable `b` 像以前一样直接和同步地发送它的值，但是来自 `a` 的发送是在事件循环上安排的，因为我们现在正在为那个特定的 Observable 使用 {@link asyncScheduler}。
  *
  * @param scheduler The {@link SchedulerLike} to perform subscription actions on.
  *

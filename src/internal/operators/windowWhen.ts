@@ -16,7 +16,7 @@ import { innerFrom } from '../observable/innerFrom';
  * <span class="informal">It's like {@link bufferWhen}, but emits a nested
  * Observable instead of an array.</span>
  *
- * <span class="informal">它类似于 {@link bufferWhen}，但发出一个嵌套的 Observable 而不是一个数组。</span>
+ * <span class="informal">它类似于 {@link bufferWhen}，但发送一个嵌套的 Observable 而不是一个数组。</span>
  *
  * ![](windowWhen.png)
  *
@@ -26,7 +26,7 @@ import { innerFrom } from '../observable/innerFrom';
  * produced by the specified `closingSelector` function emits an item. The first
  * window is opened immediately when subscribing to the output Observable.
  *
- * 返回一个 Observable，它发出从源 Observable 收集的条目的窗口。输出 Observable 发出连接的、不重叠的窗口。每当指定的 `closingSelector` 函数生成的 Observable 发出一个条目时，它就会发出当前窗口并打开一个新窗口。第一个窗口在订阅输出 Observable 时立即打开。
+ * 返回一个 Observable，它发送从源 Observable 收集的条目的窗口。输出 Observable 发送连接的、不重叠的窗口。每当指定的 `closingSelector` 函数生成的 Observable 发送一个条目时，它就会发送当前窗口并打开一个新窗口。第一个窗口在订阅输出 Observable 时立即打开。
  *
  * ## Example
  *
@@ -34,7 +34,7 @@ import { innerFrom } from '../observable/innerFrom';
  *
  * Emit only the first two clicks events in every window of [1-5] random seconds
  *
- * 仅在[1-5][1-5]随机秒的每个窗口中发出前两次单击事件
+ * 仅在[1-5][1-5]随机秒的每个窗口中发送前两次单击事件
  *
  * ```ts
  * import { fromEvent, windowWhen, interval, map, take, mergeAll } from 'rxjs';
@@ -56,7 +56,7 @@ import { innerFrom } from '../observable/innerFrom';
  * arguments and returns an Observable that signals (on either `next` or
  * `complete`) when to close the previous window and start a new one.
  *
- * 一个不带参数并返回一个 Observable 的函数，该 Observable 发出信号（在 `next` 或 `complete` 上）何时关闭前一个窗口并开始一个新窗口。
+ * 一个不带参数并返回一个 Observable 的函数，该 Observable 发送信号（在 `next` 或 `complete` 上）何时关闭前一个窗口并开始一个新窗口。
  *
  * @return A function that returns an Observable of windows, which in turn are
  * Observables.

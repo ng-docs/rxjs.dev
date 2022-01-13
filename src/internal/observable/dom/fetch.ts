@@ -16,23 +16,23 @@ export function fromFetch(input: string | Request, init?: RequestInit): Observab
  * Uses [the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to
  * make an HTTP request.
  *
- * 使用[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)发出 HTTP 请求。
+ * 使用 [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) 发送 HTTP 请求。
  *
  * **WARNING** Parts of the fetch API are still experimental. `AbortController` is
  * required for this implementation to work and use cancellation appropriately.
  *
- * **警告**fetch API 的部分内容仍处于试验阶段。此实现需要 `AbortController` 才能正常工作并适当地使用取消。
+ * **警告** fetch API 的部分内容仍处于试验阶段。此实现需要 `AbortController` 才能正常工作和使用取消功能。
  *
  * Will automatically set up an internal [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
  * in order to teardown the internal `fetch` when the subscription tears down.
  *
- * 将自动设置一个内部[AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)以便在订阅拆解时拆解内部 `fetch`。
+ * 将自动设置一个内部 [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) 以便在订阅拆解时拆解内部 `fetch`。
  *
  * If a `signal` is provided via the `init` argument, it will behave like it usually does with
  * `fetch`. If the provided `signal` aborts, the error that `fetch` normally rejects with
  * in that scenario will be emitted as an error from the observable.
  *
- * 如果一个 `signal` 是通过 `init` 参数提供的，它的行为就像它通常对 `fetch` 所做的那样。如果提供的 `signal` 中止，那么在这种情况下通常会拒绝 `fetch` 的错误将作为 observable 的错误发出。
+ * 如果一个 `signal` 是通过 `init` 参数提供的，它的行为就像它通常对 `fetch` 所做的那样。如果提供的 `signal` 中止了，那么在这种情况下通常会拒绝 `fetch` 的错误，并将其作为此 observable 的错误进行发送。
  *
  * ## Examples
  *
@@ -40,7 +40,7 @@ export function fromFetch(input: string | Request, init?: RequestInit): Observab
  *
  * Basic use
  *
- * 基本用途
+ * 基本用法
  *
  * ```ts
  * import { fromFetch } from 'rxjs/fetch';
@@ -77,7 +77,7 @@ export function fromFetch(input: string | Request, init?: RequestInit): Observab
  * the promise returned by `fetch` will resolve as soon as the response's headers are
  * received.
  *
- * 对于使用[分块传输编码](https://tools.ietf.org/html/rfc7230#section-3.3.1)的 HTTP 响应，`fetch` 返回的承诺将在收到响应的标头后立即解析。
+ * 对于使用[分块传输编码](https://tools.ietf.org/html/rfc7230#section-3.3.1)的 HTTP 响应，`fetch` 返回的 Promise 将在收到响应对象的标头后立即解析。
  *
  * That means the `fromFetch` observable will emit a `Response` - and will
  * then complete - before the body is received. When one of the methods on the
@@ -85,12 +85,12 @@ export function fromFetch(input: string | Request, init?: RequestInit): Observab
  * resolve until the entire body has been received. Unsubscribing from any observable
  * that uses the promise as an observable input will not abort the request.
  *
- * 这意味着 `fromFetch` observable 将在接收到主体之前发出一个 `Response` - 然后完成。当调用 `Response` 上的其中一种方法（如 `text()` 或 `json()` 时，返回的 Promise 将在收到整个正文之前不会解析。退订任何使用 Promise 作为可观察输入的可观察者不会中止请求。
+ * 这意味着 `fromFetch` observable 将在接收到 body 之前发送一个 `Response` - 然后完成。当调用 `Response` 上的方法之一（如 `text()` 或 `json()` 时，返回的 Promise 将在收到整个 body 之前不会解析。退订任何使用 Promise 作为可观察输入的可观察者不会中止请求。
  *
  * To facilitate aborting the retrieval of responses that use chunked transfer encoding,
  * a `selector` can be specified via the `init` parameter:
  *
- * 为了便于中止检索使用分块传输编码的响应，可以通过 `init` 参数指定 `selector` ：
+ * 为了便于中止检索使用分块传输编码的响应对象，可以通过 `init` 参数指定 `selector` ：
  *
  * ```ts
  * import { of } from 'rxjs';
@@ -117,7 +117,7 @@ export function fromFetch(input: string | Request, init?: RequestInit): Observab
  * @returns An Observable, that when subscribed to, performs an HTTP request using the native `fetch`
  * function. The {@link Subscription} is tied to an `AbortController` for the fetch.
  *
- * 一个 Observable，当被订阅时，它使用本机 `fetch` 函数执行 HTTP 请求。{@link Subscription} 绑定到 `AbortController` 以进行获取。
+ * 一个 Observable，当被订阅时，它使用原生 `fetch` 函数执行 HTTP 请求。{@link Subscription} 绑定到 `AbortController` 以进行获取。
  *
  */
 export function fromFetch<T>(

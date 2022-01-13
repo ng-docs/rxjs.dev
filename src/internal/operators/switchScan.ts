@@ -9,7 +9,7 @@ import { operate } from '../util/lift';
  * accumulator function itself returns an Observable, emitting values
  * only from the most recently returned Observable.
  *
- * 在源 Observable 上应用一个累加器函数，其中累加器函数本身返回一个 Observable，仅从最近返回的 Observable 发出值。
+ * 在源 Observable 上应用一个累加器函数，其中累加器函数本身返回一个 Observable，仅从最近返回的 Observable 发送值。
  *
  * <span class="informal">It's like {@link mergeScan}, but only the most recent
  * Observable returned by the accumulator is merged into the outer Observable.</span>

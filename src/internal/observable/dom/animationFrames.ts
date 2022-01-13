@@ -12,7 +12,7 @@ import { animationFrameProvider } from '../../scheduler/animationFrameProvider';
  * Emits the amount of time elapsed since subscription and the timestamp on each animation frame.
  * Defaults to milliseconds provided to the requestAnimationFrame's callback. Does not end on its own.
  *
- * 发出自订阅以来经过的时间量和每个动画帧上的时间戳。默认为提供给 requestAnimationFrame 回调的毫秒数。不会自行结束。
+ * 发送自订阅以来经过的时间量和每个动画帧上的时间戳。默认为提供给 requestAnimationFrame 回调的毫秒数。不会自行结束。
  *
  * Every subscription will start a separate animation loop. Since animation frames are always scheduled
  * by the browser to occur directly before a repaint, scheduling more than one animation frame synchronously

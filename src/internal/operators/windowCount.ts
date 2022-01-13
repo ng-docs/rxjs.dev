@@ -8,12 +8,12 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * Branch out the source Observable values as a nested Observable with each
  * nested Observable emitting at most `windowSize` values.
  *
- * 将源 Observable 值分支为嵌套的 Observable，每个嵌套的 Observable 最多发射 `windowSize` 值。
+ * 将源 Observable 值分支为嵌套的 Observable，每个嵌套的 Observable 最多发送 `windowSize` 值。
  *
  * <span class="informal">It's like {@link bufferCount}, but emits a nested
  * Observable instead of an array.</span>
  *
- * <span class="informal">它类似于 {@link bufferCount}，但发出一个嵌套的 Observable 而不是一个数组。</span>
+ * <span class="informal">它类似于 {@link bufferCount}，但发送一个嵌套的 Observable 而不是一个数组。</span>
  *
  * ![](windowCount.png)
  *
@@ -26,7 +26,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * started immediately at the start of the source and when each window completes
  * with size `windowSize`.
  *
- * 返回一个 Observable，它发出从源 Observable 收集的条目的窗口。输出 Observable 会在每个 `startWindowEvery` 条目中发出窗口，每个条目包含不超过 `windowSize` 个条目。当源 Observable 完成或遇到错误时，输出 Observable 会发出当前窗口并传播来自源 Observable 的通知。如果没有提供 `startWindowEvery`，那么新窗口会在源文件的开始处以及每个窗口以 `windowSize` 大小完成时立即启动。
+ * 返回一个 Observable，它发送从源 Observable 收集的条目的窗口。输出 Observable 会在每个 `startWindowEvery` 条目中发送窗口，每个条目包含不超过 `windowSize` 个条目。当源 Observable 完成或遇到错误时，输出 Observable 会发送当前窗口并传播来自源 Observable 的通知。如果没有提供 `startWindowEvery`，那么新窗口会在源文件的开始处以及每个窗口以 `windowSize` 大小完成时立即启动。
  *
  * ## Examples
  *
@@ -70,7 +70,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * @param {number} windowSize The maximum number of values emitted by each
  * window.
  *
- * 每个窗口发出的最大值数。
+ * 每个窗口发送的最大值数。
  *
  * @param {number} [startWindowEvery] Interval at which to start a new window.
  * For example if `startWindowEvery` is `2`, then a new window will be started

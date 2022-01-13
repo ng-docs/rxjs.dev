@@ -30,7 +30,7 @@ export function bufferTime<T>(
  * <span class="informal">Collects values from the past as an array, and emits
  * those arrays periodically in time.</span>
  *
- * <span class="informal">将过去的值作为数组收集，并及时定期发出这些数组。</span>
+ * <span class="informal">将过去的值作为数组收集，并及时定期发送这些数组。</span>
  *
  * ![](bufferTime.png)
  *
@@ -43,7 +43,7 @@ export function bufferTime<T>(
  * `maxBufferSize` is specified, the buffer will be closed either after
  * `bufferTimeSpan` milliseconds or when it contains `maxBufferSize` elements.
  *
- * 在特定持续时间 `bufferTimeSpan` 中缓冲来自源的值。除非给定可选参数 `bufferCreationInterval`，否则它会每隔 `bufferTimeSpan` 毫秒发出并重置缓冲区。如果给定了 `bufferCreationInterval`，则此操作符每 `bufferCreationInterval` 毫秒打开缓冲区，并每 `bufferTimeSpan` 毫秒关闭（发出和重置）缓冲区。当指定可选参数 `maxBufferSize` 时，缓冲区将在 `bufferTimeSpan` 毫秒后或包含 `maxBufferSize` 元素时关闭。
+ * 在特定持续时间 `bufferTimeSpan` 中缓冲来自源的值。除非给定可选参数 `bufferCreationInterval`，否则它会每隔 `bufferTimeSpan` 毫秒发送并重置缓冲区。如果给定了 `bufferCreationInterval`，则此操作符每 `bufferCreationInterval` 毫秒打开缓冲区，并每 `bufferTimeSpan` 毫秒关闭（发送和重置）缓冲区。当指定可选参数 `maxBufferSize` 时，缓冲区将在 `bufferTimeSpan` 毫秒后或包含 `maxBufferSize` 元素时关闭。
  *
  * ## Examples
  *
@@ -51,7 +51,7 @@ export function bufferTime<T>(
  *
  * Every second, emit an array of the recent click events
  *
- * 每秒发出一组最近的点击事件
+ * 每秒发送一组最近的点击事件
  *
  * ```ts
  * import { fromEvent, bufferTime } from 'rxjs';
@@ -63,7 +63,7 @@ export function bufferTime<T>(
  *
  * Every 5 seconds, emit the click events from the next 2 seconds
  *
- * 每 5 秒，从接下来的 2 秒发出点击事件
+ * 每 5 秒，从接下来的 2 秒发送点击事件
  *
  * ```ts
  * import { fromEvent, bufferTime } from 'rxjs';
@@ -109,7 +109,7 @@ export function bufferTime<T>(bufferTimeSpan: number, ...otherArgs: any[]): Oper
      * does not alter the buffer. Also checks to see if a new buffer needs to be started
      * after the emit.
      *
-     * 是否从记录中发出缓冲区的工作，确保在发出之前删除记录，因此可重入代码（可能来自某些自定义调度）不会改变缓冲区。还检查发射后是否需要启动新缓冲区。
+     * 是否从记录中发送缓冲区的工作，确保在发送之前删除记录，因此可重入代码（可能来自某些自定义调度）不会改变缓冲区。还检查发送后是否需要启动新缓冲区。
      *
      */
     const emit = (record: { buffer: T[]; subs: Subscription }) => {
@@ -125,7 +125,7 @@ export function bufferTime<T>(bufferTimeSpan: number, ...otherArgs: any[]): Oper
      * the work of scheduling a job at the requested bufferTimeSpan
      * that will emit the buffer (if it's not unsubscribed before then).
      *
-     * 每次我们开始一个新的缓冲区时调用。这会在请求的 bufferTimeSpan 处调度作业，该作业将发出缓冲区（如果在此之前未退订）。
+     * 每次我们开始一个新的缓冲区时调用。这会在请求的 bufferTimeSpan 处调度作业，该作业将发送缓冲区（如果在此之前未退订）。
      *
      */
     const startBuffer = () => {

@@ -28,7 +28,7 @@ import { EMPTY } from './empty';
  * cancels subscription to an Observable via `unsubscribe`, so `using` can be used as a hook, allowing you to make
  * sure that all resources which need to exist during an Observable execution will be disposed at appropriate time.
  *
- * 当 `using` 返回的 Observable 被订阅时，第二个函数返回的 Observable 也会被订阅。它的所有通知（下一个值、完成和错误事件）都将由输出 Observable 发出而不会发生变化。但是，如果有人退订 Observable 或源 Observable 本身完成或出错，则将调用资源对象上的 `unsubscribe` 方法。这可用于进行任何必要的清理，否则必须手动处理。请注意，当有人通过 `unsubscribe` 退订 Observable 时，不会发出完整或错误通知，因此 `using` 可以用作挂钩，允许你确保在 Observable 执行期间需要存在的所有资源都将在适当的时间释放.
+ * 当 `using` 返回的 Observable 被订阅时，第二个函数返回的 Observable 也会被订阅。它的所有通知（下一个值、完成和错误事件）都将由输出 Observable 发送而不会发生变化。但是，如果有人退订 Observable 或源 Observable 本身完成或出错，则将调用资源对象上的 `unsubscribe` 方法。这可用于进行任何必要的清理，否则必须手动处理。请注意，当有人通过 `unsubscribe` 退订 Observable 时，不会发送完整或错误通知，因此 `using` 可以用作挂钩，允许你确保在 Observable 执行期间需要存在的所有资源都将在适当的时间释放.
  *
  * @see {@link defer}
  * @param {function(): ISubscription} resourceFactory A function which creates any resource object

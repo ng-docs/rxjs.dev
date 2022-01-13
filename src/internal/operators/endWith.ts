@@ -27,7 +27,7 @@ export function endWith<T, A extends unknown[] = T[]>(...values: A): OperatorFun
  * Returns an observable that will emit all values from the source, then synchronously emit
  * the provided value(s) immediately after the source completes.
  *
- * 返回一个 observable，它将从源发出所有值，然后在源完成后立即同步发出提供的值。
+ * 返回一个 observable，它将从源发送所有值，然后在源完成后立即同步发送提供的值。
  *
  * NOTE: Passing a last argument of a Scheduler is _deprecated_, and may result in incorrect
  * types in TypeScript.
@@ -48,7 +48,7 @@ export function endWith<T, A extends unknown[] = T[]>(...values: A): OperatorFun
  * Emit values to know when an interval starts and stops. The interval will
  * stop when a user clicks anywhere on the document.
  *
- * 发出值以了解间隔何时开始和停止。当用户单击文档上的任意位置时，间隔将停止。
+ * 发送值以了解间隔何时开始和停止。当用户单击文档上的任意位置时，间隔将停止。
  *
  * ```ts
  * import { interval, map, fromEvent, startWith, takeUntil, endWith } from 'rxjs';
@@ -78,13 +78,13 @@ export function endWith<T, A extends unknown[] = T[]>(...values: A): OperatorFun
  * @see {@link takeUntil}
  * @param values Items you want the modified Observable to emit last.
  *
- * 你希望修改后的 Observable 最后发出的条目。
+ * 你希望修改后的 Observable 最后发送的条目。
  *
  * @return A function that returns an Observable that emits all values from the
  * source, then synchronously emits the provided value(s) immediately after the
  * source completes.
  *
- * 一个返回 Observable 的函数，该 Observable 从源发出所有值，然后在源完成后立即同步发出提供的值。
+ * 一个返回 Observable 的函数，该 Observable 从源发送所有值，然后在源完成后立即同步发送提供的值。
  *
  */
 export function endWith<T>(...values: Array<T | SchedulerLike>): MonoTypeOperatorFunction<T> {

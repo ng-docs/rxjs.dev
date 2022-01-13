@@ -2,7 +2,7 @@
   labelCn: 我已经有一个可观察者，并且
   children:
     - label: I want to change each emitted value
-      labelCn: 我要把它发出的每个值改成
+      labelCn: 我要把它发送的每个值改成
       children:
         - label: to be a constant value
           labelCn: 一个常量值
@@ -13,11 +13,11 @@
           children:
             - label: map
     - label: I want to pick a property off each emitted value
-      labelCn: 我要从它发出的每个值中取出一个属性
+      labelCn: 我要从它发送的每个值中取出一个属性
       children:
         - label: pluck
     - label: I want to spy the values being emitted without affecting them
-      labelCn: 我要监听即将发出的值，但不想影响它们
+      labelCn: 我要监听即将发送的值，但不想影响它们
       children:
         - label: tap
     - label: I want to allow some values to pass
@@ -58,7 +58,7 @@
               children:
                 - label: takeLast
         - label: until another Observable emits a value
-          labelCn: 直到另一个可观察者发出了值
+          labelCn: 直到另一个可观察者发送了值
           children:
             - label: takeUntil
     - label: I want to ignore values
@@ -84,38 +84,38 @@
           children:
             - label: skipLast
         - label: until another Observable emits a value
-          labelCn: 直到另一个可观察者发出了值
+          labelCn: 直到另一个可观察者发送了值
           children:
             - label: skipUntil
         - label: that match some previous value
-          labelCn: 与某些以前发出的值匹配
+          labelCn: 与某些以前发送的值匹配
           children:
             - label: according to value equality
               labelCn: 根据值是否相等
               children:
                 - label: emitted just before the current value
-                  labelCn: 发出恰好在当前值前面的那个
+                  labelCn: 发送恰好在当前值前面的那个
                   children:
                     - label: distinctUntilChanged
                 - label: emitted some time in the past
-                  labelCn: 以前任何时候曾发出过
+                  labelCn: 以前任何时候曾发送过
                   children:
                     - label: distinct
             - label: according to a key or object property
               labelCn: 根据一个某个键或对象属性
               children:
                 - label: emitted just before the current value
-                  labelCn: 发出恰好在当前值前面的那个
+                  labelCn: 发送恰好在当前值前面的那个
                   children:
                     - label: distinctUntilKeyChanged
         - label: that occur too frequently
           labelCn: 发生的过于频繁
           children:
             - label: by emitting the first value in each time window
-              labelCn: 发出每个时间窗口中的第一个值
+              labelCn: 发送每个时间窗口中的第一个值
               children:
                 - label: where time windows are determined by another Observable's emissions
-                  labelCn: 这个时间窗口是基于另一个可观察者的发出情况
+                  labelCn: 这个时间窗口是基于另一个可观察者的发送情况
                   children:
                     - label: throttle
                 - label: where time windows are determined by a time duration
@@ -123,10 +123,10 @@
                   children:
                     - label: throttleTime
             - label: by emitting the last value in each time window
-              labelCn: 发出每个时间窗口中的最后一个值
+              labelCn: 发送每个时间窗口中的最后一个值
               children:
                 - label: where time windows are determined by another Observable's emissions
-                  labelCn: 这个时间窗口是基于另一个可观察者的发出情况
+                  labelCn: 这个时间窗口是基于另一个可观察者的发送情况
                   children:
                     - label: audit
                 - label: where time windows are determined by a time duration
@@ -134,7 +134,7 @@
                   children:
                     - label: auditTime
             - label: by emitting the last value as soon as enough silence has occured
-              labelCn: 等足够平静时就发出最后一个值
+              labelCn: 等足够平静时就发送最后一个值
               children:
                 - label: where the silence duration threshold is determined by another Observable
                   labelCn: 此平静的间隔阈值由另一个可观察者决定
@@ -145,22 +145,22 @@
                   children:
                     - label: debounceTime
     - label: I want to compute a formula using all values emitted
-      labelCn: 我要使用已发出的所有值做某种计算
+      labelCn: 我要使用已发送的所有值做某种计算
       children:
         - label: and only output the final computed value
           labelCn: 并且只输出最终计算出的值
           children:
             - label: reduce
         - label: and output the computed values when the source emits a value
-          labelCn: 并且每当来源发出某个值时就输出计算好的值
+          labelCn: 并且每当来源发送某个值时就输出计算好的值
           children:
             - label: scan
         - label: and output the computed values as a nested Observable when the source emits a value
-          labelCn: 并且当来源发出某个值时，就把计算好的值输出为一个嵌套可观察者
+          labelCn: 并且当来源发送某个值时，就把计算好的值输出为一个嵌套可观察者
           children:
             - label: mergeScan
         - label: and output the computed values as a nested Observable when the source emits a value while unsubscribing from the previous nested Observable
-          labelCn: 并且每当来源发出某个值时，就把计算好的值输出为一个嵌套可观察者，同时取消对前一个嵌套可观察者的订阅
+          labelCn: 并且每当来源发送某个值时，就把计算好的值输出为一个嵌套可观察者，同时取消对前一个嵌套可观察者的订阅
           children:
             - label: switchScan
     - label: I want to wrap its messages with metadata
@@ -171,7 +171,7 @@
           children:
             - label: materialize
         - label: that includes the time past since the last emitted value
-          labelCn: 次元数据包含从最后一次发出值开始已过去时间
+          labelCn: 次元数据包含从最后一次发送值开始已过去时间
           children:
             - label: timeInterval
     - label: after a period of inactivity
@@ -190,7 +190,7 @@
       children:
         - label: single
     - label: I want to know how many values it emits
-      labelCn: 我要知道它发出了多少个值
+      labelCn: 我要知道它发送了多少个值
       children:
         - label: count
     - label: I want to prepend one value
@@ -198,14 +198,14 @@
       children:
         - label: startWith
     - label: I want to delay the emissions
-      labelCn: 我要延迟后再发出
+      labelCn: 我要延迟后再发送
       children:
         - label: based on a given amount of time
           labelCn: 基于给定的时间
           children:
             - label: delay
         - label: based on the emissions of another Observable
-          labelCn: 基于另一个可观察者的发出情况
+          labelCn: 基于另一个可观察者的发送情况
           children:
             - label: delayWhen
     - label: I want to group the values
@@ -235,66 +235,66 @@
           labelCn: 根据特定大小的批次
           children:
             - label: and emit the group as an array
-              labelCn: 并且把分好的组以数组形式发出
+              labelCn: 并且把分好的组以数组形式发送
               children:
                 - label: bufferCount
             - label: and emit the group as a nested Observable
-              labelCn: 并且把分好的组以嵌套可观察者的形式发出
+              labelCn: 并且把分好的组以嵌套可观察者的形式发送
               children:
                 - label: windowCount
         - label: based on time
           labelCn: 基于时间
           children:
             - label: and emit the group as an array
-              labelCn: 并且把分好的组以数组的形式发出
+              labelCn: 并且把分好的组以数组的形式发送
               children:
                 - label: bufferTime
             - label: and emit the group as a nested Observable
-              labelCn: 并且把分好的组以嵌套可观察者的形式发出
+              labelCn: 并且把分好的组以嵌套可观察者的形式发送
               children:
                 - label: windowTime
         - label: until another Observable emits
-          labelCn: 直到另一个可观察者发出了值
+          labelCn: 直到另一个可观察者发送了值
           children:
             - label: and emit the group as an array
-              labelCn: 并且把分好的组以数组的形式发出
+              labelCn: 并且把分好的组以数组的形式发送
               children:
                 - label: buffer
             - label: and emit the group as a nested Observable
-              labelCn: 并且把分好的组以嵌套可观察者的形式发出
+              labelCn: 并且把分好的组以嵌套可观察者的形式发送
               children:
                 - label: window
         - label: based on the emissions of an Observable created on-demand
-          labelCn: 基于某个按需创建的可观察者的发出情况
+          labelCn: 基于某个按需创建的可观察者的发送情况
           children:
             - label: and emit the group as an array
-              labelCn: 并且把分好的组以数组的形式发出
+              labelCn: 并且把分好的组以数组的形式发送
               children:
                 - label: bufferWhen
             - label: and emit the group as a nested Observable
-              labelCn: 并且把分好的组以嵌套可观察者的形式发出
+              labelCn: 并且把分好的组以嵌套可观察者的形式发送
               children:
                 - label: windowWhen
         - label: based on another Observable for opening a group, and an Observable for closing a group
           labelCn: 基于另一个可观察者开始一组，并基于第三个可观察者结束这一组
           children:
             - label: and emit the group as an array
-              labelCn: 并且把分好的组以数组的形式发出
+              labelCn: 并且把分好的组以数组的形式发送
               children:
                 - label: bufferToggle
             - label: and emit the group as a nested Observable
-              labelCn: 并且把分好的组以嵌套可观察者的形式发出
+              labelCn: 并且把分好的组以嵌套可观察者的形式发送
               children:
                 - label: windowToggle
         - label: based on a key calculated from the emitted values
-          labelCn: 基于根据已发出的值计算出的一个键
+          labelCn: 基于根据已发送的值计算出的一个键
           children:
             - label: groupBy
     - label: I want to start a new Observable for each value
       labelCn: 我要为每个值开始一个新的可观察者
       children:
         - label: and emit the values from all nested Observables in parallel
-          labelCn: 并且并行发出全部嵌套可观察者所发出的值
+          labelCn: 并且并行发送全部嵌套可观察者所发送的值
           children:
             - label: where the nested Observable is the same for every value
               labelCn: 这里的嵌套可观察者对每个值都是一样的
@@ -305,7 +305,7 @@
               children:
                 - label: mergeMap
         - label: and emit the values from each nested Observable in order
-          labelCn: 并且依次发出每个嵌套可观察者所发出的值
+          labelCn: 并且依次发送每个嵌套可观察者所发送的值
           children:
             - label: where the nested Observable is the same for every value
               labelCn: 这里的嵌套可观察者对每个值都是一样的
@@ -383,7 +383,7 @@
               children:
                 - label: retry
             - label: when another Observable emits
-              labelCn: 当另一个可观察者发出值的时候
+              labelCn: 当另一个可观察者发送值的时候
               children:
                 - label: retryWhen
     - label: when it completes
@@ -397,7 +397,7 @@
               children:
                 - label: repeat
             - label: when another Observable emits
-              labelCn: 当另一个可观察者发出值的时候
+              labelCn: 当另一个可观察者发送值的时候
               children:
                 - label: repeatWhen
         - label: I want to start a new Observable
@@ -416,29 +416,29 @@
           children:
             - label: subscribeOn
         - label: that routes values to observers
-          labelCn: 它会修改从发出值到观察者之间的路由
+          labelCn: 它会修改从发送值到观察者之间的路由
           children:
             - label: observeOn
     - label: I want to combine this Observable with others, and
       labelCn: 我要把这个可观察者和其它的合并，并且
       children:
         - label: I want to receive values only from the Observable that emits a value first
-          labelCn: 我只想从首先发出值的可观察者接收各个值
+          labelCn: 我只想从首先发送值的可观察者接收各个值
           children:
             - label: race
         - label: I want to output the values from either of them
-          labelCn: 我要输出所有值，而不管是从哪一个发出的
+          labelCn: 我要输出所有值，而不管是从哪一个发送的
           children:
             - label: merge
         - label: I want to output a value computed from values of the source Observables
-          labelCn: 我要输出根据来源可观察者发出的值计算出来的某个值
+          labelCn: 我要输出根据来源可观察者发送的值计算出来的某个值
           children:
             - label: using the latest value of each source whenever any source emits
-              labelCn: 当任何一个来源发出值的时候，使用每个来源发出的最后一个值
+              labelCn: 当任何一个来源发送值的时候，使用每个来源发送的最后一个值
               children:
                 - label: combineLatest
             - label: using the latest value of each source only when the primary Observable emits
-              labelCn: 仅当主可观察者发出值的时候，使用每个来源发出的最后一个值
+              labelCn: 仅当主可观察者发送值的时候，使用每个来源发送的最后一个值
               children:
                 - label: withLatestFrom
             - label: using each source value only once
@@ -449,7 +449,7 @@
   labelCn: 我已经有了由某些可观察者组合成的单一可观察者，并且
   children:
     - label: I want to receive values only from the Observable that emits a value first
-      labelCn: 我只想从首先发出值的可观察者接收各个值
+      labelCn: 我只想从首先发送值的可观察者接收各个值
       children:
         - label: race
     - label: I want to be notified when all of them have completed
@@ -457,14 +457,14 @@
       children:
         - label: forkJoin
     - label: I want to output the values from either of them
-      labelCn: 我要输出所有值，而不管是从哪一个发出的
+      labelCn: 我要输出所有值，而不管是从哪一个发送的
       children:
         - label: merge
     - label: I want to output a value computed from values of the source Observables
-      labelCn: 我要输出根据来源可观察者发出的值计算出来的某个值
+      labelCn: 我要输出根据来源可观察者发送的值计算出来的某个值
       children:
         - label: using the latest value of each source whenever any source emits
-          labelCn: 当任何一个来源发出值的时候，使用每个来源发出的最后一个值
+          labelCn: 当任何一个来源发送值的时候，使用每个来源发送的最后一个值
           children:
             - label: combineLatest
         - label: using each source value only once
@@ -495,11 +495,11 @@
           children:
             - label: throwError
         - label: that just completes, without emitting values
-          labelCn: 只完成它，而不发出任何值
+          labelCn: 只完成它，而不发送任何值
           children:
             - label: EMPTY
         - label: that never emits anything
-          labelCn: 永远不会发出任何东西
+          labelCn: 永远不会发送任何东西
           children:
             - label: NEVER
         - label: from an existing source of events
@@ -533,7 +533,7 @@
               children:
                 - label: of
         - label: that emits values on a timer
-          labelCn: 它基于定时器发出一些值
+          labelCn: 它基于定时器发送一些值
           children:
             - label: regularly
               labelCn: 均匀的

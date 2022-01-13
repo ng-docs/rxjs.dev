@@ -41,7 +41,7 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  * When the passed timespan elapses before the source emits any given value, it will unsubscribe from the source,
  * and switch the subscription to another observable.
  *
- * 当在源发出任何给定值之前经过的时间跨度过去时，它将从源退订，并将订阅切换到另一个可观察者。
+ * 当在源发送任何给定值之前经过的时间跨度过去时，它将从源退订，并将订阅切换到另一个可观察者。
  *
  * <span class="informal">Used to switch to a different observable if your source is being slow</span>
 *
@@ -62,7 +62,7 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  * - You want to emit a custom error rather than the {@link TimeoutError} emitted
  *   by the default usage of {@link timeout}.
  *
- *   你希望发出自定义错误，而不是默认使用 {@link timeout} 发出的 {@link TimeoutError}。
+ *   你希望发送自定义错误，而不是默认使用 {@link timeout} 发送的 {@link TimeoutError}。
  *
  * ## Examples
  *
@@ -85,7 +85,7 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  *
  * Emit your own custom timeout error
  *
- * 发出你自己的自定义超时错误
+ * 发送你自己的自定义超时错误
  *
  * ```ts
  * import { interval, timeoutWith, throwError } from 'rxjs';
@@ -122,7 +122,7 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  * source Observable, unless timeout happens when it starts emitting values
  * from the Observable passed as a second parameter.
  *
- * 返回一个反映源 Observable 行为的 Observable 的函数，除非在它开始从作为第二个参数传递的 Observable 发射值时发生超时。
+ * 返回一个反映源 Observable 行为的 Observable 的函数，除非在它开始从作为第二个参数传递的 Observable 发送值时发生超时。
  *
  * @deprecated Replaced with {@link timeout}. Instead of `timeoutWith(100, a$, scheduler)`, use the configuration object `timeout({ each: 100, with: () => a$, scheduler })`. Will be removed in v8.
  *

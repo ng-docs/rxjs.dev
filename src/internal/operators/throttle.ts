@@ -20,7 +20,7 @@ export const defaultThrottleConfig: ThrottleConfig = {
  * values for a duration determined by another Observable, then repeats this
  * process.
  *
- * 从源 Observable 发出一个值，然后在由另一个 Observable 确定的持续时间内忽略后续源值，然后重复此过程。
+ * 从源 Observable 发送一个值，然后在由另一个 Observable 确定的持续时间内忽略后续源值，然后重复此过程。
  *
  * <span class="informal">It's like {@link throttleTime}, but the silencing
  * duration is determined by a second Observable.</span>
@@ -38,7 +38,7 @@ export const defaultThrottleConfig: ThrottleConfig = {
  * value, the timer is disabled, and this process repeats for the
  * next source value.
  *
- * 当内部定时器被禁用时，`throttle` 在输出 Observable 上发出源 Observable 值，并在启用定时器时忽略源值。最初，定时器被禁用。一旦第一个源值抵达，它就会被转发到输出 Observable，然后通过使用源值调用 `durationSelector` 函数来启用计时器，该函数返回“duration” Observable。当持续时间 Observable 发出一个值时，定时器被禁用，并且这个过程重复下一个源值。
+ * 当内部定时器被禁用时，`throttle` 在输出 Observable 上发送源 Observable 值，并在启用定时器时忽略源值。最初，定时器被禁用。一旦第一个源值抵达，它就会被转发到输出 Observable，然后通过使用源值调用 `durationSelector` 函数来启用计时器，该函数返回“duration” Observable。当持续时间 Observable 发送一个值时，定时器被禁用，并且这个过程重复下一个源值。
  *
  * ## Example
  *
@@ -46,7 +46,7 @@ export const defaultThrottleConfig: ThrottleConfig = {
  *
  * Emit clicks at a rate of at most one click per second
  *
- * 以每秒最多一次点击的速度发出点击
+ * 以每秒最多一次点击的速度发送点击
  *
  * ```ts
  * import { fromEvent, throttle, interval } from 'rxjs';

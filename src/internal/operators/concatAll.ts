@@ -19,14 +19,14 @@ import { OperatorFunction, ObservableInput, ObservedValueOf } from '../types';
  * previous inner Observable has completed, and merges all of their values into
  * the returned observable.
  *
- * 以串行方式连接源发出的每个 Observable（高阶 Observable）。它仅在前一个内部 Observable 完成后订阅每个内部 Observable，并将它们的所有值合并到返回的 observable 中。
+ * 以串行方式连接源发送的每个 Observable（高阶 Observable）。它仅在前一个内部 Observable 完成后订阅每个内部 Observable，并将它们的所有值合并到返回的 observable 中。
  *
  * __Warning:__ If the source Observable emits Observables quickly and
  * endlessly, and the inner Observables it emits generally complete slower than
  * the source emits, you can run into memory issues as the incoming Observables
  * collect in an unbounded buffer.
  *
- * __ 警告：__ 如果源 Observable 快速且无休止地发出 Observable，并且它发出的内部 Observable 通常比源发出的慢，那么当传入的 Observable 收集在无界缓冲区中时，你可能会遇到内存问题。
+ * __ 警告：__ 如果源 Observable 快速且无休止地发送 Observable，并且它发送的内部 Observable 通常比源发送的慢，那么当传入的 Observable 收集在无界缓冲区中时，你可能会遇到内存问题。
  *
  * Note: `concatAll` is equivalent to `mergeAll` with concurrency parameter set
  * to `1`.
@@ -69,7 +69,7 @@ import { OperatorFunction, ObservableInput, ObservedValueOf } from '../types';
  * @return A function that returns an Observable emitting values from all the
  * inner Observables concatenated.
  *
- * 一个函数，它从所有串联的内部 Observable 中返回一个 Observable 发射值。
+ * 一个函数，它从所有串联的内部 Observable 中返回一个 Observable 发送值。
  *
  */
 export function concatAll<O extends ObservableInput<any>>(): OperatorFunction<O, ObservedValueOf<O>> {

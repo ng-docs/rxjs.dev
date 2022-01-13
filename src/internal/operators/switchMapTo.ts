@@ -45,7 +45,7 @@ export function switchMapTo<T, R, O extends ObservableInput<unknown>>(
  * emits values only from the most recently emitted instance of
  * `innerObservable`.
  *
- * 将每个源值映射到给定的 Observable `innerObservable`，而不考虑源值，然后将这些结果 Observable 展平为一个 Observable，即输出 Observable。输出 Observables 仅从最近发出的 `innerObservable` 实例发出值。
+ * 将每个源值映射到给定的 Observable `innerObservable`，而不考虑源值，然后将这些结果 Observable 展平为一个 Observable，即输出 Observable。输出 Observables 仅从最近发送的 `innerObservable` 实例发送值。
  *
  * ## Example
  *
@@ -77,7 +77,7 @@ export function switchMapTo<T, R, O extends ObservableInput<unknown>>(
  * and taking only the values from the most recently projected inner
  * Observable.
  *
- * 一个函数，它返回一个 Observable，每次在源 Observable 上发出一个值时，它会从给定的 `innerObservable` 发出条目（并且可以选择通过已弃用的 `resultSelector` 进行转换），并且只从最近投影的内部 Observable 中获取值。
+ * 一个函数，它返回一个 Observable，每次在源 Observable 上发送一个值时，它会从给定的 `innerObservable` 发送条目（并且可以选择通过已弃用的 `resultSelector` 进行转换），并且只从最近投影的内部 Observable 中获取值。
  *
  */
 export function switchMapTo<T, R, O extends ObservableInput<unknown>>(

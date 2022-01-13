@@ -7,7 +7,7 @@ import { dateTimestampProvider } from './scheduler/dateTimestampProvider';
 /**
  * A variant of {@link Subject} that "replays" old values to new subscribers by emitting them when they first subscribe.
  *
- * {@link Subject} 的一种变体，它通过在新订阅者首次订阅时发出旧值来“重播”旧值。
+ * {@link Subject} 的一种变体，它通过在新订阅者首次订阅时发送旧值来“重播”旧值。
  *
  * `ReplaySubject` has an internal buffer that will store a specified number of values that it has observed. Like `Subject`,
  * `ReplaySubject` "observes" values by having them passed to its `next` method. When it observes a value, it will store that
@@ -19,7 +19,7 @@ import { dateTimestampProvider } from './scheduler/dateTimestampProvider';
  * a First-In-First-Out (FIFO) manner. The `ReplaySubject` will also complete, if it has observed completion; and it will
  * error if it has observed an error.
  *
- * 当新订阅者订阅 `ReplaySubject` 实例时，它将以先进先出 (FIFO) 的方式同步发出其缓冲区中的所有值。如果 `ReplaySubject` 观察到完成，它也将完成；如果它观察到错误，它将出错。
+ * 当新订阅者订阅 `ReplaySubject` 实例时，它将以先进先出 (FIFO) 的方式同步发送其缓冲区中的所有值。如果 `ReplaySubject` 观察到完成，它也将完成；如果它观察到错误，它将出错。
  *
  * There are two main configuration items to be concerned with:
  *

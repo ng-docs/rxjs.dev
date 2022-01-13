@@ -24,7 +24,7 @@
 
 In the example below, we take the usual simple Observable that emits values `1`, `2`, `3` synchronously, and use the operator `observeOn` to specify the `async` scheduler to use for delivering those values.
 
-在下面的示例中，我们采用通常的简单 Observable 同步发出值 `1`、`2`、`3`，并使用操作符 `observeOn` 指定用于传递这些值的 `async` 调度器。
+在下面的示例中，我们采用通常的简单 Observable 同步发送值 `1`、`2`、`3`，并使用操作符 `observeOn` 指定用于传递这些值的 `async` 调度器。
 
 <!-- prettier-ignore -->
 

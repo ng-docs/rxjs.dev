@@ -13,7 +13,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  * <span class="informal">Checks to see of all values emitted by both observables are equal, in order.</span>
 *
- * <span class="informal">按顺序检查两个可观察者发出的所有值是否相等。</span>
+ * <span class="informal">按顺序检查两个可观察者发送的所有值是否相等。</span>
  *
  * ![](sequenceEqual.png)
  *
@@ -24,7 +24,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * observable emits before completing, the returned observable will emit `false` and complete. If one observable never
  * completes or emits after the other completes, the returned observable will never complete.
  *
- * `sequenceEqual` 订阅两个 observable 并缓冲来自每个 observable 的传入值。每当任何一个 observable 发出一个值时，该值都会被缓冲，并且缓冲区会从底部向上移动和比较；如果任何值对不匹配，则返回的 observable 将发出 `false` 并完成。如果其中一个 observable 完成，则操作符将等待另一个 observable 完成；如果其他 observable 在完成之前发出，则返回的 observable 将发出 `false` 并完成。如果一个 observable 从未完成或在另一个完成后发出，则返回的 observable 将永远不会完成。
+ * `sequenceEqual` 订阅两个 observable 并缓冲来自每个 observable 的传入值。每当任何一个 observable 发送一个值时，该值都会被缓冲，并且缓冲区会从底部向上移动和比较；如果任何值对不匹配，则返回的 observable 将发送 `false` 并完成。如果其中一个 observable 完成，则操作符将等待另一个 observable 完成；如果其他 observable 在完成之前发送，则返回的 observable 将发送 `false` 并完成。如果一个 observable 从未完成或在另一个完成后发送，则返回的 observable 将永远不会完成。
  *
  * ## Example
  *
@@ -70,7 +70,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * value representing whether or not the values emitted by the source
  * Observable and provided Observable were equal in sequence.
  *
- * 一个返回 Observable 的函数，该函数发出一个布尔值，表示源 Observable 发出的值和提供的 Observable 发出的值是否按顺序相等。
+ * 一个返回 Observable 的函数，该函数发送一个布尔值，表示源 Observable 发送的值和提供的 Observable 发送的值是否按顺序相等。
  *
  */
 export function sequenceEqual<T>(
@@ -86,7 +86,7 @@ export function sequenceEqual<T>(
     /**
      * A utility to emit and complete
      *
-     * 发出和完成的实用工具
+     * 发送和完成的实用工具
      *
      */
     const emit = (isEqual: boolean) => {

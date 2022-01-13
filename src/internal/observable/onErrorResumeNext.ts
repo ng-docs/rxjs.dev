@@ -14,7 +14,7 @@ export function onErrorResumeNext<A extends readonly unknown[]>(...sources: [...
  * When any of the provided Observable emits a complete or an error notification, it immediately subscribes to the next one
  * that was passed.
  *
- * 当任何提供的 Observable 发出完成或错误通知时，它会立即订阅下一个传递的通知。
+ * 当任何提供的 Observable 发送完成或错误通知时，它会立即订阅下一个传递的通知。
  *
  * <span class="informal">Execute series of Observables no matter what, even if it means swallowing errors.</span>
 *
@@ -26,7 +26,7 @@ export function onErrorResumeNext<A extends readonly unknown[]>(...sources: [...
  * If the source it's subscribed to emits an error or completes, it will move to the next source
  * without error.
  *
- * `onErrorResumeNext` 将按顺序订阅它提供的每个可观察源。如果它订阅的源发出错误或完成，它将移动到下一个源而没有错误。
+ * `onErrorResumeNext` 将按顺序订阅它提供的每个可观察源。如果它订阅的源发送错误或完成，它将移动到下一个源而没有错误。
  *
  * If `onErrorResumeNext` is provided no arguments, or a single, empty array, it will return {@link EMPTY}.
  *
@@ -35,7 +35,7 @@ export function onErrorResumeNext<A extends readonly unknown[]>(...sources: [...
  * `onErrorResumeNext` is basically {@link concat}, only it will continue, even if one of its
  * sources emits an error.
  *
- * `onErrorResumeNext` 基本上是 {@link concat}，只有它会继续，即使它的一个源发出错误。
+ * `onErrorResumeNext` 基本上是 {@link concat}，只有它会继续，即使它的一个源发送错误。
  *
  * Note that there is no way to handle any errors thrown by sources via the result of
  * `onErrorResumeNext`. If you want to handle errors thrown in any given source, you can

@@ -10,11 +10,11 @@ export function distinctUntilKeyChanged<T, K extends keyof T>(key: K, compare: (
  * Returns an Observable that emits all items emitted by the source Observable that are distinct by comparison from the previous item,
  * using a property accessed by using the key provided to check if the two items are distinct.
  *
- * 返回一个 Observable，该 Observable 发出源 Observable 发出的所有通过比较与前一个条目不同的条目，使用通过使用提供的键访问的属性来检查这两个条目是否不同。
+ * 返回一个 Observable，该 Observable 发送源 Observable 发送的所有通过比较与前一个条目不同的条目，使用通过使用提供的键访问的属性来检查这两个条目是否不同。
  *
  * If a comparator function is provided, then it will be called for each item to test for whether or not that value should be emitted.
  *
- * 如果提供了一个比较器函数，那么它将为每个条目调用以测试是否应该发出该值。
+ * 如果提供了一个比较器函数，那么它将为每个条目调用以测试是否应该发送该值。
  *
  * If a comparator function is not provided, an equality check is used by default.
  *
@@ -79,7 +79,7 @@ export function distinctUntilKeyChanged<T, K extends keyof T>(key: K, compare: (
  * @return A function that returns an Observable that emits items from the
  * source Observable with distinct values based on the key specified.
  *
- * 一个返回 Observable 的函数，它根据指定的键从源 Observable 发出具有不同值的条目。
+ * 一个返回 Observable 的函数，它根据指定的键从源 Observable 发送具有不同值的条目。
  *
  */
 export function distinctUntilKeyChanged<T, K extends keyof T>(key: K, compare?: (x: T[K], y: T[K]) => boolean): MonoTypeOperatorFunction<T> {

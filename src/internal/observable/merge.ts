@@ -31,7 +31,7 @@ export function merge<A extends readonly unknown[]>(
  * Creates an output Observable which concurrently emits all values from every
  * given input Observable.
  *
- * 创建一个输出 Observable，它同时从每个给定的输入 Observable 发出所有值。
+ * 创建一个输出 Observable，它同时从每个给定的输入 Observable 发送所有值。
  *
  * <span class="informal">Flattens multiple Observables together by blending
  * their values into one Observable.</span>
@@ -46,7 +46,7 @@ export function merge<A extends readonly unknown[]>(
  * once all input Observables have completed. Any error delivered by an input
  * Observable will be immediately emitted on the output Observable.
  *
- * `merge` 订阅每个给定的输入 Observable（作为参数），并简单地将所有输入 Observable 中的所有值转发（不做任何转换）到输出 Observable。只有在所有输入 Observable 都完成后，输出 Observable 才会完成。输入 Observable 传递的任何错误都会立即在输出 Observable 上发出。
+ * `merge` 订阅每个给定的输入 Observable（作为参数），并简单地将所有输入 Observable 中的所有值转发（不做任何转换）到输出 Observable。只有在所有输入 Observable 都完成后，输出 Observable 才会完成。输入 Observable 传递的任何错误都会立即在输出 Observable 上发送。
  *
  * ## Examples
  *
@@ -113,7 +113,7 @@ export function merge<A extends readonly unknown[]>(
  * @return {Observable} an Observable that emits items that are the result of
  * every input Observable.
  *
- * 一个 Observable，它发出的条目是每个输入 Observable 的结果。
+ * 一个 Observable，它发送的条目是每个输入 Observable 的结果。
  *
  */
 export function merge(...args: (ObservableInput<unknown> | number | SchedulerLike)[]): Observable<unknown> {

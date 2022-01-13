@@ -6,11 +6,11 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * Emits `false` if the input Observable emits any values, or emits `true` if the
  * input Observable completes without emitting any values.
  *
- * 如果输入 Observable 发出任何值，则发出 `false`，或者如果输入 Observable 完成但没有发出任何值，则发出 `true`。
+ * 如果输入 Observable 发送任何值，则发送 `false`，或者如果输入 Observable 完成但没有发送任何值，则发送 `true`。
  *
  * <span class="informal">Tells whether any values are emitted by an Observable.</span>
 *
- * <span class="informal">判断 Observable 是否发出任何值。</span>
+ * <span class="informal">判断 Observable 是否发送任何值。</span>
  *
  * ![](isEmpty.png)
  *
@@ -21,12 +21,12 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * completes having not emitted anything, `isEmpty` will emit a `true` and
  * complete.
  *
- * `isEmpty` 将发出值的 Observable 转换为发出单个布尔值的 Observable，该布尔值表示源 Observable 是否发出任何值。一旦源 Observable 发出一个值，`isEmpty` 就会发出一个 `false` 并完成。如果源 Observable 完成并没有发出任何东西，`isEmpty` 将发出一个 `true` 且完整的。
+ * `isEmpty` 将发送值的 Observable 转换为发送单个布尔值的 Observable，该布尔值表示源 Observable 是否发送任何值。一旦源 Observable 发送一个值，`isEmpty` 就会发送一个 `false` 并完成。如果源 Observable 完成并没有发送任何东西，`isEmpty` 将发送一个 `true` 并完成。
  *
  * A similar effect could be achieved with {@link count}, but `isEmpty` can emit
  * a `false` value sooner.
  *
- * 使用 {@link count} 可以实现类似的效果，但 `isEmpty` 可以更快地发出 `false` 值。
+ * 使用 {@link count} 可以实现类似的效果，但 `isEmpty` 可以更快地发送 `false` 值。
  *
  * ## Examples
  *
@@ -34,7 +34,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  * Emit `false` for a non-empty Observable
  *
- * 为非空 Observable 发出 `false`
+ * 为非空 Observable 发送 `false`
  *
  * ```ts
  * import { Subject, isEmpty } from 'rxjs';
@@ -59,7 +59,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  * Emit `true` for an empty Observable
  *
- * 为空的 Observable 发出 `true`
+ * 为空的 Observable 发送 `true`
  *
  * ```ts
  * import { EMPTY, isEmpty } from 'rxjs';
@@ -75,7 +75,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * @return A function that returns an Observable that emits boolean value
  * indicating whether the source Observable was empty or not.
  *
- * 一个返回 Observable 的函数，该函数发出布尔值，指示源 Observable 是否为空。
+ * 一个返回 Observable 的函数，该函数发送布尔值，指示源 Observable 是否为空。
  *
  */
 export function isEmpty<T>(): OperatorFunction<T, boolean> {

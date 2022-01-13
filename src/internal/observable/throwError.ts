@@ -122,7 +122,7 @@ export function throwError(errorFactory: () => any): Observable<never>;
  *
  * @param error The error instance to emit
  *
- * 要发出的错误实例
+ * 要发送的错误实例
  *
  * @deprecated Support for passing an error value will be removed in v8. Instead, pass a factory function to `throwError(() => new Error('test'))`. This is
  * because it will create the error at the moment it should be created and capture a more appropriate stack trace. If

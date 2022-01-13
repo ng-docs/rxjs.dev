@@ -7,7 +7,7 @@ import { noop } from '../util/noop';
 /**
  * Returns an Observable that emits all items emitted by the source Observable that are distinct by comparison from previous items.
  *
- * 返回一个 Observable，它发出源 Observable 发出的所有项，这些项与以前的项相比是不同的。
+ * 返回一个 Observable，它发送源 Observable 发送的所有项，这些项与以前的项相比是不同的。
  *
  * If a `keySelector` function is provided, then it will project each value from the source observable into a new value that it will
  * check for equality with previously projected values. If the `keySelector` function is not provided, it will use each value from the
@@ -74,7 +74,7 @@ import { noop } from '../util/noop';
  * @return A function that returns an Observable that emits items from the
  * source Observable with distinct values.
  *
- * 一个返回 Observable 的函数，该 Observable 从源 Observable 发出具有不同值的条目。
+ * 一个返回 Observable 的函数，该 Observable 从源 Observable 发送具有不同值的条目。
  *
  */
 export function distinct<T, K>(keySelector?: (value: T) => K, flushes?: Observable<any>): MonoTypeOperatorFunction<T> {

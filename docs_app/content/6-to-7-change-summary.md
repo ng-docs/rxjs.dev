@@ -192,7 +192,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - `toPromise` method now correctly returns `Promise<T | undefined>` instead of `Promise<T>`. This a correction without a runtime change, because if the observable does not emit a value before completion, the promise will resolve with `undefined`.
 
-  `toPromise` 方法现在可以正确返回 `Promise<T | undefined>` 而不是 `Promise<T>`。这是一个没有运行时更改的更正，因为如果 observable 在完成之前没有发出值，则 promise 将解析为 `undefined`。
+  `toPromise` 方法现在可以正确返回 `Promise<T | undefined>` 而不是 `Promise<T>`。这是一个没有运行时更改的更正，因为如果 observable 在完成之前没有发送值，则 promise 将解析为 `undefined`。
 
 - `static if` and `static throw` properties are no longer defined. They were unused in version 6.
 
@@ -391,7 +391,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - A better, more tree-shakable replacement for `toPromise()` (which is now deprecated). This function allows the user to convert any `Observable` in to a `Promise` that will resolve when the source observable emits its first value. If the source observable closes without emitting a value, the returned promise will reject with an `EmptyError`, or it will resolve with a configured `defaultValue`. For more information, see the [deprecation guide](/deprecations/to-promise).
 
-  `toPromise()` 的更好、更可摇树的替代品（现已弃用）。此函数允许用户将任何 `Observable` 转换为 `Promise`，该 Promise 将在源 observable 发出其第一个值时解析。如果源 observable 在没有发出值的情况下关闭，则返回的 Promise 将拒绝并返回 `EmptyError`，或者它将使用配置的 `defaultValue` 解析。有关详细信息，请参阅[弃用指南](/deprecations/to-promise)。
+  `toPromise()` 的更好、更可摇树的替代品（现已弃用）。此函数允许用户将任何 `Observable` 转换为 `Promise`，该 Promise 将在源 observable 发送其第一个值时解析。如果源 observable 在没有发送值的情况下关闭，则返回的 Promise 将拒绝并返回 `EmptyError`，或者它将使用配置的 `defaultValue` 解析。有关详细信息，请参阅[弃用指南](/deprecations/to-promise)。
 
 ### lastValueFrom
 
@@ -399,7 +399,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - A better, more tree-shakable replacement for `toPromise()` (which is now deprecated). This function allows the user to convert any `Observable` in to a `Promise` that will resolve when the source observable emits the last value. If the source observable closes without emitting a value, the returned promise will reject with an `EmptyError`, or it will resolve with a configured `defaultValue`. For more information, see the [deprecation guide](/deprecations/to-promise).
 
-  `toPromise()` 的更好、更可摇树的替代品（现已弃用）。此函数允许用户将任何 `Observable` 转换为 `Promise`，该 Promise 将在源 observable 发出最后一个值时解析。如果源 observable 在没有发出值的情况下关闭，则返回的 Promise 将拒绝并返回 `EmptyError`，或者它将使用配置的 `defaultValue` 解析。有关详细信息，请参阅[弃用指南](/deprecations/to-promise)。
+  `toPromise()` 的更好、更可摇树的替代品（现已弃用）。此函数允许用户将任何 `Observable` 转换为 `Promise`，该 Promise 将在源 observable 发送最后一个值时解析。如果源 observable 在没有发送值的情况下关闭，则返回的 Promise 将拒绝并返回 `EmptyError`，或者它将使用配置的 `defaultValue` 解析。有关详细信息，请参阅[弃用指南](/deprecations/to-promise)。
 
 ### ObservableInput
 
@@ -447,7 +447,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - Now accepts an `errorFactory` of `() => any` to defer the creation of the error until the time it will be emitted. It is recommended to use this method, as Errors created in most popular JavaScript runtimes will retain all values in the current scope for debugging purposes.
 
-  现在接受 `() => any` 的 `errorFactory` 以将错误的创建推迟到它发出的时间。建议使用此方法，因为在大多数流行的 JavaScript 运行时中创建的错误将保留当前范围内的所有值以进行调试。
+  现在接受 `() => any` 的 `errorFactory` 以将错误的创建推迟到它发送的时间。建议使用此方法，因为在大多数流行的 JavaScript 运行时中创建的错误将保留当前范围内的所有值以进行调试。
 
 # module `rxjs/operators`
 
@@ -463,11 +463,11 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - The observable returned by the `audit` operator's duration selector must emit a next notification to end the duration. Complete notifications no longer end the duration.
 
-  `audit` 操作符的持续时间选择器返回的可观察者必须发出下一个通知以结束持续时间。完成通知不再结束持续时间。
+  `audit` 操作符的持续时间选择器返回的可观察者必须发送下一个通知以结束持续时间。完成通知不再结束持续时间。
 
 - `audit` now emits the last value from the source when the source completes. Previously, `audit` would mirror the completion without emitting the value.
 
-  `audit` 现在在源完成时从源发出最后一个值。以前，`audit` 会镜像完成而不发出值。
+  `audit` 现在在源完成时从源发送最后一个值。以前，`audit` 会镜像完成而不发送值。
 
 ### auditTime
 
@@ -475,7 +475,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - `auditTime` now emits the last value from the source when the source completes, after the audit duration elapses. Previously, `auditTime` would mirror the completion without emitting the value and without waiting for the audit duration to elapse.
 
-  在审计持续时间过去后，`auditTime` 现在在源完成时从源发出最后一个值。以前，`auditTime` 会镜像完成而不发出值，也不需要等待审计持续时间过去。
+  在审计持续时间过去后，`auditTime` 现在在源完成时从源发送最后一个值。以前，`auditTime` 会镜像完成而不发送值，也不需要等待审计持续时间过去。
 
 ### buffer
 
@@ -487,7 +487,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - Final buffered values will now always be emitted. To get the same behavior as the previous release, you can use `endWith` and `skipLast(1)`, like so: `source$.pipe(buffer(notifier$.pipe(endWith(true))), skipLast(1))`
 
-  现在将始终发出最终缓冲值。要获得与先前版本相同的行为，你可以使用 `endWith` 和 `skipLast(1)`，如下所示： `source$.pipe(buffer(notifier$.pipe(endWith(true))), skipLast(1))`
+  现在将始终发送最终缓冲值。要获得与先前版本相同的行为，你可以使用 `endWith` 和 `skipLast(1)`，如下所示： `source$.pipe(buffer(notifier$.pipe(endWith(true))), skipLast(1))`
 
 - `closingNotifier` completion no longer completes the result of `buffer`. If that is truly a desired behavior, then you should use `takeUntil`. Something like: `source$.pipe(buffer(notifier$), takeUntil(notifier$.pipe(ignoreElements(), endWith(true))))`, where `notifier$` is multicast, although there are many ways to compose this behavior.
 
@@ -499,7 +499,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - The observable returned by the `bufferToggle` operator's closing selector must emit a next notification to close the buffer. Complete notifications no longer close the buffer.
 
-  `bufferToggle` 操作符的关闭选择器返回的 observable 必须发出下一个通知来关闭缓冲区。完成通知不再关闭缓冲区。
+  `bufferToggle` 操作符的关闭选择器返回的 observable 必须发送下一个通知来关闭缓冲区。完成通知不再关闭缓冲区。
 
 ### bufferWhen
 
@@ -507,7 +507,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - The observable returned by the `bufferWhen` operator's closing selector must emit a next notification to close the buffer. Complete notifications no longer close the buffer.
 
-  `bufferWhen` 操作符的关闭选择器返回的 observable 必须发出下一个通知来关闭缓冲区。完成通知不再关闭缓冲区。
+  `bufferWhen` 操作符的关闭选择器返回的 observable 必须发送下一个通知来关闭缓冲区。完成通知不再关闭缓冲区。
 
 ### combineLatest
 
@@ -559,7 +559,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - The observable returned by the `debounce` operator's duration selector must emit a next notification to end the duration. Complete notifications no longer end the duration.
 
-  `debounce` 操作符的持续时间选择器返回的 observable 必须发出下一个通知以结束持续时间。完成通知不再结束持续时间。
+  `debounce` 操作符的持续时间选择器返回的 observable 必须发送下一个通知以结束持续时间。完成通知不再结束持续时间。
 
 ### debounceTime
 
@@ -587,7 +587,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - `delayWhen` will no longer emit if the duration selector simply completes without a value. Notifiers must notify with a value, not a completion.
 
-  如果持续时间选择器只是在没有值的情况下完成，则 `delayWhen` 将不再发出。通知者必须通知一个值，而不是完成。
+  如果持续时间选择器只是在没有值的情况下完成，则 `delayWhen` 将不再发送。通知者必须通知一个值，而不是完成。
 
 ### endWith
 
@@ -647,7 +647,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - `mergeScan` will no longer emit its inner state again upon completion.
 
-  `mergeScan` 后将不再发出其内部状态。
+  `mergeScan` 后将不再发送其内部状态。
 
 ### pluck
 
@@ -679,7 +679,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - The `sample` operator's notifier observable must emit a next notification to effect a sample. Complete notifications no longer effect a sample.
 
-  `sample` 操作符的通知器 observable 必须发出下一个通知来影响样本。完整的通知不再影响样本。
+  `sample` 操作符的通知器 observable 必须发送 next 通知来影响采样。complete 通知不再影响采样。
 
 ### scan
 
@@ -751,7 +751,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - The observable returned by the `throttle` operator's duration selector must emit a next notification to end the duration. Complete notifications no longer end the duration.
 
-  `throttle` 操作符的持续时间选择器返回的 observable 必须发出下一个通知以结束持续时间。完成通知不再结束持续时间。
+  `throttle` 操作符的持续时间选择器返回的 observable 必须发送 next 通知以结束持续时间。complete 通知不再结束持续时间。
 
 ### throwError
 
@@ -759,7 +759,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - In an extreme corner case for usage, `throwError` is no longer able to emit a function as an error directly. If you need to push a function as an error, you will have to use the factory function to return the function like so: `throwError(() => functionToEmit)`, in other words `throwError(() => () => console.log('called later'))`.
 
-  在使用的极端极端情况下，`throwError` 不再能够直接将函数作为错误发出。如果你需要将函数作为错误推送，则必须使用工厂函数来返回函数，如下所示： `throwError(() => functionToEmit)`，换句话说 `throwError(() => () => console.log('called later'))`。
+  在使用的极端极端情况下，`throwError` 不再能够直接将函数作为错误发送。如果你需要将函数作为错误推送，则必须使用工厂函数来返回函数，如下所示： `throwError(() => functionToEmit)`，换句话说 `throwError(() => () => console.log('called later'))`。
 
 ### window
 
@@ -775,7 +775,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - The observable returned by the `windowToggle` operator's closing selector must emit a next notification to close the window. Complete notifications no longer close the window.
 
-  `windowToggle` 操作符的关闭选择器返回的 observable 必须发出下一个通知来关闭窗口。完成通知不再关闭窗口。
+  `windowToggle` 操作符的关闭选择器返回的 observable 必须发送 next 通知来关闭窗口。complete 通知不再关闭窗口。
 
 ### withLatestFrom
 
@@ -848,7 +848,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - `ajax` body serialization will now use default XHR behavior in all cases. If the body is a `Blob`, `ArrayBuffer`, any array buffer view (like a byte sequence, e.g. `Uint8Array`, etc), `FormData`, `URLSearchParams`, `string`, or `ReadableStream`, default handling is use. If the `body` is otherwise `typeof` `"object"`, then it will be converted to JSON via `JSON.stringify`, and the `Content-Type` header will be set to `application/json;charset=utf-8`. All other types will emit an error.
 
-  `ajax` 正文序列化现在将在所有情况下使用默认的 XHR 行为。如果主体是 `Blob`、`ArrayBuffer`、任何数组缓冲区视图（如字节序列，例如 `Uint8Array` 等）、`FormData`、`URLSearchParams`、`string` 或 `ReadableStream`，则使用默认处理。如果 `body` 是 `typeof` `"object"`，那么它将通过 `JSON.stringify` 转换为 JSON，并且 `Content-Type` 标头将设置为 `application/json;charset=utf-8`。所有其他类型都会发出错误。
+  `ajax` 正文序列化现在将在所有情况下使用默认的 XHR 行为。如果主体是 `Blob`、`ArrayBuffer`、任何数组缓冲区视图（如字节序列，例如 `Uint8Array` 等）、`FormData`、`URLSearchParams`、`string` 或 `ReadableStream`，则使用默认处理。如果 `body` 是 `typeof` `"object"`，那么它将通过 `JSON.stringify` 转换为 JSON，并且 `Content-Type` 标头将设置为 `application/json;charset=utf-8`。所有其他类型都会发送错误。
 
 - The `Content-Type` header passed to `ajax` configuration no longer has any effect on the serialization behavior of the AJAX request.
 
@@ -892,7 +892,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - A flag to make a request that will include streaming upload progress events in the returned observable.
 
-  发出请求的标志，该请求将在返回的 observable 中包含流式上传进度事件。
+  发送请求的标志，该请求将在返回的 observable 中包含流式上传进度事件。
 
 ### includeDownloadProgress
 
@@ -900,7 +900,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - A flag to make a request that will include streaming upload progress events in the returned observable.
 
-  发出请求的标志，该请求将在返回的 observable 中包含流式上传进度事件。
+  发送请求的标志，该请求将在返回的 observable 中包含流式上传进度事件。
 
 ### queryParams
 
@@ -908,7 +908,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - Configuration for setting query parameters in the URL of the request to be made.
 
-  用于在要发出的请求的 URL 中设置查询参数的配置。
+  用于在要发送请求的 URL 中如何设置查询参数的配置。
 
 ### XSRF (CSRF) additions:
 
@@ -938,5 +938,4 @@ No changes.
 
 - A new means of comparing the equality of to observables. If all emissions are the same, and at the same time, then they are equal. This is primarily useful for refactoring operator chains and making sure that they are equivalent.
 
-  一种比较可观察者的相等性的新方法。如果所有排放量都相同，并且同时，那么它们是相等的。这主要用于重构操作符链并确保它们是等价的。
-
+  一种比较可观察者的相等性的新方法。如果所有发送的值都一样，并且同时发生，那么它们就是相等的。这主要用于重构操作符链并确保它们是等价的。

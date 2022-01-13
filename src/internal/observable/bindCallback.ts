@@ -40,14 +40,14 @@ export function bindCallback<A extends readonly unknown[], R extends readonly un
  * If on the other hand the callback is called with multiple values the resulting
  * Observable will emit an array with said values as arguments.
  *
- * `bindCallback` 的输出是一个函数，它采用与 `func` 相同的参数，除了最后一个（回调）。当使用参数调用输出函数时，它将返回一个 Observable。如果函数 `func` 使用一个参数调用其回调，则 Observable 将发出该值。另一方面，如果使用多个值调用回调，则结果 Observable 将发出一个以所述值作为参数的数组。
+ * `bindCallback` 的输出是一个函数，它采用与 `func` 相同的参数，除了最后一个（回调）。当使用参数调用输出函数时，它将返回一个 Observable。如果函数 `func` 使用一个参数调用其回调，则 Observable 将发送该值。另一方面，如果使用多个值调用回调，则结果 Observable 将发送一个以所述值作为参数的数组。
  *
  * It is **very important** to remember that input function `func` is not called
  * when the output function is, but rather when the Observable returned by the output
  * function is subscribed. This means if `func` makes an AJAX request, that request
  * will be made every time someone subscribes to the resulting Observable, but not before.
  *
- * **非常重要**的是要记住，输入函数 `func` 不是在输出函数时调用，而是在订阅输出函数返回的 Observable 时调用。这意味着如果 `func` 发出 AJAX 请求，则每次有人订阅生成的 Observable 时都会发出该请求，但之前不会。
+ * **非常重要**的是要记住，输入函数 `func` 不是在输出函数时调用，而是在订阅输出函数返回的 Observable 时调用。这意味着如果 `func` 发送 AJAX 请求，则每次有人订阅生成的 Observable 时都会发送该请求，但之前不会。
  *
  * The last optional parameter - `scheduler` - can be used to control when the call
  * to `func` happens after someone subscribes to Observable, as well as when results
@@ -57,7 +57,7 @@ export function bindCallback<A extends readonly unknown[], R extends readonly un
  * and call `subscribe` on the output Observable, all function calls that are currently executing
  * will end before `func` is invoked.
  *
- * 最后一个可选参数 - `scheduler` - 可用于控制在有人订阅 Observable 后何时调用 `func`，以及何时发出传递给回调的结果。默认情况下，订阅 Observable 会同步调用 `func`，但使用 {@link asyncScheduler} 作为最后一个参数将推迟对 `func` 的调用，就像将调用包装在 `setTimeout` 中并设置超时时间为 `0` 一样。如果你要使用异步调度器并在输出 Observable 上调用 `subscribe`，则当前正在执行的所有函数调用将在调用 `func` 之前结束。
+ * 最后一个可选参数 - `scheduler` - 可用于控制在有人订阅 Observable 后何时调用 `func`，以及何时发送传递给回调的结果。默认情况下，订阅 Observable 会同步调用 `func`，但使用 {@link asyncScheduler} 作为最后一个参数将推迟对 `func` 的调用，就像将调用包装在 `setTimeout` 中并设置超时时间为 `0` 一样。如果你要使用异步调度器并在输出 Observable 上调用 `subscribe`，则当前正在执行的所有函数调用将在调用 `func` 之前结束。
  *
  * By default, results passed to the callback are emitted immediately after `func` invokes the callback.
  * In particular, if the callback is called synchronously, then the subscription of the resulting Observable
@@ -65,14 +65,14 @@ export function bindCallback<A extends readonly unknown[], R extends readonly un
  * you may use {@link asyncScheduler} just as before.  This means that by using `Scheduler.async` you can
  * ensure that `func` always calls its callback asynchronously, thus avoiding terrifying Zalgo.
  *
- * 默认情况下，传递给回调的结果会在 `func` 调用回调后立即发出。特别是，如果同步调用回调，则生成的 Observable 的订阅也将同步调用 `next` 函数。如果你想推迟那个调用，你可以像以前一样使用 {@link asyncScheduler}。这意味着通过使用 `Scheduler.async`，你可以确保 `func` 始终异步调用其回调，从而避免可怕的 Zalgo。
+ * 默认情况下，传递给回调的结果会在 `func` 调用回调后立即发送。特别是，如果同步调用回调，则生成的 Observable 的订阅也将同步调用 `next` 函数。如果你想推迟那个调用，你可以像以前一样使用 {@link asyncScheduler}。这意味着通过使用 `Scheduler.async`，你可以确保 `func` 始终异步调用其回调，从而避免可怕的 Zalgo。
  *
  * Note that the Observable created by the output function will always emit a single value
  * and then complete immediately. If `func` calls the callback multiple times, values from subsequent
  * calls will not appear in the stream. If you need to listen for multiple calls,
  *  you probably want to use {@link fromEvent} or {@link fromEventPattern} instead.
  *
- * 请注意，由输出函数创建的 Observable 将始终发出单个值，然后立即完成。如果 `func` 多次调用回调，后续调用的值将不会出现在流中。如果你需要监听多个呼叫，你可能希望使用 {@link fromEvent} 或 {@link fromEventPattern} 代替。
+ * 请注意，由输出函数创建的 Observable 将始终发送单个值，然后立即完成。如果 `func` 多次调用回调，后续调用的值将不会出现在流中。如果你需要监听多个呼叫，你可能希望使用 {@link fromEvent} 或 {@link fromEventPattern} 代替。
  *
  * If `func` depends on some context (`this` property) and is not already bound, the context of `func`
  * will be the context that the output function has at call time. In particular, if `func`
@@ -171,7 +171,7 @@ export function bindCallback<A extends readonly unknown[], R extends readonly un
  * @return {function(...params: *): Observable} A function which returns the
  * Observable that delivers the same values the callback would deliver.
  *
- * 一个返回 Observable 的函数，该函数传递回调将传递的相同值。
+ * 一个返回 Observable 的函数，该 Observable 将发送与回调函数的返回值相同的值。
  *
  */
 export function bindCallback(

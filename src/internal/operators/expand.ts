@@ -47,7 +47,7 @@ export function expand<T, O extends ObservableInput<unknown>>(
  * given to the `project` function to produce new output values. This is how
  * *expand* behaves recursively.
  *
- * 返回一个 Observable，该 Observable 基于将你提供的函数应用于源 Observable 发出的每个条目，其中该函数返回一个 Observable，然后合并这些结果 Observable 并发出此合并的结果来发出条目。*Expand*将在输出 Observable 上重新发出每个源值。然后，将每个输出值提供给 `project` 函数，该函数返回一个内部 Observable 以合并到输出 Observable 上。投影产生的那些输出值也被赋予 `project` 函数以产生新的输出值。这就是*expand*递归的行为方式。
+ * 返回一个 Observable，该 Observable 基于将你提供的函数应用于源 Observable 发送的每个条目，其中该函数返回一个 Observable，然后合并这些结果 Observable 并发送此合并的结果来发送条目。*Expand*将在输出 Observable 上重新发送每个源值。然后，将每个输出值提供给 `project` 函数，该函数返回一个内部 Observable 以合并到输出 Observable 上。投影产生的那些输出值也被赋予 `project` 函数以产生新的输出值。这就是*expand*递归的行为方式。
  *
  * ## Example
  *
@@ -55,7 +55,7 @@ export function expand<T, O extends ObservableInput<unknown>>(
  *
  * Start emitting the powers of two on every click, at most 10 of them
  *
- * 每次点击时开始发射 2 的幂，最多 10 个
+ * 每次点击时开始发送 2 的幂，最多 10 个
  *
  * ```ts
  * import { fromEvent, map, expand, of, delay, take } from 'rxjs';
@@ -74,7 +74,7 @@ export function expand<T, O extends ObservableInput<unknown>>(
  * that, when applied to an item emitted by the source or the output Observable,
  * returns an Observable.
  *
- * 一个函数，当应用于由源或输出 Observable 发出的条目时，会返回一个 Observable。
+ * 一个函数，当应用于由源或输出 Observable 发送的条目时，会返回一个 Observable。
  *
  * @param {number} [concurrent=Infinity] Maximum number of input
  * Observables being subscribed to concurrently.
@@ -88,7 +88,7 @@ export function expand<T, O extends ObservableInput<unknown>>(
  * the output Observable and merging the results of the Observables obtained
  * from this transformation.
  *
- * 一个函数，它返回一个发出源值的 Observable 以及将投影函数应用于输出 Observable 上发出的每个值并合并从此转换获得的 Observable 的结果的结果。
+ * 一个函数，它返回一个发送源值的 Observable 以及将投影函数应用于输出 Observable 上发送的每个值并合并从此转换获得的 Observable 的结果的结果。
  *
  */
 export function expand<T, O extends ObservableInput<unknown>>(

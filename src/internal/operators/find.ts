@@ -33,12 +33,12 @@ export function find<T>(predicate: (value: T, index: number, source: Observable<
  * Emits only the first value emitted by the source Observable that meets some
  * condition.
  *
- * 仅发出满足某些条件的源 Observable 发出的第一个值。
+ * 仅发送满足某些条件的源 Observable 发送的第一个值。
  *
  * <span class="informal">Finds the first value that passes some test and emits
  * that.</span>
  *
- * <span class="informal">找到通过一些测试并发出它的第一个值。</span>
+ * <span class="informal">找到通过一些测试并发送它的第一个值。</span>
  *
  * ![](find.png)
  *
@@ -48,7 +48,7 @@ export function find<T>(predicate: (value: T, index: number, source: Observable<
  * in `find`, and does not emit an error if a valid value is not found
  * (emits `undefined` instead).
  *
- * `find` 搜索源 Observable 中与 `predicate` 包含的指定条件匹配的第一个条目，并返回源中的第一个匹配项。与 {@link first} 不同，`predicate` 在 `find` 中是必需的，如果未找到有效值，则不会发出错误（而是发出 `undefined`）。
+ * `find` 搜索源 Observable 中与 `predicate` 包含的指定条件匹配的第一个条目，并返回源中的第一个匹配项。与 {@link first} 不同，`predicate` 在 `find` 中是必需的，如果未找到有效值，则不会发送错误（而是发送 `undefined`）。
  *
  * ## Example
  *
@@ -56,7 +56,7 @@ export function find<T>(predicate: (value: T, index: number, source: Observable<
  *
  * Find and emit the first click that happens on a DIV element
  *
- * 查找并发出发生在 DIV 元素上的第一次点击
+ * 查找并发送发生在 DIV 元素上的第一次点击
  *
  * ```ts
  * import { fromEvent, find } from 'rxjs';
@@ -83,7 +83,7 @@ export function find<T>(predicate: (value: T, index: number, source: Observable<
  * @return A function that returns an Observable that emits the first item that
  * matches the condition.
  *
- * 一个返回 Observable 的函数，该 Observable 发出与条件匹配的第一个条目。
+ * 一个返回 Observable 的函数，该 Observable 发送与条件匹配的第一个条目。
  *
  */
 export function find<T>(

@@ -34,7 +34,7 @@ export interface RepeatConfig {
  *
  * <span class="informal">Repeats all values emitted on the source. It's like {@link retry}, but for non error cases.</span>
 *
- * <span class="informal">重复源上发出的所有值。这就像 {@link retry}，但对于非错误情况。</span>
+ * <span class="informal">重复源上发送的所有值。这就像 {@link retry}，但对于非错误情况。</span>
  *
  * ![](repeat.png)
  *

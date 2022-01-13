@@ -26,7 +26,7 @@ export interface ShareConfig<T> {
    * It is also possible to pass a notifier factory returning an observable instead which grants more fine-grained
    * control over how and when the reset should happen. This allows behaviors like conditional or delayed resets.
    *
-   * 如果为真，则生成的 observable 将在源错误时重置内部状态并返回“冷”状态。这允许在发生错误时“重试”生成的 observable。如果为 false，当错误来自源时，它会将错误推送到连接主体，并且主体将保持连接主体，这意味着生成的 observable 不会再次“冷”，随后的重试或重新订阅将重新订阅该主体同一主体。在所有情况下，RxJS 主体都会再次发出相同的错误，但是 {@link ReplaySubject} 也会在推送错误之前推送其缓冲值。也可以通过一个通知工厂返回一个 observable 来代替，它可以对重置的方式和时间进行更细粒度的控制。这允许有条件或延迟重置等行为。
+   * 如果为真，则生成的 observable 将在源错误时重置内部状态并返回“冷”状态。这允许在发生错误时“重试”生成的 observable。如果为 false，当错误来自源时，它会将错误推送到连接主体，并且主体将保持连接主体，这意味着生成的 observable 不会再次“冷”，随后的重试或重新订阅将重新订阅该主体同一主体。在所有情况下，RxJS 主体都会再次发送相同的错误，但是 {@link ReplaySubject} 也会在推送错误之前推送其缓冲值。也可以通过一个通知工厂返回一个 observable 来代替，它可以对重置的方式和时间进行更细粒度的控制。这允许有条件或延迟重置等行为。
    *
    */
   resetOnError?: boolean | ((error: any) => Observable<any>);

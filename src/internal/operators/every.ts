@@ -29,12 +29,12 @@ export function every<T>(predicate: (value: T, index: number, source: Observable
 /**
  * Returns an Observable that emits whether or not every item of the source satisfies the condition specified.
  *
- * 返回一个 Observable，它发出源中的每个条目是否满足指定的条件。
+ * 返回一个 Observable，它发送源中的每个条目是否满足指定的条件。
  *
  * <span class="informal">If all values pass predicate before the source completes, emits true before completion,
  * otherwise emit false, then complete.</span>
  *
- * <span class="informal">如果所有值在源完成之前通过谓词，则在完成之前发出 true，否则发出 false，然后完成。</span>
+ * <span class="informal">如果所有值在源完成之前通过谓词，则在完成之前发送 true，否则发送 false，然后完成。</span>
  *
  * ![](every.png)
  *

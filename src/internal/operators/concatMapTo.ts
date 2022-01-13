@@ -45,7 +45,7 @@ export function concatMapTo<T, R, O extends ObservableInput<unknown>>(
  * instance emitted on the output Observable is concatenated with the previous
  * `innerObservable` instance.
  *
- * 将每个源值映射到给定的 Observable `innerObservable`，而不考虑源值，然后将这些结果 Observable 展平为一个 Observable，即输出 Observable。在输出 Observable 上发出的每个新的 `innerObservable` 实例都与前一个 `innerObservable` 实例连接。
+ * 将每个源值映射到给定的 Observable `innerObservable`，而不考虑源值，然后将这些结果 Observable 展平为一个 Observable，即输出 Observable。在输出 Observable 上发送的每个新的 `innerObservable` 实例都与前一个 `innerObservable` 实例连接。
  *
  * __Warning:__ if source values arrive endlessly and faster than their
  * corresponding inner Observables can complete, it will result in memory issues
@@ -96,7 +96,7 @@ export function concatMapTo<T, R, O extends ObservableInput<unknown>>(
  * joining the passed Observable with itself, one after the other, for each
  * value emitted from the source.
  *
- * 一个函数，该函数通过将传递的 Observable 与自身一个接一个地连接到源中发出的每个值，返回一个合并在一起的值的 Observable。
+ * 一个函数，该函数通过将传递的 Observable 与自身一个接一个地连接到源中发送的每个值，返回一个合并在一起的值的 Observable。
  *
  */
 export function concatMapTo<T, R, O extends ObservableInput<unknown>>(

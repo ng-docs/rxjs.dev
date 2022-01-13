@@ -47,7 +47,7 @@ export interface GenerateOptions<T, S> extends GenerateBaseOptions<S> {
   /**
    * Result selection function that accepts state and returns a value to emit.
    *
-   * 接受状态并返回要发出的值的结果选择函数。
+   * 接受状态并返回要发送的值的结果选择函数。
    *
    */
   resultSelector: ResultFunc<S, T>;
@@ -119,7 +119,7 @@ export interface GenerateOptions<T, S> extends GenerateBaseOptions<S> {
  *
  * @param {SchedulerLike} [scheduler] A {@link SchedulerLike} on which to run the generator loop. If not provided, defaults to emit immediately.
  *
- * 哪个来运行生成器循环。如果未提供，则默认立即发出。
+ * 哪个来运行生成器循环。如果未提供，则默认立即发送。
  *
  * @returns {Observable<T>} The generated sequence.
  *
@@ -142,7 +142,7 @@ export function generate<T, S>(
  * Generates an Observable by running a state-driven loop
  * that emits an element on each iteration.
  *
- * 通过运行一个状态驱动的循环来生成一个 Observable，该循环在每次迭代时发出一个元素。
+ * 通过运行一个状态驱动的循环来生成一个 Observable，该循环在每次迭代时发送一个元素。
  *
  * <span class="informal">Use it instead of nexting values in a for loop.</span>
 *
@@ -168,12 +168,12 @@ export function generate<T, S>(
  * that value with iterate function. If at some point the condition returns false, then the Observable
  * completes at that moment.
  *
- * `generate` 操作符的返回值是一个 Observable，它在每次循环迭代时发出一个值。首先，运行条件函数。如果它返回 true，那么 Observable 会发出当前存储的值（第一次迭代时的初始值），最后使用 iterate 函数更新该值。如果在某个时候条件返回 false，则 Observable 在那一刻完成。
+ * `generate` 操作符的返回值是一个 Observable，它在每次循环迭代时发送一个值。首先，运行条件函数。如果它返回 true，那么 Observable 会发送当前存储的值（第一次迭代时的初始值），最后使用 iterate 函数更新该值。如果在某个时候条件返回 false，则 Observable 在那一刻完成。
  *
  * Optionally you can pass a fourth parameter to `generate` - a result selector function which allows you
  * to immediately map the value that would normally be emitted by an Observable.
  *
- * 可选地，你可以传递第四个参数来 `generate` - 结果选择器函数，它允许你立即映射通常由 Observable 发出的值。
+ * 可选地，你可以传递第四个参数来 `generate` - 结果选择器函数，它允许你立即映射通常由 Observable 发送的值。
  *
  * If you find three anonymous functions in `generate` call hard to read, you can provide
  * a single object to the operator instead where the object has the properties: `initialState`,
@@ -193,7 +193,7 @@ export function generate<T, S>(
  * on a separate task in the event loop, you could use the `async` scheduler. Note that
  * by default (when no scheduler is passed) values are simply emitted synchronously.
  *
- * 两种形式的 `generate` 可以选择接受调度器。在多参数调用的情况下，调度器只是作为最后一个参数出现（无论是否有 `resultSelector` 函数）。在单参数调用的情况下，你可以将其作为 `scheduler` 属性提供给传递给操作符的对象。在这两种情况下，调度器决定下一次循环迭代何时发生，因此下一个值何时由 Observable 发出。例如，要确保在事件循环中的单独任务上将每个值推送到观察者，你可以使用 `async` 调度器。请注意，默认情况下（当没有传递调度器时）值只是同步发出。
+ * 两种形式的 `generate` 可以选择接受调度器。在多参数调用的情况下，调度器只是作为最后一个参数出现（无论是否有 `resultSelector` 函数）。在单参数调用的情况下，你可以将其作为 `scheduler` 属性提供给传递给操作符的对象。在这两种情况下，调度器决定下一次循环迭代何时发生，因此下一个值何时由 Observable 发送。例如，要确保在事件循环中的单独任务上将每个值推送到观察者，你可以使用 `async` 调度器。请注意，默认情况下（当没有传递调度器时）值只是同步发送。
  *
  * ## Examples
  *
@@ -308,7 +308,7 @@ export function generate<T, S>(
  * @param {function (state: S): T} [resultSelector] Selector function for results produced in the sequence.
  * @param {Scheduler} [scheduler] A {@link Scheduler} on which to run the generator loop. If not provided, defaults to emitting immediately.
  *
- * 哪个来运行生成器循环。如果未提供，则默认为立即发出。
+ * 哪个来运行生成器循环。如果未提供，则默认为立即发送。
  *
  * @return {Observable<T>} The generated sequence.
  *

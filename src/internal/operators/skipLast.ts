@@ -15,13 +15,13 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * emits its fourth value, the first value the source emitted will finally be emitted
  * from the returned observable, as it is no longer part of what needs to be skipped.
  *
- * 返回一个 observable，它会尽快发出值，给定一些跳过的值。例如，如果你在源上 `skipLast(3)`，当源发出其第四个值时，源发出的第一个值最终将从返回的 observable 中发出，因为它不再是需要跳过的一部分。
+ * 返回一个 observable，它会尽快发送值，给定一些跳过的值。例如，如果你在源上 `skipLast(3)`，当源发送其第四个值时，源发送的第一个值最终将从返回的 observable 中发送，因为它不再是需要跳过的一部分。
  *
  * All values emitted by the result of `skipLast(N)` will be delayed by `N` emissions,
  * as each value is held in a buffer until enough values have been emitted that that
  * the buffered value may finally be sent to the consumer.
  *
- * `skipLast(N)` 的结果发出的所有值都将延迟 `N` 个发射，因为每个值都保存在缓冲区中，直到发出足够的值，缓冲的值最终可以发送给消费者。
+ * `skipLast(N)` 的结果发送的所有值都将延迟 `N` 个发送，因为每个值都保存在缓冲区中，直到发送足够的值，缓冲的值最终可以发送给消费者。
  *
  * After subscribing, unsubscribing will not result in the emission of the buffered
  * skipped values.
@@ -58,7 +58,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * @return A function that returns an Observable that skips the last `count`
  * values emitted by the source Observable.
  *
- * 一个返回 Observable 的函数，它跳过源 Observable 发出的最后一个 `count` 数值。
+ * 一个返回 Observable 的函数，它跳过源 Observable 发送的最后一个 `count` 数值。
  *
  */
 export function skipLast<T>(skipCount: number): MonoTypeOperatorFunction<T> {

@@ -21,11 +21,11 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  * @param emitOnNext Whether or not to emit the state on next
  *
- * 是否在下一个发出状态
+ * 是否在下一个发送状态
  *
  * @param emitBeforeComplete Whether or not to emit the before completion
  *
- * 是否发出完成前的
+ * 是否发送完成前的
  *
  */
 

@@ -7,7 +7,7 @@ import { timer } from '../observable/timer';
  * Delays the emission of items from the source Observable by a given timeout or
  * until a given Date.
  *
- * 将源 Observable 的条目的发射延迟给定的超时时间或直到给定的日期。
+ * 将源 Observable 的条目的发送延迟给定的超时时间或直到给定的日期。
  *
  * <span class="informal">Time shifts each item by some specified amount of
  * milliseconds.</span>
@@ -67,7 +67,7 @@ import { timer } from '../observable/timer';
  * @param {number|Date} due The delay duration in milliseconds (a `number`) or
  * a `Date` until which the emission of the source items is delayed.
  *
- * 以毫秒为单位的延迟持续时间（一个 `number`）或一个 `Date`，在此之前源条目的发射被延迟。
+ * 以毫秒为单位的延迟持续时间（一个 `number`）或一个 `Date`，在此之前源条目的发送被延迟。
  *
  * @param {SchedulerLike} [scheduler=async] The {@link SchedulerLike} to use for
  * managing the timers that handle the time-shift for each item.
@@ -77,7 +77,7 @@ import { timer } from '../observable/timer';
  * @return A function that returns an Observable that delays the emissions of
  * the source Observable by the specified timeout or Date.
  *
- * 一个返回 Observable 的函数，它将源 Observable 的发射延迟指定的超时或日期。
+ * 一个返回 Observable 的函数，它将源 Observable 的发送延迟指定的超时或日期。
  *
  */
 export function delay<T>(due: number | Date, scheduler: SchedulerLike = asyncScheduler): MonoTypeOperatorFunction<T> {

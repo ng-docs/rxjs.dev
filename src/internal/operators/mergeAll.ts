@@ -6,7 +6,7 @@ import { OperatorFunction, ObservableInput, ObservedValueOf } from '../types';
  * Converts a higher-order Observable into a first-order Observable which
  * concurrently delivers all values that are emitted on the inner Observables.
  *
- * 将高阶 Observable 转换为一阶 Observable，它同时传递在内部 Observable 上发出的所有值。
+ * 将高阶 Observable 转换为一阶 Observable，它同时传递在内部 Observable 上发送的所有值。
  *
  * <span class="informal">Flattens an Observable-of-Observables.</span>
 *
@@ -21,7 +21,7 @@ import { OperatorFunction, ObservableInput, ObservedValueOf } from '../types';
  * completes once all inner Observables have completed. Any error delivered by
  * a inner Observable will be immediately emitted on the output Observable.
  *
- * `mergeAll` 订阅一个发出 Observable 的 Observable，也称为高阶 Observable。每次它观察到其中一个发出的内部 Observable 时，它都会订阅它并将内部 Observable 的所有值传递到输出 Observable 上。输出 Observable 仅在所有内部 Observable 完成后才完成。内部 Observable 传递的任何错误都会立即在输出 Observable 上发出。
+ * `mergeAll` 订阅一个发送 Observable 的 Observable，也称为高阶 Observable。每次它观察到其中一个发送的内部 Observable 时，它都会订阅它并将内部 Observable 的所有值传递到输出 Observable 上。输出 Observable 仅在所有内部 Observable 完成后才完成。内部 Observable 传递的任何错误都会立即在输出 Observable 上发送。
  *
  * ## Examples
  *
@@ -71,7 +71,7 @@ import { OperatorFunction, ObservableInput, ObservedValueOf } from '../types';
  * @return A function that returns an Observable that emits values coming from
  * all the inner Observables emitted by the source Observable.
  *
- * 一个返回 Observable 的函数，该 Observable 发出来自源 Observable 发出的所有内部 Observable 的值。
+ * 一个返回 Observable 的函数，该 Observable 发送来自源 Observable 发送的所有内部 Observable 的值。
  *
  */
 export function mergeAll<O extends ObservableInput<any>>(concurrent: number = Infinity): OperatorFunction<O, ObservedValueOf<O>> {

@@ -24,7 +24,7 @@ import { UnaryFunction } from '../types';
  * predicate returns false. The first behaves like {@link filter} and the second
  * behaves like {@link filter} with the predicate negated.
  *
- * `partition` 输出一个包含两个 Observable 的数组，它们通过给定的 `predicate` 函数对源 Observable 中的值进行分区。该数组中的第一个 Observable 发出谓词参数返回 true 的源值。第二个 Observable 发出谓词返回 false 的源值。第一个行为类似于 {@link filter}，第二个行为类似于 {@link filter}，谓词被否定。
+ * `partition` 输出一个包含两个 Observable 的数组，它们通过给定的 `predicate` 函数对源 Observable 中的值进行分区。该数组中的第一个 Observable 发送谓词参数返回 true 的源值。第二个 Observable 发送谓词返回 false 的源值。第一个行为类似于 {@link filter}，第二个行为类似于 {@link filter}，谓词被否定。
  *
  * ## Example
  *
@@ -56,7 +56,7 @@ import { UnaryFunction } from '../types';
  * `index` parameter is the number `i` for the i-th source emission that has
  * happened since the subscription, starting from the number `0`.
  *
- * 评估源 Observable 发出的每个值的函数。如果返回 `true`，则在返回数组中的第一个 Observable 上发出该值，如果为 `false`，则在数组中的第二个 Observable 上发出该值。`index` 参数是自订阅以来发生的第 i 个源排放的数字 `i`，从数字 `0` 开始。
+ * 评估源 Observable 发送的每个值的函数。如果返回 `true`，则在返回数组中的第一个 Observable 上发送该值，如果为 `false`，则在数组中的第二个 Observable 上发送该值。`index` 参数是自订阅以来发生的第 i 个源排放的数字 `i`，从数字 `0` 开始。
  *
  * @param {any} [thisArg] An optional argument to determine the value of `this`
  * in the `predicate` function.

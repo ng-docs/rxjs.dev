@@ -10,13 +10,13 @@ import { arrRemove } from '../util/arrRemove';
  * Buffers the source Observable values starting from an emission from
  * `openings` and ending when the output of `closingSelector` emits.
  *
- * 缓冲源 Observable 值，从 `openings` 的发射开始，到 `closingSelector` 的输出发射时结束。
+ * 缓冲源 Observable 值，从 `openings` 的发送开始，到 `closingSelector` 的输出发送时结束。
  *
  * <span class="informal">Collects values from the past as an array. Starts
  * collecting only when `opening` emits, and calls the `closingSelector`
  * function to get an Observable that tells when to close the buffer.</span>
  *
- * <span class="informal">将过去的值作为数组收集。仅在 `opening` 发出时开始收集，并调用 `closingSelector` 函数以获取一个告诉何时关闭缓冲区的 Observable。</span>
+ * <span class="informal">将过去的值作为数组收集。仅在 `opening` 发送时开始收集，并调用 `closingSelector` 函数以获取一个告诉何时关闭缓冲区的 Observable。</span>
  *
  * ![](bufferToggle.png)
  *
@@ -24,7 +24,7 @@ import { arrRemove } from '../util/arrRemove';
  * Observable provided to `openings`, and closing and sending the buffers when
  * a Subscribable or Promise returned by the `closingSelector` function emits.
  *
- * 通过提供给 `openings` 的 Observable 的信号打开缓冲区，并在 `closingSelector` 函数返回的 Subscribable 或 Promise 发出时关闭和发送缓冲区，从而缓冲来自源的值。
+ * 通过提供给 `openings` 的 Observable 的信号打开缓冲区，并在 `closingSelector` 函数返回的 Subscribable 或 Promise 发送时关闭和发送缓冲区，从而缓冲来自源的值。
  *
  * ## Example
  *
@@ -32,7 +32,7 @@ import { arrRemove } from '../util/arrRemove';
  *
  * Every other second, emit the click events from the next 500ms
  *
- * 每隔一秒，从接下来的 500 毫秒发出点击事件
+ * 每隔一秒，从接下来的 500 毫秒发送点击事件
  *
  * ```ts
  * import { fromEvent, interval, bufferToggle, EMPTY } from 'rxjs';
@@ -59,7 +59,7 @@ import { arrRemove } from '../util/arrRemove';
  * which, when it emits, signals that the associated buffer should be emitted
  * and cleared.
  *
- * 一个函数，它获取由可观察者 `openings` 发出的值并返回一个 Subscribable 或 Promise，当它发出时，表示应该发出并清除关联的缓冲区。
+ * 一个函数，它获取由可观察者 `openings` 发送的值并返回一个 Subscribable 或 Promise，当它发送时，表示应该发送并清除关联的缓冲区。
  *
  * @return A function that returns an Observable of arrays of buffered values.
  *

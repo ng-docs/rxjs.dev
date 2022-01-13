@@ -59,18 +59,18 @@ export function groupBy<T, K, R>(
  * and emits these grouped items as `GroupedObservables`, one
  * {@link GroupedObservable} per group.
  *
- * 根据指定的标准对 Observable 发出的条目进行分组，并将这些分组的条目作为 `GroupedObservables` 发出，每组一个 {@link GroupedObservable}。
+ * 根据指定的标准对 Observable 发送的条目进行分组，并将这些分组的条目作为 `GroupedObservables` 发送，每组一个 {@link GroupedObservable}。
  *
  * ![](groupBy.png)
  *
  * When the Observable emits an item, a key is computed for this item with the key function.
  *
- * 当 Observable 发出一个条目时，使用 key 函数为这个条目计算一个键。
+ * 当 Observable 发送一个条目时，使用 key 函数为这个条目计算一个键。
  *
  * If a {@link GroupedObservable} for this key exists, this {@link GroupedObservable} emits. Otherwise, a new
  * {@link GroupedObservable} for this key is created and emits.
  *
- * 如果此键的 {@link GroupedObservable} 存在，则此 {@link GroupedObservable} 发出。否则，将为该键创建一个新的 {@link GroupedObservable} 并发出。
+ * 如果此键的 {@link GroupedObservable} 存在，则此 {@link GroupedObservable} 发送。否则，将为该键创建一个新的 {@link GroupedObservable} 并发送。
  *
  * A {@link GroupedObservable} represents values belonging to the same group represented by a common key. The common
  * key is available as the `key` field of a {@link GroupedObservable} instance.
@@ -80,7 +80,7 @@ export function groupBy<T, K, R>(
  * The elements emitted by {@link GroupedObservable}s are by default the items emitted by the Observable, or elements
  * returned by the element function.
  *
- * {@link GroupedObservable} 发出的元素默认是 Observable 发出的条目，或者是 element 函数返回的元素。
+ * {@link GroupedObservable} 发送的元素默认是 Observable 发送的条目，或者是 element 函数返回的元素。
  *
  * ## Examples
  *
@@ -155,13 +155,13 @@ export function groupBy<T, K, R>(
  * @param connector Factory function to create an
  * intermediate Subject through which grouped elements are emitted.
  *
- * 工厂函数创建一个中间主体，通过该主体发出分组元素。
+ * 工厂函数创建一个中间主体，通过该主体发送分组元素。
  *
  * @return A function that returns an Observable that emits GroupedObservables,
  * each of which corresponds to a unique key value and each of which emits
  * those items from the source Observable that share that key value.
  *
- * 一个函数，它返回一个发出 GroupedObservables 的 Observable，每个都对应一个唯一的键值，每个都从源 Observable 发出共享该键值的那些条目。
+ * 一个函数，它返回一个发送 GroupedObservables 的 Observable，每个都对应一个唯一的键值，每个都从源 Observable 发送共享该键值的那些条目。
  *
  * @deprecated Use the options parameter instead.
  *
@@ -317,7 +317,7 @@ export function groupBy<T, K, R>(
  * subscriptions have to keep the subscription to the source alive until they
  * are torn down.
  *
- * 创建它是因为 groupBy 有点独特，因为具有订阅的发出组必须保持对源的订阅处于活动状态，直到它们被拆解。
+ * 创建它是因为 groupBy 有点独特，因为具有订阅的发送组必须保持对源的订阅处于活动状态，直到它们被拆解。
  *
  */
 class GroupBySubscriber<T> extends OperatorSubscriber<T> {
@@ -349,7 +349,7 @@ class GroupBySubscriber<T> extends OperatorSubscriber<T> {
  * An observable of values that is the emitted by the result of a {@link groupBy} operator,
  * contains a `key` property for the grouping.
  *
- * 由 {@link groupBy} 操作符的结果发出的可观察值包含分组的 `key` 属性。
+ * 由 {@link groupBy} 操作符的结果发送的可观察值包含分组的 `key` 属性。
  *
  */
 export interface GroupedObservable<K, T> extends Observable<T> {

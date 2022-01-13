@@ -17,7 +17,7 @@ import { UnaryFunction } from '../types';
  * value even if it has no more subscribers. If subsequent subscriptions happen, they will
  * immediately get that last stored value and complete.
  *
- * 类似于 {@link publish}，但它会等到源 observable 完成并存储最后一个发出的值。与 {@link publishReplay} 和 {@link publishBehavior} 类似，即使没有更多订阅者，它也会继续存储最后一个值。如果发生后续订阅，他们将立即获得最后存储的值并完成。
+ * 类似于 {@link publish}，但它会等到源 observable 完成并存储最后一个发送的值。与 {@link publishReplay} 和 {@link publishBehavior} 类似，即使没有更多订阅者，它也会继续存储最后一个值。如果发生后续订阅，他们将立即获得最后存储的值并完成。
  *
  * ## Example
  *
@@ -63,7 +63,7 @@ import { UnaryFunction } from '../types';
  * @return A function that returns an Observable that emits elements of a
  * sequence produced by multicasting the source sequence.
  *
- * 一个返回 Observable 的函数，该 Observable 发出由多播源序列产生的序列元素。
+ * 一个返回 Observable 的函数，该 Observable 发送由多播源序列产生的序列元素。
  *
  * @deprecated Will be removed in v8. To create a connectable observable with an
  * {@link AsyncSubject} under the hood, use {@link connectable}.

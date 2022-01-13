@@ -12,7 +12,7 @@ import { arrRemove } from '../util/arrRemove';
  * <span class="informal">Collects values from the past as an array, and emits
  * that array only when its size reaches `bufferSize`.</span>
  *
- * <span class="informal">将过去的值收集为一个数组，并仅在其大小达到 `bufferSize` 时发出该数组。</span>
+ * <span class="informal">将过去的值收集为一个数组，并仅在其大小达到 `bufferSize` 时发送该数组。</span>
  *
  * ![](bufferCount.png)
  *
@@ -22,7 +22,7 @@ import { arrRemove } from '../util/arrRemove';
  * `null`, then new buffers are started immediately at the start of the source
  * and when each buffer closes and is emitted.
  *
- * 通过 `bufferSize` 缓冲来自源 Observable 的多个值，然后发出缓冲区并清除它，并为每个 `startBufferEvery` 值启动一个新缓冲区。如果 `startBufferEvery` 未提供或为 `null`，则新缓冲区会在源开始处以及每个缓冲区关闭并发出时立即启动。
+ * 通过 `bufferSize` 缓冲来自源 Observable 的多个值，然后发送缓冲区并清除它，并为每个 `startBufferEvery` 值启动一个新缓冲区。如果 `startBufferEvery` 未提供或为 `null`，则新缓冲区会在源开始处以及每个缓冲区关闭并发送时立即启动。
  *
  * ## Examples
  *
@@ -30,7 +30,7 @@ import { arrRemove } from '../util/arrRemove';
  *
  * Emit the last two click events as an array
  *
- * 将最后两个点击事件作为数组发出
+ * 将最后两个点击事件作为数组发送
  *
  * ```ts
  * import { fromEvent, bufferCount } from 'rxjs';
@@ -42,7 +42,7 @@ import { arrRemove } from '../util/arrRemove';
  *
  * On every click, emit the last two click events as an array
  *
- * 每次单击时，将最后两个单击事件作为数组发出
+ * 每次单击时，将最后两个单击事件作为数组发送
  *
  * ```ts
  * import { fromEvent, bufferCount } from 'rxjs';
@@ -59,7 +59,7 @@ import { arrRemove } from '../util/arrRemove';
  * @see {@link windowCount}
  * @param {number} bufferSize The maximum size of the buffer emitted.
  *
- * 发出的缓冲区的最大大小。
+ * 发送的缓冲区的最大大小。
  *
  * @param {number} [startBufferEvery] Interval at which to start a new buffer.
  * For example if `startBufferEvery` is `2`, then a new buffer will be started

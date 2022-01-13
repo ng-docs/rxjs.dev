@@ -84,7 +84,7 @@ export interface TimeoutInfo<T, M = unknown> {
 /**
  * An error emitted when a timeout occurs.
  *
- * 发生超时时发出的错误。
+ * 发生超时时发送的错误。
  *
  */
 export interface TimeoutError<T = unknown, M = unknown> extends Error {
@@ -152,7 +152,7 @@ export const TimeoutError: TimeoutErrorCtor = createErrorClass(
  * function provided by `with`, and switch your subscription to the result of that. Timeout conditions are provided by
  * the settings in `first` and `each`.
  *
- * 关于配置首先要知道的是，如果你没有为配置提供 `with` 属性，当满足超时条件时，这个操作符会发出一个 {@link TimeoutError}。否则，它将使用 `with` 提供的工厂函数，并将你的订阅切换到该结果。超时条件由 `first` 和 `each` 中的设置提供。
+ * 关于配置首先要知道的是，如果你没有为配置提供 `with` 属性，当满足超时条件时，这个操作符会发送一个 {@link TimeoutError}。否则，它将使用 `with` 提供的工厂函数，并将你的订阅切换到该结果。超时条件由 `first` 和 `each` 中的设置提供。
  *
  * The `first` property can be either a `Date` for a specific time, a `number` for a time period relative to the
  * point of subscription, or it can be skipped. This property is to check timeout conditions for the arrival of
@@ -174,7 +174,7 @@ export const TimeoutError: TimeoutErrorCtor = createErrorClass(
  *
  * Emit a custom error if there is too much time between values
  *
- * 如果值之间的时间过长，则发出自定义错误
+ * 如果值之间的时间过长，则发送自定义错误
  *
  * ```ts
  * import { interval, timeout, throwError } from 'rxjs';
@@ -241,7 +241,7 @@ export function timeout<T, O extends ObservableInput<unknown>, M = unknown>(
  * function provided by `with`, and switch your subscription to the result of that. Timeout conditions are provided by
  * the settings in `first` and `each`.
  *
- * 关于配置首先要知道的是，如果你没有为配置提供 `with` 属性，当满足超时条件时，这个操作符会发出一个 {@link TimeoutError}。否则，它将使用 `with` 提供的工厂函数，并将你的订阅切换到该结果。超时条件由 `first` 和 `each` 中的设置提供。
+ * 关于配置首先要知道的是，如果你没有为配置提供 `with` 属性，当满足超时条件时，这个操作符会发送一个 {@link TimeoutError}。否则，它将使用 `with` 提供的工厂函数，并将你的订阅切换到该结果。超时条件由 `first` 和 `each` 中的设置提供。
  *
  * The `first` property can be either a `Date` for a specific time, a `number` for a time period relative to the
  * point of subscription, or it can be skipped. This property is to check timeout conditions for the arrival of
@@ -266,7 +266,7 @@ export function timeout<T, O extends ObservableInput<unknown>, M = unknown>(
  * the error would be with {@link catchError}, although you could use {@link tap} or just the error handler in your `subscribe` call
  * directly, if your error handling is only a side effect (such as notifying the user, or logging).
  *
- * 如果没有 `with` 属性，订阅结果 observable 可能会发出 {@link TimeoutError} 错误。超时错误提供了你在处理错误时可以检查的有用信息。处理错误的最常见方法是使用 {@link catchError}，尽管你可以使用 {@link tap} 或直接在 `subscribe` 调用中使用错误处理器，如果你的错误处理只是一个副作用（例如通知用户或日志记录）。
+ * 如果没有 `with` 属性，订阅结果 observable 可能会发送 {@link TimeoutError} 错误。超时错误提供了你在处理错误时可以检查的有用信息。处理错误的最常见方法是使用 {@link catchError}，尽管你可以使用 {@link tap} 或直接在 `subscribe` 调用中使用错误处理器，如果你的错误处理只是一个副作用（例如通知用户或日志记录）。
  *
  * In this case, you would check the error for `instanceof TimeoutError` to validate that the error was indeed from `timeout`, and
  * not from some other source. If it's not from `timeout`, you should probably rethrow it if you're in a `catchError`.
@@ -279,7 +279,7 @@ export function timeout<T, O extends ObservableInput<unknown>, M = unknown>(
  *
  * Emit a {@link TimeoutError} if the first value, and _only_ the first value, does not arrive within 5 seconds
  *
- * 如果第一个值（并且*只有*第一个值）在 5 秒内未抵达，则发出 {@link TimeoutError}
+ * 如果第一个值（并且*只有*第一个值）在 5 秒内未抵达，则发送 {@link TimeoutError}
  *
  * ```ts
  * import { interval, timeout } from 'rxjs';
@@ -299,7 +299,7 @@ export function timeout<T, O extends ObservableInput<unknown>, M = unknown>(
  * Emit a {@link TimeoutError} if the source waits longer than 5 seconds between any two values or the first value
  * and subscription.
  *
- * 如果源在任意两个值或第一个值和订阅之间等待超过 5 秒，则发出 {@link TimeoutError}。
+ * 如果源在任意两个值或第一个值和订阅之间等待超过 5 秒，则发送 {@link TimeoutError}。
  *
  * ```ts
  * import { timer, timeout, expand } from 'rxjs';
@@ -321,7 +321,7 @@ export function timeout<T, O extends ObservableInput<unknown>, M = unknown>(
  * Emit a {@link TimeoutError} if the source does not emit before 7 seconds, _or_ if the source waits longer than
  * 5 seconds between any two values after the first.
  *
- * 如果源在 7 秒之前没有发出，_ 或者 _ 源在第一个值之后的任意两个值之间等待超过 5 秒，则发出 {@link TimeoutError}。
+ * 如果源在 7 秒之前没有发送，_ 或者 _ 源在第一个值之后的任意两个值之间等待超过 5 秒，则发送 {@link TimeoutError}。
  *
  * ```ts
  * import { timer, timeout, expand } from 'rxjs';
@@ -356,7 +356,7 @@ export function timeout<T, M = unknown>(config: Omit<TimeoutConfig<T, any, M>, '
  * @param first The date to at which the resulting observable will timeout if the source observable
  * does not emit at least one value.
  *
- * 如果源 observable 没有发出至少一个值，则结果 observable 将超时的日期。
+ * 如果源 observable 没有发送至少一个值，则结果 observable 将超时的日期。
  *
  * @param scheduler The scheduler to use. Defaults to {@link asyncScheduler}.
  *
@@ -391,11 +391,11 @@ export function timeout<T>(each: number, scheduler?: SchedulerLike): MonoTypeOpe
 /**
  * Errors if Observable does not emit a value in given time span.
  *
- * 如果 Observable 在给定的时间范围内没有发出值，则会出错。
+ * 如果 Observable 在给定的时间范围内没有发送值，则会出错。
  *
  * <span class="informal">Timeouts on Observable that doesn't emit values fast enough.</span>
 *
- * <span class="informal">Observable 上的超时不会足够快地发出值。</span>
+ * <span class="informal">Observable 上的超时不会足够快地发送值。</span>
  *
  * ![](timeout.png)
  * @see {@link timeoutWith}
@@ -502,7 +502,7 @@ export function timeout<T, O extends ObservableInput<any>, M>(
  * The default function to use to emit an error when timeout occurs and a `with` function
  * is not specified.
  *
- * 发生超时且未指定 `with` 函数时用于发出错误的默认函数。
+ * 发生超时且未指定 `with` 函数时用于发送错误的默认函数。
  *
  * @param info The information about the timeout to pass along to the error
  *

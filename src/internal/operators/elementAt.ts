@@ -10,11 +10,11 @@ import { take } from './take';
  * Emits the single value at the specified `index` in a sequence of emissions
  * from the source Observable.
  *
- * 在源 Observable 的发射序列中在指定 `index` 处发射单个值。
+ * 在源 Observable 的发送序列中在指定 `index` 处发送单个值。
  *
  * <span class="informal">Emits only the i-th value, then completes.</span>
 *
- * <span class="informal">仅发出第 i 个值，然后完成。</span>
+ * <span class="informal">仅发送第 i 个值，然后完成。</span>
  *
  * ![](elementAt.png)
  *
@@ -24,7 +24,7 @@ import { take } from './take';
  * not given and the `index` is out of range, the output Observable will emit an
  * `ArgumentOutOfRangeError` error.
  *
- * `elementAt` 返回一个 Observable，它在源 Observable 中的指定 `index` 处发出条目，或者如果该 `index` 超出范围并且提供了 `default` 参数，则返回一个默认值。如果未给出 `default` 参数并且 `index` 超出范围，则输出 Observable 将发出 `ArgumentOutOfRangeError` 错误。
+ * `elementAt` 返回一个 Observable，它在源 Observable 中的指定 `index` 处发送条目，或者如果该 `index` 超出范围并且提供了 `default` 参数，则返回一个默认值。如果未给出 `default` 参数并且 `index` 超出范围，则输出 Observable 将发送 `ArgumentOutOfRangeError` 错误。
  *
  * ## Example
  *
@@ -32,7 +32,7 @@ import { take } from './take';
  *
  * Emit only the third click event
  *
- * 仅发出第三次点击事件
+ * 仅发送第三次点击事件
  *
  * ```ts
  * import { fromEvent, elementAt } from 'rxjs';
@@ -55,7 +55,7 @@ import { take } from './take';
  * ArgumentOutOfRangeError to the Observer's `error` callback if `i < 0` or the
  * Observable has completed before emitting the i-th `next` notification.
  *
- * 使用 `elementAt(i)` 时，如果 `i < 0` 或 Observable 在发出第 i 个 `next` 通知之前已完成，它会将 ArgumentOutOfRangeError 传递给 Observer 的 `error` 回调。
+ * 使用 `elementAt(i)` 时，如果 `i < 0` 或 Observable 在发送第 i 个 `next` 通知之前已完成，它会将 ArgumentOutOfRangeError 传递给 Observer 的 `error` 回调。
  *
  * @param {number} index Is the number `i` for the i-th source emission that has
  * happened since the subscription, starting from the number `0`.
@@ -67,7 +67,7 @@ import { take } from './take';
  * it is found. Otherwise, it will emit the default value if given. If not, it
  * emits an error.
  *
- * 一个返回 Observable 的函数，该 Observable 发出单个条目（如果找到的话）。否则，如果给定，它将发出默认值。如果不是，它会发出错误。
+ * 一个返回 Observable 的函数，该 Observable 发送单个条目（如果找到的话）。否则，如果给定，它将发送默认值。如果不是，它会发送错误。
  *
  */
 export function elementAt<T, D = T>(index: number, defaultValue?: D): OperatorFunction<T, T | D> {

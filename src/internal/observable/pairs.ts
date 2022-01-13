@@ -52,12 +52,12 @@ export function pairs(
  * enumerable keys that are present on an object directly - not ones inherited
  * via prototype chain.
  *
- * `pairs` 接受一个任意对象并返回一个发出数组的 Observable。每个发出的数组都有两个元素——第一个是来自对象的键，第二个是对应于该键的值。键是通过 `Object.keys` 函数从对象中提取的，这意味着它们只是直接存在于对象上的可枚举键——而不是通过原型链继承的键。
+ * `pairs` 接受一个任意对象并返回一个发送数组的 Observable。每个发送的数组都有两个元素——第一个是来自对象的键，第二个是对应于该键的值。键是通过 `Object.keys` 函数从对象中提取的，这意味着它们只是直接存在于对象上的可枚举键——而不是通过原型链继承的键。
  *
  * By default, these arrays are emitted synchronously. To change that you can
  * pass a {@link SchedulerLike} as a second argument to `pairs`.
  *
- * 默认情况下，这些数组是同步发出的。要改变这一点，你可以将 {@link SchedulerLike} 作为第二个参数传递给 `pairs`。
+ * 默认情况下，这些数组是同步发送的。要改变这一点，你可以将 {@link SchedulerLike} 作为第二个参数传递给 `pairs`。
  *
  * ## Example
  *

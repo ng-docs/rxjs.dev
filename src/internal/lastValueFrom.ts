@@ -19,12 +19,12 @@ export function lastValueFrom<T>(source: Observable<T>): Promise<T>;
  * returned promise will reject with {@link EmptyError} or will resolve
  * with the default value if a default was specified.
  *
- * 如果 observable 流在发出任何值之前完成，返回的 Promise 将使用 {@link EmptyError} 拒绝，或者如果指定了默认值，则使用默认值解析。
+ * 如果 observable 流在发送任何值之前完成，返回的 Promise 将使用 {@link EmptyError} 拒绝，或者如果指定了默认值，则使用默认值解析。
  *
  * If the observable stream emits an error, the returned promise will reject
  * with that error.
  *
- * 如果 observable 流发出错误，返回的 Promise 将拒绝该错误。
+ * 如果 observable 流发送错误，返回的 Promise 将拒绝该错误。
  *
  * **WARNING**: Only use this with observables you *know* will complete. If the source
  * observable does not complete, you will end up with a promise that is hung up, and
@@ -41,7 +41,7 @@ export function lastValueFrom<T>(source: Observable<T>): Promise<T>;
  * Wait for the last value from a stream and emit it from a promise in
  * an async function
  *
- * 等待流中的最后一个值并从异步函数中的承诺中发出它
+ * 等待流中的最后一个值并从异步函数中的承诺中发送它
  *
  * ```ts
  * import { interval, take, lastValueFrom } from 'rxjs';
@@ -64,7 +64,7 @@ export function lastValueFrom<T>(source: Observable<T>): Promise<T>;
  *
  * @param config a configuration object to define the `defaultValue` to use if the source completes without emitting a value
  *
- * 一个配置对象，用于定义在源完成但未发出值时使用的 `defaultValue`
+ * 一个配置对象，用于定义在源完成但未发送值时使用的 `defaultValue`
  *
  */
 export function lastValueFrom<T, D>(source: Observable<T>, config?: LastValueFromConfig<D>): Promise<T | D> {

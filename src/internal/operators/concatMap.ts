@@ -47,7 +47,7 @@ export function concatMap<T, R, O extends ObservableInput<any>>(
  * returns an (so-called "inner") Observable. Each new inner Observable is
  * concatenated with the previous inner Observable.
  *
- * 返回一个 Observable，该 Observable 基于应用你提供给源 Observable 发出的每个条目的函数来发射条目，其中该函数返回一个（所谓的“内部”）Observable。每个新的内部 Observable 都与之前的内部 Observable 连接。
+ * 返回一个 Observable，该 Observable 基于应用你提供给源 Observable 发送的每个条目的函数来发送条目，其中该函数返回一个（所谓的“内部”）Observable。每个新的内部 Observable 都与之前的内部 Observable 连接。
  *
  * __Warning:__ if source values arrive endlessly and faster than their
  * corresponding inner Observables can complete, it will result in memory issues
@@ -94,14 +94,14 @@ export function concatMap<T, R, O extends ObservableInput<any>>(
  * that, when applied to an item emitted by the source Observable, returns an
  * Observable.
  *
- * 一个函数，当应用于源 Observable 发出的条目时，返回一个 Observable。
+ * 一个函数，当应用于源 Observable 发送的条目时，返回一个 Observable。
  *
  * @return A function that returns an Observable that emits the result of
  * applying the projection function (and the optional deprecated
  * `resultSelector`) to each item emitted by the source Observable and taking
  * values from each projected inner Observable sequentially.
  *
- * 一个返回 Observable 的函数，该函数发出将投影函数（和可选的已弃用的 `resultSelector`）应用于源 Observable 发出的每个条目的结果，并按顺序从每个投影的内部 Observable 中获取值。
+ * 一个返回 Observable 的函数，该函数发送将投影函数（和可选的已弃用的 `resultSelector`）应用于源 Observable 发送的每个条目的结果，并按顺序从每个投影的内部 Observable 中获取值。
  *
  */
 export function concatMap<T, R, O extends ObservableInput<any>>(

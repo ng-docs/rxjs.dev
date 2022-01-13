@@ -37,11 +37,11 @@ export interface MonoTypeOperatorFunction<T> extends OperatorFunction<T, T> {}
 /**
  * A value and the time at which it was emitted.
  *
- * 一个值和发出它的时间。
+ * 一个值和发送它的时间。
  *
  * Emitted by the `timestamp` operator
  *
- * 由 `timestamp` 操作符发出
+ * 由 `timestamp` 操作符发送
  *
  * @see {@link timestamp}
  */
@@ -60,11 +60,11 @@ export interface Timestamp<T> {
 /**
  * A value emitted and the amount of time since the last value was emitted.
  *
- * 发出的值和自发出最后一个值以来的时间量。
+ * 发送的值和自发送最后一个值以来的时间量。
  *
  * Emitted by the `timeInterval` operator.
  *
- * 由 `timeInterval` 操作符发出。
+ * 由 `timeInterval` 操作符发送。
  *
  * @see {@link timeInterval}
  */
@@ -76,7 +76,7 @@ export interface TimeInterval<T> {
    * If this is the first emitted value, then it will be the amount of time since subscription
    * started.
    *
-   * 此值的发射与前一个值的发射之间的时间量。如果这是第一个发出的值，那么它将是自订阅开始以来的时间量。
+   * 此值的发送与前一个值的发送之间的时间量。如果这是第一个发送的值，那么它将是自订阅开始以来的时间量。
    *
    */
   interval: number;

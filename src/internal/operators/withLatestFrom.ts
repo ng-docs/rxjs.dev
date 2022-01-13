@@ -17,13 +17,13 @@ export function withLatestFrom<T, O extends unknown[], R>(
  * whose values are calculated from the latest values of each, only when the
  * source emits.
  *
- * 将源 Observable 与其他 Observable 组合以创建一个 Observable，其值是根据每个 Observable 的最新值计算的，仅当源发出时。
+ * 将源 Observable 与其他 Observable 组合以创建一个 Observable，其值是根据每个 Observable 的最新值计算的，仅当源发送时。
  *
  * <span class="informal">Whenever the source Observable emits a value, it
  * computes a formula using that value plus the latest values from other input
  * Observables, then emits the output of that formula.</span>
  *
- * <span class="informal">每当源 Observable 发出一个值时，它会使用该值加上来自其他输入 Observable 的最新值计算一个公式，然后发出该公式的输出。</span>
+ * <span class="informal">每当源 Observable 发送一个值时，它会使用该值加上来自其他输入 Observable 的最新值计算一个公式，然后发送该公式的输出。</span>
  *
  * ![](withLatestFrom.png)
  *
@@ -33,7 +33,7 @@ export function withLatestFrom<T, O extends unknown[], R>(
  * the value to be emitted on the output Observable. All input Observables must
  * emit at least one value before the output Observable will emit a value.
  *
- * `withLatestFrom` 仅在源发出一个值时将源 Observable（实例）中的每个值与来自其他输入 Observable 的最新值组合在一起，可选地使用 `project` 函数来确定要在输出 Observable 上发出的值。在输出 Observable 发出一个值之前，所有输入 Observable 必须发出至少一个值。
+ * `withLatestFrom` 仅在源发送一个值时将源 Observable（实例）中的每个值与来自其他输入 Observable 的最新值组合在一起，可选地使用 `project` 函数来确定要在输出 Observable 上发送的值。在输出 Observable 发送一个值之前，所有输入 Observable 必须发送至少一个值。
  *
  * ## Example
  *
@@ -41,7 +41,7 @@ export function withLatestFrom<T, O extends unknown[], R>(
  *
  * On every click event, emit an array with the latest timer event plus the click event
  *
- * 在每个点击事件上，发出一个包含最新计时器事件和点击事件的数组
+ * 在每个点击事件上，发送一个包含最新计时器事件和点击事件的数组
  *
  * ```ts
  * import { fromEvent, interval, withLatestFrom } from 'rxjs';

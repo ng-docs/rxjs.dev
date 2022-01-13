@@ -13,12 +13,12 @@ import { map } from './map';
  * defaults to {@link asyncScheduler}, so by default, the `interval` will be in
  * milliseconds.
  *
- * 发射一个包含当前值的对象，以及发射当前值和前一个值之间经过的时间，这是通过使用提供的 `scheduler` 的 `now()` 方法在每次发射时检索当前时间来计算的，然后计算不同之处。`scheduler` 默认为 {@link asyncScheduler}，因此默认情况下，`interval` 将以毫秒为单位。
+ * 发送一个包含当前值的对象，以及发送当前值和前一个值之间经过的时间，这是通过使用提供的 `scheduler` 的 `now()` 方法在每次发送时检索当前时间来计算的，然后计算不同之处。`scheduler` 默认为 {@link asyncScheduler}，因此默认情况下，`interval` 将以毫秒为单位。
  *
  * <span class="informal">Convert an Observable that emits items into one that
  * emits indications of the amount of time elapsed between those emissions.</span>
  *
- * <span class="informal">将发出条目的 Observable 转换为发出这些发射之间经过的时间量指示的 Observable。</span>
+ * <span class="informal">将发送条目的 Observable 转换为发送这些发送之间经过的时间量指示的 Observable。</span>
  *
  * ![](timeInterval.png)
  *
@@ -28,7 +28,7 @@ import { map } from './map';
  *
  * Emit interval between current value with the last value
  *
- * 当前值与上一个值之间的发射间隔
+ * 当前值与上一个值之间的发送间隔
  *
  * ```ts
  * import { interval, timeInterval } from 'rxjs';
@@ -51,7 +51,7 @@ import { map } from './map';
  * @return A function that returns an Observable that emits information about
  * value and interval.
  *
- * 一个返回 Observable 的函数，该 Observable 发出有关值和间隔的信息。
+ * 一个返回 Observable 的函数，该 Observable 发送有关值和间隔的信息。
  *
  */
 export function timeInterval<T>(scheduler: SchedulerLike = asyncScheduler): OperatorFunction<T, TimeInterval<T>> {

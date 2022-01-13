@@ -54,7 +54,7 @@ export function exhaustMap<T, I, R>(
  * that one completes, it will accept and flatten the next projected Observable
  * and repeat this process.
  *
- * 返回一个 Observable，该 Observable 基于应用你提供给源 Observable 发出的每个条目的函数来发射条目，其中该函数返回一个（所谓的“内部”）Observable。当它将源值投影到 Observable 时，输出 Observable 开始发射由该投影的 Observable 发出的条目。但是，如果前一个投影的 Observable 尚未完成，`exhaustMap` 忽略每个新的投影 Observable。一旦完成，它将接受并展平下一个投影的 Observable 并重复此过程。
+ * 返回一个 Observable，该 Observable 基于应用你提供给源 Observable 发送的每个条目的函数来发送条目，其中该函数返回一个（所谓的“内部”）Observable。当它将源值投影到 Observable 时，输出 Observable 开始发送由该投影的 Observable 发送的条目。但是，如果前一个投影的 Observable 尚未完成，`exhaustMap` 忽略每个新的投影 Observable。一旦完成，它将接受并展平下一个投影的 Observable 并重复此过程。
  *
  * ## Example
  *
@@ -81,7 +81,7 @@ export function exhaustMap<T, I, R>(
  * that, when applied to an item emitted by the source Observable, returns an
  * Observable.
  *
- * 一个函数，当应用于源 Observable 发出的条目时，返回一个 Observable。
+ * 一个函数，当应用于源 Observable 发送的条目时，返回一个 Observable。
  *
  * @return A function that returns an Observable containing projected
  * Observables of each item of the source, ignoring projected Observables that
