@@ -7,7 +7,7 @@ export function range(start: number, count?: number): Observable<number>;
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `range(start, count).pipe(observeOn(scheduler))` instead. Details: Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `range(start, count).pipe(observeOn(scheduler))` 代替。详细信息：详细信息： [https](https://rxjs.dev/deprecations/scheduler-argument) ://rxjs.dev/deprecations/scheduler-argument
+ * `scheduler` 参数将在 v8 中删除。使用 `range(start, count).pipe(observeOn(scheduler))` 代替。详细信息：详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function range(start: number, count: number | undefined, scheduler: SchedulerLike): Observable<number>;

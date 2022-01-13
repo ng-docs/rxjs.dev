@@ -37,7 +37,7 @@ export function combineLatest<A extends readonly unknown[]>(sources: readonly [.
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll` 。详细信息： [https](https://rxjs.dev/deprecations/scheduler-argument) ://rxjs.dev/deprecations/scheduler-argument
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll` 。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function combineLatest<A extends readonly unknown[], R>(
@@ -52,7 +52,7 @@ export function combineLatest<A extends readonly unknown[], R>(
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll` 。详细信息： [https](https://rxjs.dev/deprecations/scheduler-argument) ://rxjs.dev/deprecations/scheduler-argument
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll` 。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function combineLatest<A extends readonly unknown[]>(
@@ -64,14 +64,14 @@ export function combineLatest<A extends readonly unknown[]>(
 /**
  * @deprecated Pass an array of sources instead. The rest-parameters signature will be removed in v8. Details: <https://rxjs.dev/deprecations/array-argument>
  *
- * 而是传递一个源数组。其余参数签名将在 v8 中删除。详细信息： [https](https://rxjs.dev/deprecations/array-argument) ://rxjs.dev/deprecations/array-argument
+ * 而是传递一个源数组。其余参数签名将在 v8 中删除。详细信息： <https://rxjs.dev/deprecations/array-argument>
  *
  */
 export function combineLatest<A extends readonly unknown[]>(...sources: [...ObservableInputTuple<A>]): Observable<A>;
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll` 。详细信息： [https](https://rxjs.dev/deprecations/scheduler-argument) ://rxjs.dev/deprecations/scheduler-argument
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll` 。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function combineLatest<A extends readonly unknown[], R>(
@@ -80,7 +80,7 @@ export function combineLatest<A extends readonly unknown[], R>(
 /**
  * @deprecated Pass an array of sources instead. The rest-parameters signature will be removed in v8. Details: <https://rxjs.dev/deprecations/array-argument>
  *
- * 而是传递一个源数组。其余参数签名将在 v8 中删除。详细信息： [https](https://rxjs.dev/deprecations/array-argument) ://rxjs.dev/deprecations/array-argument
+ * 而是传递一个源数组。其余参数签名将在 v8 中删除。详细信息： <https://rxjs.dev/deprecations/array-argument>
  *
  */
 export function combineLatest<A extends readonly unknown[], R>(
@@ -89,7 +89,7 @@ export function combineLatest<A extends readonly unknown[], R>(
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll` 。详细信息： [https](https://rxjs.dev/deprecations/scheduler-argument) ://rxjs.dev/deprecations/scheduler-argument
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `combineLatestAll` 。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function combineLatest<A extends readonly unknown[]>(

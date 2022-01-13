@@ -14,14 +14,14 @@ export function of(value: undefined): Observable<undefined>;
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 的 .详细信息： [https](https://rxjs.dev/deprecations/scheduler-argument) ://rxjs.dev/deprecations/scheduler-argument
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 的 .详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function of(scheduler: SchedulerLike): Observable<never>;
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 的 .详细信息： [https](https://rxjs.dev/deprecations/scheduler-argument) ://rxjs.dev/deprecations/scheduler-argument
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 的 .详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function of<A extends readonly unknown[]>(...valuesAndScheduler: [...A, SchedulerLike]): Observable<ValueFromArray<A>>;

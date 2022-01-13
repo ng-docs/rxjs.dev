@@ -25,7 +25,7 @@ import { UnaryFunction } from '../types';
  * `source.pipe(share({ connector: () => new BehaviorSubject(initValue), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false  }))`.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。要创建一个在底层使用 {@link BehaviorSubject} 的可连接 observable，请使用 {@link connectable}。 `source.pipe(publishBehavior(initValue))` 等价于 connectable `connectable(source, { connector: () => new BehaviorSubject(initValue), resetOnDisconnect: false })` 。如果你在 `publishBehavior` 之后使用 {@link refCount}，请改用 {@link share} 运算符。 `source.pipe(publishBehavior(initValue), refCount())` 等价于 `source.pipe(share({ connector: () => new BehaviorSubject(initValue), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))` 。详细信息： [https](https://rxjs.dev/deprecations/multicasting) ://rxjs.dev/deprecations/multicasting
+ * 将在 v8 中删除。要创建一个在底层使用 {@link BehaviorSubject} 的可连接 observable，请使用 {@link connectable}。 `source.pipe(publishBehavior(initValue))` 等价于 connectable `connectable(source, { connector: () => new BehaviorSubject(initValue), resetOnDisconnect: false })` 。如果你在 `publishBehavior` 之后使用 {@link refCount}，请改用 {@link share} 运算符。 `source.pipe(publishBehavior(initValue), refCount())` 等价于 `source.pipe(share({ connector: () => new BehaviorSubject(initValue), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))` 。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function publishBehavior<T>(initialValue: T): UnaryFunction<Observable<T>, ConnectableObservable<T>> {

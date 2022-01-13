@@ -13,7 +13,7 @@ export function expand<T, O extends ObservableInput<unknown>>(
  * use `subscribeOn` within the projection function: `expand((value) => fn(value).pipe(subscribeOn(scheduler)))`.
  * Details: Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。如果你需要安排内部订阅，请在投影函数中使用 `subscribeOn` ： `expand((value) => fn(value).pipe(subscribeOn(scheduler)))` 。详细信息：详细信息： [https](https://rxjs.dev/deprecations/scheduler-argument) ://rxjs.dev/deprecations/scheduler-argument
+ * `scheduler` 参数将在 v8 中删除。如果你需要安排内部订阅，请在投影函数中使用 `subscribeOn` ： `expand((value) => fn(value).pipe(subscribeOn(scheduler)))` 。详细信息：详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function expand<T, O extends ObservableInput<unknown>>(

@@ -26,7 +26,7 @@ import { connect } from './connect';
  * `share({ connector: () => subject, resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false })`.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。要创建可连接的 observable，请使用 {@link connectable}。如果你在 `multicast` 之后使用 {@link refCount} ，请改用 {@link share} 运算符。 `multicast(subject), refCount()` 等价于 `share({ connector: () => subject, resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false })` 。详细信息： [https](https://rxjs.dev/deprecations/multicasting) ://rxjs.dev/deprecations/multicasting
+ * 将在 v8 中删除。要创建可连接的 observable，请使用 {@link connectable}。如果你在 `multicast` 之后使用 {@link refCount} ，请改用 {@link share} 运算符。 `multicast(subject), refCount()` 等价于 `share({ connector: () => subject, resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false })` 。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function multicast<T>(subject: Subject<T>): UnaryFunction<Observable<T>, ConnectableObservable<T>>;
@@ -55,7 +55,7 @@ export function multicast<T>(subject: Subject<T>): UnaryFunction<Observable<T>, 
  * `connect(selector, { connector: () => subject })`.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。请改用 {@link connect} 运算符。 `multicast(subject, selector)` 相当于 `connect(selector, { connector: () => subject })` 。详细信息： [https](https://rxjs.dev/deprecations/multicasting) ://rxjs.dev/deprecations/multicasting
+ * 将在 v8 中删除。请改用 {@link connect} 运算符。 `multicast(subject, selector)` 相当于 `connect(selector, { connector: () => subject })` 。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function multicast<T, O extends ObservableInput<any>>(
@@ -86,7 +86,7 @@ export function multicast<T, O extends ObservableInput<any>>(
  * `share({ connector: () => new BehaviorSubject('test') })`.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。要创建可连接的 observable，请使用 {@link connectable}。如果你在 `multicast` 之后使用 {@link refCount} ，请改用 {@link share} 运算符。 `multicast(() => new BehaviorSubject('test')), refCount()` 等价于 `share({ connector: () => new BehaviorSubject('test') })` 。详细信息： [https](https://rxjs.dev/deprecations/multicasting) ://rxjs.dev/deprecations/multicasting
+ * 将在 v8 中删除。要创建可连接的 observable，请使用 {@link connectable}。如果你在 `multicast` 之后使用 {@link refCount} ，请改用 {@link share} 运算符。 `multicast(() => new BehaviorSubject('test')), refCount()` 等价于 `share({ connector: () => new BehaviorSubject('test') })` 。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function multicast<T>(subjectFactory: () => Subject<T>): UnaryFunction<Observable<T>, ConnectableObservable<T>>;
@@ -115,7 +115,7 @@ export function multicast<T>(subjectFactory: () => Subject<T>): UnaryFunction<Ob
  * `connect(selector, { connector: subjectFactory })`.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。请改用 {@link connect} 运算符。 `multicast(subjectFactory, selector)` 等价于 `connect(selector, { connector: subjectFactory })` 。详细信息： [https](https://rxjs.dev/deprecations/multicasting) ://rxjs.dev/deprecations/multicasting
+ * 将在 v8 中删除。请改用 {@link connect} 运算符。 `multicast(subjectFactory, selector)` 等价于 `connect(selector, { connector: subjectFactory })` 。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function multicast<T, O extends ObservableInput<any>>(
@@ -129,7 +129,7 @@ export function multicast<T, O extends ObservableInput<any>>(
  * behaviors.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 将在 v8 中删除。请改用 {@link connectable} observable、{@link connect} 运算符或 {@link share} 运算符。有关此运算符行为的等效替换示例，请参见下面的重载。详细信息： [https](https://rxjs.dev/deprecations/multicasting) ://rxjs.dev/deprecations/multicasting
+ * 将在 v8 中删除。请改用 {@link connectable} observable、{@link connect} 运算符或 {@link share} 运算符。有关此运算符行为的等效替换示例，请参见下面的重载。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function multicast<T, R>(

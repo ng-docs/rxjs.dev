@@ -7,7 +7,7 @@ export function from<O extends ObservableInput<any>>(input: O): Observable<Obser
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 的 .详细信息： [https](https://rxjs.dev/deprecations/scheduler-argument) ://rxjs.dev/deprecations/scheduler-argument
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 的 .详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function from<O extends ObservableInput<any>>(input: O, scheduler: SchedulerLike | undefined): Observable<ObservedValueOf<O>>;

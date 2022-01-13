@@ -150,7 +150,7 @@ export function throwError(error: any): Observable<never>;
  * Use `throwError` in combination with {@link observeOn}: `throwError(() => new Error('test')).pipe(observeOn(scheduler));`.
  * Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。将 `throwError` 与 {@link observeOn} 结合使用： `throwError(() => new Error('test')).pipe(observeOn(scheduler));` .详细信息： [https](https://rxjs.dev/deprecations/scheduler-argument) ://rxjs.dev/deprecations/scheduler-argument
+ * `scheduler` 参数将在 v8 中删除。将 `throwError` 与 {@link observeOn} 结合使用： `throwError(() => new Error('test')).pipe(observeOn(scheduler));` .详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function throwError(errorOrErrorFactory: any, scheduler: SchedulerLike): Observable<never>;

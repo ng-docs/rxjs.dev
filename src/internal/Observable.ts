@@ -93,7 +93,7 @@ export class Observable<T> implements Subscribable<T> {
    * operator by simply returning `new Observable()` directly. See "Creating new operators from
    * scratch" section here: <https://rxjs.dev/guide/operators>
    *
-   * 内部实现细节，请勿直接使用。将在 v8 中内部化。如果你已经使用 `lift` 实现了一个运算符，建议你通过直接返回 `new Observable()` 来创建一个运算符。请参阅此处的“从头开始创建新运算符”部分： [https](https://rxjs.dev/guide/operators) ://rxjs.dev/guide/operators
+   * 内部实现细节，请勿直接使用。将在 v8 中内部化。如果你已经使用 `lift` 实现了一个运算符，建议你通过直接返回 `new Observable()` 来创建一个运算符。请参阅此处的“从头开始创建新运算符”部分： <https://rxjs.dev/guide/operators>
    *
    */
   lift<R>(operator?: Operator<T, R>): Observable<R> {
@@ -108,7 +108,7 @@ export class Observable<T> implements Subscribable<T> {
   /**
    * @deprecated Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: <https://rxjs.dev/deprecations/subscribe-arguments>
    *
-   * 不要传递单独的回调参数，而是使用观察者参数。带有单独回调参数的签名将在 v8 中被删除。详细信息： [https](https://rxjs.dev/deprecations/subscribe-arguments) ://rxjs.dev/deprecations/subscribe-arguments
+   * 不要传递单独的回调参数，而是使用观察者参数。带有单独回调参数的签名将在 v8 中被删除。详细信息： <https://rxjs.dev/deprecations/subscribe-arguments>
    *
    */
   subscribe(next?: ((value: T) => void) | null, error?: ((error: any) => void) | null, complete?: (() => void) | null): Subscription;
@@ -552,21 +552,21 @@ export class Observable<T> implements Subscribable<T> {
   /**
    * @deprecated Replaced with {@link firstValueFrom} and {@link lastValueFrom}. Will be removed in v8. Details: <https://rxjs.dev/deprecations/to-promise>
    *
-   * 替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： [https](https://rxjs.dev/deprecations/to-promise) ://rxjs.dev/deprecations/to-promise
+   * 替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： <https://rxjs.dev/deprecations/to-promise>
    *
    */
   toPromise(): Promise<T | undefined>;
   /**
    * @deprecated Replaced with {@link firstValueFrom} and {@link lastValueFrom}. Will be removed in v8. Details: <https://rxjs.dev/deprecations/to-promise>
    *
-   * 替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： [https](https://rxjs.dev/deprecations/to-promise) ://rxjs.dev/deprecations/to-promise
+   * 替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： <https://rxjs.dev/deprecations/to-promise>
    *
    */
   toPromise(PromiseCtor: typeof Promise): Promise<T | undefined>;
   /**
    * @deprecated Replaced with {@link firstValueFrom} and {@link lastValueFrom}. Will be removed in v8. Details: <https://rxjs.dev/deprecations/to-promise>
    *
-   * 替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： [https](https://rxjs.dev/deprecations/to-promise) ://rxjs.dev/deprecations/to-promise
+   * 替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： <https://rxjs.dev/deprecations/to-promise>
    *
    */
   toPromise(PromiseCtor: PromiseConstructorLike): Promise<T | undefined>;
@@ -597,7 +597,7 @@ export class Observable<T> implements Subscribable<T> {
    *
    * @deprecated Replaced with {@link firstValueFrom} and {@link lastValueFrom}. Will be removed in v8. Details: <https://rxjs.dev/deprecations/to-promise>
    *
-   * 替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： [https](https://rxjs.dev/deprecations/to-promise) ://rxjs.dev/deprecations/to-promise
+   * 替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： <https://rxjs.dev/deprecations/to-promise>
    *
    */
   toPromise(promiseCtor?: PromiseConstructorLike): Promise<T | undefined> {

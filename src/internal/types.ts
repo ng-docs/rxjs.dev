@@ -406,7 +406,7 @@ export type ValueFromNotification<T> = T extends { kind: 'N' | 'E' | 'C' }
  * `NaN` is "falsy" however, it is not and cannot be typed via TypeScript. See
  * comments here: <https://github.com/microsoft/TypeScript/issues/28682#issuecomment-707142417>
  *
- * 一种表示“虚假”值域的简单类型......有一个明显的例外： `NaN` 是“虚假”但是，它不是也不能通过 TypeScript 输入。在此处查看评论： [https](https://github.com/microsoft/TypeScript/issues/28682#issuecomment-707142417) ://github.com/microsoft/TypeScript/issues/28682#issuecomment-707142417
+ * 一种表示“虚假”值域的简单类型......有一个明显的例外： `NaN` 是“虚假”但是，它不是也不能通过 TypeScript 输入。在此处查看评论： <https://github.com/microsoft/TypeScript/issues/28682#issuecomment-707142417>#issuecomment-707142417
  *
  */
 export type Falsy = null | undefined | false | 0 | -0 | 0n | '';

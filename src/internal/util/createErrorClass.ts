@@ -6,7 +6,7 @@
  * This is because compiling from TypeScript down to ES5 has issues with subclassing Errors
  * as well as other built-in types: <https://github.com/Microsoft/TypeScript/issues/12123>
  *
- * 这是因为从 TypeScript 编译到 ES5 存在子类化错误以及其他内置类型的问题： [https](https://github.com/Microsoft/TypeScript/issues/12123) ://github.com/Microsoft/TypeScript/issues/12123
+ * 这是因为从 TypeScript 编译到 ES5 存在子类化错误以及其他内置类型的问题： <https://github.com/Microsoft/TypeScript/issues/12123>
  *
  * @param createImpl A factory function to create the actual constructor implementation. The returned
  * function should be a named function that calls `_super` internally.

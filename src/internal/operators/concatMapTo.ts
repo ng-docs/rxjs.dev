@@ -7,7 +7,7 @@ export function concatMapTo<O extends ObservableInput<unknown>>(observable: O): 
 /**
  * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
  *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： [https](https://rxjs.dev/deprecations/resultSelector) ://rxjs.dev/deprecations/resultSelector
+ * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： <https://rxjs.dev/deprecations/resultSelector>
  *
  */
 export function concatMapTo<O extends ObservableInput<unknown>>(
@@ -17,7 +17,7 @@ export function concatMapTo<O extends ObservableInput<unknown>>(
 /**
  * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
  *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： [https](https://rxjs.dev/deprecations/resultSelector) ://rxjs.dev/deprecations/resultSelector
+ * `resultSelector` 参数将在 v8 中删除。请改用内部 `map` 。详细信息： <https://rxjs.dev/deprecations/resultSelector>
  *
  */
 export function concatMapTo<T, R, O extends ObservableInput<unknown>>(

@@ -106,7 +106,7 @@ export interface TimeoutErrorCtor {
    * @deprecated Internal implementation detail. Do not construct error instances.
    * Cannot be tagged as internal: <https://github.com/ReactiveX/rxjs/issues/6269>
    *
-   * 内部实现细节。不要构造错误实例。不能标记为内部： [https](https://github.com/ReactiveX/rxjs/issues/6269) ://github.com/ReactiveX/rxjs/issues/6269
+   * 内部实现细节。不要构造错误实例。不能标记为内部： <https://github.com/ReactiveX/rxjs/issues/6269>
    *
    */
   new <T = unknown, M = unknown>(info?: TimeoutInfo<T, M>): TimeoutError<T, M>;

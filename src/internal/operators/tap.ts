@@ -15,7 +15,7 @@ export function tap<T>(next: (value: T) => void): MonoTypeOperatorFunction<T>;
 /**
  * @deprecated Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: <https://rxjs.dev/deprecations/subscribe-arguments>
  *
- * 不要传递单独的回调参数，而是使用观察者参数。带有单独回调参数的签名将在 v8 中被删除。详细信息： [https](https://rxjs.dev/deprecations/subscribe-arguments) ://rxjs.dev/deprecations/subscribe-arguments
+ * 不要传递单独的回调参数，而是使用观察者参数。带有单独回调参数的签名将在 v8 中被删除。详细信息： <https://rxjs.dev/deprecations/subscribe-arguments>
  *
  */
 export function tap<T>(
