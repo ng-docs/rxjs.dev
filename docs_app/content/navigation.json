@@ -11,6 +11,10 @@
     {
       "url": "team",
       "title": "Team"
+    },
+    {
+      "url": "https://blog.ralph.wang",
+      "title": "译者博客"
     }
   ],
   "TopBarNarrow": [],
