@@ -25,7 +25,7 @@ import { timer } from '../observable/timer';
  * and this process repeats for the next source value. Optionally takes a
  * {@link SchedulerLike} for managing timers.
  *
- * 当内部定时器被禁用时，`throttleTime` 在输出 Observable 上发出源 Observable 值，并在定时器启用时忽略源值。最初，定时器被禁用。一旦第一个源值到达，它就会被转发到输出 Observable，然后启用计时器。在 `duration` 毫秒（或由可选的 `scheduler` 内部确定的时间单位）过去之后，定时器被禁用，并且该过程对下一个源值重复。可以选择使用 {@link SchedulerLike} 来管理计时器。
+ * 当内部定时器被禁用时，`throttleTime` 在输出 Observable 上发出源 Observable 值，并在定时器启用时忽略源值。最初，定时器被禁用。一旦第一个源值抵达，它就会被转发到输出 Observable，然后启用计时器。在 `duration` 毫秒（或由可选的 `scheduler` 内部确定的时间单位）过去之后，定时器被禁用，并且该过程对下一个源值重复。可以选择使用 {@link SchedulerLike} 来管理计时器。
  *
  * ## Examples
  *

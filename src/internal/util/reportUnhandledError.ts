@@ -10,7 +10,7 @@ import { timeoutProvider } from '../scheduler/timeoutProvider';
  * This should be called whenever there is an error that is out-of-band with the subscription
  * or when an error hits a terminal boundary of the subscription and no error handler was provided.
  *
- * 每当订阅出现带外错误或错误到达订阅的终端边界且未提供错误处理器时，都应调用此方法。
+ * 每当订阅出现带外错误或错误抵达订阅的终端边界且未提供错误处理器时，都应调用此方法。
  *
  * @param err the error to report
  *

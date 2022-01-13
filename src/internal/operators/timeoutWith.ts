@@ -7,11 +7,11 @@ import { timeout } from './timeout';
  * If the time of the Date object passed arrives before the first value arrives from the source, it will unsubscribe
  * from the source and switch the subscription to another observable.
  *
- * 如果传递的 Date 对象的时间在第一个值从源到达之前到达，它将从源退订并将订阅切换到另一个 observable。
+ * 如果传递的 Date 对象的时间在第一个值从源抵达之前抵达，它将从源退订并将订阅切换到另一个 observable。
  *
  * <span class="informal">Use to switch to a different observable if the first value doesn't arrive by a specific time</span>
 *
- * <span class="informal">如果第一个值没有在特定时间到达，则用于切换到不同的 observable</span>
+ * <span class="informal">如果第一个值没有在特定时间抵达，则用于切换到不同的 observable</span>
  *
  * Can be used to set a timeout only for the first value, however it's recommended to use the {@link timeout} operator with
  * the `first` configuration to get that effect.
@@ -20,7 +20,7 @@ import { timeout } from './timeout';
  *
  * @param dueBy The exact time, as a `Date`, at which the timeout will be triggered if the first value does not arrive.
  *
- * 如果第一个值未到达，将触发超时的确切时间，如 `Date`。
+ * 如果第一个值未抵达，将触发超时的确切时间，如 `Date`。
  *
  * @param switchTo The observable to switch to when timeout occurs.
  *

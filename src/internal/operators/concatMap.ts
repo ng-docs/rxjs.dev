@@ -54,7 +54,7 @@ export function concatMap<T, R, O extends ObservableInput<any>>(
  * as inner Observables amass in an unbounded buffer waiting for their turn to
  * be subscribed to.
  *
- * __ 警告：__ 如果源值无休止地到达并且比它们相应的内部 Observable 完成的速度更快，这将导致内存问题，因为内部 Observable 堆积在一个无限的缓冲区中等待轮到它们被订阅。
+ * __ 警告：__ 如果源值无休止地抵达并且比它们相应的内部 Observable 完成的速度更快，这将导致内存问题，因为内部 Observable 堆积在一个无限的缓冲区中等待轮到它们被订阅。
  *
  * Note: `concatMap` is equivalent to `mergeMap` with concurrency parameter set
  * to `1`.

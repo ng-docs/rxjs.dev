@@ -38,7 +38,7 @@ export const defaultThrottleConfig: ThrottleConfig = {
  * value, the timer is disabled, and this process repeats for the
  * next source value.
  *
- * 当内部定时器被禁用时，`throttle` 在输出 Observable 上发出源 Observable 值，并在启用定时器时忽略源值。最初，定时器被禁用。一旦第一个源值到达，它就会被转发到输出 Observable，然后通过使用源值调用 `durationSelector` 函数来启用计时器，该函数返回“duration” Observable。当持续时间 Observable 发出一个值时，定时器被禁用，并且这个过程重复下一个源值。
+ * 当内部定时器被禁用时，`throttle` 在输出 Observable 上发出源 Observable 值，并在启用定时器时忽略源值。最初，定时器被禁用。一旦第一个源值抵达，它就会被转发到输出 Observable，然后通过使用源值调用 `durationSelector` 函数来启用计时器，该函数返回“duration” Observable。当持续时间 Observable 发出一个值时，定时器被禁用，并且这个过程重复下一个源值。
  *
  * ## Example
  *

@@ -28,7 +28,7 @@ export function scan<V, A, S>(accumulator: (acc: A | S, value: V, index: number)
  *
  * 1. First value arrives
  *
- *    第一个值到达
+ *    第一个值抵达
  *
  * - If a `seed` value was supplied (as the second argument to `scan`), let `state = seed` and `value = firstValue`.
  *
@@ -52,7 +52,7 @@ export function scan<V, A, S>(accumulator: (acc: A | S, value: V, index: number)
  *
  * 4. Next value arrives, let `value = nextValue`, go to 2.
  *
- *    下一个值到达，让 `value = nextValue`，转到 2。
+ *    下一个值抵达，让 `value = nextValue`，转到 2。
  *
  * ## Examples
  *

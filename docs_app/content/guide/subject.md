@@ -134,7 +134,7 @@ The `connect()` method is important to determine exactly when the shared Observa
 
 Calling `connect()` manually and handling the Subscription is often cumbersome. Usually, we want to _automatically_ connect when the first Observer arrives, and automatically cancel the shared execution when the last Observer unsubscribes.
 
-手动调用 `connect()` 并处理订阅通常很麻烦。通常，我们希望在第一个 Observer 到达时*自动*连接，并在最后一个 Observer 退订时自动取消共享执行。
+手动调用 `connect()` 并处理订阅通常很麻烦。通常，我们希望在第一个 Observer 抵达时*自动*连接，并在最后一个 Observer 退订时自动取消共享执行。
 
 Consider the following example where subscriptions occur as outlined by this list:
 
@@ -223,7 +223,7 @@ If we wish to avoid explicit calls to `connect()`, we can use ConnectableObserva
 
 <span class="informal">`refCount` makes the multicasted Observable automatically start executing when the first subscriber arrives, and stop executing when the last subscriber leaves.</span>
 
-<span class="informal">`refCount` 使多播的 Observable 在第一个订阅者到达时自动开始执行，并在最后一个订阅者离开时停止执行。</span>
+<span class="informal">`refCount` 使多播的 Observable 在第一个订阅者抵达时自动开始执行，并在最后一个订阅者离开时停止执行。</span>
 
 Below is an example:
 

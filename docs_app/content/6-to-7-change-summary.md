@@ -828,7 +828,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - Added more configuration options to `timeout`, so it could be used to timeout just if the first item doesn't arrive quickly enough, or it could be used as a timeout between each item. Users may also pass a `Date` object to define an absolute time for a timeout for the first time to arrive. Adds additional information to the timeout error, and the ability to pass along metadata with the timeout for identification purposes.
 
-  为 `timeout` 添加了更多配置选项，因此它可以用于仅当第一个项目没有足够快地到达时才超时，或者它可以用作每个项目之间的超时。用户还可以传递一个 `Date` 对象来定义第一次到达超时的绝对时间。将附加信息添加到超时错误中，并能够将元数据与超时一起传递以进行识别。
+  为 `timeout` 添加了更多配置选项，因此它可以用于仅当第一个条目没能及时抵达时才超时，或者它可以用作各个条目之间的超时。用户还可以传递一个 `Date` 对象来定义第一次抵达超时的绝对时间。将附加信息添加到超时错误中，并能够将元数据与超时一起传递以进行识别。
 
 ### zipWith, concatWith, mergeWith, raceWith
 

@@ -36,13 +36,13 @@ The [`concatMap()`](/api/operators/concatMap) operator subscribes to each "inner
 
 * [`mergeMap()`](/api/operators/mergeMap) — subscribes to each inner Observable as it arrives, then emits each value as it arrives
 
-  [`mergeMap()`](/api/operators/mergeMap) — 在每个内部 Observable 到达时订阅它，然后在它到达时发出每个值
+  [`mergeMap()`](/api/operators/mergeMap) — 在每个内部 Observable 抵达时订阅它，然后在每个值抵达时发出这个值
 
 * [`switchMap()`](/api/operators/switchMap) — subscribes to the first inner Observable when it arrives, and emits each value as it arrives, but when the next inner Observable arrives, unsubscribes to the previous one, and subscribes to the new one.
 
-  [`switchMap()`](/api/operators/switchMap) — 在第一个内部 Observable 到达时订阅它，并在它到达时发出每个值，但是当下一个内部 Observable 到达时，退订前一个，并订阅新的。
+  [`switchMap()`](/api/operators/switchMap) — 在第一个内部 Observable 抵达时订阅它，并在它抵达时发出每个值，但是当下一个内部 Observable 抵达时，退订前一个，并订阅新的。
 
 * [`exhaustMap()`](/api/operators/exhaustMap) — subscribes to the first inner Observable when it arrives, and emits each value as it arrives, discarding all newly arriving inner Observables until that first one completes, then waits for the next inner Observable.
 
-  [`exhaustMap()`](/api/operators/exhaustMap) - 当第一个内部 Observable 到达时订阅它，并在它到达时发出每个值，丢弃所有新到达的内部 Observable 直到第一个完成，然后等待下一个内部 Observable。
+  [`exhaustMap()`](/api/operators/exhaustMap) - 当第一个内部 Observable 抵达时订阅它，并在它抵达时发出每个值，丢弃所有新抵达的内部 Observable 直到第一个完成，然后等待下一个内部 Observable。
 

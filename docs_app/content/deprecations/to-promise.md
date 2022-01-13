@@ -57,7 +57,7 @@ execute();
 
 However, you might want to take the first value as it arrives without waiting an Observable to complete, thus you can use `firstValueFrom`. The `firstValueFrom` will resolve a Promise with the first value that was emitted from the Observable and will immediately unsubscribe to retain resources. The `firstValueFrom` will also reject with an {@link EmptyError} if the Observable completes with no values emitted.
 
-但是，你可能希望在第一个值到达时获取它而不等待 Observable 完成，因此你可以使用 `firstValueFrom`。`firstValueFrom` 将使用从 Observable 发出的第一个值解析 Promise，并将立即退订以保留资源。如果 Observable 完成但没有发出任何值，则 `firstValueFrom` 也会以 {@link EmptyError} 拒绝。
+但是，你可能希望在第一个值抵达时获取它而不等待 Observable 完成，因此你可以使用 `firstValueFrom`。`firstValueFrom` 将使用从 Observable 发出的第一个值解析 Promise，并将立即退订以保留资源。如果 Observable 完成但没有发出任何值，则 `firstValueFrom` 也会以 {@link EmptyError} 拒绝。
 
 ### Example
 

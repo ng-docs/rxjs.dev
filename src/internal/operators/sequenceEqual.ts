@@ -155,7 +155,7 @@ interface SequenceState<T> {
   /**
    * A temporary store for arrived values before they are checked
    *
-   * 在检查到达值之前的临时存储
+   * 在检查抵达值之前的临时存储
    *
    */
   buffer: T[];

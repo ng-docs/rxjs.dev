@@ -106,7 +106,7 @@ A [consumer](#consumer) reacting to [next](#next), [error](#error), or [complete
 
 When an [observable](#observable) uses another [observable](#observable) as a [producer](#producer), an "observation chain" is set up. That is a chain of [observation](#observation) such that multiple [observers](#observer) are [notifying](#notification) each other in a unidirectional way toward the final [consumer](#consumer).
 
-当一个[observable](#observable)使用另一个[observable](#observable)作为[producer](#producer)时，就会建立一个“观察链”。这是一个[观察](#observation)链，多个[观察者](#observer)以单向方式相互[通知](#notification)最终[消费者](#consumer)。
+当一个 [observable](#observable)使用另一个 [observable](#observable)作为[生产者](#producer)时，就会建立一个“观察链”。这是一条由[观察](#observation)组成的链，多个[观察者](#observer)以单向方式相互[通知](#notification)最终抵达[消费者](#consumer)。
 
 ### Next
 

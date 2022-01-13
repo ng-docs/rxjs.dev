@@ -14,7 +14,7 @@ export function firstValueFrom<T>(source: Observable<T>): Promise<T>;
  * and returning a promise that will resolve as soon as the first value
  * arrives from the observable. The subscription will then be closed.
  *
- * 通过订阅可观察者并将可观察者转换为承诺，并返回一个承诺，该承诺将在第一个值从可观察者到达时立即解决。然后订阅将被关闭。
+ * 通过订阅可观察者并将可观察者转换为承诺，并返回一个承诺，该承诺将在第一个值从可观察者抵达时立即解决。然后订阅将被关闭。
  *
  * If the observable stream completes before any values were emitted, the
  * returned promise will reject with {@link EmptyError} or will resolve

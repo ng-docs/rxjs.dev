@@ -32,7 +32,7 @@ import { innerFrom } from '../observable/innerFrom';
  * If the error event happens during the scheduled duration or after it only the error event is
  * forwarded to the output observable. The cache notification is not emitted in this case.
  *
- * `debounce` 延迟源 Observable 发出的通知，但如果新的通知到达源 Observable 上，则丢弃先前挂起的延迟发射。该操作符跟踪来自源 Observable 的最新通知，并通过调用 `durationSelector` 函数生成一个持续时间 Observable。只有当持续时间 Observable 发出下一个通知时才会发出通知，并且如果自产生持续时间 Observable 以来没有在源 Observable 上发出其他通知。如果在 Observable 发出的持续时间之前出现了新的通知，则不会发出之前的通知，并且会从 `durationSelector` 调度一个新的持续时间。如果完成事件在计划的持续时间内发生，则在完成事件被转发到输出 observable 之前发出最后一个缓存的通知。如果错误事件发生在计划的持续时间内或之后，则仅将错误事件转发到输出 observable。在这种情况下不会发出缓存通知。
+ * `debounce` 延迟源 Observable 发出的通知，但如果新的通知抵达源 Observable 上，则丢弃先前挂起的延迟发射。该操作符跟踪来自源 Observable 的最新通知，并通过调用 `durationSelector` 函数生成一个持续时间 Observable。只有当持续时间 Observable 发出下一个通知时才会发出通知，并且如果自产生持续时间 Observable 以来没有在源 Observable 上发出其他通知。如果在 Observable 发出的持续时间之前出现了新的通知，则不会发出之前的通知，并且会从 `durationSelector` 调度一个新的持续时间。如果完成事件在计划的持续时间内发生，则在完成事件被转发到输出 observable 之前发出最后一个缓存的通知。如果错误事件发生在计划的持续时间内或之后，则仅将错误事件转发到输出 observable。在这种情况下不会发出缓存通知。
  *
  * Like {@link debounceTime}, this is a rate-limiting operator, and also a
  * delay-like operator since output emissions do not necessarily occur at the
