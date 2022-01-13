@@ -78,7 +78,7 @@ export interface AjaxCreationMethod {
    *
    * @param headers Optional headers. Case-Insensitive.
    *
-   * 可选标题。不区分大小写。
+   * 可选标头。不区分大小写。
    *
    */
   get<T>(url: string, headers?: Record<string, string>): Observable<AjaxResponse<T>>;
@@ -107,7 +107,7 @@ export interface AjaxCreationMethod {
    *
    * @param headers Optional headers. Case-Insensitive.
    *
-   * 可选标题。不区分大小写。
+   * 可选标头。不区分大小写。
    *
    */
   post<T>(url: string, body?: any, headers?: Record<string, string>): Observable<AjaxResponse<T>>;
@@ -136,7 +136,7 @@ export interface AjaxCreationMethod {
    *
    * @param headers Optional headers. Case-Insensitive.
    *
-   * 可选标题。不区分大小写。
+   * 可选标头。不区分大小写。
    *
    */
   put<T>(url: string, body?: any, headers?: Record<string, string>): Observable<AjaxResponse<T>>;
@@ -165,7 +165,7 @@ export interface AjaxCreationMethod {
    *
    * @param headers Optional headers. Case-Insensitive.
    *
-   * 可选标题。不区分大小写。
+   * 可选标头。不区分大小写。
    *
    */
   patch<T>(url: string, body?: any, headers?: Record<string, string>): Observable<AjaxResponse<T>>;
@@ -183,7 +183,7 @@ export interface AjaxCreationMethod {
    *
    * @param headers Optional headers. Case-Insensitive.
    *
-   * 可选标题。不区分大小写。
+   * 可选标头。不区分大小写。
    *
    */
   delete<T>(url: string, headers?: Record<string, string>): Observable<AjaxResponse<T>>;
@@ -202,7 +202,7 @@ export interface AjaxCreationMethod {
    *
    * @param headers Optional headers. Case-Insensitive.
    *
-   * 可选标题。不区分大小写。
+   * 可选标头。不区分大小写。
    *
    */
   getJSON<T>(url: string, headers?: Record<string, string>): Observable<T>;
