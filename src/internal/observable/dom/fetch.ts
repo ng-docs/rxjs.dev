@@ -26,7 +26,7 @@ export function fromFetch(input: string | Request, init?: RequestInit): Observab
  * Will automatically set up an internal [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
  * in order to teardown the internal `fetch` when the subscription tears down.
  *
- * 将自动设置一个内部[AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)以便在订阅拆除时拆除内部 `fetch`。
+ * 将自动设置一个内部[AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)以便在订阅拆解时拆解内部 `fetch`。
  *
  * If a `signal` is provided via the `init` argument, it will behave like it usually does with
  * `fetch`. If the provided `signal` aborts, the error that `fetch` normally rejects with

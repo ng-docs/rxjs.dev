@@ -35,7 +35,7 @@ export class OperatorSubscriber<T> extends Subscriber<T> {
    * @param onFinalize Additional teardown logic here. This will only be called on teardown if the
    * subscriber itself is not already closed. This is called after all other teardown logic is executed.
    *
-   * 这里有额外的拆解逻辑。如果订阅者本身还没有关闭，这只会在拆卸时被调用。在执行所有其他拆卸逻辑之后调用它。
+   * 这里有额外的拆解逻辑。如果订阅者本身还没有关闭，这只会在拆解时被调用。在执行所有其他拆解逻辑之后调用它。
    *
    */
   constructor(

@@ -317,7 +317,7 @@ export function groupBy<T, K, R>(
  * subscriptions have to keep the subscription to the source alive until they
  * are torn down.
  *
- * 创建它是因为 groupBy 有点独特，因为具有订阅的发出组必须保持对源的订阅处于活动状态，直到它们被拆除。
+ * 创建它是因为 groupBy 有点独特，因为具有订阅的发出组必须保持对源的订阅处于活动状态，直到它们被拆解。
  *
  */
 class GroupBySubscriber<T> extends OperatorSubscriber<T> {
@@ -331,7 +331,7 @@ class GroupBySubscriber<T> extends OperatorSubscriber<T> {
   /**
    * Whether or not teardown was attempted on this subscription.
    *
-   * 是否尝试对此订阅进行拆卸。
+   * 是否尝试对此订阅进行拆解。
    *
    */
   teardownAttempted = false;

@@ -41,7 +41,7 @@ export class Subscription implements SubscriptionLike {
    * The list of registered teardowns to execute upon unsubscription. Adding and removing from this
    * list occurs in the {@link #add} and {@link #remove} methods.
    *
-   * 在退订时执行的已注册拆卸列表。在此列表中添加和删除发生在 {@link #add} 和 {@link #remove} 方法中。
+   * 在退订时执行的已注册拆解列表。在此列表中添加和删除发生在 {@link #add} 和 {@link #remove} 方法中。
    *
    */
   private _teardowns: Exclude<TeardownLogic, void>[] | null = null;
@@ -50,7 +50,7 @@ export class Subscription implements SubscriptionLike {
    * @param initialTeardown A function executed first as part of the teardown
    * process that is kicked off when {@link #unsubscribe} is called.
    *
-   * 在调用 {@link #unsubscribe} 时启动的作为拆卸过程的一部分首先执行的函数。
+   * 在调用 {@link #unsubscribe} 时启动的作为拆解过程的一部分首先执行的函数。
    *
    */
   constructor(private initialTeardown?: () => void) {}
@@ -141,7 +141,7 @@ export class Subscription implements SubscriptionLike {
    *
    * @param teardown The teardown logic to add to this subscription.
    *
-   * 要添加到此订阅的拆卸逻辑。
+   * 要添加到此订阅的拆解逻辑。
    *
    */
   add(teardown: TeardownLogic): void {
@@ -239,7 +239,7 @@ export class Subscription implements SubscriptionLike {
    *
    * All teardown instances are removed to free up memory upon unsubscription.
    *
-   * 退订时将删除所有拆卸实例以释放内存。
+   * 退订时将删除所有拆解实例以释放内存。
    *
    * @param teardown The teardown to remove from this subscription
    *
