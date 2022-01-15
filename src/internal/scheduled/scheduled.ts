@@ -24,7 +24,7 @@ import { scheduleReadableStreamLike } from './scheduleReadableStreamLike';
  * @see {@link of}
  * @param input The observable, array, promise, iterable, etc you would like to schedule
  *
- * 你想要安排的可观察、数组、承诺、可迭代等
+ * 你想要安排的可观察者、数组、Promise、可迭代者等
  *
  * @param scheduler The scheduler to use to schedule the subscription and emissions from
  * the returned observable.

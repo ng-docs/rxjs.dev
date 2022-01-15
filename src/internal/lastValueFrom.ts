@@ -41,7 +41,7 @@ export function lastValueFrom<T>(source: Observable<T>): Promise<T>;
  * Wait for the last value from a stream and emit it from a promise in
  * an async function
  *
- * 等待流中的最后一个值并从异步函数中的承诺中发送它
+ * 等待流中的最后一个值并从异步函数中的 Promise 中发送它
  *
  * ```ts
  * import { interval, take, lastValueFrom } from 'rxjs';

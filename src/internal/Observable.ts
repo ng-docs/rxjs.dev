@@ -329,7 +329,7 @@ export class Observable<T> implements Subscribable<T> {
    * Used as a NON-CANCELLABLE means of subscribing to an observable, for use with
    * APIs that expect promises, like `async/await`. You cannot unsubscribe from this.
    *
-   * 用作订阅 observable 的不可取消的方式，用于期望承诺的 API，如 `async/await`。你不能退订。
+   * 用作订阅 observable 的不可取消的方式，用于期望 Promise 的 API，如 `async/await`。你不能退订。
    *
    * **WARNING**: Only use this with observables you *know* will complete. If the source
    * observable does not complete, you will end up with a promise that is hung up, and
@@ -377,7 +377,7 @@ export class Observable<T> implements Subscribable<T> {
    * @return a promise that either resolves on observable completion or
    *  rejects with the handled error
    *
-   * 一个在可观察完成时解决或拒绝处理错误的承诺
+   * 一个在可观察完成时解决或拒绝处理错误的 Promise
    *
    */
   forEach(next: (value: T) => void): Promise<void>;
@@ -394,7 +394,7 @@ export class Observable<T> implements Subscribable<T> {
    * @return a promise that either resolves on observable completion or
    *  rejects with the handled error
    *
-   * 一个在可观察完成时解决或拒绝处理错误的承诺
+   * 一个在可观察完成时解决或拒绝处理错误的 Promise
    *
    * @deprecated Passing a Promise constructor will no longer be available
    * in upcoming versions of RxJS. This is because it adds weight to the library, for very
@@ -624,7 +624,7 @@ export class Observable<T> implements Subscribable<T> {
  *
  * @param promiseCtor The optional promise constructor to passed by consuming code
  *
- * 通过使用代码传递的可选承诺构造函数
+ * 通过使用代码传递的可选 Promise 构造函数
  *
  */
 function getPromiseCtor(promiseCtor: PromiseConstructorLike | undefined) {

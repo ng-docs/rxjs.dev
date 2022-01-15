@@ -278,7 +278,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### SubscribableOrPromise
 
-### SubscribableOrPromise(订阅或承诺)
+### SubscribableOrPromise(可订阅者或 Promise)
 
 - See notes on `Subscribable` above.
 
@@ -341,7 +341,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
   压缩单个数组现在会有不同的结果。这是一个极端的极端情况，因为任何人都不太可能想要一无所有地压缩一个数组。解决方法是将数组包装在另一个数组 `zip([[1,2,3]])` 中。但同样，这很奇怪。
 
-* * *
+---
 
 ## New Features
 
