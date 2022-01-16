@@ -8,8 +8,8 @@ import { SchedulerLike } from '../types';
  * 任何对 {@link empty} 的调用都返回相同的 Observable 实例，而无需 `scheduler`。最好在 `empty()` 上使用它。
  *
  * <span class="informal">Just emits 'complete', and nothing else.</span>
-*
- * <span class="informal">只是发送“完成”，没有别的。</span>
+ *
+ * <span class="informal">只是发出“完成”，没有别的。</span>
  *
  * ![](empty.png)
  *
@@ -39,11 +39,11 @@ export const EMPTY = new Observable<never>((subscriber) => subscriber.complete()
  * Creates an Observable that emits no items to the Observer and immediately
  * emits a complete notification.
  *
- * 创建一个不向观察者发送任何条目并立即发送完成通知的 Observable。
+ * 创建一个不向观察者发出任何条目并立即发出完成通知的 Observable。
  *
  * <span class="informal">Just emits 'complete', and nothing else.</span>
-*
- * <span class="informal">仅仅发送“完成”，没别的。</span>
+ *
+ * <span class="informal">仅仅发出“完成”，没别的。</span>
  *
  * ![](empty.png)
  *
@@ -51,7 +51,7 @@ export const EMPTY = new Observable<never>((subscriber) => subscriber.complete()
  * emits the complete notification. It can be used for composing with other
  * Observables, such as in a {@link mergeMap}.
  *
- * 这个静态操作符在要创建一个只发送完成通知的简单 Observable 时很有用。它可以用于与其他 Observable 组合，例如在 {@link mergeMap} 中。
+ * 这个静态操作符在要创建一个只发出完成通知的简单 Observable 时很有用。它可以用于与其他 Observable 组合，例如在 {@link mergeMap} 中。
  *
  * ## Examples
  *
@@ -59,7 +59,7 @@ export const EMPTY = new Observable<never>((subscriber) => subscriber.complete()
  *
  * Emit the number 7, then complete
  *
- * 发送数字 7，然后完成
+ * 发出数字 7，然后完成
  *
  * ```ts
  * import { empty, startWith } from 'rxjs';
@@ -102,11 +102,11 @@ export const EMPTY = new Observable<never>((subscriber) => subscriber.complete()
  * @return An "empty" Observable: emits only the complete
  * notification.
  *
- * 一个“空”的 Observable：只发送完成通知。
+ * 一个“空”的 Observable：只发出完成通知。
  *
  * @deprecated Replaced with the {@link EMPTY} constant or {@link scheduled} (e.g. `scheduled([], scheduler)`). Will be removed in v8.
  *
- * 替换为 {@link EMPTY} 常量或 {@link scheduled}（例如 `scheduled([], scheduler)`）。将在 v8 中删除。
+ * 已替换为 {@link EMPTY} 常量或 {@link scheduled}（例如 `scheduled([], scheduler)`）。将在 v8 中删除。
  *
  */
 export function empty(scheduler?: SchedulerLike) {

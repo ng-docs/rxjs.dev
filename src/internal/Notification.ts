@@ -152,7 +152,7 @@ export class Notification<T> {
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
-   * 替换为 {@link Notification#observe observe}。将在 v8 中删除。
+   * 已替换为 {@link Notification#observe observe}。将在 v8 中删除。
    *
    */
   do(next: (value: T) => void, error: (err: any) => void, complete: () => void): void;
@@ -173,7 +173,7 @@ export class Notification<T> {
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
-   * 替换为 {@link Notification#observe observe}。将在 v8 中删除。
+   * 已替换为 {@link Notification#observe observe}。将在 v8 中删除。
    *
    */
   do(next: (value: T) => void, error: (err: any) => void): void;
@@ -189,7 +189,7 @@ export class Notification<T> {
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
-   * 替换为 {@link Notification#observe observe}。将在 v8 中删除。
+   * 已替换为 {@link Notification#observe observe}。将在 v8 中删除。
    *
    */
   do(next: (value: T) => void): void;
@@ -219,7 +219,7 @@ export class Notification<T> {
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
-   * 替换为 {@link Notification#observe observe}。将在 v8 中删除。
+   * 已替换为 {@link Notification#observe observe}。将在 v8 中删除。
    *
    */
   accept(next: (value: T) => void, error: (err: any) => void, complete: () => void): void;
@@ -240,7 +240,7 @@ export class Notification<T> {
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
-   * 替换为 {@link Notification#observe observe}。将在 v8 中删除。
+   * 已替换为 {@link Notification#observe observe}。将在 v8 中删除。
    *
    */
   accept(next: (value: T) => void, error: (err: any) => void): void;
@@ -256,7 +256,7 @@ export class Notification<T> {
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
-   * 替换为 {@link Notification#observe observe}。将在 v8 中删除。
+   * 已替换为 {@link Notification#observe observe}。将在 v8 中删除。
    *
    */
   accept(next: (value: T) => void): void;
@@ -274,7 +274,7 @@ export class Notification<T> {
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
-   * 替换为 {@link Notification#observe observe}。将在 v8 中删除。
+   * 已替换为 {@link Notification#observe observe}。将在 v8 中删除。
    *
    */
   accept(observer: PartialObserver<T>): void;

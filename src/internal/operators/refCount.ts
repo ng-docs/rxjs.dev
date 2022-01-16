@@ -74,7 +74,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * `refCount` operator.
  * Details: <https://rxjs.dev/deprecations/multicasting>
  *
- * 替换为 {@link share} 操作符。如何使用 `share` 取决于你在 `refCount` 操作符之前创建的可连接 observable。详细信息： <https://rxjs.dev/deprecations/multicasting>
+ * 已替换为 {@link share} 操作符。如何使用 `share` 取决于你在 `refCount` 操作符之前创建的可连接 observable。详细信息： <https://rxjs.dev/deprecations/multicasting>
  *
  */
 export function refCount<T>(): MonoTypeOperatorFunction<T> {

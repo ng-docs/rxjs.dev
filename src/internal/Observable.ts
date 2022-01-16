@@ -552,21 +552,21 @@ export class Observable<T> implements Subscribable<T> {
   /**
    * @deprecated Replaced with {@link firstValueFrom} and {@link lastValueFrom}. Will be removed in v8. Details: <https://rxjs.dev/deprecations/to-promise>
    *
-   * 替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： <https://rxjs.dev/deprecations/to-promise>
+   * 已替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： <https://rxjs.dev/deprecations/to-promise>
    *
    */
   toPromise(): Promise<T | undefined>;
   /**
    * @deprecated Replaced with {@link firstValueFrom} and {@link lastValueFrom}. Will be removed in v8. Details: <https://rxjs.dev/deprecations/to-promise>
    *
-   * 替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： <https://rxjs.dev/deprecations/to-promise>
+   * 已替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： <https://rxjs.dev/deprecations/to-promise>
    *
    */
   toPromise(PromiseCtor: typeof Promise): Promise<T | undefined>;
   /**
    * @deprecated Replaced with {@link firstValueFrom} and {@link lastValueFrom}. Will be removed in v8. Details: <https://rxjs.dev/deprecations/to-promise>
    *
-   * 替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： <https://rxjs.dev/deprecations/to-promise>
+   * 已替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： <https://rxjs.dev/deprecations/to-promise>
    *
    */
   toPromise(PromiseCtor: PromiseConstructorLike): Promise<T | undefined>;
@@ -597,7 +597,7 @@ export class Observable<T> implements Subscribable<T> {
    *
    * @deprecated Replaced with {@link firstValueFrom} and {@link lastValueFrom}. Will be removed in v8. Details: <https://rxjs.dev/deprecations/to-promise>
    *
-   * 替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： <https://rxjs.dev/deprecations/to-promise>
+   * 已替换为 {@link firstValueFrom} 和 {@link lastValueFrom}。将在 v8 中删除。详细信息： <https://rxjs.dev/deprecations/to-promise>
    *
    */
   toPromise(promiseCtor?: PromiseConstructorLike): Promise<T | undefined> {

@@ -5,14 +5,14 @@ import { raceWith } from './raceWith';
 /**
  * @deprecated Replaced with {@link raceWith}. Will be removed in v8.
  *
- * 替换为 {@link raceWith}。将在 v8 中删除。
+ * 已替换为 {@link raceWith}。将在 v8 中删除。
  *
  */
 export function race<T, A extends readonly unknown[]>(otherSources: [...ObservableInputTuple<A>]): OperatorFunction<T, T | A[number]>;
 /**
  * @deprecated Replaced with {@link raceWith}. Will be removed in v8.
  *
- * 替换为 {@link raceWith}。将在 v8 中删除。
+ * 已替换为 {@link raceWith}。将在 v8 中删除。
  *
  */
 export function race<T, A extends readonly unknown[]>(...otherSources: [...ObservableInputTuple<A>]): OperatorFunction<T, T | A[number]>;
@@ -34,7 +34,7 @@ export function race<T, A extends readonly unknown[]>(...otherSources: [...Obser
  *
  * @deprecated Replaced with {@link raceWith}. Will be removed in v8.
  *
- * 替换为 {@link raceWith}。将在 v8 中删除。
+ * 已替换为 {@link raceWith}。将在 v8 中删除。
  *
  */
 export function race<T>(...args: any[]): OperatorFunction<T, unknown> {

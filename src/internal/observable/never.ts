@@ -46,7 +46,7 @@ export const NEVER = new Observable<never>(noop);
 /**
  * @deprecated Replaced with the {@link NEVER} constant. Will be removed in v8.
  *
- * 替换为 {@link NEVER} 常量。将在 v8 中删除。
+ * 已替换为 {@link NEVER} 常量。将在 v8 中删除。
  *
  */
 export function never() {

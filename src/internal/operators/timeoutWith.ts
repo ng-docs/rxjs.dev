@@ -10,7 +10,7 @@ import { timeout } from './timeout';
  * 如果传递的 Date 对象的时间在第一个值从源抵达之前抵达，它将从源退订并将订阅切换到另一个 observable。
  *
  * <span class="informal">Use to switch to a different observable if the first value doesn't arrive by a specific time</span>
-*
+ *
  * <span class="informal">如果第一个值没有在特定时间抵达，则用于切换到不同的 observable</span>
  *
  * Can be used to set a timeout only for the first value, however it's recommended to use the {@link timeout} operator with
@@ -32,7 +32,7 @@ import { timeout } from './timeout';
  *
  * @deprecated Replaced with {@link timeout}. Instead of `timeoutWith(someDate, a$, scheduler)`, use the configuration object `timeout({ first: someDate, with: () => a$, scheduler })`. Will be removed in v8.
  *
- * 替换为 {@link timeout}。代替 `timeoutWith(someDate, a$, scheduler)`，使用配置对象 `timeout({ first: someDate, with: () => a$, scheduler })`。将在 v8 中删除。
+ * 已替换为 {@link timeout}。代替 `timeoutWith(someDate, a$, scheduler)`，使用配置对象 `timeout({ first: someDate, with: () => a$, scheduler })`。将在 v8 中删除。
  *
  */
 export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, scheduler?: SchedulerLike): OperatorFunction<T, T | R>;
@@ -44,7 +44,7 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  * 当在源发送任何给定值之前经过的时间跨度过去时，它将从源退订，并将订阅切换到另一个可观察者。
  *
  * <span class="informal">Used to switch to a different observable if your source is being slow</span>
-*
+ *
  * <span class="informal">如果你的源很慢，用于切换到不同的 observable</span>
  *
  * Useful in cases where:
@@ -126,7 +126,7 @@ export function timeoutWith<T, R>(dueBy: Date, switchTo: ObservableInput<R>, sch
  *
  * @deprecated Replaced with {@link timeout}. Instead of `timeoutWith(100, a$, scheduler)`, use the configuration object `timeout({ each: 100, with: () => a$, scheduler })`. Will be removed in v8.
  *
- * 替换为 {@link timeout}。代替 `timeoutWith(100, a$, scheduler)`，使用配置对象 `timeout({ each: 100, with: () => a$, scheduler })`。将在 v8 中删除。
+ * 已替换为 {@link timeout}。代替 `timeoutWith(100, a$, scheduler)`，使用配置对象 `timeout({ each: 100, with: () => a$, scheduler })`。将在 v8 中删除。
  *
  */
 export function timeoutWith<T, R>(waitFor: number, switchTo: ObservableInput<R>, scheduler?: SchedulerLike): OperatorFunction<T, T | R>;

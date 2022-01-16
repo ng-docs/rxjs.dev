@@ -8,14 +8,14 @@ import { from } from '../observable/from';
 /**
  * @deprecated Replaced with {@link mergeWith}. Will be removed in v8.
  *
- * 替换为 {@link mergeWith}。将在 v8 中删除。
+ * 已替换为 {@link mergeWith}。将在 v8 中删除。
  *
  */
 export function merge<T, A extends readonly unknown[]>(...sources: [...ObservableInputTuple<A>]): OperatorFunction<T, T | A[number]>;
 /**
  * @deprecated Replaced with {@link mergeWith}. Will be removed in v8.
  *
- * 替换为 {@link mergeWith}。将在 v8 中删除。
+ * 已替换为 {@link mergeWith}。将在 v8 中删除。
  *
  */
 export function merge<T, A extends readonly unknown[]>(
@@ -24,7 +24,7 @@ export function merge<T, A extends readonly unknown[]>(
 /**
  * @deprecated Replaced with {@link mergeWith}. Will be removed in v8.
  *
- * 替换为 {@link mergeWith}。将在 v8 中删除。
+ * 已替换为 {@link mergeWith}。将在 v8 中删除。
  *
  */
 export function merge<T, A extends readonly unknown[]>(
@@ -33,7 +33,7 @@ export function merge<T, A extends readonly unknown[]>(
 /**
  * @deprecated Replaced with {@link mergeWith}. Will be removed in v8.
  *
- * 替换为 {@link mergeWith}。将在 v8 中删除。
+ * 已替换为 {@link mergeWith}。将在 v8 中删除。
  *
  */
 export function merge<T, A extends readonly unknown[]>(
