@@ -79,7 +79,7 @@ export function share<T>(options: ShareConfig<T>): MonoTypeOperatorFunction<T>;
  * closed. Only new subscribers after a reset on error or complete happened will cause a fresh subscription to the
  * source. To achieve transparent retries or restarts pipe the source through appropriate operators before sharing.
  *
- * 如果共享 observable 的订阅者计数降至 0，或者源 Observable 已出错或完成，则会重置对底层源 Observable 的订阅（退订并为新的订阅者重新订阅）。可以使用通知工厂进行重置，以支持有条件重置或延迟重置等行为。请注意，当源 Observable 发生错误或完成时进行重置的行为和透明重试或重新启动源是不同的，因为出错或完成将被转发给所有订阅者并且他们的订阅将被关闭。只有在错误或完成引起的重置后出现的新订阅者才会重新订阅此源。为了实现透明的重试或重启动，在共享之前要通过适当的操作符对源进行管道传输。
+ * 如果共享 observable 的订阅者计数降至 0，或者源 Observable 已出错或完成，则会重置对底层源 Observable 的订阅（退订并为新的订阅者重新订阅）。可以使用通知工厂进行重置，以支持有条件重置或延迟重置等行为。请注意，当源 Observable 出错或完成时进行重置的行为和透明重试或重新启动源是不同的，因为出错或完成将被转发给所有订阅者并且他们的订阅将被关闭。只有在出错或完成引起的重置后出现的新订阅者才会重新订阅此源。为了实现透明的重试或重启动，在共享之前要通过适当的操作符对源进行管道传输。
  *
  * ![](share.png)
  *

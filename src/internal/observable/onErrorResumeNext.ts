@@ -26,7 +26,7 @@ export function onErrorResumeNext<A extends readonly unknown[]>(...sources: [...
  * If the source it's subscribed to emits an error or completes, it will move to the next source
  * without error.
  *
- * `onErrorResumeNext` 将按顺序订阅它提供的每个可观察源。如果它订阅的源发送错误或完成，它将移动到下一个源而不会发出错误。
+ * `onErrorResumeNext` 将按顺序订阅它提供的每个可观察源。如果它订阅的源出错或完成，它将移动到下一个源而不会发出错误。
  *
  * If `onErrorResumeNext` is provided no arguments, or a single, empty array, it will return {@link EMPTY}.
  *
