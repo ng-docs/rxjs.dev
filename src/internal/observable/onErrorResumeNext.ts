@@ -17,7 +17,7 @@ export function onErrorResumeNext<A extends readonly unknown[]>(...sources: [...
  * 当任何提供的 Observable 发送完成或错误通知时，它会立即订阅下一个传入的 Observable。
  *
  * <span class="informal">Execute series of Observables no matter what, even if it means swallowing errors.</span>
-*
+ *
  * <span class="informal">无论如何都要执行这一系列 Observables，即使这意味着掩盖错误。</span>
  *
  * ![](onErrorResumeNext.png)
@@ -41,7 +41,7 @@ export function onErrorResumeNext<A extends readonly unknown[]>(...sources: [...
  * `onErrorResumeNext`. If you want to handle errors thrown in any given source, you can
  * always use the {@link catchError} operator on them before passing them into `onErrorResumeNext`.
  *
- * 请注意，无法通过 `onErrorResumeNext` 的结果处理来源中抛出的任何错误。如果你想处理任何给定来源中抛出的错误，你可以在将它们传递给 `onErrorResumeNext` 之前总是对其先使用 {@link catchError} 操作符。
+ * 请注意，无法通过 `onErrorResumeNext` 的结果处理来源中抛出的任何错误。如果你想处理任何给定来源中抛出的错误，你可以在将它们传给 `onErrorResumeNext` 之前总是对其先使用 {@link catchError} 操作符。
  *
  * ## Example
  *
@@ -84,7 +84,7 @@ export function onErrorResumeNext<A extends readonly unknown[]>(...sources: [...
  * @see {@link catchError}
  * @param {...ObservableInput} sources Observables (or anything that *is* observable) passed either directly or as an array.
  *
- * 直接或作为数组传入的 Observables（或任何* Observable*类似物）。
+ * 直接或作为数组传入的 Observables（或任何*可观察者*类似物）。
  *
  * @return {Observable} An Observable that concatenates all sources, one after the other,
  * ignoring all errors, such that any error causes it to move on to the next source.

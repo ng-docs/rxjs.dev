@@ -10,7 +10,7 @@ import { UnaryFunction } from '../types';
  *
  * @param initialValue The initial value passed to the {@link BehaviorSubject}.
  *
- * 传递给 {@link BehaviorSubject} 的初始值。
+ * 传给 {@link BehaviorSubject} 的初始值。
  *
  * @return A function that returns a {@link ConnectableObservable}
  *

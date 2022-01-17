@@ -34,7 +34,7 @@ import { mergeInternals } from './mergeInternals';
  * will internally remember it and it will be passed to the `accumulator`
  * function as `acc` parameter the next time source emits.
  *
- * `mergeScan` 会在内部保留 `acc` 参数的值：当源 Observable 发出了值而内部 Observable 没有发送时，`acc` 就会被设置为 `seed`。下次当内部 Observable 发送一个值时，`mergeScan` 就会在内部记住它，并在下次 source 发出值时将它作为 `acc` 参数传递给 `accumulator` 函数。
+ * `mergeScan` 会在内部保留 `acc` 参数的值：当源 Observable 发出了值而内部 Observable 没有发送时，`acc` 就会被设置为 `seed`。下次当内部 Observable 发送一个值时，`mergeScan` 就会在内部记住它，并在下次 source 发出值时将它作为 `acc` 参数传给 `accumulator` 函数。
  *
  * The `value` parameter of the `accumulator` function is the value emitted by the
  * source Observable, while the `index` is a number which represent the order of the

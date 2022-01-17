@@ -40,7 +40,7 @@ export function fromEventPattern<T>(
  * returned by the operator is subscribed, so registering handler in API will not
  * necessarily happen when `fromEventPattern` is called.
  *
- * 该操作符会接受 `addHandler` 函数作为第一个参数，处理器的参数会传给该函数。该处理器实际上是一个事件处理器函数，你现在可以将其传递给想要它的 API。`addHandler` 会在操作符返回的 Observable 被订阅时调用，因此当调用 `fromEventPattern` 时不一定会在 API 中注册处理器。
+ * 该操作符会接受 `addHandler` 函数作为第一个参数，处理器的参数会传给该函数。该处理器实际上是一个事件处理器函数，你现在可以将其传给想要它的 API。`addHandler` 会在操作符返回的 Observable 被订阅时调用，因此当调用 `fromEventPattern` 时不一定会在 API 中注册处理器。
  *
  * After registration, every time an event that we listen to happens,
  * Observable returned by `fromEventPattern` will emit value that event handler
@@ -55,7 +55,7 @@ export function fromEventPattern<T>(
  * it from the API. `removeHandler` will be called when consumer of resulting Observable
  * unsubscribes from it.
  *
- * 如果你使用的 API 也允许取消注册事件处理器，你可以将另一个函数 - `removeHandler` - 作为第二个参数传递给 `fromEventPattern`。它将注入到与以前相同的处理器函数中，现在你可以用此 API 取消注册它。当结果 Observable 的消费者退订时，就会调用 `removeHandler`。
+ * 如果你使用的 API 也允许取消注册事件处理器，你可以将另一个函数 - `removeHandler` - 作为第二个参数传给 `fromEventPattern`。它将注入到与以前相同的处理器函数中，现在你可以用此 API 取消注册它。当结果 Observable 的消费者退订时，就会调用 `removeHandler`。
  *
  * In some APIs unregistering is actually handled differently. Method registering an event handler
  * returns some kind of token, which is later used to identify which function should
@@ -64,7 +64,7 @@ export function fromEventPattern<T>(
  * by registering method is returned by `addHandler`. Then it will be passed
  * as a second argument to `removeHandler`, where you will be able to use it.
  *
- * 在某些 API 中，取消注册的处理方式实际上有所不同。注册事件处理器的方法返回某种标记，该标记稍后用于识别应该取消注册的函数，或者它本身具有取消注册事件处理器的方法。如果你的 API 是这种情况，请确保注册方法返回的令牌会由 `addHandler` 返回。然后它将作为第二个参数传递给 `removeHandler`，这样就可以了。
+ * 在某些 API 中，取消注册的处理方式实际上有所不同。注册事件处理器的方法返回某种标记，该标记稍后用于识别应该取消注册的函数，或者它本身具有取消注册事件处理器的方法。如果你的 API 是这种情况，请确保注册方法返回的令牌会由 `addHandler` 返回。然后它将作为第二个参数传给 `removeHandler`，这样就可以了。
  *
  * If you need access to all event handler parameters (not only the first one),
  * or you need to transform them in any way, you can call `fromEventPattern` with optional
@@ -74,7 +74,7 @@ export function fromEventPattern<T>(
  * that default project can be thought of as function that takes its first parameter
  * and ignores the rest.
  *
- * 如果你需要访问所有事件处理器参数（不仅是第一个），或者你需要以任何方式转换它们，你可以使用可选的第三个参数调用 `fromEventPattern` - 投影函数，它将接受传递给事件处理器的所有参数。从投影函数返回的任何内容都将出现在结果流上，而不是通常的事件处理器的第一个参数。这意味着可以将默认投影函数视为接受其第一个参数并忽略其余参数的函数。
+ * 如果你需要访问所有事件处理器参数（不仅是第一个），或者你需要以任何方式转换它们，你可以使用可选的第三个参数调用 `fromEventPattern` - 投影函数，它将接受传给事件处理器的所有参数。从投影函数返回的任何内容都将出现在结果流上，而不是通常的事件处理器的第一个参数。这意味着可以将默认投影函数视为接受其第一个参数并忽略其余参数的函数。
  *
  * ## Examples
  *
@@ -163,7 +163,7 @@ export function fromEventPattern<T>(
  * passed to registered event handler. Alternatively it emits whatever project function returns
  * at that moment.
  *
- * 一个 Observable，当事件发生时，它会发送第一个参数传递给注册的事件处理器。或者，它会发送当时任何投影函数的返回值。
+ * 一个 Observable，当事件发生时，它会发送第一个参数传给注册的事件处理器。或者，它会发送当时任何投影函数的返回值。
  *
  */
 export function fromEventPattern<T>(

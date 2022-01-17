@@ -16,7 +16,7 @@ export function single<T>(predicate?: (value: T, index: number, source: Observab
  * predicate is provided, then it will assert that the observable
  * only emits one value.
  *
- * 返回一个 observable，它断言 observable 中只发送过一个满足此谓词的值。如果没有提供谓词，那么它将断言 observable 只发送过一个值。
+ * 返回一个 observable，它断言只有一个与谓词匹配的 observable 发送一个值。如果没有提供谓词，那么它将断言 observable 只发送一个值。
  *
  * In the event that the observable is empty, it will throw an
  * {@link EmptyError}.
@@ -27,12 +27,12 @@ export function single<T>(predicate?: (value: T, index: number, source: Observab
  * or when there are two values emitted and no predicate, it will
  * throw a {@link SequenceError}
  *
- * 如果找到了两个满足此谓词的值，或者当发送了两个值而且没有谓词时，它将抛出 {@link SequenceError}
+ * 如果找到与谓词匹配的两个值，或者当发送两个值但没有谓词时，它将抛出 {@link SequenceError}
  *
  * In the event that no values match the predicate, if one is provided,
  * it will throw a {@link NotFoundError}
  *
- * 如果有谓词而且没有任何值满足此谓词，它将抛出一个 {@link NotFoundError}
+ * 如果没有值与谓词匹配，如果提供了一个，它将抛出一个 {@link NotFoundError}
  *
  * ## Example
  *
@@ -40,7 +40,7 @@ export function single<T>(predicate?: (value: T, index: number, source: Observab
  *
  * Expect only `name` beginning with `'B'`
  *
- * 期望只有一个以 `'B'` 开头的 `name`
+ * 仅期望以 `'B'` 开头的 `name`
  *
  * ```ts
  * import { of, single } from 'rxjs';
@@ -88,22 +88,22 @@ export function single<T>(predicate?: (value: T, index: number, source: Observab
  * @throws {NotFoundError} Delivers an NotFoundError to the Observer's `error`
  * callback if the Observable completes before any `next` notification was sent.
  *
- * 如果 Observable 在发送任何 `next` 通知之前已完成，则会将 `NotFoundError` 传给 Observer 的 `error` 回调。
+ * 如果 Observable 在发送任何 `next` 通知之前完成，则将 NotFoundError 传给 Observer 的 `error` 回调。
  *
  * @throws {SequenceError} Delivers a SequenceError if more than one value is emitted that matches the
  * provided predicate. If no predicate is provided, will deliver a SequenceError if more
  * than one value comes from the source
  *
- * 如果发送了多个满足所提供的谓词的值，则引发 SequenceError。如果没有提供谓词而且源发来了多个值，则将引发一个 SequenceError
+ * 如果发送多个与提供的谓词匹配的值，则提供 SequenceError。如果没有提供谓词，如果多个值来自源，将传递一个 SequenceError
  *
  * @param {Function} predicate - A predicate function to evaluate items emitted by the source Observable.
  *
- *   一个谓词函数，用来评估源 Observable 发来的条目。
+ *   一个谓词函数，用于评估源 Observable 发送的条目。
  *
  * @return A function that returns an Observable that emits the single item
  * emitted by the source Observable that matches the predicate.
  *
- * 一个返回 Observable 的函数，该 Observable 会发送源 Observable 中满足此谓词的单个条目。
+ * 一个返回 Observable 的函数，该 Observable 发送与谓词匹配的源 Observable 发送的单个条目。
  *
  */
 export function single<T>(predicate?: (value: T, index: number, source: Observable<T>) => boolean): MonoTypeOperatorFunction<T> {

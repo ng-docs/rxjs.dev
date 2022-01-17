@@ -6,7 +6,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * 围绕浏览器提供的、与 w3c 兼容的 WebSocket 对象进行包装。
  *
  * <span class="informal">{@link Subject} that communicates with a server via WebSocket</span>
-*
+ *
  * <span class="informal">{@link Subject} 通过 WebSocket 与服务器通信</span>
  *
  * `webSocket` is a factory function that produces a `WebSocketSubject`,
@@ -48,7 +48,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * property with status code number and optional `reason` property with string describing details
  * of an error.
  *
- * 由于是 {@link Subject}，`WebSocketSubject` 允许从服务器接收和发送消息。为了与连接的端点通信，请使用 `next`、`error` 和 `complete` 方法。`next` 会向服务器发送一个值，请记住，该值不会事先序列化。因此，在使用某个结果调用 `next` 之前，必须手动对该值调用 `JSON.stringify`。另请注意，如果在下一个值抵达的时刻没有 Socket 连接（例如没有人订阅），则这些值将被缓冲，并在最终建立连接时发送。`complete` 方法关闭 Socket 连接。`error` 也是如此，并通过状态代码和字符串通知服务器出现问题，并提供详细信息。由于 WebSocket API 中需要状态码，因此 `WebSocketSubject` 不允许像常规 `Subject` 一样，将任意值传递给 `error` 方法。需要使用带状态代码数字的 `code` 属性和带有描述错误详情的可选字符串属性 `reason` 的对象来调用它。
+ * 由于是 {@link Subject}，`WebSocketSubject` 允许从服务器接收和发送消息。为了与连接的端点通信，请使用 `next`、`error` 和 `complete` 方法。`next` 会向服务器发送一个值，请记住，该值不会事先序列化。因此，在使用某个结果调用 `next` 之前，必须手动对该值调用 `JSON.stringify`。另请注意，如果在下一个值抵达的时刻没有 Socket 连接（例如没有人订阅），则这些值将被缓冲，并在最终建立连接时发送。`complete` 方法关闭 Socket 连接。`error` 也是如此，并通过状态代码和字符串通知服务器出现问题，并提供详细信息。由于 WebSocket API 中需要状态码，因此 `WebSocketSubject` 不允许像常规 `Subject` 一样，将任意值传给 `error` 方法。需要使用带状态代码数字的 `code` 属性和带有描述错误详情的可选字符串属性 `reason` 的对象来调用它。
  *
  * Calling `next` does not affect subscribers of `WebSocketSubject` - they have no
  * information that something was sent to the server (unless of course the server

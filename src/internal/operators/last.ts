@@ -77,7 +77,7 @@ export function last<T, D = T>(
  * @throws {EmptyError} Delivers an EmptyError to the Observer's `error`
  * callback if the Observable completes before any `next` notification was sent.
  *
- * 如果此 Observable 在发送任何 `next` 通知之前就已完成，则会将 EmptyError 传递给 Observer 的 `error` 回调。
+ * 如果此 Observable 在发送任何 `next` 通知之前就已完成，则会将 EmptyError 传给 Observer 的 `error` 回调。
  *
  * @param {function} [predicate] - The condition any source emitted item has to satisfy.
  * @param {any} [defaultValue] - An optional default value to provide if last

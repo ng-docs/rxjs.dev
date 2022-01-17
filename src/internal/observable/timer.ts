@@ -17,7 +17,7 @@ import { isValidDate } from '../util/isDate';
  * This observable is useful for creating delays in code, or racing against other values
  * for ad-hoc timeouts.
  *
- * 此 observable 对于在代码中创建延迟或与其它值作超时竞赛时非常有用。
+ * 此 observable 对于在代码中创建延迟或与其他值作超时竞赛时非常有用。
  *
  * The `delay` is specified by default in milliseconds, however providing a custom scheduler could
  * create a different behavior.
@@ -37,7 +37,7 @@ import { isValidDate } from '../util/isDate';
  * {@link concatMapTo} or {@link concatMap} in order to wait
  * a few seconds and start a subscription to a source.
  *
- * 你可能希望使用 `timer` 将订阅 Observable 延迟设定的时间。在这里，我们使用带有 {@link concatMapTo} 或 {@link concatMap} 的计时器，以便等待几秒钟再开始订阅源。
+ * 你可能希望使用 `timer` 将订阅可观察者延迟设定的时间。在这里，我们使用带有 {@link concatMapTo} 或 {@link concatMap} 的计时器，以便等待几秒钟再开始订阅源。
  *
  * ```ts
  * import { of, timer, concatMap } from 'rxjs';
@@ -99,7 +99,7 @@ import { isValidDate } from '../util/isDate';
  *   should occur will be incorrect. In this case, it would be best to do your own calculations
  *   ahead of time, and pass a `number` in as the `dueTime`.
  *
- *   如果所提供的 `scheduler` 会从 `now()` 返回除公元时间之外的时间戳，并且将 `Date` 对象传递给 `dueTime` 参数，则首次发送时间的计算将不正确。在这种情况下，最好提前进行自己的计算，并传入一个 `number` 作为 `dueTime`。
+ *   如果所提供的 `scheduler` 会从 `now()` 返回除公元时间之外的时间戳，并且将 `Date` 对象传给 `dueTime` 参数，则首次发送时间的计算将不正确。在这种情况下，最好提前进行自己的计算，并传入一个 `number` 作为 `dueTime`。
  *
  * @param due If a `number`, the amount of time in milliseconds to wait before emitting.
  * If a `Date`, the exact time at which to emit.

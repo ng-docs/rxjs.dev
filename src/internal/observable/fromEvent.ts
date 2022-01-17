@@ -128,7 +128,7 @@ export function fromEvent<T, R>(
  * <span class="informal">Creates an Observable from DOM events, or Node.js
  * EventEmitter events or others.</span>
  *
- * <span class="informal">从 DOM 事件或 Node.js EventEmitter 事件或其它事件创建一个 Observable。</span>
+ * <span class="informal">从 DOM 事件或 Node.js EventEmitter 事件或其他事件创建一个 Observable。</span>
  *
  * ![](fromEvent.png)
  *
@@ -148,7 +148,7 @@ export function fromEvent<T, R>(
  * passed as a first argument to registered function will be emitted by output Observable.
  * When Observable is unsubscribed, function will be unregistered from event target.
  *
- * 每当订阅所生成的 Observable 时，事件处理函数都会注册到给定事件类型的事件目标。当该事件触发时，作为第一个参数传递给注册函数的那个值将由输出 Observable 发出。当 Observable 被退订时，该函数将从事件目标中取消注册。
+ * 每当订阅所生成的 Observable 时，事件处理函数都会注册到给定事件类型的事件目标。当该事件触发时，作为第一个参数传给注册函数的那个值将由输出 Observable 发出。当 Observable 被退订时，该函数将从事件目标中取消注册。
  *
  * Note that if event target calls registered function with more than one argument, second
  * and following arguments will not appear in resulting stream. In order to get access to them,
@@ -156,7 +156,7 @@ export function fromEvent<T, R>(
  * passed to event handler. Output Observable will then emit value returned by project function,
  * instead of the usual value.
  *
- * 请注意，如果事件目标调用的是具有多个参数的已注册函数，则第二个和后续参数将不会出现在结果流中。为了访问它们，你可以给 `fromEvent` 传一个可选的投影函数，该函数将使用传递给事件处理器的所有参数进行调用。然后，输出 Observable 将发出此投影函数返回的值，而不是通常的值。
+ * 请注意，如果事件目标调用的是具有多个参数的已注册函数，则第二个和后续参数将不会出现在结果流中。为了访问它们，你可以给 `fromEvent` 传一个可选的投影函数，该函数将使用传给事件处理器的所有参数进行调用。然后，输出 Observable 将发出此投影函数返回的值，而不是通常的值。
  *
  * Remember that event targets listed below are checked via duck typing. It means that
  * no matter what kind of object you have and no matter what environment you work in,

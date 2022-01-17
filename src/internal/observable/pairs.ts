@@ -40,7 +40,7 @@ export function pairs(
  * 将对象转换为 `[key, value]` 对的 Observable。
  *
  * <span class="informal">Turn entries of an object into a stream.</span>
-*
+ *
  * <span class="informal">将对象的条目转换为流。</span>
  *
  * ![](pairs.png)
@@ -57,7 +57,7 @@ export function pairs(
  * By default, these arrays are emitted synchronously. To change that you can
  * pass a {@link SchedulerLike} as a second argument to `pairs`.
  *
- * 默认情况下，这些数组是同步发送的。要改变这一点，你可以将 {@link SchedulerLike} 作为第二个参数传递给 `pairs`。
+ * 默认情况下，这些数组是同步发送的。要改变这一点，你可以将 {@link SchedulerLike} 作为第二个参数传给 `pairs`。
  *
  * ## Example
  *

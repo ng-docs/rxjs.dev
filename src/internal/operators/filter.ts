@@ -38,7 +38,7 @@ export function filter<T>(predicate: (value: T, index: number) => boolean): Mono
  * takes values from the source Observable, passes them through a `predicate`
  * function and only emits those values that yielded `true`.
  *
- * 类似于众所周知的 `Array.prototype.filter` 方法，该操作符会从源 Observable 获取值，将它们传递给 `predicate` 函数，并且只发送那些计算结果为 `true` 的值。
+ * 类似于众所周知的 `Array.prototype.filter` 方法，该操作符会从源 Observable 获取值，将它们传给 `predicate` 函数，并且只发送那些计算结果为 `true` 的值。
  *
  * ## Example
  *

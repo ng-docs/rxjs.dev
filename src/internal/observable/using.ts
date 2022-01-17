@@ -18,7 +18,7 @@ import { EMPTY } from './empty';
  * Both functions passed to `using` will be called every time someone subscribes - neither an Observable nor
  * resource object will be shared in any way between subscriptions.
  *
- * `using` 是一个工厂操作符，它接受两个函数。第一个函数返回一个可释放资源。它可以是实现了 `unsubscribe` 方法的任意对象。该对象将传给第二个函数，并且该函数要返回一个 Observable。该 Observable 可以在执行期间使用此资源对象。每次有人订阅时，都将调用传递给 `using` 的两个函数 - Observable 和资源对象都不会在订阅之间以任何方式共享。
+ * `using` 是一个工厂操作符，它接受两个函数。第一个函数返回一个可释放资源。它可以是实现了 `unsubscribe` 方法的任意对象。该对象将传给第二个函数，并且该函数要返回一个 Observable。该 Observable 可以在执行期间使用此资源对象。每次有人订阅时，都将调用传给 `using` 的两个函数 - Observable 和资源对象都不会在订阅之间以任何方式共享。
  *
  * When Observable returned by `using` is subscribed, Observable returned from the second function will be subscribed
  * as well. All its notifications (nexted values, completion and error events) will be emitted unchanged by the output

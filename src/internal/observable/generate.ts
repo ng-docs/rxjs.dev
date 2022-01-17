@@ -58,7 +58,7 @@ export interface GenerateOptions<T, S> extends GenerateBaseOptions<S> {
  * producing the sequence's elements, using the specified scheduler
  * to send out observer messages.
  *
- * 通过运行一个状态驱动的循环来生成一个 Observable 序列，该循环会使用指定的调度器向 Observer 发送消息来产生序列元素。
+ * 通过运行一个状态驱动的循环来生成一个可观察者序列，该循环会使用指定的调度器向观察者发送消息来产生序列元素。
  *
  * ![](generate.png)
  *
@@ -145,7 +145,7 @@ export function generate<T, S>(
  * 通过运行一个状态驱动的循环来生成一个 Observable，该循环会在每次迭代时发送一个元素。
  *
  * <span class="informal">Use it instead of nexting values in a for loop.</span>
-*
+ *
  * <span class="informal">使用它代替 for 循环中的下一个值。</span>
  *
  * ![](generate.png)
@@ -160,7 +160,7 @@ export function generate<T, S>(
  * iteration (for example, if the index is lower than 10) and the third states how the defined value
  * will be modified on every step (for example, the index will be incremented by one).
  *
- * `generate` 允许你创建一个由和传统 for 循环非常相似的循环生成的值流。`generate` 的第一个参数是一个初始值。第二个参数是一个接受此值并测试某些条件是否仍然成立的函数。如果是，则循环继续，如果不是，则停止。第三个值是一个函数，它采用先前定义的值并在每次迭代时以某种方式对其进行修改。请注意，这三个参数直接等价于传统 for 循环中的三个表达式：第一个表达式初始化某个状态（例如，数字序号），第二个表达式测试循环是否可以执行下一次迭代（例如，如果序号小于 10），第三个说明如何在每一步修改定义的值（例如，序号将增加 1）。
+ * `generate` 允许你创建一个由和传统 for 循环非常相似的循环生成的值流。`generate` 的第一个参数是一个初始值。第二个参数是一个接受此值并测试某些条件是否仍然成立的函数。如果是，则循环继续，如果不是，则停止。第三个值是一个函数，它采用先前定义的值并在每次迭代时以某种方式对其进行修改。请注意，这三个参数直接等价于传统 for 循环中的三个表达式：第一个表达式初始化某个状态（例如，数字索引），第二个表达式测试循环是否可以执行下一次迭代（例如，如果索引小于 10），第三个说明如何在每一步修改定义的值（例如，索引将增加 1）。
  *
  * Return value of a `generate` operator is an Observable that on each loop iteration
  * emits a value. First of all, the condition function is ran. If it returns true, then the Observable
@@ -182,7 +182,7 @@ export function generate<T, S>(
  * of calling `generate` allows you to omit `condition` as well. If you omit it, that means
  * condition always holds, or in other words the resulting Observable will never complete.
  *
- * 如果你在 `generate` 调用中发现三个匿名函数难以阅读，你可以改为向操作符提供一个对象，该对象具有以下属性： `initialState`、`condition`、`iterate` 和 `resultSelector`，它们应该具有你通常传递给 `generate` 的相应值. `resultSelector` 仍然是可选的，但调用 `generate` 的这种形式也允许你省略 `condition`。如果省略它，则意味着条件始终成立，换言之，生成的 Observable 永远不会完成。
+ * 如果你在 `generate` 调用中发现三个匿名函数难以阅读，你可以改为向操作符提供一个对象，该对象具有以下属性： `initialState`、`condition`、`iterate` 和 `resultSelector`，它们应该具有你通常传给 `generate` 的相应值. `resultSelector` 仍然是可选的，但调用 `generate` 的这种形式也允许你省略 `condition`。如果省略它，则意味着条件始终成立，换言之，生成的 Observable 永远不会完成。
  *
  * Both forms of `generate` can optionally accept a scheduler. In case of a multi-parameter call,
  * scheduler simply comes as a last argument (no matter if there is a `resultSelector`
@@ -193,7 +193,7 @@ export function generate<T, S>(
  * on a separate task in the event loop, you could use the `async` scheduler. Note that
  * by default (when no scheduler is passed) values are simply emitted synchronously.
  *
- * 这两种形式的 `generate` 都可以选择接受一个调度器。在多参数调用的情况下，调度器只能作为最后一个参数出现（无论是否有 `resultSelector` 函数）。在单参数调用的情况下，你可以将其作为参数对象的 `scheduler` 属性传给操作符。在这两种情况下，调度器都会决定下一次循环迭代何时发生，也就是下一个值将何时由 Observable 发送。例如，要确保在事件循环中的单独任务上把每个值推送到 Observer，你可以使用 `async` 调度器。请注意，默认情况下（当没有传递调度器时）这些值只会同步发送。
+ * 这两种形式的 `generate` 都可以选择接受一个调度器。在多参数调用的情况下，调度器只能作为最后一个参数出现（无论是否有 `resultSelector` 函数）。在单参数调用的情况下，你可以将其作为参数对象的 `scheduler` 属性传给操作符。在这两种情况下，调度器都会决定下一次循环迭代何时发生，也就是下一个值将何时由 Observable 发送。例如，要确保在事件循环中的单独任务上把每个值推送到观察者，你可以使用 `async` 调度器。请注意，默认情况下（当没有传递调度器时）这些值只会同步发送。
  *
  * ## Examples
  *
@@ -333,7 +333,7 @@ export function generate<S>(
  * The overload accepts options object that might contain initial state, iterate,
  * condition and scheduler.
  *
- * 通过运行一个状态驱动的循环来生成 Observable 序列，该循环会产生元素序列，并使用指定的调度器向 Observer 发送消息。此重载接受可能包含初始状态、迭代、条件和调度器的选项对象。
+ * 通过运行一个状态驱动的循环来生成可观察者序列，该循环会产生元素序列，并使用指定的调度器向观察者发送消息。此重载接受可能包含初始状态、迭代、条件和调度器的选项对象。
  *
  * ![](generate.png)
  *
@@ -385,7 +385,7 @@ export function generate<S>(options: GenerateBaseOptions<S>): Observable<S>;
  * The overload accepts options object that might contain initial state, iterate,
  * condition, result selector and scheduler.
  *
- * 通过运行一个状态驱动的循环来生成一个 Observable 序列，该循环会产生元素序列，使用指定的调度器发送 Observer 消息。重载接受可能包含初始状态、迭代、条件、结果选择器和调度器的选项对象。
+ * 通过运行一个状态驱动的循环来生成一个可观察者序列，该循环会产生元素序列，使用指定的调度器发送观察者消息。重载接受可能包含初始状态、迭代、条件、结果选择器和调度器的选项对象。
  *
  * ![](generate.png)
  *

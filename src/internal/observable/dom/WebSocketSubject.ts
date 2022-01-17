@@ -13,7 +13,7 @@ import { Observer, NextObserver } from '../../types';
  * WebSocketSubjectConfig 是一个普通的对象，它可以让我们的 webSocket 变成可配置的。
  *
  * <span class="informal">Provides flexibility to {@link webSocket}</span>
-*
+ *
  * <span class="informal">为 {@link webSocket} 提供灵活性</span>
  *
  * It defines a set of properties to provide custom behavior in specific
@@ -24,7 +24,7 @@ import { Observer, NextObserver } from '../../types';
  * to the socket client. By default, `deserializer` is going to apply `JSON.parse` to each message coming
  * from the Server.
  *
- * 它定义了一组属性以在 Socket 生命周期的特定时刻提供自定义行为。当连接打开时我们可以使用 `openObserver`，当连接关闭时使用 `closeObserver`，如果我们有兴趣监听来自服务器的数据，则用 `deserializer`，它允许我们在将数据传递给 Socket 客户端之前自定义数据的反序列化策略。默认情况下，`deserializer` 会用 `JSON.parse` 解析来自服务器的每条消息。
+ * 它定义了一组属性以在 Socket 生命周期的特定时刻提供自定义行为。当连接打开时我们可以使用 `openObserver`，当连接关闭时使用 `closeObserver`，如果我们有兴趣监听来自服务器的数据，则用 `deserializer`，它允许我们在将数据传给 Socket 客户端之前自定义数据的反序列化策略。默认情况下，`deserializer` 会用 `JSON.parse` 解析来自服务器的每条消息。
  *
  * ## Examples
  *
@@ -78,7 +78,7 @@ import { Observer, NextObserver } from '../../types';
  *
  * **closeObserver** allows us to set a custom error when an error raises up.
  *
- * **closeObserver（关闭 Observer）**允许我们在出现错误时设置自定义错误。
+ * **closeObserver（关闭观察者）**允许我们在出现错误时设置自定义错误。
  *
  * ```ts
  * import { webSocket } from 'rxjs/webSocket';
@@ -101,7 +101,7 @@ import { Observer, NextObserver } from '../../types';
  * webSocket or sending notification that the connection was successful, this is when
  * openObserver is useful for.
  *
- * **openObserver（开启 Observer）**，假设我们需要在向 webSocket 发送/接收消息或发送连接成功的通知之前进行某种初始化任务，这就是 openObserver 的用武之地。
+ * **openObserver（开启观察者）**，假设我们需要在向 webSocket 发送/接收消息或发送连接成功的通知之前进行某种初始化任务，这就是 openObserver 的用武之地。
  *
  * ```ts
  * import { webSocket } from 'rxjs/webSocket';
@@ -160,14 +160,14 @@ export interface WebSocketSubjectConfig<T> {
   /**
    * An Observer that watches when open events occur on the underlying web socket.
    *
-   * 一个 Observer，当底层 Web Socket 上发生 open 事件时进行观察。
+   * 一个观察者，当底层 Web Socket 上发生 open 事件时进行观察。
    *
    */
   openObserver?: NextObserver<Event>;
   /**
    * An Observer that watches when close events occur on the underlying web socket
    *
-   * 一个 Observer，当底层 Web Socket 上发生 close 事件时进行观察
+   * 一个观察者，当底层 Web Socket 上发生 close 事件时进行观察
    *
    */
   closeObserver?: NextObserver<CloseEvent>;
@@ -175,7 +175,7 @@ export interface WebSocketSubjectConfig<T> {
    * An Observer that watches when a close is about to occur due to
    * unsubscription.
    *
-   * 一个 Observer，当由于退订而即将发生关闭时进行观察。
+   * 一个观察者，当由于退订而即将发生关闭时进行观察。
    *
    */
   closingObserver?: NextObserver<void>;

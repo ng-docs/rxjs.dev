@@ -39,7 +39,7 @@ export function onErrorResumeNext<T, A extends readonly unknown[]>(
  * be happening until there is no more Observables left in the series, at which point returned Observable will
  * complete - even if the last subscribed stream ended with an error.
  *
- * `onErrorResumeNext` 会返回一个 Observable，它从订阅源 Observable 并再次发送其值开始。当它的值流结束时（无论 Observable 是否完成或出错）`onErrorResumeNext` 都将订阅作为参数传递给该方法的第一个 Observable。它也将开始重新发送其值，并且当该流结束时，`onErrorResumeNext` 同样会继续订阅提供的系列 Observable 中的下一个，而不管之前的 Observable 是否完成或出错。以此类推，直到系列中没有更多的 Observable 了，结果 Observable 才会完成 —— 即使最后订阅的流是因为出错而结束的。
+ * `onErrorResumeNext` 会返回一个 Observable，它从订阅源 Observable 并再次发送其值开始。当它的值流结束时（无论 Observable 是否完成或出错）`onErrorResumeNext` 都将订阅作为参数传给该方法的第一个 Observable。它也将开始重新发送其值，并且当该流结束时，`onErrorResumeNext` 同样会继续订阅提供的系列 Observable 中的下一个，而不管之前的 Observable 是否完成或出错。以此类推，直到系列中没有更多的 Observable 了，结果 Observable 才会完成 —— 即使最后订阅的流是因为出错而结束的。
  *
  * `onErrorResumeNext` can be therefore thought of as version of {@link concat} operator, which is more permissive
  * when it comes to the errors emitted by its input Observables. While `concat` subscribes to the next Observable
@@ -52,7 +52,7 @@ export function onErrorResumeNext<T, A extends readonly unknown[]>(
  * expect these errors to appear in error callback passed to {@link Observable#subscribe}. If you want to take
  * specific actions based on what error was emitted by an Observable, you should try out {@link catchError} instead.
  *
- * 请注意，你无法访问这些 Observables 发送的错误。特别是不要期望这些错误出现在传递给 {@link Observable#subscribe} 的错误回调中。如果你想根据 Observable 发送的错误采取特定的行动，你应该尝试用 {@link catchError} 来代替。
+ * 请注意，你无法访问这些 Observables 发送的错误。特别是不要期望这些错误出现在传给 {@link Observable#subscribe} 的错误回调中。如果你想根据 Observable 发送的错误采取特定的行动，你应该尝试用 {@link catchError} 来代替。
  *
  * ## Example
  *

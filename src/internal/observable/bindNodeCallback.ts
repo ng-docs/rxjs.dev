@@ -74,7 +74,7 @@ export function bindNodeCallback<A extends readonly unknown[], R extends readonl
  * browsers or any other environment and API you use implements that callback style,
  * `bindNodeCallback` can be safely used on that API functions as well.
  *
- * 请注意，`bindNodeCallback` 也可以在非 Node.js 环境中使用。“Node.js 风格”的回调只是一种约定，因此如果你为浏览器或任何其它环境编写，并且你使用的 API 实现了这种回调风格，`bindNodeCallback` 也可以安全地用于该 API 函数。
+ * 请注意，`bindNodeCallback` 也可以在非 Node.js 环境中使用。“Node.js 风格”的回调只是一种约定，因此如果你为浏览器或任何其他环境编写，并且你使用的 API 实现了这种回调风格，`bindNodeCallback` 也可以安全地用于该 API 函数。
  *
  * Remember that Error object passed to callback does not have to be an instance
  * of JavaScript built-in `Error` object. In fact, it does not even have to an object.
@@ -86,7 +86,7 @@ export function bindNodeCallback<A extends readonly unknown[], R extends readonl
  * would expect, check if callback really is called in Node.js-style and, if not,
  * switch to {@link bindCallback} instead.
  *
- * 请记住，传递给回调的 Error 对象不必是 JavaScript 内置 `Error` 对象的实例。事实上，它甚至不需要是一个对象。当该参数的值为真值时，回调函数的错误参数被解释为“存在”。例如，它可以是非零数字、非空字符串或布尔值 `true`。在所有这些情况下，结果 Observable 都会用该值进行报错。这意味着当使用 `bindNodeCallback` 时，常规风格的回调会经常失败。如果你的 Observable 错误比你预期的要频繁得多，请检查是否真的以 Node.js 风格调用了回调，如果没有，请改用 {@link bindCallback}。
+ * 请记住，传给回调的 Error 对象不必是 JavaScript 内置 `Error` 对象的实例。事实上，它甚至不需要是一个对象。当该参数的值为真值时，回调函数的错误参数被解释为“存在”。例如，它可以是非零数字、非空字符串或布尔值 `true`。在所有这些情况下，结果 Observable 都会用该值进行报错。这意味着当使用 `bindNodeCallback` 时，常规风格的回调会经常失败。如果你的 Observable 错误比你预期的要频繁得多，请检查是否真的以 Node.js 风格调用了回调，如果没有，请改用 {@link bindCallback}。
  *
  * Note that even if error parameter is technically present in callback, but its value
  * is falsy, it still won't appear in array emitted by Observable.
