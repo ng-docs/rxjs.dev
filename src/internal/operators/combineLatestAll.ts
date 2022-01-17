@@ -67,7 +67,7 @@ export function combineLatestAll<R>(project: (...values: Array<any>) => R): Oper
  * @return A function that returns an Observable that flattens Observables
  * emitted by the source Observable.
  *
- * 一个返回 Observable 的函数，该函数会展平源 Observable 发送出来的这些 Observable。
+ * 一个返回 Observable 的函数，该 Observable 会展平源 Observable 发送出来的这些 Observable。
  *
  */
 export function combineLatestAll<R>(project?: (...values: Array<any>) => R) {

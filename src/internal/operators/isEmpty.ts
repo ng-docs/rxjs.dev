@@ -75,7 +75,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * @return A function that returns an Observable that emits boolean value
  * indicating whether the source Observable was empty or not.
  *
- * 一个返回 Observable 的函数，该函数发出布尔值，以指示源 Observable 是否为空。
+ * 一个返回 Observable 的函数，该 Observable 会发出布尔值，以指示源 Observable 是否为空。
  *
  */
 export function isEmpty<T>(): OperatorFunction<T, boolean> {

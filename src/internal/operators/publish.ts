@@ -102,7 +102,7 @@ export function publish<T, O extends ObservableInput<any>>(selector: (shared: Ob
  * @return A function that returns a ConnectableObservable that upon connection
  * causes the source Observable to emit items to its Observers.
  *
- * 一个返回 ConnectableObservable 的函数，该函数在连接时会导致源 Observable 向其 Observers 发送条目。
+ * 一个返回 ConnectableObservable 的函数，在连接该 Observable 时会导致源 Observable 向其 Observers 发送条目。
  *
  * @deprecated Will be removed in v8. Use the {@link connectable} observable, the {@link connect} operator or the
  * {@link share} operator instead. See the overloads below for equivalent replacement examples of this operator's

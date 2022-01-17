@@ -93,7 +93,7 @@ export function delayWhen<T>(delayDurationSelector: (value: T, index: number) =>
  * the source Observable by an amount of time specified by the Observable
  * returned by `delayDurationSelector`.
  *
- * 一个返回 Observable 的函数，该函数将源 Observable 发出的值进行延迟，其时长由 `delayDurationSelector` 返回的 Observable 决定。
+ * 一个返回 Observable 的函数，该 Observable 会将源 Observable 发出的值进行延迟，其时长由 `delayDurationSelector` 返回的 Observable 决定。
  *
  */
 export function delayWhen<T>(

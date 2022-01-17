@@ -56,7 +56,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * Observables and propagates the first Observable exclusively until it
  * completes before subscribing to the next.
  *
- * 一个返回 Observable 的函数，该函数接受 Observable 的源并以独占方式转发第一个 Observable 中的值，直到它完成，才订阅下一个。
+ * 一个返回 Observable 的函数，该 Observable 会接受 Observable 的源并以独占方式转发第一个 Observable 中的值，直到它完成，才订阅下一个。
  *
  */
 export function exhaustAll<O extends ObservableInput<any>>(): OperatorFunction<O, ObservedValueOf<O>> {

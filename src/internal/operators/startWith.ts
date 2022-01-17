@@ -14,7 +14,7 @@ export function startWith<T>(value: undefined): OperatorFunction<T, T | undefine
 /**
  * @deprecated The `scheduler` parameter will be removed in v8. Use `scheduled` and `concatAll`. Details: <https://rxjs.dev/deprecations/scheduler-argument>
  *
- * `scheduler` 参数将在 v8 中删除。请改用 `scheduled` 和 `concatAll`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
+ * `scheduler` 参数将在 v8 中删除。使用 `scheduled` 和 `concatAll`。详细信息： <https://rxjs.dev/deprecations/scheduler-argument>
  *
  */
 export function startWith<T, A extends readonly unknown[] = T[]>(
@@ -27,16 +27,16 @@ export function startWith<T, A extends readonly unknown[] = T[]>(...values: A): 
  * values provided to this operator, then subscribe to the source and mirror all of its emissions
  * to subscribers.
  *
- * 返回一个 observable，在订阅的那一刻，它将同步发送提供给此操作符的所有值，然后订阅源，并将其所有产出物镜像给订阅者。
+ * 返回一个 observable，在订阅的那一刻，它将同步发送提供给此操作符的所有值，然后订阅源并将其所有发送镜像给订阅者。
  *
  * This is a useful way to know when subscription has occurred on an existing observable.
  *
- * 这是了解现有 observable 何时发生订阅的有效方法。
+ * 这是了解现有 observable 何时发生订阅的有用方法。
  *
  * <span class="informal">First emits its arguments in order, and then any
  * emissions from the source.</span>
  *
- * <span class="informal">首先按顺序发送其参数，然后是源的任何产出物。</span>
+ * <span class="informal">首先按顺序发送其参数，然后是源的任何排放。</span>
  *
  * ![](startWith.png)
  *
@@ -46,7 +46,7 @@ export function startWith<T, A extends readonly unknown[] = T[]>(...values: A): 
  *
  * Emit a value when a timer starts.
  *
- * 在计时器启动时发送一个值。
+ * 计时器启动时发送一个值。
  *
  * ```ts
  * import { timer, map, startWith } from 'rxjs';
@@ -64,12 +64,12 @@ export function startWith<T, A extends readonly unknown[] = T[]>(...values: A): 
  * ```
  * @param values Items you want the modified Observable to emit first.
  *
- * 你希望让修改后的 Observable 先行发送的一些条目。
+ * 你希望修改后的 Observable 首先发送的条目。
  *
  * @return A function that returns an Observable that synchronously emits
  * provided values before subscribing to the source Observable.
  *
- * 一个返回 Observable 的函数，该 Observable 会在订阅源 Observable 之前同步发送所提供的这些值。
+ * 一个返回 Observable 的函数，该 Observable 会在订阅源 Observable 之前同步发送提供的值。
  *
  * @see {@link endWith}
  * @see {@link finalize}
