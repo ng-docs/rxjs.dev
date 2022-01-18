@@ -93,6 +93,9 @@ export function partition<T>(source: ObservableInput<T>, predicate: (value: T, i
  *
  * @param {any} [thisArg] An optional argument to determine the value of `this`
  * in the `predicate` function.
+ *
+ * 一个可选参数，用于确定 `predicate` 函数中 `this` 的值。
+ *
  * @return {[Observable<T>, Observable<T>]} An array with two Observables: one
  * with values that passed the predicate, and another with values that did not
  * pass the predicate.

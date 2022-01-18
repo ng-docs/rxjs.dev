@@ -68,6 +68,9 @@ import { OperatorFunction, ObservableInput, ObservedValueOf } from '../types';
  * @see {@link zipAll}
  * @param {number} [concurrent=Infinity] Maximum number of inner
  * Observables being subscribed to concurrently.
+ *
+ * 要同时订阅的内部 Observable 的最大数量。
+ *
  * @return A function that returns an Observable that emits values coming from
  * all the inner Observables emitted by the source Observable.
  *

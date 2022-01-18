@@ -279,6 +279,9 @@ export function fromEvent<T, R>(
  * 由 `target` 发出的感兴趣的事件名称。
  *
  * @param {EventListenerOptions} [options] Options to pass through to addEventListener
+ *
+ * 要传给 addEventListener 的选项
+ *
  * @return {Observable<T>}
  */
 export function fromEvent<T>(

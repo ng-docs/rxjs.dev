@@ -589,6 +589,9 @@ export class Observable<T> implements Subscribable<T> {
    * @method toPromise
    * @param [promiseCtor] a constructor function used to instantiate
    * the Promise
+   *
+   * 用于实例化 Promise 的构造函数
+   *
    * @return A Promise that resolves with the last value emit, or
    * rejects on an error. If there were no emissions, Promise
    * resolves with undefined.

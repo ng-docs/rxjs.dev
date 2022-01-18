@@ -104,6 +104,9 @@ export function pairs(
  *
  * @param {Scheduler} [scheduler] An optional IScheduler to schedule
  * when resulting Observable will emit values.
+ *
+ * 一个可选的 IScheduler，用于安排结果 Observable 何时发出值。
+ *
  * @returns {(Observable<Array<string|T>>)} An observable sequence of
  * [key, value] pairs from the object.
  *

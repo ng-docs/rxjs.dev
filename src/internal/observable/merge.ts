@@ -105,6 +105,9 @@ export function merge<A extends readonly unknown[]>(
  *
  * @param {number} [concurrent=Infinity] Maximum number of input
  * Observables being subscribed to concurrently.
+ *
+ * 要同时订阅的输入 Observable 的最大数量。
+ *
  * @param {SchedulerLike} [scheduler=null] The {@link SchedulerLike} to use for managing
  * concurrency of input Observables.
  *

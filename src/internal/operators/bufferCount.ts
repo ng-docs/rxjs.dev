@@ -65,6 +65,9 @@ import { arrRemove } from '../util/arrRemove';
  * For example if `startBufferEvery` is `2`, then a new buffer will be started
  * on every other value from the source. A new buffer is started at the
  * beginning of the source by default.
+ *
+ * 用于开始新缓冲区的时间间隔。例如，如果 `startBufferEvery` 是 `2` ，那么将在源的每个其他值上启动一个新缓冲区。默认情况下，会在源的开头启动一个新缓冲区。
+ *
  * @return A function that returns an Observable of arrays of buffered values.
  *
  * 一个返回 Observable 的函数，该 Observable 的值是一些缓冲区构成的数组。

@@ -58,6 +58,9 @@ export function map<T, R, A>(project: (this: A, value: T, index: number) => R, t
  *
  * @param {any} [thisArg] An optional argument to define what `this` is in the
  * `project` function.
+ *
+ * 一个可选参数，用于定义 `project` 函数中的 `this` 是什么。
+ *
  * @return A function that returns an Observable that emits the values from the
  * source Observable transformed by the given `project` function.
  *

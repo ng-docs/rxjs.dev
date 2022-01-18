@@ -156,9 +156,15 @@ export function fromEventPattern<T>(
  * @param {function(handler: Function, token?: any): void} [removeHandler] A function that
  * takes a `handler` function as an argument and removes it from the event source. If `addHandler`
  * returns some kind of token, `removeHandler` function will have it as a second parameter.
+ *
+ * 一个以 `handler` 函数为参数的函数，用于将其从事件源中删除。如果 `addHandler` 返回了某种令牌，则 `removeHandler` 函数会将它作为第二个参数。
+ *
  * @param {function(...args: any): T} [project] A function to
  * transform results. It takes the arguments from the event handler and
  * should return a single value.
+ *
+ * 用于对结果做转换的函数。它会从事件处理程序中获取参数，并返回一个值。
+ *
  * @return {Observable<T>} Observable which, when an event happens, emits first parameter
  * passed to registered event handler. Alternatively it emits whatever project function returns
  * at that moment.

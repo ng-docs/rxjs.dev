@@ -62,6 +62,9 @@ export function withLatestFrom<T, O extends unknown[], R>(
  * first parameter is a value from the source Observable. (e.g.
  * `a.pipe(withLatestFrom(b, c), map(([a1, b1, c1]) => a1 + b1 + c1))`). If this is not
  * passed, arrays will be emitted on the output Observable.
+ *
+ * 用于将值组合在一起的投影功能。按照传递的 Observable 的顺序接收所有值，其中第一个参数是来自源 Observable 的值。（例如 `a.pipe(withLatestFrom(b, c), map(([a1, b1, c1]) => a1 + b1 + c1))` ）。如果未传入本参数，则将在输出 Observable 上发出这些数组。
+ *
  * @return A function that returns an Observable of projected values from the
  * most recent values from each input Observable, or an array of the most
  * recent values from each input Observable.

@@ -80,8 +80,14 @@ export function last<T, D = T>(
  * 如果此 Observable 在发送任何 `next` 通知之前就已完成，则会将 EmptyError 传给 Observer 的 `error` 回调。
  *
  * @param {function} [predicate] - The condition any source emitted item has to satisfy.
+ *
+ *   任何源在发送条目时必须满足的条件。
+ *
  * @param {any} [defaultValue] - An optional default value to provide if last
- * predicate isn't met or no values were emitted.
+ *   predicate isn't met or no values were emitted.
+ *
+ *   一个可选的默认值，如果不满足最后一个谓词或未发出任何值，则发出它。
+ *
  * @return A function that returns an Observable that emits only the last item
  * satisfying the given condition from the source, or a NoSuchElementException
  * if no such items are emitted.

@@ -4,7 +4,7 @@ import { filter } from './filter';
 /**
  * Returns an Observable that skips the first `count` items emitted by the source Observable.
  *
- * 返回一个会跳过源 Observable 发出的前`count` 个条目的 Observable。
+ * 返回一个会跳过源 Observable 发出的前 `count` 个条目的 Observable。
  *
  * ![](skip.png)
  *

@@ -67,6 +67,9 @@ export function reduce<V, A, S = A>(accumulator: (acc: A | S, value: V, index: n
  * 要针对每个源值调用的累加器函数。
  *
  * @param {A} [seed] The initial accumulation value.
+ *
+ * 初始累加值。
+ *
  * @return A function that returns an Observable that emits a single value that
  * is the result of accumulating the values emitted by the source Observable.
  *

@@ -30,8 +30,14 @@ export class Action<T> extends Subscription {
    *
    * @param {T} [state] Some contextual data that the `work` function uses when
    * called by the Scheduler.
+   *
+   * 当调度器调用 `work` 函数时要使用的一些上下文数据。
+   *
    * @param {number} [delay] Time to wait before executing the work, where the
    * time unit is implicit and defined by the Scheduler.
+   *
+   * 执行此工作前要等待的时间，其中时间单位是隐式的，由调度器定义。
+   *
    * @return {void}
    */
   public schedule(state?: T, delay: number = 0): Subscription {

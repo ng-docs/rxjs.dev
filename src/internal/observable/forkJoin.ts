@@ -184,6 +184,9 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  *
  * @param {function} [project] Function that takes values emitted by input Observables and returns value
  * that will appear in resulting Observable instead of default array.
+ *
+ * 一个函数，接受输入 Observables 发出的值，并返回将出现在结果 Observable （而不是默认的数组）中的值。
+ *
  * @return {Observable} Observable emitting either an array of last values emitted by passed Observables
  * or value from project function.
  *

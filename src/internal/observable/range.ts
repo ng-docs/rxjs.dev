@@ -58,6 +58,9 @@ export function range(start: number, count: number | undefined, scheduler: Sched
  * @see {@link timer}
  * @see {@link interval}
  * @param {number} [start=0] The value of the first integer in the sequence.
+ *
+ * 序列中第一个整数的值。
+ *
  * @param {number} count The number of sequential integers to generate.
  *
  * 要生成的连续整数的数量。

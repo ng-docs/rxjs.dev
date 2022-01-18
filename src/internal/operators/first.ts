@@ -85,8 +85,14 @@ export function first<T, D = T>(
  *
  * @param {function(value: T, index: number, source: Observable<T>): boolean} [predicate]
  * An optional function called with each item to test for condition matching.
+ *
+ * 一个可选函数，用于针对每个条目进行调用，以测试条件是否匹配。
+ *
  * @param {D} [defaultValue] The default value emitted in case no valid value
  * was found on the source.
+ *
+ * 如果在源上找不到有效值，则发出此默认值。
+ *
  * @return A function that returns an Observable that emits the first item that
  * matches the condition.
  *

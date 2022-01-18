@@ -58,6 +58,9 @@ export function every<T>(predicate: (value: T, index: number, source: Observable
  * 用于确定条目是否满足指定条件的函数。
  *
  * @param {any} [thisArg] Optional object to use for `this` in the callback.
+ *
+ * 在回调中用作 `this` 的可选对象。
+ *
  * @return A function that returns an Observable of booleans that determines if
  * all items of the source Observable meet the condition specified.
  *

@@ -96,6 +96,9 @@ export function mergeMap<T, R, O extends ObservableInput<any>>(
  *
  * @param {number} [concurrent=Infinity] Maximum number of input
  * Observables being subscribed to concurrently.
+ *
+ * 要同时订阅的输入 Observable 的最大数量。
+ *
  * @return A function that returns an Observable that emits the result of
  * applying the projection function (and the optional deprecated
  * `resultSelector`) to each item emitted by the source Observable and merging

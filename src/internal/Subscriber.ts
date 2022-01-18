@@ -102,6 +102,9 @@ export class Subscriber<T> extends Subscription implements Observer<T> {
    * 这个 {@link Observer} 回调会用于接收来自 Observable 的 `next` 类型的通知，带有一个值。Observable 可能会调用此方法 0 次或多次。
    *
    * @param {T} [value] The `next` value.
+   *
+   * `next` 值。
+   *
    * @return {void}
    */
   next(value?: T): void {
@@ -120,6 +123,9 @@ export class Subscriber<T> extends Subscription implements Observer<T> {
    * 这个 {@link Observer} 回调会从 Observable 接收类型 `error` 的通知，并附加 `Error`。通知 Observer Observable 遇到了错误情况。
    *
    * @param {any} [err] The `error` exception.
+   *
+   * `error` 异常。
+   *
    * @return {void}
    */
   error(err?: any): void {

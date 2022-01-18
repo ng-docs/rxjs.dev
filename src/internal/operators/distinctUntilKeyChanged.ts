@@ -76,6 +76,9 @@ export function distinctUntilKeyChanged<T, K extends keyof T>(key: K, compare: (
  * 用于在每个条目上查找对象属性的键名字符串。
  *
  * @param {function} [compare] Optional comparison function called to test if an item is distinct from the previous item in the source.
+ *
+ * 可选的比较函数，用于测试一个条目是否与源中的前一个条目不同。
+ *
  * @return A function that returns an Observable that emits items from the
  * source Observable with distinct values based on the key specified.
  *

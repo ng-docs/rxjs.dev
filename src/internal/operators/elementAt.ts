@@ -63,6 +63,9 @@ import { take } from './take';
  * 是自订阅以来源发出的第 i 个数字中的这个 `i`，从数字 `0` 开始。
  *
  * @param {T} [defaultValue] The default value returned for missing indices.
+ *
+ * 返回当没有指定序号时的默认值。
+ *
  * @return A function that returns an Observable that emits a single item, if
  * it is found. Otherwise, it will emit the default value if given. If not, it
  * emits an error.

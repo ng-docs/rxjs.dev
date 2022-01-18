@@ -68,6 +68,9 @@ export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(
  *
  * @param {number} [concurrent=Infinity] Maximum number of input
  * Observables being subscribed to concurrently.
+ *
+ * 要同时订阅的输入 Observable 的最大数量。
+ *
  * @return A function that returns an Observable that emits items from the
  * given `innerObservable`.
  *

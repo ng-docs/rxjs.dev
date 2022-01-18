@@ -306,6 +306,9 @@ export function generate<T, S>(
  * 迭代阶跃（step）函数。
  *
  * @param {function (state: S): T} [resultSelector] Selector function for results produced in the sequence.
+ *
+ * 用于处理序列中产生的结果的选择器函数。
+ *
  * @param {Scheduler} [scheduler] A {@link Scheduler} on which to run the generator loop. If not provided, defaults to emitting immediately.
  *
  * 用来运行生成器循环的调度器类似物。如果未提供，则默认为立即发送。

@@ -83,9 +83,18 @@ export function bufferTime<T>(
  *
  * @param {number} [bufferCreationInterval] The interval at which to start new
  * buffers.
+ *
+ * 启动新缓冲区的时间间隔。
+ *
  * @param {number} [maxBufferSize] The maximum buffer size.
+ *
+ * 最大缓冲区大小。
+ *
  * @param {SchedulerLike} [scheduler=async] The scheduler on which to schedule the
  * intervals that determine buffer boundaries.
+ *
+ * 一个调度器，用于调度决定缓冲区边界的时间间隔。
+ *
  * @return A function that returns an Observable of arrays of buffered values.
  *
  * 一个返回 Observable 的函数，该 Observable 的值是一些缓冲区构成的数组。

@@ -124,7 +124,7 @@ export function combineLatest<T extends Record<string, ObservableInput<any>>>(
  * corresponding to the order of the passed Observables (the value from the first Observable
  * will be at index 0 of the array and so on).
  *
- * `combineLatest` 会组合来自 observables 数组中传递的所有 Observables 的值。这是通过按顺序订阅每个 Observable 来完成的，并且每当有任何 Observable 发出时，都会从每个 Observable 中收集一个包含最新值的数组。因此，如果你将 `n` 个Observables 传递给此操作符，则返回的 Observable 将始终发出一个包含 `n` 个值的数组，其顺序与传递的 Observables 的顺序相对应（第一个 Observable 的值将位于数组的序号 0 处，因此在）。
+ * `combineLatest` 会组合来自 observables 数组中传递的所有 Observables 的值。这是通过按顺序订阅每个 Observable 来完成的，并且每当有任何 Observable 发出时，都会从每个 Observable 中收集一个包含最新值的数组。因此，如果你将 `n` 个 Observables 传递给此操作符，则返回的 Observable 将始终发出一个包含 `n` 个值的数组，其顺序与传递的 Observables 的顺序相对应（第一个 Observable 的值将位于数组的序号 0 处，因此在）。
  *
  * Static version of `combineLatest` accepts an array of Observables. Note that an array of
  * Observables is a good choice, if you don't know beforehand how many Observables
@@ -246,8 +246,14 @@ export function combineLatest<T extends Record<string, ObservableInput<any>>>(
  * @see {@link withLatestFrom}
  * @param {ObservableInput} [observables] An array of input Observables to combine with each other.
  * An array of Observables must be given as the first argument.
+ *
+ * 要互相组合的输入 Observable 数组。此 Observables 数组必须作为第一个参数给出。
+ *
  * @param {function} [project] An optional function to project the values from
  * the combined latest values into a new value on the output Observable.
+ *
+ * 一个可选函数，用于将组合后的最新值中的各个值投影到输出 Observable 上的新值中。
+ *
  * @param {SchedulerLike} [scheduler=null] The {@link SchedulerLike} to use for subscribing to
  * each input Observable.
  *

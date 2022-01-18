@@ -70,7 +70,13 @@ import { noop } from '../util/noop';
  * @see {@link distinctUntilChanged}
  * @see {@link distinctUntilKeyChanged}
  * @param {function} [keySelector] Optional function to select which value you want to check as distinct.
+ *
+ * 可选函数，用于选择要做差异性检查的值。
+ *
  * @param {Observable} [flushes] Optional Observable for flushing the internal HashSet of the operator.
+ *
+ * 可选的 Observable，用于刷新操作符的内部 HashSet。
+ *
  * @return A function that returns an Observable that emits items from the
  * source Observable with distinct values.
  *

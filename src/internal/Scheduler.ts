@@ -70,8 +70,14 @@ export class Scheduler implements SchedulerLike {
    *
    * @param {number} [delay] Time to wait before executing the work, where the
    * time unit is implicit and defined by the Scheduler itself.
+   *
+   * 在执行工作之前要等待的时间，其中时间单位是隐式的，由调度器本身定义。
+   *
    * @param {T} [state] Some contextual data that the `work` function uses when
    * called by the Scheduler.
+   *
+   * 当调度器调用 `work` 函数时使用的一些上下文数据。
+   *
    * @return {Subscription} A subscription in order to be able to unsubscribe
    * the scheduled work.
    *

@@ -66,6 +66,9 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * 要与源序列进行比较的 Observable 序列。
  *
  * @param {function} [comparator] An optional function to compare each value pair
+ *
+ * 用于比较每个值对的可选函数
+ *
  * @return A function that returns an Observable that emits a single boolean
  * value representing whether or not the values emitted by the source
  * Observable and provided Observable were equal in sequence.

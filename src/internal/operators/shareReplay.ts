@@ -158,9 +158,18 @@ export function shareReplay<T>(bufferSize?: number, windowTime?: number, schedul
  * @see {@link share}
  * @see {@link publishReplay}
  * @param {Number} [bufferSize=Infinity] Maximum element count of the replay buffer.
+ *
+ * 重播缓冲区的最大元素数。
+ *
  * @param {Number} [windowTime=Infinity] Maximum time length of the replay buffer in milliseconds.
+ *
+ * 重播缓冲区的最大时间长度（以毫秒为单位）。
+ *
  * @param {Scheduler} [scheduler] Scheduler where connected observers within the selector function
  * will be invoked on.
+ *
+ * 一个调度器，用于调度选择器函数中已连接的 Observer。
+ *
  * @return A function that returns an Observable sequence that contains the
  * elements of a sequence produced by multicasting the source sequence within a
  * selector function.

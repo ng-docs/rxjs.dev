@@ -5,6 +5,8 @@ import { getXHRResponse } from './getXHRResponse';
  * A normalized response from an AJAX request. To get the data from the response,
  * you will want to read the `response` property.
  *
+ * 来自 AJAX 请求的规范化响应。要从此响应中获取数据，你需要读取 `response` 属性。
+ *
  * - DO NOT create instances of this class directly.
  *
  *   不要直接创建此类的实例。

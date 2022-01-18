@@ -74,6 +74,9 @@ export function findIndex<T>(predicate: (value: T, index: number, source: Observ
  *
  * @param {any} [thisArg] An optional argument to determine the value of `this`
  * in the `predicate` function.
+ *
+ * 一个可选参数，用于确定 `predicate` 函数中 `this` 的值。
+ *
  * @return A function that returns an Observable that emits the index of the
  * first item that matches the condition.
  *

@@ -50,7 +50,10 @@ import { isFunction } from '../util/isFunction';
  * ```
  * @see {@link max}
  * @param {Function} [comparer] - Optional comparer function that it will use instead of its default to compare the
- * value of two items.
+ *   value of two items.
+ *
+ *   一个可选的比较器函数，将使用它来比较两个条目的值，以代替默认的比较逻辑。
+ *
  * @return A function that returns an Observable that emits item with the
  * smallest value.
  *

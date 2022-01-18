@@ -88,6 +88,9 @@ import { mergeInternals } from './mergeInternals';
  *
  * @param {number} [concurrent=Infinity] Maximum number of
  * input Observables being subscribed to concurrently.
+ *
+ * 要同时订阅的输入 Observable 的最大数量。
+ *
  * @return A function that returns an Observable of the accumulated values.
  *
  * 返回累加结果的 Observable 的函数。

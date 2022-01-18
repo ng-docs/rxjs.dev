@@ -358,6 +358,9 @@ export class Notification<T> {
    * 一个快捷方式，用于从给定的错误创建类型 `error` 的通知实例。
    *
    * @param {any} [err] The `error` error.
+   *
+   * `error` 错误。
+   *
    * @return {Notification<T>} The "error" Notification representing the
    * argument.
    *

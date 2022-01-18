@@ -80,6 +80,9 @@ export function find<T>(predicate: (value: T, index: number, source: Observable<
  *
  * @param {any} [thisArg] An optional argument to determine the value of `this`
  * in the `predicate` function.
+ *
+ * 一个可选参数，用于确定 `predicate` 函数中 `this` 的值。
+ *
  * @return A function that returns an Observable that emits the first item that
  * matches the condition.
  *

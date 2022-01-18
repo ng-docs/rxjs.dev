@@ -48,6 +48,9 @@ import { map } from './map';
  * // { value: 2, interval: 1000 }
  * ```
  * @param {SchedulerLike} [scheduler] Scheduler used to get the current time.
+ *
+ * 用于获取当前时间的调度器。
+ *
  * @return A function that returns an Observable that emits information about
  * value and interval.
  *

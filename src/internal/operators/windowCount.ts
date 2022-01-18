@@ -76,6 +76,9 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * For example if `startWindowEvery` is `2`, then a new window will be started
  * on every other value from the source. A new window is started at the
  * beginning of the source by default.
+ *
+ * 开始新窗口的时间间隔。例如，如果 `startWindowEvery` 为 `2` ，则将在源中的每个其他值上启动一个新窗口。默认情况下，新窗口会在源的开头启动。
+ *
  * @return A function that returns an Observable of windows, which in turn are
  * Observable of values.
  *

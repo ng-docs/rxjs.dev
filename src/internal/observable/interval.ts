@@ -51,6 +51,9 @@ import { timer } from './timer';
  * @see {@link delay}
  * @param {number} [period=0] The interval size in milliseconds (by default)
  * or the time unit determined by the scheduler's clock.
+ *
+ * 以毫秒为单位的间隔大小（默认情况下）或由调度器的时钟确定的时间单位。
+ *
  * @param {SchedulerLike} [scheduler=async] The {@link SchedulerLike} to use for scheduling
  * the emission of values, and providing a notion of "time".
  *
