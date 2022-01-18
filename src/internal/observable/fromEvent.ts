@@ -128,7 +128,7 @@ export function fromEvent<T, R>(
  * <span class="informal">Creates an Observable from DOM events, or Node.js
  * EventEmitter events or others.</span>
  *
- * <span class="informal">从 DOM 事件或 Node.js EventEmitter 事件或其他事件创建一个 Observable。</span>
+ * <span class="informal">从 DOM 事件或 Node.js EventEmitter 事件或其它事件创建一个 Observable。</span>
  *
  * ![](fromEvent.png)
  *

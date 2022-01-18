@@ -10,7 +10,7 @@ export function skipWhile<T>(predicate: (value: T, index: number) => boolean): M
  * Returns an Observable that skips all items emitted by the source Observable as long as a specified condition holds
  * true, but emits all further source items as soon as the condition becomes false.
  *
- * 返回一个 Observable，只要指定的条件依然成立，它就会跳过源 Observable 发送的所有条目，但一旦条件变为 false，就会发送源的所有其他条目。
+ * 返回一个 Observable，只要指定的条件依然成立，它就会跳过源 Observable 发送的所有条目，但一旦条件变为 false，就会发送源的所有其它条目。
  *
  * ![](skipWhile.png)
  *

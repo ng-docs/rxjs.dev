@@ -24,7 +24,7 @@ import { QueueScheduler } from './QueueScheduler';
  * This means that when you execute task with `queue` scheduler, you are sure it will end
  * before any other task scheduled with that scheduler will start.
  *
- * 这意味着当你使用 `queue` 调度器执行任务时，你要确保它会在使用该调度器调度的任何其他任务开始之前结束。
+ * 这意味着当你使用 `queue` 调度器执行任务时，你要确保它会在使用该调度器调度的任何其它任务开始之前结束。
  *
  * ## Examples
  *

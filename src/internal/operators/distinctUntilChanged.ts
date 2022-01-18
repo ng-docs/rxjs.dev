@@ -31,7 +31,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * because it's distinct in comparison to the _previously emitted_ value,
  * not in comparison to _all other emitted values_.
  *
- * 一个没有 `comparator` 的非常基本的示例。请注意，`1` 会被多次发送，因为它与*先前发送*的值相比是不同的，而不是与*已发送过的所有其他值*相比。
+ * 一个没有 `comparator` 的非常基本的示例。请注意，`1` 会被多次发送，因为它与*先前发送*的值相比是不同的，而不是与*已发送过的所有其它值*相比。
  *
  * ```ts
  * import { of, distinctUntilChanged } from 'rxjs';
@@ -132,7 +132,7 @@ export function distinctUntilChanged<T>(comparator?: (previous: T, current: T) =
  * 4. If the keys are determined to be unequal by this check, the value (not the key), is emitted
  *    and the selected key from that value is saved for future comparisons against other keys.
  *
- *    如果通过此检查确定键是不等的，则发送该值（而不是键），并保存从该值中选择的键，以供将来与其他键进行比较。
+ *    如果通过此检查确定键是不等的，则发送该值（而不是键），并保存从该值中选择的键，以供将来与其它键进行比较。
  *
  * ## Example
  *

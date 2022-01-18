@@ -17,7 +17,7 @@ import { isValidDate } from '../util/isDate';
  * This observable is useful for creating delays in code, or racing against other values
  * for ad-hoc timeouts.
  *
- * 此 observable 对于在代码中创建延迟或与其他值作超时竞赛时非常有用。
+ * 此 observable 对于在代码中创建延迟或与其它值作超时竞赛时非常有用。
  *
  * The `delay` is specified by default in milliseconds, however providing a custom scheduler could
  * create a different behavior.

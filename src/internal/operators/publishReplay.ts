@@ -50,7 +50,7 @@ export function publishReplay<T>(
  *
  * Since this is deprecated, for additional details see the documentation for {@link connect}.
  *
- * 由于已弃用此功能，因此有关其他详细信息，请参阅 {@link connect} 的文档。
+ * 由于已弃用此功能，因此有关其它详细信息，请参阅 {@link connect} 的文档。
  *
  * @param bufferSize The buffer size for the underlying {@link ReplaySubject}.
  *

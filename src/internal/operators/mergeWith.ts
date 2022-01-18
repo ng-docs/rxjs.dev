@@ -10,7 +10,7 @@ import { merge } from './merge';
  * observable, and all other sources provided as arguments. All values from
  * every source are emitted from the resulting subscription.
  *
- * 创建一个 observable，当订阅它时，它就会订阅源 observable 以及作为参数传进来的所有其他源。来自每个来源的所有值都会从对结果的订阅中发出。
+ * 创建一个 observable，当订阅它时，它就会订阅源 observable 以及作为参数传进来的所有其它源。来自每个来源的所有值都会从对结果的订阅中发出。
  *
  * When all sources complete, the resulting observable will complete.
  *

@@ -32,7 +32,7 @@ import { UnaryFunction } from '../types';
  *
  * Partition click events into those on DIV elements and those elsewhere
  *
- * 将点击事件划分为 DIV 元素上的事件和其他地方的事件
+ * 将点击事件划分为 DIV 元素上的事件和其它地方的事件
  *
  * ```ts
  * import { fromEvent } from 'rxjs';

@@ -51,7 +51,7 @@ export interface TimeoutConfig<T, O extends ObservableInput<unknown> = Observabl
    * This can be used to help identify the source of a timeout or pass along
    * other information related to the timeout.
    *
-   * 你可以提供给处理超时的代码的可选额外元数据，它将通过 {@link TimeoutError} 提供。这可用于帮助识别超时的来源或传递与超时相关的其他信息。
+   * 你可以提供给处理超时的代码的可选额外元数据，它将通过 {@link TimeoutError} 提供。这可用于帮助识别超时的来源或传递与超时相关的其它信息。
    *
    */
   meta?: M;
@@ -271,7 +271,7 @@ export function timeout<T, O extends ObservableInput<unknown>, M = unknown>(
  * In this case, you would check the error for `instanceof TimeoutError` to validate that the error was indeed from `timeout`, and
  * not from some other source. If it's not from `timeout`, you should probably rethrow it if you're in a `catchError`.
  *
- * 在这种情况下，你将检查 `instanceof TimeoutError` 的错误，以验证该错误确实来自 `timeout`，而不是来自其他来源。如果它不是来自 `timeout`，那么如果你处于 `catchError` 中，你可能应该重新抛出它。
+ * 在这种情况下，你将检查 `instanceof TimeoutError` 的错误，以验证该错误确实来自 `timeout`，而不是来自其它来源。如果它不是来自 `timeout`，那么如果你处于 `catchError` 中，你可能应该重新抛出它。
  *
  * ## Examples
  *

@@ -18,13 +18,13 @@ By default, RxJS 7.x will provide different variants of the code based on the co
 
 默认情况下，RxJS 7.x 会根据消费者提供不同的代码变体：
 
-* When RxJS 7.x is used on Node.js regardless of whether it is consumed via `require` or `import`, CommonJS code targetting ES5 will be provided for execution.
+- When RxJS 7.x is used on Node.js regardless of whether it is consumed via `require` or `import`, CommonJS code targetting ES5 will be provided for execution.
 
   在 Node.js 上使用 RxJS 7.x 时，无论是通过 `require` 还是 `import` 使用，都会提供针对 ES5 的 CommonJS 代码以供执行。
 
-* When RxJS 7.4+ is used via a bundler targeting a browser (or other non-Node.js platform) ES module code targetting ES5 will be provided by default with the option to use ES2015 code. 7.x versions prior to 7.4.0 will only provide ES5 code.
+- When RxJS 7.4+ is used via a bundler targeting a browser (or other non-Node.js platform) ES module code targetting ES5 will be provided by default with the option to use ES2015 code. 7.x versions prior to 7.4.0 will only provide ES5 code.
 
-  当通过针对浏览器（或其他非 Node.js 平台）的捆绑器使用 RxJS 7.4+ 时，将默认提供针对 ES5 的 ES 模块代码，并提供使用 ES2015 代码的选项。7.4.0 之前的 7.x 版本将仅提供 ES5 代码。
+  当通过针对浏览器（或其它非 Node.js 平台）的捆绑器使用 RxJS 7.4+ 时，将默认提供针对 ES5 的 ES 模块代码，并提供使用 ES2015 代码的选项。7.4.0 之前的 7.x 版本将仅提供 ES5 代码。
 
 If the target browsers for a project support ES2015+ or the bundle process supports down-leveling to ES5 then the bundler can optionally be configured to allow the ES2015 RxJS code to be used instead. You can enable support for using the ES2015 RxJS code by configuring a bundler to use the `es2015` custom export condition during module resolution. Configuring a bundler to use the `es2015` custom export condition is specific to each bundler. If you are interested in using this option, please consult the
 documentation of your bundler for additional information. However, some general information can be found here: <https://webpack.js.org/guides/package-exports/#conditions-custom>
@@ -62,7 +62,7 @@ typings install es6-shim --ambient
 
 ## All Module Types (CJS/ES6/AMD/TypeScript) via npm
 
-##  通过 npm 安装所有模块类型 (CJS/ES6/AMD/TypeScript)
+## 通过 npm 安装所有模块类型 (CJS/ES6/AMD/TypeScript)
 
 To install this library via npm version 3, use the following command:
 
@@ -91,4 +91,3 @@ For CDN, you can use [unpkg](https://unpkg.com/):
 To import what you need, please {@link guide/importing#cdn check out this} guide.
 
 要导入你需要的内容，请{@link guide/importing#cdn 查看此} 指南。
-

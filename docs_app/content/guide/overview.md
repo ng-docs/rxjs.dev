@@ -40,7 +40,7 @@ RxJS 中解决异步事件管理的基本概念是：
 
 - **Schedulers:** are centralized dispatchers to control concurrency, allowing us to coordinate when computation happens on e.g. `setTimeout` or `requestAnimationFrame` or others.
 
-  **Scheduler（调度器）：**是控制并发的集中化调度器，允许我们在计算发生时进行协调，例如 `setTimeout` 或 `requestAnimationFrame` 或其他。
+  **Scheduler（调度器）：**是控制并发的集中化调度器，允许我们在计算发生时进行协调，例如 `setTimeout` 或 `requestAnimationFrame` 或其它。
 
 ## First examples
 
@@ -74,7 +74,7 @@ RxJS 的强大之处在于它能够使用纯函数生成值。这意味着你的
 
 Normally you would create an impure function, where other pieces of your code can mess up your state.
 
-通常你会创建一个不纯的函数，你的代码的其他部分可能会弄乱你的状态。
+通常你会创建一个不纯的函数，你的代码的其它部分可能会弄乱你的状态。
 
 ```ts
 let count = 0;
@@ -138,7 +138,7 @@ fromEvent(document, 'click')
 
 Other flow control operators are [**filter**](../api/operators/filter), [**delay**](../api/operators/delay), [**debounceTime**](../api/operators/debounceTime), [**take**](../api/operators/take), [**takeUntil**](../api/operators/takeUntil), [**distinct**](../api/operators/distinct), [**distinctUntilChanged**](../api/operators/distinctUntilChanged) etc.
 
-其他流动控制操作符是 [**filter**](../api/operators/filter)、[**delay**](../api/operators/delay)、[**debounceTime**](../api/operators/debounceTime)、[**take**](../api/operators/take)、[**takeUntil**](../api/operators/takeUntil)、[**distinct**](../api/operators/distinct)、[**distinctUntilChanged**](../api/operators/distinctUntilChanged) 等。
+其它流动控制操作符是 [**filter**](../api/operators/filter)、[**delay**](../api/operators/delay)、[**debounceTime**](../api/operators/debounceTime)、[**take**](../api/operators/take)、[**takeUntil**](../api/operators/takeUntil)、[**distinct**](../api/operators/distinct)、[**distinctUntilChanged**](../api/operators/distinctUntilChanged) 等。
 
 ### Values
 
@@ -183,4 +183,4 @@ fromEvent(document, 'click')
 
 Other value producing operators are [**pluck**](../api/operators/pluck), [**pairwise**](../api/operators/pairwise), [**sample**](../api/operators/sample) etc.
 
-其他能产生值的操作符是 [**pluck**](../api/operators/pluck)、[**pairwise**](../api/operators/pairwise)、[**sample**](../api/operators/sample) 等。
+其它能产生值的操作符是 [**pluck**](../api/operators/pluck)、[**pairwise**](../api/operators/pairwise)、[**sample**](../api/operators/sample) 等。

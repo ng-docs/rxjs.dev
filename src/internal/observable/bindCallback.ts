@@ -87,7 +87,7 @@ export function bindCallback<A extends readonly unknown[], R extends readonly un
  * `bindCallback` will treat such functions the same as any other and error parameters
  * (whether passed or not) will always be interpreted as regular callback argument.
  *
- * 如果输入函数以“node 风格”调用其回调（即回调的第一个参数是可选的错误参数，指示调用是否失败），{@link bindNodeCallback} 可以提供更便利的错误处理，它可能是更好的选择。`bindCallback` 会将此类函数视为与任何其他函数相同，并且错误参数（无论是否传递）将始终被解释为常规回调参数。
+ * 如果输入函数以“node 风格”调用其回调（即回调的第一个参数是可选的错误参数，指示调用是否失败），{@link bindNodeCallback} 可以提供更便利的错误处理，它可能是更好的选择。`bindCallback` 会将此类函数视为与任何其它函数相同，并且错误参数（无论是否传递）将始终被解释为常规回调参数。
  *
  * ## Examples
  *

@@ -4,7 +4,7 @@ import { CompleteNotification, NextNotification, ErrorNotification } from './typ
  * A completion object optimized for memory use and created to be the
  * same "shape" as other notifications in v8.
  *
- * 为内存使用优化过的完成对象，并创建为与 v8 中的其他通知相同的“形状”。
+ * 为内存使用优化过的完成对象，并创建为与 v8 中的其它通知相同的“形状”。
  *
  * @internal
  */
@@ -14,7 +14,7 @@ export const COMPLETE_NOTIFICATION = (() => createNotification('C', undefined, u
  * Internal use only. Creates an optimized error notification that is the same "shape"
  * as other notifications.
  *
- * 限内部使用。创建与其他通知“形状”相同的优化过的错误通知。
+ * 限内部使用。创建与其它通知“形状”相同的优化过的错误通知。
  *
  * @internal
  */
@@ -26,7 +26,7 @@ export function errorNotification(error: any): ErrorNotification {
  * Internal use only. Creates an optimized next notification that is the same "shape"
  * as other notifications.
  *
- * 限内部使用。创建与其他通知“形状”相同的优化过的下一个值通知。
+ * 限内部使用。创建与其它通知“形状”相同的优化过的下一个值通知。
  *
  * @internal
  */

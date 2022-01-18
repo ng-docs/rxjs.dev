@@ -16,7 +16,7 @@
 
 Internally to the Subject, `subscribe` does not invoke a new execution that delivers values. It simply registers the given Observer in a list of Observers, similarly to how `addListener` usually works in other libraries and languages.
 
-在 Subject 内部，`subscribe` 不会调用一次能给出值的新执行过程。它只是在一个观察者列表中注册给定的观察者，类似于 `addListener` 通常在其他库和语言中的工作方式。
+在 Subject 内部，`subscribe` 不会调用一次能给出值的新执行过程。它只是在一个观察者列表中注册给定的观察者，类似于 `addListener` 通常在其它库和语言中的工作方式。
 
 **Every Subject is an Observer.** It is an object with the methods `next(v)`, `error(e)`, and `complete()`. To feed a new value to the Subject, just call `next(theValue)`, and it will be multicasted to the Observers registered to listen to the Subject.
 
@@ -464,7 +464,7 @@ Passing a dummy value this way is clumsy and can confuse users.
 
 By declaring a _void subject_, you signal that the value is irrelevant. Only the event itself matters.
 
-通过声明一个 *void 主体*，你可以表明该值是无所谓的。只有事件本身才重要。
+通过声明一个 _void 主体_，你可以表明该值是无所谓的。只有事件本身才重要。
 
 ```ts
 const subject = new Subject<void>();
@@ -490,4 +490,3 @@ setTimeout(() => subject.next(), 1000);
 <span class="informal">Before version 7, the default type of Subject values was `any`. `Subject<any>` disables type checking of the emitted values, whereas `Subject<void>` prevents accidental access to the emitted value. If you want the old behavior, then replace `Subject` with `Subject<any>`.</span>
 
 <span class="informal">在版本 7 之前，Subject 值的默认类型是 `any`。`Subject<any>` 禁用发出值的类型检查，而 `Subject<void>` 可以防止意外访问所发出的值。如果你想要老式行为，请将 `Subject` 替换为 `Subject<any>`。</span>
-

@@ -29,7 +29,7 @@ export function catchError<T, O extends ObservableInput<any>>(
  * If the source observable terminates with an error, it will map that error to a new observable,
  * subscribe to it, and forward all of its events to the resulting observable.
  *
- * 该操作符会处理各种错误，但会把所有其他事件转发到结果 observable。如果源 observable 因出错而终止，它会将该错误映射成新的 observable，订阅这个新 Observable，并将其所有事件转发到结果 observable。
+ * 该操作符会处理各种错误，但会把所有其它事件转发到结果 observable。如果源 observable 因出错而终止，它会将该错误映射成新的 observable，订阅这个新 Observable，并将其所有事件转发到结果 observable。
  *
  * ## Examples
  *

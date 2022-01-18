@@ -145,7 +145,7 @@ export function combineLatest<T extends Record<string, ObservableInput<any>>>(
  * and never complete, since, again, it will wait for all streams to emit some
  * value.
  *
- * 为了确保输出数组始终具有相同的长度，`combineLatest` 实际上会等待所有输入 Observable 至少发出一次，然后才开始发出结果。这意味着如果某些 Observable 在其他 Observable 开始发出之前已经发出了值，那么除了最后一个值之外的所有值都会丢失。另一方面，如果某个 Observable 没有发出值但完成了，则结果 Observable 将在同一时刻完成而不发出任何内容，因为现在已不可能再将完成的 Observable 中的值包含在结果数组中。此外，如果某些输入 Observable 没有发出任何值并且永远不会完成，`combineLatest` 也将永远不会发出值并且永远不会完成，因为它会一直次等待所有流发出一些值。
+ * 为了确保输出数组始终具有相同的长度，`combineLatest` 实际上会等待所有输入 Observable 至少发出一次，然后才开始发出结果。这意味着如果某些 Observable 在其它 Observable 开始发出之前已经发出了值，那么除了最后一个值之外的所有值都会丢失。另一方面，如果某个 Observable 没有发出值但完成了，则结果 Observable 将在同一时刻完成而不发出任何内容，因为现在已不可能再将完成的 Observable 中的值包含在结果数组中。此外，如果某些输入 Observable 没有发出任何值并且永远不会完成，`combineLatest` 也将永远不会发出值并且永远不会完成，因为它会一直次等待所有流发出一些值。
  *
  * If at least one Observable was passed to `combineLatest` and all passed Observables
  * emitted something, the resulting Observable will complete when all combined
@@ -155,7 +155,7 @@ export function combineLatest<T extends Record<string, ObservableInput<any>>>(
  * emitted value. On the other hand, if any Observable errors, `combineLatest`
  * will error immediately as well, and all other Observables will be unsubscribed.
  *
- * 如果至少一个 Observable 被传递给 `combineLatest` 并且所有传递的 Observables 都发出了一些东西，那么当所有组合流都已完成时，生成的 Observable 将完成。因此，即使某些 Observable 完成，`combineLatest` 的结果仍然会在其他 Observable 完成时发出值。如果是一个已完成的 Observable，从现在开始，它的值将永远是最后一个发出的值。另一方面，如果有任何 Observable 报错，`combineLatest` 也会立即报错，并且所有其他 Observable 都将被退订。
+ * 如果至少一个 Observable 被传递给 `combineLatest` 并且所有传递的 Observables 都发出了一些东西，那么当所有组合流都已完成时，生成的 Observable 将完成。因此，即使某些 Observable 完成，`combineLatest` 的结果仍然会在其它 Observable 完成时发出值。如果是一个已完成的 Observable，从现在开始，它的值将永远是最后一个发出的值。另一方面，如果有任何 Observable 报错，`combineLatest` 也会立即报错，并且所有其它 Observable 都将被退订。
  *
  * ## Examples
  *

@@ -4,9 +4,9 @@
 
 <div class="alert is-helpful">
 
-  <span>This guide refers to usage of marble diagrams when using the new <code>testScheduler.run(callback)</code>. Some details here do not apply to using the TestScheduler manually, without using the <code>run()</code> helper.</span>
+<span>This guide refers to usage of marble diagrams when using the new <code>testScheduler.run(callback)</code>. Some details here do not apply to using the TestScheduler manually, without using the <code>run()</code> helper.</span>
 
-  <span>本指南讲了在使用新的 <code>testScheduler.run(callback)</code> 时弹珠图的用法。这里的一些细节不适合手动使用 TestScheduler（不借助 <code>run()</code> 辅助器）。</span>
+<span>本指南讲了在使用新的 <code>testScheduler.run(callback)</code> 时弹珠图的用法。这里的一些细节不适合手动使用 TestScheduler（不借助 <code>run()</code> 辅助器）。</span>
 
 </div>
 
@@ -17,7 +17,6 @@ We can test our _asynchronous_ RxJS code _synchronously_ and deterministically b
 > At this time, the TestScheduler can only be used to test code that uses RxJS schedulers - `AsyncScheduler`, etc. If the code consumes a Promise, for example, it cannot be reliably tested with `TestScheduler`, but instead should be tested more traditionally. See the [Known Issues](#known-issues) section for more details.
 >
 > 此时，TestScheduler 只能用于测试使用了 RxJS 调度器 - `AsyncScheduler` 等的代码。例如，如果代码使用 Promise，则无法使用 `TestScheduler` 可靠地进行测试，而应该用更传统地方式进行测试。有关更多详细信息，请参阅[已知问题](#known-issues)部分。
->
 
 ```ts
 import { TestScheduler } from 'rxjs/testing';
@@ -87,7 +86,7 @@ Although `run()` executes entirely synchronously, the helper functions inside yo
 
 - `flush()` - immediately starts virtual time. Not often used since `run()` will automatically flush for you when your callback returns, but in some cases you may wish to flush more than once or otherwise have more control.
 
-  `flush()` - 立即开始虚拟时间。不经常使用，因为当你的回调返回时 `run()` 会自动为你刷新，但在某些情况下，你可能希望多次刷新或以其他方式取得更多控制权。
+  `flush()` - 立即开始虚拟时间。不经常使用，因为当你的回调返回时 `run()` 会自动为你刷新，但在某些情况下，你可能希望多次刷新或以其它方式取得更多控制权。
 
 - `time()` - converts marbles into a number indicating number of frames. It can be used by operators expecting a specific timeout. It measures time based on the position of the complete (`|`) signal:
 
@@ -134,7 +133,6 @@ How many virtual milliseconds one frame represents depends on the value of `Test
 > IMPORTANT: This syntax guide refers to usage of marble diagrams when using the new `testScheduler.run(callback)`. The semantics of marble diagrams when using the TestScheduler manually are different, and some features like the new time progression syntax are not supported.
 >
 > 重要提示：本语法指南是指在使用新的 `testScheduler.run(callback)` 时使用弹珠图。手动使用 TestScheduler 时弹珠图的语义不同，并且不支持新的时间进度语法等某些功能。
->
 
 - `' '` whitespace: horizontal whitespace is ignored, and can be used to help vertically align multiple marble diagrams.
 
@@ -161,7 +159,6 @@ How many virtual milliseconds one frame represents depends on the value of `Test
   `[a-z0-9]`（例如 `'a'`）任何字母数字字符：表示由生产者信号 `next()` 发出的值。你可以将它映射到一个对象或数组中，如下所示：
 
 <!-- prettier-ignore -->
-
 ```ts
 const expected = '400ms (a-b|)';
 const values = {
@@ -207,7 +204,6 @@ When it's not the first character of the diagram it must be padded a space befor
 **注意**：你可能需要从你想要前进的时间中减去 1 毫秒，因为字母数字弹珠（代表实际发出的值）在它们发出后自身已经*提前了 1 个虚拟帧*。这可能是反直觉和令人沮丧的，但目前它确实是正确的。
 
 <!-- prettier-ignore -->
-
 ```ts
 const input = ' -a-b-c|';
 const expected = '-- 9ms a 9ms b 9ms (c|)';
@@ -396,7 +392,7 @@ In the above situation we need the observable stream to complete so that we can 
 
 在上述情况下，我们需要完成 observable 流，以便我们可以测试变量是否已设置为正确的值。TestScheduler 在“虚拟时间”中（同步）运行，但在 testScheduler 回调返回之前通常不会运行（并完成）。flush() 方法会手动触发虚拟时间，以便我们可以在 observable 完成后测试局部变量。
 
-* * *
+---
 
 ## Known issues
 

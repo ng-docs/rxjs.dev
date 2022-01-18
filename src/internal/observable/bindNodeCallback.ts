@@ -74,7 +74,7 @@ export function bindNodeCallback<A extends readonly unknown[], R extends readonl
  * browsers or any other environment and API you use implements that callback style,
  * `bindNodeCallback` can be safely used on that API functions as well.
  *
- * 请注意，`bindNodeCallback` 也可以在非 Node.js 环境中使用。“Node.js 风格”的回调只是一种约定，因此如果你为浏览器或任何其他环境编写，并且你使用的 API 实现了这种回调风格，`bindNodeCallback` 也可以安全地用于该 API 函数。
+ * 请注意，`bindNodeCallback` 也可以在非 Node.js 环境中使用。“Node.js 风格”的回调只是一种约定，因此如果你为浏览器或任何其它环境编写，并且你使用的 API 实现了这种回调风格，`bindNodeCallback` 也可以安全地用于该 API 函数。
  *
  * Remember that Error object passed to callback does not have to be an instance
  * of JavaScript built-in `Error` object. In fact, it does not even have to an object.

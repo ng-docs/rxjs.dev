@@ -143,7 +143,7 @@ export interface AjaxConfig {
    * to the body will be serialized as URL, using key-value pairs based off of the keys and values of the object.
    * In all other cases, the body will be passed directly.
    *
-   * 默认情况下，这是基于 `"content-type"` 标头的值进行序列化的。例如，如果 `"content-type"` 是 `"application/json"`，则正文（body）将被序列化为 JSON。如果 `"content-type"` 是 `"application/x-www-form-urlencoded"`，则传给正文的任何对象都将被序列化为 URL，使用基于对象的键和值的键值对。在所有其他情况下，正文将直接传递。
+   * 默认情况下，这是基于 `"content-type"` 标头的值进行序列化的。例如，如果 `"content-type"` 是 `"application/json"`，则正文（body）将被序列化为 JSON。如果 `"content-type"` 是 `"application/x-www-form-urlencoded"`，则传给正文的任何对象都将被序列化为 URL，使用基于对象的键和值的键值对。在所有其它情况下，正文将直接传递。
    *
    */
   body?: any;

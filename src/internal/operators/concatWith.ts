@@ -45,7 +45,7 @@ import { concat } from './concat';
  * ```
  * @param otherSources Other observable sources to subscribe to, in sequence, after the original source is complete.
  *
- * 在原始源完成后，要按顺序订阅的其他可观察源。
+ * 在原始源完成后，要按顺序订阅的其它可观察源。
  *
  * @return A function that returns an Observable that concatenates
  * subscriptions to the source and provided Observables subscribing to the next

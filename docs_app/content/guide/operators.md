@@ -110,7 +110,7 @@ See the list of all static creation operators [here](#creation-operators-list).
 
 Observables most commonly emit ordinary values like strings and numbers, but surprisingly often, it is necessary to handle Observables _of_ Observables, so-called higher-order Observables. For example, imagine you had an Observable emitting strings that were the URLs of files you wanted to see. The code might look like this:
 
-Observables 最常发出的是普通值，如字符串和数字，但令人惊讶的是，它还经常需要处理 Observables *的* Observables，即所谓的高阶 Observables。例如，假设你有一个 Observable 发出字符串，这些字符串是你想要查看的文件的 URL。其代码可能如下所示：
+Observables 最常发出的是普通值，如字符串和数字，但令人惊讶的是，它还经常需要处理 Observables _的_ Observables，即所谓的高阶 Observables。例如，假设你有一个 Observable 发出字符串，这些字符串是你想要查看的文件的 URL。其代码可能如下所示：
 
 ```ts
 const fileObservable = urlObservable.pipe(map((url) => http.get(url)));
@@ -118,7 +118,7 @@ const fileObservable = urlObservable.pipe(map((url) => http.get(url)));
 
 `http.get()` returns an Observable (of string or string arrays probably) for each individual URL. Now you have an Observable _of_ Observables, a higher-order Observable.
 
-`http.get()` 会为每个单独的 URL 返回一个 Observable（可能是字符串或字符串数组）。现在你有了一个 Observable *的* Observable，即一个高阶 Observable。
+`http.get()` 会为每个单独的 URL 返回一个 Observable（可能是字符串或字符串数组）。现在你有了一个 Observable _的_ Observable，即一个高阶 Observable。
 
 But how do you work with a higher-order Observable? Typically, by _flattening_: by (somehow) converting a higher-order Observable into an ordinary Observable. For example:
 
@@ -133,7 +133,7 @@ const fileObservable = urlObservable.pipe(
 
 The [`concatAll()`](/api/operators/concatAll) operator subscribes to each "inner" Observable that comes out of the "outer" Observable, and copies all the emitted values until that Observable completes, and goes on to the next one. All of the values are in that way concatenated. Other useful flattening operators (called [_join operators_](#join-operators)) are
 
-[`concatAll()`](/api/operators/concatAll) 操作符订阅从“外部” Observable 出来的每个“内部” Observable，并复制所有发出的值，直到该 Observable 完成，然后继续处理下一个。所有值都以这种方式连接。其他有用的展平操作符（称为[*联结操作符*](#join-operators)）有
+[`concatAll()`](/api/operators/concatAll) 操作符订阅从“外部” Observable 出来的每个“内部” Observable，并复制所有发出的值，直到该 Observable 完成，然后继续处理下一个。所有值都以这种方式连接。其它有用的展平操作符（称为[_联结操作符_](#join-operators)）有
 
 - [`mergeAll()`](/api/operators/mergeAll) — subscribes to each inner Observable as it arrives, then emits each value as it arrives
 
@@ -150,8 +150,7 @@ The [`concatAll()`](/api/operators/concatAll) operator subscribes to each "inner
 Just as many array libraries combine [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) and [`flat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) (or `flatten()`) into a single [`flatMap()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap), there are mapping equivalents of all the RxJS flattening operators [`concatMap()`](/api/operators/concatMap)
 , [`mergeMap()`](/api/operators/mergeMap), [`switchMap()`](/api/operators/switchMap), and [`exhaustMap()`](/api/operators/exhaustMap).
 
-正如许多数组库会将 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 和 [`flat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) （或 `flatten()`） 组合成一个 [`flatMap()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap) 一样，所有 RxJS 展平操作符 [`concatMap()`](/api/operators/concatMap)、[`mergeMap()`](/api/operators/mergeMap)、[`switchMap()`](/api/operators/switchMap) 和 [`
-exhaustMap()`](/api/operators/exhaustMap) 都有其映射等价物 [`exhaustMap()`](/api/operators/exhaustMap)。
+正如许多数组库会将 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 和 [`flat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) （或 `flatten()`） 组合成一个 [`flatMap()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap) 一样，所有 RxJS 展平操作符 [`concatMap()`](/api/operators/concatMap)、[`mergeMap()`](/api/operators/mergeMap)、[`switchMap()`](/api/operators/switchMap) 和 [` exhaustMap()`](/api/operators/exhaustMap) 都有其映射等价物 [`exhaustMap()`](/api/operators/exhaustMap)。
 
 ## Marble diagrams
 
@@ -173,7 +172,7 @@ Below you can see the anatomy of a marble diagram.
 
 Throughout this documentation site, we extensively use marble diagrams to explain how operators work. They may be really useful in other contexts too, like on a whiteboard or even in our unit tests (as ASCII diagrams).
 
-在整个文档站中，我们广泛使用弹珠图来解释操作符的工作方式。它们在其他环境中也可能非常有用，比如在白板上，甚至在我们的单元测试中（如 ASCII 图表）。
+在整个文档站中，我们广泛使用弹珠图来解释操作符的工作方式。它们在其它环境中也可能非常有用，比如在白板上，甚至在我们的单元测试中（如 ASCII 图表）。
 
 ## Categories of operators
 

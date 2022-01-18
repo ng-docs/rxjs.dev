@@ -113,12 +113,12 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * the previous case. Overall, in order for `forkJoin` to emit a value, all given observables
  * have to emit something at least once and complete.
  *
- * 为了使结果数组的长度与输入的 observables 的数量相同，只要任何给定的 observables 完成而没有发出任何值，`forkJoin` 也会在那个时刻完成并且它也不会发出任何值，即使它已经具有来自其他可观察者的一些最后值。相反，如果有一个 observable 永远不会完成，`forkJoin` 也永远不会完成，除非其他 observable 在某个时刻都完成而不发出值，这会让我们回到前面的情况。总而言之，为了让 `forkJoin` 发出一个值，所有给定的 observables 都必须至少发出一次并完成。
+ * 为了使结果数组的长度与输入的 observables 的数量相同，只要任何给定的 observables 完成而没有发出任何值，`forkJoin` 也会在那个时刻完成并且它也不会发出任何值，即使它已经具有来自其它可观察者的一些最后值。相反，如果有一个 observable 永远不会完成，`forkJoin` 也永远不会完成，除非其它 observable 在某个时刻都完成而不发出值，这会让我们回到前面的情况。总而言之，为了让 `forkJoin` 发出一个值，所有给定的 observables 都必须至少发出一次并完成。
  *
  * If any given observable errors at some point, `forkJoin` will error as well and immediately unsubscribe
  * from the other observables.
  *
- * 如果在某个时候任何给定的 observable 出错，则 `forkJoin` 也会出错并立即退订其他 observables。
+ * 如果在某个时候任何给定的 observable 出错，则 `forkJoin` 也会出错并立即退订其它 observables。
  *
  * Optionally `forkJoin` accepts a `resultSelector` function, that will be called with values which normally
  * would land in the emitted array. Whatever is returned by the `resultSelector`, will appear in the output

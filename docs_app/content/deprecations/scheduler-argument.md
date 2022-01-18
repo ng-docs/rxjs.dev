@@ -60,7 +60,7 @@ To support this transition the [scheduled creation function](/api/index/function
 
 If you use any other operator from the list above and using the `scheduler` argument, you have to three potential refactoring options.
 
-如果你使用上面列表中的任何其他操作符并使用 `scheduler` 参数，则必须使用三个潜在的重构选项。
+如果你使用上面列表中的任何其它操作符并使用 `scheduler` 参数，则必须使用三个潜在的重构选项。
 
 ### Refactoring of `of` and `from`
 

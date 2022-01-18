@@ -14,7 +14,7 @@ export interface AjaxCreationMethod {
    *
    * This is the most configurable option, and the basis for all other AJAX calls in the library.
    *
-   * 这是最可配置的选项，也是库中所有其他 AJAX 调用的基础。
+   * 这是最可配置的选项，也是库中所有其它 AJAX 调用的基础。
    *
    * ## Example
    *

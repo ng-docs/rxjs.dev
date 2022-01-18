@@ -80,7 +80,7 @@ import { timer } from '../observable/timer';
  * If you enable the `leading` parameter in this example, the output would be the primary click and
  * the double click, but restricts additional clicks within 400ms.
  *
- * 如果你在此示例中启用了 `leading` 参数，则输出将只有主要的单击和双击，而会限制 400 毫秒内发生的其他单击。
+ * 如果你在此示例中启用了 `leading` 参数，则输出将只有主要的单击和双击，而会限制 400 毫秒内发生的其它单击。
  *
  * @see {@link auditTime}
  * @see {@link debounceTime}

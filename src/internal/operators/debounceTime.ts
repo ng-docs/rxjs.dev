@@ -29,7 +29,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * If the error event happens during `dueTime` or after it only the error event is
  * forwarded to the output observable. The cache notification is not emitted in this case.
  *
- * `debounceTime` 会延迟源 Observable 发送的通知，但如果源 Observable 上来了新的通知，则会丢弃先前已挂起的延迟发送物。该操作符会跟踪来自源 Observable 的最新通知，并且仅在已经过去了 `dueTime` 且源 Observable 上没有出现任何其他通知时才发送此通知。如果在 `dueTime` 静默期之前出现了新值，则先前的通知将被丢弃而不会发送，并且会安排在新的 `dueTime`。如果在 `dueTime` 期间发生了 complete 事件，则把此前发送的最后一个已缓存通知转发到输出 observable 。如果在 `dueTime` 期间或之后发生了 error 事件，则仅将此 error 事件转发到输出 observable。在这种情况下不会发送已缓存的通知。
+ * `debounceTime` 会延迟源 Observable 发送的通知，但如果源 Observable 上来了新的通知，则会丢弃先前已挂起的延迟发送物。该操作符会跟踪来自源 Observable 的最新通知，并且仅在已经过去了 `dueTime` 且源 Observable 上没有出现任何其它通知时才发送此通知。如果在 `dueTime` 静默期之前出现了新值，则先前的通知将被丢弃而不会发送，并且会安排在新的 `dueTime`。如果在 `dueTime` 期间发生了 complete 事件，则把此前发送的最后一个已缓存通知转发到输出 observable 。如果在 `dueTime` 期间或之后发生了 error 事件，则仅将此 error 事件转发到输出 observable。在这种情况下不会发送已缓存的通知。
  *
  * This is a rate-limiting operator, because it is impossible for more than one
  * notification to be emitted in any time window of duration `dueTime`, but it is also

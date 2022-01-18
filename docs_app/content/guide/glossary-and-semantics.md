@@ -4,7 +4,7 @@
 
 When discussing and documenting observables, it's important to have a common language and a known set of rules around what is going on. This document is an attempt to standardize these things so we can try to control the language in our docs, and hopefully other publications about RxJS, so we can discuss reactive programming with RxJS on consistent terms.
 
-在讨论和为 observables 写文档时，有一套统一语言和关于此事的众所周知的规则是很重要的。本文档试图将这些东西标准化，以便我们可以试着控制文档中的语言，并希望其他关于 RxJS 的出版物也这样做，这样我们就可以用一致的术语讨论如何用 RxJS 进行响应式编程。
+在讨论和为 observables 写文档时，有一套统一语言和关于此事的众所周知的规则是很重要的。本文档试图将这些东西标准化，以便我们可以试着控制文档中的语言，并希望其它关于 RxJS 的出版物也这样做，这样我们就可以用一致的术语讨论如何用 RxJS 进行响应式编程。
 
 While not all of the documentation for RxJS reflects this terminology, it is a goal of the team to ensure it does, and to ensure the language and names around the library use this document as a source of truth and unified language.
 
@@ -16,7 +16,7 @@ While not all of the documentation for RxJS reflects this terminology, it is a g
 
 There are high level entities that are frequently discussed. It's important to define them separately from other lower-level concepts, because they relate to the nature of observable.
 
-有一些经常被讨论的高级实体。将它们与其他较低级别的概念分别进行定义是很重要的，因为它们与可观察者的天性有关。
+有一些经常被讨论的高级实体。将它们与其它较低级别的概念分别进行定义是很重要的，因为它们与可观察者的天性有关。
 
 ### Consumer
 
@@ -74,7 +74,7 @@ RxJS 中主要实体之间发生的、需要定义的特定动作和事件。这
 The act of a [consumer](#consumer) requesting an Observable set up a [subscription](#subscription) so that it may [observe](#observation) a [producer](#producer). A subscribe action can occur with an observable via many different mechanisms. The primary mechanism is the [`subscribe` method](/api/index/class/Observable#subscribe) on the [Observable class](/api/index/class/Observable). Other mechanisms include the [`forEach` method](/api/index/class/Observable#forEach), functions
 like [`lastValueFrom`](/api/index/function/lastValueFrom), and [`firstValueFrom`](/api/index/function/firstValueFrom), and the deprecated [`toPromise` method](/api/index/class/Observable#forEach).
 
-[消费者](#consumer)请求 Observable 的动作会建立一个[订阅](#subscription)，以便它可以[观察](#observation)[生产者](#producer)。订阅操作可以通过许多不同的机制作用于 observable。主要机制是 [Observable 类](/api/index/class/Observable)的 [`subscribe` 方法](/api/index/class/Observable#subscribe)。其他机制包括 [`forEach` 方法](/api/index/class/Observable#forEach)、[`lastValueFrom`](/api/index/function/lastValueFrom) 和 [`firstValueFrom`](/api/index/function/firstValueFrom) 等函数，以及已弃用的 [`toPromise` 方法](/api/index/class/Observable#forEach)。
+[消费者](#consumer)请求 Observable 的动作会建立一个[订阅](#subscription)，以便它可以[观察](#observation)[生产者](#producer)。订阅操作可以通过许多不同的机制作用于 observable。主要机制是 [Observable 类](/api/index/class/Observable)的 [`subscribe` 方法](/api/index/class/Observable#subscribe)。其它机制包括 [`forEach` 方法](/api/index/class/Observable#forEach)、[`lastValueFrom`](/api/index/function/lastValueFrom) 和 [`firstValueFrom`](/api/index/function/firstValueFrom) 等函数，以及已弃用的 [`toPromise` 方法](/api/index/class/Observable#forEach)。
 
 ### Teardown
 
@@ -122,7 +122,7 @@ A value has been pushed to the [consumer](#consumer) to be [observed](#observati
 
 The [producer](#producer) has encountered a problem and is notifying the [consumer](#consumer). This is a notification that the [producer](#producer) will no longer send values and will [teardown](#teardown). This cannot occur after [complete](#complete), any other [error](#error), or [unsubscription](#unsubscription). Logically, this also means it cannot happen after [teardown](#teardown).
 
-[生产者](#producer)遇到了问题，正在通知[消费者](#consumer)。这是表示[生产者](#producer)将不再发送值并将[拆解](#teardown)的通知。这在[完成](#complete)、任何其他[错误](#error)或[退订](#unsubscription)后不会发生。从逻辑上讲，这也意味着它不会在[拆解](#teardown)之后发生。
+[生产者](#producer)遇到了问题，正在通知[消费者](#consumer)。这是表示[生产者](#producer)将不再发送值并将[拆解](#teardown)的通知。这在[完成](#complete)、任何其它[错误](#error)或[退订](#unsubscription)后不会发生。从逻辑上讲，这也意味着它不会在[拆解](#teardown)之后发生。
 
 ### Complete
 
@@ -187,7 +187,7 @@ be assumed to be [multicast](#multicast). Hot observables cannot be made [cold](
 
 [Observables](#observable) are a push-based type. That means rather than having the [consumer](#consumer) call a function or perform some other action to get a value, the [consumer](#consumer) receives values as soon as the [producer](#producer) has produced them, via a registered [next](#next) handler.
 
-[可观察者](#observable)是一种基于推送的类型。这意味着[消费者](#consumer)无需调用函数或执行其他操作来获取值，而是在[生产者](#consumer)[生成](#producer)值后立即通过已注册的[下一个](#next)处理器接收这些值。
+[可观察者](#observable)是一种基于推送的类型。这意味着[消费者](#consumer)无需调用函数或执行其它操作来获取值，而是在[生产者](#consumer)[生成](#producer)值后立即通过已注册的[下一个](#next)处理器接收这些值。
 
 ### Pull
 
@@ -278,7 +278,7 @@ An [observer](#observer) that lacks all necessary [notification](#notification) 
 
 ## Other Concepts
 
-## 其他概念
+## 其它概念
 
 ### Unhandled Errors
 
@@ -295,7 +295,7 @@ An "unhandled error" is any [error](#error) that is not handled by a [consumer](
 [Producer](#producer) interference happens when an error is allowed to unwind the callstack the RxJS callstack during [notification](#notification). When this happens, the error could break things like for-loops in [upstream](#upstream-and-downstream) [sources](#source) that are [notifying](#notification) [consumers](#consumer) during a [multicast](#multicast). That would cause the other [consumers](#consumer) in that [multicast](#multicast) to suddenly stop receiving values without logical explanation. As
 of version 6, RxJS goes out of its way to prevent producer interference by ensuring that all unhandled errors are thrown on a separate callstack.
 
-当一个错误被允许在[通知](#notification)期间展开 RxJS 调用堆栈时，会出现[生产者](#producer)干扰。发生这种情况时，该错误可能会破坏[上游](#upstream-and-downstream)[源](#source)中的 for 循环之类的东西，这些源在[多播](#multicast)期间[通知](#notification)[消费者](#consumer)。这将导致该[多播](#multicast)中的其他[消费者](#consumer)突然停止接收值而找不到合乎逻辑的解释。从版本 6 开始，RxJS 会通过确保将所有未处理的错误都抛出到单独的调用堆栈上来防止生产者干扰。
+当一个错误被允许在[通知](#notification)期间展开 RxJS 调用堆栈时，会出现[生产者](#producer)干扰。发生这种情况时，该错误可能会破坏[上游](#upstream-and-downstream)[源](#source)中的 for 循环之类的东西，这些源在[多播](#multicast)期间[通知](#notification)[消费者](#consumer)。这将导致该[多播](#multicast)中的其它[消费者](#consumer)突然停止接收值而找不到合乎逻辑的解释。从版本 6 开始，RxJS 会通过确保将所有未处理的错误都抛出到单独的调用堆栈上来防止生产者干扰。
 
 ### Upstream And Downstream
 
@@ -304,4 +304,3 @@ of version 6, RxJS goes out of its way to prevent producer interference by ensur
 The order in which [notifications](#notification) are processed by [operations](#operation) in a [stream](#stream) have a directionality to them. "Upstream" refers to an [operation](#operation) that was already processed before the current [operation](#operation), and "downstream" refers to an [operation](#operation) that _will_ be processed _after_ the current [operation](#operation). See also: [Streaming](#stream).
 
 [流](#stream)中的[操作](#operation)处理[通知](#notification)的顺序是有方向性的。“上游”是指在当前[操作](#operation)之前已经处理过的[操作](#operation)，“下游”是指*将*在当前[操作](#operation)*之后*处理的[操作](#operation)。另请参阅：[流](#stream)。
-

@@ -21,7 +21,7 @@ The purpose of these semantics is provide predictable behavior for the users of 
 **Functions such as operators, constructors, and creation functions, should use named parameters in cases where there is more than 1 argument, and arguments after the first are non-obvious.** The primary use case should be streamlined to work without configuration. For example, `fakeFlattenMap(n => of(n))` is fine, but `fakeFlattenMap(n => of(n), 1)` is less readable than `fakeFlattenMap(n => of(n), { maxConcurrent: 1 })`. Other things, like `of(1, 2, 3)` are obvious enough that named parameters don't make
 sense.
 
-**操作符、构造函数和创建函数等函数在有多个参数的情况下应使用命名参数，并且第一个参数之后的参数往往不够明显。** 应简化主要用例，使其无需配置即可工作。例如，`fakeFlattenMap(n => of(n))` 很好，但 `fakeFlattenMap(n => of(n), 1)` 的可读性不如 `fakeFlattenMap(n => of(n), { maxConcurrent: 1 })`。其他的东西，比如 `of(1, 2, 3)` 很明显，命名参数没有意义。
+**操作符、构造函数和创建函数等函数在有多个参数的情况下应使用命名参数，并且第一个参数之后的参数往往不够明显。** 应简化主要用例，使其无需配置即可工作。例如，`fakeFlattenMap(n => of(n))` 很好，但 `fakeFlattenMap(n => of(n), 1)` 的可读性不如 `fakeFlattenMap(n => of(n), { maxConcurrent: 1 })`。其它的东西，比如 `of(1, 2, 3)` 很明显，命名参数没有意义。
 
 ## Operators
 
@@ -94,4 +94,3 @@ sense.
 - IF the creation function accepts a "result selector", it must not accept "n-arguments" ahead of that result selector. Instead, it should accept an array or possibly an object. (bad: `combineThings(sourceA$, sourceB$, (a, b) => a + b)`, good: `combineThings([sourceA$, sourceB$], (a, b) => a + b)`. In this case, it may be okay to provide the result selector as a second argument, rather than as a named parameter, as the use should be fairly obvious.
 
   如果创建函数接受“结果选择器”，则它不能在该结果选择器之前接受“n-参数”。相反，它应该接受一个数组或者可能是一个对象。(坏写法: `combineThings(sourceA$, sourceB$, (a, b) => a + b)` 好写法: `combineThings([sourceA$, sourceB$], (a, b) => a + b)`。在这种情况下，将结果选择器作为第二个参数而不是作为命名参数提供会更好，因为其用法相当明显。
-

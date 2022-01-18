@@ -51,7 +51,7 @@ export const EMPTY = new Observable<never>((subscriber) => subscriber.complete()
  * emits the complete notification. It can be used for composing with other
  * Observables, such as in a {@link mergeMap}.
  *
- * 这个静态操作符在要创建一个只发出完成通知的简单 Observable 时很有用。它可以用于与其他 Observable 组合，例如在 {@link mergeMap} 中。
+ * 这个静态操作符在要创建一个只发出完成通知的简单 Observable 时很有用。它可以用于与其它 Observable 组合，例如在 {@link mergeMap} 中。
  *
  * ## Examples
  *

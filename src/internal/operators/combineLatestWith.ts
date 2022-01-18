@@ -48,7 +48,7 @@ import { combineLatest } from './combineLatest';
  * ```
  * @param otherSources the other sources to subscribe to.
  *
- * 要订阅的其他来源。
+ * 要订阅的其它来源。
  *
  * @return A function that returns an Observable that emits the latest
  * emissions from both source and provided Observables.
