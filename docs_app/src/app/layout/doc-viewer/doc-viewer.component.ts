@@ -124,7 +124,7 @@ export class DocViewerComponent implements OnDestroy {
       if (descriptionEl) {
         description = descriptionEl.innerHTML;
       }
-      const formattedTitle = title ? `RxJS - ${title}` : 'RxJS';
+      const formattedTitle = title ? `${title} - RxJS 中文版` : 'RxJS 中文版';
       this.addDocumentMetaTags(formattedTitle, description);
       this.titleService.setTitle(formattedTitle);
     };
