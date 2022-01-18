@@ -431,7 +431,7 @@
           children:
             - label: merge
         - label: I want to output a value computed from values of the source Observables
-          labelCn: 我要输出根据来源 Observable 发送的值计算出来的某个值
+          labelCn: 我要输出根据源 Observer 发送的值计算出来的某个值
           children:
             - label: using the latest value of each source whenever any source emits
               labelCn: 当任何一个来源发送值的时候，使用每个来源发送的最后一个值
@@ -461,7 +461,7 @@
       children:
         - label: merge
     - label: I want to output a value computed from values of the source Observables
-      labelCn: 我要输出根据来源 Observable 发送的值计算出来的某个值
+      labelCn: 我要输出根据源 Observer 发送的值计算出来的某个值
       children:
         - label: using the latest value of each source whenever any source emits
           labelCn: 当任何一个来源发送值的时候，使用每个来源发送的最后一个值
