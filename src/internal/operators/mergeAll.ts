@@ -71,7 +71,7 @@ import { OperatorFunction, ObservableInput, ObservedValueOf } from '../types';
  * @return A function that returns an Observable that emits values coming from
  * all the inner Observables emitted by the source Observable.
  *
- * 一个返回 Observable 的函数，该 Observable 会发送来源 Observable 发来的所有内部 Observable 所发出的值。
+ * 一个返回 Observable 的函数，该 Observable 会发送源 Observable 发来的所有内部 Observable 所发出的值。
  *
  */
 export function mergeAll<O extends ObservableInput<any>>(concurrent: number = Infinity): OperatorFunction<O, ObservedValueOf<O>> {

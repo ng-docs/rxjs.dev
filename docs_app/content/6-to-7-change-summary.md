@@ -64,7 +64,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### ConnectableObservable
 
-### ConnectableObservable(可连接的可观察者)
+### ConnectableObservable(可连接的 Observable)
 
 - `_isComplete` is no longer a property.
 
@@ -104,7 +104,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### GroupedObservable
 
-### GroupedObservable(已分组的可观察者)
+### GroupedObservable(已分组的 Observable)
 
 - No longer publicly exposes `_subscribe`
 
@@ -132,7 +132,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### isObservable
 
-### isObservable(是可观察者)
+### isObservable(是 Observable)
 
 - No longer has a generic and returns `Observable<unknown>`, you must cast the result.
 
@@ -172,7 +172,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### Observable
 
-### Observable(可观察者)
+### Observable( Observable)
 
 - `_isScalar` property removed.
 
@@ -363,7 +363,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - A handler for dealing with errors that make it all the way down to the "end" of the observation chain when there is no error handler in the observer. Useful for doing things like logging unhandled errors in RxJS observable chains.
 
-  当观察者中没有错误处理器时，用于处理一直到观察链“末端”的错误的处理器。对于在 RxJS 可观察链中记录未处理的错误等事情很有用。
+  当 Observer 中没有错误处理器时，用于处理一直到观察链“末端”的错误的处理器。对于在 RxJS 可观察链中记录未处理的错误等事情很有用。
 
 #### onStoppedNotification
 
@@ -403,7 +403,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 ### ObservableInput
 
-### ObservableInput(可观察者的输入)
+### ObservableInput( Observable 的输入)
 
 - This is just a type, but it's important. This type defines the allowed types that can be passed to almost every API within RxJS that accepts an Observable. It has always accepted `Observable`, `Promise`, `Iterable`, and `ArrayLike`. Now it will also accept `AsyncIterable` and `ReadableStream`.
 
@@ -463,7 +463,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - The observable returned by the `audit` operator's duration selector must emit a next notification to end the duration. Complete notifications no longer end the duration.
 
-  `audit` 操作符的持续时间选择器返回的可观察者必须发出下一个通知以结束持续时间。complete 通知不再结束持续时间。
+  `audit` 操作符的持续时间选择器返回的 Observable 必须发出下一个通知以结束持续时间。complete 通知不再结束持续时间。
 
 - `audit` now emits the last value from the source when the source completes. Previously, `audit` would mirror the completion without emitting the value.
 
@@ -767,7 +767,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - The `windowBoundaries` observable no longer completes the result. It was only ever meant to notify of the window boundary. To get the same behavior as the old behavior, you would need to add an `endWith` and a `skipLast(1)` like so: `source$.pipe(window(notifier$.pipe(endWith(true))), skipLast(1))`.
 
-  `windowBoundaries` 这个可观察者不会再完成此结果。它只是用来通知窗口边界。要获得与旧行为相同的行为，你需要添加一个 `endWith` 和一个 `skipLast(1)`，如下所示： `source$.pipe(window(notifier$.pipe(endWith(true))), skipLast(1))` .
+  `windowBoundaries` 这个 Observable 不会再完成此结果。它只是用来通知窗口边界。要获得与旧行为相同的行为，你需要添加一个 `endWith` 和一个 `skipLast(1)`，如下所示： `source$.pipe(window(notifier$.pipe(endWith(true))), skipLast(1))` .
 
 ### windowToggle
 
@@ -800,7 +800,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 - `zip` operators will no longer iterate provided iterables "as needed", instead the iterables will be treated as push-streams just like they would be everywhere else in RxJS. This means that passing an endless iterable will result in the thread locking up, as it will endlessly try to read from that iterable. This puts us in-line with all other Rx implementations. To work around this, it is probably best to use `map` or some combination of `map` and `zip`. For example, `zip(source$, iterator)` could
   be `source$.pipe(map(value => [value, iterator.next().value]))`.
 
-  `zip` 操作符将不再“根据需要”迭代所提供的可迭代对象，而是将可迭代对象视为推送流，就像它们在 RxJS 中的其他任何地方一样。这意味着传递一个无限迭代将导致线程锁定，因为它将无休止地尝试从该迭代中读取。这使我们与所有其他 Rx 实现保持一致。要解决此问题，最好使用 `map` 或 `map` 和 `zip` 的某种组合。例如，`zip(source$, iterator)` 要改为 `source$.pipe(map(value => [value, iterator.next().value]))`。
+  `zip` 操作符将不再“根据需要”迭代所提供的可迭代对象，而是将可迭代对象视为推送流，就像它们在 RxJS 中的其它任何地方一样。这意味着传递一个无限迭代将导致线程锁定，因为它将无休止地尝试从该迭代中读取。这使我们与所有其它 Rx 实现保持一致。要解决此问题，最好使用 `map` 或 `map` 和 `zip` 的某种组合。例如，`zip(source$, iterator)` 要改为 `source$.pipe(map(value => [value, iterator.next().value]))`。
 
 ## New Features
 
@@ -812,7 +812,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - New operator to cover the use cases of `publish` variants that use a `selector`. Wherein the selector allows the user to define multicast behavior prior to connection to the source observable for the multicast.
 
-  新操作符包含了使用 `selector` 的 `publish` 变体的用例。其中选择器允许用户在连接到多播来源可观察者之前定义多播行为。
+  新操作符包含了使用 `selector` 的 `publish` 变体的用例。其中选择器允许用户在连接到多播源 Observer 之前定义多播行为。
 
 ### share
 
@@ -848,7 +848,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - `ajax` body serialization will now use default XHR behavior in all cases. If the body is a `Blob`, `ArrayBuffer`, any array buffer view (like a byte sequence, e.g. `Uint8Array`, etc), `FormData`, `URLSearchParams`, `string`, or `ReadableStream`, default handling is use. If the `body` is otherwise `typeof` `"object"`, then it will be converted to JSON via `JSON.stringify`, and the `Content-Type` header will be set to `application/json;charset=utf-8`. All other types will emit an error.
 
-  `ajax` 正文的序列化现在将在所有情况下使用默认的 XHR 行为。如果主体是 `Blob`、`ArrayBuffer`、任何数组缓冲区视图（如字节序列，例如 `Uint8Array` 等）、`FormData`、`URLSearchParams`、`string` 或 `ReadableStream`，则使用默认处理。如果 `body` 是 `typeof` `"object"` 的，那么它将通过 `JSON.stringify` 转换为 JSON，并且 `Content-Type` 标头将设置为 `application/json;charset=utf-8`。所有其他类型都会发出错误。
+  `ajax` 正文的序列化现在将在所有情况下使用默认的 XHR 行为。如果主体是 `Blob`、`ArrayBuffer`、任何数组缓冲区视图（如字节序列，例如 `Uint8Array` 等）、`FormData`、`URLSearchParams`、`string` 或 `ReadableStream`，则使用默认处理。如果 `body` 是 `typeof` `"object"` 的，那么它将通过 `JSON.stringify` 转换为 JSON，并且 `Content-Type` 标头将设置为 `application/json;charset=utf-8`。所有其它类型都会发出错误。
 
 - The `Content-Type` header passed to `ajax` configuration no longer has any effect on the serialization behavior of the AJAX request.
 
@@ -860,7 +860,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - Ajax implementation drops support for IE10 and lower. This puts us in-line with other implementations and helps clean up code in this area
 
-  Ajax 实现放弃了对 IE10 及更低版本的支持。这使我们与其他实现保持一致，并有助于清理该区域的代码
+  Ajax 实现放弃了对 IE10 及更低版本的支持。这使我们与其它实现保持一致，并有助于清理该区域的代码
 
 ### AjaxRequest
 
@@ -938,4 +938,4 @@ No changes.
 
 - A new means of comparing the equality of to observables. If all emissions are the same, and at the same time, then they are equal. This is primarily useful for refactoring operator chains and making sure that they are equivalent.
 
-  一种比较可观察者的相等性的新方法。如果所有发出的值都一样，并且同时发生，那么它们就是相等的。这主要用于重构操作符链并确保它们是等价的。
+  一种比较 Observable 的相等性的新方法。如果所有发出的值都一样，并且同时发生，那么它们就是相等的。这主要用于重构操作符链并确保它们是等价的。
