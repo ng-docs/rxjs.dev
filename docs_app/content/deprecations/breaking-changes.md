@@ -36,7 +36,7 @@
 - **onUnhandledError:** Errors that occur during setup of an observable subscription after the subscription has emitted an error or completed will now throw in their own call stack. Before it would call `console.warn`. This is potentially breaking in edge cases for node applications, which may be configured to terminate for unhandled exceptions. In the unlikely event this affects you, you can configure the behavior to `console.warn` in the new configuration setting like
   so: `import { config } from 'rxjs'; config.onUnhandledError = (err) => console.warn(err);`
 
-  **onUnhandledError：**当 Observable 的订阅已经发出了某个错误或完成通知，在设置此订阅期间发生的错误，现在将抛出它们自己的调用堆栈。就在它要调用 `console.warn` 之前。这可能会破坏 node 应用的某些边缘情况，可以将其配置为因未处理的异常而终止。万一这个变更影响到了你，你可以在新的配置项中将此行为配置为 `console.warn`，如下所示： `import { config } from 'rxjs'; config.onUnhandledError = (err) => console.warn(err);`
+  **onUnhandledError：**当 Observable 的订阅已经发出了某个出错或完成通知，在设置此订阅期间发生的错误，现在将抛出它们自己的调用堆栈。就在它要调用 `console.warn` 之前。这可能会破坏 node 应用的某些边缘情况，可以将其配置为因未处理的异常而终止。万一这个变更影响到了你，你可以在新的配置项中将此行为配置为 `console.warn`，如下所示： `import { config } from 'rxjs'; config.onUnhandledError = (err) => console.warn(err);`
 
 - **RxJS Error types** Tests that are written with naive expectations against errors may fail now that errors have a proper `stack` property. In some testing frameworks, a deep equality check on two error instances will check the values in `stack`, which could be different.
 

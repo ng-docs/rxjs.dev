@@ -493,7 +493,7 @@ next*(error|complete)?
 
 <span class="informal">In an Observable Execution, zero to infinite Next notifications may be delivered. If either an Error or Complete notification is delivered, then nothing else can be delivered afterwards.</span>
 
-<span class="informal">在 Observable 执行中，可能会传递零个到无限个 Next 通知。如果发送了错误或完成通知，则之后将无法发送任何其它通知。</span>
+<span class="informal">在 Observable 执行中，可能会传递零个到无限个 Next 通知。如果发送了出错或完成通知，则之后将无法发送任何其它通知。</span>
 
 The following is an example of an Observable execution that delivers three Next notifications, then completes:
 

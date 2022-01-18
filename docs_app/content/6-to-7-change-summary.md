@@ -369,7 +369,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - A handler for edge cases where a subscriber within RxJS is notified after it has already "stopped", that is, a point in time where it has received an error or complete, but hasn't yet finalized. This is mostly useful for logging purposes.
 
-  边缘情况的处理器，其中 RxJS 中的订阅者在它已经“停止”之后得到通知，即它收到错误或完成但尚未完成的时间点。这主要用于记录目的。
+  边缘情况的处理器，其中 RxJS 中的订阅者在它已经“停止”之后得到通知，即它收到出错或完成但尚未完成的时间点。这主要用于记录目的。
 
 #### useDeprecatedNextContext
 
