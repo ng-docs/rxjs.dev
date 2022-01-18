@@ -116,7 +116,7 @@ Promise 是当今 JavaScript 中最常见的推送体系类型。Promise（生�
 
 RxJS introduces Observables, a new Push system for JavaScript. An Observable is a Producer of multiple values, "pushing" them to Observers (Consumers).
 
-RxJS 引入了 Observables，一个新的 JavaScript 推送体系。Observable 是多个值的生产者，并将它们“推送”给观察者（消费者）。
+RxJS 引入了 Observables，一个新的 JavaScript 推送体系。Observable 是多个值的生产者，并将它们“推送”给 Observer（消费者）。
 
 - A **Function** is a lazily evaluated computation that synchronously returns a single value on invocation.
 
@@ -441,7 +441,7 @@ It is not a coincidence that `observable.subscribe` and `subscribe` in `new Obse
 
 This shows how `subscribe` calls are not shared among multiple Observers of the same Observable. When calling `observable.subscribe` with an Observer, the function `subscribe` in `new Observable(function subscribe(subscriber) {...})` is run for that given subscriber. Each call to `observable.subscribe` triggers its own independent setup for that given subscriber.
 
-这显示了 `subscribe` 调用在同一个 Observable 的多个观察者之间是不共享的。当以某个 Observer 调用 `observable.subscribe` 时，`new Observable(function subscribe(subscriber) {...})` 中的 `subscribe` 函数会针对给定的订阅者运行。对 `observable.subscribe` 的每次调用都会为给定的订阅者触发其自己的独立设置。
+这显示了 `subscribe` 调用在同一个 Observable 的多个 Observer 之间是不共享的。当以某个 Observer 调用 `observable.subscribe` 时，`new Observable(function subscribe(subscriber) {...})` 中的 `subscribe` 函数会针对给定的订阅者运行。对 `observable.subscribe` 的每次调用都会为给定的订阅者触发其自己的独立设置。
 
 <span class="informal">Subscribing to an Observable is like calling a function, providing callbacks where the data will be delivered to.</span>
 
@@ -449,11 +449,11 @@ This shows how `subscribe` calls are not shared among multiple Observers of the 
 
 This is drastically different to event handler APIs like `addEventListener` / `removeEventListener`. With `observable.subscribe`, the given Observer is not registered as a listener in the Observable. The Observable does not even maintain a list of attached Observers.
 
-这与 `addEventListener` / `removeEventListener` 等事件处理器 API 截然不同。使用 `observable.subscribe` 时，给定的 Observer 不会在此 Observable 中注册为监听器。此 Observable 甚至不会维护附加上来的观察者列表。
+这与 `addEventListener` / `removeEventListener` 等事件处理器 API 截然不同。使用 `observable.subscribe` 时，给定的 Observer 不会在此 Observable 中注册为监听器。此 Observable 甚至不会维护附加上来的 Observer 列表。
 
 A `subscribe` call is simply a way to start an "Observable execution" and deliver values or events to an Observer of that execution.
 
-`subscribe` 调用只是一个启动“ Observable 的执行”并将一些值或事件传递给该执行过程的观察者的方法。
+`subscribe` 调用只是一个启动“ Observable 的执行”并将一些值或事件传递给该执行过程的 Observer 的方法。
 
 ### Executing Observables
 
@@ -551,7 +551,7 @@ const observable = new Observable(function subscribe(subscriber) {
 
 Because Observable Executions may be infinite, and it's common for an Observer to want to abort execution in finite time, we need an API for canceling an execution. Since each execution is exclusive to one Observer only, once the Observer is done receiving values, it has to have a way to stop the execution, in order to avoid wasting computation power or memory resources.
 
-因为 Observable 执行可能是无尽的，并且 Observer 想要在有限时间内中止执行也是很常见的，所以我们需要一个用于取消执行的 API。由于每次执行只针对一个观察者，一旦观察者接收完了值，它必须有办法停止执行，以避免浪费计算能力或内存资源。
+因为 Observable 执行可能是无尽的，并且 Observer 想要在有限时间内中止执行也是很常见的，所以我们需要一个用于取消执行的 API。由于每次执行只针对一个 Observer，一旦 Observer 接收完了值，它必须有办法停止执行，以避免浪费计算能力或内存资源。
 
 When `observable.subscribe` is called, the Observer gets attached to the newly created Observable execution. This call also returns an object, the `Subscription`:
 

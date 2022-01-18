@@ -9,7 +9,7 @@ You might have seen that we deprecated some signatures of the `subscribe` method
 This is to get ready for a future where we may allow configuration of `subscribe` via the second argument, for things like `AbortSignal` or the like (imagine `source$.subscribe(fn, { signal })`, etc). This deprecation is also because 2-3 function arguments can contribute to harder-to-read code. For example someone could name functions poorly and confuse the next reader: `source$.subscribe(doSomething, doSomethingElse, lol)` With that signature, you have to know unapparent details about `subscribe`, where
 using a partial observer solves that neatly: `source$.subscribe({ next: doSomething, error: doSomethingElse, complete: lol })`.
 
-这是为将来我们可能允许通过第二个参数配置 `subscribe` 做准备，例如 `AbortSignal` 或其类似物（想象一下 `source$.subscribe(fn, { signal })` 等）。这种弃用也是因为 2-3 个函数参数可能会导致代码更难阅读。例如，有人可能会不恰当的命名函数并让下一位读者感到困惑：`source$.subscribe(doSomething, doSomethingElse, lol)`。使用该签名，你必须了解有关 `subscribe` 的隐晦细节，使用部分观察者（partial observer）可以巧妙地解决此问题： `source$.subscribe({ next: doSomething, error: doSomethingElse, complete: lol })`。
+这是为将来我们可能允许通过第二个参数配置 `subscribe` 做准备，例如 `AbortSignal` 或其类似物（想象一下 `source$.subscribe(fn, { signal })` 等）。这种弃用也是因为 2-3 个函数参数可能会导致代码更难阅读。例如，有人可能会不恰当的命名函数并让下一位读者感到困惑：`source$.subscribe(doSomething, doSomethingElse, lol)`。使用该签名，你必须了解有关 `subscribe` 的隐晦细节，使用部分 Observer（partial observer）可以巧妙地解决此问题： `source$.subscribe({ next: doSomething, error: doSomethingElse, complete: lol })`。
 
 <div class="alert is-important">
 
@@ -43,9 +43,9 @@ We deprecated signatures for just passing the `complete` callback.
 import { of } from 'rxjs';
 
 // deprecated
-of([1,2,3]).subscribe(null, null, console.info); // difficult to read
+of([1, 2, 3]).subscribe(null, null, console.info); // difficult to read
 // suggested change
-of([1,2,3]).subscribe({complete: console.info});
+of([1, 2, 3]).subscribe({ complete: console.info });
 ```
 
 Similarly, we also deprecated signatures for solely passing the `error` callback.
@@ -55,10 +55,10 @@ Similarly, we also deprecated signatures for solely passing the `error` callback
 ```ts
 import { throwError } from 'rxjs';
 
-// deprecated 
+// deprecated
 throwError('I am an error').subscribe(null, console.error);
 // suggested change
-throwError('I am an error').subscribe({error: console.error});
+throwError('I am an error').subscribe({ error: console.error });
 ```
 
 Do notice, in general it is recommended only to use the anonymous function if you only specify the `next` callback otherwise we recommend to pass an `Observer`
@@ -68,12 +68,12 @@ Do notice, in general it is recommended only to use the anonymous function if yo
 ```ts
 import { of } from 'rxjs';
 
-// recommended 
-of([1,2,3]).subscribe((v) => console.info(v));
+// recommended
+of([1, 2, 3]).subscribe((v) => console.info(v));
 // also recommended
-of([1,2,3]).subscribe({
-    next: (v) => console.log(v),
-    error: (e) => console.error(e),
-    complete: () => console.info('complete') 
-})
+of([1, 2, 3]).subscribe({
+  next: (v) => console.log(v),
+  error: (e) => console.error(e),
+  complete: () => console.info('complete'),
+});
 ```

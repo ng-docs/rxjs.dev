@@ -301,7 +301,7 @@ export interface AjaxConfig {
    * emit progress events, and completes on the final upload load event, will error for
    * any XHR error or timeout.
    *
-   * 用于观察 HTTP 请求的上传进度的观察者。将发出进度事件，并在最终上传加载事件时完成，任何 XHR 错误或超时都会出错。
+   * 用于观察 HTTP 请求的上传进度的 Observer。将发出进度事件，并在最终上传加载事件时完成，任何 XHR 错误或超时都会出错。
    *
    * This will **not** error for errored status codes. Rather, it will always _complete_ when
    * the HTTP response comes back.

@@ -5,7 +5,7 @@ import { Subscriber } from './Subscriber';
  * A variant of Subject that only emits a value when it completes. It will emit
  * its latest value to all its observers on completion.
  *
- * Subject 的一种变体，它只会在完成时发送一个值。完成后，它将向所有观察者发送其最新值。
+ * Subject 的一种变体，它只会在完成时发送一个值。完成后，它将向所有 Observer 发送其最新值。
  *
  * @class AsyncSubject<T>
  */

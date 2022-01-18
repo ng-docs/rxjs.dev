@@ -24,7 +24,7 @@ import { innerFrom } from './innerFrom';
  * Observable instead. Last but not least, an exception during the factory
  * function call is transferred to the Observer by calling `error`.
  *
- * `defer` 能让你仅当有 Observer 订阅时才创建 Observable。它会等待 Observer 订阅它，并调用给定的工厂函数来获取 Observable —— 工厂函数通常会生成一个新的 Observable —— 然后将 Observer 订阅到这个 Observable。如果工厂函数返回了一个假值，则会改用 EMPTY 作为结果 Observable。最后，但仍然很重要的一点是，工厂函数调用期间抛出的异常会通过调用 `error` 传给观察者。
+ * `defer` 能让你仅当有 Observer 订阅时才创建 Observable。它会等待 Observer 订阅它，并调用给定的工厂函数来获取 Observable —— 工厂函数通常会生成一个新的 Observable —— 然后将 Observer 订阅到这个 Observable。如果工厂函数返回了一个假值，则会改用 EMPTY 作为结果 Observable。最后，但仍然很重要的一点是，工厂函数调用期间抛出的异常会通过调用 `error` 传递给 Observer。
  *
  * ## Example
  *
@@ -61,7 +61,7 @@ import { innerFrom } from './innerFrom';
  * @return {Observable} An Observable whose Observers' subscriptions trigger
  * an invocation of the given Observable factory function.
  *
- * 一个 Observable，其观察者的订阅会触发对给定 Observable 工厂函数的调用。
+ * 一个 Observable，其 Observer 的订阅会触发对给定 Observable 工厂函数的调用。
  *
  */
 export function defer<R extends ObservableInput<any>>(observableFactory: () => R): Observable<ObservedValueOf<R>> {

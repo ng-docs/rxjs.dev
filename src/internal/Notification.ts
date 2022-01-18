@@ -124,7 +124,7 @@ export class Notification<T> {
    *
    * @param observer The observer to notify.
    *
-   * 要通知的观察者。
+   * 要通知的 Observer。
    *
    */
   observe(observer: PartialObserver<T>): void {
@@ -266,11 +266,11 @@ export class Notification<T> {
    * If the handler is missing it will do nothing. Even if the notification is an error, if
    * there is no error handler on the observer, an error will not be thrown, it will noop.
    *
-   * 在给定 `kind` 的通知上执行传入的 `observer` 中的适当处理器。如果缺少处理器，它将什么也不做。即使通知是错误的，如果观察者上没有错误处理器，也不会抛出错误，相当于 noop。
+   * 在给定 `kind` 的通知上执行传入的 `observer` 中的适当处理器。如果缺少处理器，它将什么也不做。即使通知是错误的，如果 Observer 上没有错误处理器，也不会抛出错误，相当于 noop。
    *
    * @param observer The observer to notify.
    *
-   * 要通知的观察者。
+   * 要通知的 Observer。
    *
    * @deprecated Replaced with {@link Notification#observe observe}. Will be removed in v8.
    *
@@ -404,7 +404,7 @@ export class Notification<T> {
  * If the handler is missing it will do nothing. Even if the notification is an error, if
  * there is no error handler on the observer, an error will not be thrown, it will noop.
  *
- * 在给定 `kind` 的通知上执行 `observer` 中传入的适当处理器。如果缺少处理器，它将什么也不做。即使此通知是错误，如果此观察者上没有错误处理器，也不会抛出错误，相当于 noop。
+ * 在给定 `kind` 的通知上执行 `observer` 中传入的适当处理器。如果缺少处理器，它将什么也不做。即使此通知是错误，如果此 Observer 上没有错误处理器，也不会抛出错误，相当于 noop。
  *
  * @param notification The notification object to observe.
  *
@@ -412,7 +412,7 @@ export class Notification<T> {
  *
  * @param observer The observer to notify.
  *
- * 要通知的观察者。
+ * 要通知的 Observer。
  *
  */
 export function observeNotification<T>(notification: ObservableNotification<T>, observer: PartialObserver<T>) {

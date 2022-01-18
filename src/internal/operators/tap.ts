@@ -15,7 +15,7 @@ export function tap<T>(next: (value: T) => void): MonoTypeOperatorFunction<T>;
 /**
  * @deprecated Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: <https://rxjs.dev/deprecations/subscribe-arguments>
  *
- * 不要传递单独的回调参数，而是使用观察者参数。带有单独回调参数的签名将在 v8 中被删除。详细信息： <https://rxjs.dev/deprecations/subscribe-arguments>
+ * 不要传递单独的回调参数，而是使用 Observer 参数。带有单独回调参数的签名将在 v8 中被删除。详细信息： <https://rxjs.dev/deprecations/subscribe-arguments>
  *
  */
 export function tap<T>(
@@ -45,7 +45,7 @@ export function tap<T>(
  * For any notification, next, error, or complete, `tap` will call the appropriate callback you have provided to it, via a function
  * reference, or a partial observer, then pass that notification down the stream.
  *
- * 对于任何通知：下一个、出错或完成，`tap` 都将通过函数引用或部分观察者调用你提供给它的适当回调，然后将该通知传递到流中。
+ * 对于任何通知：下一个、出错或完成，`tap` 都将通过函数引用或部分 Observer 调用你提供给它的适当回调，然后将该通知传递到流中。
  *
  * The observable returned by `tap` is an exact mirror of the source, with one exception: Any error that occurs -- synchronously -- in a handler
  * provided to `tap` will be emitted as an error from the returned observable.
@@ -126,7 +126,7 @@ export function tap<T>(
  * @see {@link Observable#subscribe}
  * @param observerOrNext A next handler or partial observer
  *
- * 下一个值的处理器或部分观察者
+ * 下一个值的处理器或部分 Observer
  *
  * @param error An error handler
  *

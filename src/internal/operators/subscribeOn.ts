@@ -4,15 +4,15 @@ import { operate } from '../util/lift';
 /**
  * Asynchronously subscribes Observers to this Observable on the specified {@link SchedulerLike}.
  *
- * 在指定的 {@link SchedulerLike} 上异步订阅此 Observable 的观察者。
+ * 在指定的 {@link SchedulerLike} 上异步订阅此 Observable 的各个 Observer。
  *
  * With `subscribeOn` you can decide what type of scheduler a specific Observable will be using when it is subscribed to.
  *
- * 使用 `subscribeOn`，你可以决定特定 Observable 在订阅时将使用哪种类型的调度器。
+ * 通过 `subscribeOn`，你可以决定特定 Observable 在订阅时要使用哪种类型的调度器。
  *
  * Schedulers control the speed and order of emissions to observers from an Observable stream.
  *
- * 调度器控制从 Observable 流向观察者发送的速度和顺序。
+ * 调度器负责控制从 Observable 流向 Observer 的发送速度和顺序。
  *
  * ![](subscribeOn.png)
  *
@@ -43,11 +43,11 @@ import { operate } from '../util/lift';
  *
  * Both Observable `a` and `b` will emit their values directly and synchronously once they are subscribed to.
  *
- * 一旦订阅，Observable `a` 和 `b` 都会直接同步地发送它们的值。
+ * 一旦订阅，`a` 和 `b` 这两个 Observable 都会直接同步发送它们的值。
  *
  * If we instead use the `subscribeOn` operator declaring that we want to use the {@link asyncScheduler} for values emitted by Observable `a`:
  *
- * 如果我们改为使用 `subscribeOn` 操作符声明我们想要使用 {@link asyncScheduler} 来处理 Observable `a` 发送的值：
+ * 如果我们改为使用 `subscribeOn` 操作符来声明我们想要使用 {@link asyncScheduler} 来处理 Observable `a` 发送的值：
  *
  * ```ts
  * import { of, subscribeOn, asyncScheduler, merge } from 'rxjs';
@@ -77,12 +77,12 @@ import { operate } from '../util/lift';
  *
  * @param delay A delay to pass to the scheduler to delay subscriptions
  *
- * 传给调度器以延迟订阅的延迟
+ * 一个延迟数量，用来传给调度器以对订阅进行延迟
  *
  * @return A function that returns an Observable modified so that its
  * subscriptions happen on the specified {@link SchedulerLike}.
  *
- * 一个返回 Observable 修改的函数，以便它的订阅发生在指定的 {@link SchedulerLike} 上。
+ * 一个返回 Observable 的函数，会修改此 Observable，以便它的订阅发生在指定的 {@link SchedulerLike} 上。
  *
  */
 export function subscribeOn<T>(scheduler: SchedulerLike, delay: number = 0): MonoTypeOperatorFunction<T> {

@@ -15,7 +15,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * {@link WebSocketSubjectConfig} object for providing additional configuration, as
  * well as Observers for tracking lifecycle of WebSocket connection.
  *
- * `webSocket` 是一个生成 `WebSocketSubject` 的工厂函数，可用于与任意端点建立 WebSocket 连接。`webSocket` 接受带有 WebSocket 端点 url 的字符串或 {@link WebSocketSubjectConfig} 对象作为参数，用于提供额外的配置，以及用于跟踪 WebSocket 连接的生命周期的观察者。
+ * `webSocket` 是一个生成 `WebSocketSubject` 的工厂函数，可用于与任意端点建立 WebSocket 连接。`webSocket` 接受带有 WebSocket 端点 url 的字符串或 {@link WebSocketSubjectConfig} 对象作为参数，用于提供额外的配置，以及用于跟踪 WebSocket 连接的生命周期的 Observer。
  *
  * When `WebSocketSubject` is subscribed, it attempts to make a socket connection,
  * unless there is one made already. This means that many subscribers will always listen
@@ -187,7 +187,7 @@ import { WebSocketSubject, WebSocketSubjectConfig } from './WebSocketSubject';
  * @param {string|WebSocketSubjectConfig} urlConfigOrSource The WebSocket endpoint as an url or an object with
  * configuration and additional Observers.
  *
- * WebSocket 端点作为 url 或具有配置和其它观察者的对象。
+ * WebSocket 端点作为 url 或具有配置和其它 Observer 的对象。
  *
  * @return {WebSocketSubject} Subject which allows to both send and receive messages via WebSocket connection.
  *

@@ -19,7 +19,7 @@ import { noop } from '../util/noop';
  * when it completes or when it terminates with an error, you can apply the `ignoreElements` operator
  * to the Observable, which will ensure that it will never call its observers’ `next` handlers.
  *
- * 如果你不关心 Observable 发送的条目，但你确实希望在它完成或因错误终止时收到通知，你可以使用 `ignoreElements` 操作符，这将确保它永远不会调用其观察者的 `next` 处理器。
+ * 如果你不关心 Observable 发送的条目，但你确实希望在它完成或因错误终止时收到通知，你可以使用 `ignoreElements` 操作符，这将确保它永远不会调用其 Observer 的 `next` 处理器。
  *
  * ## Example
  *

@@ -108,7 +108,7 @@ export class Observable<T> implements Subscribable<T> {
   /**
    * @deprecated Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: <https://rxjs.dev/deprecations/subscribe-arguments>
    *
-   * 不要传递单独的回调参数，而是使用观察者参数。带有单独回调参数的签名将在 v8 中被删除。详细信息： <https://rxjs.dev/deprecations/subscribe-arguments>
+   * 不要传递单独的回调参数，而是使用 Observer 参数。带有单独回调参数的签名将在 v8 中被删除。详细信息： <https://rxjs.dev/deprecations/subscribe-arguments>
    *
    */
   subscribe(next?: ((value: T) => void) | null, error?: ((error: any) => void) | null, complete?: (() => void) | null): Subscription;
@@ -146,7 +146,7 @@ export class Observable<T> implements Subscribable<T> {
    * `process.on('error)`) to be notified of unhandled errors. Because of this, it's recommended that you provide
    * an `error` method to avoid missing thrown errors.
    *
-   * 第一种方法是创建一个实现了 {@link Observer} 接口的对象。它应该具有由该接口定义的方法，但请注意，它应该只是一个常规的 JavaScript 对象，你可以用任何方式创建它（ES6 类、经典函数构造函数、对象字面量等）。特别是，不要尝试使用任何 RxJS 实现细节来创建观察者，因为你不需要如此。还要记住，你的对象不必实现所有方法。如果你发现自己创建了一个什么都不做的方法，你可以简单地省略它。但是请注意，如果没有提供 `error` 方法并且发生了错误，它将被异步抛出。而使用 `try` / `catch` 无法捕获异步抛出的错误。要改用 {@link onUnhandledError} 配置选项或运行时处理器（如 `window.onerror` 或 `process.on('error)`）来通知未处理的错误。因此，建议你提供 `error` 方法以免丢失抛出的各种错误。
+   * 第一种方法是创建一个实现了 {@link Observer} 接口的对象。它应该具有由该接口定义的方法，但请注意，它应该只是一个常规的 JavaScript 对象，你可以用任何方式创建它（ES6 类、经典函数构造函数、对象字面量等）。特别是，不要尝试使用任何 RxJS 实现细节来创建 Observer，因为你不需要如此。还要记住，你的对象不必实现所有方法。如果你发现自己创建了一个什么都不做的方法，你可以简单地省略它。但是请注意，如果没有提供 `error` 方法并且发生了错误，它将被异步抛出。而使用 `try` / `catch` 无法捕获异步抛出的错误。要改用 {@link onUnhandledError} 配置选项或运行时处理器（如 `window.onerror` 或 `process.on('error)`）来通知未处理的错误。因此，建议你提供 `error` 方法以免丢失抛出的各种错误。
    *
    * The second way is to give up on Observer object altogether and simply provide callback functions in place of its methods.
    * This means you can provide three functions as arguments to `subscribe`, where the first function is equivalent
@@ -155,7 +155,7 @@ export class Observable<T> implements Subscribable<T> {
    * since `subscribe` recognizes these functions by where they were placed in function call. When it comes
    * to the `error` function, as with an Observer, if not provided, errors emitted by an Observable will be thrown asynchronously.
    *
-   * 第二种方法是完全放弃 Observer 对象，并简单地提供回调函数来代替它。这意味着你可以提供三个函数作为 `subscribe` 的参数，其中第一个函数等效于 `next` 方法，第二个函数等效于 `error` 方法，第三个函数等效于 `complete` 方法。就像观察者的情况一样，如果你不需要监听某些东西，就可以通过传递 `undefined` 或 `null` 来省略一个函数，因为 `subscribe` 会通过它们在函数调用中的位置来识别这些函数。当涉及到 `error` 函数时，与 Observer 一样，如果未提供，则 Observable 发出的错误将被异步抛出。
+   * 第二种方法是完全放弃 Observer 对象，并简单地提供回调函数来代替它。这意味着你可以提供三个函数作为 `subscribe` 的参数，其中第一个函数等效于 `next` 方法，第二个函数等效于 `error` 方法，第三个函数等效于 `complete` 方法。就像 Observer 的情况一样，如果你不需要监听某些东西，就可以通过传递 `undefined` 或 `null` 来省略一个函数，因为 `subscribe` 会通过它们在函数调用中的位置来识别这些函数。当涉及到 `error` 函数时，与 Observer 一样，如果未提供，则 Observable 发出的错误将被异步抛出。
    *
    * You can, however, subscribe with no parameters at all. This may be the case where you're not interested in terminal events
    * and you also handled emissions internally by using operators (e.g. using `tap`).
@@ -268,7 +268,7 @@ export class Observable<T> implements Subscribable<T> {
    * or the first of three possible handlers, which is the handler for each value emitted from the subscribed
    * Observable.
    *
-   *（可选）具有要调用的方法的观察者，或者三个可能的处理器中的第一个，这是从已订阅的 Observable 发送的每个值的处理器。
+   *（可选）具有要调用的方法的 Observer，或者三个可能的处理器中的第一个，这是从已订阅的 Observable 发送的每个值的处理器。
    *
    * @param {Function} error (optional) A handler for a terminal event resulting from an error. If no error handler is provided,
    * the error will be thrown asynchronously as unhandled.

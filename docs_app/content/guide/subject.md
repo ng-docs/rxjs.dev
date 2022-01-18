@@ -16,15 +16,15 @@
 
 Internally to the Subject, `subscribe` does not invoke a new execution that delivers values. It simply registers the given Observer in a list of Observers, similarly to how `addListener` usually works in other libraries and languages.
 
-在 Subject 内部，`subscribe` 不会调用一次能给出值的新执行过程。它只是在一个观察者列表中注册给定的观察者，类似于 `addListener` 通常在其它库和语言中的工作方式。
+在 Subject 内部，`subscribe` 不会调用一次能给出值的新执行过程。它只是在一个 Observer 列表中注册给定的 Observer，类似于 `addListener` 通常在其它库和语言中的工作方式。
 
 **Every Subject is an Observer.** It is an object with the methods `next(v)`, `error(e)`, and `complete()`. To feed a new value to the Subject, just call `next(theValue)`, and it will be multicasted to the Observers registered to listen to the Subject.
 
-**每个 Subject 也都是观察者。**它是一个具有方法 `next(v)`、`error(e)` 和 `complete()` 的对象。要为 Subject 提供一个新值，只需调用 `next(theValue)`，它将被多播到注册进来监听 Subject 的观察者。
+**每个 Subject 也都是 Observer。**它是一个具有方法 `next(v)`、`error(e)` 和 `complete()` 的对象。要为 Subject 提供一个新值，只需调用 `next(theValue)`，它将被多播到注册进来监听 Subject 的 Observer。
 
 In the example below, we have two Observers attached to a Subject, and we feed some values to the Subject:
 
-在下面的示例中，我们有两个观察者附加到一个主体，我们向这个主体提供一些值：
+在下面的示例中，我们有两个 Observer 附加到一个主体，我们向这个主体提供一些值：
 
 ```ts
 import { Subject } from 'rxjs';
@@ -99,7 +99,7 @@ A "multicasted Observable" passes notifications through a Subject which may have
 
 Under the hood, this is how the `multicast` operator works: Observers subscribe to an underlying Subject, and the Subject subscribes to the source Observable. The following example is similar to the previous example which used `observable.subscribe(subject)`:
 
-在底层，这就是 `multicast` 操作符的工作方式：观察者订阅底层主体，主体订阅源 Observable。下面的例子类似于前面使用 `observable.subscribe(subject)` 的例子：
+在底层，这就是 `multicast` 操作符的工作方式： Observer 订阅底层主体，主体订阅源 Observable。下面的例子类似于前面使用 `observable.subscribe(subject)` 的例子：
 
 ```ts
 import { from, Subject, multicast } from 'rxjs';
@@ -150,19 +150,19 @@ Consider the following example where subscriptions occur as outlined by this lis
 
 3. The `next` value `0` is delivered to the first Observer
 
-   `next` 值 `0` 被传递给第一个观察者
+   `next` 值 `0` 被传递给第一个 Observer
 
 4. Second Observer subscribes to the multicasted Observable
 
-   第二个观察者订阅了多播的 Observable
+   第二个 Observer 订阅了多播的 Observable
 
 5. The `next` value `1` is delivered to the first Observer
 
-   `next` 的值 `1` 被传递给第一个观察者
+   `next` 的值 `1` 被传递给第一个 Observer
 
 6. The `next` value `1` is delivered to the second Observer
 
-   `next` 的值 `1` 被传递给第二个观察者
+   `next` 的值 `1` 被传递给第二个 Observer
 
 7. First Observer unsubscribes from the multicasted Observable
 
@@ -170,11 +170,11 @@ Consider the following example where subscriptions occur as outlined by this lis
 
 8. The `next` value `2` is delivered to the second Observer
 
-   `next` 值 `2` 被传递给第二个观察者
+   `next` 值 `2` 被传递给第二个 Observer
 
 9. Second Observer unsubscribes from the multicasted Observable
 
-   第二个观察者退订多播的 Observable
+   第二个 Observer 退订多播的 Observable
 
 10. **The connection to the multicasted Observable is unsubscribed**
 
@@ -284,7 +284,7 @@ The `refCount()` method only exists on ConnectableObservable, and it returns an 
 
 One of the variants of Subjects is the `BehaviorSubject`, which has a notion of "the current value". It stores the latest value emitted to its consumers, and whenever a new Observer subscribes, it will immediately receive the "current value" from the `BehaviorSubject`.
 
-Subjects 的变体之一是 `BehaviorSubject`，它具有“当前值”的概念。它存储发送给其消费者的最新值，并且每当有新的观察者订阅时，它将立即从 `BehaviorSubject` 接收到“当前值”。
+Subjects 的变体之一是 `BehaviorSubject`，它具有“当前值”的概念。它存储发送给其消费者的最新值，并且每当有新的 Observer 订阅时，它将立即从 `BehaviorSubject` 接收到“当前值”。
 
 <span class="informal">BehaviorSubjects are useful for representing "values over time". For instance, an event stream of birthdays is a Subject, but the stream of a person's age would be a BehaviorSubject.</span>
 
@@ -292,7 +292,7 @@ Subjects 的变体之一是 `BehaviorSubject`，它具有“当前值”的概�
 
 In the following example, the BehaviorSubject is initialized with the value `0` which the first Observer receives when it subscribes. The second Observer receives the value `2` even though it subscribed after the value `2` was sent.
 
-在下面的示例中，BehaviorSubject 使用第一个观察者在订阅时收到的值 `0` 进行初始化。第二个观察者接收到值 `2`，即使它是在发送值 `2` 之后订阅的。
+在下面的示例中，BehaviorSubject 使用第一个 Observer 在订阅时收到的值 `0` 进行初始化。第二个 Observer 接收到值 `2`，即使它是在发送值 `2` 之后订阅的。
 
 ```ts
 import { BehaviorSubject } from 'rxjs';
@@ -410,7 +410,7 @@ setTimeout(() => {
 
 The AsyncSubject is a variant where only the last value of the Observable execution is sent to its observers, and only when the execution completes.
 
-AsyncSubject 是一种变体，其中仅将 Observable 执行的最后一个值发送给其观察者，并且仅在执行完成时发送。
+AsyncSubject 是一种变体，其中仅将 Observable 执行的最后一个值发送给其 Observer，并且仅在执行完成时发送。
 
 ```js
 import { AsyncSubject } from 'rxjs';

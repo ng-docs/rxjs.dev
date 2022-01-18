@@ -49,7 +49,7 @@ A contract where a [consumer](#consumer) is [observing](#observation) values pus
 
 The primary type in RxJS. At its highest level, an observable represents a template for connecting an [Observer](#observer), as a [consumer](#consumer), to a [producer](#producer), via a [subscribe](#subscribe) action, resulting in a [subscription](#subscription).
 
-RxJS 中的主要类型。在其最高级别， Observable 表示一个模板，用于通过[订阅](#subscribe)操作将[观察者](#observer)作为[消费者](#consumer)连接到[生产者](#producer)，从而产生一次[订阅](#subscription)。
+RxJS 中的主要类型。在其最高级别， Observable 表示一个模板，用于通过[订阅](#subscribe)操作将 [Observer](#observer) 作为[消费者](#consumer)连接到[生产者](#producer)，从而产生一次[订阅](#subscription)。
 
 ### Observer
 
@@ -57,7 +57,7 @@ RxJS 中的主要类型。在其最高级别， Observable 表示一个模板，
 
 The manifestation of a [consumer](#consumer). A type that may have some (or all) handlers for each type of [notification](#notification): [next](#next), [error](#error), and [complete](#complete). Having all three types of handlers generally gets this to be called an "observer", where if it is missing any of the notification handlers, it may be called a ["partial observer"](#partial-observer).
 
-表示一个[消费者](#consumer)。一种可能对每种类型的[通知](#notification)都有一些（或全部）处理器的类型： [next](#next)、[error](#error)和[complete](#complete)。拥有所有三种类型的处理器通常会称为“观察者”，如果缺少任何通知处理器，则可以将其称为[“部分观察者”](#partial-observer)。
+表示一个[消费者](#consumer)。一种可能对每种类型的[通知](#notification)都有一些（或全部）处理器的类型： [next](#next)、[error](#error)和[complete](#complete)。拥有所有三种类型的处理器通常会称为“ Observer”，如果缺少任何通知处理器，则可以将其称为[“部分 Observer”](#partial-observer)。
 
 ## Major Actions
 
@@ -106,7 +106,7 @@ A [consumer](#consumer) reacting to [next](#next), [error](#error), or [complete
 
 When an [observable](#observable) uses another [observable](#observable) as a [producer](#producer), an "observation chain" is set up. That is a chain of [observation](#observation) such that multiple [observers](#observer) are [notifying](#notification) each other in a unidirectional way toward the final [consumer](#consumer).
 
-当一个 [observable](#observable)使用另一个 [observable](#observable)作为[生产者](#producer)时，就会建立一个“观察链”。这是一条由[观察](#observation)组成的链，多个[观察者](#observer)以单向方式相互[通知](#notification)最终抵达[消费者](#consumer)。
+当一个 [observable](#observable)使用另一个 [observable](#observable)作为[生产者](#producer)时，就会建立一个“观察链”。这是一条由[观察](#observation)组成的链，多个 [Observer](#observer) 以单向方式相互[通知](#notification)最终抵达[消费者](#consumer)。
 
 ### Next
 
@@ -270,11 +270,11 @@ One, of possibly many [sources](#source), which are [subscribed](#subscribe) to 
 
 ### Partial Observer
 
-### 部分观察者
+### 部分 Observer
 
 An [observer](#observer) that lacks all necessary [notification](#notification) handlers. Generally these are supplied by user-land [consumer](#consumer) code. A "full observer" or "observer" would simply be an observer than had all [notification](#notification) handlers.
 
-缺少所有必要的[通知](#notification)处理器的[观察者](#observer)。通常这些是由用户端的[消费者](#consumer)代码提供的。“完全观察者”或“观察者”将只是一个观察者，它拥有所有[通知](#notification)的处理器。
+缺少所有必要的[通知](#notification)处理器的 [Observer](#observer)。通常这些是由用户端的[消费者](#consumer)代码提供的。“完全 Observer”或“Observer”将只是一个 Observer，它拥有所有[通知](#notification)的处理器。
 
 ## Other Concepts
 

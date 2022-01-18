@@ -39,7 +39,7 @@ export const EMPTY = new Observable<never>((subscriber) => subscriber.complete()
  * Creates an Observable that emits no items to the Observer and immediately
  * emits a complete notification.
  *
- * 创建一个不向观察者发出任何条目并立即发出完成通知的 Observable。
+ * 创建一个不向 Observer 发出任何条目并立即发出完成通知的 Observable。
  *
  * <span class="informal">Just emits 'complete', and nothing else.</span>
 *

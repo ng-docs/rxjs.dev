@@ -44,7 +44,7 @@
 
 - `unsubscribe` no longer available via the `this` context of observer functions. To reenable, set `config.useDeprecatedNextContext = true` on the rxjs `config` found at `import { config } from 'rxjs';`. Note that enabling this will result in a performance penalty for all consumer subscriptions.
 
-  不能再通过观察者函数的 `this` 上下文访问 `unsubscribe`。要重新启用它，请在 `import { config } from 'rxjs';` 处找到的 rxjs `config` 上设置 `config.useDeprecatedNextContext = true` ; .请注意，启用此功能将导致所有消费者订阅的性能下降。
+  不能再通过 Observer 函数的 `this` 上下文访问 `unsubscribe`。要重新启用它，请在 `import { config } from 'rxjs';` 处找到的 rxjs `config` 上设置 `config.useDeprecatedNextContext = true` ; .请注意，启用此功能将导致所有消费者订阅的性能下降。
 
 - Leaked implementation detail `_unsubscribeAndRecycle` of `Subscriber` has been removed. Just use new `Subscription` objects
 

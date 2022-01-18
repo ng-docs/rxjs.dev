@@ -223,7 +223,7 @@ export type ObservableNotification<T> = NextNotification<T> | ErrorNotification 
 /**
  * OBSERVER INTERFACES
  *
- * 观察者接口
+ *  Observer 接口
  *
  */
 

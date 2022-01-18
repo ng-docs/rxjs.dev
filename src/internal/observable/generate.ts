@@ -58,7 +58,7 @@ export interface GenerateOptions<T, S> extends GenerateBaseOptions<S> {
  * producing the sequence's elements, using the specified scheduler
  * to send out observer messages.
  *
- * 通过运行一个状态驱动的循环来生成一个 Observable 序列，该循环会使用指定的调度器向观察者发送消息来产生序列元素。
+ * 通过运行一个状态驱动的循环来生成一个 Observable 序列，该循环会使用指定的调度器向 Observer 发送消息来产生序列元素。
  *
  * ![](generate.png)
  *
@@ -193,7 +193,7 @@ export function generate<T, S>(
  * on a separate task in the event loop, you could use the `async` scheduler. Note that
  * by default (when no scheduler is passed) values are simply emitted synchronously.
  *
- * 这两种形式的 `generate` 都可以选择接受一个调度器。在多参数调用的情况下，调度器只能作为最后一个参数出现（无论是否有 `resultSelector` 函数）。在单参数调用的情况下，你可以将其作为参数对象的 `scheduler` 属性传给操作符。在这两种情况下，调度器都会决定下一次循环迭代何时发生，也就是下一个值将何时由 Observable 发送。例如，要确保在事件循环中的单独任务上把每个值推送到观察者，你可以使用 `async` 调度器。请注意，默认情况下（当没有传递调度器时）这些值只会同步发送。
+ * 这两种形式的 `generate` 都可以选择接受一个调度器。在多参数调用的情况下，调度器只能作为最后一个参数出现（无论是否有 `resultSelector` 函数）。在单参数调用的情况下，你可以将其作为参数对象的 `scheduler` 属性传给操作符。在这两种情况下，调度器都会决定下一次循环迭代何时发生，也就是下一个值将何时由 Observable 发送。例如，要确保在事件循环中的单独任务上把每个值推送到 Observer，你可以使用 `async` 调度器。请注意，默认情况下（当没有传递调度器时）这些值只会同步发送。
  *
  * ## Examples
  *
@@ -333,7 +333,7 @@ export function generate<S>(
  * The overload accepts options object that might contain initial state, iterate,
  * condition and scheduler.
  *
- * 通过运行一个状态驱动的循环来生成 Observable 序列，该循环会产生元素序列，并使用指定的调度器向观察者发送消息。此重载接受可能包含初始状态、迭代、条件和调度器的选项对象。
+ * 通过运行一个状态驱动的循环来生成 Observable 序列，该循环会产生元素序列，并使用指定的调度器向 Observer 发送消息。此重载接受可能包含初始状态、迭代、条件和调度器的选项对象。
  *
  * ![](generate.png)
  *
@@ -385,7 +385,7 @@ export function generate<S>(options: GenerateBaseOptions<S>): Observable<S>;
  * The overload accepts options object that might contain initial state, iterate,
  * condition, result selector and scheduler.
  *
- * 通过运行一个状态驱动的循环来生成一个 Observable 序列，该循环会产生元素序列，使用指定的调度器发送观察者消息。重载接受可能包含初始状态、迭代、条件、结果选择器和调度器的选项对象。
+ * 通过运行一个状态驱动的循环来生成一个 Observable 序列，该循环会产生元素序列，使用指定的调度器发送 Observer 消息。重载接受可能包含初始状态、迭代、条件、结果选择器和调度器的选项对象。
  *
  * ![](generate.png)
  *

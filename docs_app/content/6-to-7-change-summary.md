@@ -363,7 +363,7 @@ This document contains a detailed list of changes between RxJS 6.x and RxJS 7.x,
 
 - A handler for dealing with errors that make it all the way down to the "end" of the observation chain when there is no error handler in the observer. Useful for doing things like logging unhandled errors in RxJS observable chains.
 
-  当观察者中没有错误处理器时，用于处理一直到观察链“末端”的错误的处理器。对于在 RxJS 可观察链中记录未处理的错误等事情很有用。
+  当 Observer 中没有错误处理器时，用于处理一直到观察链“末端”的错误的处理器。对于在 RxJS 可观察链中记录未处理的错误等事情很有用。
 
 #### onStoppedNotification
 
