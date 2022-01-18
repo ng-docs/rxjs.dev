@@ -31,7 +31,7 @@ import { identity } from '../util/identity';
  * Spawn a new interval observable for each click event, but for every new
  * click, cancel the previous interval and subscribe to the new one
  *
- * 为每个点击事件产生一个新的定时器 Observable，但对于每个新点击，取消前一个定时器并订阅新的定时器
+ * 为每个点击事件产生一个新的定期重复 Observable，但对于每个新点击，取消前一个定期重复 Observable 并订阅新的定期重复 Observable
  *
  * ```ts
  * import { fromEvent, tap, map, interval, switchAll } from 'rxjs';

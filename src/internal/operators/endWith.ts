@@ -48,7 +48,7 @@ export function endWith<T, A extends unknown[] = T[]>(...values: A): OperatorFun
  * Emit values to know when an interval starts and stops. The interval will
  * stop when a user clicks anywhere on the document.
  *
- * 发送值以了解定时器何时开始和停止。当用户单击文档上的任意位置时，定时器将停止。
+ * 发送值以了解定期重复 Observable 何时开始和停止。当用户单击文档上的任意位置时，定期重复 Observable 将停止。
  *
  * ```ts
  * import { interval, map, fromEvent, startWith, takeUntil, endWith } from 'rxjs';

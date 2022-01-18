@@ -28,7 +28,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  * Take the first 5 seconds of an infinite 1-second interval Observable
  *
- * 取每秒定时器 Observable 中前 5 秒的值
+ * 取每秒定期重复 Observable 中前 5 秒的值
  *
  * ```ts
  * import { interval, take } from 'rxjs';

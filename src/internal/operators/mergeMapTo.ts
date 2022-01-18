@@ -45,7 +45,7 @@ export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(
  *
  * For each click event, start an interval Observable ticking every 1 second
  *
- * 对于每个点击事件，开始一个每秒一次的定时器 Observable
+ * 对于每个点击事件，开始一个每秒一次的定期重复 Observable
  *
  * ```ts
  * import { fromEvent, mergeMapTo, interval } from 'rxjs';

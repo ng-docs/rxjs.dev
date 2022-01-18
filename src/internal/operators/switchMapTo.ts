@@ -53,7 +53,7 @@ export function switchMapTo<T, R, O extends ObservableInput<unknown>>(
  *
  * Restart an interval Observable on every click event
  *
- * 在每个点击事件上重新启动一个定时器 Observable
+ * 在每个点击事件上重新启动一个定期重复 Observable
  *
  * ```ts
  * import { fromEvent, switchMapTo, interval } from 'rxjs';

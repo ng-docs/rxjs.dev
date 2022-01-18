@@ -34,7 +34,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * second one does not use it. You will notice that a connectable observable does nothing
  * until you call its connect function.
  *
- * 在下面的示例中，使用 *publish* 操作符将两个定时器转换为可连接的 observable。第一个会使用 *refCount* 操作符，第二个则不使用。你会注意到一个可连接的 observable 在你调用它的 connect 函数之前什么都不做。
+ * 在下面的示例中，使用 *publish* 操作符将两个定期重复 Observable 转换为可连接的 observable。第一个会使用 *refCount* 操作符，第二个则不使用。你会注意到一个可连接的 observable 在你调用它的 connect 函数之前什么都不做。
  *
  * ```ts
  * import { interval, tap, publish, refCount } from 'rxjs';

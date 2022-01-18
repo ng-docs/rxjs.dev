@@ -29,7 +29,7 @@ import { OperatorFunction, ObservableInput, ObservedValueOf } from '../types';
  *
  * Spawn a new interval Observable for each click event, and blend their outputs as one Observable
  *
- * 为每个点击事件生成一个新的定时器 Observable，并将它们的输出混合为一个 Observable
+ * 为每个点击事件生成一个新的定期重复 Observable，并将它们的输出混合为一个 Observable
  *
  * ```ts
  * import { fromEvent, map, interval, mergeAll } from 'rxjs';
