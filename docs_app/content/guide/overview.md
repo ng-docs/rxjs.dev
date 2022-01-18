@@ -20,7 +20,7 @@ RxJS 中解决异步事件管理的基本概念是：
 
 - **Observable:** represents the idea of an invokable collection of future values or events.
 
-  **Observable（ Observable）：**表示未来（future）值或事件的可调用集合的概念。
+  **Observable（可观察者）：**表示未来（future）值或事件的可调用集合的概念。
 
 - **Observer:** is a collection of callbacks that knows how to listen to values delivered by the Observable.
 
