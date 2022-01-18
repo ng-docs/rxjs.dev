@@ -7,6 +7,7 @@ export interface NavigationNode {
   title?: string;
   tooltip?: string;
   hidden?: boolean;
+  external?: boolean;
   children?: NavigationNode[];
 }
 
