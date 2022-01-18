@@ -133,7 +133,7 @@ const fileObservable = urlObservable.pipe(
 
 The [`concatAll()`](/api/operators/concatAll) operator subscribes to each "inner" Observable that comes out of the "outer" Observable, and copies all the emitted values until that Observable completes, and goes on to the next one. All of the values are in that way concatenated. Other useful flattening operators (called [_join operators_](#join-operators)) are
 
-[`concatAll()`](/api/operators/concatAll) 操作符订阅从“外部” Observable 出来的每个“内部” Observable，并复制所有发出的值，直到该 Observable 完成，然后继续处理下一个。所有值都以这种方式连接。其它有用的展平操作符（称为[_联结操作符_](#join-operators)）有
+[`concatAll()`](/api/operators/concatAll) 操作符订阅从“外部” Observable 出来的每个“内部” Observable，并复制所有发出的值，直到该 Observable 完成，然后继续处理下一个。所有值都以这种方式连接。其他有用的展平操作符（称为[_联结操作符_](#join-operators)）有
 
 - [`mergeAll()`](/api/operators/mergeAll) — subscribes to each inner Observable as it arrives, then emits each value as it arrives
 
@@ -172,7 +172,7 @@ Below you can see the anatomy of a marble diagram.
 
 Throughout this documentation site, we extensively use marble diagrams to explain how operators work. They may be really useful in other contexts too, like on a whiteboard or even in our unit tests (as ASCII diagrams).
 
-在整个文档站中，我们广泛使用弹珠图来解释操作符的工作方式。它们在其它环境中也可能非常有用，比如在白板上，甚至在我们的单元测试中（如 ASCII 图表）。
+在整个文档站中，我们广泛使用弹珠图来解释操作符的工作方式。它们在其他环境中也可能非常有用，比如在白板上，甚至在我们的单元测试中（如 ASCII 图表）。
 
 ## Categories of operators
 
@@ -465,7 +465,7 @@ Note that you must
 
 3. return that teardown function from the function passed to the Observable constructor.
 
-   从传递给 Observable 构造函数的函数中返回该拆卸函数。
+   从传递给 Observable 构造函数的函数中返回该拆解函数。
 
 Of course, this is only an example; the [`delay()`](/api/operators/delay) operator already exists.
 

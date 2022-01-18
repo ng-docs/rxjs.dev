@@ -90,7 +90,7 @@ The act of cleaning up resources used by a producer. This is guaranteed to happe
 
 The act of a [consumer](#consumer) telling a [producer](#producer) is is no longer interested in receiving values. Causes [Teardown](#teardown)
 
-[消费者](#consumer)的这个操作是告诉[生产者](#producer)自己已经没兴趣再接收值了。这会导致[拆除](#teardown)
+[消费者](#consumer)的这个操作是告诉[生产者](#producer)自己已经没兴趣再接收值了。这会导致[拆解](#teardown)
 
 ### Observation
 
