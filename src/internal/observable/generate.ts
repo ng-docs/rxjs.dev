@@ -160,7 +160,7 @@ export function generate<T, S>(
  * iteration (for example, if the index is lower than 10) and the third states how the defined value
  * will be modified on every step (for example, the index will be incremented by one).
  *
- * `generate` 允许你创建一个由和传统 for 循环非常相似的循环生成的值流。`generate` 的第一个参数是一个初始值。第二个参数是一个接受此值并测试某些条件是否仍然成立的函数。如果是，则循环继续，如果不是，则停止。第三个值是一个函数，它采用先前定义的值并在每次迭代时以某种方式对其进行修改。请注意，这三个参数直接等价于传统 for 循环中的三个表达式：第一个表达式初始化某个状态（例如，数字索引），第二个表达式测试循环是否可以执行下一次迭代（例如，如果索引小于 10），第三个说明如何在每一步修改定义的值（例如，索引将增加 1）。
+ * `generate` 允许你创建一个由和传统 for 循环非常相似的循环生成的值流。`generate` 的第一个参数是一个初始值。第二个参数是一个接受此值并测试某些条件是否仍然成立的函数。如果是，则循环继续，如果不是，则停止。第三个值是一个函数，它采用先前定义的值并在每次迭代时以某种方式对其进行修改。请注意，这三个参数直接等价于传统 for 循环中的三个表达式：第一个表达式初始化某个状态（例如，数字序号），第二个表达式测试循环是否可以执行下一次迭代（例如，如果序号小于 10），第三个说明如何在每一步修改定义的值（例如，序号将增加 1）。
  *
  * Return value of a `generate` operator is an Observable that on each loop iteration
  * emits a value. First of all, the condition function is ran. If it returns true, then the Observable

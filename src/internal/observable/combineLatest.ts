@@ -124,7 +124,7 @@ export function combineLatest<T extends Record<string, ObservableInput<any>>>(
  * corresponding to the order of the passed Observables (the value from the first Observable
  * will be at index 0 of the array and so on).
  *
- * `combineLatest` 会组合来自 observables 数组中传递的所有 Observables 的值。这是通过按顺序订阅每个 Observable 来完成的，并且每当有任何 Observable 发出时，都会从每个 Observable 中收集一个包含最新值的数组。因此，如果你将 `n` 个Observables 传给此操作符，则返回的 Observable 将始终发出一个包含 `n` 个值的数组，其顺序与传递的 Observables 的顺序相对应（第一个 Observable 的值将位于数组的索引 0 处，因此在）。
+ * `combineLatest` 会组合来自 observables 数组中传递的所有 Observables 的值。这是通过按顺序订阅每个 Observable 来完成的，并且每当有任何 Observable 发出时，都会从每个 Observable 中收集一个包含最新值的数组。因此，如果你将 `n` 个Observables 传递给此操作符，则返回的 Observable 将始终发出一个包含 `n` 个值的数组，其顺序与传递的 Observables 的顺序相对应（第一个 Observable 的值将位于数组的序号 0 处，因此在）。
  *
  * Static version of `combineLatest` accepts an array of Observables. Note that an array of
  * Observables is a good choice, if you don't know beforehand how many Observables
@@ -155,7 +155,7 @@ export function combineLatest<T extends Record<string, ObservableInput<any>>>(
  * emitted value. On the other hand, if any Observable errors, `combineLatest`
  * will error immediately as well, and all other Observables will be unsubscribed.
  *
- * 如果至少一个 Observable 被传给 `combineLatest` 并且所有传递的 Observables 都发出了一些东西，那么当所有组合流都已完成时，生成的 Observable 将完成。因此，即使某些 Observable 完成，`combineLatest` 的结果仍然会在其他 Observable 完成时发出值。如果是一个已完成的 Observable，从现在开始，它的值将永远是最后一个发出的值。另一方面，如果有任何 Observable 报错，`combineLatest` 也会立即报错，并且所有其他 Observable 都将被退订。
+ * 如果至少一个 Observable 被传递给 `combineLatest` 并且所有传递的 Observables 都发出了一些东西，那么当所有组合流都已完成时，生成的 Observable 将完成。因此，即使某些 Observable 完成，`combineLatest` 的结果仍然会在其他 Observable 完成时发出值。如果是一个已完成的 Observable，从现在开始，它的值将永远是最后一个发出的值。另一方面，如果有任何 Observable 报错，`combineLatest` 也会立即报错，并且所有其他 Observable 都将被退订。
  *
  * ## Examples
  *
