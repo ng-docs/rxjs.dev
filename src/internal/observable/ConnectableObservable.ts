@@ -24,7 +24,7 @@ export class ConnectableObservable<T> extends Observable<T> {
   /**
    * @param source The source observable
    *
-   * 源 Observer
+   * 来源 Observable
    *
    * @param subjectFactory The factory that creates the subject used internally.
    *

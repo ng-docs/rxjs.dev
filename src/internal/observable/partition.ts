@@ -62,7 +62,7 @@ export function partition<T>(source: ObservableInput<T>, predicate: (value: T, i
  *
  * Partition a set of numbers into odds and evens observables
  *
- * 将一组数字划分为奇数可观察者和偶数可观察者
+ * 将一组数字划分为奇数 Observable 和偶数 Observable
  *
  * ```ts
  * import { of, partition } from 'rxjs';

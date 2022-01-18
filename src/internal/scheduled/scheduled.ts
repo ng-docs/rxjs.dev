@@ -18,13 +18,13 @@ import { scheduleReadableStreamLike } from './scheduleReadableStreamLike';
  * Converts from a common {@link ObservableInput} type to an observable where subscription and emissions
  * are scheduled on the provided scheduler.
  *
- * 从常见的 {@link ObservableInput} 类型转换为在所提供的调度器上安排订阅和发出条目的可观察者。
+ * 从常见的 {@link ObservableInput} 类型转换为在所提供的调度器上安排订阅和发出条目的 Observable。
  *
  * @see {@link from}
  * @see {@link of}
  * @param input The observable, array, promise, iterable, etc you would like to schedule
  *
- * 你想要安排的可观察者、数组、Promise、可迭代者等
+ * 你想要安排的 Observable、数组、Promise、可迭代者等
  *
  * @param scheduler The scheduler to use to schedule the subscription and emissions from
  * the returned observable.

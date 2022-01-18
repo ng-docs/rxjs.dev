@@ -14,7 +14,7 @@ export function firstValueFrom<T>(source: Observable<T>): Promise<T>;
  * and returning a promise that will resolve as soon as the first value
  * arrives from the observable. The subscription will then be closed.
  *
- * 订阅可观察者并将可观察者转换为 Promise，并返回这个 Promise，该 Promise 将在第一个值从可观察者抵达时立即解析（resolve）。然后此订阅就会被关闭。
+ * 订阅 Observable 并将 Observable 转换为 Promise，并返回这个 Promise，该 Promise 将在第一个值从 Observable 抵达时立即解析（resolve）。然后此订阅就会被关闭。
  *
  * If the observable stream completes before any values were emitted, the
  * returned promise will reject with {@link EmptyError} or will resolve
@@ -34,7 +34,7 @@ export function firstValueFrom<T>(source: Observable<T>): Promise<T>;
  * something like {@link timeout}, {@link take}, {@link takeWhile}, or {@link takeUntil}
  * amongst others.
  *
- * **警告**：仅将其与你*知道*会发送至少一个值*或*会完成的可观察者一起使用。如果源 observable 没有发送任何值或不会完成，你最终会得到一个挂起的 Promise，并可能导致所有异步函数的状态都挂在内存中。为避免这种情况，请考虑添加 {@link timeout}、{@link take}、{@link takeWhile} 或 {@link takeUntil} 等操作符。
+ * **警告**：仅将其与你*知道*会发送至少一个值*或*会完成的 Observable 一起使用。如果源 observable 没有发送任何值或不会完成，你最终会得到一个挂起的 Promise，并可能导致所有异步函数的状态都挂在内存中。为避免这种情况，请考虑添加 {@link timeout}、{@link take}、{@link takeWhile} 或 {@link takeUntil} 等操作符。
  *
  * ## Example
  *

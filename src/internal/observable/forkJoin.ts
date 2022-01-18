@@ -97,13 +97,13 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * objects will have the same keys as the dictionary passed, with their last values they have emitted
  * located at the corresponding key.
  *
- * 如果你将可观察者的字典传给操作符，则生成的对象将具有与传递的字典相同的键名，它们发出的最后一个值位于相应的键名处。
+ * 如果你将 Observable 的字典传递给操作符，则生成的对象将具有与传递的字典相同的键名，它们发出的最后一个值位于相应的键名处。
  *
  * That means `forkJoin` will not emit more than once and it will complete after that. If you need to emit combined
  * values not only at the end of the lifecycle of passed observables, but also throughout it, try out {@link combineLatest}
  * or {@link zip} instead.
  *
- * 这意味着 `forkJoin` 不会发出超过一个值，并且会在此之后完成。如果你不仅需要在传入的可观察者的生命周期结束时发出组合值，而且还需要在整个生命周期中发出组合值，请尝试使用 {@link combineLatest} 或 {@link zip}。
+ * 这意味着 `forkJoin` 不会发出超过一个值，并且会在此之后完成。如果你不仅需要在传入的 Observable 的生命周期结束时发出组合值，而且还需要在整个生命周期中发出组合值，请尝试使用 {@link combineLatest} 或 {@link zip}。
  *
  * In order for the resulting array to have the same length as the number of input observables, whenever any of
  * the given observables completes without emitting any value, `forkJoin` will complete at that moment as well
@@ -113,7 +113,7 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * the previous case. Overall, in order for `forkJoin` to emit a value, all given observables
  * have to emit something at least once and complete.
  *
- * 为了使结果数组的长度与输入的 observables 的数量相同，只要任何给定的 observables 完成而没有发出任何值，`forkJoin` 也会在那个时刻完成并且它也不会发出任何值，即使它已经具有来自其它可观察者的一些最后值。相反，如果有一个 observable 永远不会完成，`forkJoin` 也永远不会完成，除非其它 observable 在某个时刻都完成而不发出值，这会让我们回到前面的情况。总而言之，为了让 `forkJoin` 发出一个值，所有给定的 observables 都必须至少发出一次并完成。
+ * 为了使结果数组的长度与输入的 observables 的数量相同，只要任何给定的 observables 完成而没有发出任何值，`forkJoin` 也会在那个时刻完成并且它也不会发出任何值，即使它已经具有来自其它 Observable 的一些最后值。相反，如果有一个 observable 永远不会完成，`forkJoin` 也永远不会完成，除非其它 observable 在某个时刻都完成而不发出值，这会让我们回到前面的情况。总而言之，为了让 `forkJoin` 发出一个值，所有给定的 observables 都必须至少发出一次并完成。
  *
  * If any given observable errors at some point, `forkJoin` will error as well and immediately unsubscribe
  * from the other observables.
@@ -180,7 +180,7 @@ export function forkJoin<T extends Record<string, ObservableInput<any>>>(
  * @param {...ObservableInput} args Any number of Observables provided either as an array or as an arguments
  * passed directly to the operator.
  *
- * 任意数量的 Observables 以数组参数的形式提供，或作为直接传给操作符的参数提供。
+ * 任意数量的 Observables 以数组参数的形式提供，或作为直接传递给操作符的参数提供。
  *
  * @param {function} [project] Function that takes values emitted by input Observables and returns value
  * that will appear in resulting Observable instead of default array.

@@ -6,7 +6,7 @@ import { concat } from './concat';
  * to each observable source provided, one at a time, emitting all of their values, and not subscribing
  * to the next one until it completes.
  *
- * 发送源可观察者的所有值，一旦其完成，就再订阅传入的每个可观察源，逐个发送它们的所有值，并且在每一个完成之前不会订阅下一个。
+ * 发送源 Observable 的所有值，一旦其完成，就再订阅传入的每个可观察源，逐个发送它们的所有值，并且在每一个完成之前不会订阅下一个。
  *
  * `concat(a$, b$, c$)` is the same as `a$.pipe(concatWith(b$, c$))`.
  *

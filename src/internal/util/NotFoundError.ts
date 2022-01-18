@@ -17,7 +17,7 @@ export interface NotFoundErrorCtor {
  * An error thrown when a value or values are missing from an
  * observable sequence.
  *
- * 当可观察者序列中缺少一个或多个值时引发的错误。
+ * 当 Observable 序列中缺少一个或多个值时引发的错误。
  *
  * @see {@link operators/single}
  * @class NotFoundError

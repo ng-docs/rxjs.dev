@@ -1,6 +1,6 @@
 # Observable
 
-# 可观察者（Observable）
+# Observable（Observable）
 
 Observables are lazy Push collections of multiple values. They fill the missing spot in the following table:
 
@@ -417,7 +417,7 @@ const observable = new Observable(function subscribe(subscriber) {
 
 <span class="informal">Observables can be created with `new Observable`. Most commonly, observables are created using creation functions, like `of`, `from`, `interval`, etc.</span>
 
-<span class="informal">可以使用 `new Observable`。最常见的是，可观察者是使用创建函数创建的，例如 `of`、`from`、`interval` 等。</span>
+<span class="informal">可以使用 `new Observable`。最常见的是， Observable 是使用创建函数创建的，例如 `of`、`from`、`interval` 等。</span>
 
 In the example above, the `subscribe` function is the most important piece to describe the Observable. Let's look at what subscribing means.
 
@@ -453,7 +453,7 @@ This is drastically different to event handler APIs like `addEventListener` / `r
 
 A `subscribe` call is simply a way to start an "Observable execution" and deliver values or events to an Observer of that execution.
 
-`subscribe` 调用只是一个启动“可观察者的执行”并将一些值或事件传递给该执行过程的观察者的方法。
+`subscribe` 调用只是一个启动“ Observable 的执行”并将一些值或事件传递给该执行过程的观察者的方法。
 
 ### Executing Observables
 

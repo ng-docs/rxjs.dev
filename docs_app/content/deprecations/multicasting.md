@@ -38,7 +38,7 @@ Other APIs that relate to multicasting are now deprecated.
 
 - [ConnectableObservable](/api/index/class/ConnectableObservable)
 
-  [ConnectableObservable(可连接的可观察者)](/api/index/class/ConnectableObservable)
+  [ConnectableObservable(可连接的 Observable)](/api/index/class/ConnectableObservable)
 
 - [multicast](/api/operators/multicast)
 

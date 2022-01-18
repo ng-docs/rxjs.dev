@@ -16,7 +16,7 @@ While not all of the documentation for RxJS reflects this terminology, it is a g
 
 There are high level entities that are frequently discussed. It's important to define them separately from other lower-level concepts, because they relate to the nature of observable.
 
-有一些经常被讨论的高级实体。将它们与其它较低级别的概念分别进行定义是很重要的，因为它们与可观察者的天性有关。
+有一些经常被讨论的高级实体。将它们与其它较低级别的概念分别进行定义是很重要的，因为它们与 Observable 的天性有关。
 
 ### Consumer
 
@@ -33,7 +33,7 @@ The code that is subscribing to the observable. This is whoever is being _notifi
 Any system or thing that is the source of values that are being pushed out of the observable subscription to the consumer. This can be a wide variety of things, from a `WebSocket` to a simple iteration over an `Array`. The producer is most often created during the [subscribe](#subscribe) action, and therefor "owned" by a [subscription](#subscription) in a 1:1 way, but that is not always the case. A producer may be shared between many subscriptions, if it is created outside of the [subscribe](#subscribe)
 action, in which case it is one-to-many, resulting in a [multicast](#multicast).
 
-任何作为值来源的系统或事物，它们将通过对此可观察者的订阅推送给消费者。生产者可以是各种各样的东西，从 `WebSocket` 到对 `Array` 的简单迭代均可。生产者通常是在[订阅](#subscribe)操作期间创建的，因此以 1:1 的方式由某个[订阅](#subscription)所“拥有”，但并非总是如此。一个生产者也可以在多个订阅之间共享，如果它是在[订阅](#subscribe)操作之外创建的，在这种情况下它将是一对多的，从而产生一次[多播](#multicast)。
+任何作为值来源的系统或事物，它们将通过对此 Observable 的订阅推送给消费者。生产者可以是各种各样的东西，从 `WebSocket` 到对 `Array` 的简单迭代均可。生产者通常是在[订阅](#subscribe)操作期间创建的，因此以 1:1 的方式由某个[订阅](#subscription)所“拥有”，但并非总是如此。一个生产者也可以在多个订阅之间共享，如果它是在[订阅](#subscribe)操作之外创建的，在这种情况下它将是一对多的，从而产生一次[多播](#multicast)。
 
 ### Subscription
 
@@ -41,15 +41,15 @@ action, in which case it is one-to-many, resulting in a [multicast](#multicast).
 
 A contract where a [consumer](#consumer) is [observing](#observation) values pushed by a [producer](#producer). The subscription (not to be confused with the `Subscription` class or type), is an ongoing process that amounts to the function of the observable from the Consumer's perspective. Subscription starts the moment a [subscribe](#subscribe) action is initiated, even before the [subscribe](#subscribe) action is finished.
 
-这是[消费者](#consumer)[观察](#observation)[生产者](#producer)推送的值的契约。订阅（不要与 `Subscription` 类或类型混淆）是一个持续的过程，从消费者的角度来看，它相当于可观察者的函数。订阅的生命周期会从发起[订阅](#subscribe)操作的那一刻开始，甚至在[订阅](#subscribe)操作完成之前就已经开始了。
+这是[消费者](#consumer)[观察](#observation)[生产者](#producer)推送的值的契约。订阅（不要与 `Subscription` 类或类型混淆）是一个持续的过程，从消费者的角度来看，它相当于 Observable 的函数。订阅的生命周期会从发起[订阅](#subscribe)操作的那一刻开始，甚至在[订阅](#subscribe)操作完成之前就已经开始了。
 
 ### Observable
 
-### Observable(可观察者)
+### Observable( Observable)
 
 The primary type in RxJS. At its highest level, an observable represents a template for connecting an [Observer](#observer), as a [consumer](#consumer), to a [producer](#producer), via a [subscribe](#subscribe) action, resulting in a [subscription](#subscription).
 
-RxJS 中的主要类型。在其最高级别，可观察者表示一个模板，用于通过[订阅](#subscribe)操作将[观察者](#observer)作为[消费者](#consumer)连接到[生产者](#producer)，从而产生一次[订阅](#subscription)。
+RxJS 中的主要类型。在其最高级别， Observable 表示一个模板，用于通过[订阅](#subscribe)操作将[观察者](#observer)作为[消费者](#consumer)连接到[生产者](#producer)，从而产生一次[订阅](#subscription)。
 
 ### Observer
 
@@ -146,7 +146,7 @@ The act of a [producer](#producer) pushing [nexted](#next) values, [errors](#err
 
 Some of what we discuss is conceptual. These are mostly common traits of behaviors that can manifest in observables or in push-based reactive systems.
 
-我们讨论的一些内容是概念性的。这些大部分是行为的常见特征，可以在可观察者或基于推送的响应系统中表现出来。
+我们讨论的一些内容是概念性的。这些大部分是行为的常见特征，可以在 Observable 或基于推送的响应系统中表现出来。
 
 ### Multicast
 
@@ -162,7 +162,7 @@ The act of one [producer](#producer) being [observed](#observation) by **many** 
 
 The act of one [producer](#producer) being [observed](#observation) **only one** [consumer](#consumer). An observable is "unicast" when it only connects one [producer](#producer) to one [consumer](#consumer). Unicast doesn't necessarily mean ["cold"](#cold).
 
-一个[生产者](#producer)的行为**只被一个**[消费者](#consumer)[观察到](#observation)。当一个可观察者只将一个[生产者](#producer)连接到一个[消费者](#consumer)时，它是“单播”的。单播并不一定意味着[“冷”](#cold)。
+一个[生产者](#producer)的行为**只被一个**[消费者](#consumer)[观察到](#observation)。当一个 Observable 只将一个[生产者](#producer)连接到一个[消费者](#consumer)时，它是“单播”的。单播并不一定意味着[“冷”](#cold)。
 
 ### Cold
 
@@ -170,7 +170,7 @@ The act of one [producer](#producer) being [observed](#observation) **only one**
 
 An observable is "cold" when it creates a new [producer](#producer) during [subscribe](#subscribe) for every new [subscription](#subscription). As a result, a "cold" observables are _always_ [unicast](#unicast), being one [producer](#producer) [observed](#observation) by one [consumer](#consumer). Cold observables can be made [hot](#hot) but not the other way around.
 
-当一个可观察者在[订阅](#subscribe)期间为每个新的[订阅](#subscription)创建一个新的[生产者](#producer)时，它是“冷的”。结果，“冷”可观察者*始终*是[单播](#unicast)的，即一个[生产者](#producer)被一个[消费者](#consumer)[观察到](#observation)。冷的可观察者也可以变[热](#hot)，反之则不行。
+当一个 Observable 在[订阅](#subscribe)期间为每个新的[订阅](#subscription)创建一个新的[生产者](#producer)时，它是“冷的”。结果，“冷” Observable*始终*是[单播](#unicast)的，即一个[生产者](#producer)被一个[消费者](#consumer)[观察到](#observation)。冷的 Observable 也可以变[热](#hot)，反之则不行。
 
 ### Hot
 
@@ -179,7 +179,7 @@ An observable is "cold" when it creates a new [producer](#producer) during [subs
 An observable is "hot", when its [producer](#producer) was created outside of the context of the [subscribe](#subscribe) action. This means that the "hot" observable is almost always [multicast](#multicast). It is possible that a "hot" observable is still _technically_ unicast, if it is engineered to only allow one [subscription](#subscription) at a time, however, there is no straightforward mechanism for this in RxJS, and the scenario is a unlikely. For the purposes of discussion, all "hot" observables can
 be assumed to be [multicast](#multicast). Hot observables cannot be made [cold](#cold).
 
-当一个可观察者的[生产者](#producer)是在[订阅](#subscribe)操作的上下文之外创建时，它就是热的。这意味着“热”的可观察者几乎总是[多播](#multicast)的。一个“热”的可观察者可能在*技术上*仍然是单播的，如果它被设计为一次只允许一个[订阅](#subscription)，但是，在 RxJS 中没有直接的机制，这种情况不太可能发生。出于讨论的目的，可以假设所有“热”可观察者都是[多播](#multicast)的。热的可观察者不能[变冷](#cold)。
+当一个 Observable 的[生产者](#producer)是在[订阅](#subscribe)操作的上下文之外创建时，它就是热的。这意味着“热”的 Observable 几乎总是[多播](#multicast)的。一个“热”的 Observable 可能在*技术上*仍然是单播的，如果它被设计为一次只允许一个[订阅](#subscription)，但是，在 RxJS 中没有直接的机制，这种情况不太可能发生。出于讨论的目的，可以假设所有“热” Observable 都是[多播](#multicast)的。热的 Observable 不能[变冷](#cold)。
 
 ### Push
 
@@ -187,7 +187,7 @@ be assumed to be [multicast](#multicast). Hot observables cannot be made [cold](
 
 [Observables](#observable) are a push-based type. That means rather than having the [consumer](#consumer) call a function or perform some other action to get a value, the [consumer](#consumer) receives values as soon as the [producer](#producer) has produced them, via a registered [next](#next) handler.
 
-[可观察者](#observable)是一种基于推送的类型。这意味着[消费者](#consumer)无需调用函数或执行其它操作来获取值，而是在[生产者](#consumer)[生成](#producer)值后立即通过已注册的[下一个](#next)处理器接收这些值。
+[ Observable](#observable)是一种基于推送的类型。这意味着[消费者](#consumer)无需调用函数或执行其它操作来获取值，而是在[生产者](#consumer)[生成](#producer)值后立即通过已注册的[下一个](#next)处理器接收这些值。
 
 ### Pull
 
@@ -208,7 +208,7 @@ Pull-based systems are the opposite of [push](#Push)-based. In a pull-based type
 A factory function that creates an [operator function](#operator-function). Examples of this in rxjs are functions like [`map`](/api/operators/map) and [`mergeMap`](/api/operators/mergeMap), which are generally passed to [`pipe`](/api/index/class/Observable#pipe). The result of calling many operators, and passing their resulting [operator functions](#operator-function) into pipe on an observable [source](#source) will be another [observable](#observable), and will generally not result
 in [subscription](#subscription).
 
-用于创建[操作符函数](#operator-function)的工厂函数。rxjs 中的例子是 [`map`](/api/operators/map) 和 [`mergeMap`](/api/operators/mergeMap) 之类的函数，它们通常会传给 [`pipe`](/api/index/class/Observable#pipe)。调用许多操作符，并将其返回的[操作符函数](#operator-function)传递到可观察者[源](#source)上的管道中，其结果将是另一个[可观察者](#observable)，这通常不会导致[订阅](#subscription)。
+用于创建[操作符函数](#operator-function)的工厂函数。rxjs 中的例子是 [`map`](/api/operators/map) 和 [`mergeMap`](/api/operators/mergeMap) 之类的函数，它们通常会传给 [`pipe`](/api/index/class/Observable#pipe)。调用许多操作符，并将其返回的[操作符函数](#operator-function)传递到 Observable[源](#source)上的管道中，其结果将是另一个[ Observable](#observable)，这通常不会导致[订阅](#subscription)。
 
 ### Operator Function
 
@@ -216,7 +216,7 @@ in [subscription](#subscription).
 
 A function that takes an [observable](#observable), and maps it to a new [observable](#observable). Nothing more, nothing less. Operator functions are created by [operators](#operator). If you were to call an rxjs operator like [map](/api/operators/map) and put the return value in a variable, the returned value would be an operator function.
 
-一个接受[可观察者](#observable)并将其映射到新[可观察者](#observable)的函数。不多也不少。操作符函数是由[操作符](#operator)创建的。如果你要调用像 [map](/api/operators/map) 这样的 rxjs 操作符并将返回值放入变量中，则返回值将是一个操作符函数。
+一个接受[ Observable](#observable)并将其映射到新[ Observable](#observable)的函数。不多也不少。操作符函数是由[操作符](#operator)创建的。如果你要调用像 [map](/api/operators/map) 这样的 rxjs 操作符并将返回值放入变量中，则返回值将是一个操作符函数。
 
 ### Operation
 
@@ -225,7 +225,7 @@ A function that takes an [observable](#observable), and maps it to a new [observ
 An action taken while handling a [notification](#notification), as set up by an [operator](#operator) and/or [operator function](#operator-function). In RxJS, a developer can chain several [operator functions](#operator-function) together by calling [operators](#operator) and passing the created [operator functions](#operator-function) to the [`pipe`](/api/index/class/Observable#pipe) method of [`Observable`](/api/index/class/Observable), which results in a new [observable](#observable).
 During [subscription](#subscription) to that observable, operations are performed in an order dictated by the [observation chain](#observation-chain).
 
-处理[通知](#notification)时所采取的操作，是由[操作符](#operator)和/或[操作符函数](#operator-function)建立的。在 RxJS 中，开发人员可以通过调用[操作符](#operator)并将所创建的[操作符函数](#operator-function)传递给 [`Observable`](/api/index/class/Observable) 的 [`pipe`](/api/index/class/Observable#pipe) 方法，以将多个[操作符函数](#operator-function)链接在一起，从而产生一个新的[可观察者](#observable)。在[订阅](#subscription)该可观察者期间，这些操作会按照[观察链](#observation-chain)中指定的顺序执行。
+处理[通知](#notification)时所采取的操作，是由[操作符](#operator)和/或[操作符函数](#operator-function)建立的。在 RxJS 中，开发人员可以通过调用[操作符](#operator)并将所创建的[操作符函数](#operator-function)传递给 [`Observable`](/api/index/class/Observable) 的 [`pipe`](/api/index/class/Observable#pipe) 方法，以将多个[操作符函数](#operator-function)链接在一起，从而产生一个新的[ Observable](#observable)。在[订阅](#subscription)该 Observable 期间，这些操作会按照[观察链](#observation-chain)中指定的顺序执行。
 
 ### Stream
 
@@ -234,7 +234,7 @@ During [subscription](#subscription) to that observable, operations are performe
 A "stream" or "streaming" in the case of observables, refers to the collection of [operations](#operation), as they are processed during a [subscription](#subscription). This is not to be confused with node [Streams](https://nodejs.org/api/stream.html), and the word "stream", on its own, should be used _sparingly_ in documentation and articles. Instead, prefer [observation chain](#observation-chain), [operations](#operation), or [subscription](#subscription). "Streaming" is less ambiguous, and is fine to
 use given this defined meaning.
 
-对于可观察者，“流”或“流式操作”是指[操作](#operation)的集合，因为它们是在[订阅](#subscription)期间处理的。不要与 node 的[流](https://nodejs.org/api/stream.html)混淆，“流”一词本身应在文档和文章中*谨慎使用*。相反，尽量使用[观察链](#observation-chain)、[操作](#operation)或[订阅](#subscription)。“流式操作”不那么模棱两可，可以很好地按其含义使用。
+对于 Observable，“流”或“流式操作”是指[操作](#operation)的集合，因为它们是在[订阅](#subscription)期间处理的。不要与 node 的[流](https://nodejs.org/api/stream.html)混淆，“流”一词本身应在文档和文章中*谨慎使用*。相反，尽量使用[观察链](#observation-chain)、[操作](#operation)或[订阅](#subscription)。“流式操作”不那么模棱两可，可以很好地按其含义使用。
 
 ### Source
 
@@ -242,15 +242,15 @@ use given this defined meaning.
 
 A [observable](#observable) or [valid observable input](#observable-inputs) having been converted to an observable, that will supply values to another [observable](#observable), either as the result of an [operator](#operator) or other function that creates one observable as another. This [source](#source), will be the [producer](#producer) for the resulting [observable](#observable) and all of its [subscriptions](#subscriptions). Sources may generally be any type of observable.
 
-一个[可观察者](#observable)或[有效的可观察者输入](#observable-inputs)已经被转换为一个可观察者，它将为另一个[可观察者](#observable)提供值，或者是作为[操作符](#operator)的结果，或者是另一个能创建可观察者的函数的结果。这个[来源](#source)将是结果[可观察者](#observable)及其所有[订阅](#subscriptions)的[生产者](#producer)。源通常可以是任何类型的可观察者。
+一个[ Observable](#observable)或[有效的 Observable 输入](#observable-inputs)已经被转换为一个 Observable，它将为另一个[ Observable](#observable)提供值，或者是作为[操作符](#operator)的结果，或者是另一个能创建 Observable 的函数的结果。这个[来源](#source)将是结果[ Observable](#observable)及其所有[订阅](#subscriptions)的[生产者](#producer)。源通常可以是任何类型的 Observable。
 
 ### Observable Inputs
 
-### 可观察者输入
+### Observable 输入
 
 A "observable input" ([defined as a type here](/api/index/type-alias/ObservableInput)), is any type that can easily converted to an [Observable](#observable). Observable Inputs may sometimes be referred to as "valid observable sources".
 
-“可观察者输入”（[在此处定义为类型](/api/index/type-alias/ObservableInput)）是可以轻松转换为 [Observable](#observable) 的任何类型。可观察者输入有时可能被称为“有效的可观察来源”。
+“ Observable 输入”（[在此处定义为类型](/api/index/type-alias/ObservableInput)）是可以轻松转换为 [Observable](#observable) 的任何类型。 Observable 输入有时可能被称为“有效的可观察来源”。
 
 ### Notifier
 
@@ -258,7 +258,7 @@ A "observable input" ([defined as a type here](/api/index/type-alias/ObservableI
 
 An [observable](#observable) that is being used to notify another [observable](#observable) that it needs to perform some action. The action should only occur on a [next notification](#next), and never on [error](#error) or [complete](#complete). Generally, notifiers are used with specific operators, such as [`takeUntil`](/api/operators/takeUntil), [`buffer`](/api/operators/buffer), or [`delayWhen`](/api/operators/delayWhen). A notifier may be passed directly, or it may be returned by a callback.
 
-一个[可观察者](#observable)，用于通知另一个[可观察者](#observable)，它该执行某些操作了。该操作应该只[在“下一个”通知](#next)时发生，而永远不会在[错误](#error)或[完成](#complete)时发生。通常，通知器与特定的操作符一起使用，例如 [`takeUntil`](/api/operators/takeUntil)、[`buffer`](/api/operators/buffer) 或 [`delayWhen`](/api/operators/delayWhen)。通知器可以直接传递，也可以由回调返回。
+一个[ Observable](#observable)，用于通知另一个[ Observable](#observable)，它该执行某些操作了。该操作应该只[在“下一个”通知](#next)时发生，而永远不会在[错误](#error)或[完成](#complete)时发生。通常，通知器与特定的操作符一起使用，例如 [`takeUntil`](/api/operators/takeUntil)、[`buffer`](/api/operators/buffer) 或 [`delayWhen`](/api/operators/delayWhen)。通知器可以直接传递，也可以由回调返回。
 
 ### Inner Source
 
@@ -266,7 +266,7 @@ An [observable](#observable) that is being used to notify another [observable](#
 
 One, of possibly many [sources](#source), which are [subscribed](#subscribe) to automatically within a single [subscription](#subscription) to another observable. Examples of an "inner source" include the [observable inputs](#observable-inputs) returned by the mapping function in a [mergeMap](/api/operators/mergeMap) [operator](#operator). (e.g. `source.pipe(mergeMap(value => createInnerSource(value))))`, were `createInnerSource` returns any valid [observable input](#observable-inputs)).
 
-一个或许多[来源](#source)中的一个，会在对另一个可观察者的单个[订阅](#subscribe)中自动[订阅](#subscription)。“内部源”的示例包括由 [mergeMap](/api/operators/mergeMap) [操作符](#operator)中的映射函数返回的[可观察输入](#observable-inputs)。（例如 `source.pipe(mergeMap(value => createInnerSource(value))))` 中的 `createInnerSource` 会返回任何有效的[可观察输入](#observable-inputs)。
+一个或许多[来源](#source)中的一个，会在对另一个 Observable 的单个[订阅](#subscribe)中自动[订阅](#subscription)。“内部源”的示例包括由 [mergeMap](/api/operators/mergeMap) [操作符](#operator)中的映射函数返回的[可观察输入](#observable-inputs)。（例如 `source.pipe(mergeMap(value => createInnerSource(value))))` 中的 `createInnerSource` 会返回任何有效的[可观察输入](#observable-inputs)。
 
 ### Partial Observer
 

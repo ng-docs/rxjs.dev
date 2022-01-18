@@ -5,7 +5,7 @@ import { map } from './map';
 /**
  * Attaches a timestamp to each item emitted by an observable indicating when it was emitted
  *
- * 将时间戳附加到由可观察者发送的每个条目上，指示它何时发送
+ * 将时间戳附加到由 Observable 发送的每个条目上，以指出它是何时发送的
  *
  * The `timestamp` operator maps the *source* observable stream to an object of type
  * `{value: T, timestamp: R}`. The properties are generically typed. The `value` property contains the value
@@ -13,7 +13,7 @@ import { map } from './map';
  * default, it uses the `asyncScheduler` which simply returns `Date.now()` (milliseconds since 1970/01/01
  * 00:00:00:000) and therefore is of type `number`.
  *
- * `timestamp` 操作符将*源*可观察流映射到 `{value: T, timestamp: R}` 类型的对象。属性是一般类型的。`value` 属性包含*源*observable 的值和类型。`timestamp` 由调度器 `now` 功能生成。默认情况下，它使用 `asyncScheduler`，它只返回 `Date.now()`（自 1970/01/01 00:00:00:000 以来的毫秒数），因此是 `number` 类型。
+ * `timestamp` 操作符会将*源* Observable 流映射成 `{value: T, timestamp: R}` 类型的对象。这些属性是泛型的。`value` 属性包含*源* observable 的值和类型。`timestamp` 由调度器的 `now` 功能生成。默认情况下，它使用 `asyncScheduler`，`asyncScheduler` 只会返回 `Date.now()`（自 1970/01/01 00:00:00:000 以来的毫秒数），因此是 `number` 类型。
  *
  * ![](timestamp.png)
  *
@@ -23,7 +23,7 @@ import { map } from './map';
  *
  * In this example there is a timestamp attached to the document's click events
  *
- * 在此示例中，文档的点击事件附加了一个时间戳
+ * 在此示例中，文档的每个点击事件都附加了一个时间戳
  *
  * ```ts
  * import { fromEvent, timestamp } from 'rxjs';
@@ -44,7 +44,7 @@ import { map } from './map';
  * @return A function that returns an Observable that attaches a timestamp to
  * each item emitted by the source Observable indicating when it was emitted.
  *
- * 一个返回 Observable 的函数，该 Observable 会将时间戳附加到源 Observable 发送的每个条目上，指示它何时发送。
+ * 一个返回 Observable 的函数，该 Observable 会将时间戳附加到源 Observable 发送的每个条目上，以指出它是何时发送的。
  *
  */
 export function timestamp<T>(timestampProvider: TimestampProvider = dateTimestampProvider): OperatorFunction<T, Timestamp<T>> {

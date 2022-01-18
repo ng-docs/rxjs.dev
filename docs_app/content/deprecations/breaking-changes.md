@@ -26,7 +26,7 @@
   that feature is not widely known, used, or supported, and it was never documented as it was very experimental when it was first added. Until the end of v7, `lift` will remain on Observable. Standard JavaScript users will notice no difference. However, TypeScript users might see complaints about `lift` not being a member of observable. To workaround this issue there are two things you can do: 1. Rewrite your operators as [outlined in the documentation](https://rxjs.dev/guide/operators), such that they
   return `new Observable`. or 2. cast your observable as `any` and access `lift` that way. Method 1 is recommended if you do not want things to break when we move to version 8.
 
-  **Observable（可观察者）：** `lift` 不再暴露。*从来没有文档说过*库的最终用户可以使用 `lift` 创建操作符。Lift 有[各种各样的问题](https://github.com/ReactiveX/rxjs/issues/5431)，并且一直是 rxjs 的内部实现细节，可能在早期最有价值的时候被少数高级用户使用。`lift` 的值，最初是 `Observable` 的子类，是由所有实现了 lift 的操作符组合而来的。现实情况是，该功能并未广为人知、使用或支持，并且从未写在文档中，因为它在首次添加时是实验性的。在 v7 结束之前，`lift` 将保持在 Observable 上。标准 JavaScript 用户不会注意到任何异常。然而，TypeScript 用户可能会看到关于 `lift` 不是 observable 成员的抱怨。要解决此问题，你可以做两件事： 1.[按照文档中的说明](https://rxjs.dev/guide/operators)重写你的操作符，使它们返回 `new Observable`。或 2. 将你的 observable 转换为 `any` 并以这种方式访问 `lift`
+  **Observable（ Observable）：** `lift` 不再暴露。*从来没有文档说过*库的最终用户可以使用 `lift` 创建操作符。Lift 有[各种各样的问题](https://github.com/ReactiveX/rxjs/issues/5431)，并且一直是 rxjs 的内部实现细节，可能在早期最有价值的时候被少数高级用户使用。`lift` 的值，最初是 `Observable` 的子类，是由所有实现了 lift 的操作符组合而来的。现实情况是，该功能并未广为人知、使用或支持，并且从未写在文档中，因为它在首次添加时是实验性的。在 v7 结束之前，`lift` 将保持在 Observable 上。标准 JavaScript 用户不会注意到任何异常。然而，TypeScript 用户可能会看到关于 `lift` 不是 observable 成员的抱怨。要解决此问题，你可以做两件事： 1.[按照文档中的说明](https://rxjs.dev/guide/operators)重写你的操作符，使它们返回 `new Observable`。或 2. 将你的 observable 转换为 `any` 并以这种方式访问 `lift`
   。如果你不希望在我们迁移到版本 8 时出现问题，建议使用方法 1。
 
 - **Subscriber:** `new Subscriber` no longer takes 0-3 arguments. To create a `Subscriber` with 0-3 arguments, use `Subscriber.create`. However, please note that there is little to no reason that you should be creating `Subscriber` references directly, and `Subscriber.create` and `new Subscriber` are both deprecated.
@@ -36,7 +36,7 @@
 - **onUnhandledError:** Errors that occur during setup of an observable subscription after the subscription has emitted an error or completed will now throw in their own call stack. Before it would call `console.warn`. This is potentially breaking in edge cases for node applications, which may be configured to terminate for unhandled exceptions. In the unlikely event this affects you, you can configure the behavior to `console.warn` in the new configuration setting like
   so: `import { config } from 'rxjs'; config.onUnhandledError = (err) => console.warn(err);`
 
-  **onUnhandledError：**当可观察者的订阅已经发出了某个错误或完成通知，在设置此订阅期间发生的错误，现在将抛出它们自己的调用堆栈。就在它要调用 `console.warn` 之前。这可能会破坏 node 应用的某些边缘情况，可以将其配置为因未处理的异常而终止。万一这个变更影响到了你，你可以在新的配置项中将此行为配置为 `console.warn`，如下所示： `import { config } from 'rxjs'; config.onUnhandledError = (err) => console.warn(err);`
+  **onUnhandledError：**当 Observable 的订阅已经发出了某个错误或完成通知，在设置此订阅期间发生的错误，现在将抛出它们自己的调用堆栈。就在它要调用 `console.warn` 之前。这可能会破坏 node 应用的某些边缘情况，可以将其配置为因未处理的异常而终止。万一这个变更影响到了你，你可以在新的配置项中将此行为配置为 `console.warn`，如下所示： `import { config } from 'rxjs'; config.onUnhandledError = (err) => console.warn(err);`
 
 - **RxJS Error types** Tests that are written with naive expectations against errors may fail now that errors have a proper `stack` property. In some testing frameworks, a deep equality check on two error instances will check the values in `stack`, which could be different.
 

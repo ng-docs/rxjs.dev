@@ -7,7 +7,7 @@ import { UnaryFunction } from '../types';
  * Returns a connectable observable sequence that shares a single subscription to the
  * underlying sequence containing only the last notification.
  *
- * 返回一个可连接的可观察者序列，该序列会共享对仅包含最后一个通知的基础序列的单个订阅。
+ * 返回一个可连接的 Observable 序列，该序列会共享对仅包含最后一个通知的基础序列的单个订阅。
  *
  * ![](publishLast.png)
  *

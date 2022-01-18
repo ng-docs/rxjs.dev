@@ -10,7 +10,7 @@ import { toArray } from './toArray';
  * Collects all of the inner sources from source observable. Then, once the
  * source completes, joins the values using the given static.
  *
- * 从源可观察者中收集所有内部源。一旦此源完成，就使用给定的静态联结函数来联结这些值。
+ * 从源 Observable 中收集所有内部源。一旦此源完成，就使用给定的静态联结函数来联结这些值。
  *
  * This is used for {@link combineLatestAll} and {@link zipAll} which both have the
  * same behavior of collecting all inner observables, then operating on them.

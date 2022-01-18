@@ -13,7 +13,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  * @param source The original source observable
  *
- * 原始的源可观察者
+ * 原始的源 Observable
  *
  * @param subscriber The consumer subscriber
  *

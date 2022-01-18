@@ -84,7 +84,7 @@ export function onErrorResumeNext<A extends readonly unknown[]>(...sources: [...
  * @see {@link catchError}
  * @param {...ObservableInput} sources Observables (or anything that *is* observable) passed either directly or as an array.
  *
- * 直接或作为数组传入的 Observables（或任何*可观察者*类似物）。
+ * 直接或作为数组传入的 Observables（或任何* Observable*类似物）。
  *
  * @return {Observable} An Observable that concatenates all sources, one after the other,
  * ignoring all errors, such that any error causes it to move on to the next source.

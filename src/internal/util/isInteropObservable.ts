@@ -5,7 +5,7 @@ import { isFunction } from './isFunction';
 /**
  * Identifies an input as being Observable (but not necessary an Rx Observable)
  *
- * 识别某个输入标识是否为可观察者（但不一定是 Rx 可观察者）
+ * 识别某个输入标识是否为 Observable（但不一定是 Rx  Observable）
  *
  */
 export function isInteropObservable(input: any): input is InteropObservable<any> {

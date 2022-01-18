@@ -48,7 +48,7 @@ export function multicast<T>(subject: Subject<T>): UnaryFunction<Observable<T>, 
  *
  * @return A function that returns an observable that mirrors the observable returned by the selector.
  *
- * 返回一个可观察者的函数，该可观察者是选择器返回的可观察者的镜像。
+ * 返回一个 Observable 的函数，该 Observable 是选择器返回的 Observable 的镜像。
  *
  * @deprecated Will be removed in v8. Use the {@link connect} operator instead.
  * `multicast(subject, selector)` is equivalent to
@@ -108,7 +108,7 @@ export function multicast<T>(subjectFactory: () => Subject<T>): UnaryFunction<Ob
  *
  * @return A function that returns an observable that mirrors the observable returned by the selector.
  *
- * 返回一个可观察者的函数，该 Observable 是选择器返回的可观察者的镜像。
+ * 返回一个 Observable 的函数，该函数是选择器返回的 Observable 的镜像。
  *
  * @deprecated Will be removed in v8. Use the {@link connect} operator instead.
  * `multicast(subjectFactory, selector)` is equivalent to

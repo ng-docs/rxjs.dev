@@ -1,10 +1,10 @@
 # Higher-order Observables
 
-# 高阶可观察者
+# 高阶 Observable
 
 Observables most commonly emit ordinary values like strings and numbers, but surprisingly often, it is necessary to handle Observables _of_ Observables, so-called higher-order Observables. For example, imagine you have an Observable emitting strings that are the URLs of files you want to fetch. The code might look like this:
 
-可观察者通常会发出普通值，如字符串和数字，但令人惊讶的是，经常有需要处理可观察者*的*可观察者，即所谓的高阶可观察者。例如，假设你有一个会发出字符串的可观察者，这些字符串是你要获取的文件的 URL。代码可能如下所示：
+Observable 通常会发出普通值，如字符串和数字，但令人惊讶的是，经常有需要处理 Observable*的* Observable，即所谓的高阶 Observable。例如，假设你有一个会发出字符串的 Observable，这些字符串是你要获取的文件的 URL。代码可能如下所示：
 
 ```ts
 const fileObservable = urlObservable.pipe(map((url) => http.get(url)));
@@ -12,11 +12,11 @@ const fileObservable = urlObservable.pipe(map((url) => http.get(url)));
 
 `http.get()` returns an Observable for each URL. Now you have an Observable _of_ Observables, a higher-order Observable.
 
-`http.get()` 会为每个 URL 返回一个可观察者。现在你有了一个可观察者*的*可观察者，也就是高阶可观察者。
+`http.get()` 会为每个 URL 返回一个 Observable。现在你有了一个 Observable*的* Observable，也就是高阶 Observable。
 
 But how do you work with a higher-order Observable? Typically, by _flattening_: by converting a higher-order Observable into an ordinary Observable. For example:
 
-但是你如何使用更高阶的可观察者呢？通常，通过*展平*来将高阶可观察者转换为普通的可观察者。例如：
+但是你如何使用更高阶的 Observable 呢？通常，通过*展平*来将高阶 Observable 转换为普通的 Observable。例如：
 
 ```ts
 const fileObservable = urlObservable.pipe(concatMap((url) => http.get(url)));
@@ -24,7 +24,7 @@ const fileObservable = urlObservable.pipe(concatMap((url) => http.get(url)));
 
 The Observable returned in the `concatMap` function is usually referred to as a so-called "inner" Observable, while in this context the `urlObservable` is the so-called "outer" Observable.
 
-`concatMap` 函数中返回的可观察者通常称为所谓的“内部”可观察者，而在这个上下文中，`urlObservable` 就是所谓的“外部”可观察者。
+`concatMap` 函数中返回的 Observable 通常称为所谓的“内部” Observable，而在这个上下文中，`urlObservable` 就是所谓的“外部” Observable。
 
 The [`concatMap()`](/api/operators/concatMap) operator subscribes to each "inner" Observable, buffers all further emissions of the "outer" Observable, and copies all the emitted values until the inner Observable completes, and continues processing the values of the "outer Observable". All of the values are in that way concatenated. Other useful flattening operators are
 

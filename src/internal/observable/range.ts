@@ -70,7 +70,7 @@ export function range(start: number, count: number | undefined, scheduler: Sched
  * @return {Observable} An Observable of numbers that emits a finite range of
  * sequential integers.
  *
- * 一个数字可观察者，它会发送有限范围内的连续整数。
+ * 一个数字 Observable，它会发送有限范围内的连续整数。
  *
  */
 export function range(start: number, count?: number, scheduler?: SchedulerLike): Observable<number> {

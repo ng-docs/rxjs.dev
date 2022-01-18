@@ -12,7 +12,7 @@
 
 **Every Subject is an Observable.** Given a Subject, you can `subscribe` to it, providing an Observer, which will start receiving values normally. From the perspective of the Observer, it cannot tell whether the Observable execution is coming from a plain unicast Observable or a Subject.
 
-**每个 Subject 都是可观察者。**给定一个 Subject，你可以 `subscribe` 它，提供一个 Observer，它将开始正常接收值。从 Observer 的角度来看，它无法判断 Observable 的执行是来自普通的单播 Observable 还是来自 Subject。
+**每个 Subject 都是 Observable。**给定一个 Subject，你可以 `subscribe` 它，提供一个 Observer，它将开始正常接收值。从 Observer 的角度来看，它无法判断 Observable 的执行是来自普通的单播 Observable 还是来自 Subject。
 
 Internally to the Subject, `subscribe` does not invoke a new execution that delivers values. It simply registers the given Observer in a list of Observers, similarly to how `addListener` usually works in other libraries and languages.
 

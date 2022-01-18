@@ -18,7 +18,7 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  * Retry an observable sequence on error based on custom criteria.
  *
- * 在出错时根据自定义标准重试可观察者序列。
+ * 在出错时根据自定义标准重试 Observable 序列。
  *
  * ## Example
  *
