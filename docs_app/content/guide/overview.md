@@ -12,11 +12,11 @@ RxJS 是一个使用可观察序列编写异步和基于事件的程序的库。
 
 ReactiveX combines the [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern) with the [Iterator pattern](https://en.wikipedia.org/wiki/Iterator_pattern) and [functional programming with collections](http://martinfowler.com/articles/collection-pipeline/#NestedOperatorExpressions) to fill the need for an ideal way of managing sequences of events.
 
-ReactiveX 将[观察者模式](https://en.wikipedia.org/wiki/Observer_pattern)与[迭代器模式](https://en.wikipedia.org/wiki/Iterator_pattern)和[使用集合的函数式编程](http://martinfowler.com/articles/collection-pipeline/#NestedOperatorExpressions)相结合，以满足对更好地管理事件序列的需求。
+ReactiveX 将[观察者模式](https://en.wikipedia.org/wiki/Observer_pattern)与[迭代器模式](https://en.wikipedia.org/wiki/Iterator_pattern)和[使用集合的函数式编程](http://martinfowler.com/articles/collection-pipeline/#NestedOperatorExpressions)相结合，以便让你更好地管理事件序列。
 
 The essential concepts in RxJS which solve async event management are:
 
-RxJS 中解决异步事件管理的基本概念是：
+RxJS 中解决异步事件管理的基本概念有：
 
 - **Observable:** represents the idea of an invokable collection of future values or events.
 
@@ -24,7 +24,7 @@ RxJS 中解决异步事件管理的基本概念是：
 
 - **Observer:** is a collection of callbacks that knows how to listen to values delivered by the Observable.
 
-  **Observer（观察者）：**是一个回调集合，它知道如何监听 Observable 所传递的值。
+  **Observer（观察者）：**是一个回调集合，它知道如何监听 Observable 传来的值。
 
 - **Subscription:** represents the execution of an Observable, is primarily useful for cancelling the execution.
 
@@ -32,7 +32,7 @@ RxJS 中解决异步事件管理的基本概念是：
 
 - **Operators:** are pure functions that enable a functional programming style of dealing with collections with operations like `map`, `filter`, `concat`, `reduce`, etc.
 
-  **Operator（操作符）：**是纯函数，可以使用 `map`、`filter`、`concat`、`reduce` 等操作来处理集合的函数式编程风格。
+  **Operator（操作符）：**是纯函数，可以使用 `map`、`filter`、`concat`、`reduce` 等操作来以函数式编程风格处理集合。
 
 - **Subject:** is equivalent to an EventEmitter, and the only way of multicasting a value or event to multiple Observers.
 
@@ -48,7 +48,7 @@ RxJS 中解决异步事件管理的基本概念是：
 
 Normally you register event listeners.
 
-通常你注册事件监听器。
+通常你这样注册事件监听器。
 
 ```ts
 document.addEventListener('click', () => console.log('Clicked!'));
@@ -56,7 +56,7 @@ document.addEventListener('click', () => console.log('Clicked!'));
 
 Using RxJS you create an observable instead.
 
-使用 RxJS，你要改为创建 observable。
+如果使用 RxJS，要改为创建 observable。
 
 ```ts
 import { fromEvent } from 'rxjs';
@@ -66,7 +66,7 @@ fromEvent(document, 'click').subscribe(() => console.log('Clicked!'));
 
 ### Purity
 
-### Purity(纯函数)
+### Purity(纯净)
 
 What makes RxJS powerful is its ability to produce values using pure functions. That means your code is less prone to errors.
 
@@ -95,7 +95,7 @@ fromEvent(document, 'click')
 
 The **scan** operator works just like **reduce** for arrays. It takes a value which is exposed to a callback. The returned value of the callback will then become the next value exposed the next time the callback runs.
 
-**scan** 操作符的工作方式与数组的 **reduce** 类似。它接受一个要暴露给回调的值。回调的返回值将成为下一次回调运行时暴露出来的下一个值。
+**scan** 操作符的工作方式与数组的 **reduce** 类似。它接受一个要传给回调的值。回调的返回值将成为下一次回调运行时传入的下一个值。
 
 ### Flow
 
@@ -138,7 +138,7 @@ fromEvent(document, 'click')
 
 Other flow control operators are [**filter**](../api/operators/filter), [**delay**](../api/operators/delay), [**debounceTime**](../api/operators/debounceTime), [**take**](../api/operators/take), [**takeUntil**](../api/operators/takeUntil), [**distinct**](../api/operators/distinct), [**distinctUntilChanged**](../api/operators/distinctUntilChanged) etc.
 
-其它流动控制操作符是 [**filter**](../api/operators/filter)、[**delay**](../api/operators/delay)、[**debounceTime**](../api/operators/debounceTime)、[**take**](../api/operators/take)、[**takeUntil**](../api/operators/takeUntil)、[**distinct**](../api/operators/distinct)、[**distinctUntilChanged**](../api/operators/distinctUntilChanged) 等。
+其它流动控制操作符有 [**filter**](../api/operators/filter)、[**delay**](../api/operators/delay)、[**debounceTime**](../api/operators/debounceTime)、[**take**](../api/operators/take)、[**takeUntil**](../api/operators/takeUntil)、[**distinct**](../api/operators/distinct)、[**distinctUntilChanged**](../api/operators/distinctUntilChanged) 等。
 
 ### Values
 
@@ -146,11 +146,11 @@ Other flow control operators are [**filter**](../api/operators/filter), [**delay
 
 You can transform the values passed through your observables.
 
-你可以转换通过你的 observables 传递的值。
+你可以通过你的 observables 传来的值进行转换。
 
 Here's how you can add the current mouse x position for every click, in plain JavaScript:
 
-以下是使用纯 JavaScript 来为每次单击添加当前鼠标 x 位置的方法：
+以下是使用纯 JavaScript 来为每次单击增加当前鼠标 x 位置的方法：
 
 ```ts
 let count = 0;
@@ -183,4 +183,4 @@ fromEvent(document, 'click')
 
 Other value producing operators are [**pluck**](../api/operators/pluck), [**pairwise**](../api/operators/pairwise), [**sample**](../api/operators/sample) etc.
 
-其它能产生值的操作符是 [**pluck**](../api/operators/pluck)、[**pairwise**](../api/operators/pairwise)、[**sample**](../api/operators/sample) 等。
+其它能产生值的操作符有 [**pluck**](../api/operators/pluck)、[**pairwise**](../api/operators/pairwise)、[**sample**](../api/operators/sample) 等。
