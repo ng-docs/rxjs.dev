@@ -53,6 +53,7 @@
         "files": [
           "/generated/*.json",
           "/generated/docs/*.json",
+          "/generated/docs/api/*.json",
           "/generated/docs/api/api-list.json",
           "/generated/docs/app/search-data.json"
         ]
