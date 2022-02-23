@@ -16,6 +16,11 @@
       "url": "https://blog.ralph.wang",
       "title": "译者博客",
       "external": true
+    },
+    {
+      "url": "https://rxjs.angular.tw",
+      "title": "繁体中文版",
+      "external": true
     }
   ],
   "TopBarNarrow": [],

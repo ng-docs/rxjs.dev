@@ -53,6 +53,10 @@ export class DocumentService {
   }
 
   private fetchDocument(id: string): Observable<DocumentContents> {
+    if (/^zh-TW$/.test(id)) {
+      window.location.assign('https://rxjs.angular.tw');
+      throw new Error('External link');
+    }
     const requestPath = `${DOC_CONTENT_URL_PREFIX}${id}.json`;
     const subject = new AsyncSubject<DocumentContents>();
 
