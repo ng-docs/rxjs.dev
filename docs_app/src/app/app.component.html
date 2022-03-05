@@ -40,7 +40,7 @@
   (resultSelected)="hideSearchResults()"
 ></aio-search-results>
 
-<mat-sidenav-container class="sidenav-container" [class.starting]="isStarting" [class.has-floating-toc]="hasFloatingToc">
+<mat-sidenav-container class="sidenav-container" [class.starting]="isStarting" [class.has-floating-toc]="hasFloatingToc" [autosize]="true">
   <mat-sidenav
     [ngClass]="{ collapsed: !isSideBySide }"
     #sidenav
