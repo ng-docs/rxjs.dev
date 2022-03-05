@@ -31,7 +31,7 @@
       "children": [
         {
           "url": "guide/observable",
-          "title": " Observable（Observables）"
+          "title": " 可观察者（Observables）"
         },
         {
           "url": "guide/observer",
