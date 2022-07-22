@@ -2,16 +2,14 @@ import { OperatorFunction, ObservedValueOf, ObservableInput } from '../types';
 import { mergeMap } from './mergeMap';
 import { isFunction } from '../util/isFunction';
 
-/* tslint:disable:max-line-length */
+/** @deprecated Will be removed in v9. Use {@link mergeMap} instead: `mergeMap(() => result)` */
 export function mergeMapTo<O extends ObservableInput<unknown>>(
   innerObservable: O,
   concurrent?: number
 ): OperatorFunction<unknown, ObservedValueOf<O>>;
 /**
- * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: <https://rxjs.dev/deprecations/resultSelector>
- *
- * `resultSelector` 参数将在 v8 中删除。请改用内部 `map`。详细信息： <https://rxjs.dev/deprecations/resultSelector>
- *
+ * @deprecated The `resultSelector` parameter will be removed in v8. Use an inner `map` instead.
+ * Details: https://rxjs.dev/deprecations/resultSelector
  */
 export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(
   innerObservable: O,
@@ -24,12 +22,8 @@ export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(
  * Projects each source value to the same Observable which is merged multiple
  * times in the output Observable.
  *
- * 将每个源值投影到同一个 Observable，该 Observable 会被多次合并后发送到输出 Observable 中。
- *
  * <span class="informal">It's like {@link mergeMap}, but maps each value always
  * to the same inner Observable.</span>
- *
- * <span class="informal">它很像 {@link mergeMap}，但总会将每个值映射到同一个内部 Observable。</span>
  *
  * ![](mergeMapTo.png)
  *
@@ -37,15 +31,9 @@ export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(
  * of the source value, and then merges those resulting Observables into one
  * single Observable, which is the output Observable.
  *
- * 无论源值如何，都会将每个源值映射到给定的 `innerObservable`，然后将生成的这些 Observable 合并为一个 Observable，即输出 Observable。
- *
  * ## Example
  *
- * ## 例子
- *
  * For each click event, start an interval Observable ticking every 1 second
- *
- * 对于每个点击事件，开始一个每秒一次的定期重复 Observable
  *
  * ```ts
  * import { fromEvent, mergeMapTo, interval } from 'rxjs';
@@ -55,27 +43,21 @@ export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(
  *
  * result.subscribe(x => console.log(x));
  * ```
+ *
  * @see {@link concatMapTo}
  * @see {@link merge}
  * @see {@link mergeAll}
  * @see {@link mergeMap}
  * @see {@link mergeScan}
  * @see {@link switchMapTo}
+ *
  * @param {ObservableInput} innerObservable An Observable to replace each value from
  * the source Observable.
- *
- * 用于替换源 Observable 中每个值的 Observable。
- *
  * @param {number} [concurrent=Infinity] Maximum number of input
  * Observables being subscribed to concurrently.
- *
- * 要同时订阅的输入 Observable 的最大数量。
- *
  * @return A function that returns an Observable that emits items from the
  * given `innerObservable`.
- *
- * 一个返回 Observable 的函数，该 Observable 会从给定的 `innerObservable` 中发出条目。
- *
+ * @deprecated Will be removed in v9. Use {@link mergeMap} instead: `mergeMap(() => result)`
  */
 export function mergeMapTo<T, R, O extends ObservableInput<unknown>>(
   innerObservable: O,

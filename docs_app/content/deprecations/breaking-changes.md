@@ -124,6 +124,8 @@
 
 ### of
 
+### of(对...包装成)
+
 - **of:** Use with more than 9 arguments, where the last argument is a `SchedulerLike` may result in the wrong type which includes the `SchedulerLike`, even though the run time implementation does not support that. Developers should be using `scheduled` instead
 
   **of：**与超过 9 个参数一起使用，其中最后一个参数是 `SchedulerLike`，它可能会导致包含 `SchedulerLike` 的错误类型，即使运行时实现其实并不支持它。开发人员应该改用 `scheduled` 代替它。

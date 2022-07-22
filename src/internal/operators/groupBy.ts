@@ -3,7 +3,7 @@ import { innerFrom } from '../observable/innerFrom';
 import { Subject } from '../Subject';
 import { ObservableInput, Observer, OperatorFunction, SubjectLike } from '../types';
 import { operate } from '../util/lift';
-import { OperatorSubscriber } from './OperatorSubscriber';
+import { createOperatorSubscriber, OperatorSubscriber } from './OperatorSubscriber';
 
 export interface BasicGroupByOptions<K, T> {
   element?: undefined;
@@ -32,9 +32,6 @@ export function groupBy<T, K>(key: (value: T) => K): OperatorFunction<T, Grouped
 
 /**
  * @deprecated use the options parameter instead.
- *
- * 请改用 options 参数。
- *
  */
 export function groupBy<T, K>(
   key: (value: T) => K,
@@ -44,9 +41,6 @@ export function groupBy<T, K>(
 
 /**
  * @deprecated use the options parameter instead.
- *
- * 请改用 options 参数。
- *
  */
 export function groupBy<T, K, R>(
   key: (value: T) => K,
@@ -59,36 +53,22 @@ export function groupBy<T, K, R>(
  * and emits these grouped items as `GroupedObservables`, one
  * {@link GroupedObservable} per group.
  *
- * 根据指定的标准对 Observable 发送的条目进行分组，并将这些分组后的条目作为 `GroupedObservables` 发送，每组都对应一个 {@link GroupedObservable}。
- *
  * ![](groupBy.png)
  *
  * When the Observable emits an item, a key is computed for this item with the key function.
  *
- * 当 Observable 发送一个条目时，使用 key 函数为这个条目计算出一个键。
- *
  * If a {@link GroupedObservable} for this key exists, this {@link GroupedObservable} emits. Otherwise, a new
  * {@link GroupedObservable} for this key is created and emits.
- *
- * 如果此键的 {@link GroupedObservable} 存在，则发送此 {@link GroupedObservable} 。否则，将为该键创建一个新的 {@link GroupedObservable} 并发送。
  *
  * A {@link GroupedObservable} represents values belonging to the same group represented by a common key. The common
  * key is available as the `key` field of a {@link GroupedObservable} instance.
  *
- * {@link GroupedObservable} 表示属于拥有共有键的分组的值。此共有键可用作 {@link GroupedObservable} 实例的 `key` 字段。
- *
  * The elements emitted by {@link GroupedObservable}s are by default the items emitted by the Observable, or elements
  * returned by the element function.
  *
- * {@link GroupedObservable} 发送的元素默认是此 Observable 发送的条目，或是由 element 函数返回的元素。
- *
  * ## Examples
  *
- * ## 例子
- *
  * Group objects by `id` and return as array
- *
- * 按 `id` 对一些对象进行分组并以数组形式返回
  *
  * ```ts
  * import { of, groupBy, mergeMap, reduce } from 'rxjs';
@@ -113,8 +93,6 @@ export function groupBy<T, K, R>(
  *
  * Pivot data on the `id` field
  *
- * 在 `id` 字段上透视数据
- *
  * ```ts
  * import { of, groupBy, mergeMap, reduce, map } from 'rxjs';
  *
@@ -136,37 +114,21 @@ export function groupBy<T, K, R>(
  * // { id: 2, values: [ 'Parcel', 'webpack' ] }
  * // { id: 3, values: [ 'TSLint' ] }
  * ```
+ *
  * @param key A function that extracts the key
  * for each item.
- *
- * 为每个条目提取密钥的函数。
- *
  * @param element A function that extracts the
  * return element for each item.
- *
- * 一个函数，它会抽取每个条目所返回元素。
- *
  * @param duration
  * A function that returns an Observable to determine how long each group should
  * exist.
- *
- * 一个返回 Observable 的函数，用以确定每个组应该存在多长时间。
- *
  * @param connector Factory function to create an
  * intermediate Subject through which grouped elements are emitted.
- *
- * 一个工厂函数，用于创建一个中间主体（Subject），并通过该主体发送分组后的元素。
- *
  * @return A function that returns an Observable that emits GroupedObservables,
  * each of which corresponds to a unique key value and each of which emits
  * those items from the source Observable that share that key value.
  *
- * 一个函数，它返回一个发送 GroupedObservables 的 Observable，每个 GroupedObservable 都对应一个唯一的键值，每个都会从源 Observable 发送共享此键值的那些条目。
- *
  * @deprecated Use the options parameter instead.
- *
- * 请改用 options 参数。
- *
  */
 export function groupBy<T, K, R>(
   key: (value: T) => K,
@@ -185,7 +147,7 @@ export function groupBy<T, K, R>(
   return operate((source, subscriber) => {
     let element: ((value: any) => any) | void;
     if (!elementOrOptions || typeof elementOrOptions === 'function') {
-      element = elementOrOptions;
+      element = elementOrOptions as ((value: any) => any);
     } else {
       ({ duration, element, connector } = elementOrOptions);
     }
@@ -203,6 +165,12 @@ export function groupBy<T, K, R>(
     // next call from the source.
     const handleError = (err: any) => notify((consumer) => consumer.error(err));
 
+    // The number of actively subscribed groups
+    let activeGroups = 0;
+
+    // Whether or not teardown was attempted on this subscription.
+    let teardownAttempted = false;
+
     // Capturing a reference to this, because we need a handle to it
     // in `createGroupedObservable` below. This is what we use to
     // subscribe to our source observable. This sometimes needs to be unsubscribed
@@ -210,7 +178,7 @@ export function groupBy<T, K, R>(
     // in cases where a user unsubscribes from the main resulting subscription, but
     // still has groups from this subscription subscribed and would expect values from it
     // Consider:  `source.pipe(groupBy(fn), take(2))`.
-    const groupBySourceSubscriber = new GroupBySubscriber(
+    const groupBySourceSubscriber = new OperatorSubscriber(
       subscriber,
       (value: T) => {
         // Because we have to notify all groups of any errors that occur in here,
@@ -231,7 +199,7 @@ export function groupBy<T, K, R>(
             subscriber.next(grouped);
 
             if (duration) {
-              const durationSubscriber = new OperatorSubscriber(
+              const durationSubscriber = createOperatorSubscriber(
                 // Providing the group here ensures that it is disposed of -- via `unsubscribe` --
                 // wnen the duration subscription is torn down. That is important, because then
                 // if someone holds a handle to the grouped observable and tries to subscribe to it
@@ -240,7 +208,7 @@ export function groupBy<T, K, R>(
                 group as any,
                 () => {
                   // Our duration notified! We can complete the group.
-                  // The group will be removed from the map in the teardown phase.
+                  // The group will be removed from the map in the finalization phase.
                   group!.complete();
                   durationSubscriber?.unsubscribe();
                 },
@@ -249,7 +217,7 @@ export function groupBy<T, K, R>(
                 // Errors on the duration subscriber are sent to the group
                 // but only the group. They are not sent to the main subscription.
                 undefined,
-                // Teardown: Remove this group from our map.
+                // Finalization: Remove this group from our map.
                 () => groups.delete(key)
               );
 
@@ -272,7 +240,14 @@ export function groupBy<T, K, R>(
       // When the source subscription is _finally_ torn down, release the subjects and keys
       // in our groups Map, they may be quite large and we don't want to keep them around if we
       // don't have to.
-      () => groups.clear()
+      () => groups.clear(),
+      () => {
+        teardownAttempted = true;
+        // We only kill our subscription to the source if we have
+        // no active groups. As stated above, consider this scenario:
+        // source$.pipe(groupBy(fn), take(2)).
+        return activeGroups === 0;
+      }
     );
 
     // Subscribe to the source
@@ -280,30 +255,19 @@ export function groupBy<T, K, R>(
 
     /**
      * Creates the actual grouped observable returned.
-     *
-     * 创建返回的实际分组的 observable。
-     *
      * @param key The key of the group
-     *
-     * 小组的钥匙
-     *
      * @param groupSubject The subject that fuels the group
-     *
-     * 推动小组的主体
-     *
      */
     function createGroupedObservable(key: K, groupSubject: SubjectLike<any>) {
       const result: any = new Observable<T>((groupSubscriber) => {
-        groupBySourceSubscriber.activeGroups++;
+        activeGroups++;
         const innerSub = groupSubject.subscribe(groupSubscriber);
         return () => {
           innerSub.unsubscribe();
           // We can kill the subscription to our source if we now have no more
-          // active groups subscribed, and a teardown was already attempted on
+          // active groups subscribed, and a finalization was already attempted on
           // the source.
-          --groupBySourceSubscriber.activeGroups === 0 &&
-            groupBySourceSubscriber.teardownAttempted &&
-            groupBySourceSubscriber.unsubscribe();
+          --activeGroups === 0 && teardownAttempted && groupBySourceSubscriber.unsubscribe();
         };
       });
       result.key = key;
@@ -313,51 +277,12 @@ export function groupBy<T, K, R>(
 }
 
 /**
- * This was created because groupBy is a bit unique, in that emitted groups that have
- * subscriptions have to keep the subscription to the source alive until they
- * are torn down.
- *
- * 之所以创建 groupBy 是因为它有点独特，像这种具有一些订阅的发送组必须确保对源的订阅始终处于活动状态，直到它们被拆解。
- *
- */
-class GroupBySubscriber<T> extends OperatorSubscriber<T> {
-  /**
-   * The number of actively subscribed groups
-   *
-   * 主动订阅的群组数
-   *
-   */
-  activeGroups = 0;
-  /**
-   * Whether or not teardown was attempted on this subscription.
-   *
-   * 是否要尝试对此订阅进行拆解。
-   *
-   */
-  teardownAttempted = false;
-
-  unsubscribe() {
-    this.teardownAttempted = true;
-    // We only kill our subscription to the source if we have
-    // no active groups. As stated above, consider this scenario:
-    // source$.pipe(groupBy(fn), take(2)).
-    this.activeGroups === 0 && super.unsubscribe();
-  }
-}
-
-/**
  * An observable of values that is the emitted by the result of a {@link groupBy} operator,
  * contains a `key` property for the grouping.
- *
- * 由 {@link groupBy} 操作符的结果发出的 Observable 类型的值里包含了此分组的 `key` 属性。
- *
  */
 export interface GroupedObservable<K, T> extends Observable<T> {
   /**
    * The key value for the grouped notifications.
-   *
-   * 分组通知的键值。
-   *
    */
   readonly key: K;
 }

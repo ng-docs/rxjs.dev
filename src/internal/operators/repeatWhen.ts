@@ -4,7 +4,7 @@ import { Subscription } from '../Subscription';
 
 import { MonoTypeOperatorFunction } from '../types';
 import { operate } from '../util/lift';
-import { OperatorSubscriber } from './OperatorSubscriber';
+import { createOperatorSubscriber } from './OperatorSubscriber';
 
 /**
  * Returns an Observable that mirrors the source Observable with the exception of a `complete`. If the source
@@ -12,17 +12,11 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * calls `complete` or `error`, then this method will call `complete` or `error` on the child subscription. Otherwise
  * this method will resubscribe to the source Observable.
  *
- * 返回一个镜像源 Observable 的 Observable，但 `complete` 除外。如果源 Observable 调用了 `complete`，此方法将改为发送到从 `notifier` 返回的 Observable。如果该 Observable 调用了 `complete` 或 `error`，那么此方法将在子订阅上调用 `complete` 或 `error`。否则此方法将重新订阅源 Observable。
- *
  * ![](repeatWhen.png)
  *
  * ## Example
  *
- * ## 例子
- *
  * Repeat a message stream on click
- *
- * 每当单击时重复某个消息流
  *
  * ```ts
  * import { of, fromEvent, repeatWhen } from 'rxjs';
@@ -34,19 +28,16 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  * result.subscribe(data => console.log(data))
  * ```
+ *
  * @see {@link repeat}
  * @see {@link retry}
  * @see {@link retryWhen}
+ *
  * @param {function(notifications: Observable): Observable} notifier - Receives an Observable of notifications with
- *   which a user can `complete` or `error`, aborting the repetition.
- *
- *   接收一个 Observable，它可以被用户发送 `complete` 或 `error` 的通知以中止重复。
- *
+ * which a user can `complete` or `error`, aborting the repetition.
  * @return A function that returns an Observable that that mirrors the source
  * Observable with the exception of a `complete`.
- *
- * 一个返回 Observable 的函数，该 Observable 会镜像源 Observable，但不会镜像 `complete`。
- *
+ * @deprecated Will be removed in v9 or v10. Use {@link repeat}'s `delay` option instead.
  */
 export function repeatWhen<T>(notifier: (notifications: Observable<void>) => Observable<any>): MonoTypeOperatorFunction<T> {
   return operate((source, subscriber) => {
@@ -58,17 +49,11 @@ export function repeatWhen<T>(notifier: (notifications: Observable<void>) => Obs
 
     /**
      * Checks to see if we can complete the result, completes it, and returns `true` if it was completed.
-     *
-     * 检查我们是否可以完成结果，如果可以就完成它，如果已完成，则返回 `true`。
-     *
      */
     const checkComplete = () => isMainComplete && isNotifierComplete && (subscriber.complete(), true);
     /**
      * Gets the subject to send errors through. If it doesn't exist,
      * we know we need to setup the notifier.
-     *
-     * 获取要发送错误的主体。如果它不存在，我们就要建立一个通知器。
-     *
      */
     const getCompletionSubject = () => {
       if (!completions$) {
@@ -77,7 +62,7 @@ export function repeatWhen<T>(notifier: (notifications: Observable<void>) => Obs
         // If the call to `notifier` throws, it will be caught by the OperatorSubscriber
         // In the main subscription -- in `subscribeForRepeatWhen`.
         notifier(completions$).subscribe(
-          new OperatorSubscriber(
+          createOperatorSubscriber(
             subscriber,
             () => {
               if (innerSub) {
@@ -85,7 +70,7 @@ export function repeatWhen<T>(notifier: (notifications: Observable<void>) => Obs
               } else {
                 // If we don't have an innerSub yet, that's because the inner subscription
                 // call hasn't even returned yet. We've arrived here synchronously.
-                // So we flag that we want to resub, such that we can ensure teardown
+                // So we flag that we want to resub, such that we can ensure finalization
                 // happens before we resubscribe.
                 syncResub = true;
               }
@@ -104,7 +89,7 @@ export function repeatWhen<T>(notifier: (notifications: Observable<void>) => Obs
       isMainComplete = false;
 
       innerSub = source.subscribe(
-        new OperatorSubscriber(subscriber, undefined, () => {
+        createOperatorSubscriber(subscriber, undefined, () => {
           isMainComplete = true;
           // Check to see if we are complete, and complete if so.
           // If we are not complete. Get the subject. This calls the `notifier` function.

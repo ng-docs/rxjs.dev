@@ -27,6 +27,7 @@ In the example below, we take the usual simple Observable that emits values `1`,
 在下面的示例中，我们采用通常的简单 Observable 同步发送值 `1`、`2`、`3`，并使用操作符 `observeOn` 指定用于传递这些值的 `async` 调度器。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { Observable, observeOn, asyncScheduler } from 'rxjs';
 
@@ -72,6 +73,7 @@ Notice how the notifications `got value...` were delivered after `just after sub
 请注意本通知的 `got value...` 是在 `just after subscribe` 收到的，这与我们目前看到的默认行为不同。这是因为 `observeOn(asyncScheduler)` 在 `new Observable` 和最终的 Observer 之间引入了一个代理 Observer。让我们重命名一些标识符，以使示例代码中的区别显而易见：
 
 <!-- prettier-ignore -->
+
 ```ts
 import { Observable, observeOn, asyncScheduler } from 'rxjs';
 
@@ -106,6 +108,7 @@ The `proxyObserver` is created in `observeOn(asyncScheduler)`, and its `next(val
 `proxyObserver` 是在 `observeOn(asyncScheduler)` 中创建的，它的 `next(val)` 函数大致如下：
 
 <!-- prettier-ignore -->
+
 ```ts
 const proxyObserver = {
   next(val) {
@@ -136,19 +139,19 @@ The `async` Scheduler is one of the built-in schedulers provided by RxJS. Each o
 
 `async` 调度器是 RxJS 提供的内置调度器之一。这些中的每一个都可以通过使用 `Scheduler` 对象的静态属性来创建和返回。
 
-| Scheduler                 | Purpose                                                                                                                                                                        |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 调度器                    | 用途                                                                                                                                                                           |
-| `null`                    | By not passing any scheduler, notifications are delivered synchronously and recursively. Use this for constant-time operations or tail recursive operations.                   |
-| `null`                    | 不传递任何调度器，通知将以同步和递归方式传递。要把它用于恒定时间操作或尾递归操作。                                                                                             |
-| `queueScheduler`          | Schedules on a queue in the current event frame (trampoline scheduler). Use this for iteration operations.                                                                     |
-| `queueScheduler`          | 在当前事件框架（蹦床调度器）中的队列上调度。将其用于迭代操作。                                                                                                                 |
-| `asapScheduler`           | Schedules on the micro task queue, which is the same queue used for promises. Basically after the current job, but before the next job. Use this for asynchronous conversions. |
-| `asapScheduler`           | 在微任务队列上调度，这与用于 Promise 的队列相同。基本上在当前工作之后，但在下一个工作之前。这些将用于异步转换。                                                                |
-| `asyncScheduler`          | Schedules work with `setInterval`. Use this for time-based operations.                                                                                                         |
-| `asyncScheduler`          | 使用 `setInterval` 的调度器。将此用于基于时间的操作。                                                                                                                          |
-| `animationFrameScheduler` | Schedules task that will happen just before next browser content repaint. Can be used to create smooth browser animations.                                                     |
-| `animationFrameScheduler` | 调度将在下一次浏览器内容重绘之前发生的任务。可用于创建流畅的浏览器动画。                                                                                                       |
+| Scheduler | Purpose |
+| --------- | ------- |
+| 调度器 | 用途 |
+| `null` | By not passing any scheduler, notifications are delivered synchronously and recursively. Use this for constant-time operations or tail recursive operations. |
+| `null` | 不传递任何调度器，通知将以同步和递归方式传递。要把它用于恒定时间操作或尾递归操作。 |
+| `queueScheduler` | Schedules on a queue in the current event frame (trampoline scheduler). Use this for iteration operations. |
+| `queueScheduler` | 在当前事件框架（蹦床调度器）中的队列上调度。将其用于迭代操作。 |
+| `asapScheduler` | Schedules on the micro task queue, which is the same queue used for promises. Basically after the current job, but before the next job. Use this for asynchronous conversions. |
+| `asapScheduler` | 在微任务队列上调度，这与用于 Promise 的队列相同。基本上在当前工作之后，但在下一个工作之前。这些将用于异步转换。 |
+| `asyncScheduler` | Schedules work with `setInterval`. Use this for time-based operations. |
+| `asyncScheduler` | 使用 `setInterval` 的调度器。将此用于基于时间的操作。 |
+| `animationFrameScheduler` | Schedules task that will happen just before next browser content repaint. Can be used to create smooth browser animations. |
+| `animationFrameScheduler` | 调度将在下一次浏览器内容重绘之前发生的任务。可用于创建流畅的浏览器动画。 |
 
 ## Using Schedulers
 
@@ -168,17 +171,29 @@ Because RxJS uses the least concurrency scheduler, you can pick a different sche
 **静态创建操作符通常以某个 Scheduler 作为参数。**例如，`from(array, scheduler)` 允许你指定在传递从 `array` 转换出来的每个通知时要使用的调度器。它通常是操作符的最后一个参数。以下静态创建操作符会接收 Scheduler 参数：
 
 - `bindCallback`
+
 - `bindNodeCallback`
+
 - `combineLatest`
+
 - `concat`
+
 - `empty`
+
 - `from`
+
 - `fromPromise`
+
 - `interval`
+
 - `merge`
+
 - `of`
+
 - `range`
+
 - `throw`
+
 - `timer`
 
 **Use `subscribeOn` to schedule in what context will the `subscribe()` call happen.** By default, a `subscribe()` call on an Observable will happen synchronously and immediately. However, you may delay or schedule the actual subscription to happen on a given Scheduler, using the instance operator `subscribeOn(scheduler)`, where `scheduler` is an argument you provide.

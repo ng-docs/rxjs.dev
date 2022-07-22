@@ -16,69 +16,36 @@ import { captureError } from './util/errorContext';
  * `unsubscribe`. Subscriber is a common type in RxJS, and crucial for
  * implementing operators, but it is rarely used as a public API.
  *
- * 实现 {@link Observer} 接口并扩展 {@link Subscription} 类。虽然 {@link Observer} 是用于消费 {@link Observable} 中的值的公共 API，但所有 Observers 都被转换为订阅者，以提供类似订阅的能力，例如 `unsubscribe`。订阅者是 RxJS 中的一种常见类型，对于实现操作符至关重要，但它很少用作公共 API。
- *
  * @class Subscriber<T>
  */
 export class Subscriber<T> extends Subscription implements Observer<T> {
   /**
    * A static factory for a Subscriber, given a (potentially partial) definition
    * of an Observer.
-   *
-   * 订阅者的静态工厂，以 Observer 的（全部或部分）定义为参数。
-   *
    * @param next The `next` callback of an Observer.
-   *
-   *  Observer 的 `next` 回调。
-   *
    * @param error The `error` callback of an
    * Observer.
-   *
-   *  Observer 的 `error` 回调。
-   *
    * @param complete The `complete` callback of an
    * Observer.
-   *
-   *  Observer 的 `complete` 回调。
-   *
    * @return A Subscriber wrapping the (partially defined)
    * Observer represented by the given arguments.
-   *
-   * 包装由给定参数表示的（部分定义的） Observer 的订阅者。
-   *
    * @nocollapse
    * @deprecated Do not use. Will be removed in v8. There is no replacement for this
    * method, and there is no reason to be creating instances of `Subscriber` directly.
    * If you have a specific use case, please file an issue.
-   *
-   * 不使用。将在 v8 中删除。这种方法没有替代品，也没有理由直接创建 `Subscriber` 的实例。如果你有特定的用例，请提出问题。
-   *
    */
   static create<T>(next?: (x?: T) => void, error?: (e?: any) => void, complete?: () => void): Subscriber<T> {
     return new SafeSubscriber(next, error, complete);
   }
 
-  /**
-   * @deprecated Internal implementation detail, do not use directly. Will be made internal in v8.
-   *
-   * 内部实现细节，请勿直接使用。将在 v8 中内部化。
-   *
-   */
+  /** @deprecated Internal implementation detail, do not use directly. Will be made internal in v8. */
   protected isStopped: boolean = false;
-  /**
-   * @deprecated Internal implementation detail, do not use directly. Will be made internal in v8.
-   *
-   * 内部实现细节，请勿直接使用。将在 v8 中内部化。
-   *
-   */
+  /** @deprecated Internal implementation detail, do not use directly. Will be made internal in v8. */
   protected destination: Subscriber<any> | Observer<any>; // this `any` is the escape hatch to erase extra type param (e.g. R)
 
   /**
    * @deprecated Internal implementation detail, do not use directly. Will be made internal in v8.
    * There is no reason to directly create an instance of Subscriber. This type is exported for typings reasons.
-   *
-   * 内部实现细节，请勿直接使用。将在 v8 中内部化。没有理由直接创建订阅者的实例。导出此类型只是出于类型的原因。
-   *
    */
   constructor(destination?: Subscriber<any> | Observer<any>) {
     super();
@@ -98,13 +65,7 @@ export class Subscriber<T> extends Subscription implements Observer<T> {
    * The {@link Observer} callback to receive notifications of type `next` from
    * the Observable, with a value. The Observable may call this method 0 or more
    * times.
-   *
-   * 这个 {@link Observer} 回调会用于接收来自 Observable 的 `next` 类型的通知，带有一个值。Observable 可能会调用此方法 0 次或多次。
-   *
    * @param {T} [value] The `next` value.
-   *
-   * `next` 值。
-   *
    * @return {void}
    */
   next(value?: T): void {
@@ -119,13 +80,7 @@ export class Subscriber<T> extends Subscription implements Observer<T> {
    * The {@link Observer} callback to receive notifications of type `error` from
    * the Observable, with an attached `Error`. Notifies the Observer that
    * the Observable has experienced an error condition.
-   *
-   * 这个 {@link Observer} 回调会从 Observable 接收类型 `error` 的通知，并附加 `Error`。通知 Observer Observable 遇到了错误情况。
-   *
    * @param {any} [err] The `error` exception.
-   *
-   * `error` 异常。
-   *
    * @return {void}
    */
   error(err?: any): void {
@@ -141,9 +96,6 @@ export class Subscriber<T> extends Subscription implements Observer<T> {
    * The {@link Observer} callback to receive a valueless notification of type
    * `complete` from the Observable. Notifies the Observer that the Observable
    * has finished sending push-based notifications.
-   *
-   * 这个 {@link Observer} 回调会从 Observable 接收类型为 `complete` 的无值通知。当此 Observable 已发送完基于推送的通知时，就会通知 Observer。
-   *
    * @return {void}
    */
   complete(): void {
@@ -184,6 +136,60 @@ export class Subscriber<T> extends Subscription implements Observer<T> {
   }
 }
 
+/**
+ * This bind is captured here because we want to be able to have
+ * compatibility with monoid libraries that tend to use a method named
+ * `bind`. In particular, a library called Monio requires this.
+ */
+const _bind = Function.prototype.bind;
+
+function bind<Fn extends (...args: any[]) => any>(fn: Fn, thisArg: any): Fn {
+  return _bind.call(fn, thisArg);
+}
+
+/**
+ * Internal optimization only, DO NOT EXPOSE.
+ * @internal
+ */
+class ConsumerObserver<T> implements Observer<T> {
+  constructor(private partialObserver: Partial<Observer<T>>) {}
+
+  next(value: T): void {
+    const { partialObserver } = this;
+    if (partialObserver.next) {
+      try {
+        partialObserver.next(value);
+      } catch (error) {
+        handleUnhandledError(error);
+      }
+    }
+  }
+
+  error(err: any): void {
+    const { partialObserver } = this;
+    if (partialObserver.error) {
+      try {
+        partialObserver.error(err);
+      } catch (error) {
+        handleUnhandledError(error);
+      }
+    } else {
+      handleUnhandledError(err);
+    }
+  }
+
+  complete(): void {
+    const { partialObserver } = this;
+    if (partialObserver.complete) {
+      try {
+        partialObserver.complete();
+      } catch (error) {
+        handleUnhandledError(error);
+      }
+    }
+  }
+}
+
 export class SafeSubscriber<T> extends Subscriber<T> {
   constructor(
     observerOrNext?: Partial<Observer<T>> | ((value: T) => void) | null,
@@ -192,18 +198,17 @@ export class SafeSubscriber<T> extends Subscriber<T> {
   ) {
     super();
 
-    let next: ((value: T) => void) | undefined;
-    if (isFunction(observerOrNext)) {
+    let partialObserver: Partial<Observer<T>>;
+    if (isFunction(observerOrNext) || !observerOrNext) {
       // The first argument is a function, not an observer. The next
       // two arguments *could* be observers, or they could be empty.
-      next = observerOrNext;
-    } else if (observerOrNext) {
-      // The first argument is an observer object, we have to pull the handlers
-      // off and capture the owner object as the context. That is because we're
-      // going to put them all in a new destination with ensured methods
-      // for `next`, `error`, and `complete`. That's part of what makes this
-      // the "Safe" Subscriber.
-      ({ next, error, complete } = observerOrNext);
+      partialObserver = {
+        next: (observerOrNext ?? undefined) as (((value: T) => void) | undefined),
+        error: error ?? undefined,
+        complete: complete ?? undefined,
+      };
+    } else {
+      // The first argument is a partial observer.
       let context: any;
       if (this && config.useDeprecatedNextContext) {
         // This is a deprecated path that made `this.unsubscribe()` available in
@@ -211,65 +216,38 @@ export class SafeSubscriber<T> extends Subscriber<T> {
         // now, as it is *very* slow.
         context = Object.create(observerOrNext);
         context.unsubscribe = () => this.unsubscribe();
+        partialObserver = {
+          next: observerOrNext.next && bind(observerOrNext.next, context),
+          error: observerOrNext.error && bind(observerOrNext.error, context),
+          complete: observerOrNext.complete && bind(observerOrNext.complete, context),
+        };
       } else {
-        context = observerOrNext;
+        // The "normal" path. Just use the partial observer directly.
+        partialObserver = observerOrNext;
       }
-      next = next?.bind(context);
-      error = error?.bind(context);
-      complete = complete?.bind(context);
     }
 
-    // Once we set the destination, the superclass `Subscriber` will
-    // do it's magic in the `_next`, `_error`, and `_complete` methods.
-    this.destination = {
-      next: next ? wrapForErrorHandling(next, this) : noop,
-      error: wrapForErrorHandling(error ?? defaultErrorHandler, this),
-      complete: complete ? wrapForErrorHandling(complete, this) : noop,
-    };
+    // Wrap the partial observer to ensure it's a full observer, and
+    // make sure proper error handling is accounted for.
+    this.destination = new ConsumerObserver(partialObserver);
+  }
+}
+
+function handleUnhandledError(error: any) {
+  if (config.useDeprecatedSynchronousErrorHandling) {
+    captureError(error);
+  } else {
+    // Ideal path, we report this as an unhandled error,
+    // which is thrown on a new call stack.
+    reportUnhandledError(error);
   }
 }
 
 /**
- * Wraps a user-provided handler (or our {@link defaultErrorHandler} in one case) to
- * ensure that any thrown errors are caught and handled appropriately.
- *
- * 包装用户所提供的处理器（这里是我们的 {@link defaultErrorHandler}）以确保捕获并正确处理抛出的任何错误。
- *
- * @param handler The handler to wrap
- *
- * 要包装的处理器
- *
- * @param instance The SafeSubscriber instance we're going to mark if there's an error.
- *
- * 如果出现错误，我们要标记的 SafeSubscriber 实例。
- *
- */
-function wrapForErrorHandling(handler: (arg?: any) => void, instance: SafeSubscriber<any>) {
-  return (...args: any[]) => {
-    try {
-      handler(...args);
-    } catch (err) {
-      if (config.useDeprecatedSynchronousErrorHandling) {
-        captureError(err);
-      } else {
-        // Ideal path, we report this as an unhandled error,
-        // which is thrown on a new call stack.
-        reportUnhandledError(err);
-      }
-    }
-  };
-}
-/**
  * An error handler used when no error handler was supplied
  * to the SafeSubscriber -- meaning no error handler was supplied
  * do the `subscribe` call on our observable.
- *
- * 当没有向 SafeSubscriber 提供错误处理器时要使用的错误处理器 —— 这意味着在我们的 observable 上进行 `subscribe` 调用时没有提供过错误处理器。
- *
  * @param err The error to handle
- *
- * 要处理的错误
- *
  */
 function defaultErrorHandler(err: any) {
   throw err;
@@ -277,17 +255,8 @@ function defaultErrorHandler(err: any) {
 
 /**
  * A handler for notifications that cannot be sent to a stopped subscriber.
- *
- * 一个处理器，用来处理无法发送给已停止订阅者的通知。
- *
  * @param notification The notification being sent
- *
- * 正在发送的通知
- *
  * @param subscriber The stopped subscriber
- *
- * 已停止的订阅者
- *
  */
 function handleStoppedNotification(notification: ObservableNotification<any>, subscriber: Subscriber<any>) {
   const { onStoppedNotification } = config;
@@ -298,9 +267,6 @@ function handleStoppedNotification(notification: ObservableNotification<any>, su
  * The observer used as a stub for subscriptions where the user did not
  * pass any arguments to `subscribe`. Comes with the default error handling
  * behavior.
- *
- * 此 Observer 用作订阅的存根（stub），其中用户没有将任何参数传给 `subscribe`。它带有默认的错误处理行为。
- *
  */
 export const EMPTY_OBSERVER: Readonly<Observer<any>> & { closed: true } = {
   closed: true,

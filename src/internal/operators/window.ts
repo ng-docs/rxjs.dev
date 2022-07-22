@@ -2,7 +2,7 @@ import { Observable } from '../Observable';
 import { OperatorFunction } from '../types';
 import { Subject } from '../Subject';
 import { operate } from '../util/lift';
-import { OperatorSubscriber } from './OperatorSubscriber';
+import { createOperatorSubscriber } from './OperatorSubscriber';
 import { noop } from '../util/noop';
 
 /**
@@ -75,7 +75,7 @@ export function window<T>(windowBoundaries: Observable<any>): OperatorFunction<T
 
     // Subscribe to our source
     source.subscribe(
-      new OperatorSubscriber(
+      createOperatorSubscriber(
         subscriber,
         (value) => windowSubject?.next(value),
         () => {
@@ -88,7 +88,7 @@ export function window<T>(windowBoundaries: Observable<any>): OperatorFunction<T
 
     // Subscribe to the window boundaries.
     windowBoundaries.subscribe(
-      new OperatorSubscriber(
+      createOperatorSubscriber(
         subscriber,
         () => {
           windowSubject.complete();

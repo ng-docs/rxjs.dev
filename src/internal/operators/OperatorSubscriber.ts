@@ -1,49 +1,55 @@
 import { Subscriber } from '../Subscriber';
 
 /**
+ * Creates an instance of an `OperatorSubscriber`.
+ * @param destination The downstream subscriber.
+ * @param onNext Handles next values, only called if this subscriber is not stopped or closed. Any
+ * error that occurs in this function is caught and sent to the `error` method of this subscriber.
+ * @param onError Handles errors from the subscription, any errors that occur in this handler are caught
+ * and send to the `destination` error handler.
+ * @param onComplete Handles completion notification from the subscription. Any errors that occur in
+ * this handler are sent to the `destination` error handler.
+ * @param onFinalize Additional teardown logic here. This will only be called on teardown if the
+ * subscriber itself is not already closed. This is called after all other teardown logic is executed.
+ */
+export function createOperatorSubscriber<T>(
+  destination: Subscriber<any>,
+  onNext?: (value: T) => void,
+  onComplete?: () => void,
+  onError?: (err: any) => void,
+  onFinalize?: () => void
+): Subscriber<T> {
+  return new OperatorSubscriber(destination, onNext, onComplete, onError, onFinalize);
+}
+
+/**
  * A generic helper for allowing operators to be created with a Subscriber and
  * use closures to capture necessary state from the operator function itself.
- *
- * 一个通用的辅助器，其目的是创建带有订阅者的操作符，并通过闭包从操作符函数本身捕获必要的状态。
- *
  */
 export class OperatorSubscriber<T> extends Subscriber<T> {
   /**
    * Creates an instance of an `OperatorSubscriber`.
-   *
-   * 创建 `OperatorSubscriber` 的实例。
-   *
    * @param destination The downstream subscriber.
-   *
-   * 下游订户。
-   *
    * @param onNext Handles next values, only called if this subscriber is not stopped or closed. Any
    * error that occurs in this function is caught and sent to the `error` method of this subscriber.
-   *
-   * 处理下一个值，仅在此订阅者未停止或关闭时调用。此函数中发生的任何错误都会被捕获并发送到此订阅者的 `error` 方法。
-   *
    * @param onError Handles errors from the subscription, any errors that occur in this handler are caught
    * and send to the `destination` error handler.
-   *
-   * 处理来自此订阅的错误，在此处理器中发生的任何错误都会被捕获并发送到 `destination` 错误处理器。
-   *
    * @param onComplete Handles completion notification from the subscription. Any errors that occur in
    * this handler are sent to the `destination` error handler.
-   *
-   * 处理来自此订阅的完成通知。此处理器中发生的任何错误都将发送到 `destination` 错误处理器。
-   *
-   * @param onFinalize Additional teardown logic here. This will only be called on teardown if the
-   * subscriber itself is not already closed. This is called after all other teardown logic is executed.
-   *
-   * 这里有额外的拆解逻辑。如果订阅者本身还没有关闭，这只会在拆解时被调用。在执行所有其它拆解逻辑之后才会调用它。
-   *
+   * @param onFinalize Additional finalization logic here. This will only be called on finalization if the
+   * subscriber itself is not already closed. This is called after all other finalization logic is executed.
+   * @param shouldUnsubscribe An optional check to see if an unsubscribe call should truly unsubscribe.
+   * NOTE: This currently **ONLY** exists to support the strange behavior of {@link groupBy}, where unsubscription
+   * to the resulting observable does not actually disconnect from the source if there are active subscriptions
+   * to any grouped observable. (DO NOT EXPOSE OR USE EXTERNALLY!!!)
    */
   constructor(
     destination: Subscriber<any>,
     onNext?: (value: T) => void,
     onComplete?: () => void,
     onError?: (err: any) => void,
-    private onFinalize?: () => void
+    private onFinalize?: () => void,
+    private shouldUnsubscribe?: () => boolean
   ) {
     // It's important - for performance reasons - that all of this class's
     // members are initialized and that they are always initialized in the same
@@ -75,7 +81,7 @@ export class OperatorSubscriber<T> extends Subscriber<T> {
             // Send any errors that occur down stream.
             destination.error(err);
           } finally {
-            // Ensure teardown.
+            // Ensure finalization.
             this.unsubscribe();
           }
         }
@@ -88,7 +94,7 @@ export class OperatorSubscriber<T> extends Subscriber<T> {
             // Send any errors that occur down stream.
             destination.error(err);
           } finally {
-            // Ensure teardown.
+            // Ensure finalization.
             this.unsubscribe();
           }
         }
@@ -96,9 +102,11 @@ export class OperatorSubscriber<T> extends Subscriber<T> {
   }
 
   unsubscribe() {
-    const { closed } = this;
-    super.unsubscribe();
-    // Execute additional teardown if we have any and we didn't already do so.
-    !closed && this.onFinalize?.();
+    if (!this.shouldUnsubscribe || this.shouldUnsubscribe()) {
+      const { closed } = this;
+      super.unsubscribe();
+      // Execute additional teardown if we have any and we didn't already do so.
+      !closed && this.onFinalize?.();
+    }
   }
 }

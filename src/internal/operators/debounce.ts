@@ -2,7 +2,7 @@ import { Subscriber } from '../Subscriber';
 import { MonoTypeOperatorFunction, ObservableInput } from '../types';
 import { operate } from '../util/lift';
 import { noop } from '../util/noop';
-import { OperatorSubscriber } from './OperatorSubscriber';
+import { createOperatorSubscriber } from './OperatorSubscriber';
 import { innerFrom } from '../observable/innerFrom';
 
 /**
@@ -102,7 +102,7 @@ export function debounce<T>(durationSelector: (value: T) => ObservableInput<any>
     };
 
     source.subscribe(
-      new OperatorSubscriber(
+      createOperatorSubscriber(
         subscriber,
         (value: T) => {
           // Cancel any pending debounce duration. We don't
@@ -113,7 +113,7 @@ export function debounce<T>(durationSelector: (value: T) => ObservableInput<any>
           lastValue = value;
           // Capture our duration subscriber, so we can unsubscribe it when we're notified
           // and we're going to emit the value.
-          durationSubscriber = new OperatorSubscriber(subscriber, emit, noop);
+          durationSubscriber = createOperatorSubscriber(subscriber, emit, noop);
           // Subscribe to the duration.
           innerFrom(durationSelector(value)).subscribe(durationSubscriber);
         },
@@ -126,7 +126,7 @@ export function debounce<T>(durationSelector: (value: T) => ObservableInput<any>
         // Pass all errors through to consumer
         undefined,
         () => {
-          // Teardown.
+          // Finalization.
           lastValue = durationSubscriber = null;
         }
       )

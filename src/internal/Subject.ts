@@ -11,55 +11,28 @@ import { errorContext } from './util/errorContext';
  * A Subject is a special type of Observable that allows values to be
  * multicasted to many Observers. Subjects are like EventEmitters.
  *
- * Subject（主体）是一种特殊类型的 Observable，它允许将一些值多播到多个 Observer。主体很像 EventEmitters。
- *
  * Every Subject is an Observable and an Observer. You can subscribe to a
  * Subject, and you can call next to feed values as well as error and complete.
- *
- * 每个 Subject 都同时是 Observable 和 Observer。你可以订阅一个主体，也你可以调用 next 来取得值，还能调用 error 和 complete。
- *
  */
 export class Subject<T> extends Observable<T> implements SubscriptionLike {
   closed = false;
-  /**
-   * @deprecated Internal implementation detail, do not use directly. Will be made internal in v8.
-   *
-   * 内部实现细节，请勿直接使用。将在 v8 中内部化。
-   *
-   */
+
+  private currentObservers: Observer<T>[] | null = null;
+
+  /** @deprecated Internal implementation detail, do not use directly. Will be made internal in v8. */
   observers: Observer<T>[] = [];
-  /**
-   * @deprecated Internal implementation detail, do not use directly. Will be made internal in v8.
-   *
-   * 内部实现细节，请勿直接使用。将在 v8 中内部化。
-   *
-   */
+  /** @deprecated Internal implementation detail, do not use directly. Will be made internal in v8. */
   isStopped = false;
-  /**
-   * @deprecated Internal implementation detail, do not use directly. Will be made internal in v8.
-   *
-   * 内部实现细节，请勿直接使用。将在 v8 中内部化。
-   *
-   */
+  /** @deprecated Internal implementation detail, do not use directly. Will be made internal in v8. */
   hasError = false;
-  /**
-   * @deprecated Internal implementation detail, do not use directly. Will be made internal in v8.
-   *
-   * 内部实现细节，请勿直接使用。将在 v8 中内部化。
-   *
-   */
+  /** @deprecated Internal implementation detail, do not use directly. Will be made internal in v8. */
   thrownError: any = null;
 
   /**
    * Creates a "subject" by basically gluing an observer to an observable.
    *
-   * 本质上是通过将 Observer 粘结到 Observable 来创建“主体”。
-   *
    * @nocollapse
    * @deprecated Recommended you do not use. Will be removed at some point in the future. Plans for replacement still under discussion.
-   *
-   * 建议你不要使用。将在将来的某个时候被删除。更换计划仍在讨论中。
-   *
    */
   static create: (...args: any[]) => any = <T>(destination: Observer<T>, source: Observable<T>): AnonymousSubject<T> => {
     return new AnonymousSubject<T>(destination, source);
@@ -70,12 +43,7 @@ export class Subject<T> extends Observable<T> implements SubscriptionLike {
     super();
   }
 
-  /**
-   * @deprecated Internal implementation detail, do not use directly. Will be made internal in v8.
-   *
-   * 内部实现细节，请勿直接使用。将在 v8 中内部化。
-   *
-   */
+  /** @deprecated Internal implementation detail, do not use directly. Will be made internal in v8. */
   lift<R>(operator: Operator<T, R>): Observable<R> {
     const subject = new AnonymousSubject(this, this);
     subject.operator = operator as any;
@@ -93,8 +61,10 @@ export class Subject<T> extends Observable<T> implements SubscriptionLike {
     errorContext(() => {
       this._throwIfClosed();
       if (!this.isStopped) {
-        const copy = this.observers.slice();
-        for (const observer of copy) {
+        if (!this.currentObservers) {
+          this.currentObservers = Array.from(this.observers);
+        }
+        for (const observer of this.currentObservers) {
           observer.next(value);
         }
       }
@@ -130,7 +100,7 @@ export class Subject<T> extends Observable<T> implements SubscriptionLike {
 
   unsubscribe() {
     this.isStopped = this.closed = true;
-    this.observers = null!;
+    this.observers = this.currentObservers = null!;
   }
 
   get observed() {
@@ -153,9 +123,15 @@ export class Subject<T> extends Observable<T> implements SubscriptionLike {
   /** @internal */
   protected _innerSubscribe(subscriber: Subscriber<any>) {
     const { hasError, isStopped, observers } = this;
-    return hasError || isStopped
-      ? EMPTY_SUBSCRIPTION
-      : (observers.push(subscriber), new Subscription(() => arrRemove(observers, subscriber)));
+    if (hasError || isStopped) {
+      return EMPTY_SUBSCRIPTION;
+    }
+    this.currentObservers = null;
+    observers.push(subscriber);
+    return new Subscription(() => {
+      this.currentObservers = null;
+      arrRemove(observers, subscriber);
+    });
   }
 
   /** @internal */
@@ -172,13 +148,7 @@ export class Subject<T> extends Observable<T> implements SubscriptionLike {
    * Creates a new Observable with this Subject as the source. You can do this
    * to create customize Observer-side logic of the Subject and conceal it from
    * code that uses the Observable.
-   *
-   * 创建一个以此 Subject 为源的新 Observable。你可以像这样创建 Subject 的自定义 Observer 端逻辑，并将其在使用 Observable 的代码中隐身。
-   *
    * @return {Observable} Observable that the Subject casts to
-   *
-   * 由主体转换成的 Observable
-   *
    */
   asObservable(): Observable<T> {
     const observable: any = new Observable<T>();

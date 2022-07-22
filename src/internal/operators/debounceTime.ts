@@ -2,7 +2,7 @@ import { asyncScheduler } from '../scheduler/async';
 import { Subscription } from '../Subscription';
 import { MonoTypeOperatorFunction, SchedulerAction, SchedulerLike } from '../types';
 import { operate } from '../util/lift';
-import { OperatorSubscriber } from './OperatorSubscriber';
+import { createOperatorSubscriber } from './OperatorSubscriber';
 
 /**
  * Emits a notification from the source Observable only after a particular time span
@@ -113,7 +113,7 @@ export function debounceTime<T>(dueTime: number, scheduler: SchedulerLike = asyn
     }
 
     source.subscribe(
-      new OperatorSubscriber(
+      createOperatorSubscriber(
         subscriber,
         (value: T) => {
           lastValue = value;
@@ -134,7 +134,7 @@ export function debounceTime<T>(dueTime: number, scheduler: SchedulerLike = asyn
         // Pass all errors through to consumer.
         undefined,
         () => {
-          // Teardown.
+          // Finalization.
           lastValue = activeTask = null;
         }
       )

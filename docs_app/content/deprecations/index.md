@@ -9,4 +9,3 @@ While the core team always tries to limit changes, sometimes we have to deprecat
 Do notice that this is not a complete list, please see the [changelog](https://github.com/ReactiveX/rxjs/blob/master/CHANGELOG.md) for the complete list.
 
 请注意，这不是一个完整的列表，要查看完整列表，请参阅[更新日志](https://github.com/ReactiveX/rxjs/blob/master/CHANGELOG.md)。
-

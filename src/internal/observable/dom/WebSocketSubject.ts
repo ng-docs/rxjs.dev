@@ -271,7 +271,7 @@ export class WebSocketSubject<T> extends AnonymousSubject<T> {
    * defined by the `subMsg` function, to the server over the socket to begin a
    * subscription to data over that socket. Once data arrives, the
    * `messageFilter` argument will be used to select the appropriate data for
-   * the resulting Observable. When teardown occurs, either due to
+   * the resulting Observable. When finalization occurs, either due to
    * unsubscription, completion, or error, a message defined by the `unsubMsg`
    * argument will be sent to the server over the WebSocketSubject.
    *
@@ -284,7 +284,7 @@ export class WebSocketSubject<T> extends AnonymousSubject<T> {
    * 生成要发送到服务器的订阅消息的函数。这仍将由 WebSocketSubject 配置中的序列化器处理。（默认为 JSON 序列化）
    *
    * @param unsubMsg A function to generate the unsubscription message to be
-   * sent to the server at teardown. This will still be processed by the
+   * sent to the server at finalization. This will still be processed by the
    * serializer in the WebSocketSubject's config.
    *
    * 生成退订消息以在拆解时发送到服务器的函数。这仍将由 WebSocketSubject 配置中的序列化器处理。
@@ -304,8 +304,8 @@ export class WebSocketSubject<T> extends AnonymousSubject<T> {
         observer.error(err);
       }
 
-      const subscription = self.subscribe(
-        (x) => {
+      const subscription = self.subscribe({
+        next: (x) => {
           try {
             if (messageFilter(x)) {
               observer.next(x);
@@ -314,9 +314,9 @@ export class WebSocketSubject<T> extends AnonymousSubject<T> {
             observer.error(err);
           }
         },
-        (err) => observer.error(err),
-        () => observer.complete()
-      );
+        error: (err) => observer.error(err),
+        complete: () => observer.complete(),
+      });
 
       return () => {
         try {

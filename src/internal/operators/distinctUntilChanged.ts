@@ -1,37 +1,42 @@
 import { MonoTypeOperatorFunction } from '../types';
 import { identity } from '../util/identity';
 import { operate } from '../util/lift';
-import { OperatorSubscriber } from './OperatorSubscriber';
+import { createOperatorSubscriber } from './OperatorSubscriber';
+
+export function distinctUntilChanged<T>(comparator?: (previous: T, current: T) => boolean): MonoTypeOperatorFunction<T>;
+export function distinctUntilChanged<T, K>(
+  comparator: (previous: K, current: K) => boolean,
+  keySelector: (value: T) => K
+): MonoTypeOperatorFunction<T>;
 
 /**
  * Returns a result {@link Observable} that emits all values pushed by the source observable if they
  * are distinct in comparison to the last value the result observable emitted.
  *
- * 返回一个结果 {@link Observable}，它会发送从源 observable 中发来的所有与结果 observable 中最近发出的值不同的值。
+ * When provided without parameters or with the first parameter (`{@link distinctUntilChanged#comparator comparator}`),
+ * it behaves like this:
  *
  * 1. It will always emit the first value from the source.
- *
- *    它将始终从源发送第一个值。
- *
  * 2. For all subsequent values pushed by the source, they will be compared to the previously emitted values
  *    using the provided `comparator` or an `===` equality check.
- *
- *    对于源推送的所有后续值，将使用所提供的 `comparator` 或 `===` 相等检查将它们与先前发送过的值进行比较。
- *
  * 3. If the value pushed by the source is determined to be unequal by this check, that value is emitted and
  *    becomes the new "previously emitted value" internally.
  *
- *    如果此检查确定与源推送的值不相等，则发送该值并在内部成为新的“先前发送的值”。
+ * When the second parameter (`{@link distinctUntilChanged#keySelector keySelector}`) is provided, the behavior
+ * changes:
+ *
+ * 1. It will always emit the first value from the source.
+ * 2. The `keySelector` will be run against all values, including the first value.
+ * 3. For all values after the first, the selected key will be compared against the key selected from
+ *    the previously emitted value using the `comparator`.
+ * 4. If the keys are determined to be unequal by this check, the value (not the key), is emitted
+ *    and the selected key from that value is saved for future comparisons against other keys.
  *
  * ## Examples
  *
- * ## 例子
- *
- * A very basic example with no `comparator`. Note that `1` is emitted more than once,
+ * A very basic example with no `{@link distinctUntilChanged#comparator comparator}`. Note that `1` is emitted more than once,
  * because it's distinct in comparison to the _previously emitted_ value,
  * not in comparison to _all other emitted values_.
- *
- * 一个没有 `comparator` 的非常基本的示例。请注意，`1` 会被多次发送，因为它与*先前发送*的值相比是不同的，而不是与*已发送过的所有其它值*相比。
  *
  * ```ts
  * import { of, distinctUntilChanged } from 'rxjs';
@@ -42,11 +47,9 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * // Logs: 1, 2, 1, 3
  * ```
  *
- * With a `comparator`, you can do custom comparisons. Let's say
+ * With a `{@link distinctUntilChanged#comparator comparator}`, you can do custom comparisons. Let's say
  * you only want to emit a value when all of its components have
  * changed:
- *
- * 使用 `comparator`，你可以进行自定义比较。假设你只想在其所有组件都已更改时才发送一个值：
  *
  * ```ts
  * import { of, distinctUntilChanged } from 'rxjs';
@@ -74,11 +77,9 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * // { engineVersion: '2.0.0', transmissionVersion: '1.5.0' }
  * ```
  *
- * You can also provide a custom `comparator` to check that emitted
+ * You can also provide a custom `{@link distinctUntilChanged#comparator comparator}` to check that emitted
  * changes are only in one direction. Let's say you only want to get
  * the next record temperature:
- *
- * 你还可以提供自定义 `comparator` 来检查已发送值的变化是否仅在一个方向上。假设你只想获得下一个值得记录的温度：
  *
  * ```ts
  * import { of, distinctUntilChanged } from 'rxjs';
@@ -97,51 +98,9 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * recordHighs$.subscribe(console.log);
  * // Logs: 30, 31, 34, 35
  * ```
- * @param comparator A function used to compare the previous and current values for
- * equality. Defaults to a `===` check.
- *
- * 用于比较先前值和当前值是否相等的函数。默认为 `===` 检查。
- *
- * @return A function that returns an Observable that emits items from the
- * source Observable with distinct values.
- *
- * 一个返回 Observable 的函数，该 Observable 会从源 Observable 发送具有不同值的条目。
- *
- */
-export function distinctUntilChanged<T>(comparator?: (previous: T, current: T) => boolean): MonoTypeOperatorFunction<T>;
-
-/**
- * Returns a result {@link Observable} that emits all values pushed by the source observable if they
- * are distinct in comparison to the last value the result observable emitted.
- *
- * 返回一个结果 {@link Observable}，如果它们与结果 observable 发送的最后一个值不同，则会发出源 observable 推送的所有值。
- *
- * 1. It will always emit the first value from the source.
- *
- *    它将始终从源发送第一个值。
- *
- * 2. The `keySelector` will be run against all values, including the first value.
- *
- *    `keySelector` 将针对所有值运行，包括第一个值。
- *
- * 3. For all values after the first, the selected key will be compared against the key selected from
- *    the previously emitted value using the `comparator`.
- *
- *    对于第一个之后的所有值，将使用比较器将所选的键与从先前发送的值中选择的键进行 `comparator`。
- *
- * 4. If the keys are determined to be unequal by this check, the value (not the key), is emitted
- *    and the selected key from that value is saved for future comparisons against other keys.
- *
- *    如果通过此检查确定键是不等的，则发送该值（而不是键），并保存从该值中选择的键，以供将来与其它键进行比较。
- *
- * ## Example
- *
- * ## 例子
  *
  * Selecting update events only when the `updatedBy` field shows
- * the account changed hands...
- *
- * 仅当 `updatedBy` 字段显示帐户易手时才选择更新事件...
+ * the account changed hands.
  *
  * ```ts
  * import { of, distinctUntilChanged } from 'rxjs';
@@ -166,26 +125,17 @@ export function distinctUntilChanged<T>(comparator?: (previous: T, current: T) =
  * // { updatedBy: 'ncjamieson', data: Array[0] }
  * // { updatedBy: 'blesh', data: Array[0] }
  * ```
+ *
+ * @see {@link distinct}
+ * @see {@link distinctUntilKeyChanged}
+ *
  * @param comparator A function used to compare the previous and current keys for
  * equality. Defaults to a `===` check.
- *
- * 用于比较前一个键和当前键是否相等的函数。默认为 `===` 检查。
- *
  * @param keySelector Used to select a key value to be passed to the `comparator`.
- *
- * 用于选择要传给 `comparator` 的键值。
  *
  * @return A function that returns an Observable that emits items from the
  * source Observable with distinct values.
- *
- * 一个返回 Observable 的函数，该 Observable 会从源 Observable 发出那些具有相异值的条目。
- *
  */
-export function distinctUntilChanged<T, K>(
-  comparator: (previous: K, current: K) => boolean,
-  keySelector: (value: T) => K
-): MonoTypeOperatorFunction<T>;
-
 export function distinctUntilChanged<T, K>(
   comparator?: (previous: K, current: K) => boolean,
   keySelector: (value: T) => K = identity as (value: T) => K
@@ -203,7 +153,7 @@ export function distinctUntilChanged<T, K>(
     let first = true;
 
     source.subscribe(
-      new OperatorSubscriber(subscriber, (value) => {
+      createOperatorSubscriber(subscriber, (value) => {
         // We always call the key selector.
         const currentKey = keySelector(value);
 

@@ -2,36 +2,26 @@ import { Subscriber } from '../Subscriber';
 import { ObservableInput, OperatorFunction } from '../types';
 import { operate } from '../util/lift';
 import { noop } from '../util/noop';
-import { OperatorSubscriber } from './OperatorSubscriber';
+import { createOperatorSubscriber } from './OperatorSubscriber';
 import { innerFrom } from '../observable/innerFrom';
 
 /**
  * Buffers the source Observable values, using a factory function of closing
  * Observables to determine when to close, emit, and reset the buffer.
  *
- * 缓冲源 Observable 值，由工厂函数 closingSelector 来确定何时关闭、发出和重置缓冲区。
- *
  * <span class="informal">Collects values from the past as an array. When it
  * starts collecting values, it calls a function that returns an Observable that
  * tells when to close the buffer and restart collecting.</span>
  *
- * <span class="informal">将已过去的值收集成数组。当它开始收集值时，就会调用一个返回 Observable 的函数，由该函数决定何时关闭缓冲区并重新开始收集。</span>
- *
- * ![](bufferWhen.png)
+ * ![](bufferWhen.svg)
  *
  * Opens a buffer immediately, then closes the buffer when the observable
  * returned by calling `closingSelector` function emits a value. When it closes
  * the buffer, it immediately opens a new buffer and repeats the process.
  *
- * 立即打开一个缓冲区，然后当 `closingSelector` 函数返回的 observable 发送一个值时关闭缓冲区。一旦关闭了缓冲区，就会立即打开一个新缓冲区并重复该过程。
- *
  * ## Example
  *
- * ## 例子
- *
  * Emit an array of the last clicks every [1-5] random seconds
- *
- * 每隔 [1-5] 秒随机发送最后一次点击的数组
  *
  * ```ts
  * import { fromEvent, bufferWhen, interval } from 'rxjs';
@@ -42,20 +32,16 @@ import { innerFrom } from '../observable/innerFrom';
  * );
  * buffered.subscribe(x => console.log(x));
  * ```
+ *
  * @see {@link buffer}
  * @see {@link bufferCount}
  * @see {@link bufferTime}
  * @see {@link bufferToggle}
  * @see {@link windowWhen}
+ *
  * @param {function(): Observable} closingSelector A function that takes no
  * arguments and returns an Observable that signals buffer closure.
- *
- * 一个不接受参数的函数，返回一个指示缓冲区关闭的 Observable。
- *
  * @return A function that returns an Observable of arrays of buffered values.
- *
- * 一个返回 Observable 的函数，该 Observable 的内容是一些由已缓冲的值构成的数组。
- *
  */
 export function bufferWhen<T>(closingSelector: () => ObservableInput<any>): OperatorFunction<T, T[]> {
   return operate((source, subscriber) => {
@@ -71,7 +57,7 @@ export function bufferWhen<T>(closingSelector: () => ObservableInput<any>): Oper
     // the current buffer  if there is one, starts a new buffer, and starts a
     // new closing notifier.
     const openBuffer = () => {
-      // Make sure to teardown the closing subscription, we only cared
+      // Make sure to finalize the closing subscription, we only cared
       // about one notification.
       closingSubscriber?.unsubscribe();
       // emit the buffer if we have one, and start a new buffer.
@@ -80,7 +66,7 @@ export function bufferWhen<T>(closingSelector: () => ObservableInput<any>): Oper
       b && subscriber.next(b);
 
       // Get a new closing notifier and subscribe to it.
-      innerFrom(closingSelector()).subscribe((closingSubscriber = new OperatorSubscriber(subscriber, openBuffer, noop)));
+      innerFrom(closingSelector()).subscribe((closingSubscriber = createOperatorSubscriber(subscriber, openBuffer, noop)));
     };
 
     // Start the first buffer.
@@ -88,7 +74,7 @@ export function bufferWhen<T>(closingSelector: () => ObservableInput<any>): Oper
 
     // Subscribe to our source.
     source.subscribe(
-      new OperatorSubscriber(
+      createOperatorSubscriber(
         subscriber,
         // Add every new value to the current buffer.
         (value) => buffer?.push(value),
@@ -100,7 +86,7 @@ export function bufferWhen<T>(closingSelector: () => ObservableInput<any>): Oper
         },
         // Pass all errors through to consumer.
         undefined,
-        // Release memory on teardown
+        // Release memory on finalization
         () => (buffer = closingSubscriber = null!)
       )
     );

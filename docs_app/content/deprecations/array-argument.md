@@ -17,6 +17,9 @@ To unify the API surface of `forkJoin` and `combineLatest` we deprecated some si
 ## 受此变更影响的操作符
 
 - [combineLatest](/api/index/function/combineLatest)
+
+  [combineLatest(组合最新的)](/api/index/function/combineLatest)
+
 - [forkJoin](/api/index/function/forkJoin)
 
 ## How to Refactor

@@ -15,50 +15,36 @@ export function shareReplay<T>(bufferSize?: number, windowTime?: number, schedul
 /**
  * Share source and replay specified number of emissions on subscription.
  *
- * 共享源并在订阅时对其产出物重放指定的次数。
- *
  * This operator is a specialization of `replay` that connects to a source observable
  * and multicasts through a `ReplaySubject` constructed with the specified arguments.
  * A successfully completed source will stay cached in the `shareReplayed observable` forever,
  * but an errored source can be retried.
  *
- * 该操作符是 `replay` 的一种特化，它会连接到源 observable 并通过以指定参数构造的 `ReplaySubject` 进行多播。成功完成的源将永远缓存在 `shareReplayed observable` 中，但可以重试错误的源。
- *
  * ## Why use shareReplay?
- *
- * ## 为什么要使用 shareReplay？
- *
  * You generally want to use `shareReplay` when you have side-effects or taxing computations
  * that you do not wish to be executed amongst multiple subscribers.
  * It may also be valuable in situations where you know you will have late subscribers to
  * a stream that need access to previously emitted values.
  * This ability to replay values on subscription is what differentiates {@link share} and `shareReplay`.
  *
- * 当你不想在多个订阅者之间多次执行有副作用或繁重的计算时，通常会希望使用 `shareReplay`。当你知道一定会有后来的订阅者需要访问先前发送的值流的情况下，它也可能很有价值。这种重播订阅结果的能力是 {@link share} 和 `shareReplay` 的区别。
- *
  * ![](shareReplay.png)
  *
  * ## Reference counting
- *
- * ## 引用计数
+ * By default `shareReplay` will use `refCount` of false, meaning that it will _not_ unsubscribe the
+ * source when the reference counter drops to zero, i.e. the inner `ReplaySubject` will _not_ be unsubscribed
+ * (and potentially run for ever).
+ * This is the default as it is expected that `shareReplay` is often used to keep around expensive to setup
+ * observables which we want to keep running instead of having to do the expensive setup again.
  *
  * As of RXJS version 6.4.0 a new overload signature was added to allow for manual control over what
  * happens when the operators internal reference counter drops to zero.
  * If `refCount` is true, the source will be unsubscribed from once the reference count drops to zero, i.e.
  * the inner `ReplaySubject` will be unsubscribed. All new subscribers will receive value emissions from a
  * new `ReplaySubject` which in turn will cause a new subscription to the source observable.
- * If `refCount` is false on the other hand, the source will not be unsubscribed meaning that the inner
- * `ReplaySubject` will still be subscribed to the source (and potentially run for ever).
- *
- * 从 RXJS 版本 6.4.0 开始，添加了一个新的重载签名，以允许手动控制操作符的内部引用计数器下降到零时会发生的情况。如果 `refCount` 为 `true`，则一旦引用计数下降到零，此源将被退订，即内部 `ReplaySubject` 将被退订。所有新订阅者都将从新的 `ReplaySubject` 接收值，这反过来将导致对源 observable 的新订阅。而如果 `refCount` 为 `false`，则不会退订源，这意味着内部 `ReplaySubject` 仍将订阅此源（并可能永远运行）。
  *
  * ## Examples
  *
- * ## 例子
- *
  * Example with a third subscriber coming late to the party
- *
- * 第三个订阅者迟到的示例
  *
  * ```ts
  * import { interval, take, shareReplay } from 'rxjs';
@@ -102,8 +88,6 @@ export function shareReplay<T>(bufferSize?: number, windowTime?: number, schedul
  * ```
  *
  * Example for `refCount` usage
- *
- * `refCount` 使用示例
  *
  * ```ts
  * import { Observable, tap, interval, shareReplay, take } from 'rxjs';
@@ -154,28 +138,18 @@ export function shareReplay<T>(bufferSize?: number, windowTime?: number, schedul
  * // source: 4
  * // ...
  * ```
+ *
  * @see {@link publish}
  * @see {@link share}
  * @see {@link publishReplay}
+ *
  * @param {Number} [bufferSize=Infinity] Maximum element count of the replay buffer.
- *
- * 重播缓冲区的最大元素数。
- *
  * @param {Number} [windowTime=Infinity] Maximum time length of the replay buffer in milliseconds.
- *
- * 重播缓冲区的最大时间长度（以毫秒为单位）。
- *
  * @param {Scheduler} [scheduler] Scheduler where connected observers within the selector function
  * will be invoked on.
- *
- * 一个调度器，用于调度选择器函数中已连接的 Observer。
- *
  * @return A function that returns an Observable sequence that contains the
  * elements of a sequence produced by multicasting the source sequence within a
  * selector function.
- *
- * 一个返回 Observable 序列的函数，该 Observable 包含通过在选择器函数中对源序列进行多播而产生的序列元素。
- *
  */
 export function shareReplay<T>(
   configOrBufferSize?: ShareReplayConfig | number,
@@ -185,12 +159,9 @@ export function shareReplay<T>(
   let bufferSize: number;
   let refCount = false;
   if (configOrBufferSize && typeof configOrBufferSize === 'object') {
-    bufferSize = configOrBufferSize.bufferSize ?? Infinity;
-    windowTime = configOrBufferSize.windowTime ?? Infinity;
-    refCount = !!configOrBufferSize.refCount;
-    scheduler = configOrBufferSize.scheduler;
+    ({ bufferSize = Infinity, windowTime = Infinity, refCount = false, scheduler } = configOrBufferSize);
   } else {
-    bufferSize = configOrBufferSize ?? Infinity;
+    bufferSize = (configOrBufferSize ?? Infinity) as number;
   }
   return share<T>({
     connector: () => new ReplaySubject(bufferSize, windowTime, scheduler),

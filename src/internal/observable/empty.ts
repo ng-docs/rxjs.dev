@@ -2,24 +2,19 @@ import { Observable } from '../Observable';
 import { SchedulerLike } from '../types';
 
 /**
- * The same Observable instance returned by any call to {@link empty} without a
- * `scheduler`. It is preferable to use this over `empty()`.
- *
- * 任何对 {@link empty} 的调用都返回相同的 Observable 实例，而无需 `scheduler`。最好在 `empty()` 上使用它。
+ * A simple Observable that emits no items to the Observer and immediately
+ * emits a complete notification.
  *
  * <span class="informal">Just emits 'complete', and nothing else.</span>
-*
- * <span class="informal">只是发出“完成”，没有别的。</span>
  *
  * ![](empty.png)
  *
+ * A simple Observable that only emits the complete notification. It can be used
+ * for composing with other Observables, such as in a {@link mergeMap}.
+ *
  * ## Examples
  *
- * ## 例子
- *
  * Log complete notification
- *
- * 记录完成通知
  *
  * ```ts
  * import { EMPTY } from 'rxjs';
@@ -32,55 +27,27 @@ import { SchedulerLike } from '../types';
  * // Outputs
  * // Complete!
  * ```
- */
-export const EMPTY = new Observable<never>((subscriber) => subscriber.complete());
-
-/**
- * Creates an Observable that emits no items to the Observer and immediately
- * emits a complete notification.
- *
- * 创建一个不向 Observer 发出任何条目并立即发出完成通知的 Observable。
- *
- * <span class="informal">Just emits 'complete', and nothing else.</span>
-*
- * <span class="informal">仅仅发出“完成”，没别的。</span>
- *
- * ![](empty.png)
- *
- * This static operator is useful for creating a simple Observable that only
- * emits the complete notification. It can be used for composing with other
- * Observables, such as in a {@link mergeMap}.
- *
- * 这个静态操作符在要创建一个只发出完成通知的简单 Observable 时很有用。它可以用于与其它 Observable 组合，例如在 {@link mergeMap} 中。
- *
- * ## Examples
- *
- * ## 例子
  *
  * Emit the number 7, then complete
  *
- * 发出数字 7，然后完成
- *
  * ```ts
- * import { empty, startWith } from 'rxjs';
+ * import { EMPTY, startWith } from 'rxjs';
  *
- * const result = empty().pipe(startWith(7));
+ * const result = EMPTY.pipe(startWith(7));
  * result.subscribe(x => console.log(x));
  *
  * // Outputs
  * // 7
  * ```
  *
- * Map and flatten only odd numbers to the sequence 'a', 'b', 'c'
- *
- * 仅将奇数映射并展平为序列“a”、“b”、“c”
+ * Map and flatten only odd numbers to the sequence `'a'`, `'b'`, `'c'`
  *
  * ```ts
- * import { interval, mergeMap, of, empty } from 'rxjs';
+ * import { interval, mergeMap, of, EMPTY } from 'rxjs';
  *
  * const interval$ = interval(1000);
  * const result = interval$.pipe(
- *   mergeMap(x => x % 2 === 1 ? of('a', 'b', 'c') : empty()),
+ *   mergeMap(x => x % 2 === 1 ? of('a', 'b', 'c') : EMPTY),
  * );
  * result.subscribe(x => console.log(x));
  *
@@ -90,24 +57,18 @@ export const EMPTY = new Observable<never>((subscriber) => subscriber.complete()
  * // if x % 2 is equal to 1, print a, b, c (each on its own)
  * // if x % 2 is not equal to 1, nothing will be output
  * ```
+ *
  * @see {@link Observable}
- * @see {@link never}
+ * @see {@link NEVER}
  * @see {@link of}
  * @see {@link throwError}
+ */
+export const EMPTY = new Observable<never>((subscriber) => subscriber.complete());
+
+/**
  * @param scheduler A {@link SchedulerLike} to use for scheduling
  * the emission of the complete notification.
- *
- * 用于调度发送完成通知的 {@link SchedulerLike}。
- *
- * @return An "empty" Observable: emits only the complete
- * notification.
- *
- * 一个“空”的 Observable：只发出完成通知。
- *
  * @deprecated Replaced with the {@link EMPTY} constant or {@link scheduled} (e.g. `scheduled([], scheduler)`). Will be removed in v8.
- *
- * 替换为 {@link EMPTY} 常量或 {@link scheduled}（例如 `scheduled([], scheduler)`）。将在 v8 中删除。
- *
  */
 export function empty(scheduler?: SchedulerLike) {
   return scheduler ? emptyScheduled(scheduler) : EMPTY;

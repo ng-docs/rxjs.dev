@@ -70,11 +70,14 @@ Other APIs that relate to multicasting are now deprecated.
 
 ### ConnectableObservable
 
+### ConnectableObservable(可连接的 Observable)
+
 Instead of creating a [ConnectableObservable](/api/index/class/ConnectableObservable) instance, call the [connectable](/api/index/function/connectable) function to obtain a connectable observable.
 
 无需创建[ConnectableObservable](/api/index/class/ConnectableObservable)实例，而是调用[可连接](/api/index/function/connectable)函数来获取可连接的 observable。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { ConnectableObservable, timer, Subject } from 'rxjs';
 
@@ -86,6 +89,7 @@ tick$.connect();
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { connectable, timer, Subject } from 'rxjs';
 
@@ -101,6 +105,7 @@ In situations in which the `refCount` method is used, the [share](/api/operators
 在使用 `refCount` 方法的情况下，可以使用[share](/api/operators/share)操作符。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { ConnectableObservable, timer, Subject } from 'rxjs';
 
@@ -112,6 +117,7 @@ const tick$ = new ConnectableObservable(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, share, Subject } from 'rxjs';
 
@@ -130,6 +136,7 @@ Where [multicast](/api/operators/multicast) is called with a subject factory, ca
 使用主体工厂调用[多播](/api/operators/multicast)的地方，可以用[connectable](/api/index/function/connectable)替换。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, multicast, Subject, ConnectableObservable } from 'rxjs';
 
@@ -140,6 +147,7 @@ const tick$ = timer(1_000).pipe(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { connectable, timer, Subject } from 'rxjs';
 
@@ -154,6 +162,7 @@ Where [multicast](/api/operators/multicast) is called with a subject instance, i
 如果使用主体实例调用[多播](/api/operators/multicast)，则可以将其替换为[可连接](/api/index/function/connectable)的和本地主体实例。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, multicast, Subject, ConnectableObservable } from 'rxjs';
 
@@ -164,6 +173,7 @@ const tick$ = timer(1_000).pipe(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { connectable, timer, Subject } from 'rxjs';
 
@@ -179,6 +189,7 @@ Where [multicast](/api/operators/multicast) is used in conjunction with [refCoun
 [多播](/api/operators/multicast)与[refCount](/api/operators/refCount)一起使用的地方，可以用[share](/api/index/function/connectable)代替。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, multicast, Subject, refCount } from 'rxjs';
 
@@ -190,6 +201,7 @@ const tick$ = timer(1_000).pipe(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, share, Subject } from 'rxjs';
 
@@ -204,6 +216,7 @@ Where [multicast](/api/operators/multicast) is used with a selector, it can be r
 在[多播](/api/operators/multicast)与选择器一起使用的情况下，它可以替换为[connect](/api/index/function/connect)。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, multicast, Subject, combineLatest } from 'rxjs';
 
@@ -217,6 +230,7 @@ const tick$ = timer(1_000).pipe(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, connect, combineLatest, Subject } from 'rxjs';
 
@@ -237,6 +251,7 @@ If you're using [publish](/api/operators/publish) to create a [ConnectableObserv
 如果你使用[publish](/api/operators/publish)创建[ConnectableObservable](/api/index/class/ConnectableObservable)，则可以使用[connectable](/api/index/function/connectable)。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, publish, ConnectableObservable } from 'rxjs';
 
@@ -247,6 +262,7 @@ const tick$ = timer(1_000).pipe(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { connectable, timer, Subject } from 'rxjs';
 
@@ -262,6 +278,7 @@ And if [refCount](/api/operators/refCount) is being applied to the result of [pu
 如果将[refCount](/api/operators/refCount)应用于[publish](/api/operators/publish)的结果，则可以使用[share](/api/operators/share)替换两者。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, publish, refCount } from 'rxjs';
 
@@ -273,6 +290,7 @@ const tick$ = timer(1_000).pipe(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, share } from 'rxjs';
 
@@ -291,6 +309,7 @@ If [publish](/api/operators/publish) is being called with a selector, you can us
 如果使用选择器调用[发布](/api/operators/publish)，则可以改用[连接](/api/operators/connect)操作符。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, publish, combineLatest } from 'rxjs';
 
@@ -301,6 +320,7 @@ const tick$ = timer(1_000).pipe(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, connect, combineLatest } from 'rxjs';
 
@@ -319,6 +339,7 @@ If you're using [publishBehavior](/api/operators/publishBehavior) to create a [C
 如果你使用[publishBehavior](/api/operators/publishBehavior)创建[ConnectableObservable](/api/index/class/ConnectableObservable)，则可以使用[connectable](/api/index/function/connectable)和[BehaviorSubject](api/index/class/BehaviorSubject)。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, publishBehavior, ConnectableObservable } from 'rxjs';
 
@@ -329,6 +350,7 @@ const tick$ = timer(1_000).pipe(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { connectable, timer, BehaviorSubject } from 'rxjs';
 
@@ -344,6 +366,7 @@ And if [refCount](/api/operators/refCount) is being applied to the result of [pu
 如果将[refCount](/api/operators/refCount)应用于[publishBehavior](/api/operators/publishBehavior)的结果，则可以使用[共享](/api/operators/share)操作符（带有[BehaviorSubject](api/index/class/BehaviorSubject)连接器）来替换两者。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, publishBehavior, refCount } from 'rxjs';
 
@@ -355,6 +378,7 @@ const tick$ = timer(1_000).pipe(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, share, BehaviorSubject } from 'rxjs';
 
@@ -378,6 +402,7 @@ If you're using [publishLast](/api/operators/publishLast) to create a [Connectab
 如果你使用[publishLast](/api/operators/publishLast)创建[ConnectableObservable](/api/index/class/ConnectableObservable)，则可以使用[connectable 和 AsyncSubject](api/index/class/AsyncSubject) [。](/api/index/function/connectable)
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, publishLast, ConnectableObservable } from 'rxjs';
 
@@ -388,6 +413,7 @@ const tick$ = timer(1_000).pipe(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { connectable, timer, AsyncSubject } from 'rxjs';
 
@@ -403,6 +429,7 @@ And if [refCount](/api/operators/refCount) is being applied to the result of [pu
 如果将[refCount](/api/operators/refCount)应用于[publishLast](/api/operators/publishLast)的结果，则可以使用[共享](/api/operators/share)操作符（带有[AsyncSubject](api/index/class/AsyncSubject)连接器）来替换两者。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, publishLast, refCount } from 'rxjs';
 
@@ -414,6 +441,7 @@ const tick$ = timer(1_000).pipe(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, share, AsyncSubject } from 'rxjs';
 
@@ -437,6 +465,7 @@ If you're using [publishReplay](/api/operators/publishReplay) to create a [Conne
 如果你使用[publishReplay](/api/operators/publishReplay)创建[ConnectableObservable](/api/index/class/ConnectableObservable)，则可以使用[connectable 和 ReplaySubject](api/index/class/ReplaySubject) [。](/api/index/function/connectable)
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, publishReplay, ConnectableObservable } from 'rxjs';
 
@@ -447,6 +476,7 @@ const tick$ = timer(1_000).pipe(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { connectable, timer, ReplaySubject } from 'rxjs';
 
@@ -462,6 +492,7 @@ And if [refCount](/api/operators/refCount) is being applied to the result of [pu
 如果将[refCount](/api/operators/refCount)应用于[publishReplay](/api/operators/publishReplay)的结果，你可以使用[共享](/api/operators/share)操作符（带有[ReplaySubject](api/index/class/ReplaySubject)连接器）来替换两者。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, publishReplay, refCount } from 'rxjs';
 
@@ -473,6 +504,7 @@ const tick$ = timer(1_000).pipe(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, share, ReplaySubject } from 'rxjs';
 
@@ -492,6 +524,7 @@ If [publishReplay](/api/operators/publishReplay) is being called with a selector
 如果使用选择器调用[publishReplay](/api/operators/publishReplay)，则可以使用[连接](/api/operators/connect)操作符 - 带有[ReplaySubject](api/index/class/ReplaySubject)连接器 - 代替。
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, publishReplay, combineLatest } from 'rxjs';
 
@@ -502,6 +535,7 @@ const tick$ = timer(1_000).pipe(
 ```
 
 <!-- prettier-ignore -->
+
 ```ts
 import { timer, connect, combineLatest, ReplaySubject } from 'rxjs';
 

@@ -78,7 +78,7 @@ For the `of` creation function you need to this Observable with `scheduled` and 
 import { of, asyncScheduler, scheduled } from 'rxjs';
 
 // Deprecated approach
-of([1, 2, 3], asyncScheduler).subscribe((x) => console.log(x));
+of(1, 2, 3, asyncScheduler).subscribe((x) => console.log(x));
 // suggested approach
 scheduled([1, 2, 3], asyncScheduler).subscribe((x) => console.log(x));
 ```

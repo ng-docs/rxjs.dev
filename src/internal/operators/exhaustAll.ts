@@ -1,8 +1,6 @@
-import { Subscription } from '../Subscription';
 import { OperatorFunction, ObservableInput, ObservedValueOf } from '../types';
-import { operate } from '../util/lift';
-import { innerFrom } from '../observable/innerFrom';
-import { OperatorSubscriber } from './OperatorSubscriber';
+import { exhaustMap } from './exhaustMap';
+import { identity } from '../util/identity';
 
 /**
  * Converts a higher-order Observable into a first-order Observable by dropping
@@ -60,27 +58,5 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  *
  */
 export function exhaustAll<O extends ObservableInput<any>>(): OperatorFunction<O, ObservedValueOf<O>> {
-  return operate((source, subscriber) => {
-    let isComplete = false;
-    let innerSub: Subscription | null = null;
-    source.subscribe(
-      new OperatorSubscriber(
-        subscriber,
-        (inner) => {
-          if (!innerSub) {
-            innerSub = innerFrom(inner).subscribe(
-              new OperatorSubscriber(subscriber, undefined, () => {
-                innerSub = null;
-                isComplete && subscriber.complete();
-              })
-            );
-          }
-        },
-        () => {
-          isComplete = true;
-          !innerSub && subscriber.complete();
-        }
-      )
-    );
-  });
+  return exhaustMap(identity);
 }

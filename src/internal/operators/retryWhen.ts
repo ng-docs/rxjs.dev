@@ -4,7 +4,7 @@ import { Subscription } from '../Subscription';
 
 import { MonoTypeOperatorFunction } from '../types';
 import { operate } from '../util/lift';
-import { OperatorSubscriber } from './OperatorSubscriber';
+import { createOperatorSubscriber } from './OperatorSubscriber';
 
 /**
  * Returns an Observable that mirrors the source Observable with the exception of an `error`. If the source Observable
@@ -12,17 +12,11 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * If that Observable calls `complete` or `error` then this method will call `complete` or `error` on the child
  * subscription. Otherwise this method will resubscribe to the source Observable.
  *
- * 返回一个镜像源 Observable 的 Observable，但 `error` 除外。如果源 Observable 调用了 `error`，该方法会将导致错误的 Throwable 发送到从 `notifier` 返回的通知 Observable。如果通知 Observable 调用了 `complete` 或 `error`，则此方法将在子订阅上调用 `complete` 或 `error`。否则此方法将重新订阅源 Observable。
- *
  * ![](retryWhen.png)
  *
  * Retry an observable sequence on error based on custom criteria.
  *
- * 在出错时根据自定义标准重试 Observable 序列。
- *
  * ## Example
- *
- * ## 例子
  *
  * ```ts
  * import { interval, map, retryWhen, tap, delayWhen, timer } from 'rxjs';
@@ -58,17 +52,14 @@ import { OperatorSubscriber } from './OperatorSubscriber';
  * // 'Value 6 was too high!'
  * // - Wait 5 seconds then repeat
  * ```
+ *
  * @see {@link retry}
+ *
  * @param {function(errors: Observable): Observable} notifier - Receives an Observable of notifications with which a
- *   user can `complete` or `error`, aborting the retry.
- *
- *   接收一个 Observable 通知，用户可以使用这些通知 `complete` 或 `error`，来中止重试。
- *
+ * user can `complete` or `error`, aborting the retry.
  * @return A function that returns an Observable that mirrors the source
  * Observable with the exception of an `error`.
- *
- * 一个返回 Observable 的函数，该 Observable 会镜像源 Observable，但不会镜像 `error`。
- *
+ * @deprecated Will be removed in v9 or v10, use {@link retry}'s `delay` option instead.
  */
 export function retryWhen<T>(notifier: (errors: Observable<any>) => Observable<any>): MonoTypeOperatorFunction<T> {
   return operate((source, subscriber) => {
@@ -78,15 +69,15 @@ export function retryWhen<T>(notifier: (errors: Observable<any>) => Observable<a
 
     const subscribeForRetryWhen = () => {
       innerSub = source.subscribe(
-        new OperatorSubscriber(subscriber, undefined, undefined, (err) => {
+        createOperatorSubscriber(subscriber, undefined, undefined, (err) => {
           if (!errors$) {
             errors$ = new Subject();
             notifier(errors$).subscribe(
-              new OperatorSubscriber(subscriber, () =>
+              createOperatorSubscriber(subscriber, () =>
                 // If we have an innerSub, this was an asynchronous call, kick off the retry.
                 // Otherwise, if we don't have an innerSub yet, that's because the inner subscription
                 // call hasn't even returned yet. We've arrived here synchronously.
-                // So we flag that we want to resub, such that we can ensure teardown
+                // So we flag that we want to resub, such that we can ensure finalization
                 // happens before we resubscribe.
                 innerSub ? subscribeForRetryWhen() : (syncResub = true)
               )

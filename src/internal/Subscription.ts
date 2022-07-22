@@ -8,14 +8,10 @@ import { arrRemove } from './util/arrRemove';
  * Subscription has one important method, `unsubscribe`, that takes no argument
  * and just disposes the resource held by the subscription.
  *
- * 表示一种可释放资源，例如 Observable 的执行。订阅有一个重要的方法 `unsubscribe`，它不接受任何参数，只会释放此订阅持有的资源。
- *
  * Additionally, subscriptions may be grouped together through the `add()`
  * method, which will attach a child Subscription to the current Subscription.
  * When a Subscription is unsubscribed, all its children (and its grandchildren)
  * will be unsubscribed as well.
- *
- * 此外，订阅可以通过 `add()` 方法组合在一起，该方法会将子订阅附加到当前订阅。当某个订阅被退订时，它的所有子订阅（以及孙子订阅）也将被退订。
  *
  * @class Subscription
  */
@@ -29,29 +25,20 @@ export class Subscription implements SubscriptionLike {
 
   /**
    * A flag to indicate whether this Subscription has already been unsubscribed.
-   *
-   * 指示此订阅是否已退订的标志。
-   *
    */
   public closed = false;
 
   private _parentage: Subscription[] | Subscription | null = null;
 
   /**
-   * The list of registered teardowns to execute upon unsubscription. Adding and removing from this
+   * The list of registered finalizers to execute upon unsubscription. Adding and removing from this
    * list occurs in the {@link #add} and {@link #remove} methods.
-   *
-   * 在退订时要执行的已注册拆解列表。使用 {@link #add} 和 {@link #remove} 方法在此列表中进行添加和删除。
-   *
    */
-  private _teardowns: Exclude<TeardownLogic, void>[] | null = null;
+  private _finalizers: Exclude<TeardownLogic, void>[] | null = null;
 
   /**
-   * @param initialTeardown A function executed first as part of the teardown
+   * @param initialTeardown A function executed first as part of the finalization
    * process that is kicked off when {@link #unsubscribe} is called.
-   *
-   * 在调用 {@link #unsubscribe} 时率先启动的、作为拆解过程的一部分首先执行的函数。
-   *
    */
   constructor(private initialTeardown?: () => void) {}
 
@@ -59,9 +46,6 @@ export class Subscription implements SubscriptionLike {
    * Disposes the resources held by the subscription. May, for instance, cancel
    * an ongoing Observable execution or cancel any other type of work that
    * started when the Subscription was created.
-   *
-   * 释放订此阅持有的资源。例如，可以取消正在进行的 Observable 执行过程或取消在创建订阅时开始的任何其它类型的工作。
-   *
    * @return {void}
    */
   unsubscribe(): void {
@@ -83,21 +67,21 @@ export class Subscription implements SubscriptionLike {
         }
       }
 
-      const { initialTeardown } = this;
-      if (isFunction(initialTeardown)) {
+      const { initialTeardown: initialFinalizer } = this;
+      if (isFunction(initialFinalizer)) {
         try {
-          initialTeardown();
+          initialFinalizer();
         } catch (e) {
           errors = e instanceof UnsubscriptionError ? e.errors : [e];
         }
       }
 
-      const { _teardowns } = this;
-      if (_teardowns) {
-        this._teardowns = null;
-        for (const teardown of _teardowns) {
+      const { _finalizers } = this;
+      if (_finalizers) {
+        this._finalizers = null;
+        for (const finalizer of _finalizers) {
           try {
-            execTeardown(teardown);
+            execFinalizer(finalizer);
           } catch (err) {
             errors = errors ?? [];
             if (err instanceof UnsubscriptionError) {
@@ -116,42 +100,31 @@ export class Subscription implements SubscriptionLike {
   }
 
   /**
-   * Adds a teardown to this subscription, so that teardown will be unsubscribed/called
+   * Adds a finalizer to this subscription, so that finalization will be unsubscribed/called
    * when this subscription is unsubscribed. If this subscription is already {@link #closed},
-   * because it has already been unsubscribed, then whatever teardown is passed to it
-   * will automatically be executed (unless the teardown itself is also a closed subscription).
+   * because it has already been unsubscribed, then whatever finalizer is passed to it
+   * will automatically be executed (unless the finalizer itself is also a closed subscription).
    *
-   * 向此订阅添加拆解逻辑，以便在退订此订阅时退订/调用这些拆解。如果这个订阅已经因为退订而被 {@link #closed}，那么任何传给它的拆解都会自动执行（除非拆解本身也是一个已关闭的订阅）。
-   *
-   * Closed Subscriptions cannot be added as teardowns to any subscription. Adding a closed
+   * Closed Subscriptions cannot be added as finalizers to any subscription. Adding a closed
    * subscription to a any subscription will result in no operation. (A noop).
-   *
-   * 已关闭的订阅不能作为拆解逻辑添加到任何订阅。将已关闭的订阅添加到任何订阅都不会导致任何操作。（相当于 noop）。
    *
    * Adding a subscription to itself, or adding `null` or `undefined` will not perform any
    * operation at all. (A noop).
-   *
-   * 对自身添加订阅，或者添加 `null` 或 `undefined`，它们根本不会执行任何操作。（相当于 noop）。
    *
    * `Subscription` instances that are added to this instance will automatically remove themselves
    * if they are unsubscribed. Functions and {@link Unsubscribable} objects that you wish to remove
    * will need to be removed manually with {@link #remove}
    *
-   * 添加到此实例的 `Subscription` 实例在退订后将自动删除。你要删除的函数和 {@link Unsubscribable} 对象需要使用 {@link #remove} 手动删除
-   *
-   * @param teardown The teardown logic to add to this subscription.
-   *
-   * 要添加到此订阅的拆解逻辑。
-   *
+   * @param teardown The finalization logic to add to this subscription.
    */
   add(teardown: TeardownLogic): void {
-    // Only add the teardown if it's not undefined
+    // Only add the finalizer if it's not undefined
     // and don't add a subscription to itself.
     if (teardown && teardown !== this) {
       if (this.closed) {
         // If this subscription is already closed,
-        // execute whatever teardown is handed to it automatically.
-        execTeardown(teardown);
+        // execute whatever finalizer is handed to it automatically.
+        execFinalizer(teardown);
       } else {
         if (teardown instanceof Subscription) {
           // We don't add closed subscriptions, and we don't add the same subscription
@@ -161,7 +134,7 @@ export class Subscription implements SubscriptionLike {
           }
           teardown._addParent(this);
         }
-        (this._teardowns = this._teardowns ?? []).push(teardown);
+        (this._finalizers = this._finalizers ?? []).push(teardown);
       }
     }
   }
@@ -169,13 +142,7 @@ export class Subscription implements SubscriptionLike {
   /**
    * Checks to see if a this subscription already has a particular parent.
    * This will signal that this subscription has already been added to the parent in question.
-   *
-   * 检查此订阅是否已经有一个特定的父级。这将表明此订阅已添加到相关父级。
-   *
    * @param parent the parent to check for
-   *
-   * 要检查的父级
-   *
    */
   private _hasParent(parent: Subscription) {
     const { _parentage } = this;
@@ -186,16 +153,8 @@ export class Subscription implements SubscriptionLike {
    * Adds a parent to this subscription so it can be removed from the parent if it
    * unsubscribes on it's own.
    *
-   * 将父级添加到此订阅，以便可以在它自己退订时从父级中删除它。
-   *
    * NOTE: THIS ASSUMES THAT {@link _hasParent} HAS ALREADY BEEN CHECKED.
-   *
-   * 注意：这里假设 {@link _hasParent} 已经被检查过。
-   *
    * @param parent The parent subscription to add
-   *
-   * 要添加的父订阅
-   *
    */
   private _addParent(parent: Subscription) {
     const { _parentage } = this;
@@ -204,13 +163,7 @@ export class Subscription implements SubscriptionLike {
 
   /**
    * Called on a child when it is removed via {@link #remove}.
-   *
-   * 要在子级上通过 {@link #remove} 删除它时调用。
-   *
    * @param parent The parent to remove
-   *
-   * 要删除的父级
-   *
    */
   private _removeParent(parent: Subscription) {
     const { _parentage } = this;
@@ -222,33 +175,22 @@ export class Subscription implements SubscriptionLike {
   }
 
   /**
-   * Removes a teardown from this subscription that was previously added with the {@link #add} method.
-   *
-   * 从此订阅中删除先前使用 {@link #add} 方法添加的拆解逻辑。
+   * Removes a finalizer from this subscription that was previously added with the {@link #add} method.
    *
    * Note that `Subscription` instances, when unsubscribed, will automatically remove themselves
    * from every other `Subscription` they have been added to. This means that using the `remove` method
    * is not a common thing and should be used thoughtfully.
    *
-   * 请注意，`Subscription` 实例在退订时会自动从它们添加到的所有其它 `Subscription` 中删除。这意味着使用 `remove` 方法并不是一件常见的事情，应该慎重使用。
-   *
-   * If you add the same teardown instance of a function or an unsubscribable object to a `Subcription` instance
+   * If you add the same finalizer instance of a function or an unsubscribable object to a `Subcription` instance
    * more than once, you will need to call `remove` the same number of times to remove all instances.
    *
-   * 如果你多次向 `Subcription` 实例添加函数或不可订阅对象的同一个拆解实例，则需要调用相同次数的 `remove` 来删除所有实例。
+   * All finalizer instances are removed to free up memory upon unsubscription.
    *
-   * All teardown instances are removed to free up memory upon unsubscription.
-   *
-   * 退订时将删除所有拆解实例以释放内存。
-   *
-   * @param teardown The teardown to remove from this subscription
-   *
-   * 要从此订阅中删除的拆解
-   *
+   * @param teardown The finalizer to remove from this subscription
    */
   remove(teardown: Exclude<TeardownLogic, void>): void {
-    const { _teardowns } = this;
-    _teardowns && arrRemove(_teardowns, teardown);
+    const { _finalizers } = this;
+    _finalizers && arrRemove(_finalizers, teardown);
 
     if (teardown instanceof Subscription) {
       teardown._removeParent(this);
@@ -265,10 +207,10 @@ export function isSubscription(value: any): value is Subscription {
   );
 }
 
-function execTeardown(teardown: Unsubscribable | (() => void)) {
-  if (isFunction(teardown)) {
-    teardown();
+function execFinalizer(finalizer: Unsubscribable | (() => void)) {
+  if (isFunction(finalizer)) {
+    finalizer();
   } else {
-    teardown.unsubscribe();
+    finalizer.unsubscribe();
   }
 }

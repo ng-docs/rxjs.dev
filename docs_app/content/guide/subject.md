@@ -464,7 +464,7 @@ Passing a dummy value this way is clumsy and can confuse users.
 
 By declaring a _void subject_, you signal that the value is irrelevant. Only the event itself matters.
 
-通过声明一个 _void 主体_，你可以表明该值是无所谓的。只有事件本身才重要。
+通过声明一个 _void 主体 _，你可以表明该值是无所谓的。只有事件本身才重要。
 
 ```ts
 const subject = new Subject<void>();

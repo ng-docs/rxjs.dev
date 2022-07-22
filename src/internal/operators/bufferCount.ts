@@ -1,6 +1,6 @@
 import { OperatorFunction } from '../types';
 import { operate } from '../util/lift';
-import { OperatorSubscriber } from './OperatorSubscriber';
+import { createOperatorSubscriber } from './OperatorSubscriber';
 import { arrRemove } from '../util/arrRemove';
 
 /**
@@ -83,7 +83,7 @@ export function bufferCount<T>(bufferSize: number, startBufferEvery: number | nu
     let count = 0;
 
     source.subscribe(
-      new OperatorSubscriber(
+      createOperatorSubscriber(
         subscriber,
         (value) => {
           let toEmit: T[][] | null = null;
@@ -130,7 +130,7 @@ export function bufferCount<T>(bufferSize: number, startBufferEvery: number | nu
         // Pass all errors through to consumer.
         undefined,
         () => {
-          // Clean up our memory when we teardown
+          // Clean up our memory when we finalize
           buffers = null!;
         }
       )

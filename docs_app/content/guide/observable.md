@@ -6,13 +6,13 @@ Observables are lazy Push collections of multiple values. They fill the missing 
 
 Observable 是个多值的惰性 Push 集合。他们填补了下表中的缺失点：
 
-|          | Single                                                                                                | Multiple                                                                                            |
-| -------- | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-|          | 单值                                                                                                  | 多值                                                                                                |
-| **Pull** | [`Function`](https://developer.mozilla.org/en-US/docs/Glossary/Function)                              | [`Iterator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) |
-| **拉**   | [`Function`](https://developer.mozilla.org/en-US/docs/Glossary/Function)                              | [`Iterator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) |
-| **Push** | [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) | [`Observable`](/api/index/class/Observable)                                                         |
-| **推**   | [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) | [`Observable`](/api/index/class/Observable)                                                         |
+|  | Single | Multiple |
+| --- | ------ | -------- |
+|  | 单值 | 多值 |
+| **Pull** | [`Function`](https://developer.mozilla.org/en-US/docs/Glossary/Function) | [`Iterator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) |
+| **拉** | [`Function`](https://developer.mozilla.org/en-US/docs/Glossary/Function) | [`Iterator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) |
+| **Push** | [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) | [`Observable`](/api/index/class/Observable) |
+| **推** | [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) | [`Observable`](/api/index/class/Observable) |
 
 **Example.** The following is an Observable that pushes the values `1`, `2`, `3` immediately (synchronously) when subscribed, and the value `4` after one second has passed since the subscribe call, then completes:
 
@@ -98,13 +98,13 @@ ES2015 introduced [generator functions and iterators](https://developer.mozilla.
 
 ES2015 引入了[生成器函数和迭代器](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*)（`function*`），它是另一种类型的拉取体系。调用 `iterator.next()` 的代码是消费者，它从迭代器（生产者）“拉取”出*多个*值。
 
-|          | Producer                                   | Consumer                                    |
-| -------- | ------------------------------------------ | ------------------------------------------- |
-|          | 生产者                                     | 消费者                                      |
+|  | Producer | Consumer |
+| --- | -------- | -------- |
+|  | 生产者 | 消费者 |
 | **Pull** | **Passive:** produces data when requested. | **Active:** decides when data is requested. |
-| **拉取** | **被动：**在请求时产生数据。               | **主动：**决定何时请求数据。                |
-| **Push** | **Active:** produces data at its own pace. | **Passive:** reacts to received data.       |
-| **推送** | **主动：**按照自己的节奏生成数据。         | **被动：**对接收到的数据做出响应。          |
+| **拉取** | **被动：**在请求时产生数据。 | **主动：**决定何时请求数据。 |
+| **Push** | **Active:** produces data at its own pace. | **Passive:** reacts to received data. |
+| **推送** | **主动：**按照自己的节奏生成数据。 | **被动：**对接收到的数据做出响应。 |
 
 **What is Push?** In Push systems, the Producer determines when to send data to the Consumer. The Consumer is unaware of when it will receive that data.
 
@@ -359,11 +359,11 @@ Conclusion:
 
 - `func.call()` means "_give me one value synchronously_"
 
-  `func.call()` 意思是“_同步给我一个值_”
+  `func.call()` 意思是“_ 同步给我一个值 _”
 
 - `observable.subscribe()` means "_give me any amount of values, either synchronously or asynchronously_"
 
-  `observable.subscribe()` 的意思是“_给我任意数量的值，无论是同步的还是异步的_”
+  `observable.subscribe()` 的意思是“_ 给我任意数量的值，无论是同步的还是异步的 _”
 
 ## Anatomy of an Observable
 
