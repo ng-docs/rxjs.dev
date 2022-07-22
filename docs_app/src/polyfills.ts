@@ -18,29 +18,13 @@
  * BROWSER POLYFILLS
  */
 
-/**
- * INTERNET EXPLORER
- *
- * All the Internet Explorer polyfills are defined separately, in the `ie-polyfills.js` file.
- * They are also built separately from the main app, via the `yarn build-ie-polyfills` task.
- * The output of this build is conditionally loaded (only if we are running IE) in the browser,
- * and executed before the rest of the application files are executed.
- */
-
 /** HACK: force import of environment.ts/environment.prod.ts to load env specific polyfills */
 import './environments/environment';
-
-/** ALL Firefox browsers require the following to support `@angular/animation`. **/
-// import 'web-animations-js';  // Run `npm install --save web-animations-js`.
-
-
 
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
  */
 import 'zone.js';  // Included with Angular CLI.
-
-
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
