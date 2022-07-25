@@ -20,8 +20,8 @@ module.exports = function h1CheckerPostProcessor() {
       }
     });
 
-    file.title = file.headings.h1[0];
-    if (file.headings.h1.length > 1) {
+    file.title = file.headings.h1[1] || file.headings.h1[0];
+    if (file.headings.h1.length > 2) {
       file.fail(`More than one h1 found in ${file}`);
     }
   };
