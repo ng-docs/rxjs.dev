@@ -145,7 +145,7 @@ Below you can see the anatomy of a marble diagram.
 
 你可以在下面看到弹珠图的解析。
 
-<img src="assets/images/guide/marble-diagram-anatomy.svg">
+<img src="assets/images/guide/marble-diagram-anatomy-cn.svg">
 
 Throughout this documentation site, we extensively use marble diagrams to explain how operators work. They may be really useful in other contexts too, like on a whiteboard or even in our unit tests (as ASCII diagrams).
 
