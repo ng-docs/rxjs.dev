@@ -40,9 +40,10 @@ export class PrettyPrinter {
    * @param {string} code - the code snippet to format; should already be HTML encoded
    * @param {string} [language] - The language of the code to render (could be javascript, html, typescript, etc)
    * @param {string|number} [linenums] - Whether to display line numbers:
-   *  - false: don't display
-   *  - true: do display
-   *  - number: do display but start at the given number
+   * - false: don't display
+   * - true: do display
+   * - number: do display but start at the given number
+   *
    * @returns Observable<string> - Observable of formatted code
    */
   formatCode(code: string, language?: string, linenums?: number | boolean) {

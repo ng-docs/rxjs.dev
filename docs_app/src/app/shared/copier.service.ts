@@ -6,6 +6,7 @@ import { Injectable } from "@angular/core";
  * - https://github.com/zenorocha/clipboard.js/
  *
  * Both released under MIT license - © Zeno Rocha
+ *
  */
 
 

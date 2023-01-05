@@ -38,6 +38,8 @@ A contract where a [consumer](#consumer) is [observing](#observation) values pus
 
 ### Observable
 
+### Observable(可观察者)
+
 The primary type in RxJS. At its highest level, an observable represents a template for connecting an [Observer](#observer), as a [consumer](#consumer), to a [producer](#producer), via a [subscribe](#subscribe) action, resulting in a [subscription](#subscription).
 
 ### Observer

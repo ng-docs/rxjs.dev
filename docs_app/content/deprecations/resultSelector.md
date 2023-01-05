@@ -65,7 +65,6 @@ Instead of using the `resultSelector` Argument, you can leverage the [`map`](/ap
 你可以在内部 Observable 上利用 [`map`](/api/operators/map) 操作符，而不再使用 `resultSelector` 参数：
 
 <!-- prettier-ignore -->
-
 ```ts
 import { fromEvent, switchMap, interval, map } from 'rxjs';
 

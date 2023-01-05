@@ -21,4 +21,3 @@ export class MockLocationService {
     return url.replace(/^\/+/, '').replace(/\/+(\?|#|$)/, '$1');
   }
 }
-

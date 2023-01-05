@@ -76,15 +76,15 @@ ending with `With`). Those are:
 
 虽然没有从 `'rxjs/operators'` 中删除过任何内容，但强烈建议从 `'rxjs'` 中导入操作符。几乎所有操作符函数的导出都已移至 `'rxjs'`，但只有几个旧的和已弃用的操作符保留在 `'rxjs/operators'` 中。这些操作符函数现在大多已被弃用，其中大多数已替换为静态操作符或仍然是操作符，但有了一个新名字，因此它们与其对应的静态创建函数不同（通常以 `With` 结尾）。即：
 
-| `'rxjs/operators'` Operator | Replace With Static Creation Operator | Replace With New Operator Name |
-| --------------------------- | ------------------------------------- | ------------------------------ |
-| `'rxjs/operators'` 操作符 | 替换为静态创建操作符 | 替换为新的操作符名称 |
-| [`combineLatest`](/api/operators/combineLatest) | {@link combineLatest} | {@link combineLatestWith} |
-| [`concat`](/api/operators/concat) | {@link concat} | {@link concatWith} |
-| [`merge`](/api/operators/merge) | {@link merge} | {@link mergeWith} |
-| [`onErrorResumeNext`](/api/operators/onErrorResumeNext) | {@link onErrorResumeNext} | {@link onErrorResumeNextWith} | 
-| [`race`](/api/operators/race) | {@link race} | {@link raceWith} |
-| [`zip`](/api/operators/zip) | {@link zip} | {@link zipWith} |
+| `'rxjs/operators'` Operator                             | Replace With Static Creation Operator | Replace With New Operator Name |
+| ------------------------------------------------------- | ------------------------------------- | ------------------------------ |
+| `'rxjs/operators'` 操作符                               | 替换为静态创建操作符                  | 替换为新的操作符名称           |
+| [`combineLatest`](/api/operators/combineLatest)         | {@link combineLatest}                 | {@link combineLatestWith}      |
+| [`concat`](/api/operators/concat)                       | {@link concat}                        | {@link concatWith}             |
+| [`merge`](/api/operators/merge)                         | {@link merge}                         | {@link mergeWith}              |
+| [`onErrorResumeNext`](/api/operators/onErrorResumeNext) | {@link onErrorResumeNext}             | {@link onErrorResumeNextWith}  |
+| [`race`](/api/operators/race)                           | {@link race}                          | {@link raceWith}               |
+| [`zip`](/api/operators/zip)                             | {@link zip}                           | {@link zipWith}                |
 
 `partition`, the operator, is a special case, as it is deprecated and you should be using the `partition` creation function exported from `'rxjs'` instead.
 

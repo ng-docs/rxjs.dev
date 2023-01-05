@@ -126,4 +126,3 @@ function isOriginalText(heading: HTMLHeadingElement): boolean {
   }
   return false;
 }
-

@@ -31,8 +31,8 @@ const DEFAULT_LINE_NUMS_COUNT = 10;
  * </aio-code>
  * ```
  *
- *
  * Renders code provided through the `updateCode` method.
+ *
  */
 @Component({
   selector: 'aio-code',
@@ -84,9 +84,11 @@ export class CodeComponent implements OnChanges {
 
   /**
    * Whether to display line numbers:
-   *  - If false: hide
-   *  - If true: show
-   *  - If number: show but start at that number
+   *
+   * - If false: hide
+   * - If true: show
+   * - If number: show but start at that number
+   *
    */
   @Input() linenums: boolean | number | string;
 

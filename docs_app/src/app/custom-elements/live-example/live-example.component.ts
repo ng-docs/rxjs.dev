@@ -25,6 +25,7 @@ const ZIP_BASE = CONTENT_URL_PREFIX + 'zips/';
  *        text              // higher precedence way to specify text for live example link and tooltip
  *  </live-example>
  * Example:
+ *
  *   <p>Run <live-example>Try the live example</live-example></p>.
  *   // ~/resources/live-examples/{page}/stackblitz.json
  *
@@ -33,6 +34,7 @@ const ZIP_BASE = CONTENT_URL_PREFIX + 'zips/';
  *
  *   // Link to the default stackblitz in the toh-pt1 sample
  *   // The title overrides default ("live example") with "Tour of Heroes - Part 1"
+ *
  *   <p>Run <live-example name="toh-pt1" title="Tour of Heroes - Part 1"></live-example></p>.
  *   // ~/resources/live-examples/toh-pt1/stackblitz.json
  *
@@ -48,6 +50,7 @@ const ZIP_BASE = CONTENT_URL_PREFIX + 'zips/';
  *   // Displays within the document page as an embedded style stackblitz editor
  *   <live-example name="toh-pt1" embedded stackblitz="minimal">Tour of Heroes - Part 1</live-example>
  *   // ~/resources/live-examples/toh-pt1/minimal.stackblitz.json
+ *
  */
 @Component({
   selector: 'live-example',

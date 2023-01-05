@@ -11,6 +11,6 @@ nt translate content/navigation.json --engine=dict --dict ./tools/translator/dic
 
 cd ..
 # 源码
-nt translate 'packages/**/*.ts' '!packages/**/*.d.ts' '!packages/**/*_spec.ts' '!packages/**/*.spec.ts' -et internal -et nodoc --engine=dict --dict ./tools/translator/dict/rxjs
+nt translate 'src/**/*.ts' '!src/**/*.d.ts' '!src/**/*_spec.ts' '!src/**/*.spec.ts' -et internal -et nodoc --engine=dict --dict ./tools/translator/dict/rxjs
 
 cd -

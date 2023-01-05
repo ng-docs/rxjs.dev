@@ -22,6 +22,8 @@ To unify the API surface of `forkJoin` and `combineLatest` we deprecated some si
 
 - [forkJoin](/api/index/function/forkJoin)
 
+  [forkJoin（分叉合并）](/api/index/function/forkJoin)
+
 ## How to Refactor
 
 ## 如何重构
@@ -41,5 +43,5 @@ forkJoin(odd$, even$);
 // suggested change
 forkJoin([odd$, even$]);
 // or
-forkJoin({odd: odd$, even: even$})
+forkJoin({ odd: odd$, even: even$ });
 ```
