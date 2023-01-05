@@ -1,10 +1,11 @@
 import { Observable } from '../Observable';
-import { MonoTypeOperatorFunction } from '../types';
+import { MonoTypeOperatorFunction, ObservableInput } from '../types';
 import { concat } from '../observable/concat';
 import { take } from './take';
 import { ignoreElements } from './ignoreElements';
 import { mapTo } from './mapTo';
 import { mergeMap } from './mergeMap';
+import { innerFrom } from '../observable/innerFrom';
 
 /**
  * @deprecated The `subscriptionDelay` parameter will be removed in v8.
@@ -13,10 +14,10 @@ import { mergeMap } from './mergeMap';
  *
  */
 export function delayWhen<T>(
-  delayDurationSelector: (value: T, index: number) => Observable<any>,
+  delayDurationSelector: (value: T, index: number) => ObservableInput<any>,
   subscriptionDelay: Observable<any>
 ): MonoTypeOperatorFunction<T>;
-export function delayWhen<T>(delayDurationSelector: (value: T, index: number) => Observable<any>): MonoTypeOperatorFunction<T>;
+export function delayWhen<T>(delayDurationSelector: (value: T, index: number) => ObservableInput<any>): MonoTypeOperatorFunction<T>;
 
 /**
  * Delays the emission of items from the source Observable by a given time span
@@ -31,14 +32,29 @@ export function delayWhen<T>(delayDurationSelector: (value: T, index: number) =>
  *
  * ![](delayWhen.png)
  *
- * `delayWhen` time shifts each emitted value from the source Observable by a
- * time span determined by another Observable. When the source emits a value,
- * the `delayDurationSelector` function is called with the source value as
- * argument, and should return an Observable, called the "duration" Observable.
- * The source value is emitted on the output Observable only when the duration
- * Observable emits a value or completes.
- * The completion of the notifier triggering the emission of the source value
- * is deprecated behavior and will be removed in future versions.
+ * `delayWhen` operator shifts each emitted value from the source Observable by
+ * a time span determined by another Observable. When the source emits a value,
+ * the `delayDurationSelector` function is called with the value emitted from
+ * the source Observable as the first argument to the `delayDurationSelector`.
+ * The `delayDurationSelector` function should return an {@link ObservableInput},
+ * that is internally converted to an Observable that is called the "duration"
+ * Observable.
+ *
+ * The source value is emitted on the output Observable only when the "duration"
+ * Observable emits ({@link guide/glossary-and-semantics#next next}s) any value.
+ * Upon that, the "duration" Observable gets unsubscribed.
+ *
+ * Before RxJS V7, the {@link guide/glossary-and-semantics#complete completion}
+ * of the "duration" Observable would have been triggering the emission of the
+ * source value to the output Observable, but with RxJS V7, this is not the case
+ * anymore.
+ *
+ * Only next notifications (from the "duration" Observable) trigger values from
+ * the source Observable to be passed to the output Observable. If the "duration"
+ * Observable only emits the complete notification (without next), the value
+ * emitted by the source Observable will never get to the output Observable - it
+ * will be swallowed. If the "duration" Observable errors, the error will be
+ * propagated to the output Observable.
  *
  * `delayWhen` 将每个从源 Observable 发送的值延迟一段时间，这个时间跨度由另一个 Observable 决定。当源发送一个值时，就会以源值作为参数调用 `delayDurationSelector` 函数，并返回一个 Observable，即 “duration”（持续时间） Observable。只有当持续时间 Observable 发出一个值或完成通知时，源值才会在输出 Observable 上发送。以通知器的完成来触发源值的发送是已弃用的行为，将在未来的版本中删除。
  *
@@ -77,15 +93,16 @@ export function delayWhen<T>(delayDurationSelector: (value: T, index: number) =>
  * @see {@link sampleTime}
  * @see {@link audit}
  * @see {@link auditTime}
- * @param {function(value: T, index: number): Observable} delayDurationSelector A function that
- * returns an Observable for each value emitted by the source Observable, which
- * is then used to delay the emission of that item on the output Observable
- * until the Observable returned from this function emits a value.
+ * @param delayDurationSelector A function that returns an `ObservableInput` for
+ * each `value` emitted by the source Observable, which is then used to delay the
+ * emission of that `value` on the output Observable until the `ObservableInput`
+ * returned from this function emits a next value. When called, beside `value`,
+ * this function receives a zero-based `index` of the emission order.
  *
  * 一个函数，它会为源 Observable 发送的每个值返回一个 Observable，然后用于推迟该条目在输出 Observable 上的发送，直到从该函数返回的 Observable 发送一个值。
  *
- * @param {Observable} subscriptionDelay An Observable that triggers the
- * subscription to the source Observable once it emits any value.
+ * @param subscriptionDelay An Observable that triggers the subscription to the
+ * source Observable once it emits any value.
  *
  * 一个 Observable，一旦它发送任何值，就会触发对源 Observable 的订阅。
  *
@@ -97,7 +114,7 @@ export function delayWhen<T>(delayDurationSelector: (value: T, index: number) =>
  *
  */
 export function delayWhen<T>(
-  delayDurationSelector: (value: T, index: number) => Observable<any>,
+  delayDurationSelector: (value: T, index: number) => ObservableInput<any>,
   subscriptionDelay?: Observable<any>
 ): MonoTypeOperatorFunction<T> {
   if (subscriptionDelay) {
@@ -106,5 +123,5 @@ export function delayWhen<T>(
       concat(subscriptionDelay.pipe(take(1), ignoreElements()), source.pipe(delayWhen(delayDurationSelector)));
   }
 
-  return mergeMap((value, index) => delayDurationSelector(value, index).pipe(take(1), mapTo(value)));
+  return mergeMap((value, index) => innerFrom(delayDurationSelector(value, index)).pipe(take(1), mapTo(value)));
 }

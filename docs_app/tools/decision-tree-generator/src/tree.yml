@@ -133,7 +133,7 @@
                   labelCn: 这个时间窗口是根据某个时长来决定的
                   children:
                     - label: auditTime
-            - label: by emitting the last value as soon as enough silence has occured
+            - label: by emitting the last value as soon as enough silence has occurred
               labelCn: 等足够平静时就发送最后一个值
               children:
                 - label: where the silence duration threshold is determined by another Observable

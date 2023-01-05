@@ -34,6 +34,15 @@ export function nextNotification<T>(value: T) {
   return createNotification('N', value, undefined) as NextNotification<T>;
 }
 
+export function createNotification<T>(kind: 'N', value: T, error: undefined): { kind: 'N'; value: T; error: undefined };
+export function createNotification<T>(kind: 'E', value: undefined, error: any): { kind: 'E'; value: undefined; error: any };
+export function createNotification<T>(kind: 'C', value: undefined, error: undefined): { kind: 'C'; value: undefined; error: undefined };
+export function createNotification<T>(
+  kind: 'N' | 'E' | 'C',
+  value: T | undefined,
+  error: any
+): { kind: 'N' | 'E' | 'C'; value: T | undefined; error: any };
+
 /**
  * Ensures that all notifications created internally have the same "shape" in v8.
  *
@@ -45,7 +54,7 @@ export function nextNotification<T>(value: T) {
  *
  * @internal
  */
-export function createNotification(kind: 'N' | 'E' | 'C', value: any, error: any) {
+export function createNotification<T>(kind: 'N' | 'E' | 'C', value: T | undefined, error: any) {
   return {
     kind,
     value,

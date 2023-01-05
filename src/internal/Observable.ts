@@ -1,12 +1,9 @@
 import { Operator } from './Operator';
-import { SafeSubscriber, Subscriber } from './Subscriber';
-import { isSubscription, Subscription } from './Subscription';
+import { Subscriber, isSubscriber } from './Subscriber';
+import { Subscription } from './Subscription';
 import { TeardownLogic, OperatorFunction, Subscribable, Observer } from './types';
 import { observable as Symbol_observable } from './symbol/observable';
 import { pipeFromArray } from './util/pipe';
-import { config } from './config';
-import { isFunction } from './util/isFunction';
-import { errorContext } from './util/errorContext';
 
 /**
  * A representation of any set of values over any amount of time. This is the most basic building block
@@ -38,21 +35,6 @@ export class Observable<T> implements Subscribable<T> {
     }
   }
 
-  // HACK: Since TypeScript inherits static properties too, we have to
-  // fight against TypeScript here so Subject can have a different static create signature
-  /**
-   * Creates a new Observable by calling the Observable constructor
-   * @owner Observable
-   * @method create
-   * @param {Function} subscribe? the subscriber function to be passed to the Observable constructor
-   * @return {Observable} a new observable
-   * @nocollapse
-   * @deprecated Use `new Observable()` instead. Will be removed in v8.
-   */
-  static create: (...args: any[]) => any = <T>(subscribe?: (subscriber: Subscriber<T>) => TeardownLogic) => {
-    return new Observable<T>(subscribe);
-  };
-
   /**
    * Creates a new Observable, with this Observable instance as the source, and the passed
    * operator defined as the new observable's operator.
@@ -71,10 +53,6 @@ export class Observable<T> implements Subscribable<T> {
     return observable;
   }
 
-  subscribe(observer?: Partial<Observer<T>>): Subscription;
-  subscribe(next: (value: T) => void): Subscription;
-  /** @deprecated Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments */
-  subscribe(next?: ((value: T) => void) | null, error?: ((error: any) => void) | null, complete?: (() => void) | null): Subscription;
   /**
    * Invokes an execution of an Observable and registers Observer handlers for notifications it will emit.
    *
@@ -211,30 +189,24 @@ export class Observable<T> implements Subscribable<T> {
    * @return {Subscription} a subscription reference to the registered handlers
    * @method subscribe
    */
-  subscribe(
-    observerOrNext?: Partial<Observer<T>> | ((value: T) => void) | null,
-    error?: ((error: any) => void) | null,
-    complete?: (() => void) | null
-  ): Subscription {
-    const subscriber = isSubscriber(observerOrNext) ? observerOrNext : new SafeSubscriber(observerOrNext, error, complete);
+  subscribe(observerOrNext?: Partial<Observer<T>> | ((value: T) => void) | null): Subscription {
+    const subscriber = isSubscriber(observerOrNext) ? observerOrNext : new Subscriber(observerOrNext);
 
-    errorContext(() => {
-      const { operator, source } = this;
-      subscriber.add(
-        operator
-          ? // We're dealing with a subscription in the
-            // operator chain to one of our lifted operators.
-            operator.call(subscriber, source)
-          : source
-          ? // If `source` has a value, but `operator` does not, something that
-            // had intimate knowledge of our API, like our `Subject`, must have
-            // set it. We're going to just call `_subscribe` directly.
-            this._subscribe(subscriber)
-          : // In all other cases, we're likely wrapping a user-provided initializer
-            // function, so we need to catch errors and handle them appropriately.
-            this._trySubscribe(subscriber)
-      );
-    });
+    const { operator, source } = this;
+    subscriber.add(
+      operator
+        ? // We're dealing with a subscription in the
+          // operator chain to one of our lifted operators.
+          operator.call(subscriber, source)
+        : source
+        ? // If `source` has a value, but `operator` does not, something that
+          // had intimate knowledge of our API, like our `Subject`, must have
+          // set it. We're going to just call `_subscribe` directly.
+          this._subscribe(subscriber)
+        : // In all other cases, we're likely wrapping a user-provided initializer
+          // function, so we need to catch errors and handle them appropriately.
+          this._trySubscribe(subscriber)
+    );
 
     return subscriber;
   }
@@ -295,27 +267,10 @@ export class Observable<T> implements Subscribable<T> {
    * @return a promise that either resolves on observable completion or
    *  rejects with the handled error
    */
-  forEach(next: (value: T) => void): Promise<void>;
-
-  /**
-   * @param next a handler for each value emitted by the observable
-   * @param promiseCtor a constructor function used to instantiate the Promise
-   * @return a promise that either resolves on observable completion or
-   *  rejects with the handled error
-   * @deprecated Passing a Promise constructor will no longer be available
-   * in upcoming versions of RxJS. This is because it adds weight to the library, for very
-   * little benefit. If you need this functionality, it is recommended that you either
-   * polyfill Promise, or you create an adapter to convert the returned native promise
-   * to whatever promise implementation you wanted. Will be removed in v8.
-   */
-  forEach(next: (value: T) => void, promiseCtor: PromiseConstructorLike): Promise<void>;
-
-  forEach(next: (value: T) => void, promiseCtor?: PromiseConstructorLike): Promise<void> {
-    promiseCtor = getPromiseCtor(promiseCtor);
-
-    return new promiseCtor<void>((resolve, reject) => {
-      const subscriber = new SafeSubscriber<T>({
-        next: (value) => {
+  forEach(next: (value: T) => void): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const subscriber = new Subscriber({
+        next: (value: T) => {
           try {
             next(value);
           } catch (err) {
@@ -327,7 +282,7 @@ export class Observable<T> implements Subscribable<T> {
         complete: resolve,
       });
       this.subscribe(subscriber);
-    }) as Promise<void>;
+    });
   }
 
   /** @internal */
@@ -437,63 +392,4 @@ export class Observable<T> implements Subscribable<T> {
   pipe(...operations: OperatorFunction<any, any>[]): Observable<any> {
     return pipeFromArray(operations)(this);
   }
-
-  /* tslint:disable:max-line-length */
-  /** @deprecated Replaced with {@link firstValueFrom} and {@link lastValueFrom}. Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise */
-  toPromise(): Promise<T | undefined>;
-  /** @deprecated Replaced with {@link firstValueFrom} and {@link lastValueFrom}. Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise */
-  toPromise(PromiseCtor: typeof Promise): Promise<T | undefined>;
-  /** @deprecated Replaced with {@link firstValueFrom} and {@link lastValueFrom}. Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise */
-  toPromise(PromiseCtor: PromiseConstructorLike): Promise<T | undefined>;
-  /* tslint:enable:max-line-length */
-
-  /**
-   * Subscribe to this Observable and get a Promise resolving on
-   * `complete` with the last emission (if any).
-   *
-   * **WARNING**: Only use this with observables you *know* will complete. If the source
-   * observable does not complete, you will end up with a promise that is hung up, and
-   * potentially all of the state of an async function hanging out in memory. To avoid
-   * this situation, look into adding something like {@link timeout}, {@link take},
-   * {@link takeWhile}, or {@link takeUntil} amongst others.
-   *
-   * @method toPromise
-   * @param [promiseCtor] a constructor function used to instantiate
-   * the Promise
-   * @return A Promise that resolves with the last value emit, or
-   * rejects on an error. If there were no emissions, Promise
-   * resolves with undefined.
-   * @deprecated Replaced with {@link firstValueFrom} and {@link lastValueFrom}. Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise
-   */
-  toPromise(promiseCtor?: PromiseConstructorLike): Promise<T | undefined> {
-    promiseCtor = getPromiseCtor(promiseCtor);
-
-    return new promiseCtor((resolve, reject) => {
-      let value: T | undefined;
-      this.subscribe(
-        (x: T) => (value = x),
-        (err: any) => reject(err),
-        () => resolve(value)
-      );
-    }) as Promise<T | undefined>;
-  }
-}
-
-/**
- * Decides between a passed promise constructor from consuming code,
- * A default configured promise constructor, and the native promise
- * constructor and returns it. If nothing can be found, it will throw
- * an error.
- * @param promiseCtor The optional promise constructor to passed by consuming code
- */
-function getPromiseCtor(promiseCtor: PromiseConstructorLike | undefined) {
-  return promiseCtor ?? config.Promise ?? Promise;
-}
-
-function isObserver<T>(value: any): value is Observer<T> {
-  return value && isFunction(value.next) && isFunction(value.error) && isFunction(value.complete);
-}
-
-function isSubscriber<T>(value: any): value is Subscriber<T> {
-  return (value && value instanceof Subscriber) || (isObserver(value) && isSubscription(value));
 }

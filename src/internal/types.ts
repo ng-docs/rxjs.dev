@@ -100,20 +100,7 @@ export interface SubscriptionLike extends Unsubscribable {
   readonly closed: boolean;
 }
 
-/**
- * @deprecated Do not use. Most likely you want to use `ObservableInput`. Will be removed in v8.
- *
- * 不要使用。你很可能想使用 `ObservableInput`。将在 v8 中删除。
- *
- */
-export type SubscribableOrPromise<T> = Subscribable<T> | Subscribable<never> | PromiseLike<T> | InteropObservable<T>;
-
-/**
- * OBSERVABLE INTERFACES
- *
- *  Observable 接口
- *
- */
+/** OBSERVABLE INTERFACES */
 
 export interface Subscribable<T> {
   subscribe(observer: Partial<Observer<T>>): Unsubscribable;

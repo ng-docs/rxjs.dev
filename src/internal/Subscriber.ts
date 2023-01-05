@@ -6,7 +6,6 @@ import { reportUnhandledError } from './util/reportUnhandledError';
 import { noop } from './util/noop';
 import { nextNotification, errorNotification, COMPLETE_NOTIFICATION } from './NotificationFactories';
 import { timeoutProvider } from './scheduler/timeoutProvider';
-import { captureError } from './util/errorContext';
 
 /**
  * Implements the {@link Observer} interface and extends the
@@ -19,45 +18,31 @@ import { captureError } from './util/errorContext';
  * @class Subscriber<T>
  */
 export class Subscriber<T> extends Subscription implements Observer<T> {
-  /**
-   * A static factory for a Subscriber, given a (potentially partial) definition
-   * of an Observer.
-   * @param next The `next` callback of an Observer.
-   * @param error The `error` callback of an
-   * Observer.
-   * @param complete The `complete` callback of an
-   * Observer.
-   * @return A Subscriber wrapping the (partially defined)
-   * Observer represented by the given arguments.
-   * @nocollapse
-   * @deprecated Do not use. Will be removed in v8. There is no replacement for this
-   * method, and there is no reason to be creating instances of `Subscriber` directly.
-   * If you have a specific use case, please file an issue.
-   */
-  static create<T>(next?: (x?: T) => void, error?: (e?: any) => void, complete?: () => void): Subscriber<T> {
-    return new SafeSubscriber(next, error, complete);
-  }
-
   /** @deprecated Internal implementation detail, do not use directly. Will be made internal in v8. */
   protected isStopped: boolean = false;
   /** @deprecated Internal implementation detail, do not use directly. Will be made internal in v8. */
-  protected destination: Subscriber<any> | Observer<any>; // this `any` is the escape hatch to erase extra type param (e.g. R)
+  protected destination: Subscriber<T> | Observer<T>;
 
   /**
-   * @deprecated Internal implementation detail, do not use directly. Will be made internal in v8.
-   * There is no reason to directly create an instance of Subscriber. This type is exported for typings reasons.
+   * Creates an instance of an RxJS Subscriber. This is the workhorse of the library.
+   *
+   * If another instance of Subscriber is passed in, it will automatically wire up unsubscription
+   * between this instnace and the passed in instance.
+   *
+   * If a partial or full observer is passed in, it will be wrapped and appropriate safeguards will be applied.
+   *
+   * If a next-handler function is passed in, it will be wrapped and appropriate safeguards will be applied.
+   *
+   * @param destination A subscriber, partial observer, or function that receives the next value.
    */
-  constructor(destination?: Subscriber<any> | Observer<any>) {
+  constructor(destination?: Subscriber<T> | Partial<Observer<T>> | ((value: T) => void) | null) {
     super();
-    if (destination) {
-      this.destination = destination;
-      // Automatically chain subscriptions together here.
-      // if destination is a Subscription, then it is a Subscriber.
-      if (isSubscription(destination)) {
-        destination.add(this);
-      }
-    } else {
-      this.destination = EMPTY_OBSERVER;
+    this.destination = isSubscriber(destination) ? destination : createSafeObserver(destination);
+
+    // Automatically chain subscriptions together here.
+    // if destination is a Subscription, then it is a Subscriber.
+    if (isSubscription(destination)) {
+      destination.add(this);
     }
   }
 
@@ -136,21 +121,6 @@ export class Subscriber<T> extends Subscription implements Observer<T> {
   }
 }
 
-/**
- * This bind is captured here because we want to be able to have
- * compatibility with monoid libraries that tend to use a method named
- * `bind`. In particular, a library called Monio requires this.
- */
-const _bind = Function.prototype.bind;
-
-function bind<Fn extends (...args: any[]) => any>(fn: Fn, thisArg: any): Fn {
-  return _bind.call(fn, thisArg);
-}
-
-/**
- * Internal optimization only, DO NOT EXPOSE.
- * @internal
- */
 class ConsumerObserver<T> implements Observer<T> {
   constructor(private partialObserver: Partial<Observer<T>>) {}
 
@@ -160,7 +130,7 @@ class ConsumerObserver<T> implements Observer<T> {
       try {
         partialObserver.next(value);
       } catch (error) {
-        handleUnhandledError(error);
+        reportUnhandledError(error);
       }
     }
   }
@@ -171,10 +141,10 @@ class ConsumerObserver<T> implements Observer<T> {
       try {
         partialObserver.error(err);
       } catch (error) {
-        handleUnhandledError(error);
+        reportUnhandledError(error);
       }
     } else {
-      handleUnhandledError(err);
+      reportUnhandledError(err);
     }
   }
 
@@ -184,63 +154,14 @@ class ConsumerObserver<T> implements Observer<T> {
       try {
         partialObserver.complete();
       } catch (error) {
-        handleUnhandledError(error);
+        reportUnhandledError(error);
       }
     }
   }
 }
 
-export class SafeSubscriber<T> extends Subscriber<T> {
-  constructor(
-    observerOrNext?: Partial<Observer<T>> | ((value: T) => void) | null,
-    error?: ((e?: any) => void) | null,
-    complete?: (() => void) | null
-  ) {
-    super();
-
-    let partialObserver: Partial<Observer<T>>;
-    if (isFunction(observerOrNext) || !observerOrNext) {
-      // The first argument is a function, not an observer. The next
-      // two arguments *could* be observers, or they could be empty.
-      partialObserver = {
-        next: (observerOrNext ?? undefined) as (((value: T) => void) | undefined),
-        error: error ?? undefined,
-        complete: complete ?? undefined,
-      };
-    } else {
-      // The first argument is a partial observer.
-      let context: any;
-      if (this && config.useDeprecatedNextContext) {
-        // This is a deprecated path that made `this.unsubscribe()` available in
-        // next handler functions passed to subscribe. This only exists behind a flag
-        // now, as it is *very* slow.
-        context = Object.create(observerOrNext);
-        context.unsubscribe = () => this.unsubscribe();
-        partialObserver = {
-          next: observerOrNext.next && bind(observerOrNext.next, context),
-          error: observerOrNext.error && bind(observerOrNext.error, context),
-          complete: observerOrNext.complete && bind(observerOrNext.complete, context),
-        };
-      } else {
-        // The "normal" path. Just use the partial observer directly.
-        partialObserver = observerOrNext;
-      }
-    }
-
-    // Wrap the partial observer to ensure it's a full observer, and
-    // make sure proper error handling is accounted for.
-    this.destination = new ConsumerObserver(partialObserver);
-  }
-}
-
-function handleUnhandledError(error: any) {
-  if (config.useDeprecatedSynchronousErrorHandling) {
-    captureError(error);
-  } else {
-    // Ideal path, we report this as an unhandled error,
-    // which is thrown on a new call stack.
-    reportUnhandledError(error);
-  }
+function createSafeObserver<T>(observerOrNext?: Partial<Observer<T>> | ((value: T) => void) | null): Observer<T> {
+  return new ConsumerObserver(!observerOrNext || isFunction(observerOrNext) ? { next: observerOrNext ?? undefined } : observerOrNext);
 }
 
 /**
@@ -274,3 +195,11 @@ export const EMPTY_OBSERVER: Readonly<Observer<any>> & { closed: true } = {
   error: defaultErrorHandler,
   complete: noop,
 };
+
+function isObserver<T>(value: any): value is Observer<T> {
+  return value && isFunction(value.next) && isFunction(value.error) && isFunction(value.complete);
+}
+
+export function isSubscriber<T>(value: any): value is Subscriber<T> {
+  return (value && value instanceof Subscriber) || (isObserver(value) && isSubscription(value));
+}

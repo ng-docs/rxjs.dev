@@ -34,7 +34,7 @@ export class Subscription implements SubscriptionLike {
    * The list of registered finalizers to execute upon unsubscription. Adding and removing from this
    * list occurs in the {@link #add} and {@link #remove} methods.
    */
-  private _finalizers: Exclude<TeardownLogic, void>[] | null = null;
+  private _finalizers: Set<Exclude<TeardownLogic, void>> | null = null;
 
   /**
    * @param initialTeardown A function executed first as part of the finalization
@@ -134,7 +134,7 @@ export class Subscription implements SubscriptionLike {
           }
           teardown._addParent(this);
         }
-        (this._finalizers = this._finalizers ?? []).push(teardown);
+        (this._finalizers = this._finalizers ?? new Set()).add(teardown);
       }
     }
   }
@@ -181,7 +181,7 @@ export class Subscription implements SubscriptionLike {
    * from every other `Subscription` they have been added to. This means that using the `remove` method
    * is not a common thing and should be used thoughtfully.
    *
-   * If you add the same finalizer instance of a function or an unsubscribable object to a `Subcription` instance
+   * If you add the same finalizer instance of a function or an unsubscribable object to a `Subscription` instance
    * more than once, you will need to call `remove` the same number of times to remove all instances.
    *
    * All finalizer instances are removed to free up memory upon unsubscription.
@@ -189,8 +189,7 @@ export class Subscription implements SubscriptionLike {
    * @param teardown The finalizer to remove from this subscription
    */
   remove(teardown: Exclude<TeardownLogic, void>): void {
-    const { _finalizers } = this;
-    _finalizers && arrRemove(_finalizers, teardown);
+    this._finalizers?.delete(teardown);
 
     if (teardown instanceof Subscription) {
       teardown._removeParent(this);

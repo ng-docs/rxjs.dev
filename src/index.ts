@@ -38,9 +38,6 @@ export { Scheduler } from './internal/Scheduler';
 export { Subscription } from './internal/Subscription';
 export { Subscriber } from './internal/Subscriber';
 
-/* Notification */
-export { Notification, NotificationKind } from './internal/Notification';
-
 /* Utils */
 export { pipe } from './internal/util/pipe';
 export { noop } from './internal/util/noop';
@@ -67,7 +64,6 @@ export { combineLatest } from './internal/observable/combineLatest';
 export { concat } from './internal/observable/concat';
 export { connectable } from './internal/observable/connectable';
 export { defer } from './internal/observable/defer';
-export { empty } from './internal/observable/empty';
 export { forkJoin } from './internal/observable/forkJoin';
 export { from } from './internal/observable/from';
 export { fromEvent } from './internal/observable/fromEvent';
@@ -76,7 +72,6 @@ export { generate } from './internal/observable/generate';
 export { iif } from './internal/observable/iif';
 export { interval } from './internal/observable/interval';
 export { merge } from './internal/observable/merge';
-export { never } from './internal/observable/never';
 export { of } from './internal/observable/of';
 export { onErrorResumeNext } from './internal/observable/onErrorResumeNext';
 export { pairs } from './internal/observable/pairs';
@@ -155,6 +150,7 @@ export { mergeWith } from './internal/operators/mergeWith';
 export { min } from './internal/operators/min';
 export { multicast } from './internal/operators/multicast';
 export { observeOn } from './internal/operators/observeOn';
+export { onErrorResumeNextWith } from './internal/operators/onErrorResumeNextWith';
 export { pairwise } from './internal/operators/pairwise';
 export { pluck } from './internal/operators/pluck';
 export { publish } from './internal/operators/publish';
@@ -163,7 +159,7 @@ export { publishLast } from './internal/operators/publishLast';
 export { publishReplay } from './internal/operators/publishReplay';
 export { raceWith } from './internal/operators/raceWith';
 export { reduce } from './internal/operators/reduce';
-export { repeat } from './internal/operators/repeat';
+export { repeat, RepeatConfig } from './internal/operators/repeat';
 export { repeatWhen } from './internal/operators/repeatWhen';
 export { retry, RetryConfig } from './internal/operators/retry';
 export { retryWhen } from './internal/operators/retryWhen';

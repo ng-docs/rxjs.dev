@@ -39,7 +39,7 @@ export type subscriptionLogsToBeFn = (marbles: string | string[]) => void;
 export class TestScheduler extends VirtualTimeScheduler {
   /**
    * The number of virtual time units each character in a marble diagram represents. If
-   * the test scheduler is being used in "run mode", via the `run` method, this is temporarly
+   * the test scheduler is being used in "run mode", via the `run` method, this is temporarily
    * set to `1` for the duration of the `run` block, then set back to whatever value it was.
    *
    * 弹珠图中每个字符代表的虚拟时间单位的数量。如果测试用的调度器正在“运行模式”下使用，则通过 `run` 方法，在 `run` 块的持续时间内将其临时设置为 `1`，然后设置回它的以前值。
@@ -105,7 +105,7 @@ export class TestScheduler extends VirtualTimeScheduler {
    *
    * 弹珠 DSL 中的图表。如果提供，则各种字母会映射到 `values` 中的键。
    *
-   * @param values Values to use for the letters in `marbles`. If ommitted, the letters themselves are used.
+   * @param values Values to use for the letters in `marbles`. If omitted, the letters themselves are used.
    *
    * 用作 `marbles` 中字母的值。如果省略，则使用字母本身。
    *
@@ -132,7 +132,7 @@ export class TestScheduler extends VirtualTimeScheduler {
    *
    * 弹珠 DSL 中的图表。如果提供，则各种字母会映射到 `values` 中的键。
    *
-   * @param values Values to use for the letters in `marbles`. If ommitted, the letters themselves are used.
+   * @param values Values to use for the letters in `marbles`. If omitted, the letters themselves are used.
    *
    * 用于 `marbles` 中字母的值。如果省略，则使用字母本身。
    *

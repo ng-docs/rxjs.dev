@@ -1,8 +1,7 @@
-import { Observable } from '../Observable';
-
-import { OperatorFunction } from '../types';
+import { OperatorFunction, ObservableInput } from '../types';
 import { operate } from '../util/lift';
 import { createOperatorSubscriber } from './OperatorSubscriber';
+import { innerFrom } from '../observable/innerFrom';
 
 /**
  * Compares all values of two observables in sequence using an optional comparator function
@@ -17,7 +16,8 @@ import { createOperatorSubscriber } from './OperatorSubscriber';
  *
  * ![](sequenceEqual.png)
  *
- * `sequenceEqual` subscribes to two observables and buffers incoming values from each observable. Whenever either
+ * `sequenceEqual` subscribes to source observable and `compareTo` `ObservableInput` (that internally
+ * gets converted to an observable) and buffers incoming values from each observable. Whenever either
  * observable emits a value, the value is buffered and the buffers are shifted and compared from the bottom
  * up; If any value pair doesn't match, the returned observable will emit `false` and complete. If one of the
  * observables completes, the operator will wait for the other observable to complete; If the other
@@ -61,23 +61,23 @@ import { createOperatorSubscriber } from './OperatorSubscriber';
  * @see {@link combineLatest}
  * @see {@link zip}
  * @see {@link withLatestFrom}
- * @param {Observable} compareTo The observable sequence to compare the source sequence to.
+ * @param compareTo The `ObservableInput` sequence to compare the source sequence to.
  *
- * 要与源序列进行比较的 Observable 序列。
+ * 要与源序列进行比较的 `ObservableInput` 序列。
  *
- * @param {function} [comparator] An optional function to compare each value pair
+ * @param comparator An optional function to compare each value pair.
  *
- * 用于比较每个值对的可选函数
+ * 用于比较每个值对的可选函数。
  *
  * @return A function that returns an Observable that emits a single boolean
  * value representing whether or not the values emitted by the source
- * Observable and provided Observable were equal in sequence.
+ * Observable and provided `ObservableInput` were equal in sequence.
  *
  * 一个返回 Observable 的函数，该 Observable 会发送一个布尔值，表示源 Observable 发送的值和所提供的 Observable 发送的值是否依序相等。
  *
  */
 export function sequenceEqual<T>(
-  compareTo: Observable<T>,
+  compareTo: ObservableInput<T>,
   comparator: (a: T, b: T) => boolean = (a, b) => a === b
 ): OperatorFunction<T, boolean> {
   return operate((source, subscriber) => {
@@ -119,7 +119,7 @@ export function sequenceEqual<T>(
             // at the appropriate time.
             complete ? emit(false) : selfState.buffer.push(a);
           } else {
-            // If the other stream *does* have values in it's buffer,
+            // If the other stream *does* have values in its buffer,
             // pull the oldest one off so we can compare it to what we
             // just got. If it wasn't a match, emit `false` and complete.
             !comparator(a, buffer.shift()!) && emit(false);
@@ -144,7 +144,7 @@ export function sequenceEqual<T>(
 
     // Subscribe to each source.
     source.subscribe(createSubscriber(aState, bState));
-    compareTo.subscribe(createSubscriber(bState, aState));
+    innerFrom(compareTo).subscribe(createSubscriber(bState, aState));
   });
 }
 

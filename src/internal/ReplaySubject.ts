@@ -42,7 +42,7 @@ import { dateTimestampProvider } from './scheduler/dateTimestampProvider';
  *
  * ### 与 BehaviorSubject 的差异
  *
- * `BehaviorSubject` is similar to `new ReplaySubject(1)`, with a couple fo exceptions:
+ * `BehaviorSubject` is similar to `new ReplaySubject(1)`, with a couple of exceptions:
  *
  * `BehaviorSubject` 类似于 `new ReplaySubject(1)`，但有几个例外：
  *
@@ -67,7 +67,7 @@ export class ReplaySubject<T> extends Subject<T> {
    *
    * 订阅时重播的缓冲区大小
    *
-   * @param windowTime The amount of time the buffered items will say buffered
+   * @param windowTime The amount of time the buffered items will stay buffered
    *
    * 缓冲条目会说缓冲的时间量
    *

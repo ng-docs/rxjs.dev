@@ -1,9 +1,10 @@
 import { Observable } from '../Observable';
-import { OperatorFunction } from '../types';
+import { OperatorFunction, ObservableInput } from '../types';
 import { Subject } from '../Subject';
 import { operate } from '../util/lift';
 import { createOperatorSubscriber } from './OperatorSubscriber';
 import { noop } from '../util/noop';
+import { innerFrom } from '../observable/innerFrom';
 
 /**
  * Branch out the source Observable values as a nested Observable whenever
@@ -21,8 +22,9 @@ import { noop } from '../util/noop';
  * Returns an Observable that emits windows of items it collects from the source
  * Observable. The output Observable emits connected, non-overlapping
  * windows. It emits the current window and opens a new one whenever the
- * Observable `windowBoundaries` emits an item. Because each window is an
- * Observable, the output is a higher-order Observable.
+ * `windowBoundaries` emits an item. `windowBoundaries` can be any type that
+ * `ObservableInput` accepts. It internally gets converted to an Observable.
+ * Because each window is an Observable, the output is a higher-order Observable.
  *
  * 返回一个 Observable，它会发出一些从源 Observable 收集来的条目的窗口。输出 Observable 会发送已连接的、不重叠的窗口。只要 `windowBoundaries` 这个 Observable 发出了一个条目，它就会发送当前窗口，并打开一个新窗口。因为每个窗口都是一个 Observable，所以其输出是一个高阶 Observable。
  *
@@ -51,7 +53,7 @@ import { noop } from '../util/noop';
  * @see {@link windowToggle}
  * @see {@link windowWhen}
  * @see {@link buffer}
- * @param {Observable<any>} windowBoundaries An Observable that completes the
+ * @param windowBoundaries An `ObservableInput` that completes the
  * previous window and starts a new window.
  *
  * 一个 Observable，当它发出值时，就会完成前一个窗口并启动一个新窗口。
@@ -62,7 +64,7 @@ import { noop } from '../util/noop';
  * 一个函数，它会返回一个以窗口为条目的 Observable，每个窗口都是一个 Observable，发送的是来自源 Observable 的值。
  *
  */
-export function window<T>(windowBoundaries: Observable<any>): OperatorFunction<T, Observable<T>> {
+export function window<T>(windowBoundaries: ObservableInput<any>): OperatorFunction<T, Observable<T>> {
   return operate((source, subscriber) => {
     let windowSubject: Subject<T> = new Subject<T>();
 
@@ -87,7 +89,7 @@ export function window<T>(windowBoundaries: Observable<any>): OperatorFunction<T
     );
 
     // Subscribe to the window boundaries.
-    windowBoundaries.subscribe(
+    innerFrom(windowBoundaries).subscribe(
       createOperatorSubscriber(
         subscriber,
         () => {

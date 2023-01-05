@@ -1,9 +1,8 @@
-import { Observable } from '../Observable';
 import { innerFrom } from '../observable/innerFrom';
 import { Subject } from '../Subject';
-import { SafeSubscriber } from '../Subscriber';
+import { Subscriber } from '../Subscriber';
 import { Subscription } from '../Subscription';
-import { MonoTypeOperatorFunction, SubjectLike } from '../types';
+import { MonoTypeOperatorFunction, SubjectLike, ObservableInput } from '../types';
 import { operate } from '../util/lift';
 
 export interface ShareConfig<T> {
@@ -16,46 +15,46 @@ export interface ShareConfig<T> {
    */
   connector?: () => SubjectLike<T>;
   /**
-   * If true, the resulting observable will reset internal state on error from source and return to a "cold" state. This
+   * If `true`, the resulting observable will reset internal state on error from source and return to a "cold" state. This
    * allows the resulting observable to be "retried" in the event of an error.
-   * If false, when an error comes from the source it will push the error into the connecting subject, and the subject
+   * If `false`, when an error comes from the source it will push the error into the connecting subject, and the subject
    * will remain the connecting subject, meaning the resulting observable will not go "cold" again, and subsequent retries
    * or resubscriptions will resubscribe to that same subject. In all cases, RxJS subjects will emit the same error again, however
    * {@link ReplaySubject} will also push its buffered values before pushing the error.
-   * It is also possible to pass a notifier factory returning an observable instead which grants more fine-grained
+   * It is also possible to pass a notifier factory returning an `ObservableInput` instead which grants more fine-grained
    * control over how and when the reset should happen. This allows behaviors like conditional or delayed resets.
    *
    * 如果为真，则结果 observable 会在源出错时重置内部状态并返回一个“冷”状态。这允许在发生错误时“重试”结果 observable。如果为 false，当源发来错误时，它会将错误推送到所连接的主体，并且此主体将保持连接，这意味着结果 observable 不会再次变“冷”，随后的重试或重新订阅将重新订阅同一个主体。在所有情况下，RxJS 主体都会再次发送相同的错误，但是 {@link ReplaySubject} 还会在推送错误之前推送其缓冲值。这还可以改为用通知工厂返回一个 observable，它可以对重置的方式和时间进行更细粒度的控制。这样可以支持有条件重置或延迟重置等行为。
    *
    */
-  resetOnError?: boolean | ((error: any) => Observable<any>);
+  resetOnError?: boolean | ((error: any) => ObservableInput<any>);
   /**
-   * If true, the resulting observable will reset internal state on completion from source and return to a "cold" state. This
+   * If `true`, the resulting observable will reset internal state on completion from source and return to a "cold" state. This
    * allows the resulting observable to be "repeated" after it is done.
-   * If false, when the source completes, it will push the completion through the connecting subject, and the subject
+   * If `false`, when the source completes, it will push the completion through the connecting subject, and the subject
    * will remain the connecting subject, meaning the resulting observable will not go "cold" again, and subsequent repeats
    * or resubscriptions will resubscribe to that same subject.
-   * It is also possible to pass a notifier factory returning an observable instead which grants more fine-grained
+   * It is also possible to pass a notifier factory returning an `ObservableInput` instead which grants more fine-grained
    * control over how and when the reset should happen. This allows behaviors like conditional or delayed resets.
    *
    * 如果为真，则结果 observable 将在源完成时重置内部状态并返回“冷”状态。这允许在完成后“重复”此结果 observable。如果为 false，则当源完成时，它将通过所连接的主体推送完成通知，此主体将保持连接，这意味着结果 observable 不会再次变“冷”，后续重复或重新订阅将重新订阅同一个主体。这还可以改为用通知工厂返回一个 observable，它可以对重置的方式和时间进行更细粒度的控制。这样可以支持有条件重置或延迟重置等行为。
    *
    */
-  resetOnComplete?: boolean | (() => Observable<any>);
+  resetOnComplete?: boolean | (() => ObservableInput<any>);
   /**
-   * If true, when the number of subscribers to the resulting observable reaches zero due to those subscribers unsubscribing, the
+   * If `true`, when the number of subscribers to the resulting observable reaches zero due to those subscribers unsubscribing, the
    * internal state will be reset and the resulting observable will return to a "cold" state. This means that the next
    * time the resulting observable is subscribed to, a new subject will be created and the source will be subscribed to
    * again.
-   * If false, when the number of subscribers to the resulting observable reaches zero due to unsubscription, the subject
+   * If `false`, when the number of subscribers to the resulting observable reaches zero due to unsubscription, the subject
    * will remain connected to the source, and new subscriptions to the result will be connected through that same subject.
-   * It is also possible to pass a notifier factory returning an observable instead which grants more fine-grained
+   * It is also possible to pass a notifier factory returning an `ObservableInput` instead which grants more fine-grained
    * control over how and when the reset should happen. This allows behaviors like conditional or delayed resets.
    *
    * 如果为 true，则当结果 observable 的订阅者的数量由于订阅者退订而达到零时，内部状态将被重置，而结果 observable 将返回“冷”的状态。这意味着下一次订阅结果 observable 时，将创建一个新的主体并再次订阅源。如果为 false，则当结果 observable 的订阅者数量由于退订而达到零时，主体将保持与源的连接，并且对结果的新订阅将通过同一主体进行连接。这还可以改为用通知工厂返回一个 observable，它可以对重置的方式和时间进行更细粒度的控制。这样可以支持有条件重置或延迟重置等行为。
    *
    */
-  resetOnRefCountZero?: boolean | (() => Observable<any>);
+  resetOnRefCountZero?: boolean | (() => ObservableInput<any>);
 }
 
 export function share<T>(): MonoTypeOperatorFunction<T>;
@@ -175,7 +174,7 @@ export function share<T>(options: ShareConfig<T> = {}): MonoTypeOperatorFunction
   // call to a source observable's `pipe` method - not when the static `pipe`
   // function is called.
   return (wrapperSource) => {
-    let connection: SafeSubscriber<T> | undefined;
+    let connection: Subscriber<T> | undefined;
     let resetConnection: Subscription | undefined;
     let subject: SubjectLike<T> | undefined;
     let refCount = 0;
@@ -208,7 +207,7 @@ export function share<T>(options: ShareConfig<T> = {}): MonoTypeOperatorFunction
       }
 
       // Create the subject if we don't have one yet. Grab a local reference to
-      // it as well, which avoids non-null assertations when using it and, if we
+      // it as well, which avoids non-null assertions when using it and, if we
       // connect to it now, then error/complete need a reference after it was
       // reset.
       const dest = (subject = subject ?? connector());
@@ -245,9 +244,9 @@ export function share<T>(options: ShareConfig<T> = {}): MonoTypeOperatorFunction
         // for reentrant subscriptions to the shared observable to occur and in
         // those situations we want connection to be already-assigned so that we
         // don't create another connection to the source.
-        connection = new SafeSubscriber({
-          next: (value) => dest.next(value),
-          error: (err) => {
+        connection = new Subscriber({
+          next: (value: T) => dest.next(value),
+          error: (err: any) => {
             hasErrored = true;
             cancelReset();
             resetConnection = handleReset(reset, resetOnError, err);
@@ -268,7 +267,7 @@ export function share<T>(options: ShareConfig<T> = {}): MonoTypeOperatorFunction
 
 function handleReset<T extends unknown[] = never[]>(
   reset: () => void,
-  on: boolean | ((...args: T) => Observable<any>),
+  on: boolean | ((...args: T) => ObservableInput<any>),
   ...args: T
 ): Subscription | undefined {
   if (on === true) {
@@ -280,12 +279,12 @@ function handleReset<T extends unknown[] = never[]>(
     return;
   }
 
-  const onSubscriber = new SafeSubscriber({
+  const onSubscriber = new Subscriber({
     next: () => {
       onSubscriber.unsubscribe();
       reset();
     },
   });
 
-  return on(...args).subscribe(onSubscriber);
+  return innerFrom(on(...args)).subscribe(onSubscriber);
 }

@@ -54,7 +54,7 @@
 
   `VirtualTimeScheduler` 上的静态 `sortActions` 方法在 TS 类型中已经不再对外暴露了。
 
-- `Notification.createNext(undefined)` will no longer return the exact same reference everytime.
+- `Notification.createNext(undefined)` will no longer return the exact same reference every time.
 
   `Notification.createNext(undefined)` 将不再每次都返回完全相同的引用。
 

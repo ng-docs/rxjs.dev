@@ -10,20 +10,6 @@ export interface TapObserver<T> extends Observer<T> {
   finalize: () => void;
 }
 
-export function tap<T>(observer?: Partial<TapObserver<T>>): MonoTypeOperatorFunction<T>;
-export function tap<T>(next: (value: T) => void): MonoTypeOperatorFunction<T>;
-/**
- * @deprecated Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: <https://rxjs.dev/deprecations/subscribe-arguments>
- *
- * 不要传递单独的回调参数，而是使用 Observer 参数。带有单独回调参数的签名将在 v8 中被删除。详细信息： <https://rxjs.dev/deprecations/subscribe-arguments>
- *
- */
-export function tap<T>(
-  next?: ((value: T) => void) | null,
-  error?: ((error: any) => void) | null,
-  complete?: (() => void) | null
-): MonoTypeOperatorFunction<T>;
-
 /**
  * Used to perform side-effects for notifications from the source observable
  *
@@ -142,19 +128,11 @@ export function tap<T>(
  * 返回与源相同的 Observable 的函数，但会为每个条目运行指定的 Observer 或回调。
  *
  */
-export function tap<T>(
-  observerOrNext?: Partial<TapObserver<T>> | ((value: T) => void) | null,
-  error?: ((e: any) => void) | null,
-  complete?: (() => void) | null
-): MonoTypeOperatorFunction<T> {
+export function tap<T>(observerOrNext?: Partial<TapObserver<T>> | ((value: T) => void) | null): MonoTypeOperatorFunction<T> {
   // We have to check to see not only if next is a function,
   // but if error or complete were passed. This is because someone
   // could technically call tap like `tap(null, fn)` or `tap(null, null, fn)`.
-  const tapObserver =
-    isFunction(observerOrNext) || error || complete
-      ? // tslint:disable-next-line: no-object-literal-type-assertion
-        ({ next: observerOrNext as Exclude<typeof observerOrNext, Partial<TapObserver<T>>>, error, complete } as Partial<TapObserver<T>>)
-      : observerOrNext;
+  const tapObserver = isFunction(observerOrNext) ? { next: observerOrNext } : observerOrNext;
 
   return tapObserver
     ? operate((source, subscriber) => {

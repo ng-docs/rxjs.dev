@@ -31,7 +31,7 @@ import { Observer, NextObserver } from '../../types';
  * ## 例子
  *
  * **deserializer**, the default for this property is `JSON.parse` but since there are just two options
- * for incoming data, either be text or binarydata. We can apply a custom deserialization strategy
+ * for incoming data, either be text or binary data. We can apply a custom deserialization strategy
  * or just simply skip the default behaviour.
  *
  * **deserializer（反序列化器）**，此属性的默认值为 `JSON.parse`，但由于传入数据只有两个选项：文本或二进制数据。我们可以自定义反序列化策略，或者只是跳过默认行为。
@@ -366,8 +366,8 @@ export class WebSocketSubject<T> extends AnonymousSubject<T> {
 
       const queue = this.destination;
 
-      this.destination = Subscriber.create<T>(
-        (x) => {
+      this.destination = new Subscriber({
+        next: (x: T) => {
           if (socket!.readyState === 1) {
             try {
               const { serializer } = this._config;
@@ -377,7 +377,7 @@ export class WebSocketSubject<T> extends AnonymousSubject<T> {
             }
           }
         },
-        (err) => {
+        error: (err: any) => {
           const { closingObserver } = this._config;
           if (closingObserver) {
             closingObserver.next(undefined);
@@ -389,15 +389,15 @@ export class WebSocketSubject<T> extends AnonymousSubject<T> {
           }
           this._resetState();
         },
-        () => {
+        complete: () => {
           const { closingObserver } = this._config;
           if (closingObserver) {
             closingObserver.next(undefined);
           }
           socket!.close();
           this._resetState();
-        }
-      ) as Subscriber<any>;
+        },
+      });
 
       if (queue && queue instanceof ReplaySubject) {
         subscription.add((queue as ReplaySubject<T>).subscribe(this.destination));

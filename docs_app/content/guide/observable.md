@@ -103,7 +103,7 @@ ES2015 引入了[生成器函数和迭代器](https://developer.mozilla.org/en-U
 |  | 生产者 | 消费者 |
 | **Pull** | **Passive:** produces data when requested. | **Active:** decides when data is requested. |
 | **拉取** | **被动：**在请求时产生数据。 | **主动：**决定何时请求数据。 |
-| **Push** | **Active:** produces data at its own pace. | **Passive:** reacts to received data. |
+| **Push** | **Active:** produces data at its own pace. | **Passive:** reacts to received data.       |
 | **推送** | **主动：**按照自己的节奏生成数据。 | **被动：**对接收到的数据做出响应。 |
 
 **What is Push?** In Push systems, the Producer determines when to send data to the Consumer. The Consumer is unaware of when it will receive that data.
@@ -221,7 +221,7 @@ Some people claim that Observables are asynchronous. That is not true. If you su
 
 有些人声称 Observables 是异步的。那不是真的。如果你使用日志来包裹函数调用，如下所示：
 
-```js
+```ts
 console.log('before');
 console.log(foo.call());
 console.log('after');
@@ -242,7 +242,7 @@ And this is the same behavior with Observables:
 
 这与 Observables 的行为相同：
 
-```js
+```ts
 console.log('before');
 foo.subscribe((x) => {
   console.log(x);
@@ -273,7 +273,7 @@ What is the difference between an Observable and a function? **Observables can "
 
 Observable 和函数有什么区别？ **Observables 可以随着时间的推移“返回”多个值**，而函数不能。你不能这样做：
 
-```js
+```ts
 function foo() {
   console.log('Hello');
   return 42;
@@ -586,7 +586,8 @@ For instance, this is how we clear an interval execution set with `setInterval`:
 
 例如，这就是我们使用 `setInterval` 清除定时执行集的方式：
 
-```js
+```ts
+import { Observable } from 'rxjs';
 const observable = new Observable(function subscribe(subscriber) {
   // Keep track of the interval resource
   const intervalId = setInterval(() => {
@@ -604,7 +605,7 @@ Just like `observable.subscribe` resembles `new Observable(function subscribe() 
 
 就像 `observable.subscribe` 效仿了 `new Observable(function subscribe() {...})` 一样，我们从 `subscribe` 返回的 `unsubscribe` 在概念上也相当于 `subscription.unsubscribe`。事实上，如果我们删除围绕这些概念的 ReactiveX 类型，我们就会得到相当简单的 JavaScript。
 
-```js
+```ts
 function subscribe(subscriber) {
   const intervalId = setInterval(() => {
     subscriber.next('hi');

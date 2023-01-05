@@ -76,7 +76,7 @@ export function bindCallback<A extends readonly unknown[], R extends readonly un
  *
  * If `func` depends on some context (`this` property) and is not already bound, the context of `func`
  * will be the context that the output function has at call time. In particular, if `func`
- * is called as a method of some objec and if `func` is not already bound, in order to preserve the context
+ * is called as a method of some object and if `func` is not already bound, in order to preserve the context
  * it is recommended that the context of the output function is set to that object as well.
  *
  * 如果 `func` 依赖于某个上下文（`this` 属性）并且尚未绑定，则 `func` 的上下文将是输出函数在调用时具有的上下文。特别是，如果 `func` 作为某个对象的方法被调用并且如果 `func` 尚未绑定，为了保留上下文，建议也将输出函数的上下文设置为该对象。

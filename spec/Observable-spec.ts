@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import { Observer, TeardownLogic } from '../src/internal/types';
-import { Observable, config, Subscription, noop, Subscriber, Operator, NEVER, Subject, of, throwError, empty } from 'rxjs';
-import { map, multicast, refCount, filter, count, tap, combineLatest, concat, merge, race, zip, catchError, concatMap, switchMap, publish, publishLast, publishBehavior, share, finalize} from 'rxjs/operators';
+import { TeardownLogic } from '../src/internal/types';
+import { Observable, config, Subscription, Subscriber, Operator, NEVER, Subject, of, throwError, EMPTY } from 'rxjs';
+import { map, multicast, refCount, filter, count, tap, combineLatest, concat, merge, race, zip, catchError, publish, publishLast, publishBehavior, share} from 'rxjs/operators';
 import { TestScheduler } from 'rxjs/testing';
 import { observableMatcher } from './helpers/observableMatcher';
 
@@ -58,9 +58,9 @@ describe('Observable', () => {
     it('should iterate and return a Promise', (done) => {
       const expected = [1, 2, 3];
       const result = of(1, 2, 3)
-        .forEach(function (x) {
+        .forEach((x) => {
           expect(x).to.equal(expected.shift());
-        }, Promise)
+        })
         .then(() => {
           done();
         });
@@ -72,7 +72,7 @@ describe('Observable', () => {
       throwError(() => ('bad'))
         .forEach(() => {
           done(new Error('should not be called'));
-        }, Promise)
+        })
         .then(
           () => {
             done(new Error('should not complete'));
@@ -84,25 +84,6 @@ describe('Observable', () => {
         );
     });
 
-    it('should allow Promise to be globally configured', async () => {
-      try {
-        let wasCalled = false;
-
-        config.Promise = function MyPromise(callback: any) {
-          wasCalled = true;
-          return new Promise<number>(callback);
-        } as any;
-
-        await of(42).forEach((x) => {
-          expect(x).to.equal(42);
-        })
-
-        expect(wasCalled).to.be.true;
-      } finally {
-        config.Promise = undefined;
-      }
-    });
-
     it('should reject promise if nextHandler throws', (done) => {
       const results: number[] = [];
 
@@ -112,7 +93,7 @@ describe('Observable', () => {
             throw new Error('NO THREES!');
           }
           results.push(x);
-        }, Promise)
+        })
         .then(
           () => {
             done(new Error('should not be called'));
@@ -271,7 +252,7 @@ describe('Observable', () => {
 
       expect(unsubscribeCalled).to.be.false;
 
-      empty().subscribe();
+      EMPTY.subscribe();
 
       expect(unsubscribeCalled).to.be.false;
     });
@@ -294,7 +275,7 @@ describe('Observable', () => {
 
       expect(unsubscribeCalled).to.be.false;
 
-      empty().subscribe(observer);
+      EMPTY.subscribe(observer);
 
       expect(unsubscribeCalled).to.be.false;
     });
@@ -498,13 +479,13 @@ describe('Observable', () => {
             },
           };
 
-          empty().subscribe(o);
+          EMPTY.subscribe(o);
         }
       );
 
       it('should accept an anonymous observer with no functions at all', () => {
         expect(() => {
-          empty().subscribe(<any>{});
+          EMPTY.subscribe(<any>{});
         }).not.to.throw();
       });
 
@@ -631,228 +612,6 @@ describe('Observable', () => {
       });
       expect(caught).to.be.true;
     });
-
-
-    describe('if config.useDeprecatedSynchronousErrorHandling === true', () => {
-      beforeEach(() => {
-        config.useDeprecatedSynchronousErrorHandling = true;
-      });
-
-      it('should throw synchronously', () => {
-        expect(() => throwError(() => new Error('thrown error')).subscribe()).to.throw(Error, 'thrown error');
-      });
-
-      it('should rethrow if next handler throws', () => {
-        const observable = new Observable((observer) => {
-          observer.next(1);
-        });
-
-        const sink = Subscriber.create(() => {
-          throw 'error!';
-        });
-
-        expect(() => {
-          observable.subscribe(sink);
-        }).to.throw('error!');
-      });
-
-
-      // From issue: https://github.com/ReactiveX/rxjs/issues/5979
-      it('should still rethrow synchronous errors from next handlers on synchronous observables', () => {
-        expect(() => {
-          of('test').pipe(
-            // Any operators here
-            map(x => x + '!!!'),
-            map(x => x + x),
-            map(x => x + x),
-            map(x => x + x),
-          ).subscribe({
-            next: () => {
-              throw new Error(
-                'hi there!'
-              )
-            }
-          })
-        }).to.throw('hi there!');
-      });
-
-      it('should rethrow synchronous errors from flattened observables', () => {
-        expect(() => {
-          of(1)
-            .pipe(concatMap(() => throwError(() => new Error('Ahoy! An error!'))))
-            .subscribe(console.log);
-        }).to.throw('Ahoy! An error!');
-
-        expect(() => {
-          of(1)
-            .pipe(switchMap(() => throwError(() => new Error('Avast! Thar be a new error!'))))
-            .subscribe(console.log);
-        }).to.throw('Avast! Thar be a new error!');
-      });
-
-      it('should finalize even with a synchronous error', () => {
-        let called = false;
-        const badObservable = new Observable((subscriber) => {
-          subscriber.add(() => {
-            called = true;
-          });
-
-          subscriber.error(new Error('bad'));
-        });
-
-        try {
-          badObservable.subscribe();
-        } catch (err) {
-          // do nothing
-        }
-        expect(called).to.be.true;
-      });
-
-      it('should finalize even with a synchronous thrown error', () => {
-        let called = false;
-        const badObservable = new Observable((subscriber) => {
-          subscriber.add(() => {
-            called = true;
-          });
-
-          throw new Error('bad');
-        });
-
-        try {
-          badObservable.subscribe();
-        } catch (err) {
-          // do nothing
-        }
-        expect(called).to.be.true;
-      });
-
-
-      it('should handle empty string sync errors', () => {
-        const badObservable = new Observable(() => {
-          throw '';
-        });
-
-        let caught = false;
-        try {
-          badObservable.subscribe();
-        } catch (err) {
-          caught = true;
-          expect(err).to.equal('');
-        }
-        expect(caught).to.be.true;
-      });
-
-      it('should execute finalizer even with a sync error', () => {
-        let called = false;
-        const badObservable = new Observable((subscriber) => {
-          subscriber.error(new Error('bad'));
-        }).pipe(
-          finalize(() => {
-            called = true;
-          })
-        );
-
-        try {
-          badObservable.subscribe();
-        } catch (err) {
-          // do nothing
-        }
-        expect(called).to.be.true;
-      });
-
-      it('should execute finalize even with a sync thrown error', () => {
-        let called = false;
-        const badObservable = new Observable(() => {
-          throw new Error('bad');
-        }).pipe(
-          finalize(() => {
-            called = true;
-          })
-        );
-
-        try {
-          badObservable.subscribe();
-        } catch (err) {
-          // do nothing
-        }
-        expect(called).to.be.true;
-      });
-
-      it('should execute finalizer in order even with a sync error', () => {
-        const results: any[] = [];
-        const badObservable = new Observable((subscriber) => {
-          subscriber.error(new Error('bad'));
-        }).pipe(
-          finalize(() => {
-            results.push(1);
-          }),
-          finalize(() => {
-            results.push(2)
-          })
-        );
-
-        try {
-          badObservable.subscribe();
-        } catch (err) {
-          // do nothing
-        }
-        expect(results).to.deep.equal([1, 2]);
-      });
-
-      it('should execute finalizer in order even with a sync thrown error', () => {
-        const results: any[] = [];
-        const badObservable = new Observable(() => {
-          throw new Error('bad');
-        }).pipe(
-          finalize(() => {
-            results.push(1);
-          }),
-          finalize(() => {
-            results.push(2)
-          })
-        );
-
-        try {
-          badObservable.subscribe();
-        } catch (err) {
-          // do nothing
-        }
-        expect(results).to.deep.equal([1, 2]);
-      });
-
-      // https://github.com/ReactiveX/rxjs/issues/6271
-      it('should not have a run-time error if no errors are thrown and there are operators', () => {
-        expect(() => {
-          of(1, 2, 3).pipe(
-            map(x => x + x),
-            map(x => Math.log(x))
-          )
-          .subscribe();
-        }).not.to.throw();
-      });
-
-      it('should call finalize if sync unsubscribed', () => {
-        let called = false;
-        const observable = new Observable(() => () => (called = true));
-        const subscription = observable.subscribe();
-        subscription.unsubscribe();
-
-        expect(called).to.be.true;
-      });
-
-      it('should call registered finalizer if sync unsubscribed', () => {
-        let called = false;
-        const observable = new Observable((subscriber) => subscriber.add(() => called = true));
-        const subscription = observable.subscribe();
-        subscription.unsubscribe();
-
-        expect(called).to.be.true;
-      });
-
-      afterEach(() => {
-        config.useDeprecatedSynchronousErrorHandling = false;
-      });
-    });
   });
 
   describe('pipe', () => {
@@ -933,41 +692,6 @@ describe('Observable', () => {
   });
 });
 
-/** @test {Observable} */
-describe('Observable.create', () => {
-  it('should create an Observable', () => {
-    const result = Observable.create(() => {
-      //noop
-    });
-    expect(result instanceof Observable).to.be.true;
-  });
-
-  it('should provide an observer to the function', () => {
-    let called = false;
-    const result = Observable.create((observer: Observer<any>) => {
-      called = true;
-      expectFullObserver(observer);
-      observer.complete();
-    });
-
-    expect(called).to.be.false;
-    result.subscribe(() => {
-      //noop
-    });
-    expect(called).to.be.true;
-  });
-
-  it('should send errors thrown in the passed function down the error path', (done) => {
-    Observable.create(() => {
-      throw new Error('this should be handled');
-    }).subscribe({
-      error(err: Error) {
-        expect(err).to.exist.and.be.instanceof(Error).and.have.property('message', 'this should be handled');
-        done();
-      },
-    });
-  });
-});
 
 /** @test {Observable} */
 describe('Observable.lift', () => {
@@ -1008,7 +732,7 @@ describe('Observable.lift', () => {
 
   });
 
-  it('should be overrideable in a custom Observable type that composes', (done) => {
+  it('should be overridable in a custom Observable type that composes', (done) => {
     const result = new MyCustomObservable<number>((observer) => {
       observer.next(1);
       observer.next(2);

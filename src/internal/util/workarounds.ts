@@ -4,4 +4,4 @@
 // like TS_18757 - or use a descriptive name and leave a detailed comment
 // alongside the type alias.
 
-export {}
+export {};

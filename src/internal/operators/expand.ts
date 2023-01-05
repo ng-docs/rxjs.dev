@@ -105,7 +105,9 @@ export function expand<T, O extends ObservableInput<unknown>>(
       // General merge params
       source,
       subscriber,
-      project,
+
+      // HACK: Cast because TypeScript seems to get confused here.
+      project as (value: T, index: number) => ObservableInput<ObservedValueOf<O>>,
       concurrent,
 
       // onBeforeNext

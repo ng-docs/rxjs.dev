@@ -1,15 +1,11 @@
-import { Observable } from '../Observable';
 import { ObservableInputTuple, OperatorFunction } from '../types';
-import { operate } from '../util/lift';
-import { innerFrom } from '../observable/innerFrom';
 import { argsOrArgArray } from '../util/argsOrArgArray';
-import { createOperatorSubscriber } from './OperatorSubscriber';
-import { noop } from '../util/noop';
+import { onErrorResumeNext as oERNCreate } from '../observable/onErrorResumeNext';
 
-export function onErrorResumeNext<T, A extends readonly unknown[]>(
+export function onErrorResumeNextWith<T, A extends readonly unknown[]>(
   sources: [...ObservableInputTuple<A>]
 ): OperatorFunction<T, T | A[number]>;
-export function onErrorResumeNext<T, A extends readonly unknown[]>(
+export function onErrorResumeNextWith<T, A extends readonly unknown[]>(
   ...sources: [...ObservableInputTuple<A>]
 ): OperatorFunction<T, T | A[number]>;
 
@@ -104,7 +100,7 @@ export function onErrorResumeNext<T, A extends readonly unknown[]>(
  * 一个返回 Observable 的函数，该 Observable 会从源 Observable 中发送值，但即使源出错了，它也会订阅传入的下一个 Observable，以此类推，直到它完成或用完这些 Observables。
  *
  */
-export function onErrorResumeNext<T, A extends readonly unknown[]>(
+export function onErrorResumeNextWith<T, A extends readonly unknown[]>(
   ...sources: [[...ObservableInputTuple<A>]] | [...ObservableInputTuple<A>]
 ): OperatorFunction<T, T | A[number]> {
   // For some reason, TS 4.1 RC gets the inference wrong here and infers the
@@ -113,32 +109,10 @@ export function onErrorResumeNext<T, A extends readonly unknown[]>(
   // asserted explicitly.
   const nextSources = argsOrArgArray(sources) as unknown as ObservableInputTuple<A>;
 
-  return operate((source, subscriber) => {
-    const remaining = [source, ...nextSources];
-    const subscribeNext = () => {
-      if (!subscriber.closed) {
-        if (remaining.length > 0) {
-          let nextSource: Observable<A[number]>;
-          try {
-            nextSource = innerFrom(remaining.shift()!);
-          } catch (err) {
-            subscribeNext();
-            return;
-          }
-
-          // Here we have to use one of our Subscribers, or it does not wire up
-          // The `closed` property of upstream Subscribers synchronously, that
-          // would result in situation were we could not stop a synchronous firehose
-          // with something like `take(3)`.
-          const innerSub = createOperatorSubscriber(subscriber, undefined, noop, noop);
-          nextSource.subscribe(innerSub);
-          innerSub.add(subscribeNext);
-        } else {
-          subscriber.complete();
-        }
-      }
-    };
-
-    subscribeNext();
-  });
+  return (source) => oERNCreate(source, ...nextSources);
 }
+
+/**
+ * @deprecated Renamed. Use {@link onErrorResumeNextWith} instead. Will be removed in v8.
+ */
+export const onErrorResumeNext = onErrorResumeNextWith;

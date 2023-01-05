@@ -5,7 +5,6 @@ import { Subscription, EMPTY_SUBSCRIPTION } from './Subscription';
 import { Observer, SubscriptionLike, TeardownLogic } from './types';
 import { ObjectUnsubscribedError } from './util/ObjectUnsubscribedError';
 import { arrRemove } from './util/arrRemove';
-import { errorContext } from './util/errorContext';
 
 /**
  * A Subject is a special type of Observable that allows values to be
@@ -58,44 +57,38 @@ export class Subject<T> extends Observable<T> implements SubscriptionLike {
   }
 
   next(value: T) {
-    errorContext(() => {
-      this._throwIfClosed();
-      if (!this.isStopped) {
-        if (!this.currentObservers) {
-          this.currentObservers = Array.from(this.observers);
-        }
-        for (const observer of this.currentObservers) {
-          observer.next(value);
-        }
+    this._throwIfClosed();
+    if (!this.isStopped) {
+      if (!this.currentObservers) {
+        this.currentObservers = Array.from(this.observers);
       }
-    });
+      for (const observer of this.currentObservers) {
+        observer.next(value);
+      }
+    }
   }
 
   error(err: any) {
-    errorContext(() => {
-      this._throwIfClosed();
-      if (!this.isStopped) {
-        this.hasError = this.isStopped = true;
-        this.thrownError = err;
-        const { observers } = this;
-        while (observers.length) {
-          observers.shift()!.error(err);
-        }
+    this._throwIfClosed();
+    if (!this.isStopped) {
+      this.hasError = this.isStopped = true;
+      this.thrownError = err;
+      const { observers } = this;
+      while (observers.length) {
+        observers.shift()!.error(err);
       }
-    });
+    }
   }
 
   complete() {
-    errorContext(() => {
-      this._throwIfClosed();
-      if (!this.isStopped) {
-        this.isStopped = true;
-        const { observers } = this;
-        while (observers.length) {
-          observers.shift()!.complete();
-        }
+    this._throwIfClosed();
+    if (!this.isStopped) {
+      this.isStopped = true;
+      const { observers } = this;
+      while (observers.length) {
+        observers.shift()!.complete();
       }
-    });
+    }
   }
 
   unsubscribe() {
@@ -146,7 +139,7 @@ export class Subject<T> extends Observable<T> implements SubscriptionLike {
 
   /**
    * Creates a new Observable with this Subject as the source. You can do this
-   * to create customize Observer-side logic of the Subject and conceal it from
+   * to create custom Observer-side logic of the Subject and conceal it from
    * code that uses the Observable.
    * @return {Observable} Observable that the Subject casts to
    */

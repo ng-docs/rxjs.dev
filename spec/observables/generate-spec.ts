@@ -3,7 +3,7 @@ import { TestScheduler } from 'rxjs/testing';
 import { expect } from 'chai';
 import { generate } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { SafeSubscriber } from 'rxjs/internal/Subscriber';
+import { Subscriber } from 'rxjs/internal/Subscriber';
 import { observableMatcher } from '../helpers/observableMatcher';
 
 function err(): any {
@@ -90,7 +90,7 @@ describe('generate', () => {
       (x) => x + 1
     );
     let count = 0;
-    const subscriber = new SafeSubscriber<number>((x) => {
+    const subscriber = new Subscriber<number>((x) => {
       count++;
       if (x == 2) {
         subscriber.unsubscribe();

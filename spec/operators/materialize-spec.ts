@@ -1,8 +1,9 @@
 import { expect } from 'chai';
 import { materialize, map, mergeMap, take } from 'rxjs/operators';
-import { Notification, of, Observable } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { TestScheduler } from 'rxjs/testing';
 import { observableMatcher } from '../helpers/observableMatcher';
+import { COMPLETE_NOTIFICATION, errorNotification, nextNotification } from 'rxjs/internal/NotificationFactories';
 
 /** @test {materialize} */
 describe('materialize', () => {
@@ -21,7 +22,7 @@ describe('materialize', () => {
 
       const result = e1.pipe(
         materialize(),
-        map((x: Notification<string>) => {
+        map((x: any) => {
           if (x.kind === 'C') {
             return '|';
           } else {
@@ -42,10 +43,10 @@ describe('materialize', () => {
       const expected = '--w--x--y--(z|)';
 
       const expectedValue = {
-        w: Notification.createNext('a'),
-        x: Notification.createNext('b'),
-        y: Notification.createNext('c'),
-        z: Notification.createComplete(),
+        w: nextNotification('a'),
+        x: nextNotification('b'),
+        y: nextNotification('c'),
+        z: COMPLETE_NOTIFICATION,
       };
 
       expectObservable(e1.pipe(materialize())).toBe(expected, expectedValue);
@@ -60,10 +61,10 @@ describe('materialize', () => {
       const expected = '--w--x--y--(z|)';
 
       const expectedValue = {
-        w: Notification.createNext('a'),
-        x: Notification.createNext('b'),
-        y: Notification.createNext('c'),
-        z: Notification.createError('error'),
+        w: nextNotification('a'),
+        x: nextNotification('b'),
+        y: nextNotification('c'),
+        z: errorNotification('error'),
       };
 
       expectObservable(e1.pipe(materialize())).toBe(expected, expectedValue);
@@ -79,8 +80,8 @@ describe('materialize', () => {
       const unsub = '   ------!     ';
 
       const expectedValue = {
-        w: Notification.createNext('a'),
-        x: Notification.createNext('b'),
+        w: nextNotification('a'),
+        x: nextNotification('b'),
       };
 
       expectObservable(e1.pipe(materialize()), unsub).toBe(expected, expectedValue);
@@ -96,14 +97,14 @@ describe('materialize', () => {
       const unsub = '   ------!     ';
 
       const expectedValue = {
-        w: Notification.createNext('a'),
-        x: Notification.createNext('b'),
+        w: nextNotification('a'),
+        x: nextNotification('b'),
       };
 
       const result = e1.pipe(
         mergeMap((x: string) => of(x)),
         materialize(),
-        mergeMap((x: Notification<string>) => of(x))
+        mergeMap((x) => of(x))
       );
 
       expectObservable(result, unsub).toBe(expected, expectedValue);
@@ -128,7 +129,7 @@ describe('materialize', () => {
       const e1subs = '  ^---!   ';
       const expected = '----(x|)';
 
-      expectObservable(e1.pipe(materialize())).toBe(expected, { x: Notification.createComplete() });
+      expectObservable(e1.pipe(materialize())).toBe(expected, { x: COMPLETE_NOTIFICATION });
       expectSubscriptions(e1.subscriptions).toBe(e1subs);
     });
   });
@@ -139,7 +140,7 @@ describe('materialize', () => {
       const e1subs = '  (^!)';
       const expected = '(x|)';
 
-      expectObservable(e1.pipe(materialize())).toBe(expected, { x: Notification.createComplete() });
+      expectObservable(e1.pipe(materialize())).toBe(expected, { x: COMPLETE_NOTIFICATION });
       expectSubscriptions(e1.subscriptions).toBe(e1subs);
     });
   });
@@ -150,7 +151,7 @@ describe('materialize', () => {
       const e1subs = '  (^!)';
       const expected = '(x|)';
 
-      expectObservable(e1.pipe(materialize())).toBe(expected, { x: Notification.createError('error') });
+      expectObservable(e1.pipe(materialize())).toBe(expected, { x: errorNotification('error') });
       expectSubscriptions(e1.subscriptions).toBe(e1subs);
     });
   });

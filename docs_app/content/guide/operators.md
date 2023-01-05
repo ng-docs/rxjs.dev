@@ -462,7 +462,7 @@ function discardOddDoubleEven() {
 
 ### 从头开始创建新的操作符
 
-It is more complicated, but if you have to write an operator that cannot be made from a combination of existing operators (a rare occurrance), you can write an operator from scratch using the Observable constructor, like this:
+It is more complicated, but if you have to write an operator that cannot be made from a combination of existing operators (a rare occurrence), you can write an operator from scratch using the Observable constructor, like this:
 
 它更复杂，但如果你必须编写一个不能由现有操作符组合而成的操作符（很少发生），你可以使用 Observable 构造函数从头开始编写一个操作符，如下所示：
 

@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { groupBy, delay, tap, map, take, mergeMap, materialize, skip, ignoreElements } from 'rxjs/operators';
 import { TestScheduler } from 'rxjs/testing';
-import { ReplaySubject, of, Observable, Operator, Observer, Subject } from 'rxjs';
+import { ReplaySubject, of, Observable, Operator, Observer, Subject, NextNotification, ErrorNotification } from 'rxjs';
 import { createNotification } from 'rxjs/internal/NotificationFactories';
 import { observableMatcher } from '../helpers/observableMatcher';
 
@@ -1547,7 +1547,11 @@ function phonyMarbelize<T>(testScheduler: TestScheduler) {
         // assertions
         return {
           frame: testScheduler.frame,
-          notification: createNotification(notification.kind, notification.value, notification.error),
+          notification: createNotification(
+            notification.kind,
+            (notification as NextNotification<T>).value,
+            (notification as ErrorNotification).error
+          ),
         };
       })
     );

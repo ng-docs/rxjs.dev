@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import { repeatWhen, map, mergeMap, takeUntil, takeWhile, take } from 'rxjs/operators';
 import { of, EMPTY, Observable, Subscriber } from 'rxjs';
-import { SafeSubscriber } from 'rxjs/internal/Subscriber';
 import { TestScheduler } from 'rxjs/testing';
 import { observableMatcher } from '../helpers/observableMatcher';
 
@@ -124,7 +123,7 @@ describe('repeatWhen operator', () => {
     Observable.prototype.subscribe = function (...args: any[]): any {
       let [subscriber] = args;
       if (!(subscriber instanceof Subscriber)) {
-        subscriber = new SafeSubscriber(...args);
+        subscriber = new Subscriber(...args);
       }
       subscriber.error = function (err: any): void {
         errors.push(err);
@@ -151,7 +150,7 @@ describe('repeatWhen operator', () => {
     Observable.prototype.subscribe = function (...args: any[]): any {
       let [subscriber] = args;
       if (!(subscriber instanceof Subscriber)) {
-        subscriber = new SafeSubscriber(...args);
+        subscriber = new Subscriber(...args);
       }
       subscriber.error = function (err: any): void {
         errors.push(err);

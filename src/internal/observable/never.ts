@@ -42,13 +42,3 @@ import { noop } from '../util/noop';
  * @see {@link throwError}
  */
 export const NEVER = new Observable<never>(noop);
-
-/**
- * @deprecated Replaced with the {@link NEVER} constant. Will be removed in v8.
- *
- * 已替换为 {@link NEVER} 常量。将在 v8 中删除。
- *
- */
-export function never() {
-  return NEVER;
-}

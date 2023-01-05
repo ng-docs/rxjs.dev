@@ -1,5 +1,5 @@
-import { Observable } from '../Observable';
-import { MonoTypeOperatorFunction } from '../types';
+import { innerFrom } from '../observable/innerFrom';
+import { MonoTypeOperatorFunction, ObservableInput } from '../types';
 import { operate } from '../util/lift';
 import { noop } from '../util/noop';
 import { createOperatorSubscriber } from './OperatorSubscriber';
@@ -11,13 +11,13 @@ import { createOperatorSubscriber } from './OperatorSubscriber';
  * 每当另一个 Observable（`notifier`）发送时，就会从源 Observable 发送最近发出的值。
  *
  * <span class="informal">It's like {@link sampleTime}, but samples whenever
- * the `notifier` Observable emits something.</span>
+ * the `notifier` `ObservableInput` emits something.</span>
  *
  * <span class="informal">它很像 {@link sampleTime}，但会在 `notifier` Observable 发送了某些东西时采样。</span>
  *
  * ![](sample.png)
  *
- * Whenever the `notifier` Observable emits a value, `sample`
+ * Whenever the `notifier` `ObservableInput` emits a value, `sample`
  * looks at the source Observable and emits whichever value it has most recently
  * emitted since the previous sampling, unless the source has not emitted
  * anything since the previous sampling. The `notifier` is subscribed to as soon
@@ -46,7 +46,7 @@ import { createOperatorSubscriber } from './OperatorSubscriber';
  * @see {@link debounce}
  * @see {@link sampleTime}
  * @see {@link throttle}
- * @param notifier The Observable to use for sampling the
+ * @param notifier The `ObservableInput` to use for sampling the
  * source Observable.
  *
  * 用于对源 Observable 进行采样的 Observable。
@@ -58,7 +58,7 @@ import { createOperatorSubscriber } from './OperatorSubscriber';
  * 一个返回 Observable 的函数，当通知器 Observable 发送了值或完成时，它就会发送对源 Observable 发送的值进行采样的结果。
  *
  */
-export function sample<T>(notifier: Observable<any>): MonoTypeOperatorFunction<T> {
+export function sample<T>(notifier: ObservableInput<any>): MonoTypeOperatorFunction<T> {
   return operate((source, subscriber) => {
     let hasValue = false;
     let lastValue: T | null = null;
@@ -68,7 +68,7 @@ export function sample<T>(notifier: Observable<any>): MonoTypeOperatorFunction<T
         lastValue = value;
       })
     );
-    notifier.subscribe(
+    innerFrom(notifier).subscribe(
       createOperatorSubscriber(
         subscriber,
         () => {
