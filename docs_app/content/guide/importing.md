@@ -5,6 +5,8 @@
 There are different ways you can {@link guide/installation install} RxJS. Using/importing RxJS depends on
 the used RxJS version, but also depends on the used installation method.
 
+你可以通过多种方式{@link guide/installation 安装} RxJS。使用/导入 RxJS 取决于使用的 RxJS 版本，也取决于使用的安装方式。
+
 [Pipeable operators](https://v6.rxjs.dev/guide/v6/pipeable-operators) were introduced in RxJS version
 5.5. This enabled all operators to be exported from a single place. This new export site was introduced
 with RxJS version 6 where all pipeable operators could have been imported from `'rxjs/operators'`. For
@@ -19,6 +21,8 @@ example, `import { map } from 'rxjs/operators'`.
 <span class="informal">**With RxJS v7.2.0, most operators have been moved to `{@link api#index 'rxjs'}`
 export site. This means that the preferred way to import operators is from `'rxjs'`, while
 `'rxjs/operators'` export site has been deprecated.**</span>
+
+<span class="informal">**在 RxJS v7.2.0 中，大多数运算符已移至 `{@link api#index 'rxjs'}` 中导出。这意味着导入运算符的首选方式是从 `'rxjs'` 导入运算符，而从 `'rxjs/operators'` 中导出的方式已被弃用。**</span>
 
 For example, instead of using:
 
@@ -43,6 +47,8 @@ versions.
 
 Click {@link #how-to-migrate here to see} how to migrate.
 
+单击{@link #how-to-migrate 此处查看}如何迁移。
+
 ## Export sites
 
 ## 导出点
@@ -53,15 +59,27 @@ RxJS v7 会导出 6 个不同的位置，你可以从中导入你需要的内容
 
 - `{@link api#index 'rxjs'}` - for example: `import { of } from 'rxjs';`
 
+  `{@link api#index 'rxjs'}` - 例如： `import { of } from 'rxjs';`
+
 - `{@link api#operators 'rxjs/operators'}` - for example: `import { map } from 'rxjs/operators';`
+
+  `{@link api#operators 'rxjs/operators'}` - 例如： `import { map } from 'rxjs/operators';`
 
 - `{@link api#ajax 'rxjs/ajax'}` - for example: `import { ajax } from 'rxjs/ajax';`
 
+  `{@link api#ajax 'rxjs/ajax'}` - 例如： `import { ajax } from 'rxjs/ajax';`
+
 - `{@link api#fetch 'rxjs/fetch'}` - for example: `import { fromFetch } from 'rxjs/fetch';`
+
+  `{@link api#fetch 'rxjs/fetch'}` - 例如： `import { fromFetch } from 'rxjs/fetch';`
 
 - `{@link api#webSocket 'rxjs/webSocket'}` - for example: `import { webSocket } from 'rxjs/webSocket';`
 
+  `{@link api#webSocket 'rxjs/webSocket'}` - 例如： `import { webSocket } from 'rxjs/webSocket';`
+
 - `{@link api#testing 'rxjs/testing'}` - for example: `import { TestScheduler } from 'rxjs/testing';`
+
+  `{@link api#testing 'rxjs/testing'}` - 例如： `import { TestScheduler } from 'rxjs/testing';`
 
 ### How to migrate?
 
@@ -88,6 +106,8 @@ ending with `With`). Those are:
 
 `partition`, the operator, is a special case, as it is deprecated and you should be using the `partition` creation function exported from `'rxjs'` instead.
 
+`partition` 运算符是一种特殊情况，因为它已被弃用，你应该改用从 `'rxjs'` 导出的 `partition` 创建函数。
+
 For example, the old and deprecated way of using [`merge`](/api/operators/merge) from `'rxjs/operators'`
 is:
 
@@ -105,6 +125,8 @@ But this should be avoided and replaced with one of the next two examples.
 
 For example, this could be replaced by using a static creation {@link merge} function:
 
+例如，这可以通过使用静态创建 {@link merge} 函数来替换：
+
 ```ts
 import { merge } from 'rxjs';
 
@@ -112,6 +134,8 @@ merge(a$, b$).subscribe();
 ```
 
 Or it could be written using a pipeable {@link mergeWith} operator:
+
+或者它可以使用可管道化的 {@link mergeWith} 运算符编写：
 
 ```ts
 import { mergeWith } from 'rxjs';
@@ -134,6 +158,8 @@ prior and after this version.
 
 If you've installed RxJS using {@link guide/installation#es6-via-npm ES6 via npm} and installed version
 is:
+
+如果你使用 {@link guide/installation#es6-via-npm ES6 via npm} 安装了 RxJS，并且安装的版本是：
 
 #### v7.2.0 or later
 
@@ -214,6 +240,8 @@ of(1, 2, 3).pipe(map((x) => x + '!!!')); // etc
 
 If you installed a library {@link guide/installation#cdn using CDN}, the global namespace for rxjs is
 `rxjs`.
+
+如果你{@link guide/installation#cdn 使用 CDN}安装了一个库，rxjs 的全局命名空间是 `rxjs` 。
 
 #### v7.2.0 or later
 

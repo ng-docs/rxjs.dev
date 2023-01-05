@@ -1,5 +1,3 @@
 export class SubscriptionLog {
-  constructor(public subscribedFrame: number,
-              public unsubscribedFrame: number = Infinity) {
-  }
+  constructor(public subscribedFrame: number, public unsubscribedFrame: number = Infinity) {}
 }

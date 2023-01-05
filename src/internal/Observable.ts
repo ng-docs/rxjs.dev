@@ -41,7 +41,9 @@ export class Observable<T> implements Subscribable<T> {
    * @method lift
    * @param operator the operator defining the operation to take on the observable
    * @return a new observable with the Operator applied
-   * @deprecated Internal implementation detail, do not use directly. Will be made internal in v8.
+   * @deprecated
+   *
+   * Internal implementation detail, do not use directly. Will be made internal in v8.
    * If you have implemented an operator using `lift`, it is recommended that you create an
    * operator by simply returning `new Observable()` directly. See "Creating new operators from
    * scratch" section here: https://rxjs.dev/guide/operators

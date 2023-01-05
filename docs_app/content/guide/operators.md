@@ -4,6 +4,8 @@
 
 RxJS is mostly useful for its _operators_, even though the Observable is the foundation. Operators are the essential pieces that allow complex asynchronous code to be easily composed in a declarative manner.
 
+RxJS 最有用的是它的*操作符*，虽然 Observable 是基础。操作符是允许以声明方式轻松组合复杂异步代码的基本部件。
+
 ## What are operators?
 
 ## 什么是操作符？
@@ -14,7 +16,11 @@ Operators are **functions**. There are two kinds of operators:
 
 **Pipeable Operators** are the kind that can be piped to Observables using the syntax `observableInstance.pipe(operator())`. These include, [`filter(...)`](/api/operators/filter), and [`mergeMap(...)`](/api/operators/mergeMap). When called, they do not _change_ the existing Observable instance. Instead, they return a _new_ Observable, whose subscription logic is based on the first Observable.
 
+**可管道化操作符**是一种可以使用语法 `observableInstance.pipe(operator())` 传给可观察者的类型。这些包括 [`filter(...)`](/api/operators/filter)和[`mergeMap(...)`](/api/operators/mergeMap) 。调用时，它们不会*更改*现有的可观察者实例。相反，它们返回一个*新的*可观察者，其订阅逻辑基于第一个可观察者。
+
 <span class="informal">A Pipeable Operator is a function that takes an Observable as its input and returns another Observable. It is a pure operation: the previous Observable stays unmodified.</span>
+
+<span class="informal">可管道化操作符是一个将可观察者作为输入并返回另一个可观察者的函数。这是一个纯操作：之前的可观察者会保持不变。</span>
 
 A Pipeable Operator is essentially a pure function which takes one Observable as input and generates another Observable as output. Subscribing to the output Observable will also subscribe to the input Observable.
 
@@ -66,6 +72,8 @@ Note that `map` logically must be constructed on the fly, since it must be given
 
 Pipeable operators are functions, so they _could_ be used like ordinary functions: `op()(obs)` — but in practice, there tend to be many of them convolved together, and quickly become unreadable: `op4()(op3()(op2()(op1()(obs))))`. For that reason, Observables have a method called `.pipe()` that accomplishes the same thing while being much easier to read:
 
+可管道操作符是函数，因此它们*可以*像普通函数一样使用： `op()(obs)` — 但在实践中，它们中的许多往往会纠缠在一起，并很快变得不可读： `op4()(op3()(op2()(op1()(obs))))` 。出于这个原因，Observables 有一个名为 `.pipe()` 的方法，它完成同样的事情，同时更容易阅读：
+
 ```ts
 obs.pipe(op1(), op2(), op3(), op4());
 ```
@@ -94,11 +102,15 @@ const observable = interval(1000 /* number of milliseconds */);
 
 See the list of all static creation operators [here](#creation-operators-list).
 
+请在[此处](#creation-operators-list)查看所有静态创建操作符的列表。
+
 ## Higher-order Observables
 
 ## 高阶 Observable
 
 Observables most commonly emit ordinary values like strings and numbers, but surprisingly often, it is necessary to handle Observables _of_ Observables, so-called higher-order Observables. For example, imagine you had an Observable emitting strings that were the URLs of files you wanted to see. The code might look like this:
+
+可观察者通常会发出普通值，如字符串和数字，但令人惊讶的是，经常需要处理可观察者的可观察者，即所谓的高阶可观察者。例如，假设你有一个可观察者发射字符串，这些字符串是你想要查看的文件的 URL。代码可能如下所示：
 
 ```ts
 const fileObservable = urlObservable.pipe(map((url) => http.get(url)));
@@ -106,7 +118,11 @@ const fileObservable = urlObservable.pipe(map((url) => http.get(url)));
 
 `http.get()` returns an Observable (of string or string arrays probably) for each individual URL. Now you have an Observable _of_ Observables, a higher-order Observable.
 
+`http.get()` 会为每个单独的 URL 返回一个可观察者（可能是字符串或字符串数组）。现在你有了一个可观察者*的*可观察者，一个高阶可观察者。
+
 But how do you work with a higher-order Observable? Typically, by _flattening_: by (somehow) converting a higher-order Observable into an ordinary Observable. For example:
+
+但是你如何使用高阶可观察者呢？通常，要通过*展平*：通过（某种方式）将高阶可观察者转换为普通可观察者。例如：
 
 ```ts
 const fileObservable = urlObservable.pipe(
@@ -116,6 +132,8 @@ const fileObservable = urlObservable.pipe(
 ```
 
 The [`concatAll()`](/api/operators/concatAll) operator subscribes to each "inner" Observable that comes out of the "outer" Observable, and copies all the emitted values until that Observable completes, and goes on to the next one. All of the values are in that way concatenated. Other useful flattening operators (called [_join operators_](#join-operators)) are
+
+[`concatAll()`](/api/operators/concatAll) 操作符订阅来自“外部”可观察者的每个“内部”可观察者，并复制所有发出的值，直到该可观察者完成，然后继续下一个。所有的值都以这种方式连接在一起。其他有用的展平操作符（称为[_联结操作符_](#join-operators)）是
 
 - [`mergeAll()`](/api/operators/mergeAll) — subscribes to each inner Observable as it arrives, then emits each value as it arrives
 
@@ -139,7 +157,11 @@ Just as many array libraries combine [`map()`](https://developer.mozilla.org/en-
 
 To explain how operators work, textual descriptions are often not enough. Many operators are related to time, they may for instance delay, sample, throttle, or debounce value emissions in different ways. Diagrams are often a better tool for that. _Marble Diagrams_ are visual representations of how operators work, and include the input Observable(s), the operator and its parameters, and the output Observable.
 
+要解释操作符的工作原理，仅靠文字描述通常是不够的。许多操作符与时间相关，例如，它们可能以不同方式延迟、采样、节流或防抖后发出。图表通常是更好的工具。*弹珠图*是对操作符工作原理的可视化表示，包括输入可观察者、操作符及其参数以及输出可观察者。
+
 <span class="informal">In a marble diagram, time flows to the right, and the diagram describes how values ("marbles") are emitted on the Observable execution.</span>
+
+<span class="informal">在弹珠图中，时间向右流动，该图描述了值（“弹珠”）如何在可观察者执行时发出。</span>
 
 Below you can see the anatomy of a marble diagram.
 
@@ -164,6 +186,8 @@ For a complete overview, see the [references page](/api).
 如需完整概述，请参阅[参考资料页面](/api)。
 
 ### <a id="creation-operators-list"></a>Creation Operators
+
+### <a id="creation-operators-list"></a>创建操作符
 
 - [`ajax`](/api/ajax/ajax)
 
@@ -197,9 +221,11 @@ For a complete overview, see the [references page](/api).
 
 ### <a id="join-creation-operators"></a>Join Creation Operators
 
+### <a id="join-creation-operators"></a>联结创建操作符
+
 These are Observable creation operators that also have join functionality -- emitting values of multiple source Observables.
 
-这些是 Observable 的创建操作符，它们也具有联结功能 —— 发出多个源 Observable 的值。
+这些是可观察者的创建操作符，它们也具有联结功能 —— 发出多个源 Observable 的值。
 
 - [`combineLatest`](/api/index/function/combineLatest)
 
@@ -331,7 +357,11 @@ These are Observable creation operators that also have join functionality -- emi
 
 ### <a id="join-operators"></a>Join Operators
 
+### <a id="join-operators"></a>联结操作符
+
 Also see the [Join Creation Operators](#join-creation-operators) section above.
+
+另请参阅上面的[联结创建操作符](#join-creation-operators)部分。
 
 - [`combineLatestAll`](/api/operators/combineLatestAll)
 
@@ -532,7 +562,11 @@ Note that you must
 
 2. implement a "finalization" function that cleans up when the Observable completes (in this case by unsubscribing and clearing any pending timeouts).
 
+   实现一个“终止化”函数，在可观察者完成时进行清理（在这种情况下通过取消订阅和清除任何未决的超时）。
+
 3. return that finalization function from the function passed to the Observable constructor.
+
+   从传递给可观察者构造函数的函数中返回终止化函数。
 
 Of course, this is only an example; the [`delay()`](/api/operators/delay) operator already exists.
 

@@ -132,7 +132,8 @@
   "docVersions": [
     {
       "title": "stable",
-      "url": "https://rxjs.dev/"
+      "url": "https://rxjs.dev/",
+      "titleCn": "稳定的"
     },
     {
       "title": "v6",

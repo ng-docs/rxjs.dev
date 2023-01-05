@@ -15,9 +15,9 @@ export function combineLatestAll<R>(project: (...values: Array<any>) => R): Oper
  *
  * * Every time an inner Observable emits, the output Observable emits
  * * When the returned observable emits, it emits all of the latest values by:
- *    * If a `project` function is provided, it is called with each recent value from each inner Observable in whatever order they
- *      arrived, and the result of the `project` function is what is emitted by the output Observable.
- *    * If there is no `project` function, an array of all the most recent values is emitted by the output Observable.
+ *   - If a `project` function is provided, it is called with each recent value from each inner Observable in whatever order they
+ *     arrived, and the result of the `project` function is what is emitted by the output Observable.
+ *   - If there is no `project` function, an array of all the most recent values is emitted by the output Observable.
  *
  * ## Example
  *

@@ -97,8 +97,8 @@ export function publish<T, O extends ObservableInput<any>>(selector: (shared: Ob
  * @see {@link publishReplay}
  * @see {@link publishBehavior}
  * @param {Function} [selector] - Optional selector function which can use the multicasted source sequence as many times
- * as needed, without causing multiple subscriptions to the source sequence.
- * Subscribers to the given source will receive all notifications of the source from the time of the subscription on.
+ *   as needed, without causing multiple subscriptions to the source sequence.
+ *   Subscribers to the given source will receive all notifications of the source from the time of the subscription on.
  *
  *   可选的选择器函数，可以根据需要多次使用多播的源序列，而不会导致对源序列的多次订阅。此源的订阅者将从订阅之时起收到该源的所有通知。
  *

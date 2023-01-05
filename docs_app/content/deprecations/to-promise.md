@@ -32,6 +32,8 @@ and to introduce the two new helper functions for conversion to Promises.
 As a replacement to the deprecated `toPromise()` method, you should use one of the two built in static conversion
 functions {@link firstValueFrom} or {@link lastValueFrom}.
 
+作为已弃用的 `toPromise()` 方法的替代品，你你要改用两个内置静态转换函数 {@link firstValueFrom} 或 {@link lastValueFrom} 之一。
+
 ### `lastValueFrom`
 
 The `lastValueFrom` is almost exactly the same as `toPromise()` meaning that it will resolve with the last value that has
@@ -39,6 +41,8 @@ arrived when the Observable completes, but with the difference in behavior when 
 single value. When Observable completes without emitting, `toPromise()` will successfully resolve with `undefined` (thus
 the return type change), while the `lastValueFrom` will reject with the {@link EmptyError}. Thus, the return type of the
 `lastValueFrom` is `Promise<T>`, just like `toPromise()` had in RxJS 6.
+
+`lastValueFrom` 几乎与 `toPromise()` 完全相同，这意味着它将解析为 Observable 完成时到达的最后一个值，但是如果 Observable 完成时没有发出单个值，则行为有所不同。当 Observable 完成但没有发出任何值时， `toPromise()` 将成功解析为 `undefined` （因此返回类型不同），而 `lastValueFrom` 将拒绝（reject）并返回 {@link EmptyError}。因此， `lastValueFrom` 的返回类型是 `Promise<T>` ，就像 RxJS 6 中的 `toPromise()` 一样。
 
 #### Example
 
@@ -66,6 +70,8 @@ use `firstValueFrom`. The `firstValueFrom` will resolve a Promise with the first
 Observable and will immediately unsubscribe to retain resources. The `firstValueFrom` will also reject with an
 {@link EmptyError} if the Observable completes with no values emitted.
 
+但是，你可能希望在第一个值到达时获取它而无需等待 Observable 完成，此时你可以使用 `firstValueFrom` 。 `firstValueFrom` 将使用从 Observable 发出的第一个值解析 Promise，并将立即取消订阅以保留资源。如果 Observable 完成但没有发出任何值，`firstValueFrom` 也会拒绝（reject）并返回 {@link EmptyError}。
+
 #### Example
 
 #### 例子
@@ -88,6 +94,8 @@ execute();
 <span class="informal">Both functions will return a Promise that rejects if the source Observable errors. The Promise
 will reject with the same error that the Observable has errored with.</span>
 
+<span class="informal">如果源 Observable 出错，这两个函数都将返回一个拒绝的 Promise。 Promise 将拒绝并返回与 Observable 相同的错误。</span>
+
 ## Use default value
 
 ## 使用默认值
@@ -96,6 +104,8 @@ If you don't want Promises created by `lastValueFrom` or `firstValueFrom` to rej
 were no emissions before completion, you can use the second parameter. The second parameter is expected to be an object
 with `defaultValue` parameter. The value in the `defaultValue` will be used to resolve a Promise when source Observable
 completes without emitted values.
+
+如果你不希望由 `lastValueFrom` 或 `firstValueFrom` 创建的 Promise 在完成前没有发送任何值时以 {@link EmptyError} 调用 reject，则可以使用第二个参数。第二个参数应该是一个带有 `defaultValue` 参数的对象。 `defaultValue` 中的值将用于在源 Observable 完成但没有发出值时解析 Promise。
 
 ```ts
 import { firstValueFrom, EMPTY } from 'rxjs';
@@ -116,3 +126,5 @@ be used if you _know_ an Observable will emit at least one value _or_ will event
 does not complete or emit, you will end up with a Promise that is hung up, and potentially all of the state of an async
 function hanging out in memory. To avoid this situation, look into adding something like {@link timeout}, {@link take},
 {@link takeWhile}, or {@link takeUntil} amongst others.
+
+仅当你*确信* Observable 最终会完成时才使用 `lastValueFrom` 函数。如果你*确信* Observable 将至少发出一个值*或*最终一定会完成，则应使用 `firstValueFrom` 函数。如果源 Observable 没有完成或发出值，你将以挂起的 Promise 结束，并且可能所有异步函数的状态都挂起在内存中。为避免这种情况，请考虑添加诸如 {@link timeout}、{@link take}、{@link takeWhile} 或 {@link takeUntil} 等内容。
