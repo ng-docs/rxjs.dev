@@ -8,15 +8,16 @@ import { OperatorDecisionTreeService } from './operator-decision-tree.service';
 @Component({
   selector: 'aio-operator-decision-tree',
   template: `
-    <h1 class="mat-heading" tabindex="0">Operator Decision Tree</h1>
+    <h1 class="mat-heading" tabindex="0" translation-result="on">操作符决策树</h1>
+    <h1 class="mat-heading" tabindex="0" translation-origin="off">Operator Decision Tree</h1>
     <ng-container *ngIf="!(hasError$ | async); else hasErrorTemplate">
       <h2 class="mat-subheading-2" tabindex="0">
         {{ currentSentence$ | async }}
       </h2>
       <ng-container *ngIf="isBeyondInitialQuestion$ | async">
         <section>
-          <button (click)="back()" mat-button class="back">Back</button>
-          <button (click)="startOver()" mat-button color="warn" class="start-over">Start Over</button>
+          <button (click)="back()" mat-button class="back">后退</button>
+          <button (click)="startOver()" mat-button color="warn" class="start-over">重新开始</button>
         </section>
       </ng-container>
       <div>

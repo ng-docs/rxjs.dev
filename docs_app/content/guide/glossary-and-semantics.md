@@ -192,6 +192,8 @@ An observable is "hot", when its [producer](#producer) was created outside of th
 
 Pull-based systems are the opposite of [push](#push)-based. In a pull-based type or system, the [consumer](#consumer) must request each value the [producer](#producer) has produced manually, perhaps long after the [producer](#producer) has actually done so. Examples of such systems are [Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function) and [Iterators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)
 
+基于拉取的体系是基于[推送](#push)的体系的对立面，[消费者](#consumer)必须请求[生产者](#producer)手动生成的每一个值，这也许发生在[生产者](#producer)生成值的很久以后。[函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)和[迭代器](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)就是此类体系的例子。
+
 ## Minor Entities
 
 ## 次要实体
@@ -225,6 +227,8 @@ An action taken while handling a [notification](#notification), as set up by an 
 ### Stream(流)
 
 A "stream" or "streaming" in the case of observables, refers to the collection of [operations](#operation), as they are processed during a [subscription](#subscription). This is not to be confused with node [Streams](https://nodejs.org/api/stream.html), and the word "stream", on its own, should be used _sparingly_ in documentation and articles. Instead, prefer [observation chain](#observation-chain), [operations](#operation), or [subscription](#subscription). "Streaming" is less ambiguous, and is fine to use given this defined meaning.
+
+「流（stream）」或「流式（streaming）」在 Observable 的场景下，表示一系列[操作](#operation)的集合，因为它们会在[订阅](#subscription)期间被处理。这不应该和 Node 中的[流](https://nodejs.org/api/stream.html)混淆，「流」这个词应该只保守的用在文档和各种文章中。平时应该改用[观察链](#observation-chain)、[操作](#operation)或[订阅](#subscription)。「流式」则相对明确一些，可以随意使用它的本意。
 
 ### Source
 

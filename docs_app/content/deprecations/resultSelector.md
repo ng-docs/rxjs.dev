@@ -7,9 +7,11 @@ Some operator supported a resultSelector argument that acted as mapping function
 某些操作符支持一个 resultSelector 参数作为该操作符结果的映射函数。使用 `map` 操作符可以实现相同的行为，因此并不推荐使用此参数。
 
 <div class="alert is-important">
-    <span>
-        This deprecation was introduced in RxJS 6.0 and will become breaking with RxJS 8.
-    </span>
+
+This deprecation was introduced in RxJS 6.0 and will become breaking with RxJS 8.
+
+本弃用是 RxJS 6.0 引入的，并且会在 RxJS 8 变成重大变更。
+
 </div>
 
 There were two reasons for actually deprecating those parameters:

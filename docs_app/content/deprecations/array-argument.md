@@ -7,9 +7,11 @@ To unify the API surface of `forkJoin` and `combineLatest` we deprecated some si
 为了统一 `forkJoin` 和 `combineLatest` 的 对外 API，我们弃用了一些签名。因此，建议将 Object 或 Array 传递给这些操作符。
 
 <div class="alert is-important">
-    <span>
-        This deprecation was introduced in RxJS 6.5.
-    </span>
+
+This deprecation was introduced in RxJS 6.5.
+
+本弃用是在 RxJS 6.5 引入的。
+
 </div>
 
 ## Operators affected by this Change

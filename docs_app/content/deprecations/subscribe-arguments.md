@@ -13,13 +13,9 @@ using a partial observer solves that neatly: `source$.subscribe({ next: doSometh
 
 <div class="alert is-important">
 
-    <span>
-        This deprecation was introduced in RxJS 6.4.
-    </span>
+This deprecation was introduced in RxJS 6.4.
 
-    <span>
-        此弃用是在 RxJS 6.4 中引入的。
-    </span>
+此弃用是在 RxJS 6.4 中引入的。
 
 </div>
 

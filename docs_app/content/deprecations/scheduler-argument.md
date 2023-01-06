@@ -12,13 +12,9 @@ To support this transition the [scheduled creation function](/api/index/function
 
 <div class="alert is-important">
 
-    <span>
-        This deprecation was introduced in RxJS 6.5 and will become breaking with RxJS 8.
-    </span>
+This deprecation was introduced in RxJS 6.5 and will become breaking with RxJS 8.
 
-    <span>
-        此弃用是 RxJS 6.5 中引入的，并且将在 RxJS 8 中成为重大变更。
-    </span>
+此弃用是 RxJS 6.5 中引入的，并且将在 RxJS 8 中成为重大变更。
 
 </div>
 

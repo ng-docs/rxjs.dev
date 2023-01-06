@@ -27,9 +27,11 @@ Other APIs that relate to multicasting are now deprecated.
 其它与多播相关的 API 现在均已弃用。
 
 <div class="alert is-important">
-    <span>
-        These deprecations were introduced in RxJS 7.0 and will become breaking in RxJS 8.
-    </span>
+
+These deprecations were introduced in RxJS 7.0 and will become breaking in RxJS 8.
+
+这些弃用是在 RxJS 7.0 引入的，并且会在 RxJS 8 变成重大变更。
+
 </div>
 
 ## APIs affected by this Change

@@ -51,9 +51,11 @@ The callback function you provide to `testScheduler.run(callback)` is called wit
 你提供给 `testScheduler.run(callback)` 的回调函数是使用 `helpers` 对象调用的，该对象包含你将用于编写测试的函数。
 
 <div class="alert is-helpful">
-  <span>
-    When the code inside this callback is being executed, any operator that uses timers/AsyncScheduler (like delay, debounceTime, etc.,) will automatically use the TestScheduler instead, so that we have "virtual time". You do not need to pass the TestScheduler to them, like in the past.
-  </span>
+
+When the code inside this callback is being executed, any operator that uses timers/AsyncScheduler (like delay, debounceTime, etc.,) will automatically use the TestScheduler instead, so that we have "virtual time". You do not need to pass the TestScheduler to them, like in the past.
+
+当此回调函数中的代码被执行时，任何使用了定时器/AsyncScheduler 的操作符（例如 delay、debounceTime 等）将会自动改用 TestScheduler，这样我们就有了「虚拟时间」。你不需要把 TestScheduler 传给它们，就像刚才一样。
+
 </div>
 
 ```ts
