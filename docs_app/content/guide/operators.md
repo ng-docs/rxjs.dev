@@ -16,11 +16,11 @@ Operators are **functions**. There are two kinds of operators:
 
 **Pipeable Operators** are the kind that can be piped to Observables using the syntax `observableInstance.pipe(operator())`. These include, [`filter(...)`](/api/operators/filter), and [`mergeMap(...)`](/api/operators/mergeMap). When called, they do not _change_ the existing Observable instance. Instead, they return a _new_ Observable, whose subscription logic is based on the first Observable.
 
-**可管道化操作符**是一种可以使用语法 `observableInstance.pipe(operator())` 传给可观察者的类型。这些包括 [`filter(...)`](/api/operators/filter)和[`mergeMap(...)`](/api/operators/mergeMap) 。调用时，它们不会*更改*现有的可观察者实例。相反，它们返回一个*新的*可观察者，其订阅逻辑基于第一个可观察者。
+**可管道化操作符**是一种可以使用语法 `observableInstance.pipe(operator())` 传给 Observable 的类型。这些包括 [`filter(...)`](/api/operators/filter)和[`mergeMap(...)`](/api/operators/mergeMap) 。调用时，它们不会*更改*现有的 Observable 实例。相反，它们返回一个*新的* Observable ，其订阅逻辑基于第一个 Observable 。
 
 <span class="informal">A Pipeable Operator is a function that takes an Observable as its input and returns another Observable. It is a pure operation: the previous Observable stays unmodified.</span>
 
-<span class="informal">可管道化操作符是一个将可观察者作为输入并返回另一个可观察者的函数。这是一个纯操作：之前的可观察者会保持不变。</span>
+<span class="informal">可管道化操作符是一个将 Observable 作为输入并返回另一个 Observable 的函数。这是一个纯操作：之前的 Observable 会保持不变。</span>
 
 A Pipeable Operator is essentially a pure function which takes one Observable as input and generates another Observable as output. Subscribing to the output Observable will also subscribe to the input Observable.
 
@@ -110,7 +110,7 @@ See the list of all static creation operators [here](#creation-operators-list).
 
 Observables most commonly emit ordinary values like strings and numbers, but surprisingly often, it is necessary to handle Observables _of_ Observables, so-called higher-order Observables. For example, imagine you had an Observable emitting strings that were the URLs of files you wanted to see. The code might look like this:
 
-可观察者通常会发出普通值，如字符串和数字，但令人惊讶的是，经常需要处理可观察者的可观察者，即所谓的高阶可观察者。例如，假设你有一个可观察者发射字符串，这些字符串是你想要查看的文件的 URL。代码可能如下所示：
+Observable 通常会发出普通值，如字符串和数字，但令人惊讶的是，经常需要处理 Observable 的 Observable ，即所谓的高阶 Observable 。例如，假设你有一个 Observable 发射字符串，这些字符串是你想要查看的文件的 URL。代码可能如下所示：
 
 ```ts
 const fileObservable = urlObservable.pipe(map((url) => http.get(url)));
@@ -118,11 +118,11 @@ const fileObservable = urlObservable.pipe(map((url) => http.get(url)));
 
 `http.get()` returns an Observable (of string or string arrays probably) for each individual URL. Now you have an Observable _of_ Observables, a higher-order Observable.
 
-`http.get()` 会为每个单独的 URL 返回一个可观察者（可能是字符串或字符串数组）。现在你有了一个可观察者*的*可观察者，一个高阶可观察者。
+`http.get()` 会为每个单独的 URL 返回一个 Observable （可能是字符串或字符串数组）。现在你有了一个 Observable _的_ Observable ，一个高阶 Observable 。
 
 But how do you work with a higher-order Observable? Typically, by _flattening_: by (somehow) converting a higher-order Observable into an ordinary Observable. For example:
 
-但是你如何使用高阶可观察者呢？通常，要通过*展平*：通过（某种方式）将高阶可观察者转换为普通可观察者。例如：
+但是你如何使用高阶 Observable 呢？通常，要通过*展平*：通过（某种方式）将高阶 Observable 转换为普通 Observable 。例如：
 
 ```ts
 const fileObservable = urlObservable.pipe(
@@ -133,7 +133,7 @@ const fileObservable = urlObservable.pipe(
 
 The [`concatAll()`](/api/operators/concatAll) operator subscribes to each "inner" Observable that comes out of the "outer" Observable, and copies all the emitted values until that Observable completes, and goes on to the next one. All of the values are in that way concatenated. Other useful flattening operators (called [_join operators_](#join-operators)) are
 
-[`concatAll()`](/api/operators/concatAll) 操作符订阅来自“外部”可观察者的每个“内部”可观察者，并复制所有发出的值，直到该可观察者完成，然后继续下一个。所有的值都以这种方式连接在一起。其他有用的展平操作符（称为[_联结操作符_](#join-operators)）是
+[`concatAll()`](/api/operators/concatAll) 操作符订阅来自“外部” Observable 的每个“内部” Observable ，并复制所有发出的值，直到该 Observable 完成，然后继续下一个。所有的值都以这种方式连接在一起。其他有用的展平操作符（称为[_联结操作符_](#join-operators)）是
 
 - [`mergeAll()`](/api/operators/mergeAll) — subscribes to each inner Observable as it arrives, then emits each value as it arrives
 
@@ -157,11 +157,11 @@ Just as many array libraries combine [`map()`](https://developer.mozilla.org/en-
 
 To explain how operators work, textual descriptions are often not enough. Many operators are related to time, they may for instance delay, sample, throttle, or debounce value emissions in different ways. Diagrams are often a better tool for that. _Marble Diagrams_ are visual representations of how operators work, and include the input Observable(s), the operator and its parameters, and the output Observable.
 
-要解释操作符的工作原理，仅靠文字描述通常是不够的。许多操作符与时间相关，例如，它们可能以不同方式延迟、采样、节流或防抖后发出。图表通常是更好的工具。*弹珠图*是对操作符工作原理的可视化表示，包括输入可观察者、操作符及其参数以及输出可观察者。
+要解释操作符的工作原理，仅靠文字描述通常是不够的。许多操作符与时间相关，例如，它们可能以不同方式延迟、采样、节流或防抖后发出。图表通常是更好的工具。*弹珠图*是对操作符工作原理的可视化表示，包括输入 Observable 、操作符及其参数以及输出 Observable 。
 
 <span class="informal">In a marble diagram, time flows to the right, and the diagram describes how values ("marbles") are emitted on the Observable execution.</span>
 
-<span class="informal">在弹珠图中，时间向右流动，该图描述了值（“弹珠”）如何在可观察者执行时发出。</span>
+<span class="informal">在弹珠图中，时间向右流动，该图描述了值（“弹珠”）如何在 Observable 执行时发出。</span>
 
 Below you can see the anatomy of a marble diagram.
 
@@ -225,7 +225,7 @@ For a complete overview, see the [references page](/api).
 
 These are Observable creation operators that also have join functionality -- emitting values of multiple source Observables.
 
-这些是可观察者的创建操作符，它们也具有联结功能 —— 发出多个源 Observable 的值。
+这些是 Observable 的创建操作符，它们也具有联结功能 —— 发出多个源 Observable 的值。
 
 - [`combineLatest`](/api/index/function/combineLatest)
 
@@ -562,11 +562,11 @@ Note that you must
 
 2. implement a "finalization" function that cleans up when the Observable completes (in this case by unsubscribing and clearing any pending timeouts).
 
-   实现一个“终止化”函数，在可观察者完成时进行清理（在这种情况下通过取消订阅和清除任何未决的超时）。
+   实现一个“终止化”函数，在 Observable 完成时进行清理（在这种情况下通过取消订阅和清除任何未决的超时）。
 
 3. return that finalization function from the function passed to the Observable constructor.
 
-   从传递给可观察者构造函数的函数中返回终止化函数。
+   从传递给 Observable 构造函数的函数中返回终止化函数。
 
 Of course, this is only an example; the [`delay()`](/api/operators/delay) operator already exists.
 
